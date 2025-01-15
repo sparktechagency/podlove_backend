@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/.ca32e266e0d6e1c8266a2e552f0f1574f9493ad8-audit.json",
+    "files": [
+        {
+            "date": 1736877231994,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-14-23-success.log",
+            "hash": "28ec3b635cda27df896a0173d72fe9305d1a036ab937029aa3bab9c55b877aa3"
+        },
+        {
+            "date": 1736952670946,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-15-20-success.log",
+            "hash": "69fd4608f7f0ee834e9a86885a0c9b3e40a1d113d2f16732270556261f03fa98"
+        }
+    ],
+    "hashType": "sha256"
+}
