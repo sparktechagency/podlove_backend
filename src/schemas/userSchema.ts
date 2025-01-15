@@ -34,4 +34,5 @@ export type UserSchema = Document & {
     ethnicity: Ethnicity;
     distance: Number;
   };
+  survey: string[];
 };

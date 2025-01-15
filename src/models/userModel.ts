@@ -108,6 +108,10 @@ const userSchema = new Schema<UserSchema>(
         type: Number,
       },
     },
+    survey: {
+      type: [String],
+      default: [],
+    },
   },
   {
     timestamps: true,
