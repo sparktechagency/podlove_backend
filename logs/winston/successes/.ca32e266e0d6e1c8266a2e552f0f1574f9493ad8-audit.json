@@ -14,6 +14,11 @@
             "date": 1736952670946,
             "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-15-20-success.log",
             "hash": "69fd4608f7f0ee834e9a86885a0c9b3e40a1d113d2f16732270556261f03fa98"
+        },
+        {
+            "date": 1737379071696,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-20-19-success.log",
+            "hash": "d2e881fb7dd646592b8e950083198f3393dc748f2a2606772f31bece85354518"
         }
     ],
     "hashType": "sha256"

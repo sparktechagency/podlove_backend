@@ -16,3 +16,5 @@ MongoServerError: E11000 duplicate key error collection: podlove.users index: ph
 MongoServerError
 Wed Jan 15 2025 20:51:11 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
 Wed Jan 15 2025 20:51:11 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Jan 20 2025 19:17:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jan 20 2025 19:17:52 [Podlove] [32minfo[39m: Server is running at PORT: 7000

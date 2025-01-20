@@ -16,7 +16,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
   const hashedPassword = await bcrypt.hash(password, 10);
   const verificationOTP = generateOTP();
-  const verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+  const verificationOTPExpiredAt = new Date(Date.now() + 30 * 60 * 1000);
 
   [error, auth] = await to(Auth.findOne({ email }));
   if (error) return next(error);
@@ -27,31 +27,45 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
   }
 
   const session = await mongoose.startSession();
-  session.startTransaction();
+  session.startTransaction(); // Begin transaction
 
   try {
     [error, auth] = await to(
-      Auth.create({
-        email,
-        password: hashedPassword,
-        role,
-        verificationOTP,
-        verificationOTPExpiredAt,
-        isVerified: false,
-        isBlocked: false,
-      })
+      Auth.create(
+        [
+          {
+            email,
+            password: hashedPassword,
+            role,
+            verificationOTP,
+            verificationOTPExpiredAt,
+            isVerified: false,
+            isBlocked: false,
+          },
+        ],
+        { session }
+      )
     );
     if (error) throw error;
 
+    auth = auth[0];
+
     [error, user] = await to(
-      User.create({
-        auth: auth._id,
-        name,
-        phoneNumber,
-      })
+      User.create(
+        [
+          {
+            auth: auth._id,
+            name,
+            phoneNumber,
+          },
+        ],
+        { session }
+      )
     );
     if (error) throw error;
+
     await session.commitTransaction();
+
     await sendEmail(email, verificationOTP);
 
     return res.status(StatusCodes.CREATED).json({
@@ -61,6 +75,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     });
   } catch (error) {
     await session.abortTransaction();
+
     return next(error);
   } finally {
     await session.endSession();
@@ -69,12 +84,13 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
 const activate = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, verificationOTP } = req.body;
+  let auth, user, error;
 
   if (!email || !verificationOTP) {
     return next(createError(StatusCodes.BAD_REQUEST, "Email and Verification OTP are required."));
   }
 
-  const [error, auth] = await to(Auth.findOne({ email }).select("-password"));
+  [error, auth] = await to(Auth.findOne({ email }).select("-password"));
   if (error) return next(error);
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
 
@@ -95,8 +111,8 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   auth.verificationOTPExpiredAt = null;
   auth.isVerified = true;
 
-  const [saveError] = await to(auth.save());
-  if (saveError) return next(saveError);
+  [error] = await to(auth.save());
+  if (error) return next(error);
 
   const accessSecret = process.env.JWT_ACCESS_SECRET;
   if (!accessSecret) {
@@ -104,8 +120,8 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   }
   const accessToken = generateToken(auth._id!.toString(), accessSecret, "96h");
 
-  const [userError, user] = await to(User.findOne({ auth: auth._id }));
-  if (userError) return next(userError);
+  [error, user] = await to(User.findOne({ auth: auth._id }));
+  if (error) return next(error);
   if (!user) {
     return next(createError(StatusCodes.NOT_FOUND, "Associated user not found."));
   }
