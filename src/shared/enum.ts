@@ -1,7 +1,20 @@
 export enum Role {
   USER = "USER",
   ADMIN = "ADMIN",
-  ADMINISTRATOR = "ADMINISTRATOR",
+}
+
+export enum AdminRole {
+  HOST = "HOST",
+}
+
+export enum AdminAccess {
+  ALL = "ALL",
+  DASHBOARD = "DASHBOARD",
+  USER_MANAGEMENT = "USER_MANAGEMENT",
+  PODCAST_MANAGEMENT = "PODCAST_MANAGEMENT",
+  SUBSCRIPTIONS = "SUBSCRIPTIONS",
+  SUPPORT = "SUPPORT",
+  SETTINGS = "SETTINGS",
 }
 
 export enum Gender {
