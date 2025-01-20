@@ -30,7 +30,7 @@ app.use("/faq", FaqRouter);
 app.use("/privacy", PrivacyRouter);
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
-  res.send("Hello From Tha Podlove");
+  res.send("Hello From Podlove");
 });
 
 app.use(notFound);
