@@ -18,7 +18,7 @@ const register = async (req, res, next) => {
     let error, auth, user;
     const hashedPassword = await bcrypt_1.default.hash(password, 10);
     const verificationOTP = (0, generateOTP_1.default)();
-    const verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+    const verificationOTPExpiredAt = new Date(Date.now() + 30 * 60 * 1000);
     [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ email }));
     if (error)
         return next(error);
@@ -28,24 +28,29 @@ const register = async (req, res, next) => {
             .json({ success: false, message: "Email already exists.", data: { isVerified: auth.isVerified } });
     }
     const session = await mongoose_1.default.startSession();
-    session.startTransaction();
+    session.startTransaction(); // Begin transaction
     try {
-        [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.create({
-            email,
-            password: hashedPassword,
-            role,
-            verificationOTP,
-            verificationOTPExpiredAt,
-            isVerified: false,
-            isBlocked: false,
-        }));
+        [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.create([
+            {
+                email,
+                password: hashedPassword,
+                role,
+                verificationOTP,
+                verificationOTPExpiredAt,
+                isVerified: false,
+                isBlocked: false,
+            },
+        ], { session }));
         if (error)
             throw error;
-        [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.create({
-            auth: auth._id,
-            name,
-            phoneNumber,
-        }));
+        auth = auth[0];
+        [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.create([
+            {
+                auth: auth._id,
+                name,
+                phoneNumber,
+            },
+        ], { session }));
         if (error)
             throw error;
         await session.commitTransaction();
@@ -66,10 +71,11 @@ const register = async (req, res, next) => {
 };
 const activate = async (req, res, next) => {
     const { email, verificationOTP } = req.body;
+    let auth, user, error;
     if (!email || !verificationOTP) {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "Email and Verification OTP are required."));
     }
-    const [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ email }).select("-password"));
+    [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ email }).select("-password"));
     if (error)
         return next(error);
     if (!auth)
@@ -87,17 +93,17 @@ const activate = async (req, res, next) => {
     auth.verificationOTP = "";
     auth.verificationOTPExpiredAt = null;
     auth.isVerified = true;
-    const [saveError] = await (0, await_to_ts_1.default)(auth.save());
-    if (saveError)
-        return next(saveError);
+    [error] = await (0, await_to_ts_1.default)(auth.save());
+    if (error)
+        return next(error);
     const accessSecret = process.env.JWT_ACCESS_SECRET;
     if (!accessSecret) {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
     }
     const accessToken = (0, jwt_1.generateToken)(auth._id.toString(), accessSecret, "96h");
-    const [userError, user] = await (0, await_to_ts_1.default)(userModel_1.default.findOne({ auth: auth._id }));
-    if (userError)
-        return next(userError);
+    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findOne({ auth: auth._id }));
+    if (error)
+        return next(error);
     if (!user) {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Associated user not found."));
     }

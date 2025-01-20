@@ -27,7 +27,7 @@ app.use("/tac", tacRouter_1.default);
 app.use("/faq", faqRouter_1.default);
 app.use("/privacy", privacyRouter_1.default);
 app.use("/", (req, res, next) => {
-    res.send("Hello From Tha Podlove");
+    res.send("Hello From Podlove");
 });
 app.use(notfound_1.notFound);
 app.use(errorHandler_1.errorHandler);
