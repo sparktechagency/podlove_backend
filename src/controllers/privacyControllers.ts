@@ -3,7 +3,6 @@ import to from "await-to-ts";
 import { Request, Response, NextFunction } from "express";
 import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
-import { Types } from "mongoose";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { text } = req.body;

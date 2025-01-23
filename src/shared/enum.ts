@@ -44,3 +44,20 @@ export enum Ethnicity {
   PACIFIC = "Pacific Islander",
   OTHER = "Other",
 }
+
+export enum SubscriptionPlan {
+  LISTENER = "Listener: Connection Starter",
+  SPEAKER = "Speaker: Conversation Explorer",
+  SEEKER = "Seeker: Connection Builder",
+}
+
+export enum SubscriptionStatus {
+  PAID = "PAID",
+  DUE = "DUE",
+}
+
+export enum PodcastStatus {
+  NOT_SCHEDULED = "NotScheduled",
+  SCHEDULED = "Scheduled",
+  DONE = "Done",
+}

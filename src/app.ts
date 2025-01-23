@@ -1,12 +1,13 @@
 import express, { Request, Response, NextFunction } from "express";
+import { notFound } from "@middlewares/notfound";
+import { errorHandler } from "@middlewares/errorHandler";
 import cors from "cors";
 import AuthRouter from "@routers/authRouter";
 import UserRouter from "@routers/userRouter";
-import { notFound } from "@middlewares/notfound";
 import FaqRouter from "@routers/faqRouter";
 import TaCRouter from "@routers/tacRouter";
 import PrivacyRouter from "@routers/privacyRouter";
-import { errorHandler } from "@middlewares/errorHandler";
+import PlanRouter from "@routers/planRouter";
 // import WebhookRouter from "@routers/webhookRouter";
 
 const app = express();
@@ -28,6 +29,7 @@ app.use("/user", UserRouter);
 app.use("/tac", TaCRouter);
 app.use("/faq", FaqRouter);
 app.use("/privacy", PrivacyRouter);
+app.use("/plan", PlanRouter);
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello From Podlove");

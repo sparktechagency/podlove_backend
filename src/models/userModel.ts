@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { BodyType, Ethnicity, Gender } from "@shared/enum";
+import { BodyType, Ethnicity, Gender, SubscriptionPlan, SubscriptionStatus } from "@shared/enum";
 import { UserSchema } from "@schemas/userSchema";
 
 const userSchema = new Schema<UserSchema>(
@@ -21,7 +21,7 @@ const userSchema = new Schema<UserSchema>(
     },
     address: {
       type: String,
-      default: null,
+      default: "",
     },
     age: {
       type: Number,
@@ -111,6 +111,25 @@ const userSchema = new Schema<UserSchema>(
     survey: {
       type: [String],
       default: [],
+    },
+    subscription: {
+      plan: {
+        type: String,
+        enum: SubscriptionPlan,
+        default: SubscriptionPlan.LISTENER,
+      },
+      fee: {
+        type: Number,
+        default: 0,
+      },
+      status: {
+        type: String,
+        enum: SubscriptionStatus,
+        default: "",
+      },
+      startedAt: {
+        type: Date,
+      },
     },
   },
   {

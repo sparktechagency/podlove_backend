@@ -1,5 +1,5 @@
 import { Document, Types } from "mongoose";
-import { BodyType, Ethnicity, Gender } from "@shared/enum";
+import { BodyType, Ethnicity, Gender, SubscriptionPlan, SubscriptionStatus } from "@shared/enum";
 
 export type UserSchema = Document & {
   auth: Types.ObjectId;
@@ -35,4 +35,10 @@ export type UserSchema = Document & {
     distance: Number;
   };
   survey: string[];
+  subscription: {
+    plan: SubscriptionPlan;
+    fee: Number;
+    status: SubscriptionStatus;
+    startedAt: Date;
+  };
 };
