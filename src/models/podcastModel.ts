@@ -30,12 +30,16 @@ const podcastSchema = new Schema<PodcastSchema>({
   selectedUser: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    default: null,
   },
   status: {
     type: String,
     enum: PodcastStatus,
     default: PodcastStatus.NOT_SCHEDULED,
+  },
+  recordingUrl: {
+    type: String,
+    default: "",
   },
 });
 

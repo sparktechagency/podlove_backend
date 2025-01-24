@@ -9,4 +9,5 @@ export type PodcastSchema = Document & {
   schedule: Date | null;
   selectedUser: Types.ObjectId | null;
   status: PodcastStatus;
+  recordingUrl: String;
 };
