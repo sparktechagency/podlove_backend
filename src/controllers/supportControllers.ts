@@ -34,3 +34,11 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
   if (error) return next(error);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { supports: supports || [] } });
 };
+
+const SupportControllers = {
+  create,
+  get,
+  getAll,
+};
+
+export default SupportControllers;

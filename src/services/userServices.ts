@@ -18,16 +18,13 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
     });
   }
 
-  const [error, [users, totalUsers]] = await to(
-    Promise.all([
-      User.find()
-        .populate({ path: "auth isBlocked", select: "email" })
-        .select("name phoneNumber gender age address survey")
-        .lean()
-        .skip(skip)
-        .limit(limit),
-      User.countDocuments(),
-    ])
+  const [error, users] = await to(
+    User.find()
+      .populate({ path: "auth", select: "email isBlocked" })
+      .select("name avatar phoneNumber gender age address survey")
+      .lean()
+      .skip(skip)
+      .limit(limit)
   );
 
   if (error) return next(error);
@@ -47,7 +44,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
       },
     });
   }
-
+  const totalUsers = await User.countDocuments();
   const totalPages = Math.ceil(totalUsers / limit);
 
   res.status(StatusCodes.OK).json({
@@ -77,15 +74,12 @@ const getAllPremiumSubscribers = async (req: Request, res: Response, next: NextF
     });
   }
 
-  const [error, [users, totalUsers]] = await to(
-    Promise.all([
-      User.find({ "subscription.plan": { $ne: SubscriptionPlan.LISTENER } })
-        .select("name subscription")
-        .lean()
-        .skip(skip)
-        .limit(limit),
-      User.countDocuments({ "subscription.plan": { $ne: SubscriptionPlan.LISTENER } }),
-    ])
+  const [error, users] = await to(
+    User.find({ "subscription.plan": { $ne: SubscriptionPlan.LISTENER } })
+      .select("name subscription")
+      .lean()
+      .skip(skip)
+      .limit(limit)
   );
 
   if (error) return next(error);
@@ -105,7 +99,7 @@ const getAllPremiumSubscribers = async (req: Request, res: Response, next: NextF
       },
     });
   }
-
+  const totalUsers = await User.countDocuments({ "subscription.plan": { $ne: SubscriptionPlan } });
   const totalPages = Math.ceil(totalUsers / limit);
 
   res.status(StatusCodes.OK).json({
@@ -198,7 +192,7 @@ const searchUsers = async (req: Request, res: Response, next: NextFunction): Pro
 };
 
 const searchPremiumUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { query } = req.query; // Extract the search query from the request
+  const { query } = req.query;
 
   if (!query) {
     return res.status(StatusCodes.BAD_REQUEST).json({

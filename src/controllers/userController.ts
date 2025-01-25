@@ -3,6 +3,7 @@ import User from "@models/userModel";
 import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
+import Cloudinary from "@shared/cloudinary";
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
@@ -38,7 +39,11 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   user.name = name || user.name;
   user.phoneNumber = contact || user.phoneNumber;
   user.address = address || user.address;
-  user.avatar = avatarUrl || user.avatar;
+
+  if (avatarUrl && user.avatar !== null && user.avatar !== undefined && user.avatar !== "") {
+    await Cloudinary.remove(user.avatar);
+    user.avatar = avatarUrl;
+  }
 
   [error] = await to(user.save());
   if (error) return next(error);

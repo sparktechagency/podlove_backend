@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { BodyType, Ethnicity, Gender, SubscriptionPlan, SubscriptionStatus } from "@shared/enums";
+import { UserSchema } from "@schemas/userSchema";
 
 const userSchema = new Schema(
   {
@@ -157,5 +158,5 @@ const userSchema = new Schema(
   }
 );
 
-export const User = model("User ", userSchema);
+export const User = model<UserSchema>("User ", userSchema);
 export default User;
