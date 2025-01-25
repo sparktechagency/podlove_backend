@@ -1,8 +1,7 @@
 import { Schema, model } from "mongoose";
 import { BodyType, Ethnicity, Gender, SubscriptionPlan, SubscriptionStatus } from "@shared/enum";
-import { UserSchema } from "@schemas/userSchema";
 
-const userSchema = new Schema<UserSchema>(
+const userSchema = new Schema(
   {
     auth: {
       type: Schema.Types.ObjectId,
@@ -26,38 +25,46 @@ const userSchema = new Schema<UserSchema>(
     age: {
       type: Number,
       min: 35,
+      default: 35,
     },
     gender: {
       type: String,
       enum: Object.values(Gender),
+      default: "",
     },
     bodyType: {
       type: String,
       enum: Object.values(BodyType),
+      default: "",
     },
     ethnicity: {
       type: String,
       enum: Object.values(Ethnicity),
+      default: "",
     },
     bio: {
       type: String,
       trim: true,
+      default: "",
     },
-    personalality: {
-      specturm: {
+    personality: {
+      spectrum: {
         type: Number,
         min: 1,
         max: 7,
+        default: 1,
       },
       balance: {
         type: Number,
         min: 1,
         max: 7,
+        default: 1,
       },
       focus: {
         type: Number,
         min: 1,
         max: 7,
+        default: 1,
       },
     },
     interests: {
@@ -75,37 +82,46 @@ const userSchema = new Schema<UserSchema>(
     location: {
       place: {
         type: String,
+        default: "",
       },
       longitude: {
         type: Number,
+        default: 0,
       },
       latitude: {
         type: Number,
+        default: 0,
       },
     },
     preferences: {
       gender: {
         type: String,
         enum: Object.values(Gender),
+        default: "",
       },
       age: {
         min: {
           type: Number,
+          default: 35,
         },
         max: {
           type: Number,
+          default: 80,
         },
       },
       bodyType: {
         type: String,
         enum: Object.values(BodyType),
+        default: "",
       },
       ethnicity: {
         type: String,
         enum: Object.values(Ethnicity),
+        default: "",
       },
       distance: {
         type: Number,
+        default: 0,
       },
     },
     survey: {
@@ -115,7 +131,7 @@ const userSchema = new Schema<UserSchema>(
     subscription: {
       plan: {
         type: String,
-        enum: SubscriptionPlan,
+        enum: Object.values(SubscriptionPlan),
         default: SubscriptionPlan.LISTENER,
       },
       fee: {
@@ -124,11 +140,12 @@ const userSchema = new Schema<UserSchema>(
       },
       status: {
         type: String,
-        enum: SubscriptionStatus,
+        enum: Object.values(SubscriptionStatus),
         default: "",
       },
       startedAt: {
         type: Date,
+        default: Date.now,
       },
     },
   },
@@ -137,5 +154,5 @@ const userSchema = new Schema<UserSchema>(
   }
 );
 
-export const User = model<UserSchema>("User", userSchema);
+export const User = model("User ", userSchema);
 export default User;

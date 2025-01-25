@@ -19,6 +19,16 @@
             "date": 1737379071696,
             "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-20-19-success.log",
             "hash": "d2e881fb7dd646592b8e950083198f3393dc748f2a2606772f31bece85354518"
+        },
+        {
+            "date": 1737736252105,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-24-22-success.log",
+            "hash": "408bed375a541ef3603d70d082c5e95ea2ec583cd226c94e8f5db026b3d9a10a"
+        },
+        {
+            "date": 1737809230549,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-25-18-success.log",
+            "hash": "4b592c29f5d2ce934893841a1f4f6f187f3d1ca4f7d42448baf414d5a3a05627"
         }
     ],
     "hashType": "sha256"

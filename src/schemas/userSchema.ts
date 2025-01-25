@@ -7,9 +7,9 @@ export type UserSchema = Document & {
   phoneNumber: string;
   address: string | null;
   age: number;
-  gender: Gender;
-  bodyType: BodyType;
-  ethnicity: Ethnicity;
+  gender: String;
+  bodyType: String;
+  ethnicity: String;
   bio: String;
   personalality: {
     specturm: Number;
@@ -30,9 +30,9 @@ export type UserSchema = Document & {
       min: Number;
       max: Number;
     };
-    bodyType: BodyType;
-    ethnicity: Ethnicity;
-    distance: Number;
+    bodyType: String;
+    ethnicity: String;
+    distance: String;
   };
   survey: string[];
   subscription: {

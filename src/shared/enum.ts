@@ -18,6 +18,7 @@ export enum AdminAccess {
 }
 
 export enum Gender {
+  NONE = "",
   MALE = "Male",
   FEMALE = "Female",
   NON_BINARY = "Non-binary",
@@ -26,6 +27,7 @@ export enum Gender {
 }
 
 export enum BodyType {
+  NONE = "",
   ATHLETIC = "Athletic",
   CURVY = "Curvy",
   SLIM = "Slim",
@@ -35,6 +37,7 @@ export enum BodyType {
 }
 
 export enum Ethnicity {
+  NONE = "",
   BLACK = "African American/Black",
   ASIAN = "Asian",
   WHITE = "Caucasian/White",
@@ -52,6 +55,7 @@ export enum SubscriptionPlan {
 }
 
 export enum SubscriptionStatus {
+  NONE = "",
   PAID = "PAID",
   DUE = "DUE",
 }
