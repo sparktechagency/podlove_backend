@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { PodcastSchema } from "@schemas/podcastSchema";
-import { PodcastStatus } from "@shared/enum";
+import { PodcastStatus } from "@shared/enums";
 
 const podcastSchema = new Schema<PodcastSchema>({
   primayUser: {

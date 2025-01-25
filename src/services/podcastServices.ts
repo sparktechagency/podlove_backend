@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import Podcast from "@models/podcastModel"; // Adjust the import path as necessary
-import { PodcastStatus } from "@shared/enum";
+import { PodcastStatus } from "@shared/enums";
 import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
 import createError from "http-errors";
@@ -160,3 +160,12 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
 };
+
+const PodcastServices = {
+  getAllNotScheduledPodcasts,
+  setSchedule,
+  getAllDonePodcasts,
+  selectUser,
+};
+
+export default PodcastServices;

@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { BodyType, Ethnicity, Gender, SubscriptionPlan, SubscriptionStatus } from "@shared/enum";
+import { BodyType, Ethnicity, Gender, SubscriptionPlan, SubscriptionStatus } from "@shared/enums";
 
 const userSchema = new Schema(
   {
@@ -129,9 +129,12 @@ const userSchema = new Schema(
       default: [],
     },
     subscription: {
+      id: {
+        type: String,
+        default: "",
+      },
       plan: {
         type: String,
-        enum: Object.values(SubscriptionPlan),
         default: SubscriptionPlan.LISTENER,
       },
       fee: {

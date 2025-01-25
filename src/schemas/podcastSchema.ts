@@ -1,4 +1,4 @@
-import { PodcastStatus } from "@shared/enum";
+import { PodcastStatus } from "@shared/enums";
 import { Document, Types } from "mongoose";
 
 export type PodcastSchema = Document & {

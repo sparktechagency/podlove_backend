@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { AuthSchema } from "../schemas/authSchema";
-import { Role } from "@shared/enum";
+import { Role } from "@shared/enums";
 
 const authSchema = new Schema<AuthSchema>({
   email: {

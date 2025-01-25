@@ -8,6 +8,7 @@ import FaqRouter from "@routers/faqRouter";
 import TaCRouter from "@routers/tacRouter";
 import PrivacyRouter from "@routers/privacyRouter";
 import PlanRouter from "@routers/planRouter";
+import AnalyticsRouter from "@routers/analyticsRouter";
 // import WebhookRouter from "@routers/webhookRouter";
 
 const app = express();
@@ -30,6 +31,7 @@ app.use("/tac", TaCRouter);
 app.use("/faq", FaqRouter);
 app.use("/privacy", PrivacyRouter);
 app.use("/plan", PlanRouter);
+app.use("/analytics", AnalyticsRouter);
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello From Podlove");

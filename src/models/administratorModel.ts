@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { AdminAccess, AdminRole } from "@shared/enum";
+import { AdminAccess, AdminRole } from "@shared/enums";
 import { AdministratorSchema } from "@schemas/administratorSchema";
 
 const administratorSchema = new Schema<AdministratorSchema>({

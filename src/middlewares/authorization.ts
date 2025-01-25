@@ -6,7 +6,7 @@ import createError from "http-errors";
 import Auth from "@models/authModel";
 import User from "@models/userModel";
 
-import { Role } from "@shared/enum";
+import { Role } from "@shared/enums";
 import { decodeToken } from "@utils/jwt";
 import { DecodedUser } from "@schemas/decodedUser";
 import { StatusCodes } from "http-status-codes";

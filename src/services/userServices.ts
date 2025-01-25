@@ -4,7 +4,7 @@ import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
 import createError from "http-errors";
 import Auth from "@models/authModel";
-import { SubscriptionPlan } from "@shared/enum";
+import { SubscriptionPlan } from "@shared/enums";
 
 const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const page = parseInt(req.query.page as string, 10) || 1;

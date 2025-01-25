@@ -29,6 +29,21 @@
             "date": 1737809230552,
             "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-25-18-error.log",
             "hash": "42a81fc11948afb98a6c8aa5570aece0ecf579e4343fb3ee50e9b52ba22d144e"
+        },
+        {
+            "date": 1737818502654,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-25-21-error.log",
+            "hash": "b21fb2f6b3a8151790af53e2a6ad8f305b57508662ffc32cec84adf5b87e9fa5"
+        },
+        {
+            "date": 1737830348189,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-00-error.log",
+            "hash": "dd85b4e2e9fa722e84b8c606295ace63419b732d0cc5d54984ff5b30859c92ec"
+        },
+        {
+            "date": 1737831616808,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-01-error.log",
+            "hash": "4aa5538d146cf389d2f6965476c2c6f41ef023e37f358886bccc736666dce660"
         }
     ],
     "hashType": "sha256"

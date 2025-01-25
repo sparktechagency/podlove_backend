@@ -1,5 +1,5 @@
 import { Document, Types } from "mongoose";
-import { BodyType, Ethnicity, Gender, SubscriptionPlan, SubscriptionStatus } from "@shared/enum";
+import { BodyType, Ethnicity, Gender, SubscriptionPlan, SubscriptionStatus } from "@shared/enums";
 
 export type UserSchema = Document & {
   auth: Types.ObjectId;
@@ -7,10 +7,10 @@ export type UserSchema = Document & {
   phoneNumber: string;
   address: string | null;
   age: number;
-  gender: String;
-  bodyType: String;
-  ethnicity: String;
-  bio: String;
+  gender: string;
+  bodyType: string;
+  ethnicity: string;
+  bio: string;
   personalality: {
     specturm: Number;
     balance: Number;
@@ -30,13 +30,14 @@ export type UserSchema = Document & {
       min: Number;
       max: Number;
     };
-    bodyType: String;
-    ethnicity: String;
-    distance: String;
+    bodyType: string;
+    ethnicity: string;
+    distance: string;
   };
   survey: string[];
   subscription: {
-    plan: SubscriptionPlan;
+    id: string;
+    plan: string;
     fee: Number;
     status: SubscriptionStatus;
     startedAt: Date;

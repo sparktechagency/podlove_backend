@@ -1,4 +1,4 @@
-import { AdminAccess, AdminRole } from "@shared/enum";
+import { AdminAccess, AdminRole } from "@shared/enums";
 import { Document } from "mongoose";
 
 export type AdministratorSchema = Document & {

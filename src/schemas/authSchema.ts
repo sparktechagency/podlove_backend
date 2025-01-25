@@ -1,4 +1,4 @@
-import { Role } from "@shared/enum";
+import { Role } from "@shared/enums";
 import { Document } from "mongoose";
 
 export type AuthSchema = Document & {

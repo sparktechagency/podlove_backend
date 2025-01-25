@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import Podcast from "@models/podcastModel";
-import { PodcastStatus } from "@shared/enum";
+import { PodcastStatus } from "@shared/enums";
 import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
 import createError from "http-errors";

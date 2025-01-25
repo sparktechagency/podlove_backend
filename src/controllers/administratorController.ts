@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Administrator from "@models/administratorModel";
-import { AdminRole, AdminAccess } from "@shared/enum";
+import { AdminRole, AdminAccess } from "@shared/enums";
 
 const JWT_SECRET = "your_jwt_secret_key";
 

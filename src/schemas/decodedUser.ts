@@ -1,4 +1,4 @@
-import { Role } from "@shared/enum";
+import { Role } from "@shared/enums";
 
 export type DecodedUser = {
   authId: string;
