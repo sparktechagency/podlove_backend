@@ -24,7 +24,7 @@ export const getUserInfo = async (authId: string): Promise<DecodedUser | null> =
     isVerified: auth.isVerified,
     isBlocked: auth.isBlocked,
     userId: user._id!.toString(),
-    name: user.name,
+    name: user.name
   };
   return data;
 };
@@ -67,7 +67,6 @@ const hasAccess = (roles: Role[]) => {
 export const authorize = authorizeToken(process.env.JWT_ACCESS_SECRET!, "Invalid Access Token");
 export const refreshAuthorize = authorizeToken(process.env.JWT_REFRESH_SECRET!, "Invalid Refresh Token");
 export const recoveryAuthorize = authorizeToken(process.env.JWT_RECOVERY_SECRET!, "Invalid Recovery Token");
-export const isAdmin = hasAccess([Role.ADMIN]);
 
 // export const isGUEST = hasAccess([Role.GUEST]);
 // export const isHOSTOrDJ = hasAccess([Role.HOST, Role.DJ]);

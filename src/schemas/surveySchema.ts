@@ -9,7 +9,7 @@ export type SurveySchema = Document & {
   fifth: number;
   six: number;
   seven: string;
-  eight: number;
+  eight: number
   nine: number;
   ten: string;
   eleven: number;

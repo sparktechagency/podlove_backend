@@ -7,156 +7,156 @@ const userSchema = new Schema(
     auth: {
       type: Schema.Types.ObjectId,
       ref: "Auth",
-      required: true,
+      required: true
     },
     name: {
       type: String,
       required: true,
-      trim: true,
+      trim: true
     },
     phoneNumber: {
       type: String,
       required: true,
-      unique: true,
+      unique: true
     },
     address: {
       type: String,
-      default: "",
+      default: ""
     },
     age: {
       type: Number,
       min: 35,
-      default: 35,
+      default: 35
     },
     gender: {
       type: String,
       enum: Object.values(Gender),
-      default: "",
+      default: ""
     },
     bodyType: {
       type: String,
       enum: Object.values(BodyType),
-      default: "",
+      default: ""
     },
     ethnicity: {
       type: String,
       enum: Object.values(Ethnicity),
-      default: "",
+      default: ""
     },
     bio: {
       type: String,
       trim: true,
-      default: "",
+      default: ""
     },
     personality: {
       spectrum: {
         type: Number,
         min: 1,
         max: 7,
-        default: 1,
+        default: 1
       },
       balance: {
         type: Number,
         min: 1,
         max: 7,
-        default: 1,
+        default: 1
       },
       focus: {
         type: Number,
         min: 1,
         max: 7,
-        default: 1,
-      },
+        default: 1
+      }
     },
     interests: {
       type: [String],
-      default: [],
+      default: []
     },
     avatar: {
       type: String,
-      default: "",
+      default: ""
     },
     compatibility: {
       type: [String],
-      default: [],
+      default: []
     },
     location: {
       place: {
         type: String,
-        default: "",
+        default: ""
       },
       longitude: {
         type: Number,
-        default: 0,
+        default: 0
       },
       latitude: {
         type: Number,
-        default: 0,
-      },
+        default: 0
+      }
     },
     preferences: {
       gender: {
         type: String,
         enum: Object.values(Gender),
-        default: "",
+        default: ""
       },
       age: {
         min: {
           type: Number,
-          default: 35,
+          default: 35
         },
         max: {
           type: Number,
-          default: 80,
-        },
+          default: 80
+        }
       },
       bodyType: {
         type: String,
         enum: Object.values(BodyType),
-        default: "",
+        default: ""
       },
       ethnicity: {
         type: String,
         enum: Object.values(Ethnicity),
-        default: "",
+        default: ""
       },
       distance: {
         type: Number,
-        default: 0,
-      },
+        default: 0
+      }
     },
     survey: {
       type: [String],
-      default: [],
+      default: []
     },
     subscription: {
       id: {
         type: String,
-        default: "",
+        default: ""
       },
       plan: {
         type: String,
-        default: SubscriptionPlan.LISTENER,
+        default: SubscriptionPlan.LISTENER
       },
       fee: {
         type: Number,
-        default: 0,
+        default: 0
       },
       status: {
         type: String,
         enum: Object.values(SubscriptionStatus),
-        default: "",
+        default: ""
       },
       startedAt: {
         type: Date,
-        default: Date.now,
-      },
-    },
+        default: Date.now
+      }
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 
-export const User = model<UserSchema>("User ", userSchema);
+export const User = model<UserSchema>("User", userSchema);
 export default User;

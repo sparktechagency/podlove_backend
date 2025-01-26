@@ -7,7 +7,7 @@ import Auth from "@models/authModel";
 import { SubscriptionPlan, SubscriptionStatus } from "@shared/enums";
 
 const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { query } = req.query;
+  const { search } = req.query;
   const page = parseInt(req.query.page as string, 10) || 1;
   const limit = parseInt(req.query.limit as string, 10) || 10;
   const skip = (page - 1) * limit;
@@ -23,7 +23,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
     let users;
     let totalUsers;
 
-    if (query) {
+    if (search) {
       const aggregation = [
         {
           $lookup: {
@@ -42,11 +42,11 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
         {
           $match: {
             $or: [
-              { "authDetails.email": { $regex: query, $options: "i" } },
-              { name: { $regex: query, $options: "i" } },
-              { phoneNumber: { $regex: query, $options: "i" } },
-              { gender: query },
-              { address: { $regex: query, $options: "i" } }
+              { "authDetails.email": { $regex: search, $options: "i" } },
+              { name: { $regex: search, $options: "i" } },
+              { phoneNumber: { $regex: search, $options: "i" } },
+              { gender: search },
+              { address: { $regex: search, $options: "i" } }
             ]
           }
         },
@@ -57,7 +57,6 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
             gender: 1,
             age: 1,
             address: 1,
-            survey: 1,
             "authDetails.email": 1,
             "authDetails.isBlocked": 1
           }
@@ -90,11 +89,11 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
         {
           $match: {
             $or: [
-              { "authDetails.email": { $regex: query, $options: "i" } },
-              { name: { $regex: query, $options: "i" } },
-              { phoneNumber: { $regex: query, $options: "i" } },
-              { gender: query },
-              { address: { $regex: query, $options: "i" } }
+              { "authDetails.email": { $regex: search, $options: "i" } },
+              { name: { $regex: search, $options: "i" } },
+              { phoneNumber: { $regex: search, $options: "i" } },
+              { gender: search },
+              { address: { $regex: search, $options: "i" } }
             ]
           }
         },
@@ -129,7 +128,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
         message: "No users found",
         data: {
           users: [],
-          pagination: query ? undefined : {
+          pagination: search ? undefined : {
             page,
             limit,
             totalPages: 0,
@@ -158,7 +157,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
 };
 
 const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { query } = req.query;
+  const { search } = req.query;
   const page = parseInt(req.query.page as string, 10) || 1;
   const limit = parseInt(req.query.limit as string, 10) || 10;
   const skip = (page - 1) * limit;
@@ -174,12 +173,12 @@ const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunctio
     let users;
     let totalUsers;
 
-    if (query) {
+    if (search) {
       users = await User.find({
         "subscription.status": SubscriptionStatus.PAID,
         $or: [
-          { name: { $regex: query, $options: "i" } },
-          { "subscription.plan": { $regex: query, $options: "i" } }
+          { name: { $regex: search, $options: "i" } },
+          { "subscription.plan": { $regex: search, $options: "i" } }
         ]
       })
         .select("name subscription")
@@ -190,14 +189,14 @@ const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunctio
       totalUsers = await User.countDocuments({
         "subscription.status": SubscriptionStatus.PAID,
         $or: [
-          { name: { $regex: query, $options: "i" } },
-          { "subscription.plan": { $regex: query, $options: "i" } }
+          { name: { $regex: search, $options: "i" } },
+          { "subscription.plan": { $regex: search, $options: "i" } }
         ]
       });
     } else {
       const [error, fetchedUsers] = await to(
         User.find({ "subscription.status": SubscriptionStatus.PAID })
-          .select("name subscription")
+          .select("name subscription avatar")
           .lean()
           .skip(skip)
           .limit(limit)
@@ -251,12 +250,16 @@ const block = async (req: Request, res: Response, next: NextFunction): Promise<a
   if (error) return next(error);
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
 
-  auth.isBlocked = true;
+  if (auth.isBlocked) {
+    auth.isBlocked = false;
+  } else if (!auth.isBlocked) {
+    auth.isBlocked = true;
+  }
   await auth.save();
 
   res.status(StatusCodes.OK).json({
     success: true,
-    message: "User blocked successfully",
+    message: auth.isBlocked ? "User blocked successfully" : "User unblocked successfully",
     data: { isBlocked: auth.isBlocked }
   });
 };

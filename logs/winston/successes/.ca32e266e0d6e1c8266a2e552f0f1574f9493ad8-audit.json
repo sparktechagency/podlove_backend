@@ -74,6 +74,41 @@
             "date": 1737877033004,
             "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-26-13-success.log",
             "hash": "017fbd7a676eaf25f9d6fae7e4840a006f902ae2909e118e208d203358749cf6"
+        },
+        {
+            "date": 1737878420049,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-26-14-success.log",
+            "hash": "8fea1d3fa2ee7bd04c0d3a0798dacddbb1bde665c01b24ded8bbd41cb4c9d1ed"
+        },
+        {
+            "date": 1737882109003,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-26-15-success.log",
+            "hash": "5475b7e369d801de5fa9b15702d49763de493307d7db36eb2d3a4f92f48a0958"
+        },
+        {
+            "date": 1737887737351,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-26-16-success.log",
+            "hash": "50b1c91b54dac330243df0cb83aec774793d9324445dd426305f6e5891b12a42"
+        },
+        {
+            "date": 1737889281325,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-26-17-success.log",
+            "hash": "c699162815802ed9e9acac087dada02353d4ba10176ed14641c2a127afb0c126"
+        },
+        {
+            "date": 1737892849759,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-26-18-success.log",
+            "hash": "44815073846a6998b462d1bfbfe6ad913a318fbb6213131944e629f287cccf41"
+        },
+        {
+            "date": 1737896413743,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-26-19-success.log",
+            "hash": "a732846e3f6002b0503bf76dee92111962e56489fbe5b91e20f40b2e0d9b3080"
+        },
+        {
+            "date": 1737900075547,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-01-26-20-success.log",
+            "hash": "909fe4437340db13a20917cba21122ba402cd012d0c866a57f6a4929290ac74e"
         }
     ],
     "hashType": "sha256"

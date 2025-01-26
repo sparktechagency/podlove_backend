@@ -3,9 +3,9 @@ export enum Role {
   ADMIN = "ADMIN",
 }
 
-export enum AdminRole {
-  HOST = "HOST",
-}
+// export enum AdminRole {
+//   HOST = "HOST",
+// }
 
 export enum AdminAccess {
   ALL = "ALL",

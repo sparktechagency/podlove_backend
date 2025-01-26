@@ -1,0 +1,20 @@
+Sun Jan 26 2025 16:35:37 [Podlove] [31merror[39m: Podcast not found
+NotFoundError: Podcast not found
+    at get (/home/mir/dev/projects/podlove_backend/src/controllers/podcastController.ts:18:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sun Jan 26 2025 16:37:24 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 16:37:24 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 16:48:46 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:36:30
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError

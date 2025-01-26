@@ -13,6 +13,8 @@ import SupportRouter from "@routers/supportRouter";
 import WebhookRouter from "@routers/webhookRouter";
 import SubscriptionRouter from "@routers/subscriptionRouter";
 import AdminRouter from "@routers/adminRouter";
+import SurveyRouter from "@routers/surveyRouter";
+import PodcastRouter from "@routers/podcastRouter";
 
 const app = express();
 
@@ -38,6 +40,8 @@ app.use("/analytics", AnalyticsRouter);
 app.use("/support", SupportRouter);
 app.use("/subscription", SubscriptionRouter);
 app.use("/admin", AdminRouter);
+app.use("/survey", SurveyRouter);
+app.use("/podcast", PodcastRouter);
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello From Podlove");

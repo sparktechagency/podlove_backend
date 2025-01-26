@@ -1,0 +1,58 @@
+Sun Jan 26 2025 20:1:17 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:1:17 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:9:40 [Podlove] [31merror[39m: Administrator validation failed: access: `"USER_MANAGEMENT"` is not a valid enum value for path `access`.
+ValidationError: Administrator validation failed: access: `"USER_MANAGEMENT"` is not a valid enum value for path `access`.
+    at model.Document.invalidate (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Sun Jan 26 2025 20:10:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:10:37 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:11:40 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:11:40 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:11:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:11:48 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:12:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:12:45 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:14:29 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:14:30 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:14:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:14:48 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:15:24 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:15:24 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:20:36 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:36:30
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Sun Jan 26 2025 20:20:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:20:45 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:23:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:23:35 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:23:51 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:23:51 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:24:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:24:21 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:26:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:26:42 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:28:50 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:28:51 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:31:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:31:1 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:31:17 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:31:17 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:33:39 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:33:39 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:35:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:35:20 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 20:36:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 20:36:19 [Podlove] [32minfo[39m: Server is running at PORT: 7000

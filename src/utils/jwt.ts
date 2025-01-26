@@ -3,10 +3,14 @@ import createError from "http-errors";
 
 export type Decoded = {
   id: string;
+  isAdmin: boolean;
 };
 
 export const generateToken = (id: string, secret: string, duration: string): string =>
   jwt.sign({ id }, secret, { expiresIn: duration });
+
+export const generateAdminToken = (id: string, isAdmin: true, secret: string, duration: string): string =>
+  jwt.sign({ id, isAdmin }, secret, { expiresIn: duration });
 
 export const decodeToken = (token: string, secret: string): [Error | null, Decoded | null] => {
   let decoded: Decoded | null = null;

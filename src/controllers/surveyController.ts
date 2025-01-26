@@ -24,7 +24,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
     sixteen,
     seventeen,
     eighteen,
-    nineteen,
+    nineteen
   } = req.body;
 
   const [error, survey] = await to(
@@ -48,7 +48,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
       sixteen,
       seventeen,
       eighteen,
-      nineteen,
+      nineteen
     })
   );
 
@@ -56,12 +56,12 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   res.status(StatusCodes.CREATED).json({
     success: true,
     message: "Survey created successfully",
-    data: survey,
+    data: survey
   });
 };
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const userId = req.params.userId;
+  const userId = req.params.id;
   const [error, survey] = await to(Survey.findOne({ user: userId }));
 
   if (error) return next(error);
@@ -69,13 +69,13 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Surveys retrieved successfully",
-    data: survey,
+    data: survey
   });
 };
 
 const SurveyController = {
   create,
-  get,
+  get
 };
 
 export default SurveyController;

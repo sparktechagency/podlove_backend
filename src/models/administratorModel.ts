@@ -1,35 +1,49 @@
 import { Schema, model } from "mongoose";
-import { AdminAccess, AdminRole } from "@shared/enums";
+import { AdminAccess } from "@shared/enums";
 import { AdministratorSchema } from "@schemas/administratorSchema";
 
 const administratorSchema = new Schema<AdministratorSchema>({
   name: {
     type: String,
-    required: true,
+    required: true
   },
-  contact: {
+  avatar: {
     type: String,
-    required: true,
+    default: ""
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: true
+  },
+  contact: {
+    type: String,
+    required: true
+  },
+  address: {
+    type: String,
+    default: ""
   },
   password: {
     type: String,
-    required: true,
+    required: true
   },
-  role: {
+  // role: {
+  //   type: String,
+  //   required: true,
+  //   enum: AdminRole,
+  // },
+  access: {
     type: String,
     required: true,
-    enum: AdminRole,
+    enum: Object.values(AdminAccess)
   },
-  access: {
-    type: [String],
-    required: true,
-    enum: Object.values(AdminAccess),
+  recoveryOTP: {
+    type: String
   },
+  recoveryOTPExpiredAt: {
+    type: Date
+  }
 });
 
 const Administrator = model<AdministratorSchema>("Administrator", administratorSchema);

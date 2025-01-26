@@ -1,11 +1,15 @@
-import { AdminAccess, AdminRole } from "@shared/enums";
+import { AdminAccess } from "@shared/enums";
 import { Document } from "mongoose";
 
 export type AdministratorSchema = Document & {
   name: string;
+  avatar: string;
   email: string;
+  address: string;
   contact: string;
   password: string;
-  role: AdminRole;
-  access: AdminAccess[];
+  access: AdminAccess;
+  recoveryOTP: string;
+  recoveryOTPExpiredAt: Date | null;
+  // role: AdminRole;
 };

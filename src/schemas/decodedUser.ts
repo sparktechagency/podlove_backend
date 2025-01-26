@@ -9,3 +9,8 @@ export type DecodedUser = {
   email: string;
   role: Role;
 };
+
+export type DecodedAdmin = {
+  id: string;
+  isAdmin: boolean;
+}

@@ -74,6 +74,41 @@
             "date": 1737877033006,
             "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-13-error.log",
             "hash": "389be845fe52c891034d54b8a418d99dcb54dd371218d609988c20f4f0d6304a"
+        },
+        {
+            "date": 1737878420051,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-14-error.log",
+            "hash": "3c1ba41513b516ef3c69146038db090c0c72eabd5f4bdeba43a20207190e5cce"
+        },
+        {
+            "date": 1737882109004,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-15-error.log",
+            "hash": "a752bccedd48cd006c806b5cfd0b9b5ebba737f2c67678cb15e2c691fd21c948"
+        },
+        {
+            "date": 1737887842177,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-16-error.log",
+            "hash": "e1c6d56d5f882ae3c87e6422ebdced5d74c9b4058b87dd5d5019afe0685c4f75"
+        },
+        {
+            "date": 1737889281326,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-17-error.log",
+            "hash": "c126b8a46d99e0da68bc422bf653396a401e5b6abc6290035873c3a7aacb9cc1"
+        },
+        {
+            "date": 1737892849761,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-18-error.log",
+            "hash": "a7a54669a112e1bc0b8093c38233dc3967835defe37d4e8367f5a44868b75603"
+        },
+        {
+            "date": 1737896413744,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-19-error.log",
+            "hash": "1312f94fce24e47b209c0ec527a46f97398179d4e5159efc9c5a544376787312"
+        },
+        {
+            "date": 1737900075548,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-20-error.log",
+            "hash": "c86d9e90d6c94e853449b2215b204139b56fae26b78cfca442842eaa74466213"
         }
     ],
     "hashType": "sha256"

@@ -1,6 +1,6 @@
 import express from "express";
 import SubscriptionServices from "@services/subscriptionServices";
-import { authorize, isAdmin } from "@middlewares/authorization";
+import { authorize } from "@middlewares/authorization";
 
 const router = express.Router();
 

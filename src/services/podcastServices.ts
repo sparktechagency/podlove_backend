@@ -4,6 +4,7 @@ import { PodcastStatus } from "@shared/enums";
 import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
 import createError from "http-errors";
+import { error } from "winston";
 
 const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const page = parseInt(req.query.page as string, 10) || 1;
@@ -17,10 +18,9 @@ const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: Nex
     });
   }
 
-
   const [error, podcasts] = await to(
-    Podcast.find({ status: PodcastStatus.NOT_SCHEDULED })
-      .populate({ path: "primayUser", select: "name avatar" })
+    Podcast.find({ status: { $in: [PodcastStatus.NOT_SCHEDULED, PodcastStatus.SCHEDULED] } })
+      .populate({ path: "primaryUser", select: "name avatar" })
       .populate({ path: "participant1", select: "name avatar" })
       .populate({ path: "participant2", select: "name avatar" })
       .populate({ path: "participant3", select: "name avatar" })
@@ -65,15 +65,28 @@ const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: Nex
   });
 };
 
-const setSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const podcastDone = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const podcastId = req.body.podcastId;
-  const schedule: Date = new Date(req.body.schedule);
+  const [error, podcast] = await to(Podcast.findById(podcastId));
+  if (error) return next(error);
+  if (!podcast) return next(createError(StatusCodes.NOT_FOUND, "Podcast not found"));
+
+  podcast.status = PodcastStatus.DONE;
+  const [saveError] = await to(podcast.save());
+  if (saveError) return next(saveError);
+
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { status: podcast.status } });
+};
+
+const setSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const { podcastId, date, time } = req.body;
 
   const [error, podcast] = await to(Podcast.findById(podcastId));
   if (error) return next(error);
   if (!podcast) return next(createError(StatusCodes.NOT_FOUND, "Podcast not found!"));
 
-  podcast.schedule = schedule;
+  podcast.schedule.date = date;
+  podcast.schedule.time = time;
   podcast.status = PodcastStatus.SCHEDULED;
 
   const [saveError] = await to(podcast.save());
@@ -96,7 +109,7 @@ const getAllDonePodcasts = async (req: Request, res: Response, next: NextFunctio
 
   const [error, podcasts] = await to(
     Podcast.find({ status: PodcastStatus.DONE })
-      .populate({ path: "primayUser", select: "name avatar" })
+      .populate({ path: "primaryUser", select: "name avatar" })
       .populate({ path: "participant1", select: "name avatar" })
       .populate({ path: "participant2", select: "name avatar" })
       .populate({ path: "participant3", select: "name avatar" })
@@ -162,6 +175,7 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
 const PodcastServices = {
   getAllNotScheduledPodcasts,
   setSchedule,
+  podcastDone,
   getAllDonePodcasts,
   selectUser
 };

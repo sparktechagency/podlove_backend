@@ -1,6 +1,6 @@
 import SupportController from "@controllers/supportControllers";
 import express from "express";
-import { authorize, isAdmin } from "@middlewares/authorization";
+import { authorize } from "@middlewares/authorization";
 import SupportServices from "@services/supportServices";
 
 const router = express.Router();
