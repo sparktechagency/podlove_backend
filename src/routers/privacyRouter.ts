@@ -5,7 +5,7 @@ import { authorize } from "@middlewares/authorization";
 const router = express.Router();
 
 router.post("/create", PrivacyController.create);
-router.get("/", authorize, PrivacyController.get);
-router.put("/update/:id", PrivacyController.update);
+router.get("/", PrivacyController.get);
+router.put("/update", PrivacyController.update);
 
 export default router;

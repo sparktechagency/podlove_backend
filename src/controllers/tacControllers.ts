@@ -19,13 +19,14 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
 };
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const id = req.params.id;
   const { text } = req.body;
   if (!text) return next(createError(StatusCodes.BAD_REQUEST, "No text provided"));
 
-  const [error, tac] = await to(TaC.findByIdAndUpdate(id, { $set: { text: text } }, { new: true }));
+  const [error, tac] = await to(TaC.findOne());
   if (error) return next(error);
   if (!tac) return next(createError(StatusCodes.NOT_FOUND, "Terms and Condition not found"));
+  tac.text = text;
+  await tac.save();
 
   res.status(StatusCodes.OK).json({ success: true, message: "Success", data: tac });
 };
@@ -33,7 +34,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
 const TaCController = {
   create,
   get,
-  update,
+  update
 };
 
 export default TaCController;

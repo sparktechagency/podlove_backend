@@ -19,14 +19,16 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
 };
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const id = req.params.id;
   const { text } = req.body;
 
   if (!text) return next(createError(StatusCodes.BAD_REQUEST, "No text provided"));
 
-  const [error, privacy] = await to(Privacy.findByIdAndUpdate(id, { $set: { text: text } }, { new: true }));
+  const [error, privacy] = await to(Privacy.findOne());
   if (error) return next(error);
   if (!privacy) return next(createError(StatusCodes.NOT_FOUND, "Privacy policy not found"));
+
+  privacy.text = text;
+  await privacy.save();
 
   res.status(StatusCodes.OK).json({ success: true, message: "Success", data: privacy });
 };
@@ -34,7 +36,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
 const PrivacyController = {
   create,
   get,
-  update,
+  update
 };
 
 export default PrivacyController;
