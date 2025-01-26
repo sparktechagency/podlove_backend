@@ -4,14 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const notfound_1 = require("./middlewares/notfound");
+const errorHandler_1 = require("./middlewares/errorHandler");
 const cors_1 = __importDefault(require("cors"));
 const authRouter_1 = __importDefault(require("./routers/authRouter"));
 const userRouter_1 = __importDefault(require("./routers/userRouter"));
-const notfound_1 = require("./middlewares/notfound");
 const faqRouter_1 = __importDefault(require("./routers/faqRouter"));
 const tacRouter_1 = __importDefault(require("./routers/tacRouter"));
 const privacyRouter_1 = __importDefault(require("./routers/privacyRouter"));
-const errorHandler_1 = require("./middlewares/errorHandler");
+const planRouter_1 = __importDefault(require("./routers/planRouter"));
+const analyticsRouter_1 = __importDefault(require("./routers/analyticsRouter"));
 // import WebhookRouter from "@routers/webhookRouter";
 const app = (0, express_1.default)();
 // app.use("/", WebhookRouter);
@@ -26,6 +28,8 @@ app.use("/user", userRouter_1.default);
 app.use("/tac", tacRouter_1.default);
 app.use("/faq", faqRouter_1.default);
 app.use("/privacy", privacyRouter_1.default);
+app.use("/plan", planRouter_1.default);
+app.use("/analytics", analyticsRouter_1.default);
 app.use("/", (req, res, next) => {
     res.send("Hello From Podlove");
 });

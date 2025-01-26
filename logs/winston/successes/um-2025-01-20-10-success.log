@@ -1,0 +1,10 @@
+Mon Jan 20 2025 10:29:38 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jan 20 2025 10:29:38 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Jan 20 2025 10:41:15 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlove.users index: phoneNumber_1 dup key: { phoneNumber: "000000000" }
+MongoServerError: E11000 duplicate key error collection: podlove.users index: phoneNumber_1 dup key: { phoneNumber: "000000000" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError

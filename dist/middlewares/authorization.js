@@ -9,7 +9,7 @@ require("dotenv/config");
 const http_errors_1 = __importDefault(require("http-errors"));
 const authModel_1 = __importDefault(require("../models/authModel"));
 const userModel_1 = __importDefault(require("../models/userModel"));
-const enum_1 = require("../shared/enum");
+const enums_1 = require("../shared/enums");
 const jwt_1 = require("../utils/jwt");
 const http_status_codes_1 = require("http-status-codes");
 const getUserInfo = async (authId) => {
@@ -68,6 +68,6 @@ const hasAccess = (roles) => {
 exports.authorize = authorizeToken(process.env.JWT_ACCESS_SECRET, "Invalid Access Token");
 exports.refreshAuthorize = authorizeToken(process.env.JWT_REFRESH_SECRET, "Invalid Refresh Token");
 exports.recoveryAuthorize = authorizeToken(process.env.JWT_RECOVERY_SECRET, "Invalid Recovery Token");
-exports.isAdmin = hasAccess([enum_1.Role.ADMIN]);
+exports.isAdmin = hasAccess([enums_1.Role.ADMIN]);
 // export const isGUEST = hasAccess([Role.GUEST]);
 // export const isHOSTOrDJ = hasAccess([Role.HOST, Role.DJ]);

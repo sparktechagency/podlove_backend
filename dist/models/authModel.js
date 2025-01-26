@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-const enum_1 = require("../shared/enum");
+const enums_1 = require("../shared/enums");
 const authSchema = new mongoose_1.Schema({
     email: {
         type: String,
@@ -15,7 +15,7 @@ const authSchema = new mongoose_1.Schema({
     role: {
         type: String,
         required: true,
-        enum: enum_1.Role,
+        enum: enums_1.Role,
     },
     verificationOTP: {
         type: String,
