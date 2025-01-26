@@ -5,28 +5,28 @@ const supportSchema = new Schema<SupportSchema>({
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    required: true
   },
   userName: {
     type: String,
-    required: true,
+    required: true
   },
   userAvatar: {
     type: String,
-    required: true,
+    default: ""
   },
   description: {
     type: String,
-    required: true,
+    required: true
   },
   date: {
     type: Date,
-    required: true,
+    required: true
   },
   reply: {
     type: String,
-    default: "",
-  },
+    default: ""
+  }
 });
 
 const Support = model<SupportSchema>("Support", supportSchema);

@@ -8,9 +8,7 @@ import fileHandler from "@middlewares/fileHandler";
 const router = express.Router();
 
 router.get("/get-all-users", UserServices.getAllUsers);
-router.get("/get-all-premium-users", UserServices.getAllPremiumSubscribers);
-router.get("/search-user", UserServices.searchUsers);
-router.get("/search-premium-user", UserServices.searchPremiumUsers);
+router.get("/get-all-premium-users", UserServices.getAllPremiumUsers);
 router.get("/", authorize, UserController.get);
 router.put("/update", fileUpload(), fileHandler, authorize, UserController.update);
 router.post("/block/:authId", UserServices.block);

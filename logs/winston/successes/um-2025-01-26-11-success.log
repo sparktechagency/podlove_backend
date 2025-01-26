@@ -1,0 +1,165 @@
+Sun Jan 26 2025 11:0:53 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:0:53 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:1:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:1:4 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:2:29 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:36:30
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Sun Jan 26 2025 11:2:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:2:48 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:2:52 [Podlove] [31merror[39m: Support validation failed: userAvatar: Path `userAvatar` is required.
+ValidationError: Support validation failed: userAvatar: Path `userAvatar` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Sun Jan 26 2025 11:3:17 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:3:17 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:3:24 [Podlove] [31merror[39m: Support validation failed: userAvatar: Path `userAvatar` is required.
+ValidationError: Support validation failed: userAvatar: Path `userAvatar` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Sun Jan 26 2025 11:3:46 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:3:46 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:3:49 [Podlove] [31merror[39m: Support validation failed: userAvatar: Path `userAvatar` is required.
+ValidationError: Support validation failed: userAvatar: Path `userAvatar` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Sun Jan 26 2025 11:4:10 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:4:10 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:4:14 [Podlove] [31merror[39m: Support validation failed: userAvatar: Path `userAvatar` is required.
+ValidationError: Support validation failed: userAvatar: Path `userAvatar` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Sun Jan 26 2025 11:4:54 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:4:54 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:4:58 [Podlove] [31merror[39m: Support validation failed: userAvatar: Path `userAvatar` is required.
+ValidationError: Support validation failed: userAvatar: Path `userAvatar` is required.
+    at model.Document.invalidate (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3318:32)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/document.js:3079:17
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Sun Jan 26 2025 11:5:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:5:9 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:7:10 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:7:10 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:7:38 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:7:38 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:10:16 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:36:30
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Sun Jan 26 2025 11:10:39 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:10:39 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:12:24 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:12:24 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:14:56 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:14:56 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:17:16 [Podlove] [31merror[39m: Invalid integer: NaN
+Error: Invalid integer: NaN
+    at generateV1Error (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/stripe@17.4.0/node_modules/stripe/cjs/RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sun Jan 26 2025 11:26:8 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "year" for model "Analytics"
+CastError: Cast to Number failed for value "NaN" (type number) at path "year" for model "Analytics"
+    at SchemaNumber.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:380:11)
+    at SchemaNumber.SchemaType.applySetters (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1236:12)
+    at SchemaNumber.castForQuery (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:434:16)
+    at cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4906:12)
+    at model.Query.Query._castConditions (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2309:10)
+    at model.Query._find (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2336:8)
+    at model.Query.exec (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4458:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getIncomeByYear (/home/mir/dev/projects/podlove_backend/src/controllers/analyticsControllers.ts:51:30)
+CastError
+Sun Jan 26 2025 11:29:39 [Podlove] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:147:48)
+UnauthorizedError
+Sun Jan 26 2025 11:32:6 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:32:6 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:33:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:33:9 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:33:29 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:33:30 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:33:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:33:43 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:33:46 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:33:46 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:34:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:34:13 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:34:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:34:43 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:36:16 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:36:16 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:36:39 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:36:39 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:36:54 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:36:54 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:38:6 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:38:6 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:47:51 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:47:51 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:47:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:47:57 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:48:11 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:48:11 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:50:44 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:50:44 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:50:50 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:50:50 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:51:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:51:49 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:54:6 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:54:6 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:54:24 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:54:24 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:54:47 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:54:47 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 11:55:30 [Podlove] [31merror[39m: Cast to ObjectId failed for value "search" (type string) at path "_id" for model "Support"
+CastError: Cast to ObjectId failed for value "search" (type string) at path "_id" for model "Support"
+    at SchemaObjectId.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/objectId.js:250:11)
+    at SchemaObjectId.SchemaType.applySetters (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1236:12)
+    at SchemaObjectId.SchemaType.castForQuery (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1653:17)
+    at cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/cast.js:390:32)
+    at model.Query.Query.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4906:12)
+    at model.Query.Query._castConditions (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2309:10)
+    at model.Query._findOne (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2632:8)
+    at model.Query.exec (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4458:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async get (/home/mir/dev/projects/podlove_backend/src/controllers/supportControllers.ts:26:28)
+CastError
+Sun Jan 26 2025 11:55:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 11:55:42 [Podlove] [32minfo[39m: Server is running at PORT: 7000

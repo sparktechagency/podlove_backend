@@ -1,0 +1,72 @@
+Sun Jan 26 2025 12:2:38 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:2:38 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:2:47 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:2:47 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:2:52 [Podlove] [31merror[39m: Plan not found
+NotFoundError: Plan not found
+    at upgrade (/home/mir/dev/projects/podlove_backend/src/services/subscriptionServices.ts:22:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sun Jan 26 2025 12:3:27 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:3:27 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:7:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:7:4 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:8:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:8:37 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:9:7 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:9:7 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:10:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:10:2 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:10:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:10:13 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:11:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:11:35 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:12:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:12:4 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:13:44 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:13:44 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:13:56 [Podlove] [31merror[39m: Cast to Number failed for value "Shukumar" (type string) at path "subscription.fee" for model "User "
+CastError: Cast to Number failed for value "Shukumar" (type string) at path "subscription.fee" for model "User "
+    at SchemaNumber.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:380:11)
+    at SchemaNumber.SchemaType.applySetters (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schemaType.js:1236:12)
+    at SchemaNumber.castForQuery (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:434:16)
+    at cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/cast.js:390:32)
+    at cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/cast.js:76:20)
+    at model.Query.Query.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4906:12)
+    at model.Query.Query._castConditions (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2309:10)
+    at model.Query._find (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2336:8)
+    at model.Query.exec (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4458:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+CastError
+Sun Jan 26 2025 12:15:14 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:15:14 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:34:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:34:35 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:36:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:36:37 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:38:44 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:38:44 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:39:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:39:1 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:39:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:39:45 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:40:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:40:4 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:41:51 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:41:51 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:47:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:47:4 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:48:10 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:48:10 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:52:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:52:1 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:54:8 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:54:8 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:54:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:54:59 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:56:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:56:0 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:56:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:56:20 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sun Jan 26 2025 12:57:26 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 26 2025 12:57:27 [Podlove] [32minfo[39m: Server is running at PORT: 7000

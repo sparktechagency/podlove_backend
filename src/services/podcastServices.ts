@@ -13,22 +13,20 @@ const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: Nex
   if (page < 1 || limit < 1) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       success: false,
-      message: "Page and limit must be positive integers",
+      message: "Page and limit must be positive integers"
     });
   }
 
-  const [error, [podcasts, totalPodcasts]] = await to(
-    Promise.all([
-      Podcast.find({ status: PodcastStatus.NOT_SCHEDULED })
-        .populate("primayUser ", "name")
-        .populate("participant1", "name")
-        .populate("participant2", "name")
-        .populate("participant3", "name")
-        .skip(skip)
-        .limit(limit)
-        .lean(),
-      Podcast.countDocuments({ status: PodcastStatus.NOT_SCHEDULED }),
-    ])
+
+  const [error, podcasts] = await to(
+    Podcast.find({ status: PodcastStatus.NOT_SCHEDULED })
+      .populate({ path: "primayUser", select: "name avatar" })
+      .populate({ path: "participant1", select: "name avatar" })
+      .populate({ path: "participant2", select: "name avatar" })
+      .populate({ path: "participant3", select: "name avatar" })
+      .skip(skip)
+      .limit(limit)
+      .lean()
   );
 
   if (error) return next(error);
@@ -43,12 +41,13 @@ const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: Nex
           page,
           limit,
           totalPages: 0,
-          totalPodcasts: 0,
-        },
-      },
+          totalPodcasts: 0
+        }
+      }
     });
   }
 
+  const totalPodcasts = await Podcast.countDocuments({ status: PodcastStatus.NOT_SCHEDULED });
   const totalPages = Math.ceil(totalPodcasts / limit);
 
   res.status(StatusCodes.OK).json({
@@ -60,9 +59,9 @@ const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: Nex
         page,
         limit,
         totalPages,
-        totalPodcasts,
-      },
-    },
+        totalPodcasts
+      }
+    }
   });
 };
 
@@ -91,23 +90,21 @@ const getAllDonePodcasts = async (req: Request, res: Response, next: NextFunctio
   if (page < 1 || limit < 1) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       success: false,
-      message: "Page and limit must be positive integers",
+      message: "Page and limit must be positive integers"
     });
   }
 
-  const [error, [podcasts, totalPodcasts]] = await to(
-    Promise.all([
-      Podcast.find({ status: PodcastStatus.DONE })
-        .populate("primayUser ", "name")
-        .populate("participant1", "name")
-        .populate("participant2", "name")
-        .populate("participant3", "name")
-        .skip(skip)
-        .limit(limit)
-        .lean(),
-      Podcast.countDocuments({ status: PodcastStatus.NOT_SCHEDULED }),
-    ])
+  const [error, podcasts] = await to(
+    Podcast.find({ status: PodcastStatus.DONE })
+      .populate({ path: "primayUser", select: "name avatar" })
+      .populate({ path: "participant1", select: "name avatar" })
+      .populate({ path: "participant2", select: "name avatar" })
+      .populate({ path: "participant3", select: "name avatar" })
+      .skip(skip)
+      .limit(limit)
+      .lean()
   );
+
 
   if (error) return next(error);
 
@@ -121,11 +118,12 @@ const getAllDonePodcasts = async (req: Request, res: Response, next: NextFunctio
           page,
           limit,
           totalPages: 0,
-          totalPodcasts: 0,
-        },
-      },
+          totalPodcasts: 0
+        }
+      }
     });
   }
+  const totalPodcasts = await Podcast.countDocuments({ status: PodcastStatus.DONE });
 
   const totalPages = Math.ceil(totalPodcasts / limit);
 
@@ -138,9 +136,9 @@ const getAllDonePodcasts = async (req: Request, res: Response, next: NextFunctio
         page,
         limit,
         totalPages,
-        totalPodcasts,
-      },
-    },
+        totalPodcasts
+      }
+    }
   });
 };
 
@@ -165,7 +163,7 @@ const PodcastServices = {
   getAllNotScheduledPodcasts,
   setSchedule,
   getAllDonePodcasts,
-  selectUser,
+  selectUser
 };
 
 export default PodcastServices;

@@ -39,11 +39,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   user.name = name || user.name;
   user.phoneNumber = contact || user.phoneNumber;
   user.address = address || user.address;
-
-  if (avatarUrl && user.avatar !== null && user.avatar !== undefined && user.avatar !== "") {
-    await Cloudinary.remove(user.avatar);
-    user.avatar = avatarUrl;
-  }
+  user.avatar = avatarUrl || user.avatar;
 
   [error] = await to(user.save());
   if (error) return next(error);

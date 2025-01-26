@@ -71,8 +71,8 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
   }
 };
 
-const controller = {
-  webhook,
+const StripeServices = {
+  webhook
 };
 
-export default controller;
+export default StripeServices;

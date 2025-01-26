@@ -6,11 +6,12 @@ import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
 import Plan from "@models/planModel";
 import { SubscriptionPlan, SubscriptionStatus } from "@shared/enums";
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const upgrade = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
-  const planId = req.body.plan;
+  const planId = req.body.planId;
   let error, user, plan, session, customer;
 
   [error, user] = await to(User.findById(userId));
@@ -32,18 +33,18 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
       line_items: [
         {
           price: plan.priceId,
-          quantity: 1,
-        },
+          quantity: 1
+        }
       ],
       subscription_data: {
         metadata: {
           plan: plan.name,
           fee: plan.unitAmount,
-          userId: userId,
-        },
+          userId: userId
+        }
       },
       success_url: `https://example.com/success`,
-      cancel_url: `https://example.com/cancel`,
+      cancel_url: `https://example.com/cancel`
     })
   );
   if (error) return next(error);
@@ -61,7 +62,7 @@ const cancel = async (req: Request, res: Response, next: NextFunction): Promise<
 
   [error] = await to(
     stripe.subscriptions.update(user.subscription!.id!, {
-      cancel_at_period_end: true,
+      cancel_at_period_end: true
     })
   );
   if (error) return next(error);
@@ -79,7 +80,7 @@ const cancel = async (req: Request, res: Response, next: NextFunction): Promise<
 
 const SubscriptionServices = {
   upgrade,
-  cancel,
+  cancel
 };
 
 export default SubscriptionServices;

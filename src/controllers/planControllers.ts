@@ -16,7 +16,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   [error, product] = await to(
     stripe.products.create({
       name: name!,
-      description: description,
+      description: description
     })
   );
   if (error) return next(error);
@@ -24,11 +24,11 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   [error, price] = await to(
     stripe.prices.create({
       product: product.id,
-      unit_amount: unitAmount,
+      unit_amount: Number.parseFloat(unitAmount) * 100,
       currency: "usd",
       recurring: {
-        interval: interval!,
-      },
+        interval: interval!
+      }
     })
   );
   if (error) return next(error);
@@ -37,10 +37,10 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
     Plan.create({
       name: name,
       description: description,
-      unitAmount: unitAmount,
+      unitAmount: Number.parseFloat(unitAmount),
       interval: interval,
       productId: product.id,
-      priceId: price.id,
+      priceId: price.id
     })
   );
   if (error) return next(error);
@@ -48,7 +48,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   return res.status(StatusCodes.CREATED).json({
     success: true,
     message: "Success",
-    data: plan,
+    data: plan
   });
 };
 
@@ -89,7 +89,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   if (unitAmount || interval) {
     let [error] = await to(
       stripe.prices.update(plan.priceId, {
-        active: false,
+        active: false
       })
     );
     if (error) return next(error);
@@ -103,8 +103,8 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
         unit_amount: plan.unitAmount * 100,
         currency: "usd",
         recurring: {
-          interval: plan.interval!,
-        },
+          interval: plan.interval!
+        }
       })
     );
     if (error) return next(error);
@@ -117,7 +117,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   res.status(StatusCodes.OK).json({
     success: true,
     message: "Success",
-    data: plan,
+    data: plan
   });
 };
 
@@ -125,7 +125,7 @@ const controller = {
   create,
   get,
   getAll,
-  update,
+  update
 };
 
 export default controller;
