@@ -5,28 +5,28 @@ const supportSchema = new mongoose_1.Schema({
     user: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        required: true,
+        required: true
     },
     userName: {
         type: String,
-        required: true,
+        required: true
     },
     userAvatar: {
         type: String,
-        required: true,
+        default: ""
     },
     description: {
         type: String,
-        required: true,
+        required: true
     },
     date: {
         type: Date,
-        required: true,
+        required: true
     },
     reply: {
         type: String,
-        default: "",
-    },
+        default: ""
+    }
 });
 const Support = (0, mongoose_1.model)("Support", supportSchema);
 exports.default = Support;

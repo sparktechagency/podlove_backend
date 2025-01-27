@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const administratorController_1 = __importDefault(require("../controllers/administratorController"));
+const adminServices_1 = __importDefault(require("../services/adminServices"));
+const express_1 = __importDefault(require("express"));
+const admin_authorization_1 = require("../middlewares/admin_authorization");
+const express_fileupload_1 = __importDefault(require("express-fileupload"));
+const fileHandler_1 = __importDefault(require("../middlewares/fileHandler"));
+const authRouter_1 = __importDefault(require("./authRouter"));
+const router = express_1.default.Router();
+router.post("/create", administratorController_1.default.create);
+router.post("/login", administratorController_1.default.login);
+router.post("/change-password", administratorController_1.default.changePassword);
+router.post("/send-message", adminServices_1.default.sendMessage);
+router.put("/update", (0, express_fileupload_1.default)(), fileHandler_1.default, admin_authorization_1.isAdmin, administratorController_1.default.update);
+router.put("/update/:id", admin_authorization_1.isAdmin, administratorController_1.default.updateAdmin);
+router.delete("remove/:id", administratorController_1.default.remove);
+authRouter_1.default.post("/forgot-password", administratorController_1.default.forgotPassword);
+authRouter_1.default.post("/verify-email", administratorController_1.default.verifyEmail);
+authRouter_1.default.put("/reset-password", admin_authorization_1.isAdmin, administratorController_1.default.resetPassword);
+exports.default = router;

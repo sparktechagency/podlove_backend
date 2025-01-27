@@ -10,7 +10,6 @@ const enums_1 = require("../shared/enums");
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const http_status_codes_1 = require("http-status-codes");
 const getAnalytics = async (req, res, next) => {
-    const year = Number.parseInt(req.params.year);
     let error, users, premiumUsers, totalIncomeResult, totalIncome, totalPodcast, analytics;
     [error, users] = await (0, await_to_ts_1.default)(userModel_1.default.countDocuments());
     if (error)
@@ -25,38 +24,13 @@ const getAnalytics = async (req, res, next) => {
         {
             $group: {
                 _id: null,
-                total: { $sum: "$subscription.fee" },
-            },
-        },
+                total: { $sum: "$subscription.fee" }
+            }
+        }
     ]));
     if (error)
         return next(error);
     totalIncome = totalIncomeResult[0]?.total || 0;
-    const allMonths = Object.values(enums_1.Months);
-    [error, analytics] = await (0, await_to_ts_1.default)(analyticsModel_1.default.find({ year }));
-    if (error)
-        return next(error);
-    const incomeArray = [];
-    const subscriptionArray = [];
-    if (analytics.length === 0) {
-        allMonths.forEach((month) => {
-            incomeArray.push({ month: month, income: 0 });
-            subscriptionArray.push({ month: month, active: 0, cancel: 0 });
-        });
-    }
-    else {
-        allMonths.forEach((month) => {
-            const monthData = analytics.find((item) => item.month === month);
-            if (monthData) {
-                incomeArray.push({ month: month, income: monthData.income });
-                subscriptionArray.push({ month: month, active: monthData.active, cancel: monthData.cancel });
-            }
-            else {
-                incomeArray.push({ month: month, income: 0 });
-                subscriptionArray.push({ month: month, active: 0, cancel: 0 });
-            }
-        });
-    }
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Success",
@@ -64,13 +38,71 @@ const getAnalytics = async (req, res, next) => {
             users,
             premiumUsers,
             totalIncome,
-            totalPodcast,
-            incomeArray,
-            subscriptionArray,
-        },
+            totalPodcast
+        }
+    });
+};
+const getIncomeByYear = async (req, res, next) => {
+    const year = Number.parseInt(req.params.year);
+    const [error, analytics] = await (0, await_to_ts_1.default)(analyticsModel_1.default.find({ year }));
+    if (error)
+        return next(error);
+    const allMonths = Object.values(enums_1.Months);
+    const income = [];
+    if (analytics.length === 0) {
+        allMonths.forEach((month) => {
+            income.push({ month: month, income: 0 });
+        });
+    }
+    else {
+        allMonths.forEach((month) => {
+            const monthData = analytics.find((item) => item.month === month);
+            if (monthData) {
+                income.push({ month: month, income: monthData.income });
+            }
+            else {
+                income.push({ month: month, income: 0 });
+            }
+        });
+    }
+    return res.status(http_status_codes_1.StatusCodes.OK).json({
+        success: true,
+        message: "Success",
+        data: income
+    });
+};
+const getSubscriptionByYear = async (req, res, next) => {
+    const year = Number.parseInt(req.params.year);
+    const [error, analytics] = await (0, await_to_ts_1.default)(analyticsModel_1.default.find({ year }));
+    if (error)
+        return next(error);
+    const allMonths = Object.values(enums_1.Months);
+    const subscription = [];
+    if (analytics.length === 0) {
+        allMonths.forEach((month) => {
+            subscription.push({ month: month, active: 0, cancel: 0 });
+        });
+    }
+    else {
+        allMonths.forEach((month) => {
+            const monthData = analytics.find((item) => item.month === month);
+            if (monthData) {
+                subscription.push({ month: month, active: monthData.active, cancel: monthData.cancel });
+            }
+            else {
+                subscription.push({ month: month, active: 0, cancel: 0 });
+            }
+        });
+    }
+    return res.status(http_status_codes_1.StatusCodes.OK).json({
+        success: true,
+        message: "Success",
+        data: subscription
     });
 };
 const AnalyticsController = {
     getAnalytics,
+    getIncomeByYear,
+    getSubscriptionByYear
 };
 exports.default = AnalyticsController;

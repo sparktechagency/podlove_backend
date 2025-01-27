@@ -109,6 +109,11 @@
             "date": 1737900075548,
             "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-26-20-error.log",
             "hash": "c86d9e90d6c94e853449b2215b204139b56fae26b78cfca442842eaa74466213"
+        },
+        {
+            "date": 1737948736845,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-27-09-error.log",
+            "hash": "8882b9c4f7a773d5bde29bd5b781e2dbff14b0ab91038dc69a8c5ed754bcac3f"
         }
     ],
     "hashType": "sha256"

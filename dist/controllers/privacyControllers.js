@@ -23,20 +23,21 @@ const get = async (req, res, next) => {
     res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: privacy });
 };
 const update = async (req, res, next) => {
-    const id = req.params.id;
     const { text } = req.body;
     if (!text)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "No text provided"));
-    const [error, privacy] = await (0, await_to_ts_1.default)(privacyModel_1.default.findByIdAndUpdate(id, { $set: { text: text } }, { new: true }));
+    const [error, privacy] = await (0, await_to_ts_1.default)(privacyModel_1.default.findOne());
     if (error)
         return next(error);
     if (!privacy)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Privacy policy not found"));
+    privacy.text = text;
+    await privacy.save();
     res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: privacy });
 };
 const PrivacyController = {
     create,
     get,
-    update,
+    update
 };
 exports.default = PrivacyController;

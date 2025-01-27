@@ -15,34 +15,34 @@ const create = async (req, res, next) => {
     let error, product, price, plan;
     [error, product] = await (0, await_to_ts_1.default)(stripe.products.create({
         name: name,
-        description: description,
+        description: description
     }));
     if (error)
         return next(error);
     [error, price] = await (0, await_to_ts_1.default)(stripe.prices.create({
         product: product.id,
-        unit_amount: unitAmount,
+        unit_amount: Number.parseFloat(unitAmount) * 100,
         currency: "usd",
         recurring: {
-            interval: interval,
-        },
+            interval: interval
+        }
     }));
     if (error)
         return next(error);
     [error, plan] = await (0, await_to_ts_1.default)(planModel_1.default.create({
         name: name,
         description: description,
-        unitAmount: unitAmount,
+        unitAmount: Number.parseFloat(unitAmount),
         interval: interval,
         productId: product.id,
-        priceId: price.id,
+        priceId: price.id
     }));
     if (error)
         return next(error);
     return res.status(http_status_codes_1.StatusCodes.CREATED).json({
         success: true,
         message: "Success",
-        data: plan,
+        data: plan
     });
 };
 const get = async (req, res, next) => {
@@ -81,7 +81,7 @@ const update = async (req, res, next) => {
     }
     if (unitAmount || interval) {
         let [error] = await (0, await_to_ts_1.default)(stripe.prices.update(plan.priceId, {
-            active: false,
+            active: false
         }));
         if (error)
             return next(error);
@@ -92,8 +92,8 @@ const update = async (req, res, next) => {
             unit_amount: plan.unitAmount * 100,
             currency: "usd",
             recurring: {
-                interval: plan.interval,
-            },
+                interval: plan.interval
+            }
         }));
         if (error)
             return next(error);
@@ -106,13 +106,13 @@ const update = async (req, res, next) => {
     res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Success",
-        data: plan,
+        data: plan
     });
 };
 const controller = {
     create,
     get,
     getAll,
-    update,
+    update
 };
 exports.default = controller;

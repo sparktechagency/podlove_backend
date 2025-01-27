@@ -3,44 +3,48 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const enums_1 = require("../shared/enums");
 const podcastSchema = new mongoose_1.Schema({
-    primayUser: {
+    primaryUser: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        required: true,
+        required: true
     },
     participant1: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        required: true,
+        required: true
     },
     participant2: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        required: true,
+        required: true
     },
     participant3: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        required: true,
+        required: true
     },
     schedule: {
-        type: Date,
-        default: null,
+        date: {
+            type: String
+        },
+        time: {
+            type: String
+        }
     },
     selectedUser: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        default: null,
+        default: null
     },
     status: {
         type: String,
         enum: enums_1.PodcastStatus,
-        default: enums_1.PodcastStatus.NOT_SCHEDULED,
+        default: enums_1.PodcastStatus.NOT_SCHEDULED
     },
     recordingUrl: {
         type: String,
-        default: "",
-    },
+        default: ""
+    }
 });
 const Podcast = (0, mongoose_1.model)("Podcast", podcastSchema);
 exports.default = Podcast;

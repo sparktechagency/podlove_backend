@@ -36,11 +36,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.decodeToken = exports.generateToken = void 0;
+exports.decodeToken = exports.generateAdminToken = exports.generateToken = void 0;
 const jsonwebtoken_1 = __importStar(require("jsonwebtoken"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const generateToken = (id, secret, duration) => jsonwebtoken_1.default.sign({ id }, secret, { expiresIn: duration });
 exports.generateToken = generateToken;
+const generateAdminToken = (id, isAdmin, secret, duration) => jsonwebtoken_1.default.sign({ id, isAdmin }, secret, { expiresIn: duration });
+exports.generateAdminToken = generateAdminToken;
 const decodeToken = (token, secret) => {
     let decoded = null;
     try {

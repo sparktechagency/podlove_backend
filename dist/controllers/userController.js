@@ -7,7 +7,6 @@ const userModel_1 = __importDefault(require("../models/userModel"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const http_status_codes_1 = require("http-status-codes");
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
-const cloudinary_1 = __importDefault(require("../shared/cloudinary"));
 const get = async (req, res, next) => {
     const userId = req.user.userId;
     const email = req.user.email;
@@ -42,10 +41,7 @@ const update = async (req, res, next) => {
     user.name = name || user.name;
     user.phoneNumber = contact || user.phoneNumber;
     user.address = address || user.address;
-    if (avatarUrl && user.avatar !== null && user.avatar !== undefined && user.avatar !== "") {
-        await cloudinary_1.default.remove(user.avatar);
-        user.avatar = avatarUrl;
-    }
+    user.avatar = avatarUrl || user.avatar;
     [error] = await (0, await_to_ts_1.default)(user.save());
     if (error)
         return next(error);

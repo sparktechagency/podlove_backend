@@ -8,8 +8,8 @@ const http_status_codes_1 = require("http-status-codes");
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const create = async (req, res, next) => {
-    const { primayUser, participant1, participant2, participant3 } = req.body;
-    const [error, podcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.create({ primayUser, participant1, participant2, participant3 }));
+    const { primaryUser, participant1, participant2, participant3 } = req.body;
+    const [error, podcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.create({ primaryUser, participant1, participant2, participant3 }));
     if (error)
         return next(error);
     return res.status(http_status_codes_1.StatusCodes.CREATED).json({ success: true, message: "Success", data: podcast });
@@ -31,3 +31,9 @@ const getAll = async (req, res, next) => {
         return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "No podcast found", data: { podcasts: [] } });
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: { podcasts: podcasts } });
 };
+const PodcastController = {
+    create,
+    get,
+    getAll
+};
+exports.default = PodcastController;

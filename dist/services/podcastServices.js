@@ -15,20 +15,17 @@ const getAllNotScheduledPodcasts = async (req, res, next) => {
     if (page < 1 || limit < 1) {
         return res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).json({
             success: false,
-            message: "Page and limit must be positive integers",
+            message: "Page and limit must be positive integers"
         });
     }
-    const [error, [podcasts, totalPodcasts]] = await (0, await_to_ts_1.default)(Promise.all([
-        podcastModel_1.default.find({ status: enums_1.PodcastStatus.NOT_SCHEDULED })
-            .populate("primayUser ", "name")
-            .populate("participant1", "name")
-            .populate("participant2", "name")
-            .populate("participant3", "name")
-            .skip(skip)
-            .limit(limit)
-            .lean(),
-        podcastModel_1.default.countDocuments({ status: enums_1.PodcastStatus.NOT_SCHEDULED }),
-    ]));
+    const [error, podcasts] = await (0, await_to_ts_1.default)(podcastModel_1.default.find({ status: { $in: [enums_1.PodcastStatus.NOT_SCHEDULED, enums_1.PodcastStatus.SCHEDULED] } })
+        .populate({ path: "primaryUser", select: "name avatar" })
+        .populate({ path: "participant1", select: "name avatar" })
+        .populate({ path: "participant2", select: "name avatar" })
+        .populate({ path: "participant3", select: "name avatar" })
+        .skip(skip)
+        .limit(limit)
+        .lean());
     if (error)
         return next(error);
     if (!podcasts || podcasts.length === 0) {
@@ -41,11 +38,12 @@ const getAllNotScheduledPodcasts = async (req, res, next) => {
                     page,
                     limit,
                     totalPages: 0,
-                    totalPodcasts: 0,
-                },
-            },
+                    totalPodcasts: 0
+                }
+            }
         });
     }
+    const totalPodcasts = await podcastModel_1.default.countDocuments({ status: enums_1.PodcastStatus.NOT_SCHEDULED });
     const totalPages = Math.ceil(totalPodcasts / limit);
     res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
@@ -56,20 +54,33 @@ const getAllNotScheduledPodcasts = async (req, res, next) => {
                 page,
                 limit,
                 totalPages,
-                totalPodcasts,
-            },
-        },
+                totalPodcasts
+            }
+        }
     });
 };
-const setSchedule = async (req, res, next) => {
+const podcastDone = async (req, res, next) => {
     const podcastId = req.body.podcastId;
-    const schedule = new Date(req.body.schedule);
+    const [error, podcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.findById(podcastId));
+    if (error)
+        return next(error);
+    if (!podcast)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Podcast not found"));
+    podcast.status = enums_1.PodcastStatus.DONE;
+    const [saveError] = await (0, await_to_ts_1.default)(podcast.save());
+    if (saveError)
+        return next(saveError);
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: { status: podcast.status } });
+};
+const setSchedule = async (req, res, next) => {
+    const { podcastId, date, time } = req.body;
     const [error, podcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.findById(podcastId));
     if (error)
         return next(error);
     if (!podcast)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Podcast not found!"));
-    podcast.schedule = schedule;
+    podcast.schedule.date = date;
+    podcast.schedule.time = time;
     podcast.status = enums_1.PodcastStatus.SCHEDULED;
     const [saveError] = await (0, await_to_ts_1.default)(podcast.save());
     if (saveError)
@@ -83,20 +94,17 @@ const getAllDonePodcasts = async (req, res, next) => {
     if (page < 1 || limit < 1) {
         return res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).json({
             success: false,
-            message: "Page and limit must be positive integers",
+            message: "Page and limit must be positive integers"
         });
     }
-    const [error, [podcasts, totalPodcasts]] = await (0, await_to_ts_1.default)(Promise.all([
-        podcastModel_1.default.find({ status: enums_1.PodcastStatus.DONE })
-            .populate("primayUser ", "name")
-            .populate("participant1", "name")
-            .populate("participant2", "name")
-            .populate("participant3", "name")
-            .skip(skip)
-            .limit(limit)
-            .lean(),
-        podcastModel_1.default.countDocuments({ status: enums_1.PodcastStatus.NOT_SCHEDULED }),
-    ]));
+    const [error, podcasts] = await (0, await_to_ts_1.default)(podcastModel_1.default.find({ status: enums_1.PodcastStatus.DONE })
+        .populate({ path: "primaryUser", select: "name avatar" })
+        .populate({ path: "participant1", select: "name avatar" })
+        .populate({ path: "participant2", select: "name avatar" })
+        .populate({ path: "participant3", select: "name avatar" })
+        .skip(skip)
+        .limit(limit)
+        .lean());
     if (error)
         return next(error);
     if (!podcasts || podcasts.length === 0) {
@@ -109,11 +117,12 @@ const getAllDonePodcasts = async (req, res, next) => {
                     page,
                     limit,
                     totalPages: 0,
-                    totalPodcasts: 0,
-                },
-            },
+                    totalPodcasts: 0
+                }
+            }
         });
     }
+    const totalPodcasts = await podcastModel_1.default.countDocuments({ status: enums_1.PodcastStatus.DONE });
     const totalPages = Math.ceil(totalPodcasts / limit);
     res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
@@ -124,9 +133,9 @@ const getAllDonePodcasts = async (req, res, next) => {
                 page,
                 limit,
                 totalPages,
-                totalPodcasts,
-            },
-        },
+                totalPodcasts
+            }
+        }
     });
 };
 const selectUser = async (req, res, next) => {
@@ -147,7 +156,8 @@ const selectUser = async (req, res, next) => {
 const PodcastServices = {
     getAllNotScheduledPodcasts,
     setSchedule,
+    podcastDone,
     getAllDonePodcasts,
-    selectUser,
+    selectUser
 };
 exports.default = PodcastServices;

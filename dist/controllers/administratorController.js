@@ -3,117 +3,250 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.loginAdministrator = exports.searchAdministrators = exports.deleteAdministrator = exports.updateAdministrator = exports.getAllAdministrators = exports.createAdministrator = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const administratorModel_1 = __importDefault(require("../models/administratorModel"));
-const JWT_SECRET = "your_jwt_secret_key";
-const createAdministrator = async (req, res, next) => {
+const await_to_ts_1 = __importDefault(require("await-to-ts"));
+const http_status_codes_1 = require("http-status-codes");
+const http_errors_1 = __importDefault(require("http-errors"));
+const jwt_1 = require("../utils/jwt");
+const generateOTP_1 = __importDefault(require("../utils/generateOTP"));
+const sendEmail_1 = __importDefault(require("../utils/sendEmail"));
+const create = async (req, res, next) => {
+    const { name, email, contact, password } = req.body;
+    const access = req.body.access;
+    const hashedPassword = await bcrypt_1.default.hash(password, 10);
+    const [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.create({ name, email, contact, password: hashedPassword, access }));
+    if (error)
+        return next(error);
+    return res.status(http_status_codes_1.StatusCodes.CREATED).json({
+        success: true,
+        message: "Administrator created successfully.",
+        data: {}
+    });
+};
+const getAll = async (req, res, next) => {
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 10;
+    const skip = (page - 1) * limit;
+    const { search } = req.query;
     try {
-        const { name, email, contact, password, role, access } = req.body;
-        if (!name || !email || !contact || !password || !role || !access) {
-            return res.status(400).json({ error: "All fields are required" });
+        let query = {};
+        if (search) {
+            const regex = new RegExp(search, "i");
+            query = {
+                $or: [
+                    { name: regex },
+                    { email: regex },
+                    { contact: regex }
+                ]
+            };
         }
-        // Hash the password
-        const hashedPassword = await bcrypt_1.default.hash(password, 10);
-        const admin = new administratorModel_1.default({
-            name,
-            email,
-            contact,
-            password: hashedPassword,
-            role,
-            access,
+        const [error, admins] = await (0, await_to_ts_1.default)(administratorModel_1.default.find(query).skip(skip).limit(limit).lean());
+        if (error)
+            return next(error);
+        const totalAdmins = await administratorModel_1.default.countDocuments(query);
+        const totalPages = Math.ceil(totalAdmins / limit);
+        return res.status(http_status_codes_1.StatusCodes.OK).json({
+            success: true,
+            message: "Success.",
+            data: {
+                admins,
+                pagination: {
+                    page,
+                    limit,
+                    totalPages,
+                    totalAdmins
+                }
+            }
         });
-        const savedAdmin = await admin.save();
-        res.status(201).json(savedAdmin);
     }
     catch (error) {
-        next(error);
+        return next(error);
     }
 };
-exports.createAdministrator = createAdministrator;
-const getAllAdministrators = async (req, res, next) => {
-    try {
-        const administrators = await administratorModel_1.default.find();
-        res.status(200).json(administrators);
+const updateAdmin = async (req, res, next) => {
+    const adminId = req.params.id;
+    const { name, email, contact, password, address } = req.body;
+    const access = req.body.access;
+    let error, admin;
+    [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findById(adminId));
+    if (error)
+        return next(error);
+    if (!admin)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Administrator not found."));
+    admin.email = email || admin.email;
+    admin.name = name || admin.name;
+    admin.contact = contact || admin.contact;
+    admin.address = address || admin.address;
+    if (password) {
+        admin.password = await bcrypt_1.default.hash(password, 10);
     }
-    catch (error) {
-        next(error);
-    }
+    admin.access = access || admin.access;
+    [error] = await (0, await_to_ts_1.default)(admin.save());
+    if (error)
+        return next(error);
+    const data = {
+        name: admin.name,
+        email: admin.email,
+        contact: admin.contact,
+        address: admin.address,
+        access: admin.access
+    };
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: data });
 };
-exports.getAllAdministrators = getAllAdministrators;
-const updateAdministrator = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const updates = req.body;
-        const updatedAdmin = await administratorModel_1.default.findByIdAndUpdate(id, updates, { new: true, runValidators: true });
-        if (!updatedAdmin) {
-            return res.status(404).json({ error: "Administrator not found" });
-        }
-        res.status(200).json(updatedAdmin);
-    }
-    catch (error) {
-        next(error);
-    }
+const update = async (req, res, next) => {
+    const adminId = req.admin.id;
+    const { name, contact, address, avatarUrl } = req.body;
+    let error, admin;
+    [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findById(adminId));
+    if (error)
+        return next(error);
+    if (!admin)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Administrator not found."));
+    admin.name = name || admin.name;
+    admin.contact = contact || admin.contact;
+    admin.address = address || admin.address;
+    admin.avatar = avatarUrl || admin.avatar;
+    [error] = await (0, await_to_ts_1.default)(admin.save());
+    if (error)
+        return next(error);
+    const data = {
+        name: admin.name,
+        email: admin.email,
+        contact: admin.contact,
+        address: admin.address,
+        avatar: admin.avatar
+    };
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: data });
 };
-exports.updateAdministrator = updateAdministrator;
-const deleteAdministrator = async (req, res, next) => {
-    try {
-        const { id } = req.params;
-        const deletedAdmin = await administratorModel_1.default.findByIdAndDelete(id);
-        if (!deletedAdmin) {
-            return res.status(404).json({ error: "Administrator not found" });
-        }
-        res.status(200).json({ message: "Administrator deleted successfully" });
-    }
-    catch (error) {
-        next(error);
-    }
+const remove = async (req, res, next) => {
+    const adminId = req.params.id;
+    const [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findByIdAndDelete(adminId));
+    if (error)
+        return next(error);
+    if (!admin)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Administrator not found."));
+    return res.status(http_status_codes_1.StatusCodes.OK).json({
+        success: true,
+        message: "Administrator removed successfully.",
+        data: admin
+    });
 };
-exports.deleteAdministrator = deleteAdministrator;
-const searchAdministrators = async (req, res, next) => {
-    try {
-        const { query } = req.query;
-        if (!query || typeof query !== "string") {
-            return res.status(400).json({ error: "Invalid query parameter" });
-        }
-        const results = await administratorModel_1.default.find({
-            $or: [
-                { name: { $regex: query, $options: "i" } },
-                { email: { $regex: query, $options: "i" } },
-                { contact: { $regex: query, $options: "i" } },
-            ],
-        });
-        res.status(200).json(results);
-    }
-    catch (error) {
-        next(error);
-    }
+const login = async (req, res, next) => {
+    const { email, password } = req.body;
+    let error, admin, isPasswordValid;
+    [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findOne({ email }));
+    if (error)
+        return next(error);
+    if (!admin)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "No Admin account found with the given email"));
+    [error, isPasswordValid] = await (0, await_to_ts_1.default)(bcrypt_1.default.compare(password, admin.password));
+    if (error)
+        return next(error);
+    if (!isPasswordValid)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Wrong password"));
+    const adminSecret = process.env.JWT_ADMIN_SECRET;
+    if (!adminSecret)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
+    const accessToken = (0, jwt_1.generateAdminToken)(admin._id.toString(), true, adminSecret, "96h");
+    return res.status(http_status_codes_1.StatusCodes.OK).json({
+        success: true,
+        message: "Login successful",
+        data: { accessToken }
+    });
 };
-exports.searchAdministrators = searchAdministrators;
-const loginAdministrator = async (req, res, next) => {
-    try {
-        const { email, password } = req.body;
-        // Validate input
-        if (!email || !password) {
-            return res.status(400).json({ error: "Email and password are required" });
-        }
-        // Find the admin by email
-        const admin = await administratorModel_1.default.findOne({ email });
-        if (!admin) {
-            return res.status(404).json({ error: "Administrator not found" });
-        }
-        // Compare passwords
-        const isPasswordValid = await bcrypt_1.default.compare(password, admin.password);
-        if (!isPasswordValid) {
-            return res.status(401).json({ error: "Invalid credentials" });
-        }
-        // Generate JWT token
-        const token = jsonwebtoken_1.default.sign({ id: admin._id, role: admin.role }, JWT_SECRET, { expiresIn: "1h" });
-        res.status(200).json({ message: "Login successful", token });
-    }
-    catch (error) {
-        next(error);
-    }
+const changePassword = async (req, res, next) => {
+    const adminId = req.params.id;
+    const { password, newPassword, confirmPassword } = req.body;
+    let error, admin, isMatch;
+    [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findById(adminId));
+    if (error)
+        return next(error);
+    if (!admin)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Admin Not Found"));
+    [error, isMatch] = await (0, await_to_ts_1.default)(bcrypt_1.default.compare(password, admin.password));
+    if (error)
+        return next(error);
+    if (!isMatch)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Wrong Password"));
+    admin.password = await bcrypt_1.default.hash(newPassword, 10);
+    await admin.save();
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Passowrd changed successfully", data: {} });
 };
-exports.loginAdministrator = loginAdministrator;
+const forgotPassword = async (req, res, next) => {
+    const { email } = req.body;
+    const [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findOne({ email }));
+    if (error)
+        return next(error);
+    if (!admin)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User Not Found"));
+    const recoveryOTP = (0, generateOTP_1.default)();
+    admin.recoveryOTP = recoveryOTP;
+    admin.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+    await admin.save();
+    await (0, sendEmail_1.default)(email, recoveryOTP);
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: {} });
+};
+const verifyEmail = async (req, res, next) => {
+    const { email, recoveryOTP } = req.body;
+    let error, admin;
+    if (!email || !recoveryOTP) {
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "Email and Recovery OTP are required."));
+    }
+    [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findOne({ email }).select("-password"));
+    if (error)
+        return next(error);
+    if (!admin)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
+    if (!admin.recoveryOTP || !admin.recoveryOTPExpiredAt) {
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Recovery OTP is not set or has expired."));
+    }
+    const currentTime = new Date();
+    if (currentTime > admin.recoveryOTPExpiredAt) {
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Recovery OTP has expired."));
+    }
+    if (recoveryOTP !== admin.recoveryOTP) {
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Wrong OTP."));
+    }
+    admin.recoveryOTP = "";
+    admin.recoveryOTPExpiredAt = null;
+    [error] = await (0, await_to_ts_1.default)(admin.save());
+    if (error)
+        return next(error);
+    const adminSecret = process.env.JWT_ADMIN_SECRET;
+    if (!adminSecret)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
+    const recoveryToken = (0, jwt_1.generateAdminToken)(admin._id.toString(), true, adminSecret, "96h");
+    return res.status(http_status_codes_1.StatusCodes.OK).json({
+        success: true,
+        message: "Email successfully verified.",
+        data: recoveryToken
+    });
+};
+const resetPassword = async (req, res, next) => {
+    const adminId = req.admin.id;
+    const { password, confirmPassword } = req.body;
+    const [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findById(adminId));
+    if (error)
+        return next(error);
+    if (!admin)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Admin Not Found"));
+    if (password !== confirmPassword)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "Passwords don't match"));
+    admin.password = await bcrypt_1.default.hash(password, 10);
+    await admin.save();
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Password reset successful", data: {} });
+};
+const AdministratorController = {
+    create,
+    getAll,
+    update,
+    updateAdmin,
+    remove,
+    login,
+    changePassword,
+    forgotPassword,
+    verifyEmail,
+    resetPassword
+};
+exports.default = AdministratorController;
