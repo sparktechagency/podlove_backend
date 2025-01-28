@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("/get-all-users", UserServices.getAllUsers);
 router.get("/get-all-premium-users", UserServices.getAllPremiumUsers);
 router.get("/", authorize, UserController.get);
-router.put("/update/:id", UserController.update);
+router.patch("/update/:id", UserController.update);
 router.post("/block/:authId", UserServices.block);
 router.post("/unblock/:authId", UserServices.unblock);
 

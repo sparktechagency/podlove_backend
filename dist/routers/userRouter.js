@@ -11,7 +11,7 @@ const router = express_1.default.Router();
 router.get("/get-all-users", userServices_1.default.getAllUsers);
 router.get("/get-all-premium-users", userServices_1.default.getAllPremiumUsers);
 router.get("/", authorization_1.authorize, userController_1.default.get);
-router.put("/update/:id", userController_1.default.update);
+router.patch("/update/:id", userController_1.default.update);
 router.post("/block/:authId", userServices_1.default.block);
 router.post("/unblock/:authId", userServices_1.default.unblock);
 exports.default = router;
