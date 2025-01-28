@@ -3,11 +3,20 @@ import Podcast from "@models/podcastModel";
 import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
 import createError from "http-errors";
+import MatchedServices from "@services/matchesServices";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { primaryUser, participant1, participant2, participant3 } = req.body;
-  const [error, podcast] = await to(Podcast.create({ primaryUser, participant1, participant2, participant3 }));
+  const { primaryUser } = req.body;
+  let error, participants, podcast;
+  [error, participants] = await to(MatchedServices.match(primaryUser));
+  if (error) return;
+  const participant1 = participants[0];
+  const participant2 = participants[1];
+  const participant3 = participants[2];
+
+  [error, podcast] = await to(Podcast.create({ primaryUser, participant1, participant2, participant3 }));
   if (error) return next(error);
+
   return res.status(StatusCodes.CREATED).json({ success: true, message: "Success", data: podcast });
 };
 
