@@ -10,13 +10,15 @@ const router = express.Router();
 
 router.post("/create", AdministratorController.create);
 router.post("/login", AdministratorController.login);
-router.post("/change-password", AdministratorController.changePassword);
+router.post("/change-password", isAdmin, AdministratorController.changePassword);
 router.post("/send-message", AdminServices.sendMessage);
 router.put("/update", fileUpload(), fileHandler, isAdmin, AdministratorController.update);
 router.put("/update/:id", isAdmin, AdministratorController.updateAdmin);
 router.delete("remove/:id", AdministratorController.remove);
-authRouter.post("/forgot-password", AdministratorController.forgotPassword);
-authRouter.post("/verify-email", AdministratorController.verifyEmail);
-authRouter.put("/reset-password", isAdmin, AdministratorController.resetPassword);
+router.post("/forgot-password", AdministratorController.forgotPassword);
+router.post("/verify-email", AdministratorController.verifyEmail);
+router.put("/reset-password", AdministratorController.resetPassword);
+router.get("/info", isAdmin, AdministratorController.getAdminInfo);
+router.get("/", AdministratorController.getAll);
 
 export default router;

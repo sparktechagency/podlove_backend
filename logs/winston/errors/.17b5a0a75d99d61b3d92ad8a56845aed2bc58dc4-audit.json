@@ -134,6 +134,16 @@
             "date": 1738055032778,
             "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-28-15-error.log",
             "hash": "560b67d207b7d9369f203bea11ebd01233da8c113a9b291fef4bf9df479f75e5"
+        },
+        {
+            "date": 1738067064164,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-28-18-error.log",
+            "hash": "3c6bbd2060876a2ab68656ed29f3fa6b5639c9f71c469b15881f03dea611c47c"
+        },
+        {
+            "date": 1738069211359,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-01-28-19-error.log",
+            "hash": "3e6be59c4806eea11db7a5fbaa780befeba395fbdaaad7a52eb64b479cfa9523"
         }
     ],
     "hashType": "sha256"

@@ -1,0 +1,111 @@
+Tue Jan 28 2025 18:24:27 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 18:24:28 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 18:28:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 18:28:38 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 18:37:34 [Podlove] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:49:39
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 28 2025 18:43:23 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 18:43:23 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 18:43:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 18:43:53 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 18:44:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 18:44:43 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 18:44:58 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 18:44:59 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 18:51:20 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:36:30
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Tue Jan 28 2025 18:51:24 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:36:30
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Tue Jan 28 2025 18:52:1 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:142:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 28 2025 18:52:3 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:142:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 28 2025 18:52:6 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:142:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 28 2025 18:52:8 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:142:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 28 2025 18:52:29 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:142:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Tue Jan 28 2025 18:53:22 [Podlove] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/podlove_backend/src/utils/jwt.ts:24:26)
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:44:41
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Tue Jan 28 2025 18:53:30 [Podlove] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/podlove_backend/src/utils/jwt.ts:24:26)
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:44:41
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Tue Jan 28 2025 18:53:48 [Podlove] [31merror[39m: Invalid or malformed token
+UnauthorizedError: Invalid or malformed token
+    at decodeToken (/home/mir/dev/projects/podlove_backend/src/utils/jwt.ts:24:26)
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:44:41
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Tue Jan 28 2025 18:57:30 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 18:57:31 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 18:57:55 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 18:57:56 [Podlove] [32minfo[39m: Server is running at PORT: 7000

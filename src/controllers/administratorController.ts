@@ -49,7 +49,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
 
 
     const [error, admins] = await to(
-      Administrator.find(query).skip(skip).limit(limit).lean()
+      Administrator.find(query).select("-password").skip(skip).limit(limit).lean()
     );
     if (error) return next(error);
 
@@ -107,6 +107,14 @@ const updateAdmin = async (req: Request, res: Response, next: NextFunction): Pro
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: data });
 };
 
+const getAdminInfo = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const id = req.admin.id;
+  const [error, admin] = await to(Administrator.findById(id).select("-password"));
+  if (error) return next(error);
+  if (!admin) return next(createError(StatusCodes.NOT_FOUND, "Administrator not found."));
+
+  return res.status(StatusCodes.OK).json({ success: true, message: "Administrator info successfully.", data: admin });
+};
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const adminId = req.admin.id;
@@ -174,7 +182,7 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
 };
 
 const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const adminId = req.params.id;
+  const adminId = req.admin.id;
 
   const { password, newPassword, confirmPassword } = req.body;
   let error, admin, isMatch;
@@ -206,7 +214,7 @@ const forgotPassword = async (req: Request, res: Response, next: NextFunction): 
 
   await sendEmail(email, recoveryOTP);
 
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: recoveryOTP });
 };
 
 const verifyEmail = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -254,11 +262,10 @@ const verifyEmail = async (req: Request, res: Response, next: NextFunction): Pro
 };
 
 const resetPassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const adminId = req.admin.id;
 
-  const { password, confirmPassword } = req.body;
+  const { email, password, confirmPassword } = req.body;
 
-  const [error, admin] = await to(Administrator.findById(adminId));
+  const [error, admin] = await to(Administrator.findOne({ email }));
   if (error) return next(error);
   if (!admin) return next(createError(StatusCodes.NOT_FOUND, "Admin Not Found"));
 
@@ -273,6 +280,7 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction): P
 const AdministratorController = {
   create,
   getAll,
+  getAdminInfo,
   update,
   updateAdmin,
   remove,

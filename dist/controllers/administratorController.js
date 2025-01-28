@@ -41,7 +41,7 @@ const getAll = async (req, res, next) => {
                 ]
             };
         }
-        const [error, admins] = await (0, await_to_ts_1.default)(administratorModel_1.default.find(query).skip(skip).limit(limit).lean());
+        const [error, admins] = await (0, await_to_ts_1.default)(administratorModel_1.default.find(query).select("-password").skip(skip).limit(limit).lean());
         if (error)
             return next(error);
         const totalAdmins = await administratorModel_1.default.countDocuments(query);
@@ -93,6 +93,15 @@ const updateAdmin = async (req, res, next) => {
         access: admin.access
     };
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: data });
+};
+const getAdminInfo = async (req, res, next) => {
+    const id = req.admin.id;
+    const [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findById(id).select("-password"));
+    if (error)
+        return next(error);
+    if (!admin)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Administrator not found."));
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Administrator info successfully.", data: admin });
 };
 const update = async (req, res, next) => {
     const adminId = req.admin.id;
@@ -156,7 +165,7 @@ const login = async (req, res, next) => {
     });
 };
 const changePassword = async (req, res, next) => {
-    const adminId = req.params.id;
+    const adminId = req.admin.id;
     const { password, newPassword, confirmPassword } = req.body;
     let error, admin, isMatch;
     [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findById(adminId));
@@ -185,7 +194,7 @@ const forgotPassword = async (req, res, next) => {
     admin.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
     await admin.save();
     await (0, sendEmail_1.default)(email, recoveryOTP);
-    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: {} });
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: recoveryOTP });
 };
 const verifyEmail = async (req, res, next) => {
     const { email, recoveryOTP } = req.body;
@@ -224,9 +233,8 @@ const verifyEmail = async (req, res, next) => {
     });
 };
 const resetPassword = async (req, res, next) => {
-    const adminId = req.admin.id;
-    const { password, confirmPassword } = req.body;
-    const [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findById(adminId));
+    const { email, password, confirmPassword } = req.body;
+    const [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findOne({ email }));
     if (error)
         return next(error);
     if (!admin)
@@ -240,6 +248,7 @@ const resetPassword = async (req, res, next) => {
 const AdministratorController = {
     create,
     getAll,
+    getAdminInfo,
     update,
     updateAdmin,
     remove,
