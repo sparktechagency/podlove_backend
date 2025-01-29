@@ -20,6 +20,7 @@ const subscriptionRouter_1 = __importDefault(require("./routers/subscriptionRout
 const adminRouter_1 = __importDefault(require("./routers/adminRouter"));
 const surveyRouter_1 = __importDefault(require("./routers/surveyRouter"));
 const podcastRouter_1 = __importDefault(require("./routers/podcastRouter"));
+const homeRouter_1 = __importDefault(require("./routers/homeRouter"));
 const app = (0, express_1.default)();
 app.use("/", webhookRouter_1.default);
 app.use(express_1.default.json());
@@ -40,6 +41,7 @@ app.use("/subscription", subscriptionRouter_1.default);
 app.use("/admin", adminRouter_1.default);
 app.use("/survey", surveyRouter_1.default);
 app.use("/podcast", podcastRouter_1.default);
+app.use("/home", homeRouter_1.default);
 app.use("/", (req, res, next) => {
     res.send("Hello From Podlove");
 });

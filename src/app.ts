@@ -16,6 +16,7 @@ import SubscriptionRouter from "@routers/subscriptionRouter";
 import AdminRouter from "@routers/adminRouter";
 import SurveyRouter from "@routers/surveyRouter";
 import PodcastRouter from "@routers/podcastRouter";
+import HomeRouter from "@routers/homeRouter";
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use("/subscription", SubscriptionRouter);
 app.use("/admin", AdminRouter);
 app.use("/survey", SurveyRouter);
 app.use("/podcast", PodcastRouter);
+app.use("/home", HomeRouter);
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello From Podlove");
