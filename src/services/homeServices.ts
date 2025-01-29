@@ -5,23 +5,24 @@ import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
 import SubscriptionPlan from "@models/subscriptionPlanModel";
 
-
 const homeData = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   let error, podcast, subscriptionPlans;
 
-  [error, podcast] = await to(Podcast.findOne({ primaryUser: userId })
-    .populate({
-      path: "participant1",
-      select: "bio interests"
-    }).populate({
-      path: "participant2",
-      select: "bio interests"
-    })
-    .populate({
-      path: "participant3",
-      select: "bio interests"
-    })
+  [error, podcast] = await to(
+    Podcast.findOne({ primaryUser: userId })
+      .populate({
+        path: "participant1",
+        select: "name bio interests",
+      })
+      .populate({
+        path: "participant2",
+        select: "name bio interests",
+      })
+      .populate({
+        path: "participant3",
+        select: "name bio interests",
+      })
   );
   if (error) return next(error);
   if (!podcast) return next(createError(StatusCodes.NOT_FOUND, "Podcast not found"));
@@ -33,7 +34,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
 };
 
 const HomeServices = {
-  homeData
+  homeData,
 };
 
 export default HomeServices;

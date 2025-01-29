@@ -14,14 +14,15 @@ const homeData = async (req, res, next) => {
     [error, podcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.findOne({ primaryUser: userId })
         .populate({
         path: "participant1",
-        select: "bio interests"
-    }).populate({
+        select: "name bio interests",
+    })
+        .populate({
         path: "participant2",
-        select: "bio interests"
+        select: "name bio interests",
     })
         .populate({
         path: "participant3",
-        select: "bio interests"
+        select: "name bio interests",
     }));
     if (error)
         return next(error);
@@ -33,6 +34,6 @@ const homeData = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: { podcast, subscriptionPlans } });
 };
 const HomeServices = {
-    homeData
+    homeData,
 };
 exports.default = HomeServices;

@@ -25,10 +25,12 @@ const podcastSchema = new mongoose_1.Schema({
     },
     schedule: {
         date: {
-            type: String
+            type: String,
+            default: ""
         },
         time: {
-            type: String
+            type: String,
+            default: ""
         }
     },
     selectedUser: {

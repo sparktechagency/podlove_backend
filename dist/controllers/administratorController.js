@@ -138,7 +138,7 @@ const remove = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Administrator removed successfully.",
-        data: admin
+        data: {}
     });
 };
 const login = async (req, res, next) => {

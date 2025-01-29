@@ -16,7 +16,7 @@ router.post("/change-password", admin_authorization_1.isAdmin, administratorCont
 router.post("/send-message", adminServices_1.default.sendMessage);
 router.put("/update", (0, express_fileupload_1.default)(), fileHandler_1.default, admin_authorization_1.isAdmin, administratorController_1.default.update);
 router.put("/update/:id", admin_authorization_1.isAdmin, administratorController_1.default.updateAdmin);
-router.delete("remove/:id", administratorController_1.default.remove);
+router.delete("/remove/:id", administratorController_1.default.remove);
 router.post("/forgot-password", administratorController_1.default.forgotPassword);
 router.post("/verify-email", administratorController_1.default.verifyEmail);
 router.put("/reset-password", administratorController_1.default.resetPassword);
