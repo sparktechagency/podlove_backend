@@ -10,7 +10,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
   const userId = req.user.userId;
   let error, podcast, subscriptionPlans;
 
-  [error, podcast] = await to(Podcast.find({ primaryUser: userId })
+  [error, podcast] = await to(Podcast.findOne({ primaryUser: userId })
     .populate({
       path: "participant1",
       select: "bio interests"
