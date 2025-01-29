@@ -1362,3 +1362,45 @@ Tue Jan 28 2025 19:1:41 [Podlove] [32minfo[39m: Successfully Connected to Mong
 Tue Jan 28 2025 19:1:41 [Podlove] [32minfo[39m: Server is running at PORT: 7000
 Tue Jan 28 2025 19:1:50 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
 Tue Jan 28 2025 19:1:51 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 20:0:48 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlove.administrators index: email_1 dup key: { email: "mir@gmail.com" }
+MongoServerError: E11000 duplicate key error collection: podlove.administrators index: email_1 dup key: { email: "mir@gmail.com" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Tue Jan 28 2025 20:2:39 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 20:2:39 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 20:3:30 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jan 28 2025 20:3:31 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Tue Jan 28 2025 20:5:10 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlove.administrators index: email_1 dup key: { email: "mir@gmail.com" }
+MongoServerError: E11000 duplicate key error collection: podlove.administrators index: email_1 dup key: { email: "mir@gmail.com" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Tue Jan 28 2025 20:6:19 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlove.administrators index: email_1 dup key: { email: "thakursaad613@gmail.com" }
+MongoServerError: E11000 duplicate key error collection: podlove.administrators index: email_1 dup key: { email: "thakursaad613@gmail.com" }
+    at InsertOneOperation.execute (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/insert.ts:82:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:271:14)
+    at async executeOperation (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/operations/execute_operation.ts:109:12)
+    at async Collection.insertOne (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongodb@6.10.0/node_modules/mongodb/src/collection.ts:277:12)
+MongoServerError
+Tue Jan 28 2025 20:32:14 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/admin_authorization.ts:33:30
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Wed Jan 29 2025 9:26:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
