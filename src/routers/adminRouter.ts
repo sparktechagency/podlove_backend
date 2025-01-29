@@ -14,7 +14,7 @@ router.post("/change-password", isAdmin, AdministratorController.changePassword)
 router.post("/send-message", AdminServices.sendMessage);
 router.put("/update", fileUpload(), fileHandler, isAdmin, AdministratorController.update);
 router.put("/update/:id", isAdmin, AdministratorController.updateAdmin);
-router.delete("remove/:id", AdministratorController.remove);
+router.delete("/remove/:id", AdministratorController.remove);
 router.post("/forgot-password", AdministratorController.forgotPassword);
 router.post("/verify-email", AdministratorController.verifyEmail);
 router.put("/reset-password", AdministratorController.resetPassword);

@@ -151,7 +151,7 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Administrator removed successfully.",
-    data: admin
+    data: {}
   });
 };
 

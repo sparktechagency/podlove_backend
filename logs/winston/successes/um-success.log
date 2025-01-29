@@ -1404,3 +1404,9 @@ UnauthorizedError: Not Authorized
     at router (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
 UnauthorizedError
 Wed Jan 29 2025 9:26:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 29 2025 18:9:3 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 29 2025 18:9:4 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Wed Jan 29 2025 18:10:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 29 2025 18:10:36 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Wed Jan 29 2025 18:10:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jan 29 2025 18:10:58 [Podlove] [32minfo[39m: Server is running at PORT: 7000

@@ -25,10 +25,12 @@ const podcastSchema = new Schema<PodcastSchema>({
   },
   schedule: {
     date: {
-      type: String
+      type: String,
+      default: ""
     },
     time: {
-      type: String
+      type: String,
+      default: ""
     }
   },
   selectedUser: {
