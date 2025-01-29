@@ -11,7 +11,10 @@ const subscriptionPlanModel_1 = __importDefault(require("../models/subscriptionP
 const homeData = async (req, res, next) => {
     const userId = req.user.userId;
     let error, podcast, subscriptionPlans;
-    [error, podcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.find({ primaryUser: userId }));
+    [error, podcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.find({ primaryUser: userId }).populate({
+        path: "participant1",
+        select: "bio interests"
+    }));
     if (error)
         return next(error);
     if (!podcast)
