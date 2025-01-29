@@ -8,8 +8,9 @@ export type PodcastSchema = Document & {
   participant3: Types.ObjectId;
   schedule: {
     date: string;
+    day: string;
     time: string;
-  }
+  };
   selectedUser: Types.ObjectId | null;
   status: PodcastStatus;
   recordingUrl: String;

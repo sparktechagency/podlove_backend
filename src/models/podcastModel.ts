@@ -6,47 +6,51 @@ const podcastSchema = new Schema<PodcastSchema>({
   primaryUser: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    required: true,
   },
   participant1: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    required: true,
   },
   participant2: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    required: true,
   },
   participant3: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    required: true,
   },
   schedule: {
     date: {
       type: String,
-      default: ""
+      default: "",
+    },
+    day: {
+      type: String,
+      default: "",
     },
     time: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
   },
   selectedUser: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    default: null
+    default: null,
   },
   status: {
     type: String,
     enum: PodcastStatus,
-    default: PodcastStatus.NOT_SCHEDULED
+    default: PodcastStatus.NOT_SCHEDULED,
   },
   recordingUrl: {
     type: String,
-    default: ""
-  }
+    default: "",
+  },
 });
 
 const Podcast = model<PodcastSchema>("Podcast", podcastSchema);

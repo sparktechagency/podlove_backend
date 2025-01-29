@@ -15,7 +15,7 @@ const getAllNotScheduledPodcasts = async (req, res, next) => {
     if (page < 1 || limit < 1) {
         return res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).json({
             success: false,
-            message: "Page and limit must be positive integers"
+            message: "Page and limit must be positive integers",
         });
     }
     const [error, podcasts] = await (0, await_to_ts_1.default)(podcastModel_1.default.find({ status: { $in: [enums_1.PodcastStatus.NOT_SCHEDULED, enums_1.PodcastStatus.SCHEDULED] } })
@@ -38,9 +38,9 @@ const getAllNotScheduledPodcasts = async (req, res, next) => {
                     page,
                     limit,
                     totalPages: 0,
-                    totalPodcasts: 0
-                }
-            }
+                    totalPodcasts: 0,
+                },
+            },
         });
     }
     const totalPodcasts = await podcastModel_1.default.countDocuments({ status: enums_1.PodcastStatus.NOT_SCHEDULED });
@@ -54,9 +54,9 @@ const getAllNotScheduledPodcasts = async (req, res, next) => {
                 page,
                 limit,
                 totalPages,
-                totalPodcasts
-            }
-        }
+                totalPodcasts,
+            },
+        },
     });
 };
 const podcastDone = async (req, res, next) => {
@@ -73,13 +73,14 @@ const podcastDone = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: { status: podcast.status } });
 };
 const setSchedule = async (req, res, next) => {
-    const { podcastId, date, time } = req.body;
+    const { podcastId, date, day, time } = req.body;
     const [error, podcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.findById(podcastId));
     if (error)
         return next(error);
     if (!podcast)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Podcast not found!"));
     podcast.schedule.date = date;
+    podcast.schedule.day = day;
     podcast.schedule.time = time;
     podcast.status = enums_1.PodcastStatus.SCHEDULED;
     const [saveError] = await (0, await_to_ts_1.default)(podcast.save());
@@ -94,7 +95,7 @@ const getAllDonePodcasts = async (req, res, next) => {
     if (page < 1 || limit < 1) {
         return res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).json({
             success: false,
-            message: "Page and limit must be positive integers"
+            message: "Page and limit must be positive integers",
         });
     }
     const [error, podcasts] = await (0, await_to_ts_1.default)(podcastModel_1.default.find({ status: enums_1.PodcastStatus.DONE })
@@ -117,9 +118,9 @@ const getAllDonePodcasts = async (req, res, next) => {
                     page,
                     limit,
                     totalPages: 0,
-                    totalPodcasts: 0
-                }
-            }
+                    totalPodcasts: 0,
+                },
+            },
         });
     }
     const totalPodcasts = await podcastModel_1.default.countDocuments({ status: enums_1.PodcastStatus.DONE });
@@ -133,9 +134,9 @@ const getAllDonePodcasts = async (req, res, next) => {
                 page,
                 limit,
                 totalPages,
-                totalPodcasts
-            }
-        }
+                totalPodcasts,
+            },
+        },
     });
 };
 const selectUser = async (req, res, next) => {
@@ -158,6 +159,6 @@ const PodcastServices = {
     setSchedule,
     podcastDone,
     getAllDonePodcasts,
-    selectUser
+    selectUser,
 };
 exports.default = PodcastServices;

@@ -6,47 +6,51 @@ const podcastSchema = new mongoose_1.Schema({
     primaryUser: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        required: true
+        required: true,
     },
     participant1: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        required: true
+        required: true,
     },
     participant2: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        required: true
+        required: true,
     },
     participant3: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        required: true
+        required: true,
     },
     schedule: {
         date: {
             type: String,
-            default: ""
+            default: "",
+        },
+        day: {
+            type: String,
+            default: "",
         },
         time: {
             type: String,
-            default: ""
-        }
+            default: "",
+        },
     },
     selectedUser: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: "User",
-        default: null
+        default: null,
     },
     status: {
         type: String,
         enum: enums_1.PodcastStatus,
-        default: enums_1.PodcastStatus.NOT_SCHEDULED
+        default: enums_1.PodcastStatus.NOT_SCHEDULED,
     },
     recordingUrl: {
         type: String,
-        default: ""
-    }
+        default: "",
+    },
 });
 const Podcast = (0, mongoose_1.model)("Podcast", podcastSchema);
 exports.default = Podcast;

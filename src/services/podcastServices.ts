@@ -14,7 +14,7 @@ const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: Nex
   if (page < 1 || limit < 1) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       success: false,
-      message: "Page and limit must be positive integers"
+      message: "Page and limit must be positive integers",
     });
   }
 
@@ -41,9 +41,9 @@ const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: Nex
           page,
           limit,
           totalPages: 0,
-          totalPodcasts: 0
-        }
-      }
+          totalPodcasts: 0,
+        },
+      },
     });
   }
 
@@ -59,9 +59,9 @@ const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: Nex
         page,
         limit,
         totalPages,
-        totalPodcasts
-      }
-    }
+        totalPodcasts,
+      },
+    },
   });
 };
 
@@ -79,13 +79,14 @@ const podcastDone = async (req: Request, res: Response, next: NextFunction): Pro
 };
 
 const setSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { podcastId, date, time } = req.body;
+  const { podcastId, date, day, time } = req.body;
 
   const [error, podcast] = await to(Podcast.findById(podcastId));
   if (error) return next(error);
   if (!podcast) return next(createError(StatusCodes.NOT_FOUND, "Podcast not found!"));
 
   podcast.schedule.date = date;
+  podcast.schedule.day = day;
   podcast.schedule.time = time;
   podcast.status = PodcastStatus.SCHEDULED;
 
@@ -103,7 +104,7 @@ const getAllDonePodcasts = async (req: Request, res: Response, next: NextFunctio
   if (page < 1 || limit < 1) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       success: false,
-      message: "Page and limit must be positive integers"
+      message: "Page and limit must be positive integers",
     });
   }
 
@@ -118,7 +119,6 @@ const getAllDonePodcasts = async (req: Request, res: Response, next: NextFunctio
       .lean()
   );
 
-
   if (error) return next(error);
 
   if (!podcasts || podcasts.length === 0) {
@@ -131,9 +131,9 @@ const getAllDonePodcasts = async (req: Request, res: Response, next: NextFunctio
           page,
           limit,
           totalPages: 0,
-          totalPodcasts: 0
-        }
-      }
+          totalPodcasts: 0,
+        },
+      },
     });
   }
   const totalPodcasts = await Podcast.countDocuments({ status: PodcastStatus.DONE });
@@ -149,9 +149,9 @@ const getAllDonePodcasts = async (req: Request, res: Response, next: NextFunctio
         page,
         limit,
         totalPages,
-        totalPodcasts
-      }
-    }
+        totalPodcasts,
+      },
+    },
   });
 };
 
@@ -177,7 +177,7 @@ const PodcastServices = {
   setSchedule,
   podcastDone,
   getAllDonePodcasts,
-  selectUser
+  selectUser,
 };
 
 export default PodcastServices;
