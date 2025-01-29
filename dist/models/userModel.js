@@ -139,8 +139,8 @@ const userSchema = new mongoose_1.Schema({
             default: enums_1.SubscriptionPlanName.LISTENER,
         },
         fee: {
-            type: Number,
-            default: 0,
+            type: String,
+            default: "Free",
         },
         status: {
             type: String,

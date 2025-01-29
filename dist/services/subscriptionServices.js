@@ -67,7 +67,7 @@ const cancel = async (req, res, next) => {
         return next(error);
     user.subscription.id = "";
     user.subscription.plan = enums_1.SubscriptionPlanName.LISTENER;
-    user.subscription.fee = 0;
+    user.subscription.fee = "Free";
     user.subscription.status = enums_1.SubscriptionStatus.NONE;
     user.subscription.startedAt = new Date();
     [error] = await (0, await_to_ts_1.default)(user.save());

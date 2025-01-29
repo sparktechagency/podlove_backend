@@ -70,7 +70,7 @@ const cancel = async (req: Request, res: Response, next: NextFunction): Promise<
 
   user.subscription!.id = "";
   user.subscription!.plan = SubscriptionPlanName.LISTENER;
-  user.subscription!.fee = 0;
+  user.subscription!.fee = "Free";
   user.subscription!.status = SubscriptionStatus.NONE;
   user.subscription!.startedAt = new Date();
 

@@ -31,7 +31,7 @@ const webhook = async (req, res, next) => {
             invoice = event.data.object;
             const subscription = await stripe.subscriptions.retrieve(invoice.subscription);
             const plan = subscription.metadata.plan;
-            const fee = Number.parseFloat(subscription.metadata.fee);
+            const fee = subscription.metadata.fee;
             const userId = subscription.metadata.userId;
             [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userId));
             if (error)
@@ -66,6 +66,6 @@ const webhook = async (req, res, next) => {
     }
 };
 const StripeServices = {
-    webhook
+    webhook,
 };
 exports.default = StripeServices;

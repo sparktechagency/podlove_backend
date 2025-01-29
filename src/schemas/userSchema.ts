@@ -38,7 +38,7 @@ export type UserSchema = Document & {
   subscription: {
     id: string;
     plan: string;
-    fee: Number;
+    fee: String;
     status: SubscriptionStatus;
     startedAt: Date;
   };
