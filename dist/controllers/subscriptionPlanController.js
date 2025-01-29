@@ -13,9 +13,12 @@ const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const create = async (req, res, next) => {
     const { name, description, unitAmount, interval } = req.body;
     let error, product, price, subscriptionPlan;
+    const formattedDescription = description
+        .map((desc) => `${desc.key}: ${desc.details}`)
+        .join(" | ");
     [error, product] = await (0, await_to_ts_1.default)(stripe.products.create({
         name: name,
-        description: description
+        description: formattedDescription
     }));
     if (error)
         return next(error);
