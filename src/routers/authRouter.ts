@@ -12,5 +12,6 @@ authRouter.post("/verify-email", AuthController.verifyEmail);
 authRouter.put("/reset-password", recoveryAuthorize, AuthController.resetPassword);
 authRouter.post("/resend-otp", AuthController.resendOTP);
 authRouter.post("/change-password", authorize, AuthController.changePassword);
+authRouter.delete("/delete", authorize, AuthController.remove);
 
 export default authRouter;

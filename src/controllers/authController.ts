@@ -40,8 +40,8 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
             verificationOTP,
             verificationOTPExpiredAt,
             isVerified: false,
-            isBlocked: false,
-          },
+            isBlocked: false
+          }
         ],
         { session }
       )
@@ -56,8 +56,8 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
           {
             auth: auth._id,
             name,
-            phoneNumber,
-          },
+            phoneNumber
+          }
         ],
         { session }
       )
@@ -71,7 +71,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     return res.status(StatusCodes.CREATED).json({
       success: true,
       message: "Registration successful",
-      data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
+      data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP }
     });
   } catch (error) {
     await session.abortTransaction();
@@ -129,7 +129,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Account successfully verified.",
-    data: { accessToken, auth, user },
+    data: { accessToken, auth, user }
   });
 };
 
@@ -161,7 +161,7 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Login successful",
-    data: { accessToken, refreshToken, auth, user },
+    data: { accessToken, refreshToken, auth, user }
   });
 };
 
@@ -222,7 +222,7 @@ const verifyEmail = async (req: Request, res: Response, next: NextFunction): Pro
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Email successfully verified.",
-    data: recoveryToken,
+    data: recoveryToken
   });
 };
 
@@ -297,6 +297,21 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
   return res.status(StatusCodes.OK).json({ success: true, message: "Passowrd changed successfully", data: {} });
 };
 
+const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  const authId = req.user.authId;
+
+  try {
+    await Promise.all([
+      Auth.findByIdAndDelete(authId),
+      User.findByIdAndDelete(userId)
+    ]);
+    return res.status(StatusCodes.OK).json({ success: true, message: "User Removed successfully", data: {} });
+  } catch (e) {
+    return next(e);
+  }
+
+};
 const AuthController = {
   register,
   activate,
@@ -306,6 +321,7 @@ const AuthController = {
   resendOTP,
   resetPassword,
   changePassword,
+  remove
 };
 
 export default AuthController;

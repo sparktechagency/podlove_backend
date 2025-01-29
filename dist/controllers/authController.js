@@ -38,8 +38,8 @@ const register = async (req, res, next) => {
                 verificationOTP,
                 verificationOTPExpiredAt,
                 isVerified: false,
-                isBlocked: false,
-            },
+                isBlocked: false
+            }
         ], { session }));
         if (error)
             throw error;
@@ -48,8 +48,8 @@ const register = async (req, res, next) => {
             {
                 auth: auth._id,
                 name,
-                phoneNumber,
-            },
+                phoneNumber
+            }
         ], { session }));
         if (error)
             throw error;
@@ -58,7 +58,7 @@ const register = async (req, res, next) => {
         return res.status(http_status_codes_1.StatusCodes.CREATED).json({
             success: true,
             message: "Registration successful",
-            data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
+            data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP }
         });
     }
     catch (error) {
@@ -110,7 +110,7 @@ const activate = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Account successfully verified.",
-        data: { accessToken, auth, user },
+        data: { accessToken, auth, user }
     });
 };
 const login = async (req, res, next) => {
@@ -140,7 +140,7 @@ const login = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Login successful",
-        data: { accessToken, refreshToken, auth, user },
+        data: { accessToken, refreshToken, auth, user }
     });
 };
 const forgotPassword = async (req, res, next) => {
@@ -191,7 +191,7 @@ const verifyEmail = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Email successfully verified.",
-        data: recoveryToken,
+        data: recoveryToken
     });
 };
 const resetPassword = async (req, res, next) => {
@@ -261,6 +261,20 @@ const changePassword = async (req, res, next) => {
     await auth.save();
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Passowrd changed successfully", data: {} });
 };
+const remove = async (req, res, next) => {
+    const userId = req.user.userId;
+    const authId = req.user.authId;
+    try {
+        await Promise.all([
+            authModel_1.default.findByIdAndDelete(authId),
+            userModel_1.default.findByIdAndDelete(userId)
+        ]);
+        return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "User Removed successfully", data: {} });
+    }
+    catch (e) {
+        return next(e);
+    }
+};
 const AuthController = {
     register,
     activate,
@@ -270,5 +284,6 @@ const AuthController = {
     resendOTP,
     resetPassword,
     changePassword,
+    remove
 };
 exports.default = AuthController;
