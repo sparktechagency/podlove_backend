@@ -11,8 +11,8 @@ export type UserSchema = Document & {
   bodyType: string;
   ethnicity: string;
   bio: string;
-  personalality: {
-    specturm: Number;
+  personality: {
+    spectrum: Number;
     balance: Number;
     focus: Number;
   };
