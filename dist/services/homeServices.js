@@ -20,7 +20,7 @@ const homeData = async (req, res, next) => {
         select: "bio interests"
     })
         .populate({
-        path: "participant1",
+        path: "participant3",
         select: "bio interests"
     }));
     if (error)

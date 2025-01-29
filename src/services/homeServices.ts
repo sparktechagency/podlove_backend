@@ -19,7 +19,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
       select: "bio interests"
     })
     .populate({
-      path: "participant1",
+      path: "participant3",
       select: "bio interests"
     })
   );
