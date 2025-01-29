@@ -5,7 +5,8 @@ import User from "@models/userModel";
 import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
 import Plan from "@models/planModel";
-import { SubscriptionPlan, SubscriptionStatus } from "@shared/enums";
+import { SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
+import SubscriptionPlan from "@models/subscriptionPlanModel";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -18,7 +19,7 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
 
-  [error, plan] = await to(Plan.findById(planId));
+  [error, plan] = await to(SubscriptionPlan.findById(planId));
   if (error) return next(error);
   if (!plan) return next(createError(StatusCodes.NOT_FOUND, "Plan not found"));
 
@@ -33,23 +34,23 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
       line_items: [
         {
           price: plan.priceId,
-          quantity: 1
-        }
+          quantity: 1,
+        },
       ],
       subscription_data: {
         metadata: {
           plan: plan.name,
           fee: plan.unitAmount,
-          userId: userId
-        }
+          userId: userId,
+        },
       },
       success_url: `https://example.com/success`,
-      cancel_url: `https://example.com/cancel`
+      cancel_url: `https://example.com/cancel`,
     })
   );
   if (error) return next(error);
 
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: session });
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: session.url });
 };
 
 const cancel = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -62,13 +63,13 @@ const cancel = async (req: Request, res: Response, next: NextFunction): Promise<
 
   [error] = await to(
     stripe.subscriptions.update(user.subscription!.id!, {
-      cancel_at_period_end: true
+      cancel_at_period_end: true,
     })
   );
   if (error) return next(error);
 
   user.subscription!.id = "";
-  user.subscription!.plan = SubscriptionPlan.LISTENER;
+  user.subscription!.plan = SubscriptionPlanName.LISTENER;
   user.subscription!.fee = 0;
   user.subscription!.status = SubscriptionStatus.NONE;
   user.subscription!.startedAt = new Date();
@@ -80,7 +81,7 @@ const cancel = async (req: Request, res: Response, next: NextFunction): Promise<
 
 const SubscriptionServices = {
   upgrade,
-  cancel
+  cancel,
 };
 
 export default SubscriptionServices;

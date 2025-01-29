@@ -8,8 +8,8 @@ const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const userModel_1 = __importDefault(require("../models/userModel"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const http_status_codes_1 = require("http-status-codes");
-const planModel_1 = __importDefault(require("../models/planModel"));
 const enums_1 = require("../shared/enums");
+const subscriptionPlanModel_1 = __importDefault(require("../models/subscriptionPlanModel"));
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const upgrade = async (req, res, next) => {
     const userId = req.user.userId;
@@ -20,7 +20,7 @@ const upgrade = async (req, res, next) => {
         return next(error);
     if (!user)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
-    [error, plan] = await (0, await_to_ts_1.default)(planModel_1.default.findById(planId));
+    [error, plan] = await (0, await_to_ts_1.default)(subscriptionPlanModel_1.default.findById(planId));
     if (error)
         return next(error);
     if (!plan)
@@ -35,22 +35,22 @@ const upgrade = async (req, res, next) => {
         line_items: [
             {
                 price: plan.priceId,
-                quantity: 1
-            }
+                quantity: 1,
+            },
         ],
         subscription_data: {
             metadata: {
                 plan: plan.name,
                 fee: plan.unitAmount,
-                userId: userId
-            }
+                userId: userId,
+            },
         },
         success_url: `https://example.com/success`,
-        cancel_url: `https://example.com/cancel`
+        cancel_url: `https://example.com/cancel`,
     }));
     if (error)
         return next(error);
-    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: session });
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: session.url });
 };
 const cancel = async (req, res, next) => {
     const userId = req.user.userId;
@@ -61,12 +61,12 @@ const cancel = async (req, res, next) => {
     if (!user)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
     [error] = await (0, await_to_ts_1.default)(stripe.subscriptions.update(user.subscription.id, {
-        cancel_at_period_end: true
+        cancel_at_period_end: true,
     }));
     if (error)
         return next(error);
     user.subscription.id = "";
-    user.subscription.plan = enums_1.SubscriptionPlan.LISTENER;
+    user.subscription.plan = enums_1.SubscriptionPlanName.LISTENER;
     user.subscription.fee = 0;
     user.subscription.status = enums_1.SubscriptionStatus.NONE;
     user.subscription.startedAt = new Date();
@@ -77,6 +77,6 @@ const cancel = async (req, res, next) => {
 };
 const SubscriptionServices = {
     upgrade,
-    cancel
+    cancel,
 };
 exports.default = SubscriptionServices;

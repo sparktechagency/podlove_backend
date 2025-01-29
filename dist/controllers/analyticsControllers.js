@@ -14,7 +14,7 @@ const getAnalytics = async (req, res, next) => {
     [error, users] = await (0, await_to_ts_1.default)(userModel_1.default.countDocuments());
     if (error)
         return next(error);
-    [error, premiumUsers] = await (0, await_to_ts_1.default)(userModel_1.default.countDocuments({ "subscription.plan": { $ne: enums_1.SubscriptionPlan.LISTENER } }));
+    [error, premiumUsers] = await (0, await_to_ts_1.default)(userModel_1.default.countDocuments({ "subscription.plan": { $ne: enums_1.SubscriptionPlanName.LISTENER } }));
     if (error)
         return next(error);
     [error, totalPodcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.countDocuments());
@@ -24,9 +24,9 @@ const getAnalytics = async (req, res, next) => {
         {
             $group: {
                 _id: null,
-                total: { $sum: "$subscription.fee" }
-            }
-        }
+                total: { $sum: "$subscription.fee" },
+            },
+        },
     ]));
     if (error)
         return next(error);
@@ -38,8 +38,8 @@ const getAnalytics = async (req, res, next) => {
             users,
             premiumUsers,
             totalIncome,
-            totalPodcast
-        }
+            totalPodcast,
+        },
     });
 };
 const getIncomeByYear = async (req, res, next) => {
@@ -68,7 +68,7 @@ const getIncomeByYear = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Success",
-        data: income
+        data: income,
     });
 };
 const getSubscriptionByYear = async (req, res, next) => {
@@ -97,12 +97,12 @@ const getSubscriptionByYear = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Success",
-        data: subscription
+        data: subscription,
     });
 };
 const AnalyticsController = {
     getAnalytics,
     getIncomeByYear,
-    getSubscriptionByYear
+    getSubscriptionByYear,
 };
 exports.default = AnalyticsController;

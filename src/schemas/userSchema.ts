@@ -1,5 +1,5 @@
 import { Document, Types } from "mongoose";
-import { BodyType, Ethnicity, Gender, SubscriptionPlan, SubscriptionStatus } from "@shared/enums";
+import { BodyType, Ethnicity, Gender, SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 
 export type UserSchema = Document & {
   auth: Types.ObjectId;

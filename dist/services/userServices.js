@@ -17,7 +17,7 @@ const getAllUsers = async (req, res, next) => {
     if (page < 1 || limit < 1) {
         return res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).json({
             success: false,
-            message: "Page and limit must be positive integers"
+            message: "Page and limit must be positive integers",
         });
     }
     try {
@@ -30,14 +30,14 @@ const getAllUsers = async (req, res, next) => {
                         from: "auths",
                         localField: "auth",
                         foreignField: "_id",
-                        as: "authDetails"
-                    }
+                        as: "authDetails",
+                    },
                 },
                 {
                     $unwind: {
                         path: "$authDetails",
-                        preserveNullAndEmptyArrays: true
-                    }
+                        preserveNullAndEmptyArrays: true,
+                    },
                 },
                 {
                     $match: {
@@ -46,9 +46,9 @@ const getAllUsers = async (req, res, next) => {
                             { name: { $regex: search, $options: "i" } },
                             { phoneNumber: { $regex: search, $options: "i" } },
                             { gender: search },
-                            { address: { $regex: search, $options: "i" } }
-                        ]
-                    }
+                            { address: { $regex: search, $options: "i" } },
+                        ],
+                    },
                 },
                 {
                     $project: {
@@ -58,15 +58,15 @@ const getAllUsers = async (req, res, next) => {
                         age: 1,
                         address: 1,
                         "authDetails.email": 1,
-                        "authDetails.isBlocked": 1
-                    }
+                        "authDetails.isBlocked": 1,
+                    },
                 },
                 {
-                    $skip: skip
+                    $skip: skip,
                 },
                 {
-                    $limit: limit
-                }
+                    $limit: limit,
+                },
             ];
             users = await userModel_1.default.aggregate(aggregation);
             const countAggregation = [
@@ -75,14 +75,14 @@ const getAllUsers = async (req, res, next) => {
                         from: "auths",
                         localField: "auth",
                         foreignField: "_id",
-                        as: "authDetails"
-                    }
+                        as: "authDetails",
+                    },
                 },
                 {
                     $unwind: {
                         path: "$authDetails",
-                        preserveNullAndEmptyArrays: true
-                    }
+                        preserveNullAndEmptyArrays: true,
+                    },
                 },
                 {
                     $match: {
@@ -91,13 +91,13 @@ const getAllUsers = async (req, res, next) => {
                             { name: { $regex: search, $options: "i" } },
                             { phoneNumber: { $regex: search, $options: "i" } },
                             { gender: search },
-                            { address: { $regex: search, $options: "i" } }
-                        ]
-                    }
+                            { address: { $regex: search, $options: "i" } },
+                        ],
+                    },
                 },
                 {
-                    $count: "total"
-                }
+                    $count: "total",
+                },
             ];
             const totalResult = await userModel_1.default.aggregate(countAggregation);
             totalUsers = totalResult[0]?.total || 0;
@@ -121,13 +121,15 @@ const getAllUsers = async (req, res, next) => {
                 message: "No users found",
                 data: {
                     users: [],
-                    pagination: search ? undefined : {
-                        page,
-                        limit,
-                        totalPages: 0,
-                        totalUsers: 0
-                    }
-                }
+                    pagination: search
+                        ? undefined
+                        : {
+                            page,
+                            limit,
+                            totalPages: 0,
+                            totalUsers: 0,
+                        },
+                },
             });
         }
         res.status(http_status_codes_1.StatusCodes.OK).json({
@@ -139,9 +141,9 @@ const getAllUsers = async (req, res, next) => {
                     page,
                     limit,
                     totalPages,
-                    totalUsers
-                }
-            }
+                    totalUsers,
+                },
+            },
         });
     }
     catch (error) {
@@ -156,7 +158,7 @@ const getAllPremiumUsers = async (req, res, next) => {
     if (page < 1 || limit < 1) {
         return res.status(http_status_codes_1.StatusCodes.BAD_REQUEST).json({
             success: false,
-            message: "Page and limit must be positive integers"
+            message: "Page and limit must be positive integers",
         });
     }
     try {
@@ -165,10 +167,7 @@ const getAllPremiumUsers = async (req, res, next) => {
         if (search) {
             users = await userModel_1.default.find({
                 "subscription.status": enums_1.SubscriptionStatus.PAID,
-                $or: [
-                    { name: { $regex: search, $options: "i" } },
-                    { "subscription.plan": { $regex: search, $options: "i" } }
-                ]
+                $or: [{ name: { $regex: search, $options: "i" } }, { "subscription.plan": { $regex: search, $options: "i" } }],
             })
                 .select("name subscription")
                 .lean()
@@ -176,10 +175,7 @@ const getAllPremiumUsers = async (req, res, next) => {
                 .limit(limit);
             totalUsers = await userModel_1.default.countDocuments({
                 "subscription.status": enums_1.SubscriptionStatus.PAID,
-                $or: [
-                    { name: { $regex: search, $options: "i" } },
-                    { "subscription.plan": { $regex: search, $options: "i" } }
-                ]
+                $or: [{ name: { $regex: search, $options: "i" } }, { "subscription.plan": { $regex: search, $options: "i" } }],
             });
         }
         else {
@@ -204,9 +200,9 @@ const getAllPremiumUsers = async (req, res, next) => {
                         page,
                         limit,
                         totalPages: 0,
-                        totalUsers: 0
-                    }
-                }
+                        totalUsers: 0,
+                    },
+                },
             });
         }
         res.status(http_status_codes_1.StatusCodes.OK).json({
@@ -218,9 +214,9 @@ const getAllPremiumUsers = async (req, res, next) => {
                     page,
                     limit,
                     totalPages,
-                    totalUsers
-                }
-            }
+                    totalUsers,
+                },
+            },
         });
     }
     catch (error) {
@@ -244,7 +240,7 @@ const block = async (req, res, next) => {
     res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: auth.isBlocked ? "User blocked successfully" : "User unblocked successfully",
-        data: { isBlocked: auth.isBlocked }
+        data: { isBlocked: auth.isBlocked },
     });
 };
 const unblock = async (req, res, next) => {
@@ -259,13 +255,13 @@ const unblock = async (req, res, next) => {
     res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "User blocked successfully",
-        data: { isBlocked: auth.isBlocked }
+        data: { isBlocked: auth.isBlocked },
     });
 };
 const UserServices = {
     getAllUsers,
     getAllPremiumUsers,
     block,
-    unblock
+    unblock,
 };
 exports.default = UserServices;

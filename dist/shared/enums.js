@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Months = exports.PodcastStatus = exports.SubscriptionStatus = exports.SubscriptionPlan = exports.Ethnicity = exports.BodyType = exports.Gender = exports.AdminAccess = exports.Role = void 0;
+exports.Months = exports.PodcastStatus = exports.SubscriptionStatus = exports.SubscriptionPlanName = exports.Ethnicity = exports.BodyType = exports.Gender = exports.AdminAccess = exports.Role = void 0;
 var Role;
 (function (Role) {
     Role["USER"] = "USER";
@@ -50,12 +50,12 @@ var Ethnicity;
     Ethnicity["PACIFIC"] = "Pacific Islander";
     Ethnicity["OTHER"] = "Other";
 })(Ethnicity || (exports.Ethnicity = Ethnicity = {}));
-var SubscriptionPlan;
-(function (SubscriptionPlan) {
-    SubscriptionPlan["LISTENER"] = "Listener: Connection Starter";
-    SubscriptionPlan["SPEAKER"] = "Speaker: Conversation Explorer";
-    SubscriptionPlan["SEEKER"] = "Seeker: Connection Builder";
-})(SubscriptionPlan || (exports.SubscriptionPlan = SubscriptionPlan = {}));
+var SubscriptionPlanName;
+(function (SubscriptionPlanName) {
+    SubscriptionPlanName["LISTENER"] = "Listener: Connection Starter";
+    SubscriptionPlanName["SPEAKER"] = "Speaker: Conversation Explorer";
+    SubscriptionPlanName["SEEKER"] = "Seeker: Connection Builder";
+})(SubscriptionPlanName || (exports.SubscriptionPlanName = SubscriptionPlanName = {}));
 var SubscriptionStatus;
 (function (SubscriptionStatus) {
     SubscriptionStatus["NONE"] = "";

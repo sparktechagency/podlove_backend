@@ -48,7 +48,7 @@ export enum Ethnicity {
   OTHER = "Other",
 }
 
-export enum SubscriptionPlan {
+export enum SubscriptionPlanName {
   LISTENER = "Listener: Connection Starter",
   SPEAKER = "Speaker: Conversation Explorer",
   SEEKER = "Seeker: Connection Builder",

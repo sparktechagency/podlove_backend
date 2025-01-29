@@ -1,20 +1,20 @@
 import Analytics from "@models/analyticsModel";
 import Podcast from "@models/podcastModel";
 import User from "@models/userModel";
-import { Months, SubscriptionPlan } from "@shared/enums";
+import { Months, SubscriptionPlanName } from "@shared/enums";
 import to from "await-to-ts";
 import { Request, Response, NextFunction } from "express";
 import { StatusCodes } from "http-status-codes";
 
 const getAnalytics = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-
-
   let error, users, premiumUsers, totalIncomeResult, totalIncome, totalPodcast, analytics;
 
   [error, users] = await to(User.countDocuments());
   if (error) return next(error);
 
-  [error, premiumUsers] = await to(User.countDocuments({ "subscription.plan": { $ne: SubscriptionPlan.LISTENER } }));
+  [error, premiumUsers] = await to(
+    User.countDocuments({ "subscription.plan": { $ne: SubscriptionPlanName.LISTENER } })
+  );
   if (error) return next(error);
 
   [error, totalPodcast] = await to(Podcast.countDocuments());
@@ -25,9 +25,9 @@ const getAnalytics = async (req: Request, res: Response, next: NextFunction): Pr
       {
         $group: {
           _id: null,
-          total: { $sum: "$subscription.fee" }
-        }
-      }
+          total: { $sum: "$subscription.fee" },
+        },
+      },
     ])
   );
   if (error) return next(error);
@@ -41,8 +41,8 @@ const getAnalytics = async (req: Request, res: Response, next: NextFunction): Pr
       users,
       premiumUsers,
       totalIncome,
-      totalPodcast
-    }
+      totalPodcast,
+    },
   });
 };
 
@@ -55,24 +55,21 @@ const getIncomeByYear = async (req: Request, res: Response, next: NextFunction):
   if (analytics.length === 0) {
     allMonths.forEach((month) => {
       income.push({ month: month, income: 0 });
-
     });
   } else {
     allMonths.forEach((month) => {
       const monthData = analytics.find((item) => item.month === month);
       if (monthData) {
         income.push({ month: month, income: monthData.income });
-
       } else {
         income.push({ month: month, income: 0 });
-
       }
     });
   }
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Success",
-    data: income
+    data: income,
   });
 };
 
@@ -88,32 +85,28 @@ const getSubscriptionByYear = async (req: Request, res: Response, next: NextFunc
   if (analytics.length === 0) {
     allMonths.forEach((month) => {
       subscription.push({ month: month, active: 0, cancel: 0 });
-
     });
   } else {
     allMonths.forEach((month) => {
       const monthData = analytics.find((item) => item.month === month);
       if (monthData) {
         subscription.push({ month: month, active: monthData.active, cancel: monthData.cancel });
-
       } else {
         subscription.push({ month: month, active: 0, cancel: 0 });
-
       }
     });
   }
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Success",
-    data: subscription
+    data: subscription,
   });
 };
-
 
 const AnalyticsController = {
   getAnalytics,
   getIncomeByYear,
-  getSubscriptionByYear
+  getSubscriptionByYear,
 };
 
 export default AnalyticsController;

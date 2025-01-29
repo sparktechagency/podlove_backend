@@ -4,7 +4,7 @@ import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
 import createError from "http-errors";
 import Auth from "@models/authModel";
-import { SubscriptionPlan, SubscriptionStatus } from "@shared/enums";
+import { SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 
 const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { search } = req.query;
@@ -15,7 +15,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
   if (page < 1 || limit < 1) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       success: false,
-      message: "Page and limit must be positive integers"
+      message: "Page and limit must be positive integers",
     });
   }
 
@@ -30,14 +30,14 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
             from: "auths",
             localField: "auth",
             foreignField: "_id",
-            as: "authDetails"
-          }
+            as: "authDetails",
+          },
         },
         {
           $unwind: {
             path: "$authDetails",
-            preserveNullAndEmptyArrays: true
-          }
+            preserveNullAndEmptyArrays: true,
+          },
         },
         {
           $match: {
@@ -46,9 +46,9 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
               { name: { $regex: search, $options: "i" } },
               { phoneNumber: { $regex: search, $options: "i" } },
               { gender: search },
-              { address: { $regex: search, $options: "i" } }
-            ]
-          }
+              { address: { $regex: search, $options: "i" } },
+            ],
+          },
         },
         {
           $project: {
@@ -58,15 +58,15 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
             age: 1,
             address: 1,
             "authDetails.email": 1,
-            "authDetails.isBlocked": 1
-          }
+            "authDetails.isBlocked": 1,
+          },
         },
         {
-          $skip: skip
+          $skip: skip,
         },
         {
-          $limit: limit
-        }
+          $limit: limit,
+        },
       ];
 
       users = await User.aggregate(aggregation);
@@ -77,14 +77,14 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
             from: "auths",
             localField: "auth",
             foreignField: "_id",
-            as: "authDetails"
-          }
+            as: "authDetails",
+          },
         },
         {
           $unwind: {
             path: "$authDetails",
-            preserveNullAndEmptyArrays: true
-          }
+            preserveNullAndEmptyArrays: true,
+          },
         },
         {
           $match: {
@@ -93,13 +93,13 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
               { name: { $regex: search, $options: "i" } },
               { phoneNumber: { $regex: search, $options: "i" } },
               { gender: search },
-              { address: { $regex: search, $options: "i" } }
-            ]
-          }
+              { address: { $regex: search, $options: "i" } },
+            ],
+          },
         },
         {
-          $count: "total"
-        }
+          $count: "total",
+        },
       ];
 
       const totalResult = await User.aggregate(countAggregation);
@@ -128,13 +128,15 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
         message: "No users found",
         data: {
           users: [],
-          pagination: search ? undefined : {
-            page,
-            limit,
-            totalPages: 0,
-            totalUsers: 0
-          }
-        }
+          pagination: search
+            ? undefined
+            : {
+                page,
+                limit,
+                totalPages: 0,
+                totalUsers: 0,
+              },
+        },
       });
     }
 
@@ -147,9 +149,9 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
           page,
           limit,
           totalPages,
-          totalUsers
-        }
-      }
+          totalUsers,
+        },
+      },
     });
   } catch (error) {
     return next(error);
@@ -165,7 +167,7 @@ const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunctio
   if (page < 1 || limit < 1) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       success: false,
-      message: "Page and limit must be positive integers"
+      message: "Page and limit must be positive integers",
     });
   }
 
@@ -176,10 +178,7 @@ const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunctio
     if (search) {
       users = await User.find({
         "subscription.status": SubscriptionStatus.PAID,
-        $or: [
-          { name: { $regex: search, $options: "i" } },
-          { "subscription.plan": { $regex: search, $options: "i" } }
-        ]
+        $or: [{ name: { $regex: search, $options: "i" } }, { "subscription.plan": { $regex: search, $options: "i" } }],
       })
         .select("name subscription")
         .lean()
@@ -188,10 +187,7 @@ const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunctio
 
       totalUsers = await User.countDocuments({
         "subscription.status": SubscriptionStatus.PAID,
-        $or: [
-          { name: { $regex: search, $options: "i" } },
-          { "subscription.plan": { $regex: search, $options: "i" } }
-        ]
+        $or: [{ name: { $regex: search, $options: "i" } }, { "subscription.plan": { $regex: search, $options: "i" } }],
       });
     } else {
       const [error, fetchedUsers] = await to(
@@ -220,9 +216,9 @@ const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunctio
             page,
             limit,
             totalPages: 0,
-            totalUsers: 0
-          }
-        }
+            totalUsers: 0,
+          },
+        },
       });
     }
 
@@ -235,9 +231,9 @@ const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunctio
           page,
           limit,
           totalPages,
-          totalUsers
-        }
-      }
+          totalUsers,
+        },
+      },
     });
   } catch (error) {
     return next(error);
@@ -260,7 +256,7 @@ const block = async (req: Request, res: Response, next: NextFunction): Promise<a
   res.status(StatusCodes.OK).json({
     success: true,
     message: auth.isBlocked ? "User blocked successfully" : "User unblocked successfully",
-    data: { isBlocked: auth.isBlocked }
+    data: { isBlocked: auth.isBlocked },
   });
 };
 
@@ -276,7 +272,7 @@ const unblock = async (req: Request, res: Response, next: NextFunction): Promise
   res.status(StatusCodes.OK).json({
     success: true,
     message: "User blocked successfully",
-    data: { isBlocked: auth.isBlocked }
+    data: { isBlocked: auth.isBlocked },
   });
 };
 
@@ -284,7 +280,7 @@ const UserServices = {
   getAllUsers,
   getAllPremiumUsers,
   block,
-  unblock
+  unblock,
 };
 
 export default UserServices;
