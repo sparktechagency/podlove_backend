@@ -1,21 +1,31 @@
-import { Schema, model } from "mongoose";
-import { AuthSchema } from "../schemas/authSchema";
-import { Role } from "@shared/enums";
+import { Schema, model, Document } from "mongoose";
+
+export type AuthSchema = Document & {
+  email: string;
+  password: string;
+  verificationOTP: string;
+  verificationOTPExpiredAt: Date | null;
+  recoveryOTP: string;
+  recoveryOTPExpiredAt: Date | null;
+  isVerified: boolean;
+  isBlocked: boolean;
+  googleId: {
+    id: string;
+    isNew: boolean;
+  };
+  appleId: {
+    id: string;
+    isNew: boolean;
+  };
+};
 
 const authSchema = new Schema<AuthSchema>({
   email: {
     type: String,
-    required: true,
     unique: true,
   },
   password: {
     type: String,
-    required: true,
-  },
-  role: {
-    type: String,
-    required: true,
-    enum: Role,
   },
   verificationOTP: {
     type: String,
@@ -36,6 +46,22 @@ const authSchema = new Schema<AuthSchema>({
   isBlocked: {
     type: Boolean,
     default: false,
+  },
+  googleId: {
+    id: {
+      type: String,
+    },
+    isNew: {
+      type: Boolean,
+    },
+  },
+  appleId: {
+    id: {
+      type: String,
+    },
+    isNew: {
+      type: Boolean,
+    },
   },
 });
 

@@ -11,7 +11,7 @@ import sendEmail from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { name, email, phoneNumber, role, password, confirmPassword } = req.body;
+  const { name, email, phoneNumber, password, confirmPassword } = req.body;
   let error, auth, user;
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -27,7 +27,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
   }
 
   const session = await mongoose.startSession();
-  session.startTransaction(); // Begin transaction
+  session.startTransaction();
 
   try {
     [error, auth] = await to(
@@ -36,12 +36,11 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
           {
             email,
             password: hashedPassword,
-            role,
             verificationOTP,
             verificationOTPExpiredAt,
             isVerified: false,
-            isBlocked: false
-          }
+            isBlocked: false,
+          },
         ],
         { session }
       )
@@ -56,8 +55,8 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
           {
             auth: auth._id,
             name,
-            phoneNumber
-          }
+            phoneNumber,
+          },
         ],
         { session }
       )
@@ -71,7 +70,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     return res.status(StatusCodes.CREATED).json({
       success: true,
       message: "Registration successful",
-      data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP }
+      data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
     });
   } catch (error) {
     await session.abortTransaction();
@@ -129,7 +128,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Account successfully verified.",
-    data: { accessToken, auth, user }
+    data: { accessToken, auth, user },
   });
 };
 
@@ -161,8 +160,20 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Login successful",
-    data: { accessToken, refreshToken, auth, user }
+    data: { accessToken, refreshToken, auth, user },
   });
+};
+
+const signInWithGoogle = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const { googleId, name, email } = req.body;
+  let error, auth, user;
+  [error, auth] = await to(Auth.find({ googleId: googleId }));
+  if (error) return next(error);
+  if (!auth) {
+    [error, auth] = await to(Auth.create({ googleId, email }));
+    if (error) return next(error);
+    [error, user] = await to(User.create({ auth: auth._id, name }));
+  }
 };
 
 const forgotPassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -222,7 +233,7 @@ const verifyEmail = async (req: Request, res: Response, next: NextFunction): Pro
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Email successfully verified.",
-    data: recoveryToken
+    data: recoveryToken,
   });
 };
 
@@ -302,15 +313,11 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
   const authId = req.user.authId;
 
   try {
-    await Promise.all([
-      Auth.findByIdAndDelete(authId),
-      User.findByIdAndDelete(userId)
-    ]);
+    await Promise.all([Auth.findByIdAndDelete(authId), User.findByIdAndDelete(userId)]);
     return res.status(StatusCodes.OK).json({ success: true, message: "User Removed successfully", data: {} });
   } catch (e) {
     return next(e);
   }
-
 };
 const AuthController = {
   register,
@@ -321,7 +328,7 @@ const AuthController = {
   resendOTP,
   resetPassword,
   changePassword,
-  remove
+  remove,
 };
 
 export default AuthController;

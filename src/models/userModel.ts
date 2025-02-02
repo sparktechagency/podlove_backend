@@ -1,6 +1,48 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types, Document } from "mongoose";
 import { BodyType, Ethnicity, Gender, SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
-import { UserSchema } from "@schemas/userSchema";
+
+export type UserSchema = Document & {
+  auth: Types.ObjectId;
+  name: string;
+  phoneNumber: string;
+  address: string | null;
+  age: number;
+  gender: string;
+  bodyType: string;
+  ethnicity: string;
+  bio: string;
+  personality: {
+    spectrum: Number;
+    balance: Number;
+    focus: Number;
+  };
+  interests: string[];
+  avatar: string;
+  compatibility: string[];
+  location: {
+    place: string;
+    longitude: Number;
+    latitude: Number;
+  };
+  preferences: {
+    gender: Gender[];
+    age: {
+      min: Number;
+      max: Number;
+    };
+    bodyType: string[];
+    ethnicity: string[];
+    distance: string;
+  };
+  survey: string[];
+  subscription: {
+    id: string;
+    plan: string;
+    fee: String;
+    status: SubscriptionStatus;
+    startedAt: Date;
+  };
+};
 
 const userSchema = new Schema(
   {
@@ -16,8 +58,7 @@ const userSchema = new Schema(
     },
     phoneNumber: {
       type: String,
-      required: true,
-      unique: true,
+      default: "",
     },
     address: {
       type: String,
@@ -96,7 +137,7 @@ const userSchema = new Schema(
     },
     preferences: {
       gender: {
-        type: String,
+        type: [String],
         enum: Object.values(Gender),
         default: "",
       },
@@ -111,12 +152,12 @@ const userSchema = new Schema(
         },
       },
       bodyType: {
-        type: String,
+        type: [String],
         enum: Object.values(BodyType),
         default: "",
       },
       ethnicity: {
-        type: String,
+        type: [String],
         enum: Object.values(Ethnicity),
         default: "",
       },
