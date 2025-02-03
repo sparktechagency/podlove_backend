@@ -7,7 +7,6 @@ export type DecodedUser = {
   isVerified: boolean;
   isBlocked: boolean;
   email: string;
-  role: Role;
 };
 
 export type DecodedAdmin = {

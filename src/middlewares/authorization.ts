@@ -20,7 +20,6 @@ export const getUserInfo = async (authId: string): Promise<DecodedUser | null> =
   data = {
     authId: auth._id!.toString(),
     email: auth.email,
-    role: auth.role,
     isVerified: auth.isVerified,
     isBlocked: auth.isBlocked,
     userId: user._id!.toString(),
@@ -55,14 +54,6 @@ const authorizeToken = (secret: string, errorMessage: string) => {
   };
 };
 
-const hasAccess = (roles: Role[]) => {
-  return (req: Request, res: Response, next: NextFunction): void => {
-    const user = req.user;
-    console.log(user);
-    if (roles.includes(user.role as Role)) return next();
-    return next(createError(403, "Access Denied."));
-  };
-};
 
 export const authorize = authorizeToken(process.env.JWT_ACCESS_SECRET!, "Invalid Access Token");
 export const refreshAuthorize = authorizeToken(process.env.JWT_REFRESH_SECRET!, "Invalid Refresh Token");

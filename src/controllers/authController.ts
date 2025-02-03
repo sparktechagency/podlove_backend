@@ -81,8 +81,8 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
   }
 };
 
-const activate = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { email, verificationOTP } = req.body;
+const activation = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const { method, email, verificationOTP } = req.body;
   let auth, user, error;
 
   if (!email || !verificationOTP) {
@@ -103,7 +103,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   }
 
   if (verificationOTP !== auth.verificationOTP) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "Wrong OTP."));
+    return next(createError(StatusCodes.UNAUTHORIZED, "Wrong OTP. Please enter the correct one"));
   }
 
   auth.verificationOTP = "";
@@ -193,8 +193,8 @@ const forgotPassword = async (req: Request, res: Response, next: NextFunction): 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
 };
 
-const verifyEmail = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { email, recoveryOTP } = req.body;
+const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const { method, email, recoveryOTP } = req.body;
   let error, auth;
 
   if (!email || !recoveryOTP) {
@@ -254,7 +254,7 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction): P
 };
 
 const resendOTP = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { email, status } = req.body;
+  const { method, email } = req.body;
   let error, auth;
   [error, auth] = await to(Auth.findOne({ email: email }));
   if (error) return next(error);
@@ -321,10 +321,10 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
 };
 const AuthController = {
   register,
-  activate,
+  activation,
   login,
   forgotPassword,
-  verifyEmail,
+  recovery,
   resendOTP,
   resetPassword,
   changePassword,

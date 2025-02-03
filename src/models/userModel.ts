@@ -3,6 +3,7 @@ import { BodyType, Ethnicity, Gender, SubscriptionPlanName, SubscriptionStatus }
 
 export type UserSchema = Document & {
   auth: Types.ObjectId;
+  isProfileComplete: boolean;
   name: string;
   phoneNumber: string;
   address: string | null;
@@ -51,6 +52,10 @@ const userSchema = new Schema(
       ref: "Auth",
       required: true,
     },
+    isProfileComplete: {
+      type: Boolean,
+      default: false,
+    },
     name: {
       type: String,
       required: true,
@@ -58,6 +63,7 @@ const userSchema = new Schema(
     },
     phoneNumber: {
       type: String,
+      unique: true,
       default: "",
     },
     address: {
