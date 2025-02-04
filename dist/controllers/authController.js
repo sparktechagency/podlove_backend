@@ -14,7 +14,7 @@ const userModel_1 = __importDefault(require("../models/userModel"));
 const sendEmail_1 = __importDefault(require("../utils/sendEmail"));
 const generateOTP_1 = __importDefault(require("../utils/generateOTP"));
 const register = async (req, res, next) => {
-    const { name, email, phoneNumber, role, password, confirmPassword } = req.body;
+    const { name, email, phoneNumber, password, confirmPassword } = req.body;
     let error, auth, user;
     const hashedPassword = await bcrypt_1.default.hash(password, 10);
     const verificationOTP = (0, generateOTP_1.default)();
@@ -28,18 +28,17 @@ const register = async (req, res, next) => {
             .json({ success: false, message: "Email already exists.", data: { isVerified: auth.isVerified } });
     }
     const session = await mongoose_1.default.startSession();
-    session.startTransaction(); // Begin transaction
+    session.startTransaction();
     try {
         [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.create([
             {
                 email,
                 password: hashedPassword,
-                role,
                 verificationOTP,
                 verificationOTPExpiredAt,
                 isVerified: false,
-                isBlocked: false
-            }
+                isBlocked: false,
+            },
         ], { session }));
         if (error)
             throw error;
@@ -48,8 +47,8 @@ const register = async (req, res, next) => {
             {
                 auth: auth._id,
                 name,
-                phoneNumber
-            }
+                phoneNumber,
+            },
         ], { session }));
         if (error)
             throw error;
@@ -58,7 +57,7 @@ const register = async (req, res, next) => {
         return res.status(http_status_codes_1.StatusCodes.CREATED).json({
             success: true,
             message: "Registration successful",
-            data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP }
+            data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
         });
     }
     catch (error) {
@@ -69,8 +68,8 @@ const register = async (req, res, next) => {
         await session.endSession();
     }
 };
-const activate = async (req, res, next) => {
-    const { email, verificationOTP } = req.body;
+const activation = async (req, res, next) => {
+    const { method, email, verificationOTP } = req.body;
     let auth, user, error;
     if (!email || !verificationOTP) {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "Email and Verification OTP are required."));
@@ -88,7 +87,7 @@ const activate = async (req, res, next) => {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Verification OTP has expired."));
     }
     if (verificationOTP !== auth.verificationOTP) {
-        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Wrong OTP."));
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Wrong OTP. Please enter the correct one"));
     }
     auth.verificationOTP = "";
     auth.verificationOTPExpiredAt = null;
@@ -110,7 +109,7 @@ const activate = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Account successfully verified.",
-        data: { accessToken, auth, user }
+        data: { accessToken, auth, user },
     });
 };
 const login = async (req, res, next) => {
@@ -140,8 +139,21 @@ const login = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Login successful",
-        data: { accessToken, refreshToken, auth, user }
+        data: { accessToken, refreshToken, auth, user },
     });
+};
+const signInWithGoogle = async (req, res, next) => {
+    const { googleId, name, email } = req.body;
+    let error, auth, user;
+    [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.find({ googleId: googleId }));
+    if (error)
+        return next(error);
+    if (!auth) {
+        [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.create({ googleId, email }));
+        if (error)
+            return next(error);
+        [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.create({ auth: auth._id, name }));
+    }
 };
 const forgotPassword = async (req, res, next) => {
     const { email } = req.body;
@@ -157,8 +169,8 @@ const forgotPassword = async (req, res, next) => {
     await (0, sendEmail_1.default)(email, recoveryOTP);
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: {} });
 };
-const verifyEmail = async (req, res, next) => {
-    const { email, recoveryOTP } = req.body;
+const recovery = async (req, res, next) => {
+    const { method, email, recoveryOTP } = req.body;
     let error, auth;
     if (!email || !recoveryOTP) {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "Email and Recovery OTP are required."));
@@ -191,7 +203,7 @@ const verifyEmail = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Email successfully verified.",
-        data: recoveryToken
+        data: recoveryToken,
     });
 };
 const resetPassword = async (req, res, next) => {
@@ -209,7 +221,7 @@ const resetPassword = async (req, res, next) => {
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Password reset successful", data: {} });
 };
 const resendOTP = async (req, res, next) => {
-    const { email, status } = req.body;
+    const { method, email } = req.body;
     let error, auth;
     [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ email: email }));
     if (error)
@@ -265,10 +277,7 @@ const remove = async (req, res, next) => {
     const userId = req.user.userId;
     const authId = req.user.authId;
     try {
-        await Promise.all([
-            authModel_1.default.findByIdAndDelete(authId),
-            userModel_1.default.findByIdAndDelete(userId)
-        ]);
+        await Promise.all([authModel_1.default.findByIdAndDelete(authId), userModel_1.default.findByIdAndDelete(userId)]);
         return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "User Removed successfully", data: {} });
     }
     catch (e) {
@@ -277,13 +286,13 @@ const remove = async (req, res, next) => {
 };
 const AuthController = {
     register,
-    activate,
+    activation,
     login,
     forgotPassword,
-    verifyEmail,
+    recovery,
     resendOTP,
     resetPassword,
     changePassword,
-    remove
+    remove,
 };
 exports.default = AuthController;

@@ -9,6 +9,10 @@ const userSchema = new mongoose_1.Schema({
         ref: "Auth",
         required: true,
     },
+    isProfileComplete: {
+        type: Boolean,
+        default: false,
+    },
     name: {
         type: String,
         required: true,
@@ -16,8 +20,8 @@ const userSchema = new mongoose_1.Schema({
     },
     phoneNumber: {
         type: String,
-        required: true,
         unique: true,
+        default: "",
     },
     address: {
         type: String,
@@ -96,7 +100,7 @@ const userSchema = new mongoose_1.Schema({
     },
     preferences: {
         gender: {
-            type: String,
+            type: [String],
             enum: Object.values(enums_1.Gender),
             default: "",
         },
@@ -111,12 +115,12 @@ const userSchema = new mongoose_1.Schema({
             },
         },
         bodyType: {
-            type: String,
+            type: [String],
             enum: Object.values(enums_1.BodyType),
             default: "",
         },
         ethnicity: {
-            type: String,
+            type: [String],
             enum: Object.values(enums_1.Ethnicity),
             default: "",
         },

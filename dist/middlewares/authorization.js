@@ -22,7 +22,6 @@ const getUserInfo = async (authId) => {
     data = {
         authId: auth._id.toString(),
         email: auth.email,
-        role: auth.role,
         isVerified: auth.isVerified,
         isBlocked: auth.isBlocked,
         userId: user._id.toString(),
@@ -53,15 +52,6 @@ const authorizeToken = (secret, errorMessage) => {
             return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.FORBIDDEN, "You are blocked"));
         req.user = data;
         return next();
-    };
-};
-const hasAccess = (roles) => {
-    return (req, res, next) => {
-        const user = req.user;
-        console.log(user);
-        if (roles.includes(user.role))
-            return next();
-        return next((0, http_errors_1.default)(403, "Access Denied."));
     };
 };
 exports.authorize = authorizeToken(process.env.JWT_ACCESS_SECRET, "Invalid Access Token");
