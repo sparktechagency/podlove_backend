@@ -143,7 +143,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
 
 const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, password } = req.body;
-  let error, auth, isPasswordValid;
+  let error, auth, user, isPasswordValid;
 
   [error, auth] = await to(Auth.findOne({ email }));
   if (error) return next(error);
@@ -165,7 +165,8 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
   const accessToken = generateToken(auth._id!.toString(), accessSecret, "96h");
   const refreshToken = generateToken(auth._id!.toString(), refreshSecret, "96h");
 
-  const user = await User.findOne({ auth: auth._id });
+  [error, user] = await to(User.findOne({ auth: auth._id }).populate({path: "auth", select: "email"}));
+  if(error) return next(error);
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Login successful",
