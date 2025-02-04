@@ -81,7 +81,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
   }
 };
 
-const activation = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const activate = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { method, email, verificationOTP } = req.body;
   let auth, user, error;
 
@@ -176,7 +176,7 @@ const signInWithGoogle = async (req: Request, res: Response, next: NextFunction)
   }
 };
 
-const forgotPassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;
 
   const [error, auth] = await to(Auth.findOne({ email }));
@@ -193,7 +193,7 @@ const forgotPassword = async (req: Request, res: Response, next: NextFunction): 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
 };
 
-const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const recoveryVerify = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { method, email, recoveryOTP } = req.body;
   let error, auth;
 
@@ -321,10 +321,10 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
 };
 const AuthController = {
   register,
-  activation,
+  activate,
   login,
-  forgotPassword,
   recovery,
+  recoveryVerify,
   resendOTP,
   resetPassword,
   changePassword,
