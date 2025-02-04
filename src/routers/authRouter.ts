@@ -5,9 +5,9 @@ import { authorize, recoveryAuthorize } from "@middlewares/authorization";
 const authRouter = express.Router();
 
 authRouter.post("/register", AuthController.register);
-authRouter.post("/activate", AuthController.activation);
+authRouter.post("/activate", AuthController.activate);
 authRouter.post("/login", AuthController.login);
-authRouter.post("/recovery", AuthController.forgotPassword);
+authRouter.post("/recovery", AuthController.recovery);
 authRouter.post("/recovery-verify", AuthController.recovery);
 authRouter.put("/reset-password", recoveryAuthorize, AuthController.resetPassword);
 authRouter.post("/resend-otp", AuthController.resendOTP);
