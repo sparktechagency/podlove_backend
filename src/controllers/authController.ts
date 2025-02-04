@@ -20,10 +20,24 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
   [error, auth] = await to(Auth.findOne({ email }));
   if (error) return next(error);
-  if (auth) {
+
+  if (auth && !auth.isVerified) {
+    auth.verificationOTP = verificationOTP;
+    auth.verificationOTPExpiredAt = verificationOTPExpiredAt;
+    [error] = await to(auth.save());
+    if(error) return next(error);
+
+    await sendEmail(email, verificationOTP);
+
     return res
       .status(StatusCodes.CONFLICT)
-      .json({ success: false, message: "Email already exists.", data: { isVerified: auth.isVerified } });
+      .json({ success: false, message: "Your account already exists. Please verify now.", data: { isVerified: auth.isVerified } });
+  }
+
+  if(auth && auth.isVerified) {
+    return res
+      .status(StatusCodes.CONFLICT)
+      .json({ success: false, message: "Your account already exists. Please login now.", data: { isVerified: auth.isVerified } });
   }
 
   const session = await mongoose.startSession();
@@ -74,7 +88,6 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     });
   } catch (error) {
     await session.abortTransaction();
-
     return next(error);
   } finally {
     await session.endSession();
