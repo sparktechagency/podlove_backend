@@ -31,7 +31,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
     return res
       .status(StatusCodes.CONFLICT)
-      .json({ success: false, message: "Your account already exists. Please verify now.", data: { isVerified: auth.isVerified } });
+      .json({ success: false, message: "Your account already exists. Please verify now.", data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP } });
   }
 
   if(auth && auth.isVerified) {
