@@ -93,12 +93,8 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   if (error) return next(error);
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
 
-  if (!auth.verificationOTP || !auth.verificationOTPExpiredAt) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "Verification OTP is not set or has expired."));
-  }
-
   const currentTime = new Date();
-  if (currentTime > auth.verificationOTPExpiredAt) {
+  if (!auth.verificationOTP || !auth.verificationOTPExpiredAt || currentTime > auth.verificationOTPExpiredAt) {
     return next(createError(StatusCodes.UNAUTHORIZED, "Verification OTP has expired."));
   }
 
