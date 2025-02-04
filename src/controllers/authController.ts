@@ -128,7 +128,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   }
   const accessToken = generateToken(auth._id!.toString(), accessSecret, "96h");
 
-  [error, user] = await to(User.findOne({ auth: auth._id }));
+  [error, user] = await to(User.findOne({ auth: auth._id }).populate({path: "auth", select: "email"}));
   if (error) return next(error);
   if (!user) {
     return next(createError(StatusCodes.NOT_FOUND, "Associated user not found."));
