@@ -26,7 +26,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   const userId = req.params.id;
   const updates = req.body;
 
-  const [error, user] = await to(User.findByIdAndUpdate(userId, { $set: updates }, { new: true }));
+  const [error, user] = await to(User.findByIdAndUpdate(userId, { $set: updates }, { new: true }).populate({path: "auth", select: "email"}));
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found."));
 
