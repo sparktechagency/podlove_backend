@@ -34,7 +34,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
   [error, subscriptionPlans] = await to(SubscriptionPlan.find().lean());
   if (error) return next(error);
 
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { user, podcast, subscriptions } });
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { user, podcast, subscriptionPlans } });
 };
 
 const HomeServices = {
