@@ -3,9 +3,12 @@ export enum Role {
   ADMIN = "ADMIN",
 }
 
-// export enum AdminRole {
-//   HOST = "HOST",
-// }
+export enum Method {
+  emailActivation = "emailActivation",
+  phoneActivation = "phoneActivation",
+  emailRecovery = "emailRecovery",
+  phoneRecovery = "phoneRecovery",
+}
 
 export enum AdminAccess {
   ALL = "ALL",

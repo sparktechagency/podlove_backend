@@ -9,6 +9,7 @@ import Auth from "@models/authModel";
 import User from "@models/userModel";
 import sendEmail from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
+import { Method } from "@shared/enums";
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, email, phoneNumber, password, confirmPassword } = req.body;
@@ -25,19 +26,23 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     auth.verificationOTP = verificationOTP;
     auth.verificationOTPExpiredAt = verificationOTPExpiredAt;
     [error] = await to(auth.save());
-    if(error) return next(error);
+    if (error) return next(error);
 
     await sendEmail(email, verificationOTP);
 
-    return res
-      .status(StatusCodes.CONFLICT)
-      .json({ success: false, message: "Your account already exists. Please verify now.", data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP } });
+    return res.status(StatusCodes.CONFLICT).json({
+      success: false,
+      message: "Your account already exists. Please verify now.",
+      data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
+    });
   }
 
-  if(auth && auth.isVerified) {
-    return res
-      .status(StatusCodes.CONFLICT)
-      .json({ success: false, message: "Your account already exists. Please login now.", data: { isVerified: auth.isVerified } });
+  if (auth && auth.isVerified) {
+    return res.status(StatusCodes.CONFLICT).json({
+      success: false,
+      message: "Your account already exists. Please login now.",
+      data: { isVerified: auth.isVerified },
+    });
   }
 
   const session = await mongoose.startSession();
@@ -128,7 +133,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   }
   const accessToken = generateToken(auth._id!.toString(), accessSecret, "96h");
 
-  [error, user] = await to(User.findOne({ auth: auth._id }).populate({path: "auth", select: "email"}));
+  [error, user] = await to(User.findOne({ auth: auth._id }).populate({ path: "auth", select: "email" }));
   if (error) return next(error);
   if (!user) {
     return next(createError(StatusCodes.NOT_FOUND, "Associated user not found."));
@@ -165,8 +170,8 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
   const accessToken = generateToken(auth._id!.toString(), accessSecret, "96h");
   const refreshToken = generateToken(auth._id!.toString(), refreshSecret, "96h");
 
-  [error, user] = await to(User.findOne({ auth: auth._id }).populate({path: "auth", select: "email"}));
-  if(error) return next(error);
+  [error, user] = await to(User.findOne({ auth: auth._id }).populate({ path: "auth", select: "email" }));
+  if (error) return next(error);
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Login successful",
@@ -263,21 +268,28 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction): P
   return res.status(StatusCodes.OK).json({ success: true, message: "Password reset successful", data: {} });
 };
 
-const resendOTP = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+type resendOTPPayload = {
+  method: Method;
+  email: string;
+};
+
+const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, next: NextFunction): Promise<any> => {
   const { method, email } = req.body;
+
   let error, auth;
+
   [error, auth] = await to(Auth.findOne({ email: email }));
   if (error) return next(error);
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "Account not found"));
 
   let verificationOTP, recoveryOTP;
 
-  if (status === "activate" && auth.isVerified)
+  if (method === Method.emailActivation && auth.isVerified)
     return res
       .status(StatusCodes.OK)
       .json({ success: true, message: "Your account is already verified. Please login.", data: {} });
 
-  if (status === "activate" && !auth.isVerified) {
+  if (method === Method.emailActivation && !auth.isVerified) {
     verificationOTP = generateOTP();
     auth.verificationOTP = verificationOTP;
     auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
@@ -286,7 +298,7 @@ const resendOTP = async (req: Request, res: Response, next: NextFunction): Promi
     sendEmail(email, verificationOTP);
   }
 
-  if (status === "recovery") {
+  if (method === Method.emailRecovery) {
     recoveryOTP = generateOTP();
     auth.recoveryOTP = recoveryOTP;
     auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
