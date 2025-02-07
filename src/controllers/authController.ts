@@ -296,20 +296,20 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
     [error] = await to(auth.save());
     if (error) return next(error);
     sendEmail(email, verificationOTP);
-  }
-
-  if (method === Method.emailRecovery) {
+    return res
+      .status(StatusCodes.OK)
+      .json({ success: true, message: "OTP resend successful", data: { verificationOTP: auth.verificationOTP } });
+  } else if (method === Method.emailRecovery) {
     recoveryOTP = generateOTP();
     auth.recoveryOTP = recoveryOTP;
     auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
     [error] = await to(auth.save());
     if (error) return next(error);
     sendEmail(email, recoveryOTP);
+    return res
+      .status(StatusCodes.OK)
+      .json({ success: true, message: "OTP resend successful", data: { recoveryOTP: auth.recoveryOTP } });
   }
-
-  return res
-    .status(StatusCodes.OK)
-    .json({ success: true, message: "OTP resend successful", data: { verificationOTP, recoveryOTP } });
 };
 
 const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
