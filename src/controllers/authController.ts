@@ -298,7 +298,7 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
     [error] = await to(auth.save());
     if (error) return next(error);
 
-    sendEmail(email, verificationOTP);
+    await sendEmail(email, verificationOTP);
 
     return res
       .status(StatusCodes.OK)
@@ -314,7 +314,7 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
     [error] = await to(auth.save());
     if (error) return next(error);
 
-    sendSMS(user!.phoneNumber, verificationOTP);
+    await sendSMS(user!.phoneNumber, verificationOTP);
     return res
       .status(StatusCodes.OK)
       .json({ success: true, message: "OTP resend successful", data: { verificationOTP: auth.verificationOTP } });
@@ -326,7 +326,7 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
     [error] = await to(auth.save());
     if (error) return next(error);
 
-    sendEmail(email, recoveryOTP);
+    await sendEmail(email, recoveryOTP);
     return res
       .status(StatusCodes.OK)
       .json({ success: true, message: "OTP resend successful", data: { recoveryOTP: auth.recoveryOTP } });
@@ -362,6 +362,7 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
     return next(e);
   }
 };
+
 const AuthController = {
   register,
   activate,
