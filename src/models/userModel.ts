@@ -13,23 +13,23 @@ export type UserSchema = Document & {
   ethnicity: string;
   bio: string;
   personality: {
-    spectrum: Number;
-    balance: Number;
-    focus: Number;
+    spectrum: number;
+    balance: number;
+    focus: number;
   };
   interests: string[];
   avatar: string;
   compatibility: string[];
   location: {
     place: string;
-    longitude: Number;
-    latitude: Number;
+    longitude: number;
+    latitude: number;
   };
   preferences: {
     gender: Gender[];
     age: {
-      min: Number;
-      max: Number;
+      min: number;
+      max: number;
     };
     bodyType: string[];
     ethnicity: string[];

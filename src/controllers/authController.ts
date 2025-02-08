@@ -10,6 +10,7 @@ import User from "@models/userModel";
 import sendEmail from "@utils/sendEmail";
 import generateOTP from "@utils/generateOTP";
 import { Method } from "@shared/enums";
+import sendSMS from "@utils/sendSMS";
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, email, phoneNumber, password, confirmPassword } = req.body;
@@ -100,7 +101,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 };
 
 const activate = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { method, email, verificationOTP } = req.body;
+  const { email, verificationOTP } = req.body;
   let auth, user, error;
 
   if (!email || !verificationOTP) {
@@ -276,7 +277,7 @@ type resendOTPPayload = {
 const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, next: NextFunction): Promise<any> => {
   const { method, email } = req.body;
 
-  let error, auth;
+  let error, auth, user;
 
   [error, auth] = await to(Auth.findOne({ email: email }));
   if (error) return next(error);
@@ -293,9 +294,27 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
     verificationOTP = generateOTP();
     auth.verificationOTP = verificationOTP;
     auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+
     [error] = await to(auth.save());
     if (error) return next(error);
+
     sendEmail(email, verificationOTP);
+
+    return res
+      .status(StatusCodes.OK)
+      .json({ success: true, message: "OTP resend successful", data: { verificationOTP: auth.verificationOTP } });
+  } else if (method === Method.phoneActivation && !auth.isVerified) {
+    verificationOTP = generateOTP();
+    auth.verificationOTP = verificationOTP;
+    auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+
+    [error, user] = await to(User.findOne({auth: auth._id}));
+    if(error) return next(error);
+
+    [error] = await to(auth.save());
+    if (error) return next(error);
+
+    sendSMS(user!.phoneNumber, verificationOTP);
     return res
       .status(StatusCodes.OK)
       .json({ success: true, message: "OTP resend successful", data: { verificationOTP: auth.verificationOTP } });
@@ -303,8 +322,10 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
     recoveryOTP = generateOTP();
     auth.recoveryOTP = recoveryOTP;
     auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+
     [error] = await to(auth.save());
     if (error) return next(error);
+
     sendEmail(email, recoveryOTP);
     return res
       .status(StatusCodes.OK)

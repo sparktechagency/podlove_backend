@@ -59,5 +59,6 @@ export const authorize = authorizeToken(process.env.JWT_ACCESS_SECRET!, "Invalid
 export const refreshAuthorize = authorizeToken(process.env.JWT_REFRESH_SECRET!, "Invalid Refresh Token");
 export const recoveryAuthorize = authorizeToken(process.env.JWT_RECOVERY_SECRET!, "Invalid Recovery Token");
 
+
 // export const isGUEST = hasAccess([Role.GUEST]);
 // export const isHOSTOrDJ = hasAccess([Role.HOST, Role.DJ]);

@@ -34,6 +34,7 @@
     "socket.io": "^4.8.1",
     "stripe": "^17.4.0",
     "tsconfig-paths": "^4.2.0",
+    "twilio": "^5.4.3",
     "uuid": "^11.0.4",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0"
