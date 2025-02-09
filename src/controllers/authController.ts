@@ -210,7 +210,7 @@ const recovery = async (req: Request, res: Response, next: NextFunction): Promis
 };
 
 const recoveryVerify = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { method, email, recoveryOTP } = req.body;
+  const { email, recoveryOTP } = req.body;
   let error, auth;
 
   if (!email || !recoveryOTP) {
@@ -285,10 +285,12 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
 
   let verificationOTP, recoveryOTP;
 
-  if (method === Method.emailActivation && auth.isVerified)
-    return res
-      .status(StatusCodes.OK)
-      .json({ success: true, message: "Your account is already verified. Please login.", data: {} });
+  if ((method === Method.emailActivation || method === Method.phoneActivation) && auth.isVerified)
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Your account is already verified. Please login.",
+      data: { isVerified: auth.isVerified },
+    });
 
   if (method === Method.emailActivation && !auth.isVerified) {
     verificationOTP = generateOTP();
@@ -300,24 +302,28 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
 
     await sendEmail(email, verificationOTP);
 
-    return res
-      .status(StatusCodes.OK)
-      .json({ success: true, message: "OTP resend successful", data: { verificationOTP: auth.verificationOTP } });
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "OTP resend successful",
+      data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
+    });
   } else if (method === Method.phoneActivation && !auth.isVerified) {
     verificationOTP = generateOTP();
     auth.verificationOTP = verificationOTP;
     auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
 
-    [error, user] = await to(User.findOne({auth: auth._id}));
-    if(error) return next(error);
+    [error, user] = await to(User.findOne({ auth: auth._id }));
+    if (error) return next(error);
 
     [error] = await to(auth.save());
     if (error) return next(error);
 
     await sendSMS(user!.phoneNumber, verificationOTP);
-    return res
-      .status(StatusCodes.OK)
-      .json({ success: true, message: "OTP resend successful", data: { verificationOTP: auth.verificationOTP } });
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "OTP resend successful",
+      data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
+    });
   } else if (method === Method.emailRecovery) {
     recoveryOTP = generateOTP();
     auth.recoveryOTP = recoveryOTP;

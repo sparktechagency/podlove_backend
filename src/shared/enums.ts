@@ -7,7 +7,6 @@ export enum Method {
   emailActivation = "emailActivation",
   phoneActivation = "phoneActivation",
   emailRecovery = "emailRecovery",
-  phoneRecovery = "phoneRecovery",
 }
 
 export enum AdminAccess {
