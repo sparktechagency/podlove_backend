@@ -7,9 +7,9 @@ import { generateToken } from "@utils/jwt";
 import { Request, Response, NextFunction } from "express";
 import Auth from "@models/authModel";
 import User from "@models/userModel";
-import sendEmail from "@utils/sendEmail";
-import generateOTP from "@utils/generateOTP";
 import { Method } from "@shared/enums";
+import generateOTP from "@utils/generateOTP";
+import sendEmail from "@utils/sendEmail";
 import sendSMS from "@utils/sendSMS";
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -367,6 +367,7 @@ const AuthController = {
   register,
   activate,
   login,
+  signInWithGoogle,
   recovery,
   recoveryVerify,
   resendOTP,
