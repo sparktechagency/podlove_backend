@@ -1,6 +1,9 @@
-const OpenAI = require("openai");
+import OpenAI from "openai";
+import "dotenv/config";
+import * as process from "node:process";
+
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_KEY,
 });
 
 const user1Responses = [
@@ -52,7 +55,7 @@ const user2Responses = [
   ""
 ];
 
-async function getCompatibilityScore(user1, user2) {
+async function getCompatibilityScore(user1: string[], user2: string[]) {
   const prompt = `
 Below are responses from two individuals answering dating questions.
 Calculate their compatibility as a number between 0 and 100.
@@ -128,7 +131,7 @@ Now, output ONLY a single numeric value (for example, 75) representing the compa
     }
     console.log(compatibilityScore);
     return compatibilityScore;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error during API call:", error.response ? error.response.data : error.message);
   }
 }
@@ -160,7 +163,7 @@ const questions = [
   },
 ];
 
-async function isUserSuitable(userResponses) {
+async function isUserSuitable(userResponses: string[]) {
   let prompt = "Below are responses from a user answering the following dating suitability questions:\n\n";
   questions.forEach((q, index) => {
     prompt += `${index + 1}. ${q.question} ${userResponses[index]}\n`;
@@ -184,12 +187,13 @@ async function isUserSuitable(userResponses) {
         },
       ],
     });
+    
     const rawOutput = response.choices[0].message.content.trim();
     if (rawOutput !== "true" && rawOutput !== "false") {
       throw new Error(`Received output is not valid: "${rawOutput}"`);
     }
     return rawOutput === "true";
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error during API call:", error.response ? error.response.data : error.message);
     return false;
   }
