@@ -1475,3 +1475,95 @@ Mon Feb 10 2025 11:53:51 [Podlove] [32minfo[39m: Successfully Connected to Mon
 Mon Feb 10 2025 11:53:51 [Podlove] [32minfo[39m: Server is running at PORT: 7000
 Mon Feb 10 2025 11:54:11 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
 Mon Feb 10 2025 11:54:11 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 12:42:5 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 12:42:5 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 12:46:33 [Podlove] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:161:48)
+UnauthorizedError
+Mon Feb 10 2025 14:29:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 14:29:59 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 14:31:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 14:31:3 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 14:32:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 14:32:28 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 14:35:17 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 14:35:17 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 16:20:32 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 16:20:33 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 16:28:24 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 16:28:25 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 16:29:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 16:29:46 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 17:0:15 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 17:0:15 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 17:53:5 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 17:53:5 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 17:53:10 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 17:53:10 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 17:53:25 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 17:53:26 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:0:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:0:43 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:3:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:3:18 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:4:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:4:42 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:5:11 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:5:12 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:5:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:5:43 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:5:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:5:59 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:6:31 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:6:31 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:7:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:7:9 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:7:29 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:7:29 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:7:55 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:7:55 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:8:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:8:2 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:8:34 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:8:34 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:8:51 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:8:51 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:9:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:9:5 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:12:32 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:12:32 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:12:53 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:12:53 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:15:56 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:16:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:16:0 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:16:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:16:20 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:19:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:19:4 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:22:24 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:22:24 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:22:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:22:35 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:23:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:23:48 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:24:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:24:58 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:25:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:25:36 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:26:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:26:28 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:27:25 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:27:26 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:27:38 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:27:51 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:27:51 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:29:55 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:29:56 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:33:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:33:3 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:33:23 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:33:23 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 18:35:21 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 18:35:21 [Podlove] [32minfo[39m: Server is running at PORT: 7000

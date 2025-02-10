@@ -7,6 +7,7 @@ const authRouter = express.Router();
 authRouter.post("/register", AuthController.register);
 authRouter.post("/activate", AuthController.activate);
 authRouter.post("/login", AuthController.login);
+authRouter.post("/signin-with-google", AuthController.signInWithGoogle);
 authRouter.post("/recovery", AuthController.recovery);
 authRouter.post("/recovery-verify", AuthController.recovery);
 authRouter.put("/reset-password", recoveryAuthorize, AuthController.resetPassword);

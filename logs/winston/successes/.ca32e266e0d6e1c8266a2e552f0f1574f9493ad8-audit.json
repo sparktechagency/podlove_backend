@@ -109,6 +109,31 @@
             "date": 1739165572889,
             "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-02-10-11-success.log",
             "hash": "37fa3ca55ed8526b1119f9fc9caab6ffb6ae7c1f4d31420d50472b782f46b766"
+        },
+        {
+            "date": 1739169723168,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-02-10-12-success.log",
+            "hash": "c95525b05d91e97302cb4fb1d1b148ef947c1360fcad74d6cbd7410cd259c6f0"
+        },
+        {
+            "date": 1739176196972,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-02-10-14-success.log",
+            "hash": "3cacbaa11ee02fb821d4e4ad8083d6cdca481692ca718adb14eafa61c201f4dd"
+        },
+        {
+            "date": 1739182830217,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-02-10-16-success.log",
+            "hash": "1361ba3b6c9f7570ad49bd00259f0ec9741bdb876f51a2157861cb3bb74bb702"
+        },
+        {
+            "date": 1739185213472,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-02-10-17-success.log",
+            "hash": "8889201e4fd4d427f8985b023946a69a5549b8114cee2bd6870f51e2b0a87ec2"
+        },
+        {
+            "date": 1739188841193,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/successes/um-2025-02-10-18-success.log",
+            "hash": "32980b943da049bb3d5dd2f5d52c34108b52d9715f013fa13a74fd00f4a63e3b"
         }
     ],
     "hashType": "sha256"

@@ -1,9 +1,11 @@
 import OpenAI from "openai";
 import "dotenv/config";
 import * as process from "node:process";
+import { Request, Response, NextFunction } from "express";
+import { StatusCodes } from "http-status-codes";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_KEY,
+  apiKey: process.env.OPENAI_KEY || "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",
 });
 
 const user1Responses = [
@@ -139,32 +141,93 @@ Now, output ONLY a single numeric value (for example, 75) representing the compa
 
 const questions = [
   {
-    question: "I believe in communicating openly about boundaries with my partner.",
+    question: "Do you believe in mutual respect and understanding in a relationship?",
     options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
   },
   {
-    question: "It’s important to me that both partners give enthusiastic consent before progressing to physical intimacy.",
+    question: "Are you open to discussing personal values and beliefs with your partner?",
     options: ["Yes", "No"],
   },
   {
-    question: "I am interested in a monogamous, exclusive relationship.",
+    question: "Do you prefer long-term commitment over casual dating?",
     options: ["Yes", "No", "Not sure yet"],
   },
   {
-    question: "Why is exclusivity important to you in a relationship?",
+    question: "What qualities do you value most in a partner?",
     options: [],
   },
   {
-    question: "I am emotionally available and ready to invest in a serious relationship.",
+    question: "Do you think emotional intelligence is important in a relationship?",
     options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
   },
   {
-    question: "I have resolved most of my past relationship baggage and am ready to move forward.",
+    question: "Have you worked on personal growth and self-improvement for a better relationship?",
     options: ["Yes", "No"],
+  },
+  {
+    question: "Do you believe trust is the foundation of a healthy relationship?",
+    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+  },
+  {
+    question: "Are you willing to compromise and adapt in a relationship?",
+    options: ["Yes", "No", "Not sure yet"],
+  },
+  {
+    question: "Do you think communication plays a crucial role in maintaining a relationship?",
+    options: ["Yes", "No"],
+  },
+  {
+    question: "Are you ready to invest time and effort into building a meaningful relationship?",
+    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
   },
 ];
 
-async function isUserSuitable(userResponses: string[]) {
+async function isUserSuitable(req: Request, res: Response, next: NextFunction) : Promise<any> {
+  const userResponses = req.body.userResponses;
+
+  const questions = [
+    {
+      question: "Do you believe in mutual respect and understanding in a relationship?",
+      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+    },
+    {
+      question: "Are you open to discussing personal values and beliefs with your partner?",
+      options: ["Yes", "No"],
+    },
+    {
+      question: "Do you prefer long-term commitment over casual dating?",
+      options: ["Yes", "No", "Not sure yet"],
+    },
+    {
+      question: "What qualities do you value most in a partner?",
+      options: [],
+    },
+    {
+      question: "Do you think emotional intelligence is important in a relationship?",
+      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+    },
+    {
+      question: "Have you worked on personal growth and self-improvement for a better relationship?",
+      options: ["Yes", "No"],
+    },
+    {
+      question: "Do you believe trust is the foundation of a healthy relationship?",
+      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+    },
+    {
+      question: "Are you willing to compromise and adapt in a relationship?",
+      options: ["Yes", "No", "Not sure yet"],
+    },
+    {
+      question: "Do you think communication plays a crucial role in maintaining a relationship?",
+      options: ["Yes", "No"],
+    },
+    {
+      question: "Are you ready to invest time and effort into building a meaningful relationship?",
+      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+    },
+  ];
+
   let prompt = "Below are responses from a user answering the following dating suitability questions:\n\n";
   questions.forEach((q, index) => {
     prompt += `${index + 1}. ${q.question} ${userResponses[index]}\n`;
@@ -172,6 +235,7 @@ async function isUserSuitable(userResponses: string[]) {
   prompt += "\nBased on the user's responses, determine if the user is suitable for the app. ";
   prompt += "Output only 'true' if the user is suitable and 'false' if not. ";
   prompt += "Do not include any additional text, punctuation, spaces, or explanation.";
+
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-4o",
@@ -193,23 +257,21 @@ async function isUserSuitable(userResponses: string[]) {
     if (rawOutput !== "true" && rawOutput !== "false") {
       throw new Error(`Received output is not valid: "${rawOutput}"`);
     }
-    return rawOutput === "true";
+    return res.status(StatusCodes.OK).json({success: true, message: "Success", data: {isSuitable: rawOutput === "true"}});
   } catch (error: any) {
     console.error("Error during API call:", error.response ? error.response.data : error.message);
-    return false;
+    return next(error);
   }
 }
 
-const userResponses = [
-  "Strongly Agree",
-  "No",
-  "Yes",
-  "Exclusivity builds trust and security in relationships.",
-  "Strongly Agree",
-  "Yes",
-];
+const OpenaiServices = {
+  isUserSuitable,
+}
+
+
+
 
 getCompatibilityScore(user1Responses, user2Responses);
-isUserSuitable(userResponses).then((result) => {
-  console.log(result);
-});
+
+export default OpenaiServices;
+

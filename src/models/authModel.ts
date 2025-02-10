@@ -9,14 +9,8 @@ export type AuthSchema = Document & {
   recoveryOTPExpiredAt: Date | null;
   isVerified: boolean;
   isBlocked: boolean;
-  googleId: {
-    id: string;
-    isNew: boolean;
-  };
-  appleId: {
-    id: string;
-    isNew: boolean;
-  };
+  googleId: string;
+  appleId: string;
 };
 
 const authSchema = new Schema<AuthSchema>({
@@ -48,20 +42,14 @@ const authSchema = new Schema<AuthSchema>({
     default: false,
   },
   googleId: {
-    id: {
+
       type: String,
-    },
-    isNew: {
-      type: Boolean,
-    },
+
   },
   appleId: {
-    id: {
+    
       type: String,
-    },
-    isNew: {
-      type: Boolean,
-    },
+
   },
 });
 

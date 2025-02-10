@@ -159,17 +159,33 @@ const login = async (req, res, next) => {
     });
 };
 const signInWithGoogle = async (req, res, next) => {
-    const { googleId, name, email } = req.body;
+    const { googleId, name, email, avatar } = req.body;
     let error, auth, user;
-    [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.find({ googleId: googleId }));
+    [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ googleId: googleId }));
     if (error)
         return next(error);
     if (!auth) {
         [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.create({ googleId, email }));
         if (error)
             return next(error);
-        [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.create({ auth: auth._id, name }));
+        [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.create({ auth: auth._id, name, avatar }));
+        if (error)
+            return next(error);
     }
+    const accessSecret = process.env.JWT_ACCESS_SECRET;
+    const refreshSecret = process.env.JWT_REFRESH_SECRET;
+    if (!accessSecret || !refreshSecret)
+        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
+    const accessToken = (0, jwt_1.generateToken)(auth._id.toString(), accessSecret, "96h");
+    const refreshToken = (0, jwt_1.generateToken)(auth._id.toString(), refreshSecret, "96h");
+    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findOne({ auth: auth._id }).populate({ path: "auth", select: "email" }));
+    if (error)
+        return next(error);
+    return res.status(http_status_codes_1.StatusCodes.OK).json({
+        success: true,
+        message: "Login successful",
+        data: { accessToken, refreshToken, auth, user },
+    });
 };
 const recovery = async (req, res, next) => {
     const { email } = req.body;

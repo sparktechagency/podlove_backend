@@ -40,7 +40,7 @@ const openai_1 = __importDefault(require("openai"));
 require("dotenv/config");
 const process = __importStar(require("node:process"));
 const openai = new openai_1.default({
-    apiKey: process.env.OPENAI_KEY,
+    apiKey: process.env.OPENAI_KEY || "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",
 });
 const user1Responses = [
     "Larger gatherings",
@@ -172,31 +172,90 @@ Now, output ONLY a single numeric value (for example, 75) representing the compa
 }
 const questions = [
     {
-        question: "I believe in communicating openly about boundaries with my partner.",
+        question: "Do you believe in mutual respect and understanding in a relationship?",
         options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
     },
     {
-        question: "It’s important to me that both partners give enthusiastic consent before progressing to physical intimacy.",
+        question: "Are you open to discussing personal values and beliefs with your partner?",
         options: ["Yes", "No"],
     },
     {
-        question: "I am interested in a monogamous, exclusive relationship.",
+        question: "Do you prefer long-term commitment over casual dating?",
         options: ["Yes", "No", "Not sure yet"],
     },
     {
-        question: "Why is exclusivity important to you in a relationship?",
+        question: "What qualities do you value most in a partner?",
         options: [],
     },
     {
-        question: "I am emotionally available and ready to invest in a serious relationship.",
+        question: "Do you think emotional intelligence is important in a relationship?",
         options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
     },
     {
-        question: "I have resolved most of my past relationship baggage and am ready to move forward.",
+        question: "Have you worked on personal growth and self-improvement for a better relationship?",
         options: ["Yes", "No"],
     },
+    {
+        question: "Do you believe trust is the foundation of a healthy relationship?",
+        options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+    },
+    {
+        question: "Are you willing to compromise and adapt in a relationship?",
+        options: ["Yes", "No", "Not sure yet"],
+    },
+    {
+        question: "Do you think communication plays a crucial role in maintaining a relationship?",
+        options: ["Yes", "No"],
+    },
+    {
+        question: "Are you ready to invest time and effort into building a meaningful relationship?",
+        options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+    },
 ];
-async function isUserSuitable(userResponses) {
+async function isUserSuitable(req, res, next) {
+    const userResponses = JSON.parse(req.body.userResponses);
+    const questions = [
+        {
+            question: "Do you believe in mutual respect and understanding in a relationship?",
+            options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+        },
+        {
+            question: "Are you open to discussing personal values and beliefs with your partner?",
+            options: ["Yes", "No"],
+        },
+        {
+            question: "Do you prefer long-term commitment over casual dating?",
+            options: ["Yes", "No", "Not sure yet"],
+        },
+        {
+            question: "What qualities do you value most in a partner?",
+            options: [],
+        },
+        {
+            question: "Do you think emotional intelligence is important in a relationship?",
+            options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+        },
+        {
+            question: "Have you worked on personal growth and self-improvement for a better relationship?",
+            options: ["Yes", "No"],
+        },
+        {
+            question: "Do you believe trust is the foundation of a healthy relationship?",
+            options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+        },
+        {
+            question: "Are you willing to compromise and adapt in a relationship?",
+            options: ["Yes", "No", "Not sure yet"],
+        },
+        {
+            question: "Do you think communication plays a crucial role in maintaining a relationship?",
+            options: ["Yes", "No"],
+        },
+        {
+            question: "Are you ready to invest time and effort into building a meaningful relationship?",
+            options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+        },
+    ];
     let prompt = "Below are responses from a user answering the following dating suitability questions:\n\n";
     questions.forEach((q, index) => {
         prompt += `${index + 1}. ${q.question} ${userResponses[index]}\n`;
@@ -233,11 +292,15 @@ async function isUserSuitable(userResponses) {
 }
 const userResponses = [
     "Strongly Agree",
-    "No",
     "Yes",
-    "Exclusivity builds trust and security in relationships.",
-    "Strongly Agree",
     "Yes",
+    "Kindness, honesty, and shared goals.",
+    "Strongly Disagree",
+    "Yes",
+    "Strongly Disagree",
+    "Yes",
+    "Yes",
+    "Agree",
 ];
 getCompatibilityScore(user1Responses, user2Responses);
 isUserSuitable(userResponses).then((result) => {

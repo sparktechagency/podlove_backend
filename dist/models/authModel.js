@@ -30,20 +30,10 @@ const authSchema = new mongoose_1.Schema({
         default: false,
     },
     googleId: {
-        id: {
-            type: String,
-        },
-        isNew: {
-            type: Boolean,
-        },
+        type: String,
     },
     appleId: {
-        id: {
-            type: String,
-        },
-        isNew: {
-            type: Boolean,
-        },
+        type: String,
     },
 });
 const Auth = (0, mongoose_1.model)("Auth", authSchema);

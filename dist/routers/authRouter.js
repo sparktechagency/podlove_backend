@@ -10,6 +10,7 @@ const authRouter = express_1.default.Router();
 authRouter.post("/register", authController_1.default.register);
 authRouter.post("/activate", authController_1.default.activate);
 authRouter.post("/login", authController_1.default.login);
+authRouter.post("/signin-with-google", authController_1.default.signInWithGoogle);
 authRouter.post("/recovery", authController_1.default.recovery);
 authRouter.post("/recovery-verify", authController_1.default.recovery);
 authRouter.put("/reset-password", authorization_1.recoveryAuthorize, authController_1.default.resetPassword);

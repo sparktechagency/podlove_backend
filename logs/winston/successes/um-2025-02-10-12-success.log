@@ -1,0 +1,6 @@
+Mon Feb 10 2025 12:42:5 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Feb 10 2025 12:42:5 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Mon Feb 10 2025 12:46:33 [Podlove] [31merror[39m: Wrong password
+UnauthorizedError: Wrong password
+    at login (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:161:48)
+UnauthorizedError
