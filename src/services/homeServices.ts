@@ -10,23 +10,14 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
   const userId = req.user.userId;
   let error, user, podcast, subscriptionPlans;
 
-  [error, user] = await to(User.findById(userId).populate({path: "auth", select: "email"}));
-  if(error) return next(error);
+  [error, user] = await to(User.findById(userId).populate({ path: "auth", select: "email" }));
+  if (error) return next(error);
 
   [error, podcast] = await to(
-    Podcast.findOne({ primaryUser: userId })
-      .populate({
-        path: "participant1",
-        select: "name bio interests",
-      })
-      .populate({
-        path: "participant2",
-        select: "name bio interests",
-      })
-      .populate({
-        path: "participant3",
-        select: "name bio interests",
-      })
+    Podcast.findOne({ primaryUser: userId }).populate({
+      path: "participants",
+      select: "name bio interests",
+    })
   );
   if (error) return next(error);
   if (!podcast) return next(createError(StatusCodes.NOT_FOUND, "Podcast not found"));
@@ -34,7 +25,9 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
   [error, subscriptionPlans] = await to(SubscriptionPlan.find().lean());
   if (error) return next(error);
 
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { user, podcast, subscriptionPlans } });
+  return res
+    .status(StatusCodes.OK)
+    .json({ success: true, message: "Success", data: { user, podcast, subscriptionPlans } });
 };
 
 const HomeServices = {
