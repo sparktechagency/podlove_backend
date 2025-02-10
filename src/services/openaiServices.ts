@@ -5,8 +5,7 @@ import { Request, Response, NextFunction } from "express";
 import { StatusCodes } from "http-status-codes";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_KEY || "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",
-});
+  apiKey: process.env.OPENAI_KEY });
 
 const user1Responses = [
   "Larger gatherings",
