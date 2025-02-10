@@ -1,7 +1,0 @@
-Sat Jan 25 2025 21:21:46 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
-Sat Jan 25 2025 21:21:46 [Podlove] [32minfo[39m: Server is running at PORT: 7000
-Sat Jan 25 2025 21:23:29 [Podlove] [31merror[39m: User not found
-NotFoundError: User not found
-    at activate (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:95:37)
-    at processTicksAndRejections (node:internal/process/task_queues:105:5)
-NotFoundError

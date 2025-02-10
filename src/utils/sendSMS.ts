@@ -1,27 +1,17 @@
-import { to } from "await-to-ts";
 import "dotenv/config";
-import twilio from "twilio";
-import { logger } from "@shared/logger";
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID!;
-const authToken = process.env.TWILIO_AUTH_TOKEN!;
-const client = twilio(accountSid, authToken);
-
-const sendMessage = async (phoneNumber: string, verificationOTP: string) => {
-  const messageBody = `Your verification code is ${verificationOTP}`;
-  try {
-    const [error, message] = await to(
-      client.messages.create({
-        body: messageBody,
-        from: process.env.TWILIO_PHONE_NUMBER,
-        to: phoneNumber,
-      })
-    );
-    if (error) throw new Error(`Failed to send SMS: ${error.message}`);
-    logger.info(`Message sent: ${message.sid}`);
-  } catch (err: any) {
-    console.error(`Error: ${err.message}`);
-  }
+const sendSMS = async (phoneNumber: string, verificationOTP: string) => {
+    const messageBody = `Your verification code is ${verificationOTP}`;
+    const accountSid = 'ACbf57a53431bf3db00dc2011280c35c19';
+    const authToken = '066ab30d775138e33d274ca7c052b996';
+    const client = require('twilio')(accountSid, authToken);
+    client.messages
+        .create({
+            body: messageBody,
+            from: '+18555259062',
+            to: phoneNumber
+        })
+    .then((message: { sid: any; }) => console.log(message.sid));
 };
 
-export default sendMessage;
+export default sendSMS;
