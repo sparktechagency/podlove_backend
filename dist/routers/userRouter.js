@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const userController_1 = __importDefault(require("../controllers/userController"));
-const authorization_1 = require("../middlewares/authorization");
-const userServices_1 = __importDefault(require("../services/userServices"));
-const matchesServices_1 = __importDefault(require("../services/matchesServices"));
+const userController_1 = __importDefault(require("@controllers/userController"));
+const authorization_1 = require("@middlewares/authorization");
+const userServices_1 = __importDefault(require("@services/userServices"));
+const matchesServices_1 = __importDefault(require("@services/matchesServices"));
 const router = express_1.default.Router();
 router.patch("/update/:id", userController_1.default.update);
 router.post("/block/:authId", userServices_1.default.block);

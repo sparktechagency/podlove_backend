@@ -3,14 +3,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const podcastModel_1 = __importDefault(require("../models/podcastModel"));
+const podcastModel_1 = __importDefault(require("@models/podcastModel"));
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const http_status_codes_1 = require("http-status-codes");
-const subscriptionPlanModel_1 = __importDefault(require("../models/subscriptionPlanModel"));
+const subscriptionPlanModel_1 = __importDefault(require("@models/subscriptionPlanModel"));
+const userModel_1 = __importDefault(require("@models/userModel"));
 const homeData = async (req, res, next) => {
     const userId = req.user.userId;
-    let error, podcast, subscriptionPlans;
+    let error, user, podcast, subscriptionPlans;
+    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findById(userId).populate({ path: "auth", select: "email" }));
+    if (error)
+        return next(error);
     [error, podcast] = await (0, await_to_ts_1.default)(podcastModel_1.default.findOne({ primaryUser: userId })
         .populate({
         path: "participant1",
@@ -31,7 +35,7 @@ const homeData = async (req, res, next) => {
     [error, subscriptionPlans] = await (0, await_to_ts_1.default)(subscriptionPlanModel_1.default.find().lean());
     if (error)
         return next(error);
-    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: { podcast, subscriptionPlans } });
+    return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: { user, podcast, subscriptionPlans } });
 };
 const HomeServices = {
     homeData,

@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const stripe_1 = __importDefault(require("stripe"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
-const enums_1 = require("../shared/enums");
+const enums_1 = require("@shared/enums");
 const http_status_codes_1 = require("http-status-codes");
-const userModel_1 = __importDefault(require("../models/userModel"));
+const userModel_1 = __importDefault(require("@models/userModel"));
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const webhook = async (req, res, next) => {
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;

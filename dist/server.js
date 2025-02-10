@@ -6,11 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const http_1 = __importDefault(require("http"));
 const app_1 = __importDefault(require("./app"));
 require("dotenv/config");
-const atlasDB_1 = require("./connection/atlasDB");
-const logger_1 = require("./shared/logger");
-const administratorModel_1 = __importDefault(require("./models/administratorModel"));
+const atlasDB_1 = require("@connection/atlasDB");
+const logger_1 = require("@shared/logger");
+const administratorModel_1 = __importDefault(require("@models/administratorModel"));
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
-const enums_1 = require("./shared/enums");
+const enums_1 = require("@shared/enums");
 const PORT = process.env.PORT || 8000;
 async function checkAdmin() {
     let error, administrator;

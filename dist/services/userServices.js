@@ -3,12 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const userModel_1 = __importDefault(require("../models/userModel"));
+const userModel_1 = __importDefault(require("@models/userModel"));
 const http_status_codes_1 = require("http-status-codes");
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const http_errors_1 = __importDefault(require("http-errors"));
-const authModel_1 = __importDefault(require("../models/authModel"));
-const enums_1 = require("../shared/enums");
+const authModel_1 = __importDefault(require("@models/authModel"));
+const enums_1 = require("@shared/enums");
 const getAllUsers = async (req, res, next) => {
     const { search } = req.query;
     const page = parseInt(req.query.page, 10) || 1;

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const supportModel_1 = __importDefault(require("../models/supportModel"));
+const supportModel_1 = __importDefault(require("@models/supportModel"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const http_status_codes_1 = require("http-status-codes");

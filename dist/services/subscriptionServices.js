@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const stripe_1 = __importDefault(require("stripe"));
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
-const userModel_1 = __importDefault(require("../models/userModel"));
+const userModel_1 = __importDefault(require("@models/userModel"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const http_status_codes_1 = require("http-status-codes");
-const enums_1 = require("../shared/enums");
-const subscriptionPlanModel_1 = __importDefault(require("../models/subscriptionPlanModel"));
+const enums_1 = require("@shared/enums");
+const subscriptionPlanModel_1 = __importDefault(require("@models/subscriptionPlanModel"));
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const upgrade = async (req, res, next) => {
     const userId = req.user.userId;

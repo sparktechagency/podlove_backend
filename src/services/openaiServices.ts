@@ -124,7 +124,8 @@ Now, output ONLY a single numeric value (for example, 75) representing the compa
         { role: "user", content: prompt }
       ]
     });
-    const rawOutput = response.choices[0].message.content.trim();
+
+    const rawOutput = response.choices[0].message!.content!.trim();
     const compatibilityScore = parseFloat(rawOutput);
     if (isNaN(compatibilityScore)) {
       throw new Error(`Received output is not a valid number: "${rawOutput}"`);
@@ -188,7 +189,7 @@ async function isUserSuitable(userResponses: string[]) {
       ],
     });
     
-    const rawOutput = response.choices[0].message.content.trim();
+    const rawOutput = response.choices[0].message!.content!.trim();
     if (rawOutput !== "true" && rawOutput !== "false") {
       throw new Error(`Received output is not valid: "${rawOutput}"`);
     }

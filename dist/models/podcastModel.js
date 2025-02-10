@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-const enums_1 = require("../shared/enums");
+const enums_1 = require("@shared/enums");
 const podcastSchema = new mongoose_1.Schema({
     primaryUser: {
         type: mongoose_1.Schema.Types.ObjectId,

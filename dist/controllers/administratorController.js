@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const administratorModel_1 = __importDefault(require("../models/administratorModel"));
+const administratorModel_1 = __importDefault(require("@models/administratorModel"));
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const http_status_codes_1 = require("http-status-codes");
 const http_errors_1 = __importDefault(require("http-errors"));
-const jwt_1 = require("../utils/jwt");
-const generateOTP_1 = __importDefault(require("../utils/generateOTP"));
-const sendEmail_1 = __importDefault(require("../utils/sendEmail"));
+const jwt_1 = require("@utils/jwt");
+const generateOTP_1 = __importDefault(require("@utils/generateOTP"));
+const sendEmail_1 = __importDefault(require("@utils/sendEmail"));
 const create = async (req, res, next) => {
     const { name, email, contact, password } = req.body;
     const access = req.body.access;

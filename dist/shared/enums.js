@@ -1,14 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Months = exports.PodcastStatus = exports.SubscriptionStatus = exports.SubscriptionPlanName = exports.Ethnicity = exports.BodyType = exports.Gender = exports.AdminAccess = exports.Role = void 0;
+exports.Months = exports.PodcastStatus = exports.SubscriptionStatus = exports.SubscriptionPlanName = exports.Ethnicity = exports.BodyType = exports.Gender = exports.AdminAccess = exports.Method = exports.Role = void 0;
 var Role;
 (function (Role) {
     Role["USER"] = "USER";
     Role["ADMIN"] = "ADMIN";
 })(Role || (exports.Role = Role = {}));
-// export enum AdminRole {
-//   HOST = "HOST",
-// }
+var Method;
+(function (Method) {
+    Method["emailActivation"] = "emailActivation";
+    Method["phoneActivation"] = "phoneActivation";
+    Method["emailRecovery"] = "emailRecovery";
+})(Method || (exports.Method = Method = {}));
 var AdminAccess;
 (function (AdminAccess) {
     AdminAccess["ALL"] = "ALL";

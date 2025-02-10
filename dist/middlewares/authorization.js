@@ -7,9 +7,9 @@ exports.recoveryAuthorize = exports.refreshAuthorize = exports.authorize = expor
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 require("dotenv/config");
 const http_errors_1 = __importDefault(require("http-errors"));
-const authModel_1 = __importDefault(require("../models/authModel"));
-const userModel_1 = __importDefault(require("../models/userModel"));
-const jwt_1 = require("../utils/jwt");
+const authModel_1 = __importDefault(require("@models/authModel"));
+const userModel_1 = __importDefault(require("@models/userModel"));
+const jwt_1 = require("@utils/jwt");
 const http_status_codes_1 = require("http-status-codes");
 const getUserInfo = async (authId) => {
     let error, auth, user, data;

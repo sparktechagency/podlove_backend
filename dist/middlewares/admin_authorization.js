@@ -7,9 +7,9 @@ exports.recoveryAuthorize = exports.isAdmin = exports.getAdminInfo = void 0;
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 require("dotenv/config");
 const http_errors_1 = __importDefault(require("http-errors"));
-const jwt_1 = require("../utils/jwt");
+const jwt_1 = require("@utils/jwt");
 const http_status_codes_1 = require("http-status-codes");
-const administratorModel_1 = __importDefault(require("../models/administratorModel"));
+const administratorModel_1 = __importDefault(require("@models/administratorModel"));
 const getAdminInfo = async (id) => {
     let error, admin, data;
     [error, admin] = await (0, await_to_ts_1.default)(administratorModel_1.default.findById(id));

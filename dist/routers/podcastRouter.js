@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const podcastController_1 = __importDefault(require("../controllers/podcastController"));
-const podcastServices_1 = __importDefault(require("../services/podcastServices"));
+const podcastController_1 = __importDefault(require("@controllers/podcastController"));
+const podcastServices_1 = __importDefault(require("@services/podcastServices"));
 const router = express_1.default.Router();
 router.get("/get-new-podcasts", podcastServices_1.default.getAllNotScheduledPodcasts);
 router.get("/get-done-podcasts", podcastServices_1.default.getAllDonePodcasts);

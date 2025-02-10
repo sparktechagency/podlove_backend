@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.connectDB = connectDB;
 const mongoose_1 = __importDefault(require("mongoose"));
 require("dotenv/config");
-const logger_1 = require("../shared/logger");
+const logger_1 = require("@shared/logger");
 const clientOptions = {
     serverApi: { version: "1", strict: true, deprecationErrors: true },
 };

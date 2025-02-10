@@ -7,7 +7,7 @@ const stripe_1 = __importDefault(require("stripe"));
 require("dotenv/config");
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const http_errors_1 = __importDefault(require("http-errors"));
-const subscriptionPlanModel_1 = __importDefault(require("../models/subscriptionPlanModel"));
+const subscriptionPlanModel_1 = __importDefault(require("@models/subscriptionPlanModel"));
 const http_status_codes_1 = require("http-status-codes");
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
 const create = async (req, res, next) => {

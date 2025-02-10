@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const surveyModel_1 = __importDefault(require("../models/surveyModel"));
+const surveyModel_1 = __importDefault(require("@models/surveyModel"));
 const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const http_status_codes_1 = require("http-status-codes");
 const create = async (req, res, next) => {

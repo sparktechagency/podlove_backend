@@ -3,12 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const administratorController_1 = __importDefault(require("../controllers/administratorController"));
-const adminServices_1 = __importDefault(require("../services/adminServices"));
+const administratorController_1 = __importDefault(require("@controllers/administratorController"));
+const adminServices_1 = __importDefault(require("@services/adminServices"));
 const express_1 = __importDefault(require("express"));
-const admin_authorization_1 = require("../middlewares/admin_authorization");
+const admin_authorization_1 = require("@middlewares/admin_authorization");
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
-const fileHandler_1 = __importDefault(require("../middlewares/fileHandler"));
+const fileHandler_1 = __importDefault(require("@middlewares/fileHandler"));
 const router = express_1.default.Router();
 router.post("/create", administratorController_1.default.create);
 router.post("/login", administratorController_1.default.login);

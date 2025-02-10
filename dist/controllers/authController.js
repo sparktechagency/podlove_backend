@@ -8,11 +8,13 @@ const await_to_ts_1 = __importDefault(require("await-to-ts"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const http_errors_1 = __importDefault(require("http-errors"));
 const http_status_codes_1 = require("http-status-codes");
-const jwt_1 = require("../utils/jwt");
-const authModel_1 = __importDefault(require("../models/authModel"));
-const userModel_1 = __importDefault(require("../models/userModel"));
-const sendEmail_1 = __importDefault(require("../utils/sendEmail"));
-const generateOTP_1 = __importDefault(require("../utils/generateOTP"));
+const jwt_1 = require("@utils/jwt");
+const authModel_1 = __importDefault(require("@models/authModel"));
+const userModel_1 = __importDefault(require("@models/userModel"));
+const enums_1 = require("@shared/enums");
+const generateOTP_1 = __importDefault(require("@utils/generateOTP"));
+const sendEmail_1 = __importDefault(require("@utils/sendEmail"));
+const sendSMS_1 = __importDefault(require("@utils/sendSMS"));
 const register = async (req, res, next) => {
     const { name, email, phoneNumber, password, confirmPassword } = req.body;
     let error, auth, user;
@@ -22,10 +24,25 @@ const register = async (req, res, next) => {
     [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ email }));
     if (error)
         return next(error);
-    if (auth) {
-        return res
-            .status(http_status_codes_1.StatusCodes.CONFLICT)
-            .json({ success: false, message: "Email already exists.", data: { isVerified: auth.isVerified } });
+    if (auth && !auth.isVerified) {
+        auth.verificationOTP = verificationOTP;
+        auth.verificationOTPExpiredAt = verificationOTPExpiredAt;
+        [error] = await (0, await_to_ts_1.default)(auth.save());
+        if (error)
+            return next(error);
+        await (0, sendEmail_1.default)(email, verificationOTP);
+        return res.status(http_status_codes_1.StatusCodes.CONFLICT).json({
+            success: false,
+            message: "Your account already exists. Please verify now.",
+            data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
+        });
+    }
+    if (auth && auth.isVerified) {
+        return res.status(http_status_codes_1.StatusCodes.CONFLICT).json({
+            success: false,
+            message: "Your account already exists. Please login now.",
+            data: { isVerified: auth.isVerified },
+        });
     }
     const session = await mongoose_1.default.startSession();
     session.startTransaction();
@@ -68,8 +85,8 @@ const register = async (req, res, next) => {
         await session.endSession();
     }
 };
-const activation = async (req, res, next) => {
-    const { method, email, verificationOTP } = req.body;
+const activate = async (req, res, next) => {
+    const { email, verificationOTP } = req.body;
     let auth, user, error;
     if (!email || !verificationOTP) {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "Email and Verification OTP are required."));
@@ -79,11 +96,8 @@ const activation = async (req, res, next) => {
         return next(error);
     if (!auth)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "User not found"));
-    if (!auth.verificationOTP || !auth.verificationOTPExpiredAt) {
-        return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Verification OTP is not set or has expired."));
-    }
     const currentTime = new Date();
-    if (currentTime > auth.verificationOTPExpiredAt) {
+    if (!auth.verificationOTP || !auth.verificationOTPExpiredAt || currentTime > auth.verificationOTPExpiredAt) {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.UNAUTHORIZED, "Verification OTP has expired."));
     }
     if (verificationOTP !== auth.verificationOTP) {
@@ -100,7 +114,7 @@ const activation = async (req, res, next) => {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
     }
     const accessToken = (0, jwt_1.generateToken)(auth._id.toString(), accessSecret, "96h");
-    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findOne({ auth: auth._id }));
+    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findOne({ auth: auth._id }).populate({ path: "auth", select: "email" }));
     if (error)
         return next(error);
     if (!user) {
@@ -114,7 +128,7 @@ const activation = async (req, res, next) => {
 };
 const login = async (req, res, next) => {
     const { email, password } = req.body;
-    let error, auth, isPasswordValid;
+    let error, auth, user, isPasswordValid;
     [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ email }));
     if (error)
         return next(error);
@@ -135,7 +149,9 @@ const login = async (req, res, next) => {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
     const accessToken = (0, jwt_1.generateToken)(auth._id.toString(), accessSecret, "96h");
     const refreshToken = (0, jwt_1.generateToken)(auth._id.toString(), refreshSecret, "96h");
-    const user = await userModel_1.default.findOne({ auth: auth._id });
+    [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findOne({ auth: auth._id }).populate({ path: "auth", select: "email" }));
+    if (error)
+        return next(error);
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         success: true,
         message: "Login successful",
@@ -155,7 +171,7 @@ const signInWithGoogle = async (req, res, next) => {
         [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.create({ auth: auth._id, name }));
     }
 };
-const forgotPassword = async (req, res, next) => {
+const recovery = async (req, res, next) => {
     const { email } = req.body;
     const [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ email }));
     if (error)
@@ -169,8 +185,8 @@ const forgotPassword = async (req, res, next) => {
     await (0, sendEmail_1.default)(email, recoveryOTP);
     return res.status(http_status_codes_1.StatusCodes.OK).json({ success: true, message: "Success", data: {} });
 };
-const recovery = async (req, res, next) => {
-    const { method, email, recoveryOTP } = req.body;
+const recoveryVerify = async (req, res, next) => {
+    const { email, recoveryOTP } = req.body;
     let error, auth;
     if (!email || !recoveryOTP) {
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.BAD_REQUEST, "Email and Recovery OTP are required."));
@@ -222,38 +238,62 @@ const resetPassword = async (req, res, next) => {
 };
 const resendOTP = async (req, res, next) => {
     const { method, email } = req.body;
-    let error, auth;
+    let error, auth, user;
     [error, auth] = await (0, await_to_ts_1.default)(authModel_1.default.findOne({ email: email }));
     if (error)
         return next(error);
     if (!auth)
         return next((0, http_errors_1.default)(http_status_codes_1.StatusCodes.NOT_FOUND, "Account not found"));
     let verificationOTP, recoveryOTP;
-    if (status === "activate" && auth.isVerified)
-        return res
-            .status(http_status_codes_1.StatusCodes.OK)
-            .json({ success: true, message: "Your account is already verified. Please login.", data: {} });
-    if (status === "activate" && !auth.isVerified) {
+    if ((method === enums_1.Method.emailActivation || method === enums_1.Method.phoneActivation) && auth.isVerified)
+        return res.status(http_status_codes_1.StatusCodes.OK).json({
+            success: true,
+            message: "Your account is already verified. Please login.",
+            data: { isVerified: auth.isVerified },
+        });
+    if (method === enums_1.Method.emailActivation && !auth.isVerified) {
         verificationOTP = (0, generateOTP_1.default)();
         auth.verificationOTP = verificationOTP;
         auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
         [error] = await (0, await_to_ts_1.default)(auth.save());
         if (error)
             return next(error);
-        (0, sendEmail_1.default)(email, verificationOTP);
+        await (0, sendEmail_1.default)(email, verificationOTP);
+        return res.status(http_status_codes_1.StatusCodes.OK).json({
+            success: true,
+            message: "OTP resend successful",
+            data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
+        });
     }
-    if (status === "recovery") {
+    else if (method === enums_1.Method.phoneActivation && !auth.isVerified) {
+        verificationOTP = (0, generateOTP_1.default)();
+        auth.verificationOTP = verificationOTP;
+        auth.verificationOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+        [error, user] = await (0, await_to_ts_1.default)(userModel_1.default.findOne({ auth: auth._id }));
+        if (error)
+            return next(error);
+        [error] = await (0, await_to_ts_1.default)(auth.save());
+        if (error)
+            return next(error);
+        await (0, sendSMS_1.default)(user.phoneNumber, verificationOTP);
+        return res.status(http_status_codes_1.StatusCodes.OK).json({
+            success: true,
+            message: "OTP resend successful",
+            data: { isVerified: auth.isVerified, verificationOTP: auth.verificationOTP },
+        });
+    }
+    else if (method === enums_1.Method.emailRecovery) {
         recoveryOTP = (0, generateOTP_1.default)();
         auth.recoveryOTP = recoveryOTP;
         auth.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
         [error] = await (0, await_to_ts_1.default)(auth.save());
         if (error)
             return next(error);
-        (0, sendEmail_1.default)(email, recoveryOTP);
+        await (0, sendEmail_1.default)(email, recoveryOTP);
+        return res
+            .status(http_status_codes_1.StatusCodes.OK)
+            .json({ success: true, message: "OTP resend successful", data: { recoveryOTP: auth.recoveryOTP } });
     }
-    return res
-        .status(http_status_codes_1.StatusCodes.OK)
-        .json({ success: true, message: "OTP resend successful", data: { verificationOTP, recoveryOTP } });
 };
 const changePassword = async (req, res, next) => {
     const user = req.user;
@@ -286,10 +326,11 @@ const remove = async (req, res, next) => {
 };
 const AuthController = {
     register,
-    activation,
+    activate,
     login,
-    forgotPassword,
+    signInWithGoogle,
     recovery,
+    recoveryVerify,
     resendOTP,
     resetPassword,
     changePassword,
