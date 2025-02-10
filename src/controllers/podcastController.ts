@@ -4,17 +4,27 @@ import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
 import createError from "http-errors";
 import MatchedServices from "@services/matchesServices";
+import { SubscriptionPlanName } from "@shared/enums";
+import User from "@models/userModel";
+import { Types } from "mongoose";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { primaryUser } = req.body;
-  let error, participants, podcast;
-  [error, participants] = await to(MatchedServices.match(primaryUser));
-  if (error) return;
-  const participant1 = participants[0];
-  const participant2 = participants[1];
-  const participant3 = participants[2];
+  const userId = req.user.userId;
+  let error, participants, podcast, user, matchCount;
 
-  [error, podcast] = await to(Podcast.create({ primaryUser, participant1, participant2, participant3 }));
+  [error, user] = await to(User.findById(userId));
+  if (error) return next(error);
+
+  if (user?.subscription.plan === SubscriptionPlanName.LISTENER) matchCount = 2;
+  else if (user?.subscription.plan === SubscriptionPlanName.SEEKER) matchCount = 3;
+  else matchCount = 4;
+
+  [error, participants] = await to(MatchedServices.match(userId, matchCount));
+  if (error) return;
+
+  const participantsObjectIds = participants.map((id: string) => new Types.ObjectId(id));
+
+  [error, podcast] = await to(Podcast.create({ primaryUser: userId, participants: participantsObjectIds }));
   if (error) return next(error);
 
   return res.status(StatusCodes.CREATED).json({ success: true, message: "Success", data: podcast });
@@ -39,7 +49,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
 const PodcastController = {
   create,
   get,
-  getAll
+  getAll,
 };
 
 export default PodcastController;

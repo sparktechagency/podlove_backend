@@ -2,26 +2,18 @@ import { NextFunction, Request, Response } from "express";
 import User from "@models/userModel";
 import to from "await-to-ts";
 import { BodyType, Ethnicity, Gender } from "@shared/enums";
+import { Types } from "mongoose";
 
-const calculateDistance = (
-  lat1: number,
-  lon1: number,
-  lat2: number,
-  lon2: number
-) => {
+const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
   const R = 6371;
   const dLat = (lat2 - lat1) * (Math.PI / 180);
   const dLon = (lon2 - lon1) * (Math.PI / 180);
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * (Math.PI / 180)) *
-      Math.cos(lat2 * (Math.PI / 180)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 };
-
 
 const findMatchingUsers = async (currentUser: any) => {
   const query: any = {};
@@ -57,36 +49,33 @@ const currentUser = {
     gender: [Gender.FEMALE],
     age: { min: 25, max: 35 },
     bodyType: [BodyType.SLIM, BodyType.AVERAGE],
-    ethnicity: [Ethnicity.WHITE ],
+    ethnicity: [Ethnicity.WHITE],
     distance: 50,
   },
-  location: { latitude: 40.7128, longitude: -74.0060 },
+  location: { latitude: 40.7128, longitude: -74.006 },
 };
 
-findMatchingUsers(currentUser)
-  .then(users => console.log("Matching users:", users))
-  .catch(error => console.error("Error finding users:", error));
+// findMatchingUsers(currentUser)
+//   .then((users) => console.log("Matching users:", users))
+//   .catch((error) => console.error("Error finding users:", error));
 
-
-const match = async (userId: String): Promise<any> => {
-
+const match = async (userId: string, matchCount: number = 2): Promise<string[]> => {
   let error, user, matchedUsers;
+
   [error, user] = await to(User.findById(userId));
   if (error) throw error;
+  if (!user) throw new Error("User not found");
 
-  [error, matchedUsers] = await to(User.aggregate([
-    { $match: { _id: { $ne: userId } } },
-    { $project: { _id: 1 } },
-    { $sample: { size: 3 } }
-  ]));
+  [error, matchedUsers] = await to(
+    User.aggregate([
+      { $match: { _id: { $ne: new Types.ObjectId(userId) } } },
+      { $sample: { size: matchCount } },
+      { $project: { _id: 1 } },
+    ])
+  );
   if (error) throw error;
 
-  let matches: string[] = [];
-  matches.push(matchedUsers[0]._id as string);
-  matches.push(matchedUsers[1]._id as string);
-  matches.push(matchedUsers[2]._id as string);
-
-  return matches;
+  return matchedUsers.map((u: { _id: Types.ObjectId }) => u._id.toString());
 };
 
 const matchedUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -103,7 +92,7 @@ const matchedUsers = async (req: Request, res: Response, next: NextFunction): Pr
 
 const MatchedServices = {
   match,
-  matchedUsers
+  matchedUsers,
 };
 
 export default MatchedServices;

@@ -1,6 +1,18 @@
-import { Schema, model } from "mongoose";
-import { PodcastSchema } from "@schemas/podcastSchema";
+import { Document, Types, Schema, model } from "mongoose";
 import { PodcastStatus } from "@shared/enums";
+
+export type PodcastSchema = Document & {
+  primaryUser: Types.ObjectId;
+  participants: Types.ObjectId[];
+  schedule: {
+    date: string;
+    day: string;
+    time: string;
+  };
+  selectedUser: Types.ObjectId | null;
+  status: PodcastStatus;
+  recordingUrl: string;
+};
 
 const podcastSchema = new Schema<PodcastSchema>({
   primaryUser: {
@@ -8,21 +20,13 @@ const podcastSchema = new Schema<PodcastSchema>({
     ref: "User",
     required: true,
   },
-  participant1: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  participant2: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  participant3: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
+  participants: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+  ],
   schedule: {
     date: {
       type: String,
