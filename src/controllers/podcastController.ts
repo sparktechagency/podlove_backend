@@ -16,7 +16,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   if (error) return next(error);
 
   if (user?.subscription.plan === SubscriptionPlanName.LISTENER) matchCount = 2;
-  else if (user?.subscription.plan === SubscriptionPlanName.SEEKER) matchCount = 3;
+  else if (user?.subscription.plan === SubscriptionPlanName.SPEAKER) matchCount = 3;
   else matchCount = 4;
 
   [error, participants] = await to(MatchedServices.match(userId, matchCount));
