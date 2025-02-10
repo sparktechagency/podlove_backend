@@ -40,10 +40,6 @@ jobs:
             if [ ! -d ".git" ]; then
               echo "Directory is not a Git repository. Cloning repository..."
               git clone --branch $BRANCH $REPO_URL .
-            else
-              echo "Directory is a Git repository. Fetching latest changes..."
-              git fetch origin $BRANCH
-              git reset --hard origin/$BRANCH
             fi
 
             echo "Ensuring the working directory is up-to-date..."

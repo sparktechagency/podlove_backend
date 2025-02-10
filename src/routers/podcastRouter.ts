@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("/get-new-podcasts", PodcastServices.getAllNotScheduledPodcasts);
 router.get("/get-done-podcasts", PodcastServices.getAllDonePodcasts);
-router.post("/create", PodcastController.create);
+router.post("/create", authorize, PodcastController.create);
 router.post("/set-schedule", PodcastServices.setSchedule);
 router.post("/select-user", PodcastServices.selectUser);
 router.post("/podcast-done", PodcastServices.podcastDone);
