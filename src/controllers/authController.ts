@@ -130,7 +130,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
 
   const accessSecret = process.env.JWT_ACCESS_SECRET;
   if (!accessSecret) {
-    return next(createError(StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
+    return next(createError(StatusCodes.INTERNAL_SERVER_ERROR, "Unexpected Server Error"));
   }
   const accessToken = generateToken(auth._id!.toString(), accessSecret, "96h");
 
@@ -237,17 +237,13 @@ const recoveryVerify = async (req: Request, res: Response, next: NextFunction): 
   if (error) return next(error);
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
 
-  if (!auth.recoveryOTP || !auth.recoveryOTPExpiredAt) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "Recovery OTP is not set or has expired."));
-  }
-
   const currentTime = new Date();
-  if (currentTime > auth.recoveryOTPExpiredAt) {
+  if (currentTime > auth.recoveryOTPExpiredAt!) {
     return next(createError(StatusCodes.UNAUTHORIZED, "Recovery OTP has expired."));
   }
 
   if (recoveryOTP !== auth.recoveryOTP) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "Wrong OTP."));
+    return next(createError(StatusCodes.UNAUTHORIZED, "Wrong OTP.Please enter the correct one."));
   }
 
   auth.recoveryOTP = "";
@@ -256,16 +252,11 @@ const recoveryVerify = async (req: Request, res: Response, next: NextFunction): 
   [error] = await to(auth.save());
   if (error) return next(error);
 
-  const recoverySecret = process.env.JWT_RECOVERY_SECRET;
-  if (!recoverySecret) {
-    return next(createError(StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
-  }
-  const recoveryToken = generateToken(auth._id!.toString(), recoverySecret, "96h");
 
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Email successfully verified.",
-    data: recoveryToken,
+    data: {},
   });
 };
 
@@ -302,7 +293,7 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
   let verificationOTP, recoveryOTP;
 
   if ((method === Method.emailActivation || method === Method.phoneActivation) && auth.isVerified)
-    return res.status(StatusCodes.OK).json({
+    return res.status(StatusCodes.CONFLICT).json({
       success: true,
       message: "Your account is already verified. Please login.",
       data: { isVerified: auth.isVerified },
