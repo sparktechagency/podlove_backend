@@ -222,7 +222,7 @@ const recovery = async (req: Request, res: Response, next: NextFunction): Promis
 
   await sendEmail(email, recoveryOTP);
 
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {recoveryOTP: auth.recoveryOTP} });
 };
 
 const recoveryVerify = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
