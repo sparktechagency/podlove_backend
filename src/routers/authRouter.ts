@@ -10,7 +10,7 @@ authRouter.post("/login", AuthController.login);
 authRouter.post("/signin-with-google", AuthController.signInWithGoogle);
 authRouter.post("/recovery", AuthController.recovery);
 authRouter.post("/recovery-verify", AuthController.recovery);
-authRouter.put("/reset-password", recoveryAuthorize, AuthController.resetPassword);
+authRouter.post("/reset-password", recoveryAuthorize, AuthController.resetPassword);
 authRouter.post("/resend-otp", AuthController.resendOTP);
 authRouter.post("/change-password", authorize, AuthController.changePassword);
 authRouter.delete("/delete", authorize, AuthController.remove);
