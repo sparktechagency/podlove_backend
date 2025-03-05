@@ -1,18 +1,19 @@
 import AuthController from "@controllers/authController";
 import express from "express";
-import { authorize, recoveryAuthorize } from "@middlewares/authorization";
+import { authorize } from "@middlewares/authorization";
+import { asyncHandler, asyncSessionHandler } from "@shared/asyncHandler";
 
-const authRouter = express.Router();
+const router = express.Router();
 
-authRouter.post("/register", AuthController.register);
-authRouter.post("/activate", AuthController.activate);
-authRouter.post("/login", AuthController.login);
-authRouter.post("/signin-with-google", AuthController.signInWithGoogle);
-authRouter.post("/recovery", AuthController.recovery);
-authRouter.post("/recovery-verify", AuthController.recovery);
-authRouter.post("/reset-password", recoveryAuthorize, AuthController.resetPassword);
-authRouter.post("/resend-otp", AuthController.resendOTP);
-authRouter.post("/change-password", authorize, AuthController.changePassword);
-authRouter.delete("/delete", authorize, AuthController.remove);
+router.post("/register", asyncSessionHandler(AuthController.register));
+router.post("/activate", asyncHandler(AuthController.activate));
+router.post("/login", asyncHandler(AuthController.login));
+router.post("/sign-in-with-google", asyncHandler(AuthController.signInWithGoogle));
+router.post("/resend-otp", asyncHandler(AuthController.resendOTP));
+router.post("/recovery", asyncHandler(AuthController.recovery));
+router.post("/recovery-verification", asyncHandler(AuthController.recoveryVerification));
+router.post("/reset-password", asyncHandler(AuthController.resetPassword));
+router.post("/change-password", authorize, asyncHandler(AuthController.changePassword));
+router.delete("/delete", authorize, asyncHandler(AuthController.remove));
 
-export default authRouter;
+export default router;

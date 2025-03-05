@@ -29,7 +29,7 @@ export const fileHandler = async (req: Request, res: Response, next: NextFunctio
     if (req.files) {
       await Promise.all(
         fileFields.map(async ({ fieldName, folder, key }) => {
-          const file = req.files[fieldName];
+          const file = req.files![fieldName];
           console.log(file);
 
           if (file) {

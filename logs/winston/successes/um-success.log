@@ -1356,7 +1356,7 @@ Tue Jan 28 2025 19:0:14 [Podlove] [32minfo[39m: Successfully Connected to Mong
 Tue Jan 28 2025 19:0:15 [Podlove] [32minfo[39m: Server is running at PORT: 7000
 Tue Jan 28 2025 19:0:21 [Podlove] [31merror[39m: Wrong password
 UnauthorizedError: Wrong password
-    at login (/home/mir/dev/projects/podlove_backend/src/controllers/administratorController.ts:169:48)
+    at login (/home/mir/dev/projects/podlove_backend/src/controllers/adminController.ts:169:48)
 UnauthorizedError
 Tue Jan 28 2025 19:1:41 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
 Tue Jan 28 2025 19:1:41 [Podlove] [32minfo[39m: Server is running at PORT: 7000
@@ -1583,3 +1583,15 @@ Tue Feb 11 2025 0:2:23 [Podlove] [32minfo[39m: Successfully Connected to Mongo
 Tue Feb 11 2025 0:2:24 [Podlove] [32minfo[39m: Server is running at PORT: 7000
 Tue Feb 11 2025 0:5:21 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
 Tue Feb 11 2025 0:5:21 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Wed Mar 05 2025 12:10:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Mar 05 2025 12:10:38 [Podlove] [32minfo[39m: No administrators found. Creating one...
+Wed Mar 05 2025 12:10:38 [Podlove] [32minfo[39m: Administrator created successfully. Starting server...
+Wed Mar 05 2025 12:10:38 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Wed Mar 05 2025 12:34:30 [Podlove] [31merror[39m: Failed to connect to MongoDB: bad auth : Authentication failed.
+Wed Mar 05 2025 12:35:37 [Podlove] [31merror[39m: Failed to connect to MongoDB: bad auth : Authentication failed.
+Wed Mar 05 2025 13:1:6 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Mar 05 2025 13:1:9 [Podlove] [32minfo[39m: No administrators found. Creating one...
+Wed Mar 05 2025 13:1:10 [Podlove] [32minfo[39m: Administrator created successfully. Starting server...
+Wed Mar 05 2025 13:1:10 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Wed Mar 05 2025 13:3:31 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Mar 05 2025 13:3:33 [Podlove] [32minfo[39m: Server is running at PORT: 7000

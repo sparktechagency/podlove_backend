@@ -1,30 +1,29 @@
-import jwt, { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
+import jwt, { JsonWebTokenError, JwtPayload, TokenExpiredError } from "jsonwebtoken";
 import createError from "http-errors";
+import { StatusCodes } from "http-status-codes";
 
-export type Decoded = {
+type Decoded = {
   id: string;
-  isAdmin: boolean;
 };
 
-export const generateToken = (id: string, secret: string, duration: string): string =>
-  jwt.sign({ id }, secret, { expiresIn: duration });
+export const generateToken = (id: string, secret: string): string => jwt.sign({ id: id }, secret, { expiresIn: "92h" });
 
-export const generateAdminToken = (id: string, isAdmin: true, secret: string, duration: string): string =>
-  jwt.sign({ id, isAdmin }, secret, { expiresIn: duration });
-
-export const decodeToken = (token: string, secret: string): [Error | null, Decoded | null] => {
-  let decoded: Decoded | null = null;
+export const decodeToken = (token: string, secret: string): Decoded => {
   try {
-    decoded = jwt.verify(token, secret) as jwt.JwtPayload & Decoded;
-  } catch (err) {
+    return jwt.verify(token, secret) as JwtPayload & Decoded;
+  } catch (err: any) {
+    let errorMessage: string;
+    let statusCode: number;
     if (err instanceof TokenExpiredError) {
-      return [createError(401, "Token has expired"), null];
+      errorMessage = "Token has expired";
+      statusCode = StatusCodes.UNAUTHORIZED;
+    } else if (err instanceof JsonWebTokenError) {
+      errorMessage = "Invalid or malformed token";
+      statusCode = StatusCodes.UNAUTHORIZED;
+    } else {
+      errorMessage = "Internal Server Error";
+      statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
     }
-    if (err instanceof JsonWebTokenError) {
-      return [createError(401, "Invalid or malformed token"), null];
-    }
-    return [createError(500, "Internal Server Error"), null];
+    throw createError(statusCode, errorMessage);
   }
-
-  return [null, decoded];
 };

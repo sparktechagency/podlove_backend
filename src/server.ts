@@ -4,7 +4,7 @@ import app from "./app";
 import "dotenv/config";
 import { connectDB } from "@connection/atlasDB";
 import { logger } from "@shared/logger";
-import Administrator from "@models/administratorModel";
+import Administrator from "@models/adminModel";
 import to from "await-to-ts";
 import { AdminAccess } from "@shared/enums";
 

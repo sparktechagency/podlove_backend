@@ -1,5 +1,8 @@
-import { AboutSchema } from "@schemas/aboutSchema";
-import { model, Schema } from "mongoose";
+import { Document, model, Schema } from "mongoose";
+
+export type AboutSchema = Document & {
+    text: string,
+}
 
 const aboutSchema = new Schema<AboutSchema>({
     text: {

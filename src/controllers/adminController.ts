@@ -1,15 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import Administrator from "@models/administratorModel";
+import Administrator from "@models/adminModel";
 import { AdminAccess } from "@shared/enums";
 import to from "await-to-ts";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
-import { generateAdminToken, generateToken } from "@utils/jwt";
-import Auth from "@models/authModel";
 import generateOTP from "@utils/generateOTP";
 import sendEmail from "@utils/sendEmail";
+import Admin from "@models/adminModel";
 
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -157,23 +155,11 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
 
 const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, password } = req.body;
-  let error, admin, isPasswordValid;
-
-  [error, admin] = await to(Administrator.findOne({ email }));
-  if (error) return next(error);
-  if (!admin) return next(createError(StatusCodes.NOT_FOUND, "No Admin account found with the given email"));
-
-  [error, isPasswordValid] = await to(bcrypt.compare(password, admin.password));
-  if (error) return next(error);
-
-  if (!isPasswordValid) return next(createError(StatusCodes.UNAUTHORIZED, "Wrong password"));
-
-  const adminSecret = process.env.JWT_ADMIN_SECRET;
-  if (!adminSecret)
-    return next(createError(StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
-
-  const accessToken = generateAdminToken(admin._id!.toString(), true, adminSecret, "96h");
-
+  let admin = await Admin.findByEmail(email);
+  if (!admin) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
+  if (!(await admin.comparePassword(password)))
+    return next(createError(StatusCodes.UNAUTHORIZED, "Wrong password. Please try again"));
+  const accessToken = Admin.generateAccessToken(admin._id!.toString());
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Login successful",
@@ -181,103 +167,58 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
   });
 };
 
-const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const adminId = req.admin.id;
-
-  const { password, newPassword, confirmPassword } = req.body;
-  let error, admin, isMatch;
-
-  [error, admin] = await to(Administrator.findById(adminId));
-  if (error) return next(error);
-  if (!admin) return next(createError(StatusCodes.NOT_FOUND, "Admin Not Found"));
-
-  [error, isMatch] = await to(bcrypt.compare(password, admin.password));
-  if (error) return next(error);
-  if (!isMatch) return next(createError(StatusCodes.UNAUTHORIZED, "Wrong Password"));
-
-  admin.password = await bcrypt.hash(newPassword, 10);
-  await admin.save();
-  return res.status(StatusCodes.OK).json({ success: true, message: "Passowrd changed successfully", data: {} });
-};
-
-const forgotPassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;
-
-  const [error, admin] = await to(Administrator.findOne({ email }));
-  if (error) return next(error);
-  if (!admin) return next(createError(StatusCodes.NOT_FOUND, "User Not Found"));
-
-  const recoveryOTP = generateOTP();
-  admin.recoveryOTP = recoveryOTP;
-  admin.recoveryOTPExpiredAt = new Date(Date.now() + 60 * 1000);
+  const admin = await Admin.findByEmailWithoutPassword(email);
+  if (!admin) throw createError(StatusCodes.NOT_FOUND, "No account found with the given email");
+  admin.generateRecoveryOTP();
+  await sendEmail(email, admin.recoveryOTP);
   await admin.save();
-
-  await sendEmail(email, recoveryOTP);
-
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: recoveryOTP });
+  return res
+    .status(StatusCodes.OK)
+    .json({ success: true, message: "Success", data: { recoveryOTP: admin.recoveryOTP } });
 };
 
-const verifyEmail = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const recoveryVerification = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, recoveryOTP } = req.body;
-  let error, admin;
-
-  if (!email || !recoveryOTP) {
-    return next(createError(StatusCodes.BAD_REQUEST, "Email and Recovery OTP are required."));
-  }
-
-  [error, admin] = await to(Administrator.findOne({ email }).select("-password"));
-  if (error) return next(error);
-  if (!admin) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
-
-  if (!admin.recoveryOTP || !admin.recoveryOTPExpiredAt) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "Recovery OTP is not set or has expired."));
-  }
-
-  const currentTime = new Date();
-  if (currentTime > admin.recoveryOTPExpiredAt) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "Recovery OTP has expired."));
-  }
-
-  if (recoveryOTP !== admin.recoveryOTP) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "Wrong OTP."));
-  }
-
-  admin.recoveryOTP = "";
-  admin.recoveryOTPExpiredAt = null;
-
-  [error] = await to(admin.save());
-  if (error) return next(error);
-
-  const adminSecret = process.env.JWT_ADMIN_SECRET;
-  if (!adminSecret)
-    return next(createError(StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret is not defined."));
-
-  const recoveryToken = generateAdminToken(admin._id!.toString(), true, adminSecret, "96h");
-
+  const admin = await Admin.findByEmailWithoutPassword(email);
+  if (!admin) throw createError(StatusCodes.NOT_FOUND, "Admin not found");
+  if (admin.isRecoveryOTPExpired()) throw createError(StatusCodes.UNAUTHORIZED, "Recovery OTP has expired.");
+  if (!admin.isCorrectRecoveryOTP(recoveryOTP))
+    throw createError(StatusCodes.UNAUTHORIZED, "Wrong OTP. Please try again");
+  admin.clearRecoveryOTP();
+  await admin.save();
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Email successfully verified.",
-    data: recoveryToken
+    data: {}
   });
 };
 
 const resetPassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-
   const { email, password, confirmPassword } = req.body;
-
-  const [error, admin] = await to(Administrator.findOne({ email }));
-  if (error) return next(error);
-  if (!admin) return next(createError(StatusCodes.NOT_FOUND, "Admin Not Found"));
-
-  if (password !== confirmPassword) return next(createError(StatusCodes.BAD_REQUEST, "Passwords don't match"));
-  admin.password = await bcrypt.hash(password, 10);
+  let admin = await Admin.findByEmail(email);
+  if (!admin) throw createError(StatusCodes.NOT_FOUND, "User Not Found");
+  if (password !== confirmPassword) throw createError(StatusCodes.BAD_REQUEST, "Passwords don't match");
+  admin.password = password;
   await admin.save();
-
   return res.status(StatusCodes.OK).json({ success: true, message: "Password reset successful", data: {} });
 };
 
+const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const email = req.admin.email;
+  const { password, newPassword, confirmPassword } = req.body;
+  const admin = await Admin.findByEmail(email);
+  if (!admin) throw createError(StatusCodes.NOT_FOUND, "Admin Not Found");
+  if (!(await admin.comparePassword(password)))
+    throw createError(StatusCodes.UNAUTHORIZED, "Wrong Password. Please try again.");
 
-const AdministratorController = {
+  admin.password = newPassword;
+  await admin.save();
+  return res.status(StatusCodes.OK).json({ success: true, message: "Password changed successfully", data: {} });
+};
+
+const AdminController = {
   create,
   getAll,
   getAdminInfo,
@@ -285,10 +226,10 @@ const AdministratorController = {
   updateAdmin,
   remove,
   login,
+  recovery,
+  recoveryVerification,
   changePassword,
-  forgotPassword,
-  verifyEmail,
   resetPassword
 };
 
-export default AdministratorController;
+export default AdminController;

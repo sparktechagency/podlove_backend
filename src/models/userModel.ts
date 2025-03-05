@@ -1,6 +1,14 @@
 import { Schema, model, Types, Document } from "mongoose";
 import { BodyType, Ethnicity, Gender, SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 
+export type DecodedUser = {
+  authId: string;
+  userId: string;
+  name: string;
+  email: string;
+  isVerified: boolean;
+};
+
 export type UserSchema = Document & {
   auth: Types.ObjectId;
   isProfileComplete: boolean;
