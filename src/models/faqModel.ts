@@ -1,7 +1,11 @@
-import mongoose from "mongoose";
-import { FaqSchema } from "@schemas/faqSchema";
+import {Document, Schema, model} from "mongoose";
 
-const faqSchema = new mongoose.Schema<FaqSchema>({
+type FaqSchema = Document & {
+  question: string;
+  answer: string;
+};
+
+const faqSchema = new Schema<FaqSchema>({
   question: {
     type: String,
   },
@@ -10,5 +14,5 @@ const faqSchema = new mongoose.Schema<FaqSchema>({
   },
 });
 
-const Faq = mongoose.model<FaqSchema>("Faq", faqSchema);
+const Faq = model<FaqSchema>("Faq", faqSchema);
 export default Faq;
