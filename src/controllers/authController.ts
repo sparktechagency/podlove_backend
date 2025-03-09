@@ -36,7 +36,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
   return res.status(StatusCodes.CREATED).json({
     success: true,
-    message: "Registration successful",
+    message: "Please check your email for otp.",
     data: { isVerified: auth.isVerified, otp: auth.verificationOTP },
   });
 };

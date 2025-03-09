@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from "express";
 import { StatusCodes } from "http-status-codes";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_KEY,
+  apiKey: process.env.OPENAI_KEY
 });
 
 const user1Responses = [
@@ -30,7 +30,7 @@ const user1Responses = [
   "Somewhat political – I stay informed about politics and discuss it occasionally",
   "Yes, I'm open to dating someone with different political views",
   "No",
-  "",
+  ""
 ];
 
 const user2Responses = [
@@ -54,7 +54,7 @@ const user2Responses = [
   "No, I prefer someone who shares my beliefs",
   "Not at all political – I don't follow politics and prefer to avoid political discussions",
   "No",
-  "",
+  ""
 ];
 
 // async function getCompatibilityScore(user1: string[], user2: string[]) {
@@ -62,7 +62,7 @@ const user2Responses = [
 // Below are responses from two individuals answering dating questions.
 // Calculate their compatibility as a number between 0 and 100.
 // **IMPORTANT:** Your output MUST be a single numeric value only, with no additional text, spaces, or punctuation.
-
+//
 // User 1 responses:
 // 1. Do you prefer spending your weekends socializing in larger gatherings or relaxing at home with a few close friends? ${user1[0]}
 // 2. When faced with a major life decision, do you usually follow your head (logic) or your heart (feelings)? ${user1[1]}
@@ -86,7 +86,7 @@ const user2Responses = [
 // 20. Would you date someone with different political beliefs? ${user1[19]}
 // 21. Do you have pets? ${user1[20]}
 // 22. If yes, which pet do you have? ${user1[21]}
-
+//
 // User 2 responses:
 // 1. Do you prefer spending your weekends socializing in larger gatherings or relaxing at home with a few close friends? ${user2[0]}
 // 2. When faced with a major life decision, do you usually follow your head (logic) or your heart (feelings)? ${user2[1]}
@@ -110,7 +110,7 @@ const user2Responses = [
 // 20. Would you date someone with different political beliefs? ${user2[19]}
 // 21. Do you have pets? ${user2[20]}
 // 22. If yes, which pet do you have? ${user2[21]}
-
+//
 // Now, output ONLY a single numeric value (for example, 75) representing the compatibility score between these two individuals.
 // `;
 //   try {
@@ -127,7 +127,7 @@ const user2Responses = [
 //         { role: "user", content: prompt },
 //       ],
 //     });
-
+//
 //     const rawOutput = response.choices[0].message!.content!.trim();
 //     const compatibilityScore = parseFloat(rawOutput);
 //     if (isNaN(compatibilityScore)) {
@@ -140,47 +140,52 @@ const user2Responses = [
 //   }
 // }
 
+// Make sure you have imported or required the OpenAI library, e.g.:
+// const { Configuration, OpenAIApi } = require("openai");
+// const openai = new OpenAIApi(new Configuration({ apiKey: YOUR_API_KEY }));
+
+
 const questions = [
   {
     question: "Do you believe in mutual respect and understanding in a relationship?",
-    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
   },
   {
     question: "Are you open to discussing personal values and beliefs with your partner?",
-    options: ["Yes", "No"],
+    options: ["Yes", "No"]
   },
   {
     question: "Do you prefer long-term commitment over casual dating?",
-    options: ["Yes", "No", "Not sure yet"],
+    options: ["Yes", "No", "Not sure yet"]
   },
   {
     question: "What qualities do you value most in a partner?",
-    options: [],
+    options: []
   },
   {
     question: "Do you think emotional intelligence is important in a relationship?",
-    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
   },
   {
     question: "Have you worked on personal growth and self-improvement for a better relationship?",
-    options: ["Yes", "No"],
+    options: ["Yes", "No"]
   },
   {
     question: "Do you believe trust is the foundation of a healthy relationship?",
-    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
   },
   {
     question: "Are you willing to compromise and adapt in a relationship?",
-    options: ["Yes", "No", "Not sure yet"],
+    options: ["Yes", "No", "Not sure yet"]
   },
   {
     question: "Do you think communication plays a crucial role in maintaining a relationship?",
-    options: ["Yes", "No"],
+    options: ["Yes", "No"]
   },
   {
     question: "Are you ready to invest time and effort into building a meaningful relationship?",
-    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-  },
+    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+  }
 ];
 
 async function isUserSuitable(req: Request, res: Response, next: NextFunction): Promise<any> {
@@ -189,44 +194,44 @@ async function isUserSuitable(req: Request, res: Response, next: NextFunction): 
   const questions = [
     {
       question: "Do you believe in mutual respect and understanding in a relationship?",
-      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
     },
     {
       question: "Are you open to discussing personal values and beliefs with your partner?",
-      options: ["Yes", "No"],
+      options: ["Yes", "No"]
     },
     {
       question: "Do you prefer long-term commitment over casual dating?",
-      options: ["Yes", "No", "Not sure yet"],
+      options: ["Yes", "No", "Not sure yet"]
     },
     {
       question: "What qualities do you value most in a partner?",
-      options: [],
+      options: []
     },
     {
       question: "Do you think emotional intelligence is important in a relationship?",
-      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
     },
     {
       question: "Have you worked on personal growth and self-improvement for a better relationship?",
-      options: ["Yes", "No"],
+      options: ["Yes", "No"]
     },
     {
       question: "Do you believe trust is the foundation of a healthy relationship?",
-      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
     },
     {
       question: "Are you willing to compromise and adapt in a relationship?",
-      options: ["Yes", "No", "Not sure yet"],
+      options: ["Yes", "No", "Not sure yet"]
     },
     {
       question: "Do you think communication plays a crucial role in maintaining a relationship?",
-      options: ["Yes", "No"],
+      options: ["Yes", "No"]
     },
     {
       question: "Are you ready to invest time and effort into building a meaningful relationship?",
-      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-    },
+      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"]
+    }
   ];
 
   let prompt = "Below are responses from a user answering the following dating suitability questions:\n\n";
@@ -246,13 +251,13 @@ async function isUserSuitable(req: Request, res: Response, next: NextFunction): 
         {
           role: "system",
           content:
-            "You are a dating suitability algorithm. Evaluate the user's responses and determine if the user is suitable for the app. Output only 'true' or 'false' with no extra text.",
+            "You are a dating suitability algorithm. Evaluate the user's responses and determine if the user is suitable for the app. Output only 'true' or 'false' with no extra text."
         },
         {
           role: "user",
-          content: prompt,
-        },
-      ],
+          content: prompt
+        }
+      ]
     });
 
     const rawOutput = response.choices[0].message!.content!.trim();
@@ -269,7 +274,7 @@ async function isUserSuitable(req: Request, res: Response, next: NextFunction): 
 }
 
 const OpenaiServices = {
-  isUserSuitable,
+  isUserSuitable
 };
 
 // getCompatibilityScore(user1Responses, user2Responses);

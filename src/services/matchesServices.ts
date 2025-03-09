@@ -1,8 +1,10 @@
-import { NextFunction, Request, Response } from "express";
-import User from "@models/userModel";
-import to from "await-to-ts";
-import { BodyType, Ethnicity, Gender } from "@shared/enums";
-import { Types } from "mongoose";
+import User, { UserSchema } from "@models/userModel";
+import OpenAI from "openai";
+import process from "node:process";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_KEY
+});
 
 const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
   const R = 6371;
@@ -15,84 +17,150 @@ const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: numbe
   return R * c;
 };
 
-const findMatchingUsers = async (currentUser: any) => {
-  const query: any = {};
+const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: string[]) => {
+  const questions = [
+    "Do you prefer spending your weekends socializing in larger gatherings or relaxing at home with a few close friends?",
+    "When faced with a major life decision, do you usually follow your head (logic) or your heart (feelings)?",
+    "Which of these activities sounds most appealing to you?",
+    "How important is personal growth in your life?",
+    "How do you like to show affection?",
+    "How do you envision your ideal future?",
+    "Do you have kids?",
+    "Do you want kids in the future?",
+    "Will you date a person who has kids?",
+    "Do you smoke?",
+    "Will you date a smoker?",
+    "How would you describe your drinking habits?",
+    "If 'Never', would you be comfortable dating someone who drinks?",
+    "Do you consider yourself religious or spiritual?",
+    "If 'Religious', what is your religion or denomination?",
+    "If 'Spiritual', would you like to describe your spiritual beliefs?",
+    "How important is religion or spirituality in your life?",
+    "Would you date someone with different religious or spiritual beliefs?",
+    "How would you describe your level of political engagement?",
+    "Would you date someone with different political beliefs?",
+    "Do you have pets?",
+    "If yes, which pet do you have?"
+  ];
 
-  query["gender"] = { $in: currentUser.preferences.gender };
+  let userContent = "Below are 22 questions, followed by each user's responses.\n";
+  userContent += "Please produce a single compatibility score between 0 and 100.\n\n";
 
-  query["age"] = { $gte: currentUser.preferences.age.min, $lte: currentUser.preferences.age.max };
+  for (let i = 0; i < questions.length; i++) {
+    userContent += `Question ${i + 1}: ${questions[i]}\n`;
+    userContent += `User1: ${userOneAnswers[i]}\n`;
+    userContent += `User2: ${userTwoAnswers[i]}\n\n`;
+  }
 
-  query["bodyType"] = { $in: currentUser.preferences.bodyType };
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o",
+      temperature: 0.3,
+      max_tokens: 50,
+      messages: [
+        {
+          role: "system",
+          content: `
+      You are a dating compatibility algorithm.
+      Given the questions and each user's responses, produce a single numeric compatibility score (0-100).
+      Your answer must be strictly a number with no extra text or punctuation.
+    `
+        },
+        {
+          role: "user",
+          content: userContent
+        }
+      ]
+    });
 
-  query["ethnicity"] = { $in: currentUser.preferences.ethnicity };
+    const rawOutput = response.choices[0].message!.content!.trim();
+    const numericRegex = /^\d+(\.\d+)?$/;
+    if (!numericRegex.test(rawOutput)) {
+      throw new Error(`Output is not strictly a number: "${rawOutput}"`);
+    }
+    return parseFloat(rawOutput);
+  } catch (error: any) {
+    console.error("Error during API call:", error.response?.data || error.message);
+    return null;
+  }
+}
+type UserPreferences = {
+  gender: string[];
+  age: { min: number; max: number };
+  bodyType: string[];
+  ethnicity: string[];
+  distance: number;
+};
+const filterUsers = async (userPreferences: UserPreferences, latitude: number, longitude: number) : Promise<UserSchema[]> => {
+  const query = {
+    age: {
+      $gte: userPreferences.age.min,
+      $lte: userPreferences.age.max
+    },
+    gender: { $in: userPreferences.gender },
+    bodyType: { $in: userPreferences.bodyType },
+    ethnicity: { $in: userPreferences.ethnicity }
+  };
 
-  if (currentUser.preferences.distance > 0) {
-    const matchingUsers = await User.find(query).exec();
-    const filteredUsers = matchingUsers.filter((user) => {
+  const filteredUsers = await User.find(query).exec();
+
+  return filteredUsers
+    .filter((user) => {
       const distance = calculateDistance(
-        currentUser.location.latitude,
-        currentUser.location.longitude,
+        latitude,
+        longitude,
         user.location.latitude,
         user.location.longitude
       );
-      return distance <= currentUser.preferences.distance;
-    });
-    return filteredUsers;
-  }
-
-  const matchingUsers = await User.find(query).exec();
-  return matchingUsers;
+      return distance <= userPreferences.distance;
+    })
 };
 
-const currentUser = {
-  preferences: {
-    gender: [Gender.FEMALE],
-    age: { min: 25, max: 35 },
-    bodyType: [BodyType.SLIM, BodyType.AVERAGE],
-    ethnicity: [Ethnicity.WHITE],
-    distance: 50,
-  },
-  location: { latitude: 40.7128, longitude: -74.006 },
-};
+const match = async (user: UserSchema, matchCount: number = 2) => {
+  const userOneAnswers = user.compatibility;
 
-// findMatchingUsers(currentUser)
-//   .then((users) => console.log("Matching users:", users))
-//   .catch((error) => console.error("Error finding users:", error));
-
-const match = async (userId: string, matchCount: number = 2): Promise<string[]> => {
-  let error, user, matchedUsers;
-
-  [error, user] = await to(User.findById(userId));
-  if (error) throw error;
-  if (!user) throw new Error("User not found");
-
-  [error, matchedUsers] = await to(
-    User.aggregate([
-      { $match: { _id: { $ne: new Types.ObjectId(userId) } } },
-      { $sample: { size: matchCount } },
-      { $project: { _id: 1 } },
-    ])
+  const filteredUserList = await filterUsers(
+    user.preferences,
+    user.location.latitude,
+    user.location.longitude
   );
-  if (error) throw error;
 
-  return matchedUsers.map((u: { _id: Types.ObjectId }) => u._id.toString());
+  const scoredCandidates = [];
+  for (const candidate of filteredUserList) {
+    const userTwoAnswers = candidate.compatibility;
+    const score = (await getCompatibilityScore(userOneAnswers, userTwoAnswers)) ?? 0;
+    scoredCandidates.push({
+      user: candidate,
+      compatibilityScore: score,
+    });
+  }
+  scoredCandidates.sort((a, b) => b.compatibilityScore - a.compatibilityScore);
+  return scoredCandidates.slice(0, matchCount).map((item) => item.user._id);
 };
 
-const matchedUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  // const userId = req.params.id;
-  // const [error, user] = await to(User.findById(userId)
-  //   .populate({ path: "first", select: "bio interests" })
-  //   .populate({ path: "second", select: "bio interests" })
-  //   .populate({ path: "third", select: "bio interests" })
-  //   .lean());
-  // if (error) return next(error);
-  // if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
-  // return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user.matches });
-};
+
+// const match = async (userId: string, matchCount: number = 2): Promise<string[]> => {
+//   let error, user, matchedUsers;
+//
+//   [error, user] = await to(User.findById(userId));
+//   if (error) throw error;
+//   if (!user) throw new Error("User not found");
+//
+//   [error, matchedUsers] = await to(
+//     User.aggregate([
+//       { $match: { _id: { $ne: new Types.ObjectId(userId) } } },
+//       { $sample: { size: matchCount } },
+//       { $project: { _id: 1 } },
+//     ])
+//   );
+//   if (error) throw error;
+//
+//   return matchedUsers.map((u: { _id: Types.ObjectId }) => u._id.toString());
+// };
+
 
 const MatchedServices = {
-  match,
-  matchedUsers,
+  match
 };
 
 export default MatchedServices;

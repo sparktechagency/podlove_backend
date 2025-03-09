@@ -41,7 +41,7 @@ export type UserSchema = Document & {
     };
     bodyType: string[];
     ethnicity: string[];
-    distance: string;
+    distance: number;
   };
   survey: string[];
   subscription: {
