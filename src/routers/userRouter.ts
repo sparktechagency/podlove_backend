@@ -9,7 +9,7 @@ import { asyncHandler } from "@shared/asyncHandler";
 
 const router = express.Router();
 
-router.patch("/update/:id", asyncHandler(UserController.update));
+router.patch("/update", asyncHandler(UserController.update));
 router.post("/block/:authId", UserServices.block);
 router.post("/unblock/:authId", UserServices.unblock);
 // router.post("/match/:id", MatchedServices.match);
