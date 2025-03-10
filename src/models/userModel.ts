@@ -18,7 +18,7 @@ export type UserSchema = Document & {
   age: number;
   gender: string;
   bodyType: string;
-  ethnicity: string;
+  ethnicity: string[];
   bio: string;
   personality: {
     spectrum: number;
@@ -94,7 +94,7 @@ const userSchema = new Schema(
       default: "",
     },
     ethnicity: {
-      type: String,
+      type: [String],
       enum: Object.values(Ethnicity),
       default: "",
     },

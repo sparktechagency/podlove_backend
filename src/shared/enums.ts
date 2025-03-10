@@ -65,6 +65,7 @@ export enum SubscriptionStatus {
 export enum PodcastStatus {
   NOT_SCHEDULED = "NotScheduled",
   SCHEDULED = "Scheduled",
+  PLAYING = "Playing",
   DONE = "Done",
 }
 
