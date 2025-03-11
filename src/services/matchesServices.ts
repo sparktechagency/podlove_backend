@@ -1,6 +1,7 @@
 import User, { UserSchema } from "@models/userModel";
 import OpenAI from "openai";
 import process from "node:process";
+import { Types } from "mongoose";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_KEY
@@ -83,7 +84,7 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
     console.error("Error during API call:", error.response?.data || error.message);
     return null;
   }
-}
+};
 type UserPreferences = {
   gender: string[];
   age: { min: number; max: number };
@@ -91,7 +92,7 @@ type UserPreferences = {
   ethnicity: string[];
   distance: number;
 };
-const filterUsers = async (userPreferences: UserPreferences, latitude: number, longitude: number) : Promise<UserSchema[]> => {
+const filterUsers = async (userPreferences: UserPreferences, latitude: number, longitude: number): Promise<UserSchema[]> => {
   const query = {
     age: {
       $gte: userPreferences.age.min,
@@ -113,10 +114,10 @@ const filterUsers = async (userPreferences: UserPreferences, latitude: number, l
         user.location.longitude
       );
       return distance <= userPreferences.distance;
-    })
+    });
 };
 
-const match = async (user: UserSchema, matchCount: number = 2) => {
+const match = async (user: UserSchema, matchCount: number = 2): Promise<Types.ObjectId[]> => {
   const userOneAnswers = user.compatibility;
 
   const filteredUserList = await filterUsers(
@@ -131,11 +132,11 @@ const match = async (user: UserSchema, matchCount: number = 2) => {
     const score = (await getCompatibilityScore(userOneAnswers, userTwoAnswers)) ?? 0;
     scoredCandidates.push({
       user: candidate,
-      compatibilityScore: score,
+      compatibilityScore: score
     });
   }
   scoredCandidates.sort((a, b) => b.compatibilityScore - a.compatibilityScore);
-  return scoredCandidates.slice(0, matchCount).map((item) => item.user._id);
+  return scoredCandidates.slice(0, matchCount).map((item) => item.user._id as Types.ObjectId);
 };
 
 

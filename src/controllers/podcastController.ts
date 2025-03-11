@@ -6,62 +6,81 @@ import createError from "http-errors";
 import MatchedServices from "@services/matchesServices";
 import { PodcastStatus, SubscriptionPlanName } from "@shared/enums";
 import User from "@models/userModel";
-import { Types } from "mongoose";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  // const user = await User.findById(req.user.userId);
-  // if(user!.isSelectedForPodcast) return res.status(StatusCodes.CONFLICT).json({success: true, message: "User is already selected for another podcast", data : {}});
-  // let matchCount = 0;
-  // if (user!.subscription.plan === SubscriptionPlanName.LISTENER) matchCount = 2;
-  // else if (user!.subscription.plan === SubscriptionPlanName.SPEAKER) matchCount = 3;
-  // else matchCount = 4;
-  //
-  // [error, participants] = await to(MatchedServices.match(userId, matchCount));
-  //
-  //
-  // const participantsObjectIds = participants.map((id: string) => new Types.ObjectId(id));
-  //
-  // [error, podcast] = await to(Podcast.create({ primaryUser: userId, participants: participantsObjectIds }));
-  // if (error) return next(error);
-  //
-  // return res.status(StatusCodes.CREATED).json({ success: true, message: "Success", data: podcast });
+  const user = await User.findById(req.user.userId);
+  if (user!.isSelectedForPodcast) return res.status(StatusCodes.CONFLICT).json({
+    success: true,
+    message: "User is already selected for another podcast",
+    data: {}
+  });
+  let matchCount = 0;
+  if (user!.subscription.plan === SubscriptionPlanName.LISTENER) matchCount = 2;
+  else if (user!.subscription.plan === SubscriptionPlanName.SPEAKER) matchCount = 3;
+  else matchCount = 4;
+  const participants = await MatchedServices.match(user!, matchCount);
+  if (participants.length !== matchCount)
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Not enough compatible user for the podcast",
+      data: {}
+    });
+  const podcast = await Podcast.create({ primaryUser: user!._id, participants: participants });
+  return res.status(StatusCodes.CREATED).json({
+    success: true,
+    message: "User successfully scheduled for the podcast",
+    data: podcast
+  });
 };
 
-
 const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const status = req.query.status;
-  const page = parseInt(req.query.page as string, 10) || 1;
-  const limit = parseInt(req.query.limit as string, 10) || 10;
+  const status = req.query.status?.toString().toLowerCase();
+  const page = Math.max(1, parseInt(req.query.page as string, 10) || 1);
+  const limit = Math.max(1, parseInt(req.query.limit as string, 10) || 10);
   const skip = (page - 1) * limit;
 
-  if (page < 1 || limit < 1) {
+  if (req.query.id) {
+    const id = req.query.id as string;
+    const podcast = await Podcast.findById(id);
+    if (!podcast) return res.status(StatusCodes.NOT_FOUND).json({
+      success: false,
+      message: "Podcast not found",
+      data: {}
+    });
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Successfully fetched the podcast",
+      data: podcast
+    });
+  }
+
+  const validStatuses = ["before", "after"];
+  if (status && !validStatuses.includes(status)) {
     return res.status(StatusCodes.BAD_REQUEST).json({
       success: false,
-      message: "Page and limit must be positive integers",
+      message: "Invalid status value. Allowed values: 'before', 'after'",
       data: {}
     });
   }
-  let query = {};
+
+  let query: Record<string, any> = {};
   if (status === "before") {
     query = { status: { $in: [PodcastStatus.NOT_SCHEDULED, PodcastStatus.SCHEDULED] } };
   } else if (status === "after") {
     query = { status: { $in: [PodcastStatus.DONE] } };
   }
 
-  const podcasts = await
+  const [podcasts, total] = await Promise.all([
     Podcast.find(query)
       .populate({ path: "primaryUser", select: "name avatar" })
       .populate({ path: "participants", select: "name avatar" })
-
       .skip(skip)
       .limit(limit)
-      .lean();
+      .lean(),
+    Podcast.countDocuments(query)
+  ]);
 
-
-  const total = await Podcast.countDocuments(query);
-  const totalPages = Math.ceil(total / limit);
-
-  res.status(StatusCodes.OK).json({
+  return res.status(StatusCodes.OK).json({
     success: true,
     message: "Successfully retrieved podcasts",
     data: {
@@ -70,32 +89,16 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
         page,
         limit,
         total,
-        totalPages
+        totalPages: Math.ceil(total / limit)
       }
     }
   });
 };
 
-const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { id } = req.params;
-  const [error, podcast] = await to(Podcast.findById(id).lean());
-  if (error) return next(error);
-  if (!podcast) return next(createError(StatusCodes.NOT_FOUND, "Podcast not found"));
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
-};
-
-const getAll = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const [error, podcasts] = await to(Podcast.find().lean());
-  if (error) return next(error);
-  if (!podcasts || podcasts.length === 0)
-    return res.status(StatusCodes.OK).json({ success: true, message: "No podcast found", data: { podcasts: [] } });
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { podcasts: podcasts } });
-};
 
 const PodcastController = {
   create,
-  get,
-  getAll
+  getPodcasts
 };
 
 export default PodcastController;
