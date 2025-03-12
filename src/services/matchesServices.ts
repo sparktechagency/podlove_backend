@@ -4,7 +4,7 @@ import process from "node:process";
 import { Types } from "mongoose";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_KEY
+  apiKey: process.env.OPENAI_KEY,
 });
 
 const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
@@ -41,7 +41,7 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
     "How would you describe your level of political engagement?",
     "Would you date someone with different political beliefs?",
     "Do you have pets?",
-    "If yes, which pet do you have?"
+    "If yes, which pet do you have?",
   ];
 
   let userContent = "Below are 22 questions, followed by each user's responses.\n";
@@ -65,13 +65,13 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
       You are a dating compatibility algorithm.
       Given the questions and each user's responses, produce a single numeric compatibility score (0-100).
       Your answer must be strictly a number with no extra text or punctuation.
-    `
+    `,
         },
         {
           role: "user",
-          content: userContent
-        }
-      ]
+          content: userContent,
+        },
+      ],
     });
 
     const rawOutput = response.choices[0].message!.content!.trim();
@@ -92,76 +92,62 @@ type UserPreferences = {
   ethnicity: string[];
   distance: number;
 };
-const filterUsers = async (userPreferences: UserPreferences, latitude: number, longitude: number): Promise<UserSchema[]> => {
+const filterUsers = async (
+  userPreferences: UserPreferences,
+  latitude: number,
+  longitude: number
+): Promise<UserSchema[]> => {
   const query = {
     age: {
       $gte: userPreferences.age.min,
-      $lte: userPreferences.age.max
+      $lte: userPreferences.age.max,
     },
     gender: { $in: userPreferences.gender },
     bodyType: { $in: userPreferences.bodyType },
-    ethnicity: { $in: userPreferences.ethnicity }
+    ethnicity: { $in: userPreferences.ethnicity },
   };
 
   const filteredUsers = await User.find(query).exec();
 
-  return filteredUsers
-    .filter((user) => {
-      const distance = calculateDistance(
-        latitude,
-        longitude,
-        user.location.latitude,
-        user.location.longitude
-      );
-      return distance <= userPreferences.distance;
-    });
+  return filteredUsers.filter((user) => {
+    const distance = calculateDistance(latitude, longitude, user.location.latitude, user.location.longitude);
+    return distance <= userPreferences.distance;
+  });
 };
 
-const match = async (user: UserSchema, matchCount: number = 2): Promise<Types.ObjectId[]> => {
-  const userOneAnswers = user.compatibility;
+// const match = async (user: UserSchema, matchCount: number = 2): Promise<Types.ObjectId[]> => {
+//   const userOneAnswers = user.compatibility;
 
-  const filteredUserList = await filterUsers(
-    user.preferences,
-    user.location.latitude,
-    user.location.longitude
-  );
-
-  const scoredCandidates = [];
-  for (const candidate of filteredUserList) {
-    const userTwoAnswers = candidate.compatibility;
-    const score = (await getCompatibilityScore(userOneAnswers, userTwoAnswers)) ?? 0;
-    scoredCandidates.push({
-      user: candidate,
-      compatibilityScore: score
-    });
-  }
-  scoredCandidates.sort((a, b) => b.compatibilityScore - a.compatibilityScore);
-  return scoredCandidates.slice(0, matchCount).map((item) => item.user._id as Types.ObjectId);
-};
-
-
-// const match = async (userId: string, matchCount: number = 2): Promise<string[]> => {
-//   let error, user, matchedUsers;
-//
-//   [error, user] = await to(User.findById(userId));
-//   if (error) throw error;
-//   if (!user) throw new Error("User not found");
-//
-//   [error, matchedUsers] = await to(
-//     User.aggregate([
-//       { $match: { _id: { $ne: new Types.ObjectId(userId) } } },
-//       { $sample: { size: matchCount } },
-//       { $project: { _id: 1 } },
-//     ])
+//   const filteredUserList = await filterUsers(
+//     user.preferences,
+//     user.location.latitude,
+//     user.location.longitude
 //   );
-//   if (error) throw error;
-//
-//   return matchedUsers.map((u: { _id: Types.ObjectId }) => u._id.toString());
+
+//   const scoredCandidates = [];
+//   for (const candidate of filteredUserList) {
+//     const userTwoAnswers = candidate.compatibility;
+//     const score = (await getCompatibilityScore(userOneAnswers, userTwoAnswers)) ?? 0;
+//     scoredCandidates.push({
+//       user: candidate,
+//       compatibilityScore: score
+//     });
+//   }
+//   scoredCandidates.sort((a, b) => b.compatibilityScore - a.compatibilityScore);
+//   return scoredCandidates.slice(0, matchCount).map((item) => item.user._id as Types.ObjectId);
 // };
 
+const match = async (userId: string, matchCount: number = 2): Promise<string[]> => {
+  const matchedUsers = await User.aggregate([
+    { $match: { _id: { $ne: new Types.ObjectId(userId) } } },
+    { $sample: { size: matchCount } },
+    { $project: { _id: 1 } },
+  ]);
+  return matchedUsers.map((u: { _id: Types.ObjectId }) => u._id.toString());
+};
 
 const MatchedServices = {
-  match
+  match,
 };
 
 export default MatchedServices;
