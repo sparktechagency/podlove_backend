@@ -52,6 +52,8 @@ export type UserSchema = Document & {
     startedAt: Date;
   };
   isSelectedForPodcast: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 const userSchema = new Schema(
@@ -209,7 +211,7 @@ const userSchema = new Schema(
     },
     isSelectedForPodcast: {
       type: Boolean,
-    }
+    },
   },
   {
     timestamps: true,

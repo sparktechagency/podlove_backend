@@ -13,20 +13,24 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
     email: req.user.email,
     contact: user.phoneNumber,
     address: user.address,
-    avatar: user.avatar
+    avatar: user.avatar,
+    joind: user.createdAt,
   };
   return res.status(StatusCodes.OK).json({ success: true, message: "User data retrieved successfully.", data: data });
 };
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const user = await User.findByIdAndUpdate(req.user.userId, { $set: req.body }, { new: true }).populate({path: "auth", select: "email"});
+  const user = await User.findByIdAndUpdate(req.user.userId, { $set: req.body }, { new: true }).populate({
+    path: "auth",
+    select: "email",
+  });
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found."));
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
 };
 
 const UserController = {
   get,
-  update
+  update,
 };
 
 export default UserController;
