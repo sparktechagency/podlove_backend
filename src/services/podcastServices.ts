@@ -21,9 +21,7 @@ const getAllNotScheduledPodcasts = async (req: Request, res: Response, next: Nex
   const [error, podcasts] = await to(
     Podcast.find({ status: { $in: [PodcastStatus.NOT_SCHEDULED, PodcastStatus.SCHEDULED] } })
       .populate({ path: "primaryUser", select: "name avatar" })
-      .populate({ path: "participant1", select: "name avatar" })
-      .populate({ path: "participant2", select: "name avatar" })
-      .populate({ path: "participant3", select: "name avatar" })
+      .populate({ path: "participants", select: "name avatar" })
       .skip(skip)
       .limit(limit)
       .lean()
@@ -111,9 +109,7 @@ const getAllDonePodcasts = async (req: Request, res: Response, next: NextFunctio
   const [error, podcasts] = await to(
     Podcast.find({ status: PodcastStatus.DONE })
       .populate({ path: "primaryUser", select: "name avatar" })
-      .populate({ path: "participant1", select: "name avatar" })
-      .populate({ path: "participant2", select: "name avatar" })
-      .populate({ path: "participant3", select: "name avatar" })
+      .populate({ path: "participants", select: "name avatar" })
       .skip(skip)
       .limit(limit)
       .lean()
