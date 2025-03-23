@@ -19,6 +19,10 @@ const supportSchema = new Schema<SupportSchema>({
     type: String,
     required: true
   },
+  category: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Date,
     required: true

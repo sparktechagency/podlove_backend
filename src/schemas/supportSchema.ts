@@ -7,4 +7,5 @@ export type SupportSchema = Document & {
   description: string;
   date: Date;
   reply: string;
+  category: string;
 };
