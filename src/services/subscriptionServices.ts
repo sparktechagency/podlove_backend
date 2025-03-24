@@ -1,18 +1,20 @@
+// services/subscriptionService.ts
+
 import Stripe from "stripe";
 import { Request, Response, NextFunction } from "express";
 import to from "await-to-ts";
 import User from "@models/userModel";
 import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
-import Plan from "@models/planModel";
-import { SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 import SubscriptionPlan from "@models/subscriptionPlanModel";
+import { SubscriptionStatus } from "@shared/enums";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const upgrade = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   const planId = req.body.planId;
+
   let error, user, plan, session, customer;
 
   [error, user] = await to(User.findById(userId));
@@ -37,12 +39,10 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
           quantity: 1,
         },
       ],
-      subscription_data: {
-        metadata: {
-          plan: plan.name,
-          fee: plan.unitAmount,
-          userId: userId,
-        },
+      metadata: {
+        plan: plan.name,
+        fee: plan.unitAmount,
+        userId: userId,
       },
       success_url: `https://example.com/success`,
       cancel_url: `https://example.com/cancel`,
@@ -69,9 +69,9 @@ const cancel = async (req: Request, res: Response, next: NextFunction): Promise<
   if (error) return next(error);
 
   user.subscription!.id = "";
-  user.subscription!.plan = SubscriptionPlanName.LISTENER;
+  user.subscription!.plan = "LISTENER";
   user.subscription!.fee = "Free";
-  user.subscription!.status = SubscriptionStatus.NONE;
+  user.subscription!.status = SubscriptionStatus.PAID;
   user.subscription!.startedAt = new Date();
 
   [error] = await to(user.save());
