@@ -20,7 +20,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
     })
   );
   if (error) return next(error);
-  if (!podcast) return next(createError(StatusCodes.NOT_FOUND, "Podcast not found"));
+  if (!podcast) podcast = {};
 
   [error, subscriptionPlans] = await to(SubscriptionPlan.find().lean());
   if (error) return next(error);

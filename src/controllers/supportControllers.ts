@@ -6,8 +6,8 @@ import to from "await-to-ts";
 import { StatusCodes } from "http-status-codes";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { userId, category, description } = req.body;
-
+  const { category, description } = req.body;
+  const userId = req.user.userId;
   let error, user, support;
   [error, user] = await to(User.findById(userId));
   if (error) return next(error);
