@@ -1,5 +1,3 @@
-// services/stripeService.ts
-
 import Stripe from "stripe";
 import { Request, Response, NextFunction } from "express";
 import createError from "http-errors";
@@ -13,52 +11,26 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const webhook = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
   let event = req.body;
-
   if (endpointSecret) {
     const signature = req.headers["stripe-signature"];
-    if (!signature) return next(createError(StatusCodes.FORBIDDEN, "Unauthorized"));
-
+    if (!signature) next(createError(StatusCodes.FORBIDDEN, "Unauthorized"));
     try {
-      event = stripe.webhooks.constructEvent(req.body, signature, endpointSecret);
+      event = stripe.webhooks.constructEvent(req.body, signature!, endpointSecret);
     } catch (error: any) {
-      console.error("Webhook signature verification failed:", error.message);
+      console.log(`Webhook signature verification failed:`, error.message);
       return res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
     }
   }
 
-  let error, user;
-
+  let error, subscriptionId, user, invoice;
   switch (event.type) {
-    case "checkout.session.completed":
-      const session = event.data.object as Stripe.Checkout.Session;
-      const subscriptionId = session.subscription as string;
-
-      if (session.metadata) {
-        const { userId, plan, fee } = session.metadata;
-
-        // Attach metadata to the subscription (so it exists when invoice is created)
-        await stripe.subscriptions.update(subscriptionId, {
-          metadata: {
-            userId,
-            plan,
-            fee,
-          },
-        });
-      }
-      break;
-
     case "invoice.payment_succeeded":
-      const invoice = event.data.object as Stripe.Invoice;
-
-      const subId = invoice.subscription as string;
-
-      const subscription = await stripe.subscriptions.retrieve(subId);
-      const { plan, fee, userId } = subscription.metadata;
-
-      if (!userId) {
-        console.warn("No userId in subscription metadata, skipping invoice.payment_succeeded");
-        break;
-      }
+      invoice = event.data.object as Stripe.Invoice;
+      console.log(invoice);
+      const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
+      const plan = subscription.metadata.plan;
+      const fee = subscription.metadata.fee;
+      const userId = subscription.metadata.userId;
 
       [error, user] = await to(User.findById(userId));
       if (error) throw error;
@@ -75,10 +47,28 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
       break;
 
-    // Optional: Add `invoice.payment_failed` handling here
-  }
+    // case "invoice_payment_failed":
+    //   invoice = event.data.object as Stripe.Invoice;
 
-  res.status(200).send(); // Always respond to Stripe to avoid retries
+    //   const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
+    //   const plan = subscription.metadata.plan;
+    //   const fee = Number.parseFloat(subscription.metadata.fee);
+    //   const userId = subscription.metadata.userId;
+
+    //   [error, user] = await to(User.findById(userId));
+    //   if (error) throw error;
+    //   if(!user) throw new Error("User not found");
+
+    //   user.subscription!.plan = plan;
+    //   user.subscription!.fee = fee;
+    //   user.subscription!.startedAt = new Date();
+    //   user.subscription!.status = SubscriptionStatus.PAID;
+
+    //   [error] = await to(user.save());
+    //   if(error) throw error;
+
+    //   break;
+  }
 };
 
 const StripeServices = {
