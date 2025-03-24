@@ -14,6 +14,8 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
     contact: user.phoneNumber,
     address: user.address,
     avatar: user.avatar,
+    gender: user.gender,
+    bio: user.bio,
     joind: user.createdAt,
   };
   return res.status(StatusCodes.OK).json({ success: true, message: "User data retrieved successfully.", data: data });
