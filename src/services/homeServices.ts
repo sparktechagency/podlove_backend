@@ -1,29 +1,24 @@
 import { Request, Response, NextFunction } from "express";
 import Podcast from "@models/podcastModel";
-import to from "await-to-ts";
-import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
 import SubscriptionPlan from "@models/subscriptionPlanModel";
 import User from "@models/userModel";
 
 const homeData = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
-  let error, user, podcast, subscriptionPlans;
 
-  [error, user] = await to(User.findById(userId).populate({ path: "auth", select: "email" }));
-  if (error) return next(error);
+  const user = await User.findById(userId).populate({ path: "auth", select: "email" });
 
-  [error, podcast] = await to(
+  let podcast;
+  podcast = await 
     Podcast.findOne({ primaryUser: userId }).populate({
       path: "participants",
       select: "name bio interests",
-    })
-  );
-  if (error) return next(error);
+    }).lean();
+
   if (!podcast) podcast = {};
 
-  [error, subscriptionPlans] = await to(SubscriptionPlan.find().lean());
-  if (error) return next(error);
+  const subscriptionPlans = await SubscriptionPlan.find().lean();
 
   return res
     .status(StatusCodes.OK)
