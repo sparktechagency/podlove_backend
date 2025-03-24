@@ -1,6 +1,0 @@
-Wed Mar 05 2025 12:10:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
-Wed Mar 05 2025 12:10:38 [Podlove] [32minfo[39m: No administrators found. Creating one...
-Wed Mar 05 2025 12:10:38 [Podlove] [32minfo[39m: Administrator created successfully. Starting server...
-Wed Mar 05 2025 12:10:38 [Podlove] [32minfo[39m: Server is running at PORT: 7000
-Wed Mar 05 2025 12:34:30 [Podlove] [31merror[39m: Failed to connect to MongoDB: bad auth : Authentication failed.
-Wed Mar 05 2025 12:35:37 [Podlove] [31merror[39m: Failed to connect to MongoDB: bad auth : Authentication failed.

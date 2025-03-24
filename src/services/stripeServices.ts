@@ -25,6 +25,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
   let error, subscriptionId, user, invoice;
   switch (event.type) {
     case "invoice.payment_succeeded":
+      console.log("in");
       invoice = event.data.object as Stripe.Invoice;
       console.log(invoice);
       const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
