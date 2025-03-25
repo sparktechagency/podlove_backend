@@ -62,6 +62,11 @@ export enum SubscriptionStatus {
   DUE = "DUE",
 }
 
+export enum PodcastType {
+  "Date" = "Date",
+  "Feedback" = "Feedback"
+}
+
 export enum PodcastStatus {
   NOT_SCHEDULED = "NotScheduled",
   SCHEDULED = "Scheduled",

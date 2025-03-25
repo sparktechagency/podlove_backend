@@ -34,63 +34,63 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
 };
 
 const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const status = req.query.status?.toString().toLowerCase();
-  const page = Math.max(1, parseInt(req.query.page as string, 10) || 1);
-  const limit = Math.max(1, parseInt(req.query.limit as string, 10) || 10);
+  const { id, status } = req.query;
+  const page = parseInt(req.query.page as string, 10) || 1;
+  const limit = parseInt(req.query.limit as string, 10) || 10;
   const skip = (page - 1) * limit;
 
-  if (req.query.id) {
-    const id = req.query.id as string;
-    const podcast = await Podcast.findById(id);
-    if (!podcast)
-      return res.status(StatusCodes.NOT_FOUND).json({
-        success: false,
-        message: "Podcast not found",
-        data: {},
-      });
+  if (page < 1 || limit < 1) throw createError(StatusCodes.BAD_REQUEST, "Page and limit must be positive integers");
+    
+  
+  if (id) {
+    const podcast = await Podcast.findById(id)
+        .populate({ path: "primaryUser", select: "name avatar" })
+        .populate({ path: "participants", select: "name avatar" })
+        .lean()
+    
+    if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found");
+      
     return res.status(StatusCodes.OK).json({
       success: true,
-      message: "Successfully fetched the podcast",
+      message: "Podcast retrieved successfully",
       data: podcast,
     });
   }
 
-  const validStatuses = ["before", "after"];
-  if (status && !validStatuses.includes(status)) {
-    return res.status(StatusCodes.BAD_REQUEST).json({
-      success: false,
-      message: "Invalid status value. Allowed values: 'before', 'after'",
-      data: {},
-    });
+  let statusFilter: any = {};
+  if (status) {
+    if (status === "done") {
+      statusFilter.status = PodcastStatus.DONE;
+    } else if (status === "not_scheduled") {
+      statusFilter.status = PodcastStatus.NOT_SCHEDULED;
+    } else if (status === "scheduled") {
+      statusFilter.status = PodcastStatus.SCHEDULED;
+    } else if (status === "upcoming") {
+      statusFilter.status = { $in: [PodcastStatus.NOT_SCHEDULED, PodcastStatus.SCHEDULED] };
+    }
   }
 
-  let query: Record<string, any> = {};
-  if (status === "before") {
-    query = { status: { $in: [PodcastStatus.NOT_SCHEDULED, PodcastStatus.SCHEDULED] } };
-  } else if (status === "after") {
-    query = { status: { $in: [PodcastStatus.DONE] } };
-  }
-
-  const [podcasts, total] = await Promise.all([
-    Podcast.find(query)
+  const podcasts = await 
+    Podcast.find(statusFilter)
       .populate({ path: "primaryUser", select: "name avatar" })
       .populate({ path: "participants", select: "name avatar" })
       .skip(skip)
       .limit(limit)
-      .lean(),
-    Podcast.countDocuments(query),
-  ]);
+      .lean()
+
+  const total = await Podcast.countDocuments(statusFilter);
+  const totalPages = Math.ceil(total / limit);
 
   return res.status(StatusCodes.OK).json({
     success: true,
-    message: "Successfully retrieved podcasts",
+    message: podcasts.length ? "Successfully retrieved podcasts" : "No podcasts found",
     data: {
       podcasts,
       pagination: {
         page,
         limit,
         total,
-        totalPages: Math.ceil(total / limit),
+        totalPages,
       },
     },
   });
