@@ -9,6 +9,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
   const user = await User.findById(req.user.userId).lean();
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found."));
   const data = {
+    _id: user._id,
     name: user.name,
     email: req.user.email,
     contact: user.phoneNumber,
