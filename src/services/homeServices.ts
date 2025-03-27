@@ -9,21 +9,35 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
 
   const user = await User.findById(userId).populate({ path: "auth", select: "email" });
 
-  let podcast;
-  podcast = await 
-    Podcast.findOne({ primaryUser: userId }).populate({
+  let podcast = await Podcast.findOne({
+    $or: [{ primaryUser: userId }, { participants: userId }],
+  })
+    .populate({
       path: "participants",
       select: "name bio interests",
-    }).lean();
+    })
+    .populate({
+      path: "primaryUser",
+      select: "name bio interests",
+    })
+    .lean();
 
-  if (!podcast) podcast = {};
+  const isPrimaryUser = podcast ? podcast.primaryUser.toString() === userId : false;
 
   const subscriptionPlans = await SubscriptionPlan.find().lean();
 
-  return res
-    .status(StatusCodes.OK)
-    .json({ success: true, message: "Success", data: { user, podcast, subscriptionPlans } });
+  return res.status(StatusCodes.OK).json({
+    success: true,
+    message: "Success",
+    data: {
+      user,
+      podcast: podcast || {},
+      subscriptionPlans,
+      isPrimaryUser,
+    },
+  });
 };
+
 
 const HomeServices = {
   homeData,

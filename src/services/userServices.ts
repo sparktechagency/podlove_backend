@@ -6,163 +6,10 @@ import createError from "http-errors";
 import Auth from "@models/authModel";
 import { SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 
-const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { search } = req.query;
-  const page = parseInt(req.query.page as string, 10) || 1;
-  const limit = parseInt(req.query.limit as string, 10) || 10;
-  const skip = (page - 1) * limit;
-
-  if (page < 1 || limit < 1) {
-    return res.status(StatusCodes.BAD_REQUEST).json({
-      success: false,
-      message: "Page and limit must be positive integers",
-    });
-  }
-
-  try {
-    let users;
-    let totalUsers;
-
-    if (search) {
-      const aggregation = [
-        {
-          $lookup: {
-            from: "auths",
-            localField: "auth",
-            foreignField: "_id",
-            as: "authDetails",
-          },
-        },
-        {
-          $unwind: {
-            path: "$authDetails",
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $match: {
-            $or: [
-              { "authDetails.email": { $regex: search, $options: "i" } },
-              { name: { $regex: search, $options: "i" } },
-              { phoneNumber: { $regex: search, $options: "i" } },
-              { gender: search },
-              { address: { $regex: search, $options: "i" } },
-            ],
-          },
-        },
-        {
-          $project: {
-            name: 1,
-            phoneNumber: 1,
-            gender: 1,
-            age: 1,
-            address: 1,
-            "authDetails.email": 1,
-            "authDetails.isBlocked": 1,
-          },
-        },
-        {
-          $skip: skip,
-        },
-        {
-          $limit: limit,
-        },
-      ];
-
-      users = await User.aggregate(aggregation);
-
-      const countAggregation = [
-        {
-          $lookup: {
-            from: "auths",
-            localField: "auth",
-            foreignField: "_id",
-            as: "authDetails",
-          },
-        },
-        {
-          $unwind: {
-            path: "$authDetails",
-            preserveNullAndEmptyArrays: true,
-          },
-        },
-        {
-          $match: {
-            $or: [
-              { "authDetails.email": { $regex: search, $options: "i" } },
-              { name: { $regex: search, $options: "i" } },
-              { phoneNumber: { $regex: search, $options: "i" } },
-              { gender: search },
-              { address: { $regex: search, $options: "i" } },
-            ],
-          },
-        },
-        {
-          $count: "total",
-        },
-      ];
-
-      const totalResult = await User.aggregate(countAggregation);
-      totalUsers = totalResult[0]?.total || 0;
-    } else {
-      const [error, fetchedUsers] = await to(
-        User.find()
-          .populate({ path: "auth", select: "email isBlocked" })
-          .select("name avatar phoneNumber gender age address survey")
-          .lean()
-          .skip(skip)
-          .limit(limit)
-      );
-
-      if (error) return next(error);
-
-      users = fetchedUsers || [];
-      totalUsers = await User.countDocuments();
-    }
-
-    const totalPages = Math.ceil(totalUsers / limit);
-
-    if (!users || users.length === 0) {
-      return res.status(StatusCodes.OK).json({
-        success: true,
-        message: "No users found",
-        data: {
-          users: [],
-          pagination: search
-            ? undefined
-            : {
-                page,
-                limit,
-                totalPages: 0,
-                totalUsers: 0,
-              },
-        },
-      });
-    }
-
-    res.status(StatusCodes.OK).json({
-      success: true,
-      message: "Successfully retrieved users information",
-      data: {
-        users,
-        pagination: {
-          page,
-          limit,
-          totalPages,
-          totalUsers,
-        },
-      },
-    });
-  } catch (error) {
-    return next(error);
-  }
-};
-
 const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { search } = req.query;
   const page = parseInt(req.query.page as string, 10) || 1;
   const limit = parseInt(req.query.limit as string, 10) || 10;
-  const skip = (page - 1) * limit;
 
   if (page < 1 || limit < 1) {
     return res.status(StatusCodes.BAD_REQUEST).json({
@@ -171,73 +18,47 @@ const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunctio
     });
   }
 
-  try {
-    let users;
-    let totalUsers;
+  const skip = (page - 1) * limit;
 
-    if (search) {
-      users = await User.find({
-        "subscription.status": SubscriptionStatus.PAID,
-        $or: [{ name: { $regex: search, $options: "i" } }, { "subscription.plan": { $regex: search, $options: "i" } }],
-      })
-        .select("name subscription")
-        .lean()
-        .skip(skip)
-        .limit(limit);
+  let query: any = { "subscription.status": SubscriptionStatus.PAID };
 
-      totalUsers = await User.countDocuments({
-        "subscription.status": SubscriptionStatus.PAID,
-        $or: [{ name: { $regex: search, $options: "i" } }, { "subscription.plan": { $regex: search, $options: "i" } }],
-      });
-    } else {
-      const [error, fetchedUsers] = await to(
-        User.find({ "subscription.status": SubscriptionStatus.PAID })
-          .select("name subscription avatar")
-          .lean()
-          .skip(skip)
-          .limit(limit)
-      );
-
-      if (error) return next(error);
-
-      users = fetchedUsers || [];
-      totalUsers = await User.countDocuments({ "subscription.status": SubscriptionStatus.PAID });
-    }
-
-    const totalPages = Math.ceil(totalUsers / limit);
-
-    if (!users || users.length === 0) {
-      return res.status(StatusCodes.OK).json({
-        success: true,
-        message: "No premium users found",
-        data: {
-          users: [],
-          pagination: {
-            page,
-            limit,
-            totalPages: 0,
-            totalUsers: 0,
-          },
-        },
-      });
-    }
-
-    res.status(StatusCodes.OK).json({
-      success: true,
-      message: "Successfully retrieved premium users information",
-      data: {
-        users,
-        pagination: {
-          page,
-          limit,
-          totalPages,
-          totalUsers,
-        },
-      },
-    });
-  } catch (error) {
-    return next(error);
+  if (search) {
+    query.$or = [
+      { name: { $regex: search, $options: "i" } },
+      { "subscription.plan": { $regex: search, $options: "i" } },
+    ];
   }
+
+  const [users, total] = await Promise.all([
+    User.find(query).select("name subscription avatar").lean().skip(skip).limit(limit),
+    User.countDocuments(query),
+  ]);
+
+  const totalPages = Math.ceil(total / limit);
+
+  const subscriptionCounts = await User.aggregate([
+    {
+      $group: {
+        _id: "$subscription.plan",
+        count: { $sum: 1 },
+      },
+    },
+  ]);
+
+  return res.status(StatusCodes.OK).json({
+    success: true,
+    message: users.length ? "Successfully retrieved premium users information" : "No premium users found",
+    data: {
+      subscriptionCounts,
+      users,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+      },
+    },
+  });
 };
 
 const block = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -277,7 +98,6 @@ const unblock = async (req: Request, res: Response, next: NextFunction): Promise
 };
 
 const UserServices = {
-  getAllUsers,
   getAllPremiumUsers,
   block,
   unblock,

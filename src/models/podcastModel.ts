@@ -2,7 +2,7 @@ import { Document, Types, Schema, model } from "mongoose";
 import { PodcastStatus, PodcastType } from "@shared/enums";
 
 export type PodcastSchema = Document & {
-  type: PodcastType;
+  // type: PodcastType;
   primaryUser: Types.ObjectId;
   participants: Types.ObjectId[];
   schedule: {
@@ -13,15 +13,14 @@ export type PodcastSchema = Document & {
   selectedUser: Types.ObjectId | null;
   status: PodcastStatus;
   recordingUrl: string;
-  isFinished: boolean;
 };
 
 const podcastSchema = new Schema<PodcastSchema>({
-  type: {
-    type: String,
-    enum: PodcastType,
-    required: true,
-  },
+  // type: {
+  //   type: String,
+  //   enum: PodcastType,
+  //   required: true,
+  // },
   primaryUser: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -62,10 +61,6 @@ const podcastSchema = new Schema<PodcastSchema>({
     type: String,
     default: "",
   },
-  isFinished: {
-    type: Boolean,
-    default: false,
-  }
 });
 
 const Podcast = model<PodcastSchema>("Podcast", podcastSchema);

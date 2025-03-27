@@ -72,6 +72,7 @@ export enum PodcastStatus {
   SCHEDULED = "Scheduled",
   PLAYING = "Playing",
   DONE = "Done",
+  FINISHED = "Finished"
 }
 
 export enum Months {
