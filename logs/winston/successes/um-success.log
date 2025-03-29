@@ -1696,3 +1696,125 @@ Thu Mar 27 2025 9:4:26 [Podlove] [32minfo[39m: Successfully Connected to Mongo
 Thu Mar 27 2025 9:4:26 [Podlove] [32minfo[39m: Server is running at PORT: 7000
 Thu Mar 27 2025 9:4:32 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
 Thu Mar 27 2025 9:4:32 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Thu Mar 27 2025 9:10:21 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Mar 27 2025 9:10:21 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sat Mar 29 2025 2:21:6 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 2:21:6 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 9:59:50 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 9:59:50 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:9:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Mar 29 2025 10:9:46 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sat Mar 29 2025 10:9:46 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:9:46 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:11:7 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:11:7 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:11:37 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "age" for model "User"
+CastError: Cast to Number failed for value "NaN" (type number) at path "age" for model "User"
+    at SchemaNumber.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:380:11)
+    at SchemaNumber.handleSingle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:389:15)
+    at SchemaNumber.castForQuery (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:430:20)
+    at cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/cast.js:367:39)
+    at model.Query.Query.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4906:12)
+    at model.Query.Query._castConditions (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2309:10)
+    at model.Query._find (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2336:8)
+    at model.Query.exec (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4458:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Promise.all (index 0)
+CastError
+Sat Mar 29 2025 10:11:40 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:11:40 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:18:6 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:18:7 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:18:19 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:18:19 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:18:29 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "age" for model "User"
+CastError: Cast to Number failed for value "NaN" (type number) at path "age" for model "User"
+    at SchemaNumber.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:380:11)
+    at SchemaNumber.handleSingle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:389:15)
+    at SchemaNumber.castForQuery (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:430:20)
+    at cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/cast.js:367:39)
+    at model.Query.Query.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4906:12)
+    at model.Query.Query._castConditions (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2309:10)
+    at model.Query._find (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2336:8)
+    at model.Query.exec (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4458:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Promise.all (index 0)
+CastError
+Sat Mar 29 2025 10:20:11 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "age" for model "User"
+CastError: Cast to Number failed for value "NaN" (type number) at path "age" for model "User"
+    at SchemaNumber.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:380:11)
+    at SchemaNumber.handleSingle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:389:15)
+    at SchemaNumber.castForQuery (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:430:20)
+    at cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/cast.js:367:39)
+    at model.Query.Query.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4906:12)
+    at model.Query.Query._castConditions (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2309:10)
+    at model.Query._find (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2336:8)
+    at model.Query.exec (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4458:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Promise.all (index 0)
+CastError
+Sat Mar 29 2025 10:20:13 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "age" for model "User"
+CastError: Cast to Number failed for value "NaN" (type number) at path "age" for model "User"
+    at SchemaNumber.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:380:11)
+    at SchemaNumber.handleSingle (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:389:15)
+    at SchemaNumber.castForQuery (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/schema/number.js:430:20)
+    at cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/cast.js:367:39)
+    at model.Query.Query.cast (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4906:12)
+    at model.Query.Query._castConditions (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2309:10)
+    at model.Query._find (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:2336:8)
+    at model.Query.exec (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/mongoose@8.8.4/node_modules/mongoose/lib/query.js:4458:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Promise.all (index 0)
+CastError
+Sat Mar 29 2025 10:20:16 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:20:16 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:20:27 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:20:27 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:50:32 [Podlove] [32minfo[39m: 67a0661aee3ae6848db16501
+Sat Mar 29 2025 10:50:32 [Podlove] [32minfo[39m: 67a0661aee3ae6848db16501
+Sat Mar 29 2025 10:53:29 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Mar 29 2025 10:53:30 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sat Mar 29 2025 10:54:22 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:54:22 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:57:24 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:57:24 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:58:35 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:58:35 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 10:59:26 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 10:59:26 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:0:8 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:0:8 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:1:23 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:1:23 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:1:48 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:1:48 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:3:41 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:3:41 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:5:12 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:5:12 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:12:48 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:12:48 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:13:1 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:13:1 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:13:56 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:13:56 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:22:16 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Mar 29 2025 11:22:16 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sat Mar 29 2025 11:22:28 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:22:28 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:23:33 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:23:33 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:31:30 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:31:30 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:31:43 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:31:43 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 11:40:29 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 11:40:29 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 12:12:40 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Mar 29 2025 12:12:41 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sat Mar 29 2025 15:54:53 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Mar 29 2025 15:54:53 [Podlove] [32minfo[39m: Server is running at PORT: 7000
+Sat Mar 29 2025 15:55:18 [Podlove] [32minfo[39m: 67c7eade734e6386abd7ffab
+Sat Mar 29 2025 15:55:18 [Podlove] [32minfo[39m: [object Object]
+Sat Mar 29 2025 15:55:23 [Podlove] [32minfo[39m: 67a0661aee3ae6848db16501
+Sat Mar 29 2025 15:55:23 [Podlove] [32minfo[39m: 67a0661aee3ae6848db16501

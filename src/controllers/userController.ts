@@ -46,12 +46,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
   if (ethnicityArray.length) query.ethnicity = { $in: ethnicityArray };
 
   const [users, total] = await Promise.all([
-    User.find(query)
-      .populate({ path: "auth", select: "email isBlocked" })
-      .select("name avatar phoneNumber gender age address survey")
-      .lean()
-      .skip(skip)
-      .limit(limit),
+    User.find(query).populate({ path: "auth", select: "email isBlocked" }).lean().skip(skip).limit(limit),
     User.countDocuments(query),
   ]);
 
