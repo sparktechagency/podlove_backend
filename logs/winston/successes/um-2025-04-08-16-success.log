@@ -1,0 +1,27 @@
+Tue Apr 08 2025 16:16:56 [Podlove] [31merror[39m: Wrong OTP. Please enter the correct code
+UnauthorizedError: Wrong OTP. Please enter the correct code
+    at activate (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:50:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Tue Apr 08 2025 16:17:58 [Podlove] [31merror[39m: Wrong OTP. Please enter the correct code
+UnauthorizedError: Wrong OTP. Please enter the correct code
+    at activate (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:50:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Tue Apr 08 2025 16:18:3 [Podlove] [31merror[39m: Wrong OTP. Please enter the correct code
+UnauthorizedError: Wrong OTP. Please enter the correct code
+    at activate (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:50:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Tue Apr 08 2025 16:21:15 [Podlove] [31merror[39m: Verification OTP has expired.
+UnauthorizedError: Verification OTP has expired.
+    at activate (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:53:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Tue Apr 08 2025 16:21:38 [Podlove] [31merror[39m: Verification OTP has expired.
+UnauthorizedError: Verification OTP has expired.
+    at activate (/home/mir/dev/projects/podlove_backend/src/controllers/authController.ts:53:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Tue Apr 08 2025 16:25:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Apr 08 2025 16:25:49 [Podlove] [32minfo[39m: Server is running at PORT: 7001

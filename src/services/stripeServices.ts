@@ -22,7 +22,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
     }
   }
 
-  let error, subscriptionId, user, invoice;
+  let error, user, invoice;
   switch (event.type) {
     case "invoice.payment_succeeded":
       console.log("in");

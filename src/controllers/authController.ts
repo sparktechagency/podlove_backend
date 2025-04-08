@@ -12,7 +12,9 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
 
   let auth = await Auth.findByEmail(email);
   if (auth) {
-    const message = auth.isVerified ? "Email already exists! Please login." : "Email already exists! Please verify your account";
+    const message = auth.isVerified
+      ? "Email already exists! Please login."
+      : "Email already exists! Please verify your account";
     return res
       .status(StatusCodes.CONFLICT)
       .json({ success: false, message: message, data: { isVerified: auth.isVerified } });
@@ -31,7 +33,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     name,
     phoneNumber,
   });
-  await user.save({session});
+  await user.save({ session });
   await sendEmail(email, auth.verificationOTP);
 
   return res.status(StatusCodes.CREATED).json({
@@ -49,8 +51,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
   if (!auth.isCorrectVerificationOTP(otp))
     throw createError(StatusCodes.UNAUTHORIZED, "Wrong OTP. Please enter the correct code");
 
-  if (auth.isVerificationOTPExpired())
-    throw createError(StatusCodes.UNAUTHORIZED, "Verification OTP has expired.");
+  if (auth.isVerificationOTPExpired()) throw createError(StatusCodes.UNAUTHORIZED, "Verification OTP has expired.");
 
   auth.clearVerificationOTP();
   auth.isVerified = true;
@@ -151,6 +152,8 @@ type resendOTPPayload = {
 
 const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, next: NextFunction): Promise<any> => {
   const { method, email } = req.body;
+  console.log(method);
+
   let auth = await Auth.findByEmail(email);
   if (!auth) throw createError(StatusCodes.NOT_FOUND, "Account not found");
 

@@ -87,7 +87,6 @@ const userSchema = new Schema(
     },
     gender: {
       type: String,
-      enum: Object.values(Gender),
       default: "",
     },
     bodyType: {
@@ -154,7 +153,6 @@ const userSchema = new Schema(
     preferences: {
       gender: {
         type: [String],
-        enum: Object.values(Gender),
         default: "",
       },
       age: {
