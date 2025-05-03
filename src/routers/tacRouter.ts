@@ -5,7 +5,7 @@ import { asyncHandler } from "@shared/asyncHandler";
 
 const router = express.Router();
 
-router.get("/", authorize, asyncHandler(TaCController.get));
+router.get("/", asyncHandler(TaCController.get));
 router.patch("/update", admin_authorize, asyncHandler(TaCController.update));
 
 export default router;

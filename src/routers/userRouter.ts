@@ -12,6 +12,7 @@ const router = express.Router();
 router.patch("/update", authorize, asyncHandler(UserController.update));
 router.post("/block/:authId", UserServices.block);
 router.post("/unblock/:authId", UserServices.unblock);
+router.post("/validate-bio", asyncHandler(UserServices.validateBio));
 // router.post("/match/:id", MatchedServices.match);
 // router.get("/match/getAll/:id", MatchedServices.matchedUsers);
 router.get("/get-all-users", asyncHandler(UserController.getAll));

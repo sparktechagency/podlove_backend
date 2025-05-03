@@ -40,16 +40,15 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
   const skip = (page - 1) * limit;
 
   if (page < 1 || limit < 1) throw createError(StatusCodes.BAD_REQUEST, "Page and limit must be positive integers");
-    
-  
+
   if (id) {
     const podcast = await Podcast.findById(id)
-        .populate({ path: "primaryUser", select: "name avatar" })
-        .populate({ path: "participants", select: "name avatar" })
-        .lean()
-    
+      .populate({ path: "primaryUser", select: "name avatar" })
+      .populate({ path: "participants", select: "name avatar" })
+      .lean();
+
     if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found");
-      
+
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Podcast retrieved successfully",
@@ -70,13 +69,12 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
     }
   }
 
-  const podcasts = await 
-    Podcast.find(statusFilter)
-      .populate({ path: "primaryUser", select: "name avatar" })
-      .populate({ path: "participants", select: "name avatar" })
-      .skip(skip)
-      .limit(limit)
-      .lean()
+  const podcasts = await Podcast.find(statusFilter)
+    .populate({ path: "primaryUser", select: "name avatar" })
+    .populate({ path: "participants", select: "name avatar" })
+    .skip(skip)
+    .limit(limit)
+    .lean();
 
   const total = await Podcast.countDocuments(statusFilter);
   const totalPages = Math.ceil(total / limit);

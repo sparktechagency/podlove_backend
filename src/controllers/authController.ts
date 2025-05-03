@@ -15,9 +15,11 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     const message = auth.isVerified
       ? "Email already exists! Please login."
       : "Email already exists! Please verify your account";
+    auth.generateVerificationOTP();
+    await auth.save();
     return res
       .status(StatusCodes.CONFLICT)
-      .json({ success: false, message: message, data: { isVerified: auth.isVerified } });
+      .json({ success: false, message: message, data: { isVerified: auth.isVerified, otp: auth.verificationOTP } });
   }
 
   const session = req.session;

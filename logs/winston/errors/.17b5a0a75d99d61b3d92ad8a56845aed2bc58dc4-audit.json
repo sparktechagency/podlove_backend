@@ -6,119 +6,74 @@
     "auditLog": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/.17b5a0a75d99d61b3d92ad8a56845aed2bc58dc4-audit.json",
     "files": [
         {
-            "date": 1743026091843,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-27-03-error.log",
-            "hash": "5219cbfab6eb87fc6ebf9913e759d26999cdd6d467a9c266db16a9ddcb7f5325"
+            "date": 1745130426646,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-20-12-error.log",
+            "hash": "ec355e48ef92885fc490fa4afe6df524a8d6800170ad54a28019252f5886f70a"
         },
         {
-            "date": 1743026907925,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-27-04-error.log",
-            "hash": "7236b620b26ad6b477297f9c8823ae2c23019b56f4ddf5e3883ca5ca0a13d159"
+            "date": 1745133166911,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-20-13-error.log",
+            "hash": "9e317d702152270da7e810be0495ad9e812e71e1c8bc47cdfee741666e3093d6"
         },
         {
-            "date": 1743030743021,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-27-05-error.log",
-            "hash": "195e066507e0d7e266606fabad9da2542c12c428050aaddbb45619f1c69d5860"
+            "date": 1745204237419,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-21-08-error.log",
+            "hash": "e6a2394162d84ad3315e0d25dc2c7a8d645373408a70dfb0621d94d47f028241"
         },
         {
-            "date": 1743037421486,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-27-07-error.log",
-            "hash": "0ef5b612fc3913e9f41a681c24f55f4757e7685c54071369dfcc3a09e8bdf321"
+            "date": 1745204982648,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-21-09-error.log",
+            "hash": "ea1dc6bb576d767fd73b5bc83ec806606289d82633c71855ed3fa6266b798c40"
         },
         {
-            "date": 1743040944376,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-27-08-error.log",
-            "hash": "b403476be508aff9190aef770fda69546acc052c49e47ef25ef939101bc2e26a"
+            "date": 1745311813866,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-22-14-error.log",
+            "hash": "24c955f391e779e96b5026478a7869d1e7f3d29c047315030521bb06f008eb0e"
         },
         {
-            "date": 1743044650865,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-27-09-error.log",
-            "hash": "c9ec7734c03ab13e01e68000808aa0de7edcaacba8354e49679a2a3817a88c28"
+            "date": 1745312435060,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-22-15-error.log",
+            "hash": "08805be32714bcff7f5e94f92479433e8644e2ce9eef7e1927c19e9860cf6e1f"
         },
         {
-            "date": 1743221384078,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-29-10-error.log",
-            "hash": "03aefab19622ad81a3d48f00a94f8c88f1762e628cf42c044a70e39f30f54b81"
+            "date": 1745323263627,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-22-18-error.log",
+            "hash": "11474dcf33c8daf32d416c86ea9581fe63c64e26695c378dc71a0070f84992b5"
         },
         {
-            "date": 1743225734325,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-29-11-error.log",
-            "hash": "07440dcb4dd9369bfe8bb454203c3447b2388bb9c3346160449df3caadc2a665"
+            "date": 1745380406742,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-23-09-error.log",
+            "hash": "ac6fcb5df4bab04363ee326d206002a70ec1931030ae33a025c3a2776beb73ab"
         },
         {
-            "date": 1743228758653,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-29-12-error.log",
-            "hash": "baa899c1626f057d0c583a879ca5f60b4ab4d84eec2f85e0c4f9ebbb40293f93"
+            "date": 1745909983507,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-29-12-error.log",
+            "hash": "fafdb219278f9a0dd72b826d7c7dcc433078a31f5b46d57840de5c9ace58fd55"
         },
         {
-            "date": 1743242091366,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-29-15-error.log",
-            "hash": "f22ada4c412c1074dd25da6915fe69c8dbc737d5695b68cfeb432c8d2b6c7621"
+            "date": 1746243585845,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-05-03-09-error.log",
+            "hash": "32d3c6adc961be7e66fefd5dab55bfd96c602e5a388c4b70468b57964bf7c922"
         },
         {
-            "date": 1743306048084,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-30-09-error.log",
-            "hash": "dbf65e1d99678ce8902197ff92f691cc34fd8c372a42512c504fa2982973a628"
+            "date": 1746246023227,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-05-03-10-error.log",
+            "hash": "5cbb1c9fb9a7007bfa7e1b0b8b9c62318ad6d348ebe80b57f078fa9e09396b4c"
         },
         {
-            "date": 1743312874341,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-30-11-error.log",
-            "hash": "acca8bb0aa36ae7187575fbf0d096bc7d03a925c19605fd916b07084e86774a9"
+            "date": 1746254196549,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-05-03-12-error.log",
+            "hash": "7bd4777a0c5b6e59a1872bdbef7ed43de04b4308f6d64e9e8d6cfadc17a67fcc"
         },
         {
-            "date": 1743324340449,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-03-30-14-error.log",
-            "hash": "872adbfd93a2a9d5b07371888167317cd6b08e0fa1ba62d05ed541ec89c980d7"
+            "date": 1746255606618,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-05-03-13-error.log",
+            "hash": "74c96e26381ce18afb533a82bfabbcacf50466035e3fb90ccedb066bbfde696c"
         },
         {
-            "date": 1743586102027,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-02-15-error.log",
-            "hash": "06c486b0b6b5a142ee3564a31c9343c8006a93ee0375087df4d9fb1a5f8cb2c6"
-        },
-        {
-            "date": 1743589908314,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-02-16-error.log",
-            "hash": "5a391ec4d7df0325e9e696230c35e627ede3dbcfdbb30d78447aca65904adb03"
-        },
-        {
-            "date": 1743654717356,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-03-10-error.log",
-            "hash": "825494d661536a7dd6115c49e110edde7806bf06aa2c9559d81da2a36e917885"
-        },
-        {
-            "date": 1743656840426,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-03-11-error.log",
-            "hash": "122119a6b9ec9b27050974cdae78fce585055cbaace5d6ea924788623cf518c2"
-        },
-        {
-            "date": 1743756647249,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-04-14-error.log",
-            "hash": "757ac1b69f4edb163749bae0bebf2894e5e7f6874bd0371174c4c67ab321180b"
-        },
-        {
-            "date": 1743841716404,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-05-14-error.log",
-            "hash": "d8b4162872f03d03ac0a1ca9f277b5652475626d08e021760079395a666b03e0"
-        },
-        {
-            "date": 1743845668818,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-05-15-error.log",
-            "hash": "cdf761bfa57c5cd39eb84c7e355b2148a0a52f924bb75fec26fbbdf0a5e8441d"
-        },
-        {
-            "date": 1744005975825,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-07-12-error.log",
-            "hash": "4fa2d1af26852cc875bea967f9d31ce2dac6d3d4aef43c52345dcca49de03dac"
-        },
-        {
-            "date": 1744093796821,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-08-12-error.log",
-            "hash": "e9d3245d0876db663cd426e9c584a0f7cf191a9f9374ef6030c1683063d17134"
-        },
-        {
-            "date": 1744107947365,
-            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-04-08-16-error.log",
-            "hash": "5a64f5c880ec44266edccd7ba60362170624c55b2d3c0fe32e3b62720521790b"
+            "date": 1746264521832,
+            "name": "/home/mir/dev/projects/podlove_backend/logs/winston/errors/um-2025-05-03-15-error.log",
+            "hash": "6a4d98b084a42bdb6337f517960b649e63165bffb70aa7b16119bfe19c79106a"
         }
     ],
     "hashType": "sha256"

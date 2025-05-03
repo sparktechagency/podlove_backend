@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@google/generative-ai':
+        specifier: ^0.24.1
+        version: 0.24.1
       await-to-ts:
         specifier: ^1.0.6
         version: 1.0.6
@@ -127,6 +130,10 @@ packages:
 
   '@dabh/diagnostics@2.0.3':
     resolution: {integrity: sha512-hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA==}
+
+  '@google/generative-ai@0.24.1':
+    resolution: {integrity: sha512-MqO+MLfM6kjxcKoy0p1wRzG3b4ZZXtPI+z2IE26UogS2Cm/XHO+7gGRBh6gcJsOiIVoH93UwKvW4HdgiOZCy9Q==}
+    engines: {node: '>=18.0.0'}
 
   '@jridgewell/resolve-uri@3.1.2':
     resolution: {integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==}
@@ -1343,6 +1350,8 @@ snapshots:
       colorspace: 1.1.4
       enabled: 2.0.0
       kuler: 2.0.0
+
+  '@google/generative-ai@0.24.1': {}
 
   '@jridgewell/resolve-uri@3.1.2': {}
 

@@ -14,8 +14,7 @@ export type UserSchema = Document & {
   isProfileComplete: boolean;
   name: string;
   phoneNumber: string;
-  address: string | null;
-  age: number;
+  dateOfBirth: string;
   gender: string;
   bodyType: string;
   ethnicity: string[];
@@ -76,14 +75,9 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
-    address: {
+    dateOfBirth: {
       type: String,
       default: "",
-    },
-    age: {
-      type: Number,
-      min: 35,
-      default: 35,
     },
     gender: {
       type: String,

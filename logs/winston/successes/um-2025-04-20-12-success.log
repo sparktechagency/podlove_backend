@@ -1,0 +1,103 @@
+Sun Apr 20 2025 12:27:8 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:27:9 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:27:17 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:27:18 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:27:22 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:27:22 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:28:5 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:28:6 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:28:6 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:28:32 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:28:33 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:28:33 [Podlove] [32minfo[39m: Consumer Policy added Successfully!
+Sun Apr 20 2025 12:28:33 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:28:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:28:57 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:28:57 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:28:57 [Podlove] [32minfo[39m: Media Policy added Successfully!
+Sun Apr 20 2025 12:28:57 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:29:33 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:29:33 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:29:33 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:29:33 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:29:33 [Podlove] [32minfo[39m: Server is running at PORT: 7005
+Sun Apr 20 2025 12:32:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:32:18 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:32:18 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:32:18 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:32:33 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:32:34 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:32:34 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:32:34 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:32:34 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:33:1 [Podlove] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (/home/mir/dev/projects/podlove_backend/src/utils/jwt.ts:27:22)
+    at /home/mir/dev/projects/podlove_backend/src/middlewares/authorization.ts:50:32
+    at /home/mir/dev/projects/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/mir/dev/projects/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+UnauthorizedError
+Sun Apr 20 2025 12:33:22 [Podlove] [32minfo[39m: 67a98f287809a7a156b6d1cf
+Sun Apr 20 2025 12:34:56 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:34:57 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:34:57 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:34:57 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:34:57 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:35:12 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:35:12 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:35:12 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:35:12 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:35:12 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:35:21 [Podlove] [32minfo[39m: 67a98f287809a7a156b6d1cf
+Sun Apr 20 2025 12:37:47 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:37:47 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:37:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:37:47 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:37:47 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:38:5 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:38:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:38:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:38:5 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:38:5 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:38:13 [Podlove] [32minfo[39m: 67a98f287809a7a156b6d1cf
+Sun Apr 20 2025 12:42:50 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:42:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:42:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:42:51 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:42:51 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:43:26 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:43:27 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:43:27 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:43:27 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:43:27 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:43:34 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:43:35 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:43:35 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:43:35 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:43:35 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:45:12 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:45:13 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:45:13 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:45:13 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:45:13 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:46:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:46:49 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:46:49 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:46:50 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:46:50 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:47:51 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:47:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:47:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:47:51 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:47:51 [Podlove] [32minfo[39m: Server is running at PORT: 7001
+Sun Apr 20 2025 12:47:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Apr 20 2025 12:47:59 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Apr 20 2025 12:47:59 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Apr 20 2025 12:47:59 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Apr 20 2025 12:47:59 [Podlove] [32minfo[39m: Server is running at PORT: 7001

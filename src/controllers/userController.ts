@@ -70,18 +70,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const user = await User.findById(req.user.userId).lean();
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found."));
-  const data = {
-    _id: user._id,
-    name: user.name,
-    email: req.user.email,
-    contact: user.phoneNumber,
-    address: user.address,
-    avatar: user.avatar,
-    gender: user.gender,
-    bio: user.bio,
-    joind: user.createdAt,
-  };
-  return res.status(StatusCodes.OK).json({ success: true, message: "User data retrieved successfully.", data: data });
+  return res.status(StatusCodes.OK).json({ success: true, message: "User data retrieved successfully.", data: user });
 };
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {

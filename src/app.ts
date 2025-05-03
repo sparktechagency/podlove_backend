@@ -19,6 +19,8 @@ import PodcastRouter from "@routers/podcastRouter";
 import HomeRouter from "@routers/homeRouter";
 import AIRouter from "@routers/aiRouter";
 import NotificationRouter from "@routers/notificationRouter";
+import ConsumerPolicyRouter from "@routers/consumerPolicyRouter";
+import MediaPolicyRouter from "@routers/mediaPolicyRouter";
 
 const app = express();
 
@@ -30,7 +32,7 @@ app.use(
   cors({
     origin: "*",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    credentials: true
+    credentials: true,
   })
 );
 
@@ -49,6 +51,8 @@ app.use("/podcast", PodcastRouter);
 app.use("/home", HomeRouter);
 app.use("/ai", AIRouter);
 app.use("/notification", NotificationRouter);
+app.use("/consumer", ConsumerPolicyRouter);
+app.use("/media", MediaPolicyRouter);
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello From Podlove");
