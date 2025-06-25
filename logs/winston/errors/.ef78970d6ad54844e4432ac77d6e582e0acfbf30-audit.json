@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\bdCalling\\Documents\\Jahid Hasan\\podlove_backend\\logs\\winston\\errors\\.ef78970d6ad54844e4432ac77d6e582e0acfbf30-audit.json",
+    "files": [
+        {
+            "date": 1750852195003,
+            "name": "C:\\Users\\bdCalling\\Documents\\Jahid Hasan\\podlove_backend\\logs\\winston\\errors\\um-2025-06-25-17-error.log",
+            "hash": "c0d75f72f63c867801816b16e39ebf5c3bd0289fa8838b48ac59bdbddeaf86e6"
+        },
+        {
+            "date": 1750855525268,
+            "name": "C:\\Users\\bdCalling\\Documents\\Jahid Hasan\\podlove_backend\\logs\\winston\\errors\\um-2025-06-25-18-error.log",
+            "hash": "ed3a06a2e9a6aa5797c5d2664d6c313a85ebc39862c716e239e7df154ac82688"
+        },
+        {
+            "date": 1750864165757,
+            "name": "C:\\Users\\bdCalling\\Documents\\Jahid Hasan\\podlove_backend\\logs\\winston\\errors\\um-2025-06-25-21-error.log",
+            "hash": "d148240daa33e34c1138d3bbbfab9c1214bcfb8ea8c79c214355e68c8803ec12"
+        }
+    ],
+    "hashType": "sha256"
+}

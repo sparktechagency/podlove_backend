@@ -6,10 +6,11 @@ import fileUpload from "express-fileupload";
 import fileHandler from "@middlewares/fileHandler";
 import MatchedServices from "@services/matchesServices";
 import { asyncHandler } from "@shared/asyncHandler";
+import { upload } from "@utils/multerConfig";
 
 const router = express.Router();
 
-router.patch("/update", authorize, asyncHandler(UserController.update));
+router.patch("/update", authorize, upload.single("avatar"), asyncHandler(UserController.update));
 router.post("/block/:authId", UserServices.block);
 router.post("/unblock/:authId", UserServices.unblock);
 router.post("/validate-bio", asyncHandler(UserServices.validateBio));

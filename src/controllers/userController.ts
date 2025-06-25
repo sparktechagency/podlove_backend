@@ -4,6 +4,7 @@ import createError from "http-errors";
 import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
 import Cloudinary from "@shared/cloudinary";
+import mongoose from "mongoose";
 
 const getAll = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { search, minAge, maxAge, gender, bodyType, ethnicity } = req.query;
@@ -73,13 +74,112 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
   return res.status(StatusCodes.OK).json({ success: true, message: "User data retrieved successfully.", data: user });
 };
 
+// const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+//   console.log("file", req.file);
+//   const user = await User.findByIdAndUpdate(req.user.userId, { $set: req.body }, { new: true }).populate({
+//     path: "auth",
+//     select: "email",
+//   });
+//   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found."));
+//   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
+// };
+
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const user = await User.findByIdAndUpdate(req.user.userId, { $set: req.body }, { new: true }).populate({
-    path: "auth",
-    select: "email",
-  });
-  if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found."));
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: user });
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  try {
+    const userId = req.user.userId;
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      throw createError(StatusCodes.BAD_REQUEST, "Invalid user ID");
+    }
+
+    // Build an updates object with only allowed top-level fields
+    const allowedFields = [
+      "isProfileComplete",
+      "name",
+      "phoneNumber",
+      "dateOfBirth",
+      "gender",
+      "bodyType",
+      "ethnicity",
+      "bio",
+      "compatibility",
+      "survey",
+      "isSelectedForPodcast",
+    ];
+    const updates: any = {};
+
+    for (const field of allowedFields) {
+      if (req.body[field] !== undefined) {
+        updates[field] = req.body[field];
+      }
+    }
+
+    // Parse nested JSON strings if sent via form-data
+    if (req.body.personality) {
+      updates.personality =
+        typeof req.body.personality === "string" ? JSON.parse(req.body.personality) : req.body.personality;
+    }
+    if (req.body.interests) {
+      updates.interests = typeof req.body.interests === "string" ? JSON.parse(req.body.interests) : req.body.interests;
+    }
+    if (req.body.location) {
+      const loc = typeof req.body.location === "string" ? JSON.parse(req.body.location) : req.body.location;
+      updates.location = {
+        place: loc.place,
+        longitude: Number(loc.longitude),
+        latitude: Number(loc.latitude),
+      };
+    }
+    if (req.body.preferences) {
+      const pref = typeof req.body.preferences === "string" ? JSON.parse(req.body.preferences) : req.body.preferences;
+      updates.preferences = {
+        gender: pref.gender,
+        age: { min: Number(pref.age.min), max: Number(pref.age.max) },
+        bodyType: pref.bodyType,
+        ethnicity: pref.ethnicity,
+        distance: Number(pref.distance),
+      };
+    }
+    if (req.body.subscription) {
+      const sub = typeof req.body.subscription === "string" ? JSON.parse(req.body.subscription) : req.body.subscription;
+      updates.subscription = {
+        id: sub.id,
+        plan: sub.plan,
+        fee: sub.fee,
+        status: sub.status,
+        startedAt: new Date(sub.startedAt),
+      };
+    }
+
+    // Handle avatar upload
+    if (req.file) {
+      // assuming Multer put the file in /uploads and req.file.filename is set
+      updates.avatar = `/uploads/${req.file.filename}`;
+    }
+
+    // Perform the update
+    const user = await User.findByIdAndUpdate(userId, { $set: updates }, { new: true, session })
+      .populate({ path: "auth", select: "email" })
+      .lean();
+
+    if (!user) {
+      throw createError(StatusCodes.NOT_FOUND, "User not found.");
+    }
+
+    await session.commitTransaction();
+    session.endSession();
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Profile updated successfully",
+      data: user,
+    });
+  } catch (err) {
+    await session.abortTransaction();
+    session.endSession();
+    next(err);
+  }
 };
 
 const UserController = {

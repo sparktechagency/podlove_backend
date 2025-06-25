@@ -1290,3 +1290,127 @@ BadRequestError: Your bio contains content that violates our guidelines. Please 
     at validateBio (/home/mir/dev/projects/podlove_backend/src/services/userServices.ts:78:20)
     at processTicksAndRejections (node:internal/process/task_queues:105:5)
 BadRequestError
+Wed Jun 25 2025 17:50:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 17:50:11 [Podlove] [32minfo[39m: No administrators found. Creating one...
+Wed Jun 25 2025 17:50:12 [Podlove] [32minfo[39m: Administrator created successfully. Starting server...
+Wed Jun 25 2025 17:50:12 [Podlove] [32minfo[39m: Privacy Policy added successfully!
+Wed Jun 25 2025 17:50:13 [Podlove] [32minfo[39m: Consumer Policy added Successfully!
+Wed Jun 25 2025 17:50:14 [Podlove] [32minfo[39m: Media Policy added Successfully!
+Wed Jun 25 2025 17:50:14 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 18:44:19 [Podlove] [31merror[39m: Failed to send email: connect ECONNREFUSED ::1:587
+Error: Failed to send email: connect ECONNREFUSED ::1:587
+    at sendEmail (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\utils\sendEmail.ts:30:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async register (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\controllers\authController.ts:39:3)
+    at async C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:16:7
+Error
+Wed Jun 25 2025 18:46:5 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 18:46:8 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 18:46:9 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 18:46:9 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 18:46:9 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 18:52:39 [Podlove] [31merror[39m: Failed to send email: connect ECONNREFUSED ::1:465
+Error: Failed to send email: connect ECONNREFUSED ::1:465
+    at sendEmail (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\utils\sendEmail.ts:31:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async register (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\controllers\authController.ts:39:3)
+    at async C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:16:7
+Error
+Wed Jun 25 2025 18:56:58 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 18:57:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 18:57:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 18:57:6 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 18:57:6 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 19:14:44 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Wed Jun 25 2025 21:9:31 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 21:9:33 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 21:9:34 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 21:9:34 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 21:9:34 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 21:9:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 21:9:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 21:9:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 21:9:52 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 21:9:52 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 21:10:17 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 21:10:20 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 21:10:20 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 21:10:20 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 21:10:20 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 21:10:39 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 21:10:42 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 21:10:43 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 21:10:43 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 21:10:43 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 21:12:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 21:12:55 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 21:12:55 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 21:12:55 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 21:12:55 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 21:18:21 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 21:18:24 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 21:18:24 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 21:18:24 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 21:18:24 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 21:27:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 21:27:23 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 21:27:23 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 21:27:24 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 21:27:24 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 21:29:5 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:44:30
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Wed Jun 25 2025 21:29:39 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Wed Jun 25 2025 21:52:32 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jun 25 2025 21:52:35 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jun 25 2025 21:52:35 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jun 25 2025 21:52:35 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jun 25 2025 21:52:35 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Wed Jun 25 2025 21:58:8 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Wed Jun 25 2025 21:58:9 [Podlove] [31merror[39m: Cast to date failed for value "Invalid Date" (type Date) at path "subscription.startedAt"
+CastError: Cast to date failed for value "Invalid Date" (type Date) at path "subscription.startedAt"
+    at SchemaDate.cast (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\date.js:377:11)
+    at SchemaDate.SchemaType.applySetters (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaDate.castForQuery (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\date.js:412:19)
+    at castUpdateVal (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:628:19)
+    at walkUpdatePath (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:433:24)
+    at walkUpdatePath (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:378:20)
+    at castUpdate (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4851:10)
+    at model.Query._findOneAndUpdate (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3474:23)
+    at model.Query.exec (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+CastError
+Wed Jun 25 2025 22:1:53 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Wed Jun 25 2025 22:4:55 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Wed Jun 25 2025 22:10:25 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\userServices.ts:78:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+BadRequestError
+Wed Jun 25 2025 22:12:31 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\userServices.ts:78:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+BadRequestError

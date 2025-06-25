@@ -24,7 +24,7 @@ import MediaPolicyRouter from "@routers/mediaPolicyRouter";
 
 const app = express();
 
-app.use("/", WebhookRouter);
+// app.use("/", WebhookRouter);
 
 app.use(express.json());
 
