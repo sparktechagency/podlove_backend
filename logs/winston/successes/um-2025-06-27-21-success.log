@@ -1,0 +1,46 @@
+Fri Jun 27 2025 21:27:16 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jun 27 2025 21:27:19 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jun 27 2025 21:27:20 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jun 27 2025 21:27:20 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jun 27 2025 21:27:20 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Fri Jun 27 2025 21:27:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jun 27 2025 21:27:39 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jun 27 2025 21:27:40 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jun 27 2025 21:27:40 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jun 27 2025 21:27:40 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Fri Jun 27 2025 21:28:3 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jun 27 2025 21:28:6 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jun 27 2025 21:28:6 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jun 27 2025 21:28:7 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jun 27 2025 21:28:7 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Fri Jun 27 2025 21:39:3 [Podlove] [31merror[39m: Missing or invalid fields
+BadRequestError: Missing or invalid fields
+    at sendMessage (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\adminServices.ts:76:24)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:47:12)
+BadRequestError
+Fri Jun 27 2025 21:39:38 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jun 27 2025 21:39:41 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jun 27 2025 21:39:41 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jun 27 2025 21:39:41 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jun 27 2025 21:39:41 [Podlove] [32minfo[39m: Server is running at PORT: 8000
+Fri Jun 27 2025 21:39:46 [Podlove] [31merror[39m: Missing or invalid fields
+BadRequestError: Missing or invalid fields
+    at sendMessage (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\adminServices.ts:76:24)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:47:12)
+BadRequestError

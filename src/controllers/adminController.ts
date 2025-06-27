@@ -22,7 +22,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   return res.status(StatusCodes.CREATED).json({
     success: true,
     message: "Administrator created successfully.",
-    data: {}
+    data: {admin}
   });
 };
 
@@ -116,7 +116,9 @@ const getAdminInfo = async (req: Request, res: Response, next: NextFunction): Pr
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const adminId = req.admin.id;
-  const { name, contact, address, avatarUrl } = req.body;
+  const avatar = req.file;
+  const avatarUrl = `uploads/${avatar?.filename}`;
+  const { name, contact, address } = req.body;
   let error, admin;
   [error, admin] = await to(Administrator.findById(adminId));
   if (error) return next(error);
