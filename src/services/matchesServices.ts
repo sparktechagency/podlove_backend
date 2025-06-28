@@ -1,22 +1,49 @@
 import User, { UserSchema } from "@models/userModel";
+import { Request, Response, NextFunction } from "express";
 import OpenAI from "openai";
 import process from "node:process";
+import { StatusCodes } from "http-status-codes";
+import createError from "http-errors";
 import { Types } from "mongoose";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_KEY,
-});
-
-const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+// const pLimit = require('p-limit');
+const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
+const CONCURRENCY_LIMIT = 3;
+const MODEL = "gpt-4o";
+// Calculates haversine distance in kilometers
+export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const R = 6371;
-  const dLat = (lat2 - lat1) * (Math.PI / 180);
-  const dLon = (lon2 - lon1) * (Math.PI / 180);
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c;
-};
+  const rad = (x: number) => (x * Math.PI) / 180;
+  const dLat = rad(lat2 - lat1);
+  const dLon = rad(lon2 - lon1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Uses OpenAI to compute a compatibility score (0-100)
+// async function getCompatibilityScore(answersA: string[], answersB: string[]): Promise<number> {
+//   const prompt = answersA.map((a, i) => `Q${i+1}: A:${a} vs B:${answersB[i]}`).join('\n');
+//   const system = 'Return only a compatibility score (0-100).';
+//   const resp = await openai.chat.completions.create({
+//     model: MODEL,
+//     temperature: 0.3,
+//     max_tokens: 10,
+//     messages: [
+//       { role: 'system', content: system },
+//       { role: 'user', content: prompt }
+//     ]
+//   });
+//   const raw = resp.choices[0].message?.content?.trim() || '0';
+//   const num = parseFloat(raw);
+//   return isNaN(num) ? 0 : Math.min(100, Math.max(0, num));
+// }
+
+export interface Preferences {
+  gender: string[];
+  age: { min: number; max: number };
+  bodyType: string[];
+  ethnicity: string[];
+  distance: number;
+}
 
 const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: string[]) => {
   const questions = [
@@ -53,9 +80,11 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
     userContent += `User2: ${userTwoAnswers[i]}\n\n`;
   }
 
+  console.log("User content for OpenAI:", userContent);
+
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: MODEL,
       temperature: 0.3,
       max_tokens: 50,
       messages: [
@@ -73,7 +102,8 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
         },
       ],
     });
-
+  
+    console.log("Raw API response:", response);
     const rawOutput = response.choices[0].message!.content!.trim();
     const numericRegex = /^\d+(\.\d+)?$/;
     if (!numericRegex.test(rawOutput)) {
@@ -85,35 +115,105 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
     return null;
   }
 };
-type UserPreferences = {
-  gender: string[];
-  age: { min: number; max: number };
-  bodyType: string[];
-  ethnicity: string[];
-  distance: number;
-};
-const filterUsers = async (
-  userPreferences: UserPreferences,
-  latitude: number,
-  longitude: number
-): Promise<UserSchema[]> => {
-  const query = {
+
+
+async function findMatches(
+  userId: string,
+  answers: string[],
+  limitCount = 3
+): Promise<{ user: UserSchema; score: number }[]> {
+  // 1) Load user
+  const user = await User.findById(userId).lean();
+  if (!user) throw new Error("User not found");
+
+  // 2) Save own answers
+  await User.findByIdAndUpdate(userId, { compatibility: answers }).exec();
+
+  // 3) Build filter based on preferences
+  const pref = user.preferences;
+  const candidates = await User.find({
+    _id: { $ne: user._id },
     age: {
-      $gte: userPreferences.age.min,
-      $lte: userPreferences.age.max,
+      $gte: pref.age.min,
+      $lte: pref.age.max,
     },
-    gender: { $in: userPreferences.gender },
-    bodyType: { $in: userPreferences.bodyType },
-    ethnicity: { $in: userPreferences.ethnicity },
-  };
+    gender: { $in: pref.gender },
+    bodyType: { $in: pref.bodyType },
+    ethnicity: { $in: pref.ethnicity },
+  }).lean();
 
-  const filteredUsers = await User.find(query).exec();
+  // 4) Distance filtering
+  const nearby = candidates.filter(
+    (c) =>
+      calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
+      pref.distance
+  );
 
-  return filteredUsers.filter((user) => {
-    const distance = calculateDistance(latitude, longitude, user.location.latitude, user.location.longitude);
-    return distance <= userPreferences.distance;
-  });
-};
+  console.log("Nearby candidates:", nearby);
+
+  // 5) Compute scores with concurrency limit
+  // const limit = pLimit(CONCURRENCY_LIMIT);
+  const scored = await Promise.all(
+    nearby.map(async (c) => ({
+      user: c,
+      score: await getCompatibilityScore(answers, c.compatibility || []),
+    }))
+  );
+
+  // 6) Sort & return top N
+  return scored
+    .map((item) => ({
+      user: item.user,
+      score: item.score === null ? 0 : item.score,
+    }))
+    .sort((a, b) => {
+      const scoreA = a.score ?? -Infinity;
+      const scoreB = b.score ?? -Infinity;
+      return scoreB - scoreA;
+    })
+    .slice(0, limitCount);
+}
+
+// const openai = new OpenAI({
+//   apiKey: process.env.OPENAI_KEY,
+// });
+
+// const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+//   const R = 6371;
+//   const dLat = (lat2 - lat1) * (Math.PI / 180);
+//   const dLon = (lon2 - lon1) * (Math.PI / 180);
+//   const a =
+//     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+//     Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+//   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+//   return R * c;
+// };
+
+
+// const filterUsers = async (
+//   userPreferences: UserPreferences,
+//   latitude: number,
+//   longitude: number
+// ): Promise<UserSchema[]> => {
+//   const query = {
+//     age: {
+//       $gte: userPreferences.age.min,
+//       $lte: userPreferences.age.max,
+//     },
+//     gender: { $in: userPreferences.gender },
+//     bodyType: { $in: userPreferences.bodyType },
+//     ethnicity: { $in: userPreferences.ethnicity },
+//   };
+
+//   const filteredUsers = await User.find(query).exec();
+
+//   return filteredUsers.filter((user) => {
+//     const distance = calculateDistance(latitude, longitude, user.location.latitude, user.location.longitude);
+//     return distance <= userPreferences.distance;
+//   });
+// };
+
+// const matchByCompatibility = async()
 
 // const match = async (user: UserSchema, matchCount: number = 2): Promise<Types.ObjectId[]> => {
 //   const userOneAnswers = user.compatibility;
@@ -137,7 +237,7 @@ const filterUsers = async (
 //   return scoredCandidates.slice(0, matchCount).map((item) => item.user._id as Types.ObjectId);
 // };
 
-const match = async (userId: string, matchCount: number = 2): Promise<string[]> => {
+const match = async (userId: string, matchCount: number = 3): Promise<string[]> => {
   const matchedUsers = await User.aggregate([
     { $match: { _id: { $ne: new Types.ObjectId(userId) } } },
     { $sample: { size: matchCount } },
@@ -146,8 +246,35 @@ const match = async (userId: string, matchCount: number = 2): Promise<string[]> 
   return matchedUsers.map((u: { _id: Types.ObjectId }) => u._id.toString());
 };
 
+interface MatchRequestBody {
+  compatibility: string[];
+  count?: number;
+}
+
+const matchUser = async (
+  req: Request<{ id: string }, {}, MatchRequestBody>,
+  res: Response,
+  next: NextFunction
+): Promise<any> => {
+  try {
+    const userId = req.params.id;
+    const { compatibility, count } = req.body;
+
+    // Validate answers length
+    if (!Array.isArray(compatibility) || compatibility.length !== 22) {
+      throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of 22 strings");
+    }
+
+    const topMatches = await findMatches(userId, compatibility, count || 3);
+    return res.status(StatusCodes.OK).json({ success: true, data: topMatches });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const MatchedServices = {
   match,
+  matchUser,
 };
 
 export default MatchedServices;

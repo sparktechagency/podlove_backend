@@ -14,7 +14,7 @@ router.patch("/update", authorize, upload.single("avatar"), asyncHandler(UserCon
 router.post("/block/:authId", UserServices.block);
 router.post("/unblock/:authId", UserServices.unblock);
 router.post("/validate-bio", asyncHandler(UserServices.validateBio));
-// router.post("/match/:id", MatchedServices.match);
+router.post("/match/:id", MatchedServices.matchUser);
 // router.get("/match/getAll/:id", MatchedServices.matchedUsers);
 router.get("/get-all-users", asyncHandler(UserController.getAll));
 router.get("/get-all-premium-users", UserServices.getAllPremiumUsers);
