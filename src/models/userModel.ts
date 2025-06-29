@@ -152,11 +152,11 @@ const userSchema = new Schema(
       age: {
         min: {
           type: Number,
-          default: 35,
+          default: 25,
         },
         max: {
           type: Number,
-          default: 80,
+          default: 35,
         },
       },
       bodyType: {

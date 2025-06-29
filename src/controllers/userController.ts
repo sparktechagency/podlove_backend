@@ -109,6 +109,10 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
     ];
     const updates: any = {};
 
+    console.log("req.body", req.body);
+    // for testing purpoose add it will be validate with openai 
+    updates.bio = req.body.text ? req.body.text.trim() : "";
+
     for (const field of allowedFields) {
       if (req.body[field] !== undefined) {
         updates[field] = req.body[field];

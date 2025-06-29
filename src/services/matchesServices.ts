@@ -5,6 +5,7 @@ import process from "node:process";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
 import { Types } from "mongoose";
+import Podcast from "@models/podcastModel";
 // const pLimit = require('p-limit');
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
 const CONCURRENCY_LIMIT = 3;
@@ -102,9 +103,10 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
         },
       ],
     });
-  
+
     console.log("Raw API response:", response);
     const rawOutput = response.choices[0].message!.content!.trim();
+    console.log("Raw output from OpenAI:", rawOutput);
     const numericRegex = /^\d+(\.\d+)?$/;
     if (!numericRegex.test(rawOutput)) {
       throw new Error(`Output is not strictly a number: "${rawOutput}"`);
@@ -116,54 +118,148 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
   }
 };
 
+async function filterByPreferences(
+  userPreferences: {
+    age: { min: number; max: number };
+    gender: string[];
+    bodyType: string[];
+    ethnicity: string[];
+    distance: number;
+  },
+  currentLat: number,
+  currentLon: number
+) {
+  const now = new Date();
 
-async function findMatches(
-  userId: string,
-  answers: string[],
-  limitCount = 3
-): Promise<{ user: UserSchema; score: number }[]> {
+  const results = await User.aggregate([
+    // 1) Compute each user’s age in years
+    {
+      $addFields: {
+        age: {
+          $floor: {
+            $divide: [{ $subtract: [now, { $toDate: "$dateOfBirth" }] }, 1000 * 60 * 60 * 24 * 365],
+          },
+        },
+      },
+    },
+    // 2) Apply all preference filters
+    {
+      $match: {
+        gender: { $in: userPreferences.gender },
+        bodyType: { $in: userPreferences.bodyType },
+        ethnicity: { $in: userPreferences.ethnicity }, // matches any in the array
+        age: {
+          $gte: userPreferences.age.min,
+          $lte: userPreferences.age.max,
+        },
+      },
+    },
+    // 3) (Optional) filter by distance in JS if you need geo
+    {
+      $addFields: {
+        distanceKm: {
+          $let: {
+            vars: {
+              lat1: currentLat,
+              lon1: currentLon,
+              lat2: "$location.latitude",
+              lon2: "$location.longitude",
+            },
+            in: {
+              $multiply: [
+                6371,
+                {
+                  $acos: {
+                    $add: [
+                      {
+                        $multiply: [{ $sin: { $toRadians: "$$lat1" } }, { $sin: { $toRadians: "$$lat2" } }],
+                      },
+                      {
+                        $multiply: [
+                          { $cos: { $toRadians: "$$lat1" } },
+                          { $cos: { $toRadians: "$$lat2" } },
+                          { $cos: { $toRadians: { $subtract: ["$$lon2", "$$lon1"] } } },
+                        ],
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        },
+      },
+    },
+    {
+      $match: {
+        distanceKm: { $lte: userPreferences.distance },
+      },
+    },
+    // 4) Project only the fields you need
+    {
+      $project: {
+        _id: 1,
+        name: 1,
+        gender: 1,
+        age: 1,
+        ethnicity: 1,
+        bodyType: 1,
+        distanceKm: 1,
+      },
+    },
+  ]).exec();
+
+  return results;
+}
+
+
+async function findMatches(userId: string, answers: string[], limitCount = 3): Promise<any> {
   // 1) Load user
   const user = await User.findById(userId).lean();
   if (!user) throw new Error("User not found");
+
+  if (user.compatibility && user.compatibility.length === 22) {
+    answers = user.compatibility;
+  }
 
   // 2) Save own answers
   await User.findByIdAndUpdate(userId, { compatibility: answers }).exec();
 
   // 3) Build filter based on preferences
   const pref = user.preferences;
-  const candidates = await User.find({
-    _id: { $ne: user._id },
-    age: {
-      $gte: pref.age.min,
-      $lte: pref.age.max,
-    },
-    gender: { $in: pref.gender },
-    bodyType: { $in: pref.bodyType },
-    ethnicity: { $in: pref.ethnicity },
+  console.log("User preferences:", pref, " pref.gender[0]: ", pref.gender[0], " pref.bodyType[0]: ", pref.bodyType[0]);
+  let candidates = await User.find({
+    // age:       { $gte: pref.age.min, $lte: pref.age.max },
+    gender: { $in: pref.gender[0] },
+    bodyType: { $in: pref.bodyType[0] },
+    // ethnicity: { $in: pref.ethnicity[0] }
   }).lean();
 
+  console.log("Candidates found:", candidates);
   // 4) Distance filtering
-  const nearby = candidates.filter(
-    (c) =>
-      calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
-      pref.distance
-  );
+  // const nearby = candidates.filter(
+  //   (c) =>
+  //     calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
+  //     pref.distance
+  // );
 
-  console.log("Nearby candidates:", nearby);
+  // console.log("Nearby candidates:", nearby);
 
   // 5) Compute scores with concurrency limit
   // const limit = pLimit(CONCURRENCY_LIMIT);
   const scored = await Promise.all(
-    nearby.map(async (c) => ({
+    candidates.map(async (c) => ({
       user: c,
       score: await getCompatibilityScore(answers, c.compatibility || []),
     }))
   );
 
+  console.log("Scored candidates:", scored);
+
   // 6) Sort & return top N
   return scored
     .map((item) => ({
-      user: item.user,
+      user: item.user._id,
       score: item.score === null ? 0 : item.score,
     }))
     .sort((a, b) => {
@@ -188,7 +284,6 @@ async function findMatches(
 //   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 //   return R * c;
 // };
-
 
 // const filterUsers = async (
 //   userPreferences: UserPreferences,
@@ -258,15 +353,14 @@ const matchUser = async (
 ): Promise<any> => {
   try {
     const userId = req.params.id;
-    const { compatibility, count } = req.body;
-
-    // Validate answers length
+    let { compatibility, count } = req.body;
     if (!Array.isArray(compatibility) || compatibility.length !== 22) {
       throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of 22 strings");
     }
 
     const topMatches = await findMatches(userId, compatibility, count || 3);
-    return res.status(StatusCodes.OK).json({ success: true, data: topMatches });
+    const podcast = await Podcast.create({ primaryUser: userId, participants: topMatches, status: "not_scheduled" });
+    return res.status(StatusCodes.OK).json({ success: true, message: "Matched users successfully", data: podcast });
   } catch (err) {
     next(err);
   }

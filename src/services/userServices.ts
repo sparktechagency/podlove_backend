@@ -66,16 +66,16 @@ const validateBio = async (req: Request, res: Response, next: NextFunction): Pro
   const bio = req.body.text as string;
   console.log(bio);
 
-  const result = await OpenaiServices.analyzeBio(bio);
+  // const result = await OpenaiServices.analyzeBio(bio);
 
-  if (result === true) {
-    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
-  }
+  // if (result === true) {
+  //   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {} });
+  // }
 
-  const errorMessage =
-    "Your bio contains content that violates our guidelines. Please ensure it does not include:\n1. Profanity, hate speech, or explicit content\n2. Personal information such as phone numbers, addresses, emails, or identifiable details\n3. Spam, random characters, or nonsensical phrases.";
+  // const errorMessage =
+  //   "Your bio contains content that violates our guidelines. Please ensure it does not include:\n1. Profanity, hate speech, or explicit content\n2. Personal information such as phone numbers, addresses, emails, or identifiable details\n3. Spam, random characters, or nonsensical phrases.";
 
-  throw createError(StatusCodes.BAD_REQUEST, errorMessage);
+  // throw createError(StatusCodes.BAD_REQUEST, errorMessage);
 };
 
 const block = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
