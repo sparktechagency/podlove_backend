@@ -1,0 +1,59 @@
+Mon Jun 30 2025 21:30:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jun 30 2025 21:30:46 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jun 30 2025 21:30:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jun 30 2025 21:30:47 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jun 30 2025 21:30:47 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 10.0.60.168
+Mon Jun 30 2025 21:32:35 [Podlove] [31merror[39m: Podcast validation failed: participants.0: Cast to [ObjectId] failed for value "[ { user: new ObjectId('685bf24e49787bb2bfa51b3c'), score: 91 } ]" (type string) at path "participants.0" because of "CastError", status: `not_scheduled` is not a valid enum value for path `status`.
+ValidationError: Podcast validation failed: participants.0: Cast to [ObjectId] failed for value "[ { user: new ObjectId('685bf24e49787bb2bfa51b3c'), score: 91 } ]" (type string) at path "participants.0" because of "CastError", status: `not_scheduled` is not a valid enum value for path `status`.
+    at model.Document.invalidate (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:3352:32)
+    at model.$set (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:1480:12)
+    at model.$set (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:1132:16)
+    at model.Document (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:178:12)
+    at model.Model (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:127:12)
+    at new model (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:4836:15)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:2786:20
+    at Array.map (<anonymous>)
+    at Function.create (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:2774:34)
+    at matchUser (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\matchesServices.ts:273:35)
+ValidationError
+Mon Jun 30 2025 21:35:15 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jun 30 2025 21:35:18 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jun 30 2025 21:35:18 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jun 30 2025 21:35:18 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jun 30 2025 21:35:18 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 10.0.60.168
+Mon Jun 30 2025 21:35:24 [Podlove] [31merror[39m: Podcast validation failed: participants.0: Cast to [ObjectId] failed for value "[ { user: new ObjectId('685bf24e49787bb2bfa51b3c'), score: 92 } ]" (type string) at path "participants.0" because of "CastError", status: `not_scheduled` is not a valid enum value for path `status`.
+ValidationError: Podcast validation failed: participants.0: Cast to [ObjectId] failed for value "[ { user: new ObjectId('685bf24e49787bb2bfa51b3c'), score: 92 } ]" (type string) at path "participants.0" because of "CastError", status: `not_scheduled` is not a valid enum value for path `status`.
+    at model.Document.invalidate (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:3352:32)
+    at model.$set (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:1480:12)
+    at model.$set (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:1132:16)
+    at model.Document (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:178:12)
+    at model.Model (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:127:12)
+    at new model (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:4836:15)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:2786:20
+    at Array.map (<anonymous>)
+    at Function.create (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:2774:34)
+    at matchUser (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\matchesServices.ts:273:35)
+ValidationError
+Mon Jun 30 2025 21:36:39 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jun 30 2025 21:36:42 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jun 30 2025 21:36:43 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jun 30 2025 21:36:43 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jun 30 2025 21:36:43 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 10.0.60.168
+Mon Jun 30 2025 21:36:52 [Podlove] [31merror[39m: Podcast validation failed: participants.0: Cast to [ObjectId] failed for value "[ { user: new ObjectId('685bf24e49787bb2bfa51b3c'), score: 92 } ]" (type string) at path "participants.0" because of "CastError"
+ValidationError: Podcast validation failed: participants.0: Cast to [ObjectId] failed for value "[ { user: new ObjectId('685bf24e49787bb2bfa51b3c'), score: 92 } ]" (type string) at path "participants.0" because of "CastError"
+    at model.Document.invalidate (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:3352:32)
+    at model.$set (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:1480:12)
+    at model.$set (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:1132:16)
+    at model.Document (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\document.js:178:12)
+    at model.Model (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:127:12)
+    at new model (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:4836:15)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:2786:20
+    at Array.map (<anonymous>)
+    at Function.create (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\model.js:2774:34)
+    at matchUser (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\matchesServices.ts:273:35)
+ValidationError
+Mon Jun 30 2025 21:47:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jun 30 2025 21:47:21 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jun 30 2025 21:47:21 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jun 30 2025 21:47:22 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jun 30 2025 21:47:22 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 10.0.60.168

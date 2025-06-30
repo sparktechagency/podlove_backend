@@ -1,24 +1,26 @@
 import User, { UserSchema } from "@models/userModel";
 import { Request, Response, NextFunction } from "express";
+import { calculateAge } from "@utils/ageUtils";
 import OpenAI from "openai";
 import process from "node:process";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
 import { Types } from "mongoose";
 import Podcast from "@models/podcastModel";
+import { calculateDistance } from "@utils/calculateDistanceUtils";
 // const pLimit = require('p-limit');
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
 const CONCURRENCY_LIMIT = 3;
 const MODEL = "gpt-4o";
 // Calculates haversine distance in kilometers
-export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
-  const R = 6371;
-  const rad = (x: number) => (x * Math.PI) / 180;
-  const dLat = rad(lat2 - lat1);
-  const dLon = rad(lon2 - lon1);
-  const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLon / 2) ** 2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-}
+// export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+//   const R = 6371;
+//   const rad = (x: number) => (x * Math.PI) / 180;
+//   const dLat = rad(lat2 - lat1);
+//   const dLon = rad(lon2 - lon1);
+//   const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLon / 2) ** 2;
+//   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+// }
 
 // Uses OpenAI to compute a compatibility score (0-100)
 // async function getCompatibilityScore(answersA: string[], answersB: string[]): Promise<number> {
@@ -118,99 +120,6 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
   }
 };
 
-async function filterByPreferences(
-  userPreferences: {
-    age: { min: number; max: number };
-    gender: string[];
-    bodyType: string[];
-    ethnicity: string[];
-    distance: number;
-  },
-  currentLat: number,
-  currentLon: number
-) {
-  const now = new Date();
-
-  const results = await User.aggregate([
-    // 1) Compute each user’s age in years
-    {
-      $addFields: {
-        age: {
-          $floor: {
-            $divide: [{ $subtract: [now, { $toDate: "$dateOfBirth" }] }, 1000 * 60 * 60 * 24 * 365],
-          },
-        },
-      },
-    },
-    // 2) Apply all preference filters
-    {
-      $match: {
-        gender: { $in: userPreferences.gender },
-        bodyType: { $in: userPreferences.bodyType },
-        ethnicity: { $in: userPreferences.ethnicity }, // matches any in the array
-        age: {
-          $gte: userPreferences.age.min,
-          $lte: userPreferences.age.max,
-        },
-      },
-    },
-    // 3) (Optional) filter by distance in JS if you need geo
-    {
-      $addFields: {
-        distanceKm: {
-          $let: {
-            vars: {
-              lat1: currentLat,
-              lon1: currentLon,
-              lat2: "$location.latitude",
-              lon2: "$location.longitude",
-            },
-            in: {
-              $multiply: [
-                6371,
-                {
-                  $acos: {
-                    $add: [
-                      {
-                        $multiply: [{ $sin: { $toRadians: "$$lat1" } }, { $sin: { $toRadians: "$$lat2" } }],
-                      },
-                      {
-                        $multiply: [
-                          { $cos: { $toRadians: "$$lat1" } },
-                          { $cos: { $toRadians: "$$lat2" } },
-                          { $cos: { $toRadians: { $subtract: ["$$lon2", "$$lon1"] } } },
-                        ],
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        },
-      },
-    },
-    {
-      $match: {
-        distanceKm: { $lte: userPreferences.distance },
-      },
-    },
-    // 4) Project only the fields you need
-    {
-      $project: {
-        _id: 1,
-        name: 1,
-        gender: 1,
-        age: 1,
-        ethnicity: 1,
-        bodyType: 1,
-        distanceKm: 1,
-      },
-    },
-  ]).exec();
-
-  return results;
-}
 
 
 async function findMatches(userId: string, answers: string[], limitCount = 3): Promise<any> {
@@ -227,28 +136,31 @@ async function findMatches(userId: string, answers: string[], limitCount = 3): P
 
   // 3) Build filter based on preferences
   const pref = user.preferences;
-  console.log("User preferences:", pref, " pref.gender[0]: ", pref.gender[0], " pref.bodyType[0]: ", pref.bodyType[0]);
+  const age = calculateAge(user.dateOfBirth);
+  if(age < pref.age.min || age > pref.age.max) {
+    throw createError(StatusCodes.BAD_REQUEST, "User's age does not match preferences");
+  }
+
   let candidates = await User.find({
-    // age:       { $gte: pref.age.min, $lte: pref.age.max },
-    gender: { $in: pref.gender[0] },
-    bodyType: { $in: pref.bodyType[0] },
-    // ethnicity: { $in: pref.ethnicity[0] }
+    gender: { $in: pref.gender },
+    bodyType: { $in: pref.bodyType },
+    ethnicity: { $in: pref.ethnicity }
   }).lean();
 
   console.log("Candidates found:", candidates);
   // 4) Distance filtering
-  // const nearby = candidates.filter(
-  //   (c) =>
-  //     calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
-  //     pref.distance
-  // );
+  const nearby = candidates.filter(
+    (c) =>
+      calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
+      pref.distance
+  );
 
   // console.log("Nearby candidates:", nearby);
 
   // 5) Compute scores with concurrency limit
   // const limit = pLimit(CONCURRENCY_LIMIT);
   const scored = await Promise.all(
-    candidates.map(async (c) => ({
+    nearby.map(async (c) => ({
       user: c,
       score: await getCompatibilityScore(answers, c.compatibility || []),
     }))
@@ -359,7 +271,7 @@ const matchUser = async (
     }
 
     const topMatches = await findMatches(userId, compatibility, count || 3);
-    const podcast = await Podcast.create({ primaryUser: userId, participants: topMatches, status: "not_scheduled" });
+    const podcast = await Podcast.create({ primaryUser: userId, participants: topMatches, status: "NotScheduled" });
     return res.status(StatusCodes.OK).json({ success: true, message: "Matched users successfully", data: podcast });
   } catch (err) {
     next(err);

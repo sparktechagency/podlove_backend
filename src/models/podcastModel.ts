@@ -4,7 +4,7 @@ import { PodcastStatus, PodcastType } from "@shared/enums";
 export type PodcastSchema = Document & {
   // type: PodcastType;
   primaryUser: Types.ObjectId;
-  participants: Types.ObjectId[];
+  participants:   { user: Types.ObjectId; score: number }[];
   schedule: {
     date: string;
     day: string;
@@ -13,6 +13,8 @@ export type PodcastSchema = Document & {
   selectedUser: Types.ObjectId | null;
   status: PodcastStatus;
   recordingUrl: string;
+  score: number;
+  createdAt?: Date;
 };
 
 const podcastSchema = new Schema<PodcastSchema>({
@@ -28,10 +30,9 @@ const podcastSchema = new Schema<PodcastSchema>({
   },
   participants: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
+    user:  { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    score: { type: Number, required: true }
+  }
   ],
   schedule: {
     date: {
@@ -60,6 +61,10 @@ const podcastSchema = new Schema<PodcastSchema>({
   recordingUrl: {
     type: String,
     default: "",
+  },
+  score: {
+    type: Number,
+    default: 0,
   },
 });
 
