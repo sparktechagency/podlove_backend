@@ -1,20 +1,14 @@
-
-export function calculateAge(birthdate: string | Date, asOf = new Date()) {
-  const dob = new Date(birthdate);
-  if (isNaN(dob.getTime())) {
-    throw new Error(`Invalid birthdate: ${birthdate}`);
-  }
-
-  let age = asOf.getFullYear() - dob.getFullYear();
-  const m = asOf.getMonth() - dob.getMonth();
-  if (m < 0 || (m === 0 && asOf.getDate() < dob.getDate())) {
-    age--;
-  }
-  return age;
+export function ageToDOB(age: number) {
+  const today = new Date();
+  const year = today.getFullYear() - age;
+  const dateOfBirth = new Date(year, today.getMonth(), today.getDate());
+  const fmt = (d: Date) => d.toISOString().split('T')[0];
+  const formate = fmt(dateOfBirth);
+  return formate;
 }
 
 const ageUtils = {
-  calculateAge,
+  ageToDOB,
 };
 export default ageUtils;
 

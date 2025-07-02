@@ -147,12 +147,14 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
     }
     if (req.body.subscription) {
       const sub = typeof req.body.subscription === "string" ? JSON.parse(req.body.subscription) : req.body.subscription;
+      const timestamp = Date.parse(sub.startedAt);
+      console.log("timestamp", timestamp);
       updates.subscription = {
         id: sub.id,
         plan: sub.plan,
         fee: sub.fee,
         status: sub.status,
-        startedAt: new Date(sub.startedAt),
+        startedAt: new Date(timestamp || Date.now()), 
       };
     }
 

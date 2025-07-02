@@ -1,44 +1,16 @@
 import User, { UserSchema } from "@models/userModel";
 import { Request, Response, NextFunction } from "express";
-import { calculateAge } from "@utils/ageUtils";
+import { ageToDOB } from "@utils/ageUtils";
 import OpenAI from "openai";
 import process from "node:process";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
-import { Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
 import Podcast from "@models/podcastModel";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
-// const pLimit = require('p-limit');
+import { SubscriptionPlanName } from "@shared/enums";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
-const CONCURRENCY_LIMIT = 3;
 const MODEL = "gpt-4o";
-// Calculates haversine distance in kilometers
-// export function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
-//   const R = 6371;
-//   const rad = (x: number) => (x * Math.PI) / 180;
-//   const dLat = rad(lat2 - lat1);
-//   const dLon = rad(lon2 - lon1);
-//   const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLon / 2) ** 2;
-//   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-// }
-
-// Uses OpenAI to compute a compatibility score (0-100)
-// async function getCompatibilityScore(answersA: string[], answersB: string[]): Promise<number> {
-//   const prompt = answersA.map((a, i) => `Q${i+1}: A:${a} vs B:${answersB[i]}`).join('\n');
-//   const system = 'Return only a compatibility score (0-100).';
-//   const resp = await openai.chat.completions.create({
-//     model: MODEL,
-//     temperature: 0.3,
-//     max_tokens: 10,
-//     messages: [
-//       { role: 'system', content: system },
-//       { role: 'user', content: prompt }
-//     ]
-//   });
-//   const raw = resp.choices[0].message?.content?.trim() || '0';
-//   const num = parseFloat(raw);
-//   return isNaN(num) ? 0 : Math.min(100, Math.max(0, num));
-// }
 
 export interface Preferences {
   gender: string[];
@@ -46,6 +18,10 @@ export interface Preferences {
   bodyType: string[];
   ethnicity: string[];
   distance: number;
+}
+
+interface MatchRequestBody {
+  compatibility: string[];
 }
 
 const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: string[]) => {
@@ -83,8 +59,6 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
     userContent += `User2: ${userTwoAnswers[i]}\n\n`;
   }
 
-  console.log("User content for OpenAI:", userContent);
-
   try {
     const response = await openai.chat.completions.create({
       model: MODEL,
@@ -105,8 +79,6 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
         },
       ],
     });
-
-    console.log("Raw API response:", response);
     const rawOutput = response.choices[0].message!.content!.trim();
     console.log("Raw output from OpenAI:", rawOutput);
     const numericRegex = /^\d+(\.\d+)?$/;
@@ -120,54 +92,48 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
   }
 };
 
-
-
-async function findMatches(userId: string, answers: string[], limitCount = 3): Promise<any> {
+async function findMatches(
+  userId: string,
+  answers: string[],
+  limitCount: number,
+  session: mongoose.mongo.ClientSession
+): Promise<any> {
   // 1) Load user
-  const user = await User.findById(userId).lean();
+  const user = await User.findById(userId, {}, { session }).lean();
   if (!user) throw new Error("User not found");
 
   if (user.compatibility && user.compatibility.length === 22) {
     answers = user.compatibility;
   }
-
   // 2) Save own answers
-  await User.findByIdAndUpdate(userId, { compatibility: answers }).exec();
-
+  await User.findByIdAndUpdate(userId, { compatibility: answers }, { session }).exec();
   // 3) Build filter based on preferences
   const pref = user.preferences;
-  const age = calculateAge(user.dateOfBirth);
-  if(age < pref.age.min || age > pref.age.max) {
-    throw createError(StatusCodes.BAD_REQUEST, "User's age does not match preferences");
-  }
-
-  let candidates = await User.find({
-    gender: { $in: pref.gender },
-    bodyType: { $in: pref.bodyType },
-    ethnicity: { $in: pref.ethnicity }
-  }).lean();
-
-  console.log("Candidates found:", candidates);
+  console.log("User preferences:", pref);
+  let candidates = await User.find(
+    {
+      _id: { $ne: user._id },
+      dateOfBirth: { $gte: ageToDOB(pref.age.max), $lte: ageToDOB(pref.age.min) },
+      gender: { $in: pref.gender },
+      bodyType: { $in: pref.bodyType },
+      ethnicity: { $in: pref.ethnicity },
+    },
+    null,
+    { session }
+  ).lean();
   // 4) Distance filtering
   const nearby = candidates.filter(
     (c) =>
       calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
       pref.distance
   );
-
-  // console.log("Nearby candidates:", nearby);
-
   // 5) Compute scores with concurrency limit
-  // const limit = pLimit(CONCURRENCY_LIMIT);
   const scored = await Promise.all(
     nearby.map(async (c) => ({
       user: c,
       score: await getCompatibilityScore(answers, c.compatibility || []),
     }))
   );
-
-  console.log("Scored candidates:", scored);
-
   // 6) Sort & return top N
   return scored
     .map((item) => ({
@@ -182,68 +148,6 @@ async function findMatches(userId: string, answers: string[], limitCount = 3): P
     .slice(0, limitCount);
 }
 
-// const openai = new OpenAI({
-//   apiKey: process.env.OPENAI_KEY,
-// });
-
-// const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
-//   const R = 6371;
-//   const dLat = (lat2 - lat1) * (Math.PI / 180);
-//   const dLon = (lon2 - lon1) * (Math.PI / 180);
-//   const a =
-//     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-//     Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-//   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-//   return R * c;
-// };
-
-// const filterUsers = async (
-//   userPreferences: UserPreferences,
-//   latitude: number,
-//   longitude: number
-// ): Promise<UserSchema[]> => {
-//   const query = {
-//     age: {
-//       $gte: userPreferences.age.min,
-//       $lte: userPreferences.age.max,
-//     },
-//     gender: { $in: userPreferences.gender },
-//     bodyType: { $in: userPreferences.bodyType },
-//     ethnicity: { $in: userPreferences.ethnicity },
-//   };
-
-//   const filteredUsers = await User.find(query).exec();
-
-//   return filteredUsers.filter((user) => {
-//     const distance = calculateDistance(latitude, longitude, user.location.latitude, user.location.longitude);
-//     return distance <= userPreferences.distance;
-//   });
-// };
-
-// const matchByCompatibility = async()
-
-// const match = async (user: UserSchema, matchCount: number = 2): Promise<Types.ObjectId[]> => {
-//   const userOneAnswers = user.compatibility;
-
-//   const filteredUserList = await filterUsers(
-//     user.preferences,
-//     user.location.latitude,
-//     user.location.longitude
-//   );
-
-//   const scoredCandidates = [];
-//   for (const candidate of filteredUserList) {
-//     const userTwoAnswers = candidate.compatibility;
-//     const score = (await getCompatibilityScore(userOneAnswers, userTwoAnswers)) ?? 0;
-//     scoredCandidates.push({
-//       user: candidate,
-//       compatibilityScore: score
-//     });
-//   }
-//   scoredCandidates.sort((a, b) => b.compatibilityScore - a.compatibilityScore);
-//   return scoredCandidates.slice(0, matchCount).map((item) => item.user._id as Types.ObjectId);
-// };
-
 const match = async (userId: string, matchCount: number = 3): Promise<string[]> => {
   const matchedUsers = await User.aggregate([
     { $match: { _id: { $ne: new Types.ObjectId(userId) } } },
@@ -253,27 +157,148 @@ const match = async (userId: string, matchCount: number = 3): Promise<string[]> 
   return matchedUsers.map((u: { _id: Types.ObjectId }) => u._id.toString());
 };
 
-interface MatchRequestBody {
-  compatibility: string[];
-  count?: number;
-}
-
 const matchUser = async (
   req: Request<{ id: string }, {}, MatchRequestBody>,
   res: Response,
   next: NextFunction
 ): Promise<any> => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
   try {
     const userId = req.params.id;
-    let { compatibility, count } = req.body;
+    let { compatibility } = req.body;
     if (!Array.isArray(compatibility) || compatibility.length !== 22) {
       throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of 22 strings");
     }
 
-    const topMatches = await findMatches(userId, compatibility, count || 3);
-    const podcast = await Podcast.create({ primaryUser: userId, participants: topMatches, status: "NotScheduled" });
+    const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
+    if (podcastExists) {
+      return res.status(StatusCodes.CONFLICT).json({
+        success: false,
+        message: "User already has a podcast not scheduled",
+        data: {},
+      });
+    }
+
+    const topMatches = await findMatches(userId, compatibility, 2, session);
+    const podcast = await Podcast.create([{ primaryUser: userId, participants: topMatches, status: "NotScheduled" }], {
+      session,
+    });
+    await session.commitTransaction();
+    session.endSession();
     return res.status(StatusCodes.OK).json({ success: true, message: "Matched users successfully", data: podcast });
   } catch (err) {
+    await session.abortTransaction();
+    session.endSession();
+    next(err);
+  }
+};
+
+const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  if (!userId) {
+    return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated"));
+  }
+  if (!Types.ObjectId.isValid(userId)) {
+    return next(createError(StatusCodes.BAD_REQUEST, "Invalid user ID"));
+  }
+
+  const session = await mongoose.startSession();
+  session.startTransaction({ readConcern: { level: "snapshot" } });
+
+  try {
+    // 1) Load the podcast and populate participants.user
+    const findUserMatch = await Podcast.findOne({ primaryUser: userId }, null, { session })
+      .populate({
+        path: "participants.user",
+        select: "name avatar compatibility",
+        options: { session },
+      })
+      .lean()
+      .exec();
+
+    if (!findUserMatch) {
+      throw createError(StatusCodes.NOT_FOUND, "No podcast found for this user");
+    }
+
+    // 2) Extract all participant user IDs
+    const userIds: Types.ObjectId[] = findUserMatch.participants.map((p) => p.user as Types.ObjectId);
+
+    // 3) Load full user docs in one query
+    const users = await User.find(
+      { _id: { $in: userIds } },
+      "name avatar bio interests personality phoneNumber dateOfBirth isProfileComplete location preferences",
+      { session }
+    )
+      .lean()
+      .exec();
+
+    if (!users.length) {
+      throw createError(StatusCodes.NOT_FOUND, "Matched users not found");
+    }
+
+    // 4) Commit transaction (snapshot read only, no writes needed)
+    await session.commitTransaction();
+    session.endSession();
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Matched users retrieved successfully",
+      data: { users },
+    });
+  } catch (err) {
+    await session.abortTransaction();
+    session.endSession();
+    return next(err);
+  }
+};
+
+const findMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const session = await mongoose.startSession();
+  try {
+    session.startTransaction();
+
+    // 1) Load user
+    const user = await User.findById(req.user.userId, null, { session });
+    if (!user) {
+      throw createError(StatusCodes.NOT_FOUND, "User not found");
+    }
+
+    // 2) Determine matchCount based on plan
+    let matchCount: number;
+    switch (user.subscription.plan) {
+      case SubscriptionPlanName.LISTENER:
+        matchCount = 2;
+        break;
+      case SubscriptionPlanName.SPEAKER:
+        matchCount = 3;
+        break;
+      default:
+        matchCount = 4;
+    }
+
+    // 3) Compute participants (this will update user's compatibility inside)
+    const participants = await findMatches(req.user.userId, user.compatibility, matchCount, session);
+
+    // 4) Update or create the podcast document
+    const podcastUpdate = await Podcast.findOneAndUpdate(
+      { primaryUser: user._id },
+      { $set: { participants } },
+      { new: true, session }
+    );
+
+    // 5) Commit and respond
+    await session.commitTransaction();
+    session.endSession();
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "User successfully updated matches for the podcast",
+      data: podcastUpdate,
+    });
+  } catch (err) {
+    await session.abortTransaction();
+    session.endSession();
     next(err);
   }
 };
@@ -281,6 +306,8 @@ const matchUser = async (
 const MatchedServices = {
   match,
   matchUser,
+  getMatchedUsers,
+  findMatch
 };
 
 export default MatchedServices;
