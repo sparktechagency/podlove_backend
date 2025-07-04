@@ -69,6 +69,7 @@ export enum PodcastType {
 
 export enum PodcastStatus {
   NOT_SCHEDULED = "NotScheduled",
+  REQSHEDULED = "ReqScheduled",
   SCHEDULED = "Scheduled",
   PLAYING = "Playing",
   DONE = "Done",

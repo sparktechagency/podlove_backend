@@ -10,7 +10,7 @@ export type PodcastSchema = Document & {
     day: string;
     time: string;
   };
-  selectedUser: Types.ObjectId | null;
+  selectedUser: {user: Types.ObjectId }[]| [];
   status: PodcastStatus;
   recordingUrl: string;
   score: number;
@@ -48,11 +48,11 @@ const podcastSchema = new Schema<PodcastSchema>({
       default: "",
     },
   },
-  selectedUser: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    default: null,
-  },
+  selectedUser: [
+    {
+    user: {type: Schema.Types.ObjectId, ref: "User", default:""},
+    }
+  ],
   status: {
     type: String,
     enum: PodcastStatus,
