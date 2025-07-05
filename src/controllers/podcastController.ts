@@ -8,6 +8,7 @@ import { PodcastStatus, SubscriptionPlanName } from "@shared/enums";
 import User from "@models/userModel";
 import { logger } from "@shared/logger";
 import mongoose, { Types } from "mongoose";
+import { scheduler } from "node:timers/promises";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const user = await User.findById(req.user.userId);
@@ -173,12 +174,117 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
   });
 };
 
+const startPodcast = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const podcastId = req.params.id;
+  const userId = req.user.userId;
+  if (!mongoose.Types.ObjectId.isValid(podcastId)) {
+    throw createError(StatusCodes.BAD_REQUEST, "Invalid podcast ID");
+  }
+  try {
+    const { schedule, status } = req.body;
+    const filter = {
+      _id: podcastId,
+      primaryUser: userId,
+      "schedule.date": schedule.date,
+      "schedule.day": schedule.day,
+      "schedule.time": schedule.time,
+    };
 
+    const update = {
+      $set: { status },
+    };
 
+    const result = await Podcast.updateOne(filter, update);
+    if (result.matchedCount === 0) {
+      // either no such podcast, or schedule didn't match
+      return res.status(StatusCodes.NOT_FOUND).json({
+        success: false,
+        message: "Podcast not found or schedule did not match, status not updated",
+      });
+    }
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: `Podcast status updated to "${status}"`,
+      modifiedCount: result,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const updateRecording = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  const podcastId = req.params.id;
+  const file = req.file;
+
+  if (!file) {
+    return next(createError(StatusCodes.BAD_REQUEST, "Recording file is required"));
+  }
+  const recordingUrl = `/uploads/recordings/${file.filename}`;
+  const session = await mongoose.startSession();
+  try {
+    session.startTransaction();
+    const {status} = req.body;
+    // Only the podcast owner (primaryUser) can update
+    const updated = await Podcast.findOneAndUpdate(
+      { _id: podcastId, primaryUser: userId },
+      { $set: { recordingUrl, status } },
+      { new: true, session }
+    )
+      .lean()
+      .exec();
+
+    if (!updated) {
+      throw createError(StatusCodes.NOT_FOUND, "Podcast not found or not yours");
+    }
+
+    await session.commitTransaction();
+    session.endSession();
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Recording uploaded successfully",
+      data: updated,
+    });
+  } catch (err) {
+    await session.abortTransaction();
+    session.endSession();
+    next(err);
+  }
+};
+
+const getAdminRecordedPodcast = async(req:Request, res:Response, next:NextFunction): Promise<any> =>{
+  const admin = req.admin.id;
+  const podcastId = req.params.id;
+  if(!admin || !podcastId){
+    throw createError(StatusCodes.BAD_REQUEST, "Admin or Podcast ID is not valid");
+  }
+  try{
+    const findPodcastId = await Podcast.find({_id:podcastId}).select("_id, recordingUrl status")
+    if(!findPodcastId){
+      res.status(StatusCodes.OK).json({
+        success: true,
+        message:"Record podcast audio not found",
+        data:{}
+      })
+    }
+    res.status(StatusCodes.OK).json({
+      success: true,
+      message:"Recored audio retrived successfully",
+      data:{admin, findPodcastId}
+    })
+  }catch(err){
+    next(err);
+  }
+}
 const PodcastController = {
   create,
   getPodcasts,
-  sendPodcastRequest
+  sendPodcastRequest,
+  startPodcast,
+  updateRecording,
+  getAdminRecordedPodcast
 };
 
 export default PodcastController;

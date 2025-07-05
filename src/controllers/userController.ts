@@ -161,7 +161,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
     // Handle avatar upload
     if (req.file) {
       // assuming Multer put the file in /uploads and req.file.filename is set
-      updates.avatar = `/uploads/${req.file.filename}`;
+      updates.avatar = `/uploads/images/${req.file.filename}`;
     }
 
     // Perform the update

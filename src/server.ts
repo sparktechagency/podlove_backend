@@ -43,7 +43,7 @@ async function startServer() {
     await MediaPolicy.findOrCreate();
 
     const server = http.createServer(app);
-    const ipaddress: any= process.env.ip ||  "0.0.0.0";
+    const ipaddress: any= process.env.ip || "0.0.0.0";
     server.listen(PORT, ipaddress, () => {
       logger.info(`Server is running at PORT: ${PORT}, HOST: ${ipaddress}`);
     });

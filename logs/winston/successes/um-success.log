@@ -2576,3 +2576,241 @@ Fri Jul 04 2025 21:30:18 [Podlove] [32minfo[39m: Privacy Policy exists!
 Fri Jul 04 2025 21:30:19 [Podlove] [32minfo[39m: Consumer Policy exists!
 Fri Jul 04 2025 21:30:19 [Podlove] [32minfo[39m: Media Policy exists!
 Fri Jul 04 2025 21:30:19 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 10.0.60.168
+Fri Jul 04 2025 21:42:23 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 04 2025 21:42:28 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 04 2025 21:42:28 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 04 2025 21:42:29 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 04 2025 21:42:29 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 10.0.60.168
+Sat Jul 05 2025 16:18:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 16:18:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 16:18:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 16:18:5 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 16:18:5 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 10.0.60.168
+Sat Jul 05 2025 16:29:8 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 16:29:11 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 16:29:12 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 16:29:12 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 16:29:12 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 10.0.60.168
+Sat Jul 05 2025 16:42:30 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 16:42:34 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 16:42:34 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 16:42:34 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 16:42:34 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 0.0.0.0
+Sat Jul 05 2025 16:51:3 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 16:51:6 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 16:51:7 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 16:51:7 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 16:51:7 [Podlove] [32minfo[39m: Server is running at PORT: 5000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:0:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:0:27 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:0:27 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:0:28 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:0:28 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:5:24 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:37)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Sat Jul 05 2025 17:10:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:10:47 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:10:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:10:47 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:10:47 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:17:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:18:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:18:7 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:18:7 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:18:8 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:18:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:22:26 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:28:39 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:28:42 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:28:42 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:28:43 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:28:43 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:29:58 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:32:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:32:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:32:6 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:32:6 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:32:6 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:33:47 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:33:48 [Podlove] [31merror[39m: Multipart: Boundary not found
+Error: Multipart: Boundary not found
+    at new Multipart (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:233:13)
+    at getInstance (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:33:12)
+    at module.exports (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:56:10)
+    at multerMiddleware (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:38:16)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:64:12
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error
+Sat Jul 05 2025 17:33:57 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:34:14 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:35:2 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:35:20 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:36:34 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:54:8 [Podlove] [32minfo[39m: 686912412187e3d7c60663b3
+Sat Jul 05 2025 18:32:38 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 18:32:41 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 18:32:42 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 18:32:42 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 18:32:42 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 19:55:22 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 19:55:31 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 19:55:34 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 19:55:35 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 19:55:35 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 19:55:35 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 19:57:46 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 19:57:49 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 19:57:49 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 19:57:50 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 19:57:50 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 20:1:12 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 20:1:15 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 20:1:15 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 20:1:16 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 20:1:16 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 20:3:50 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 20:3:53 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 20:3:53 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 20:3:54 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 20:3:54 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 20:5:3 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 20:5:6 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 20:5:6 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 20:5:6 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 20:5:6 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 20:9:44 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 20:9:47 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 20:9:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 20:9:48 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 20:9:48 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 20:49:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 20:49:46 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 20:49:46 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 20:49:47 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 20:49:47 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 21:0:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 21:0:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 21:0:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 21:0:17 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 21:0:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 21:6:49 [Podlove] [32minfo[39m: 68600f666d611e9e83e68e1a
+Sat Jul 05 2025 21:6:49 [Podlove] [31merror[39m: Invalid podcast ID
+BadRequestError: Invalid podcast ID
+    at updateRecording (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\controllers\podcastController.ts:227:28)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at done (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:59:7)
+    at indicateDone (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:63:68)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:171:11
+    at WriteStream.<anonymous> (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\storage\disk.js:43:9)
+    at WriteStream.emit (node:events:523:35)
+    at WriteStream.emit (node:domain:489:12)
+    at finish (node:internal/streams/writable:757:10)
+BadRequestError
+Sat Jul 05 2025 21:7:29 [Podlove] [32minfo[39m: 68600f666d611e9e83e68e1a
+Sat Jul 05 2025 21:7:30 [Podlove] [31merror[39m: Invalid podcast ID
+BadRequestError: Invalid podcast ID
+    at updateRecording (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\controllers\podcastController.ts:227:28)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at done (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:59:7)
+    at indicateDone (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:63:68)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:171:11
+    at WriteStream.<anonymous> (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\storage\disk.js:43:9)
+    at WriteStream.emit (node:events:523:35)
+    at WriteStream.emit (node:domain:489:12)
+    at finish (node:internal/streams/writable:757:10)
+BadRequestError
+Sat Jul 05 2025 21:14:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 21:14:27 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 21:14:28 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 21:14:29 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 21:14:29 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 21:14:54 [Podlove] [32minfo[39m: 68600f666d611e9e83e68e1a
+Sat Jul 05 2025 21:14:56 [Podlove] [31merror[39m: Invalid podcast ID
+BadRequestError: Invalid podcast ID
+    at updateRecording (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\controllers\podcastController.ts:226:28)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at done (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:59:7)
+    at indicateDone (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:63:68)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:171:11
+    at WriteStream.<anonymous> (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\storage\disk.js:43:9)
+    at WriteStream.emit (node:events:523:35)
+    at WriteStream.emit (node:domain:489:12)
+    at finish (node:internal/streams/writable:757:10)
+BadRequestError
+Sat Jul 05 2025 21:15:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 21:15:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 21:15:52 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 21:15:52 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 21:15:52 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 21:16:6 [Podlove] [32minfo[39m: 68600f666d611e9e83e68e1a
+Sat Jul 05 2025 21:16:8 [Podlove] [31merror[39m: Cast to ObjectId failed for value ":6865458d177e6b2e46b24d02" (type string) at path "_id" for model "Podcast"
+CastError: Cast to ObjectId failed for value ":6865458d177e6b2e46b24d02" (type string) at path "_id" for model "Podcast"
+    at SchemaObjectId.cast (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaObjectId.SchemaType.castForQuery (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1673:17)
+    at cast (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\cast.js:390:32)
+    at model.Query.Query.cast (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:5055:12)
+    at model.Query.Query._castConditions (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:2351:10)
+    at model.Query._findOneAndUpdate (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3454:8)
+    at model.Query.exec (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateRecording (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\controllers\podcastController.ts:235:21)
+CastError
+Sat Jul 05 2025 21:17:30 [Podlove] [32minfo[39m: 68600f666d611e9e83e68e1a
+Sat Jul 05 2025 21:32:3 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 21:33:20 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 21:34:24 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 21:34:25 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 21:34:25 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 21:34:27 [Podlove] [32minfo[39m: 68600f666d611e9e83e68e1a
+Sat Jul 05 2025 21:36:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 21:36:6 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 21:36:6 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 21:36:7 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 21:36:7 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 21:36:22 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 21:36:32 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 21:36:32 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 21:36:35 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 21:36:35 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 21:37:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 21:38:1 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 21:38:1 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 21:38:1 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 21:38:1 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 21:41:20 [Podlove] [32minfo[39m: 68600f666d611e9e83e68e1a
+Sat Jul 05 2025 21:44:0 [Podlove] [32minfo[39m: 68600f666d611e9e83e68e1a
+Sat Jul 05 2025 21:49:33 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 21:49:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 21:49:37 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 21:49:37 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 21:49:37 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 21:52:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 21:52:7 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 21:52:7 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 21:52:8 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 21:52:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 22:14:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 22:15:3 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 22:15:3 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 22:15:4 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 22:15:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 22:15:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 22:15:41 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 22:15:41 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 22:15:41 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 22:15:41 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 22:16:24 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Sat Jul 05 2025 22:17:31 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Jul 05 2025 22:17:32 [Podlove] [32minfo[39m: [object Object]
