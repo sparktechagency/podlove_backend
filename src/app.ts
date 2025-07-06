@@ -22,9 +22,11 @@ import NotificationRouter from "@routers/notificationRouter";
 import ConsumerPolicyRouter from "@routers/consumerPolicyRouter";
 import MediaPolicyRouter from "@routers/mediaPolicyRouter";
 
+
 const app = express();
 
 // app.use("/", WebhookRouter);
+
 
 app.use(express.json());
 
@@ -53,6 +55,7 @@ app.use("/ai", AIRouter);
 app.use("/notification", NotificationRouter);
 app.use("/consumer", ConsumerPolicyRouter);
 app.use("/media", MediaPolicyRouter);
+
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello From Podlove");

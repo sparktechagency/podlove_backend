@@ -14,3 +14,8 @@ UnauthorizedError: Wrong password. Please try again
 UnauthorizedError
 Sat Jul 05 2025 22:17:31 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
 Sat Jul 05 2025 22:17:32 [Podlove] [32minfo[39m: [object Object]
+Sat Jul 05 2025 22:20:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 22:20:25 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 22:20:25 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 22:20:25 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 22:20:25 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168

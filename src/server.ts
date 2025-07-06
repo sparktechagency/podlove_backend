@@ -10,7 +10,10 @@ import { AdminAccess } from "@shared/enums";
 import Privacy from "@models/privacyModel";
 import ConsumerPolicy from "@models/consumerPolicyModel";
 import MediaPolicy from "@models/mediaPolicyModel";
-
+import { Server as SocketIOServer } from "socket.io";
+import initSocketHandlers from "@services/socketService";
+// import initSocketHandlers from "@services/socketService";
+// import initSocketHandlers from "@/services/socketService";
 const PORT = process.env.PORT || 8000;
 
 async function checkAdmin() {
@@ -41,8 +44,15 @@ async function startServer() {
     await Privacy.findOrCreate();
     await ConsumerPolicy.findOrCreate();
     await MediaPolicy.findOrCreate();
-
+     
     const server = http.createServer(app);
+
+    const io = new SocketIOServer(server, {
+      cors: { origin: "*"},
+    });
+
+    initSocketHandlers(io);    
+    
     const ipaddress: any= process.env.ip || "0.0.0.0";
     server.listen(PORT, ipaddress, () => {
       logger.info(`Server is running at PORT: ${PORT}, HOST: ${ipaddress}`);
