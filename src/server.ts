@@ -11,7 +11,8 @@ import Privacy from "@models/privacyModel";
 import ConsumerPolicy from "@models/consumerPolicyModel";
 import MediaPolicy from "@models/mediaPolicyModel";
 import { Server as SocketIOServer } from "socket.io";
-import initSocketHandlers from "@services/socketService";
+import { SocketService } from "@services/socketService";
+// import initSocketHandlers from "@services/socketService";
 // import initSocketHandlers from "@services/socketService";
 // import initSocketHandlers from "@/services/socketService";
 const PORT = process.env.PORT || 8000;
@@ -46,16 +47,17 @@ async function startServer() {
     await MediaPolicy.findOrCreate();
      
     const server = http.createServer(app);
+    const socketService = new SocketService(server);
+    // const io = new SocketIOServer(server, {
+    //   cors: { origin: "*"},
+    // });
 
-    const io = new SocketIOServer(server, {
-      cors: { origin: "*"},
-    });
-
-    initSocketHandlers(io);    
+    // initSocketHandlers(io);    
     
     const ipaddress: any= process.env.ip || "0.0.0.0";
     server.listen(PORT, ipaddress, () => {
       logger.info(`Server is running at PORT: ${PORT}, HOST: ${ipaddress}`);
+      logger.info(`Socket.IO server initialized`);
     });
   } catch (error) {
     logger.error("Failed to start the server:", error);
