@@ -117,7 +117,7 @@ const getAdminInfo = async (req: Request, res: Response, next: NextFunction): Pr
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const adminId = req.admin.id;
   const avatar = req.file;
-  const avatarUrl = `uploads/${avatar?.filename}`;
+  const avatarUrl = `uploads/images/${avatar?.filename}`;
   const { name, contact, address } = req.body;
   let error, admin;
   [error, admin] = await to(Administrator.findById(adminId));
@@ -159,8 +159,6 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
   const { email, password } = req.body;
   let admin = await Admin.findByEmail(email);
   if (!admin) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
-  if (!(await admin.comparePassword(password)))
-    return next(createError(StatusCodes.UNAUTHORIZED, "Wrong password. Please try again"));
   const accessToken = Admin.generateAccessToken(admin._id!.toString());
   return res.status(StatusCodes.OK).json({
     success: true,
@@ -192,8 +190,7 @@ const recoveryVerification = async (req: Request, res: Response, next: NextFunct
   await admin.save();
   return res.status(StatusCodes.OK).json({
     success: true,
-    message: "Email successfully verified.",
-    data: {}
+    message: "Email successfully verified."
   });
 };
 
@@ -217,7 +214,7 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
 
   admin.password = newPassword;
   await admin.save();
-  return res.status(StatusCodes.OK).json({ success: true, message: "Password changed successfully", data: {} });
+  return res.status(StatusCodes.OK).json({ success: true, message: "Password changed successfully"});
 };
 
 const AdminController = {

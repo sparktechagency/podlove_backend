@@ -1,0 +1,88 @@
+Wed Jul 09 2025 11:30:17 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 09 2025 11:30:17 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:31:6 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlovedb.admins index: email_1 dup key: { email: "cabar80380@dxirl.com" }
+MongoServerError: E11000 duplicate key error collection: podlovedb.admins index: email_1 dup key: { email: "cabar80380@dxirl.com" }
+    at InsertOneOperation.execute (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\collection.ts:286:12)
+MongoServerError
+Wed Jul 09 2025 11:32:47 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:33:3 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:33:10 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:38:30 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:38:55 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:39:4 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:39:30 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlovedb.admins index: email_1 dup key: { email: "yoxike1079@dxirl.com" }
+MongoServerError: E11000 duplicate key error collection: podlovedb.admins index: email_1 dup key: { email: "yoxike1079@dxirl.com" }
+    at InsertOneOperation.execute (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\collection.ts:286:12)
+MongoServerError
+Wed Jul 09 2025 11:39:42 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:42:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 11:42:21 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 11:42:21 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 11:42:21 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 11:42:21 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 11:44:37 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:45:11 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:47:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 11:47:3 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 11:47:3 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 11:47:4 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 11:47:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 11:47:29 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 11:47:32 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 11:47:33 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 11:47:33 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 11:47:33 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 11:47:58 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:47:58 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:8 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:9 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:9 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:9 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:12 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:12 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:23 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:23 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:24 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:24 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:26 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:26 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:50:22 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:173:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError

@@ -1,0 +1,19 @@
+Mon Jul 07 2025 17:0:19 [Podlove] [32minfo[39m: 686b918776e0118e83c43eaa
+Mon Jul 07 2025 17:7:52 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:175:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Mon Jul 07 2025 17:32:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 17:32:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 17:32:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 17:32:17 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 17:32:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Mon Jul 07 2025 17:36:33 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:36:45 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:36:59 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:37:8 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:37:25 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:37:38 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:38:1 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:38:18 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8

@@ -2962,3 +2962,2537 @@ Sun Jul 06 2025 17:44:13 [Podlove] [32minfo[39m: Consumer Policy exists!
 Sun Jul 06 2025 17:44:13 [Podlove] [32minfo[39m: Media Policy exists!
 Sun Jul 06 2025 17:44:13 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
 Sun Jul 06 2025 17:44:20 [Podlove] [32minfo[39m: 🔌 Socket connected:
+Mon Jul 07 2025 11:30:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 11:30:52 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 11:30:52 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 11:30:52 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 11:31:41 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 11:31:44 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 11:31:44 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 11:31:44 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 11:31:44 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Mon Jul 07 2025 11:43:31 [Podlove] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (C:\Users\Bd Calling\podlove_backend\src\utils\jwt.ts:27:22)
+    at C:\Users\Bd Calling\podlove_backend\src\middlewares\authorization.ts:50:32
+    at C:\Users\Bd Calling\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+UnauthorizedError
+Mon Jul 07 2025 11:43:58 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Mon Jul 07 2025 11:43:59 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:54:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 11:44:58 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Mon Jul 07 2025 11:44:59 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:54:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:200:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 11:45:58 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 11:46:1 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 11:46:2 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 11:46:2 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 11:46:2 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Mon Jul 07 2025 11:46:27 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 11:46:30 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 11:46:30 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 11:46:30 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 11:46:30 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Mon Jul 07 2025 11:46:39 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Mon Jul 07 2025 11:46:40 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:54:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 11:47:16 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 11:47:19 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 11:47:19 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 11:47:19 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 11:47:19 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Mon Jul 07 2025 11:47:24 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Mon Jul 07 2025 11:47:25 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:54:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 11:48:31 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Mon Jul 07 2025 11:48:32 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:54:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 11:50:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 11:50:39 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 11:50:39 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 11:50:39 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 11:50:39 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Mon Jul 07 2025 11:50:46 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Mon Jul 07 2025 11:50:46 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:55:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 11:56:5 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 11:56:9 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 11:56:9 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 11:56:9 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 11:56:9 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Mon Jul 07 2025 11:56:18 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Mon Jul 07 2025 11:59:48 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Mon Jul 07 2025 12:49:14 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 12:49:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 12:49:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 12:49:17 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 12:49:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Mon Jul 07 2025 12:52:18 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:52:24 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:52:32 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:52:37 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:52:44 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:52:50 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:52:56 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:53:5 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:53:10 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:53:15 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:53:23 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:53:32 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\Bd Calling\podlove_backend\src\middlewares\authorization.ts:44:30
+    at C:\Users\Bd Calling\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Jul 07 2025 12:57:18 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:57:19 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:55:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 12:59:46 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 12:59:47 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:55:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 13:0:6 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 13:0:7 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:55:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:200:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 13:2:34 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 13:2:35 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:55:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 13:2:42 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 13:2:43 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:55:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:219:14)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 13:54:34 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 13:54:34 [Podlove] [31merror[39m: Invalid upload for field avatar
+Error: Invalid upload for field avatar
+    at fileFilter (C:\Users\Bd Calling\podlove_backend\src\utils\multerConfig.ts:55:8)
+    at wrappedFileFilter (C:\Users\Bd Calling\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\Bd Calling\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\Bd Calling\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\Bd Calling\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Mon Jul 07 2025 14:15:1 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 14:17:37 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 14:17:43 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 14:18:13 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 14:22:18 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 14:22:28 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 14:24:17 [Podlove] [32minfo[39m: 686b6e8476e0118e83c43dd7
+Mon Jul 07 2025 14:28:15 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:28:19 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:28:28 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:28:37 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:28:42 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:28:49 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:28:53 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:28:53 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:28:55 [Podlove] [31merror[39m: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+MongoServerError: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+    at Connection.sendCommand (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:559:17)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.command (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:633:22)
+    at async Server.command (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\sdam\server.ts:342:21)
+    at async FindOneAndUpdateOperation.executeCommand (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\command.ts:179:12)
+    at async FindOneAndUpdateOperation.execute (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\find_and_modify.ts:216:20)
+    at async tryOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.findOneAndUpdate (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\collection.ts:1006:12)
+    at async model.Query._findOneAndUpdate (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:3513:13)
+MongoServerError
+Mon Jul 07 2025 14:29:3 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:29:8 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:29:14 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:29:51 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:29:58 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 14:31:46 [Podlove] [32minfo[39m: 686b84fe76e0118e83c43e33
+Mon Jul 07 2025 15:14:30 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:14:34 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:14:43 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:14:48 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:14:57 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:15:2 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:15:7 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:15:14 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:15:20 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:15:26 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:15:52 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:15:58 [Podlove] [32minfo[39m: 686b8fdb76e0118e83c43e72
+Mon Jul 07 2025 15:21:55 [Podlove] [32minfo[39m: 686b918776e0118e83c43eaa
+Mon Jul 07 2025 15:24:24 [Podlove] [32minfo[39m: 686b918776e0118e83c43eaa
+Mon Jul 07 2025 16:18:39 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\Bd Calling\podlove_backend\src\middlewares\authorization.ts:44:30
+    at C:\Users\Bd Calling\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Jul 07 2025 16:18:47 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\Bd Calling\podlove_backend\src\middlewares\authorization.ts:44:30
+    at C:\Users\Bd Calling\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Jul 07 2025 16:19:14 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\Bd Calling\podlove_backend\src\middlewares\authorization.ts:44:30
+    at C:\Users\Bd Calling\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Jul 07 2025 16:19:23 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Mon Jul 07 2025 16:19:36 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Mon Jul 07 2025 16:26:1 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Jul 07 2025 16:26:1 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 07 2025 16:52:55 [Podlove] [32minfo[39m: 686b918776e0118e83c43eaa
+Mon Jul 07 2025 16:54:38 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Jul 07 2025 16:54:38 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 07 2025 16:56:51 [Podlove] [32minfo[39m: 686b918776e0118e83c43eaa
+Mon Jul 07 2025 16:59:2 [Podlove] [32minfo[39m: 686b918776e0118e83c43eaa
+Mon Jul 07 2025 17:0:19 [Podlove] [32minfo[39m: 686b918776e0118e83c43eaa
+Mon Jul 07 2025 17:7:52 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:175:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Mon Jul 07 2025 17:32:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 07 2025 17:32:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 07 2025 17:32:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 07 2025 17:32:17 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 07 2025 17:32:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Mon Jul 07 2025 17:36:33 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:36:45 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:36:59 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:37:8 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:37:25 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:37:38 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:38:1 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Mon Jul 07 2025 17:38:18 [Podlove] [32minfo[39m: 686bb0a5e37b16229f5b2fa8
+Tue Jul 08 2025 10:6:33 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jul 08 2025 10:6:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Tue Jul 08 2025 10:6:37 [Podlove] [32minfo[39m: Consumer Policy exists!
+Tue Jul 08 2025 10:6:37 [Podlove] [32minfo[39m: Media Policy exists!
+Tue Jul 08 2025 10:6:37 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Tue Jul 08 2025 11:0:5 [Podlove] [32minfo[39m: 686ca3baa7b1d9d7f96e41a9
+Tue Jul 08 2025 11:0:51 [Podlove] [32minfo[39m: 686ca3baa7b1d9d7f96e41a9
+Tue Jul 08 2025 11:1:44 [Podlove] [32minfo[39m: 686ca3baa7b1d9d7f96e41a9
+Tue Jul 08 2025 11:1:56 [Podlove] [32minfo[39m: 686ca3baa7b1d9d7f96e41a9
+Tue Jul 08 2025 11:5:23 [Podlove] [32minfo[39m: 686ca3baa7b1d9d7f96e41a9
+Tue Jul 08 2025 11:5:31 [Podlove] [32minfo[39m: 686ca3baa7b1d9d7f96e41a9
+Tue Jul 08 2025 11:13:15 [Podlove] [32minfo[39m: 686ca74fa7b1d9d7f96e41ca
+Tue Jul 08 2025 11:17:14 [Podlove] [32minfo[39m: 686ca9c1a7b1d9d7f96e41d7
+Tue Jul 08 2025 11:17:25 [Podlove] [32minfo[39m: 686ca9c1a7b1d9d7f96e41d7
+Tue Jul 08 2025 11:21:59 [Podlove] [31merror[39m: Wrong OTP. Please enter the correct code
+UnauthorizedError: Wrong OTP. Please enter the correct code
+    at activate (C:\Users\Bd Calling\podlove_backend\src\controllers\authController.ts:54:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Tue Jul 08 2025 11:26:12 [Podlove] [32minfo[39m: 686cabd5a7b1d9d7f96e41ec
+Tue Jul 08 2025 11:37:22 [Podlove] [32minfo[39m: 686cae69a7b1d9d7f96e41f9
+Tue Jul 08 2025 11:55:29 [Podlove] [32minfo[39m: 686cae69a7b1d9d7f96e41f9
+Tue Jul 08 2025 12:29:6 [Podlove] [32minfo[39m: 686cae69a7b1d9d7f96e41f9
+Tue Jul 08 2025 12:29:22 [Podlove] [32minfo[39m: 686cae69a7b1d9d7f96e41f9
+Tue Jul 08 2025 12:29:43 [Podlove] [32minfo[39m: 686cae69a7b1d9d7f96e41f9
+Tue Jul 08 2025 12:29:44 [Podlove] [31merror[39m: Podcast validation failed: participants: Cast to embedded failed for value "68650ea1c04864b3b200cb58" (type string) at path "participants" because of "ObjectParameterError"
+ValidationError: Podcast validation failed: participants: Cast to embedded failed for value "68650ea1c04864b3b200cb58" (type string) at path "participants" because of "ObjectParameterError"
+    at model.Document.invalidate (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:3352:32)
+    at model.$set (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:1480:12)
+    at model.$set (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:1132:16)
+    at model.Document (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:178:12)
+    at model.Model (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\model.js:127:12)
+    at new model (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\model.js:4836:15)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\model.js:2786:20
+    at Array.map (<anonymous>)
+    at Function.create (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\model.js:2774:34)
+    at create (C:\Users\Bd Calling\podlove_backend\src\controllers\podcastController.ts:31:33)
+ValidationError
+Tue Jul 08 2025 12:30:14 [Podlove] [32minfo[39m: 686cae69a7b1d9d7f96e41f9
+Tue Jul 08 2025 12:30:26 [Podlove] [32minfo[39m: 686cae69a7b1d9d7f96e41f9
+Tue Jul 08 2025 12:30:28 [Podlove] [31merror[39m: Podcast validation failed: participants: Cast to embedded failed for value "686a037f590ca42548a0e9bf" (type string) at path "participants" because of "ObjectParameterError"
+ValidationError: Podcast validation failed: participants: Cast to embedded failed for value "686a037f590ca42548a0e9bf" (type string) at path "participants" because of "ObjectParameterError"
+    at model.Document.invalidate (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:3352:32)
+    at model.$set (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:1480:12)
+    at model.$set (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:1132:16)
+    at model.Document (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:178:12)
+    at model.Model (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\model.js:127:12)
+    at new model (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\model.js:4836:15)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\model.js:2786:20
+    at Array.map (<anonymous>)
+    at Function.create (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\model.js:2774:34)
+    at create (C:\Users\Bd Calling\podlove_backend\src\controllers\podcastController.ts:31:33)
+ValidationError
+Tue Jul 08 2025 14:23:57 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:24:6 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:24:20 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:24:26 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:24:33 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:24:39 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:24:49 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:24:56 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:25:4 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:25:13 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:25:42 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:25:53 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:26:51 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:27:7 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:27:25 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Tue Jul 08 2025 14:27:34 [Podlove] [32minfo[39m: 686cd551a7b1d9d7f96e4221
+Wed Jul 09 2025 10:14:39 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 09 2025 10:14:42 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:30:17 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 09 2025 11:30:17 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:31:6 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlovedb.admins index: email_1 dup key: { email: "cabar80380@dxirl.com" }
+MongoServerError: E11000 duplicate key error collection: podlovedb.admins index: email_1 dup key: { email: "cabar80380@dxirl.com" }
+    at InsertOneOperation.execute (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\collection.ts:286:12)
+MongoServerError
+Wed Jul 09 2025 11:32:47 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:33:3 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:33:10 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:38:30 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:38:55 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:39:4 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:39:30 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlovedb.admins index: email_1 dup key: { email: "yoxike1079@dxirl.com" }
+MongoServerError: E11000 duplicate key error collection: podlovedb.admins index: email_1 dup key: { email: "yoxike1079@dxirl.com" }
+    at InsertOneOperation.execute (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (C:\Users\Bd Calling\podlove_backend\node_modules\mongodb\src\collection.ts:286:12)
+MongoServerError
+Wed Jul 09 2025 11:39:42 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:42:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 11:42:21 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 11:42:21 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 11:42:21 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 11:42:21 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 11:44:37 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:45:11 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:163:28)
+UnauthorizedError
+Wed Jul 09 2025 11:47:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 11:47:3 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 11:47:3 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 11:47:4 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 11:47:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 11:47:29 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 11:47:32 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 11:47:33 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 11:47:33 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 11:47:33 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 11:47:58 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:47:58 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:8 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:9 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:9 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:9 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:12 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:12 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:23 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:23 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:24 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:24 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:48:26 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 11:48:26 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 11:50:22 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:173:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 09 2025 12:4:21 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:4:25 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:4:25 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:4:25 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:4:25 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:9:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:9:13 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:9:13 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:9:13 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:9:13 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:15:7 [Podlove] [31merror[39m: Wrong OTP. Please try again
+UnauthorizedError: Wrong OTP. Please try again
+    at recoveryVerification (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:188:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Jul 09 2025 12:19:17 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:19:20 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:19:20 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:19:21 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:19:21 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:24:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:24:45 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:24:45 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:24:46 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:24:46 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:24:56 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:24:59 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:25:0 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:25:0 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:25:0 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:26:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:26:52 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:26:53 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:26:53 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:26:53 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:26:53 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 12:28:12 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:28:13 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:29:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:29:3 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:29:3 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:29:4 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:29:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:29:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 12:33:56 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:33:59 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:34:0 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:34:0 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:34:0 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:34:0 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 12:34:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:34:39 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:34:39 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:34:39 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:34:39 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:34:39 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 12:35:15 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:35:18 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:35:19 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:35:19 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:35:19 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:35:19 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 12:35:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 12:35:40 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 12:35:41 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 12:35:41 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 12:35:41 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 12:35:41 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 12:45:17 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:45:17 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:45:18 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:45:18 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:45:35 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:45:35 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:46:23 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:46:23 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:46:24 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:46:24 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:46:57 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:46:57 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:46:58 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:46:58 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:47:29 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:47:29 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:47:30 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:47:30 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 12:47:36 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 12:47:36 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:19:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 14:19:46 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 14:19:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 14:19:47 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 14:19:47 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 14:19:47 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 14:22:38 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:22:43 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:22:56 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:23:10 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 14:23:13 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 14:23:13 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 14:23:13 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 14:23:13 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 14:23:13 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 14:23:14 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:23:25 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:23:44 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:24:5 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:25:8 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:25:52 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:26:49 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:27:22 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:27:47 [Podlove] [32minfo[39m: 686e26b20932bcfc67242fea
+Wed Jul 09 2025 14:30:39 [Podlove] [31merror[39m: Wrong OTP. Please enter the correct code
+UnauthorizedError: Wrong OTP. Please enter the correct code
+    at activate (C:\Users\Bd Calling\podlove_backend\src\controllers\authController.ts:54:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Jul 09 2025 14:31:57 [Podlove] [31merror[39m: Wrong OTP. Please enter the correct code
+UnauthorizedError: Wrong OTP. Please enter the correct code
+    at activate (C:\Users\Bd Calling\podlove_backend\src\controllers\authController.ts:54:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Jul 09 2025 14:32:37 [Podlove] [31merror[39m: Wrong OTP. Please enter the correct code
+UnauthorizedError: Wrong OTP. Please enter the correct code
+    at activate (C:\Users\Bd Calling\podlove_backend\src\controllers\authController.ts:54:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Jul 09 2025 14:33:0 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:33:0 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:33:7 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:33:8 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:33:21 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:33:21 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:33:22 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:33:23 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:35:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 14:35:23 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 14:35:24 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 14:35:24 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 14:35:24 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 14:35:24 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 14:35:54 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 14:35:57 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 14:35:58 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 14:35:58 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 14:35:58 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 14:35:58 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 14:43:35 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:43:35 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:43:51 [Podlove] [31merror[39m: Wrong OTP. Please enter the correct code
+UnauthorizedError: Wrong OTP. Please enter the correct code
+    at activate (C:\Users\Bd Calling\podlove_backend\src\controllers\authController.ts:54:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Jul 09 2025 14:44:36 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:44:36 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:45:0 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:45:0 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:47:14 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:47:14 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:47:15 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:47:15 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:47:36 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:47:36 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:47:40 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:47:46 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:47:49 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:47:49 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:47:50 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:47:50 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:48:27 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:48:28 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:48:28 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:48:38 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:49:5 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:49:6 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:49:18 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:49:25 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:50:5 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 14:50:8 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 14:50:9 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 14:50:9 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 14:50:9 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 14:50:9 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 14:50:9 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:50:13 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:50:13 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:50:48 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:51:0 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:51:4 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:51:5 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:51:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 14:51:38 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 14:51:39 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 14:51:39 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 14:51:39 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 14:51:39 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 14:51:39 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 14:51:40 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 14:51:40 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:52:17 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:52:54 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:54:2 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:55:28 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:56:4 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 14:56:14 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 15:1:11 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 15:1:11 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 15:2:40 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 15:4:27 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 15:5:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 15:5:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 15:5:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 15:5:52 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 15:5:52 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 15:5:52 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 15:7:10 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 15:7:14 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 15:7:14 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 15:7:14 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 15:7:14 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 15:7:14 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 15:8:34 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 15:8:44 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 15:9:12 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 15:9:56 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 15:10:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 15:11:2 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 15:11:2 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 15:11:2 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 15:11:2 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 15:11:2 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 15:11:5 [Podlove] [32minfo[39m: 686e2c96a189feda916cf487
+Wed Jul 09 2025 15:14:7 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Wed Jul 09 2025 15:14:50 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 15:14:50 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 15:15:6 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 15:15:6 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 15:15:49 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 15:15:49 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 15:17:2 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 15:17:2 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 15:17:3 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 15:17:3 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 15:17:16 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 15:17:16 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 15:17:17 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 15:17:17 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 15:18:24 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 15:18:28 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 15:18:28 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 15:18:28 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 15:18:28 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 15:18:28 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 15:23:12 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 15:23:15 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 15:23:15 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 15:23:16 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 15:23:16 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 15:23:16 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 15:39:12 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:39:13 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'min')
+TypeError: Cannot read properties of undefined (reading 'min')
+    at update (C:\Users\Bd Calling\podlove_backend\src\controllers\userController.ts:143:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+TypeError
+Wed Jul 09 2025 15:39:19 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:39:19 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'min')
+TypeError: Cannot read properties of undefined (reading 'min')
+    at update (C:\Users\Bd Calling\podlove_backend\src\controllers\userController.ts:143:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+TypeError
+Wed Jul 09 2025 15:39:38 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:39:38 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'min')
+TypeError: Cannot read properties of undefined (reading 'min')
+    at update (C:\Users\Bd Calling\podlove_backend\src\controllers\userController.ts:143:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+TypeError
+Wed Jul 09 2025 15:40:3 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:40:27 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:40:28 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+CastError: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+    at SchemaNumber.cast (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\number.js:381:11)
+    at SchemaNumber.SchemaType.applySetters (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaNumber.castForQuery (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\number.js:435:16)
+    at castUpdateVal (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:628:19)
+    at walkUpdatePath (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:433:24)
+    at walkUpdatePath (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:378:20)
+    at castUpdate (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:4851:10)
+    at model.Query._findOneAndUpdate (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:3474:23)
+    at model.Query.exec (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+CastError
+Wed Jul 09 2025 15:40:28 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:40:34 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:48:58 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 15:49:1 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 15:49:1 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 15:49:1 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 15:49:1 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 15:49:1 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 15:50:6 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:50:22 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:50:23 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+CastError: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+    at SchemaNumber.cast (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\number.js:381:11)
+    at SchemaNumber.SchemaType.applySetters (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaNumber.castForQuery (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\number.js:435:16)
+    at castUpdateVal (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:628:19)
+    at walkUpdatePath (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:433:24)
+    at walkUpdatePath (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:378:20)
+    at castUpdate (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:4851:10)
+    at model.Query._findOneAndUpdate (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:3474:23)
+    at model.Query.exec (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+CastError
+Wed Jul 09 2025 15:50:23 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:50:28 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 15:51:33 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 15:51:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 15:51:36 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 15:51:37 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 15:51:37 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 15:51:37 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 16:11:6 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:11:15 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:11:25 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:11:34 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:11:44 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:11:56 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:12:0 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:12:5 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:12:9 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:12:14 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:12:51 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:15:44 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:15:51 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:19:30 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:19:37 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:20:45 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:20:56 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:22:1 [Podlove] [32minfo[39m: 686e401f0564a9e33fce12d6
+Wed Jul 09 2025 16:46:15 [Podlove] [31merror[39m: Wrong OTP. Please enter the correct code
+UnauthorizedError: Wrong OTP. Please enter the correct code
+    at activate (C:\Users\Bd Calling\podlove_backend\src\controllers\authController.ts:54:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Jul 09 2025 17:19:29 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 17:19:32 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 17:19:32 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 17:19:33 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 17:19:33 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 17:19:33 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 17:20:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 17:20:7 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 17:20:7 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 17:20:8 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 17:20:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 17:20:8 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 17:26:3 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 17:26:6 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 17:26:6 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 17:26:7 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 17:26:7 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 17:26:7 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 17:26:40 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:26:47 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:26:55 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:27:0 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:27:8 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:27:12 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:27:16 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:27:21 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:27:25 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:27:30 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:28:8 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:28:15 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:28:57 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:29:42 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:29:51 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:29:57 [Podlove] [32minfo[39m: 686e51da84eba1dbe196df8f
+Wed Jul 09 2025 17:30:0 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:3 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:6 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:10 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:13 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:16 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:20 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:23 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:26 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:30 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:33 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:36 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:39 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:42 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:46 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:49 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:52 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:56 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:30:59 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:2 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:5 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:8 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:12 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:15 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:19 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:21 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:30 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:32 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:33 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:33 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:34 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:35 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:36 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:36 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:37 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:38 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:39 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:40 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:41 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:41 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:42 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:43 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:44 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:44 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:45 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:45 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:46 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:47 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:48 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:48 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:49 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:49 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:49 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:50 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:51 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:51 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:52 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:52 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:53 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:54 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:55 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:55 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:55 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:56 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:57 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:57 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:57 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:58 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:58 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:59 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:59 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:31:59 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:0 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:0 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:0 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:1 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:1 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:2 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:2 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:2 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:2 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:3 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:3 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:3 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:4 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:5 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:5 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:5 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:5 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:6 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:6 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:7 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:7 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:8 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:8 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:8 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:9 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:9 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:10 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:10 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:10 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:11 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:11 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:12 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:12 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:13 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:13 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:14 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:14 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:14 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:15 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:15 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:16 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:16 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:17 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:18 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:18 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:18 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:18 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:19 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:20 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:20 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:21 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:21 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:21 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:22 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:22 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:23 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:23 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:24 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:24 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:25 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:25 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:26 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:26 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:27 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:27 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:28 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:28 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:29 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:29 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:30 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:30 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:31 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:31 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:32 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:32 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:33 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:34 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:34 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:34 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:35 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:35 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:36 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:36 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:37 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:37 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:37 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:38 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:38 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:39 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:40 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:40 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:41 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:42 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:42 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:42 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:43 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:44 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:44 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:45 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:45 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:45 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:46 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:47 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:47 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:48 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:49 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:50 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:50 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:50 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:51 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:51 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:52 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:52 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:53 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:53 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:53 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:54 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:54 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:55 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:55 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:56 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:56 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:56 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:57 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:58 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:58 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:58 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:32:59 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:0 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:1 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:1 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:1 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:2 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:3 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:3 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:3 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:4 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:4 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:4 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:5 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:6 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:6 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:7 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:8 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:9 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:9 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:9 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:10 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:11 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:11 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:12 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:12 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:13 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:13 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:14 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:14 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:15 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:15 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:16 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:16 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:17 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:17 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:18 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:19 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:20 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:20 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:21 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:22 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:22 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:22 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:23 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:23 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:24 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:24 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:25 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:25 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:26 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:26 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:27 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:28 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:28 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:29 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:30 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:30 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:30 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:31 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:32 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:33 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:34 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:34 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:35 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:35 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:36 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:37 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:38 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:38 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:39 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:40 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:41 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:41 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:42 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:43 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:43 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:44 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:45 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:45 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:45 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:46 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:46 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:46 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:47 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:47 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:47 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:48 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:48 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:48 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:49 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:49 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:49 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:49 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:50 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:50 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:50 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:51 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:51 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:51 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:52 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:52 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:52 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:53 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:53 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:53 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:53 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:54 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:54 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:54 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:55 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:56 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:56 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:57 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:57 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:33:58 [Podlove] [31merror[39m: answers must be an array of 22 strings
+BadRequestError: answers must be an array of 22 strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:171:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Wed Jul 09 2025 17:36:26 [Podlove] [32minfo[39m: 686e0145a9e6c91d50ffc677
+Wed Jul 09 2025 17:36:26 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 09 2025 17:36:44 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:173:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 09 2025 17:36:45 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:173:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 09 2025 17:37:1 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:173:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 09 2025 17:37:16 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:173:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 09 2025 17:40:31 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 17:40:48 [Podlove] [32minfo[39m: 686e382b372e77d7ef44d89a
+Wed Jul 09 2025 17:41:18 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:173:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 09 2025 17:41:33 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at recovery (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:173:32)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 09 2025 17:48:1 [Podlove] [31merror[39m: Wrong OTP. Please try again
+UnauthorizedError: Wrong OTP. Please try again
+    at recoveryVerification (C:\Users\Bd Calling\podlove_backend\src\controllers\adminController.ts:188:22)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+UnauthorizedError
+Wed Jul 09 2025 17:59:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 17:59:45 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 17:59:45 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 17:59:46 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 17:59:46 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 17:59:46 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 18:0:25 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 18:0:28 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 18:0:29 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 18:0:29 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 18:0:29 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 18:0:29 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 09 2025 18:1:40 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 09 2025 18:1:43 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 09 2025 18:1:44 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 09 2025 18:1:44 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 09 2025 18:1:44 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Wed Jul 09 2025 18:1:44 [Podlove] [32minfo[39m: Socket.IO server initialized

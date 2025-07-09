@@ -1,0 +1,60 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\.5d9c68d9efdae532d7b7a1a84330a7673bf7057f-audit.json",
+    "files": [
+        {
+            "date": 1751866191725,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-07-11-error.log",
+            "hash": "ed061f6d957bb71b4a33495f069758440447c8cd1235f04b7f2321c05f62fdd7"
+        },
+        {
+            "date": 1751870948997,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-07-12-error.log",
+            "hash": "7c4c0d6749e85b1f6e2e3f3014b7b794d768f0ba66f73d4ca57564814ff0e468"
+        },
+        {
+            "date": 1751887928444,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-07-17-error.log",
+            "hash": "8708ebf321ca1f70afd6403ae4f0b95843269365fb74746efa5a41015adad96a"
+        },
+        {
+            "date": 1751947588236,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-08-10-error.log",
+            "hash": "de7c9bd76913b9fc35e6a31fcdcf8332266d0578a23f51c9a91096570bfede2e"
+        },
+        {
+            "date": 1752039732532,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-09-11-error.log",
+            "hash": "174dec673abc2e913bb8dc332a8d69d2c95895d3a5321cff6af75e20838df48c"
+        },
+        {
+            "date": 1752041054360,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-09-12-error.log",
+            "hash": "078158892d599548ffbe5713d43c28a8e3bcbe34221ee581c5c8114639c21447"
+        },
+        {
+            "date": 1752049178404,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-09-14-error.log",
+            "hash": "556a42554e7b74a804ec08320b86e78523fe19c32efdd64cfd9bfccb625628fb"
+        },
+        {
+            "date": 1752051942761,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-09-15-error.log",
+            "hash": "df74537dacbfa0b014b9a753dda64546066034314d89fc5b17365544f075d5bd"
+        },
+        {
+            "date": 1752059964246,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-09-17-error.log",
+            "hash": "dd98bce2da2e104502042b9ffbd447717389e7fb84a42877087883db787d63d3"
+        },
+        {
+            "date": 1752062420514,
+            "name": "C:\\Users\\Bd Calling\\podlove_backend\\logs\\winston\\errors\\um-2025-07-09-18-error.log",
+            "hash": "0b8d3107841d91f7fcea5c3a7a93ef1dba6db7264cfa049c221acd67308b05bb"
+        }
+    ],
+    "hashType": "sha256"
+}
