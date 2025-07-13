@@ -204,7 +204,7 @@ const questions = [
 
 async function isUserSuitable(req: Request, res: Response, next: NextFunction): Promise<any> {
   const userResponses = req.body.userResponses;
-
+  console.log("user response: ", userResponses);
   const questions = [
     {
       question: "Do you believe in mutual respect and understanding in a relationship?",
@@ -278,6 +278,7 @@ async function isUserSuitable(req: Request, res: Response, next: NextFunction): 
     if (rawOutput !== "true" && rawOutput !== "false") {
       throw new Error(`Received output is not valid: "${rawOutput}"`);
     }
+    console.log("getting response status: ", rawOutput);
     return res
       .status(StatusCodes.OK)
       .json({ success: true, message: "Success", data: { isSuitable: rawOutput === "true" } });

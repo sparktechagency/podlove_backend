@@ -18,15 +18,21 @@ import SurveyRouter from "@routers/surveyRouter";
 import PodcastRouter from "@routers/podcastRouter";
 import HomeRouter from "@routers/homeRouter";
 import AIRouter from "@routers/aiRouter";
+// import ChatRouter from "@routers/chatRouter";
 import NotificationRouter from "@routers/notificationRouter";
 import ConsumerPolicyRouter from "@routers/consumerPolicyRouter";
 import MediaPolicyRouter from "@routers/mediaPolicyRouter";
+import path from "path";
+import ChatRouter from "@routers/chatRouter";
 
 
 const app = express();
 
 // app.use("/", WebhookRouter);
-
+app.use(
+  "/uploads",
+  express.static(path.join(__dirname, "../uploads"))
+);
 
 app.use(express.json());
 
@@ -55,6 +61,7 @@ app.use("/ai", AIRouter);
 app.use("/notification", NotificationRouter);
 app.use("/consumer", ConsumerPolicyRouter);
 app.use("/media", MediaPolicyRouter);
+app.use("/chat", ChatRouter);
 
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {

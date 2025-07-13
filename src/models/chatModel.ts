@@ -41,7 +41,7 @@ const MessageSchema = new Schema<IMessage>({
 const ChatSchema = new Schema<IChat>({
   participants: [{ 
     type: Schema.Types.ObjectId, 
-    ref: 'User', 
+    ref: "User", 
     required: true 
   }],
   messages: [MessageSchema],

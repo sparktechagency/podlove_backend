@@ -1,0 +1,63 @@
+Sun Jul 13 2025 11:19:25 [Podlove] [32minfo[39m: 68732bf0742d0564cb2fce92
+Sun Jul 13 2025 11:19:25 [Podlove] [32minfo[39m: [object Object]
+Sun Jul 13 2025 11:29:57 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Sun Jul 13 2025 11:29:58 [Podlove] [31merror[39m: Parameter "obj" to Document() must be an object, got "685bf24e49787bb2bfa51b3c" (type string)
+ObjectParameterError: Parameter "obj" to Document() must be an object, got "685bf24e49787bb2bfa51b3c" (type string)
+    at EmbeddedDocument.Document (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:123:11)
+    at EmbeddedDocument.Subdocument (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\types\subdocument.js:34:12)
+    at EmbeddedDocument.ArraySubdocument [as constructor] (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\types\arraySubdocument.js:44:15)
+    at new EmbeddedDocument (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\documentArray.js:131:17)
+    at SchemaDocumentArray.SchemaArray._castForQuery (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\array.js:561:11)
+    at SchemaDocumentArray.SchemaArray.castForQuery (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\array.js:587:17)
+    at cast (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\cast.js:390:32)
+    at cast (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\cast.js:76:20)
+    at model.Query.Query.cast (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:5055:12)
+    at model.Query.Query._castConditions (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:2351:10)
+ObjectParameterError
+Sun Jul 13 2025 11:37:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jul 13 2025 11:37:52 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jul 13 2025 11:37:53 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jul 13 2025 11:37:53 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jul 13 2025 11:37:53 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Sun Jul 13 2025 11:37:53 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jul 13 2025 11:38:19 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Sun Jul 13 2025 11:54:5 [Podlove] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (C:\Users\Bd Calling\podlove_backend\src\utils\jwt.ts:28:22)
+    at C:\Users\Bd Calling\podlove_backend\src\middlewares\authorization.ts:51:32
+    at C:\Users\Bd Calling\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+UnauthorizedError
+Sun Jul 13 2025 11:54:42 [Podlove] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (C:\Users\Bd Calling\podlove_backend\src\utils\jwt.ts:28:22)
+    at C:\Users\Bd Calling\podlove_backend\src\middlewares\authorization.ts:51:32
+    at C:\Users\Bd Calling\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+UnauthorizedError
+Sun Jul 13 2025 11:54:48 [Podlove] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (C:\Users\Bd Calling\podlove_backend\src\utils\jwt.ts:28:22)
+    at C:\Users\Bd Calling\podlove_backend\src\middlewares\authorization.ts:51:32
+    at C:\Users\Bd Calling\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+UnauthorizedError
+Sun Jul 13 2025 11:55:58 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a

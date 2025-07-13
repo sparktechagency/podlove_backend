@@ -20,10 +20,11 @@ const BASE_UPLOAD_DIR = path.join(__dirname, "../../uploads");
 const storage = multer.diskStorage({
   destination: (_req, file, cb) => {
     // choose subfolder by fieldname or mimetype
+    console.log("file: ", file)
     let subFolder: string;
     if (file.fieldname === "recording" || file.mimetype.startsWith("audio/")) {
       subFolder = "recordings";
-    } else if (file.fieldname === "image" || file.mimetype.startsWith("image/")) {
+    } else if (file.fieldname === "avatar" || file.mimetype.startsWith("image/")) {
       subFolder = "images";
     } else {
       return cb(new Error("Unexpected file field or type"), "");
@@ -39,7 +40,7 @@ const storage = multer.diskStorage({
     // use fieldname as prefix + timestamp + original extension
     const timestamp = Date.now();
     const ext = path.extname(file.originalname);
-    cb(null, `${file.fieldname}-${timestamp}${ext}`);
+    cb(null, `${timestamp}${ext}`);
   },
 });
 
@@ -47,7 +48,7 @@ const storage = multer.diskStorage({
 function fileFilter(_req: Express.Request, file: Express.Multer.File, cb: multer.FileFilterCallback) {
   if (
     (file.fieldname === "recording" && file.mimetype.startsWith("audio/")) ||
-    (file.fieldname === "image"     && file.mimetype.startsWith("image/"))
+    (file.fieldname === "avatar"     && file.mimetype.startsWith("image/"))
   ) {
     cb(null, true);
   } else {

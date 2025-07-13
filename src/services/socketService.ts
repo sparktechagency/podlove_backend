@@ -1,255 +1,309 @@
 import { Socket, Server as SocketServer } from 'socket.io';
 import { Server as HTTPServer } from 'http';
 import jwt from 'jsonwebtoken';
-import { ChatService } from './chatService';
-// import { ChatService } from './chatService';
-
+// import ChatService from './chatService';
+import { NextFunction } from 'express';
+import ChatService from './chatService';
+// import { decodeToken } from '@utils/jwt';
+import { authorize, authorizeToken, verifyJwtAndFetchUser} from '@middlewares/authorization';
+import { asyncHandler } from '@shared/asyncHandler';
+import { decodeToken } from "@utils/jwt";
+import { StatusCodes } from "http-status-codes";
 
 interface AuthenticatedSocket extends Socket {
-  user?: {
-    id: string;
-    email: string;
-    username: string;
-  };
+  user?: any;
 }
 
-export class SocketService {
-  private io: SocketServer;
-  private chatService: ChatService;
-  private userSockets: Map<string, string[]> = new Map(); // userId -> socketIds
+const userSockets = new Map<string, string[]>();
 
-  constructor(server: HTTPServer) {
-    this.io = new SocketServer(server, {
-      cors: {
-        origin: process.env.CLIENT_URL || "http://localhost:3000",
-        methods: ["GET", "POST"],
-        credentials: true
+export default function initSocketHandlers(io: any): void {
+
+  // Authentication middleware for socket connections
+  io.use(async (socket: any, next: (err?: any) => void) => {
+     try {
+      // 1) grab raw token from handshake
+      const rawToken = (socket.handshake as any).auth?.token || socket.handshake.headers.authorization || "";
+      if(!rawToken){
+        return next(new Error("Authentication failed"));
       }
-    });
+      // 2) verify + fetch user
+      const user = await verifyJwtAndFetchUser(
+        rawToken,
+        process.env.JWT_ACCESS_SECRET!,
+      );
 
-    this.chatService = new ChatService();
-    this.setupSocketHandlers();
-  }
+      // 3) attach to socket
+      (socket as AuthenticatedSocket).data = { user };
 
-  private setupSocketHandlers() {
-    // Authentication middleware for socket connections
-    this.io.use(async (socket: AuthenticatedSocket, next) => {
-      try {
-        const token = socket.handshake.auth.token || socket.handshake.headers.authorization?.replace('Bearer ', '');
-        
-        if (!token) {
-          throw new Error('Authentication failed');
-        }
+      next();
+    } catch (err) {
+      next(err); 
+    }
+   
+  });
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any;
-        socket.user = decoded;
-        
-        next();
-      } catch (error) {
-        next(new Error('Authentication failed'));
-      }
-    });
 
-    this.io.on('connection', (socket: AuthenticatedSocket) => {
-      console.log(`User ${socket.user?.username} connected with socket ID: ${socket.id}`);
-      
-      // Store user socket mapping
-      this.addUserSocket(socket.user!.id, socket.id);
-
-      // Handle joining chat rooms
-      socket.on('join-chat', async (chatId: string) => {
-        try {
-          // Verify user is participant in this chat
-          const chats = await this.chatService.getUserChats(socket.user!.id);
-          const isParticipant = chats.some(chat => chat._id.toString() === chatId);
-          
-          if (!isParticipant) {
-            socket.emit('error', { message: 'You are not a participant in this chat' });
-            return;
-          }
-
-          socket.join(chatId);
-          socket.emit('joined-chat', { chatId });
-          
-          // Notify other participants that user joined
-          socket.to(chatId).emit('user-joined', {
-            userId: socket.user!.id,
-            username: socket.user!.username
-          });
-          
-        } catch (error) {
-          socket.emit('error', { message: 'Failed to join chat' });
-        }
-      });
-
-      // Handle leaving chat rooms
-      socket.on('leave-chat', (chatId: string) => {
-        socket.leave(chatId);
-        socket.to(chatId).emit('user-left', {
-          userId: socket.user!.id,
-          username: socket.user!.username
-        });
-      });
-
-      // Handle sending messages
-      socket.on('send-message', async (data: {
-        chatId: string;
-        content: string;
-        messageType?: 'text' | 'image' | 'file';
-        replyTo?: string;
-      }) => {
-        try {
-          const message = await this.chatService.sendMessage(
-            data.chatId,
-            socket.user!.id,
-            data.content,
-            data.messageType || 'text',
-            data.replyTo
-          );
-
-          // Emit to all participants in the chat
-          this.io.to(data.chatId).emit('new-message', {
-            chatId: data.chatId,
-            message
-          });
-
-          // Send push notification to offline users
-          await this.sendPushNotifications(data.chatId, socket.user!.id, message);
-          
-        } catch (error) {
-          socket.emit('error', { 
-            message: error ? error : 'Failed to send message' 
-          });
-        }
-      });
-
-      // Handle typing indicators
-      socket.on('typing-start', (data: { chatId: string }) => {
-        socket.to(data.chatId).emit('user-typing', {
-          userId: socket.user!.id,
-          username: socket.user!.username
-        });
-      });
-
-      socket.on('typing-stop', (data: { chatId: string }) => {
-        socket.to(data.chatId).emit('user-stopped-typing', {
-          userId: socket.user!.id,
-          username: socket.user!.username
-        });
-      });
-
-      // Handle message editing
-      socket.on('edit-message', async (data: {
-        chatId: string;
-        messageId: string;
-        content: string;
-      }) => {
-        try {
-          const message = await this.chatService.editMessage(
-            data.chatId,
-            data.messageId,
-            socket.user!.id,
-            data.content
-          );
-
-          this.io.to(data.chatId).emit('message-edited', {
-            chatId: data.chatId,
-            messageId: data.messageId,
-            message
-          });
-          
-        } catch (error) {
-          socket.emit('error', { 
-            message: error instanceof Error ? error.message : 'Failed to edit message' 
-          });
-        }
-      });
-
-      // Handle message deletion
-      socket.on('delete-message', async (data: {
-        chatId: string;
-        messageId: string;
-      }) => {
-        try {
-          await this.chatService.deleteMessage(
-            data.chatId,
-            data.messageId,
-            socket.user!.id
-          );
-
-          this.io.to(data.chatId).emit('message-deleted', {
-            chatId: data.chatId,
-            messageId: data.messageId
-          });
-          
-        } catch (error) {
-          socket.emit('error', { 
-            message: error instanceof Error ? error.message : 'Failed to delete message' 
-          });
-        }
-      });
-
-      // Handle disconnect
-      socket.on('disconnect', () => {
-        console.log(`User ${socket.user?.username} disconnected`);
-        this.removeUserSocket(socket.user!.id, socket.id);
-      });
-    });
-  }
-
-  // Helper methods for user socket management
-  private addUserSocket(userId: string, socketId: string) {
-    const userSockets = this.userSockets.get(userId) || [];
-    userSockets.push(socketId);
-    this.userSockets.set(userId, userSockets);
-  }
-
-  private removeUserSocket(userId: string, socketId: string) {
-    const userSockets = this.userSockets.get(userId) || [];
-    const filteredSockets = userSockets.filter(id => id !== socketId);
+  io.on('connection', (socket: AuthenticatedSocket) => {
+    // const userId = 
+    console.log(`User ${socket.data.user?.name} connected with socket ID: ${socket.id}`);
+    console.log("user: ", socket.data.user.userId)
+    // Store user socket mapping
+    addUserSocket(socket.data.user!.userId, socket.id);
     
-    if (filteredSockets.length === 0) {
-      this.userSockets.delete(userId);
-    } else {
-      this.userSockets.set(userId, filteredSockets);
-    }
-  }
+    // Handle joining chat rooms
+    socket.on('join-chat', async ({ chatId }) => {
+      try {
+        // Verify user is participant in this chat
+        console.log("is participatns: ", socket.data.user!.userId);
+        const chats = await ChatService.getUserChats(socket.data.user!.userId);
+        console.log("chats: ", chats, " chatId: ", chatId);
+        const isParticipant = chats.some(chat => chat._id.toHexString() === chatId);
+        // const isParticipant = chats.some(chat =>chat._id.equals(chatId));
+        console.log("is participatns: ", isParticipant);
+        if (!isParticipant) {
+          socket.emit('error', { message: 'You are not a participant in this chat' });
+          return;
+        }
+        // const chatId = socket.id;
+        socket.join(socket.id);
+        socket.emit('joined-chat', { chatId });
 
-  // Check if user is online
-  public isUserOnline(userId: string): boolean {
-    return this.userSockets.has(userId);
-  }
+        // Notify other participants that user joined
+        socket.to(chatId).emit('user-joined', {
+          userId: socket.data.user!._id,
+          username: socket.data.user!.name
+        });
 
-  // Send push notifications to offline users
-  private async sendPushNotifications(chatId: string, senderId: string, message: any) {
-    try {
-      const chats = await this.chatService.getUserChats(senderId);
-      const chat = chats.find(c => c._id.toString() === chatId);
-      
-      if (!chat) return;
-
-      // Find offline participants
-      const offlineParticipants = chat.participants.filter(participant => {
-        const participantId = participant._id?.toString();
-        return participantId !== senderId && !this.isUserOnline(participantId!);
-      });
-
-      // Here you would implement your push notification logic
-      // For example, using Firebase Cloud Messaging (FCM)
-      for (const participant of offlineParticipants) {
-        // Assuming participant is an object with a username property
-        console.log(`Sending push notification to ${(participant as any).username}`);
-        // await this.sendPushNotification(participant._id, message);
+      } catch (error) {
+        socket.emit('error', { message: 'Failed to join chat' });
       }
-    } catch (error) {
-      console.error('Error sending push notifications:', error);
-    }
-  }
+    });
 
-  // Get Socket.IO instance for external use
-  public getIO(): SocketServer {
-    return this.io;
+    // Handle leaving chat rooms
+    socket.on('leave-chat', (chatId: string) => {
+      socket.leave(chatId);
+      socket.to(chatId).emit('user-left', {
+        userId: socket.user!.id,
+        username: socket.user!.username
+      });
+    });
+
+    // Handle sending messages
+    socket.on('send-message', async (data: {
+      chatId: string;
+      content: string;
+      messageType?: 'text' | 'image' | 'file';
+      replyTo?: string;
+    }) => {
+      try {
+        console.log("data: ", data, " userId: ", socket.data);
+        const message = await ChatService.sendMessage(
+          data.chatId,
+          socket.data.user!.userId,
+          data.content,
+          data.messageType || 'text',
+          data.replyTo
+        );
+        console.log("message: ",  data.chatId);
+
+        // Emit to all participants in the chat
+        io.to(data.chatId).emit('new-message', {
+          chatId: data.chatId,
+          message
+        });
+
+        // Send push notification to offline users
+        await sendPushNotifications(data.chatId, socket.data.user!.userId, message);
+
+      } catch (error) {
+        socket.emit('error', {
+          message: error ? error : 'Failed to send message'
+        });
+      }
+    });
+
+    // Handle typing indicators
+    socket.on('typing-start', (data: { chatId: string }) => {
+      console.log("typing start: ", data.chatId)
+      socket.to(data.chatId).emit('user-typing', {
+        userId: socket.data.user!.userId,
+        username: socket.data.user!.name
+      });
+    });
+
+    socket.on('typing-stop', (data: { chatId: string }) => {
+      socket.to(data.chatId).emit('user-stopped-typing', {
+        userId: socket.data.user!.userId,
+        username: socket.data.user!.name
+      });
+    });
+
+    // Handle message editing
+    socket.on('edit-message', async (data: {
+      chatId: string;
+      messageId: string;
+      content: string;
+    }) => {
+      try {
+        const message = await ChatService.editMessage(
+          data.chatId,
+          data.messageId,
+          socket.data.user!.userId,
+          data.content
+        );
+
+        io.to(data.chatId).emit('message-edited', {
+          chatId: data.chatId,
+          messageId: data.messageId,
+          message
+        });
+
+      } catch (error) {
+        socket.emit('error', {
+          message: error instanceof Error ? error.message : 'Failed to edit message'
+        });
+      }
+    });
+
+    // Handle message deletion
+    socket.on('delete-message', async (data: {
+      chatId: string;
+      messageId: string;
+    }) => {
+      try {
+        await ChatService.deleteMessage(
+          data.chatId,
+          data.messageId,
+          socket.data.user!.userId
+        );
+
+        io.to(data.chatId).emit('message-deleted', {
+          chatId: data.chatId,
+          messageId: data.messageId
+        });
+
+      } catch (error) {
+        socket.emit('error', {
+          message: error instanceof Error ? error.message : 'Failed to delete message'
+        });
+      }
+    });
+
+    // Handle disconnect
+    socket.on('disconnect', () => {
+      console.log(`User ${socket.data.user?.name} disconnected`);
+      removeUserSocket(socket.data.user!.userId, socket.id);
+    });
+  });
+}
+
+// Helper methods for user socket management
+function addUserSocket(userId: string, socketId: string): void {
+  // Grab existing array (or start a new one)
+  const sockets = userSockets.get(userId) || [];
+  sockets.push(socketId);
+  // Store it back on the map
+  userSockets.set(userId, sockets);
+}
+
+function removeUserSocket(userId: string, socketId: string): void {
+  const sockets = userSockets.get(userId);
+  if (!sockets) return;
+
+  // Filter out the one that disconnected
+  const filtered = sockets.filter((id) => id !== socketId);
+
+  if (filtered.length > 0) {
+    // Still have some left → update
+    userSockets.set(userId, filtered);
+  } else {
+    // No sockets left → entirely remove the user
+    userSockets.delete(userId);
   }
 }
 
+// Check if user is online
+function isUserOnline(userId: string): boolean {
+  return userSockets.has(userId);
+}
+
+// Send push notifications to offline users
+async function sendPushNotifications(chatId: string, senderId: string, message: any) {
+  try {
+    const chats = await ChatService.getUserChats(senderId);
+    const chat = chats.find((c: { _id: { toString: () => string; }; }) => c._id.toString() === chatId);
+    if (!chat) return;
+   
+    // Find offline participants
+    const offlineParticipants = chat.participants.filter((participant: { _id: { toString: () => any; }; }) => {
+      const participantId = participant._id?.toString();
+      return participantId !== senderId && !isUserOnline(participantId!);
+    });
+
+    // Here you would implement your push notification logic
+    // For example, using Firebase Cloud Messaging (FCM)
+    for (const participant of offlineParticipants) {
+      // Assuming participant is an object with a username property
+      console.log(`Sending push notification to ${(participant as any).name}`);
+      // await this.sendPushNotification(participant._id, message);
+    }
+  } catch (error) {
+    console.error('Error sending push notifications:', error);
+  }
+}
+
+// async function sendPushNotifications(
+//   chatId: string,
+//   senderId: string,
+//   message: any
+// ): Promise<void> {
+//   try {
+//     // 1) Fetch all chats for this user
+//     const chats = await ChatService.getUserChats(senderId);
+//     console.log("chats: ", chats);
+
+//     // 2) Find the specific chat by its ID
+//     const chat = chats.find(c => c._id.toString() === chatId);
+//     console.log("chat: ", chat);
+//     if (!chat) return;
+
+//     // 3) Identify offline participants (excluding the sender)
+//     const offlineParticipants = chat.participants.filter(p => {
+//       const participantId = p._id?.toString();
+//       return participantId !== senderId && !isUserOnline(participantId!);
+//     });
+
+//     // 4) For each offline user, log, push, and persist a Notification
+//     for (const participant of offlineParticipants) {
+//       const userId = participant._id;
+//       const username = (participant as any).name ?? "Unknown";
+
+//       console.log(`Sending push notification to ${username}`);
+
+//       // ▶▶ Your FCM (or other) push logic here…
+//       // await pushService.sendToUser(userId, message);
+
+//       // ▶▶ Persist in MongoDB
+//       await Notification.create({
+//         type: "chat_message",   // or whatever category you prefer
+//         user: userId,
+//         message: typeof message === "string"
+//           ? message
+//           : JSON.stringify(message), 
+//           read:false
+//       });
+//     }
+//   } catch (error) {
+//     console.error("Error sending push notifications:", error);
+//   }
+// }
+
+
+const socketService = {
+  initSocketHandlers
+}
+export { socketService };
+  function createError(UNAUTHORIZED: any, arg1: string): any {
+    throw new Error('Function not implemented.');
+  }
 

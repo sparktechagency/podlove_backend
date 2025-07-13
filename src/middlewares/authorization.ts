@@ -9,6 +9,7 @@ import { StatusCodes } from "http-status-codes";
 import Admin, { DecodedAdmin } from "@models/adminModel";
 import { asyncHandler } from "@shared/asyncHandler";
 import { logger } from "@shared/logger";
+import { Socket } from "socket.io";
 
 const getUserInfo = async (authId: string): Promise<DecodedUser | null> => {
   let error, auth, user, data: DecodedUser;
@@ -37,7 +38,7 @@ const getAdminInfo = async (id: string): Promise<DecodedAdmin | null> => {
   return data;
 };
 
-const authorizeToken = (secret: string, isAdminCheck: boolean = false) => {
+export const authorizeToken = (secret: string, isAdminCheck: boolean = false) => {
   return asyncHandler(async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith("Bearer")) {
@@ -56,7 +57,6 @@ const authorizeToken = (secret: string, isAdminCheck: boolean = false) => {
       logger.info(data);
       req.admin = data;
     } else {
-
       data = await getUserInfo(decoded.id);
       if (!data) return next(createError(StatusCodes.NOT_FOUND, "Account Not Found"));
       req.user = data;
@@ -64,6 +64,30 @@ const authorizeToken = (secret: string, isAdminCheck: boolean = false) => {
     return next();
   });
 };
+
+export async function verifyJwtAndFetchUser(
+  rawToken: string,
+  secret: string,
+): Promise<any> {
+  if (!rawToken) {
+    throw createError(StatusCodes.UNAUTHORIZED, "Token missing");
+  }
+
+  const token = rawToken.replace(/^Bearer\s+/, "");
+  if (!secret) {
+    throw createError(StatusCodes.INTERNAL_SERVER_ERROR, "JWT secret not configured");
+  }
+
+  const decoded = decodeToken(token, secret);
+  if (!decoded?.id) {
+    throw createError(StatusCodes.UNAUTHORIZED, "Invalid token payload");
+  }
+  const user = await getUserInfo(decoded.id);
+  if (!user) {
+    throw createError(StatusCodes.NOT_FOUND, "User not found");
+  }
+  return user;
+}
 
 export const authorize = authorizeToken(process.env.JWT_ACCESS_SECRET!);
 export const admin_authorize = authorizeToken(process.env.JWT_ACCESS_SECRET!, true);

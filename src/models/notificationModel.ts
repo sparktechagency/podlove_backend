@@ -4,6 +4,7 @@ type NotificationSchema = Document & {
     type: string;
     user: Types.ObjectId;
     message: string;
+    read:Boolean
 };
 
 const notificationSchema = new Schema<NotificationSchema>({
@@ -20,6 +21,10 @@ const notificationSchema = new Schema<NotificationSchema>({
         type: String,
         required: true,
     },
+    read:{
+        type: Boolean,
+        default: false
+    }
 },
     {timestamps: true},
 );
