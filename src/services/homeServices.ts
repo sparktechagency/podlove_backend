@@ -4,38 +4,81 @@ import { StatusCodes } from "http-status-codes";
 import SubscriptionPlan from "@models/subscriptionPlanModel";
 import User from "@models/userModel";
 
+// const homeData = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+//   const userId = req.user.userId;
+
+//   const user = await User.findById(userId).populate({ path: "auth", select: "email" });
+
+//   let podcast = await Podcast.findOne({
+//     $or: [{ primaryUser: userId }, { participants: userId }],
+//   })
+//     .populate({
+//       path: "participants",
+//       select: "name bio interests",
+//     })
+//     .populate({
+//       path: "primaryUser",
+//       select: "name bio interests",
+//     })
+//     .lean();
+
+//   const isPrimaryUser = podcast ? podcast.primaryUser.toString() === userId : false;
+
+//   const subscriptionPlans = await SubscriptionPlan.find().lean();
+
+//   return res.status(StatusCodes.OK).json({
+//     success: true,
+//     message: "Success",
+//     data: {
+//       user,
+//       podcast: podcast || {},
+//       subscriptionPlans,
+//       isPrimaryUser,
+//     },
+//   });
+// };
+
+
 const homeData = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const userId = req.user.userId;
+  try {
+    const userId = req.user.userId;
 
-  const user = await User.findById(userId).populate({ path: "auth", select: "email" });
+    // Fetch the user (with their auth email)
+    const user = await User
+      .findById(userId)
+      .populate({ path: "auth", select: "email" })
+      .lean();
 
-  let podcast = await Podcast.findOne({
-    $or: [{ primaryUser: userId }, { participants: userId }],
-  })
-    .populate({
-      path: "participants",
-      select: "name bio interests",
+    // Find the podcast where they’re primary or a participant
+    const podcast = await Podcast.findOne({
+      $or: [
+        { primaryUser: userId },
+        { "participants.user": userId }
+      ]
     })
-    .populate({
-      path: "primaryUser",
-      select: "name bio interests",
-    })
-    .lean();
+      .populate({ path: "participants.user", select: "name bio interests" })
+      .populate({ path: "primaryUser", select: "name bio interests" })
+      .lean();
 
-  const isPrimaryUser = podcast ? podcast.primaryUser.toString() === userId : false;
+    const isPrimaryUser = !!podcast && podcast.primaryUser.toString() === userId;
 
-  const subscriptionPlans = await SubscriptionPlan.find().lean();
+    // Fetch available subscription plans
+    const subscriptionPlans = await SubscriptionPlan.find().lean();
 
-  return res.status(StatusCodes.OK).json({
-    success: true,
-    message: "Success",
-    data: {
-      user,
-      podcast: podcast || {},
-      subscriptionPlans,
-      isPrimaryUser,
-    },
-  });
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Success",
+      data: {
+        user,
+        podcast: podcast || {},
+        subscriptionPlans,
+        isPrimaryUser,
+      },
+    });
+  } catch (err) {
+    // Forward the error to your error‑handling middleware
+    next(err);
+  }
 };
 
 

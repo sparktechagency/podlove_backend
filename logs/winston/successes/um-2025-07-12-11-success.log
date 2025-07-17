@@ -1,0 +1,102 @@
+Sat Jul 12 2025 11:9:46 [Podlove] [32minfo[39m: 6871d92cf8bbe9e9de6cc393
+Sat Jul 12 2025 11:9:47 [Podlove] [31merror[39m: Parameter "obj" to Document() must be an object, got "6871d92df8bbe9e9de6cc395" (type string)
+ObjectParameterError: Parameter "obj" to Document() must be an object, got "6871d92df8bbe9e9de6cc395" (type string)
+    at EmbeddedDocument.Document (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\document.js:123:11)
+    at EmbeddedDocument.Subdocument (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\types\subdocument.js:34:12)
+    at EmbeddedDocument.ArraySubdocument [as constructor] (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\types\arraySubdocument.js:44:15)
+    at new EmbeddedDocument (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\documentArray.js:131:17)
+    at SchemaDocumentArray.SchemaArray._castForQuery (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\array.js:561:11)
+    at SchemaDocumentArray.SchemaArray.castForQuery (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\schema\array.js:587:17)
+    at cast (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\cast.js:390:32)
+    at cast (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\cast.js:76:20)
+    at model.Query.Query.cast (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:5055:12)
+    at model.Query.Query._castConditions (C:\Users\Bd Calling\podlove_backend\node_modules\mongoose\lib\query.js:2351:10)
+ObjectParameterError
+Sat Jul 12 2025 11:10:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 12 2025 11:11:0 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 12 2025 11:11:0 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 12 2025 11:11:1 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 12 2025 11:11:1 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Sat Jul 12 2025 11:11:1 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Jul 12 2025 11:11:22 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 12 2025 11:11:25 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 12 2025 11:11:25 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 12 2025 11:11:26 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 12 2025 11:11:26 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Sat Jul 12 2025 11:11:26 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Jul 12 2025 11:14:43 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:14:53 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:15:11 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:16:14 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:16:22 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:16:41 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:17:0 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:17:10 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:17:19 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:17:28 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:18:0 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:18:11 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:19:5 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:19:13 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:19:21 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:19:33 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:20:59 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:21:1 [Podlove] [31merror[39m: Matched users not found
+NotFoundError: Matched users not found
+    at getMatchedUsers (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:239:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sat Jul 12 2025 11:26:35 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:28:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 12 2025 11:28:56 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 12 2025 11:28:56 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 12 2025 11:28:56 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 12 2025 11:28:56 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Sat Jul 12 2025 11:28:56 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Jul 12 2025 11:31:34 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 12 2025 11:31:37 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 12 2025 11:31:37 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 12 2025 11:31:38 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 12 2025 11:31:38 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Sat Jul 12 2025 11:31:38 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Jul 12 2025 11:34:34 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 12 2025 11:34:37 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 12 2025 11:34:37 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 12 2025 11:34:38 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 12 2025 11:34:38 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Sat Jul 12 2025 11:34:38 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Jul 12 2025 11:40:11 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 12 2025 11:40:15 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 12 2025 11:40:15 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 12 2025 11:40:15 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 12 2025 11:40:15 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Sat Jul 12 2025 11:40:15 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Jul 12 2025 11:40:44 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:40:55 [Podlove] [32minfo[39m: 6871ef1f46ee05b8ba525412
+Sat Jul 12 2025 11:50:37 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:50:46 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:51:7 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:51:16 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:51:23 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:51:31 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:51:39 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:51:45 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:51:54 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:52:1 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:52:15 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:52:26 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:53:17 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:53:21 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:53:29 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:53:38 [Podlove] [32minfo[39m: 6871f792960e1939aa126ec3
+Sat Jul 12 2025 11:53:42 [Podlove] [31merror[39m: answers must be an array of strings
+BadRequestError: answers must be an array of strings
+    at matchUser (C:\Users\Bd Calling\podlove_backend\src\services\matchesServices.ts:175:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Sat Jul 12 2025 11:55:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 12 2025 11:56:0 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 12 2025 11:56:0 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 12 2025 11:56:0 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 12 2025 11:56:0 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Sat Jul 12 2025 11:56:0 [Podlove] [32minfo[39m: Socket.IO server initialized

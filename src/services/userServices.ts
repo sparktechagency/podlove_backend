@@ -71,11 +71,18 @@ const validateBio = async (req: Request, res: Response, next: NextFunction): Pro
   const result = await OpenaiServices.analyzeBio(bio);
 
   if (result === true) {
-   const updatedBio = await User.findByIdAndUpdate(userId, { bio }, { new: true });
-    if (!updatedBio) {
+       const updatedUserBio = await User.findByIdAndUpdate(
+      userId,                         
+      { $set: { bio: bio.trim() } },  
+      {
+        new: true,        
+      }
+    );
+    console.log("updatedUserBio: ", updatedUserBio)
+    if (!updatedUserBio) {
         return next(createError(StatusCodes.NOT_FOUND, "User not found"));
       }
-    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {updatedBio} });
+    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {updatedUserBio} });
   }
 
   const errorMessage =

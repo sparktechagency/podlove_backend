@@ -80,7 +80,6 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
       ],
     });
     const rawOutput = response.choices[0].message!.content!.trim();
-    console.log("Raw output from OpenAI:", rawOutput);
     const numericRegex = /^\d+(\.\d+)?$/;
     if (!numericRegex.test(rawOutput)) {
       throw new Error(`Output is not strictly a number: "${rawOutput}"`);
@@ -99,17 +98,16 @@ async function findMatches(
   session: mongoose.mongo.ClientSession
 ): Promise<any> {
   // 1) Load user
-  const user = await User.findById(userId, {}, { session }).lean();
+  const user = await User.findById(userId, {}, { session });
   if (!user) throw new Error("User not found");
 
-  if (user.compatibility && user.compatibility.length === 22) {
+  if (user.compatibility && !answers) {
     answers = user.compatibility;
   }
   // 2) Save own answers
   await User.findByIdAndUpdate(userId, { compatibility: answers }, { session }).exec();
   // 3) Build filter based on preferences
   const pref = user.preferences;
-  console.log("User preferences:", pref);
   let candidates = await User.find(
     {
       _id: { $ne: user._id },
@@ -125,7 +123,8 @@ async function findMatches(
   const nearby = candidates.filter(
     (c) =>
       calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
-      pref.distance
+      pref.distance? calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
+      pref.distance : calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude)
   );
   // 5) Compute scores with concurrency limit
   const scored = await Promise.all(
@@ -167,9 +166,9 @@ const matchUser = async (
   try {
     const userId = req.params.id;
     let { compatibility } = req.body;
-    if (!Array.isArray(compatibility) || compatibility.length !== 22) {
-      throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of 22 strings");
-    }
+    // if (!Array.isArray(compatibility)) {
+    //   throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of strings");
+    // }
 
     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
     if (podcastExists) {

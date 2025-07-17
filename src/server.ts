@@ -116,11 +116,15 @@ async function startServer() {
     const server = http.createServer(app);
     // const socketService = new SocketService(server);
       const io = new SocketIOServer(server, {
+<<<<<<< HEAD
       cors: {
         origin: process.env.CLIENT_URL || "http://localhost:3000",
         methods: ["GET", "POST"],
         credentials: true
       }
+=======
+      cors: { origin: "*" }
+>>>>>>> 6845c063dd37b749fdac5291307995d0d8fe3628
     }); 
     // const io = new SocketIOServer(server, {
     //   cors: { origin: "*"},
