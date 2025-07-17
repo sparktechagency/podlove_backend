@@ -7147,3 +7147,137 @@ Sun Jul 13 2025 18:15:4 [Podlove] [32minfo[39m: Server is running at PORT: 800
 Sun Jul 13 2025 18:15:4 [Podlove] [32minfo[39m: Socket.IO server initialized
 Sun Jul 13 2025 18:40:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
 >>>>>>> 6845c063dd37b749fdac5291307995d0d8fe3628
+Thu Jul 17 2025 9:59:23 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 9:59:26 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 9:59:26 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 9:59:26 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 9:59:26 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 9:59:26 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 15:30:40 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 15:30:43 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 15:30:44 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 15:30:44 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 15:30:44 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 15:30:44 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 18:16:7 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 18:16:24 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 18:16:25 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 18:16:25 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 18:16:28 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 18:16:28 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 18:50:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 18:51:3 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 18:51:3 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 18:51:3 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 18:51:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 18:51:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 18:57:0 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Thu Jul 17 2025 18:58:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 18:58:31 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 18:58:31 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 18:58:32 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 18:58:32 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 18:58:32 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 18:59:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 18:59:44 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 18:59:45 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 18:59:45 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 18:59:45 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 18:59:45 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 18:59:51 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Thu Jul 17 2025 19:3:25 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 19:3:28 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 19:3:29 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 19:3:29 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 19:3:29 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 19:3:29 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 19:5:18 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Thu Jul 17 2025 19:8:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 19:9:0 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 19:9:0 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 19:9:0 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 19:9:0 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 19:9:0 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 19:10:15 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Thu Jul 17 2025 19:10:45 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Thu Jul 17 2025 19:12:16 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 19:12:20 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 19:12:20 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 19:12:21 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 19:12:21 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 19:12:21 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 19:12:47 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Thu Jul 17 2025 19:14:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 19:14:40 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 19:14:40 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 19:14:41 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 19:14:41 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 19:14:41 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 19:15:16 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 19:15:20 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 19:15:20 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 19:15:21 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 19:15:21 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 19:15:21 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 19:15:29 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Thu Jul 17 2025 19:17:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 19:17:6 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 19:17:7 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 19:17:7 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 19:17:7 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 19:17:7 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 19:22:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 19:22:15 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 19:22:15 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 19:22:16 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 19:22:16 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 19:22:16 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 19:22:41 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Thu Jul 17 2025 19:24:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 17 2025 19:24:9 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 17 2025 19:24:9 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 17 2025 19:24:10 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 17 2025 19:24:10 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jul 17 2025 19:24:10 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 17 2025 19:24:20 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Thu Jul 17 2025 19:25:4 [Podlove] [31merror[39m: Subscription Plan not found!
+NotFoundError: Subscription Plan not found!
+    at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError

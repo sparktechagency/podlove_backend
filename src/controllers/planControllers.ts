@@ -16,7 +16,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   [error, product] = await to(
     stripe.products.create({
       name: name!,
-      description: description
+      description: description,
     })
   );
   if (error) return next(error);
@@ -27,8 +27,8 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
       unit_amount: Number.parseFloat(unitAmount) * 100,
       currency: "usd",
       recurring: {
-        interval: interval!
-      }
+        interval: interval!,
+      },
     })
   );
   if (error) return next(error);
@@ -40,7 +40,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
       unitAmount: Number.parseFloat(unitAmount),
       interval: interval,
       productId: product.id,
-      priceId: price.id
+      priceId: price.id,
     })
   );
   if (error) return next(error);
@@ -48,25 +48,107 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   return res.status(StatusCodes.CREATED).json({
     success: true,
     message: "Success",
-    data: plan
+    data: plan,
   });
 };
 
+// const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+//   const userId = req.params.id;
+//   const [error, plan] = await to(Plan.findOne({userId:userId}).lean());
+//   if (error) return next(error);
+//   if (!plan) return next(createError(StatusCodes.NOT_FOUND, "Plan not found!"));
+//   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: plan });
+// };
+
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const id = req.params.id;
-  const [error, plan] = await to(Plan.findById(id).lean());
+  const userId = req.params.id;
+  console.log("userId: ", userId);
+  // 1) Perform the query with .exec() for a real Promise
+  const [error, plan] = await to(
+    Plan.findOne({ userId })
+      .lean<{
+        _id: string;
+        userId: string;
+        name: string;
+        description: { key: string; details: string }[];
+        unitAmount: number | string;
+        interval: string;
+        productId: string;
+        priceId: string;
+      }>()
+      .exec()
+  );
+
+  console.log("plan: ", plan);
+
+  // 2) Handle errors
   if (error) return next(error);
-  if (!plan) return next(createError(StatusCodes.NOT_FOUND, "Plan not found!"));
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: plan });
+  if (!plan) {
+    return next(createError(StatusCodes.NOT_FOUND, "Plan not found!"));
+  }
+
+  // 3) Normalize unitAmount to a number, if it came back as string
+  const normalizedPlan = {
+    ...plan,
+    unitAmount: typeof plan.unitAmount === "string" ? parseFloat(plan.unitAmount) : plan.unitAmount,
+  };
+
+  // 4) Send response
+  return res.status(StatusCodes.OK).json({
+    success: true,
+    message: "Success",
+    data: normalizedPlan,
+  });
 };
 
+
 const getAll = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const [error, plans] = await to(Plan.find().lean());
-  if (error) return next(error);
-  if (!plans || plans.length === 0) {
-    return res.status(StatusCodes.OK).json({ success: true, message: "No Plans Found!", data: [] });
+  // 1) Read page & limit from query, with sensible defaults
+  const page = Math.max(parseInt(req.query.page as string) || 1, 1);
+  const limit = Math.max(parseInt(req.query.limit as string) || 10, 1);
+  const skip = (page - 1) * limit;
+
+  try {
+    // 2) Get total count
+    const [countErr, total] = await to<number>(Plan.countDocuments().exec());
+    if (countErr) return next(countErr);
+
+    // 3) Fetch paged plans
+    const [findErr, plans] = await to(Plan.find().skip(skip).limit(limit).lean().exec());
+    if (findErr) return next(findErr);
+
+    // 4) If no plans at all
+    if (!plans || plans.length === 0) {
+      return res.status(StatusCodes.OK).json({
+        success: true,
+        message: "No Plans Found!",
+        data: [],
+        meta: {
+          total: 0,
+          page,
+          limit,
+          totalPages: 0,
+        },
+      });
+    }
+
+    // 5) Build pagination metadata
+    const totalPages = Math.ceil(total / limit);
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Success",
+      data: plans,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages,
+      },
+    });
+  } catch (err) {
+    return next(err);
   }
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: plans });
 };
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -89,7 +171,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   if (unitAmount || interval) {
     let [error] = await to(
       stripe.prices.update(plan.priceId, {
-        active: false
+        active: false,
       })
     );
     if (error) return next(error);
@@ -103,8 +185,8 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
         unit_amount: plan.unitAmount * 100,
         currency: "usd",
         recurring: {
-          interval: plan.interval!
-        }
+          interval: plan.interval!,
+        },
       })
     );
     if (error) return next(error);
@@ -117,15 +199,15 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   res.status(StatusCodes.OK).json({
     success: true,
     message: "Success",
-    data: plan
+    data: plan,
   });
 };
 
-const controller = {
+const planController = {
   create,
   get,
   getAll,
-  update
+  update,
 };
 
-export default controller;
+export default planController;

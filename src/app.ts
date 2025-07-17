@@ -18,19 +18,12 @@ import SurveyRouter from "@routers/surveyRouter";
 import PodcastRouter from "@routers/podcastRouter";
 import HomeRouter from "@routers/homeRouter";
 import AIRouter from "@routers/aiRouter";
-<<<<<<< HEAD
-import ChatRouter from "@routers/chatRouter";
-=======
 // import ChatRouter from "@routers/chatRouter";
->>>>>>> 6845c063dd37b749fdac5291307995d0d8fe3628
 import NotificationRouter from "@routers/notificationRouter";
 import ConsumerPolicyRouter from "@routers/consumerPolicyRouter";
 import MediaPolicyRouter from "@routers/mediaPolicyRouter";
 import path from "path";
-<<<<<<< HEAD
-=======
 import ChatRouter from "@routers/chatRouter";
->>>>>>> 6845c063dd37b749fdac5291307995d0d8fe3628
 
 
 const app = express();
@@ -68,11 +61,7 @@ app.use("/ai", AIRouter);
 app.use("/notification", NotificationRouter);
 app.use("/consumer", ConsumerPolicyRouter);
 app.use("/media", MediaPolicyRouter);
-<<<<<<< HEAD
-// app.use("/chat", ChatRouter);
-=======
 app.use("/chat", ChatRouter);
->>>>>>> 6845c063dd37b749fdac5291307995d0d8fe3628
 
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
