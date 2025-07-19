@@ -57,26 +57,97 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
 };
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const id = req.params.id;
-  const [error, subscriptionPlan] = await to(SubscriptionPlan.findById(id).lean());
+  const Id = req.params.id;
+  // 1) Perform the query with .exec() for a real Promise
+  const [error, plan] = await to(
+    SubscriptionPlan.findById(Id)
+      .lean<{
+        _id: string;
+        userId: string;
+        name: string;
+        description: { key: string; details: string }[];
+        unitAmount: number | string;
+        interval: string;
+        productId: string;
+        priceId: string;
+      }>()
+      .exec()
+  );
+
+  console.log("plan: ", plan);
+
+  // 2) Handle errors
   if (error) return next(error);
-  if (!subscriptionPlan) return next(createError(StatusCodes.NOT_FOUND, "Subscription Plan not found!"));
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: subscriptionPlan });
+  if (!plan) {
+    return next(createError(StatusCodes.NOT_FOUND, "Plan not found!"));
+  }
+
+  // 3) Normalize unitAmount to a number, if it came back as string
+  const normalizedPlan = {
+    ...plan,
+    unitAmount: typeof plan.unitAmount === "string" ? parseFloat(plan.unitAmount) : plan.unitAmount,
+  };
+
+  // 4) Send response
+  return res.status(StatusCodes.OK).json({
+    success: true,
+    message: "Success",
+    data: normalizedPlan,
+  });
 };
 
 const getAll = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const [error, subscriptionPlans] = await to(SubscriptionPlan.find().lean());
-  if (error) return next(error);
-  if (!subscriptionPlans || subscriptionPlans.length === 0) {
-    return res.status(StatusCodes.OK).json({ success: true, message: "No Subscription Plans Found!", data: [] });
+  // 1) Read page & limit from query, with sensible defaults
+  const page = Math.max(parseInt(req.query.page as string) || 1, 1);
+  const limit = Math.max(parseInt(req.query.limit as string) || 10, 1);
+  const skip = (page - 1) * limit;
+
+  try {
+    // 2) Get total count
+    const [countErr, total] = await to<number>(SubscriptionPlan.countDocuments().exec());
+    if (countErr) return next(countErr);
+
+    // 3) Fetch paged plans
+    const [findErr, plans] = await to(SubscriptionPlan.find().skip(skip).limit(limit).lean().exec());
+    if (findErr) return next(findErr);
+
+    // 4) If no plans at all
+    if (!plans || plans.length === 0) {
+      return res.status(StatusCodes.OK).json({
+        success: true,
+        message: "No Plans Found!",
+        data: [],
+        meta: {
+          total: 0,
+          page,
+          limit,
+          totalPages: 0,
+        },
+      });
+    }
+
+    // 5) Build pagination metadata
+    const totalPages = Math.ceil(total / limit);
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Success",
+      data: plans,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages,
+      },
+    });
+  } catch (err) {
+    return next(err);
   }
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: subscriptionPlans });
 };
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const id = req.params.id;
   let { name, description, unitAmount, interval } = req.body;
-
   let error, price, subscriptionPlan;
   [error, subscriptionPlan] = await to(SubscriptionPlan.findById(id));
   if (error) return next(error);

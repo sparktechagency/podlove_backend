@@ -54,6 +54,9 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
 
 const cancel = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
+  if(!userId){
+    throw createError(StatusCodes.BAD_GATEWAY, "User unauthorized");
+  }
   let error, user;
 
   [error, user] = await to(User.findById(userId));

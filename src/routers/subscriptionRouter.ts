@@ -5,6 +5,6 @@ import { authorize } from "@middlewares/authorization";
 const router = express.Router();
 
 router.post("/upgrade", authorize, SubscriptionServices.upgrade);
-router.post("/cancel", SubscriptionServices.cancel);
+router.post("/cancel", authorize, SubscriptionServices.cancel);
 
 export default router;

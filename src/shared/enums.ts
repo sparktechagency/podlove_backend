@@ -60,6 +60,7 @@ export enum SubscriptionStatus {
   NONE = "",
   PAID = "PAID",
   DUE = "DUE",
+  FAILED = "FAILED",
 }
 
 export enum PodcastType {

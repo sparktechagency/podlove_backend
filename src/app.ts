@@ -11,7 +11,6 @@ import PlanRouter from "@routers/planRouter";
 import AnalyticsRouter from "@routers/analyticsRouter";
 import SupportRouter from "@routers/supportRouter";
 import WebhookRouter from "@routers/webhookRouter";
-import SubscriptionPlanRouter from "@routers/subscriptionPlanRouter";
 import SubscriptionRouter from "@routers/subscriptionRouter";
 import AdminRouter from "@routers/adminRouter";
 import SurveyRouter from "@routers/surveyRouter";
@@ -24,11 +23,18 @@ import ConsumerPolicyRouter from "@routers/consumerPolicyRouter";
 import MediaPolicyRouter from "@routers/mediaPolicyRouter";
 import path from "path";
 import ChatRouter from "@routers/chatRouter";
-
+import SubscriptionPlanRouter from "@routers/subscriptionPlanRouter"
+import StripeServices from "@services/stripeServices";
 
 const app = express();
 
-// app.use("/", WebhookRouter);
+app.use("/", WebhookRouter);
+// app.post(
+//   "/webhook",
+//   // ⇣ raw body ONLY for Stripe
+//   express.raw({ type: "application/json" }),
+//   StripeServices.webhook
+// );
 app.use(
   "/uploads",
   express.static(path.join(__dirname, "../uploads"))
@@ -49,7 +55,8 @@ app.use("/user", UserRouter);
 app.use("/tac", TaCRouter);
 app.use("/faq", FaqRouter);
 app.use("/privacy", PrivacyRouter);
-app.use("/plan", SubscriptionPlanRouter);
+// app.use("/plan", SubscriptionPlanRouter);
+app.use("/subscription-plan", SubscriptionPlanRouter);
 app.use("/analytics", AnalyticsRouter);
 app.use("/support", SupportRouter);
 app.use("/subscription", SubscriptionRouter);

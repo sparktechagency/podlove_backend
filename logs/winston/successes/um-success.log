@@ -7281,3 +7281,472 @@ NotFoundError: Subscription Plan not found!
     at get (F:\podlove\podlove_backend\src\controllers\subscriptionPlanController.ts:63:49)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
 NotFoundError
+Fri Jul 18 2025 11:3:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 11:3:38 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 11:3:38 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 11:3:38 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 11:11:58 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 11:12:2 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 11:12:2 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 11:12:2 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 11:12:33 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 11:12:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 11:12:36 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 11:12:37 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 11:12:37 [Podlove] [32minfo[39m: Server is running at PORT: 8001, HOST: 10.0.60.210
+Fri Jul 18 2025 11:12:37 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:7:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:8:2 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:8:2 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:8:3 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:8:3 [Podlove] [32minfo[39m: Server is running at PORT: 8001, HOST: 10.0.60.210
+Fri Jul 18 2025 12:8:3 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:8:44 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:8:47 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:8:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:8:48 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:9:21 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:9:24 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:9:24 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:9:24 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:9:24 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 12:9:24 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:21:16 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 12:31:53 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:31:56 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:31:57 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:31:57 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:31:57 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 12:31:57 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:32:28 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 12:32:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:32:52 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:32:52 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:32:53 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:32:53 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 12:32:53 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:37:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:37:3 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:37:4 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:37:4 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:37:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 12:37:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:43:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:43:4 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:43:4 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:43:4 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:43:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 12:43:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:43:12 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:43:15 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:43:15 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:43:16 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:43:16 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 12:43:16 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:46:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:46:12 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:46:13 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:46:13 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:46:13 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 12:46:13 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:52:36 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 12:54:34 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 12:54:37 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 12:54:38 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 12:54:38 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 12:54:38 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 12:54:38 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 12:54:59 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 14:23:30 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 14:23:33 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 14:23:33 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 14:23:33 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 14:23:33 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 14:23:33 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 14:24:21 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 14:24:24 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 14:24:24 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 14:24:25 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 14:24:25 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 14:24:25 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 14:25:3 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 14:25:6 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 14:25:7 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 14:25:7 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 14:25:7 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 14:25:7 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 14:25:27 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 14:48:49 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 14:52:16 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 14:52:19 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 14:52:19 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 14:52:19 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 14:52:19 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 14:52:19 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 14:54:6 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 14:54:9 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 14:54:9 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 14:54:10 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 14:54:10 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 14:54:10 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 14:54:13 [Podlove] [31merror[39m: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:0:53 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:0:56 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:0:57 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:0:57 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:0:57 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:0:57 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:1:6 [Podlove] [31merror[39m: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:1:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:1:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:1:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:1:52 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:1:52 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:1:52 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:2:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:2:38 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:2:38 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:2:38 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:2:38 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:2:38 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:2:45 [Podlove] [31merror[39m: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:7:25 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:7:29 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:7:29 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:7:29 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:7:29 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:7:29 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:7:49 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:9:24 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:14:26 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:14:29 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:14:30 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:14:30 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:14:30 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:14:30 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:14:51 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:14:55 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:14:55 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:14:56 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:14:56 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:14:56 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:15:15 [Podlove] [31merror[39m: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:15:18 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:15:20 [Podlove] [31merror[39m: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:15:21 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:20:53 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:20:56 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:20:57 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:20:57 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:20:57 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:20:57 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:21:2 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:21:55 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips, insights, and advice not available to free-tier users."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat with your match for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out, providing another chance at connection."}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:22:21 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:23:53 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:23:56 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:23:56 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:23:57 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:23:57 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:23:57 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:24:12 [Podlove] [31merror[39m: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+Error: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:27:36 [Podlove] [31merror[39m: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+Error: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:32:50 [Podlove] [31merror[39m: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+Error: Invalid string: {:"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:33:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:33:41 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:33:41 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:33:41 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:33:41 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:33:41 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:36:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:36:4 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:36:4 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:36:4 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:36:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:36:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:37:34 [Podlove] [31merror[39m: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+Error: Invalid string: {:"3"=>{:key=>"Exclusive Content", :details=>"Access to curated dating tips…"}, :"0"=>{:key=>"More Matches", :details=>"Meet three matches instead of two."}, :"1"=>{:key=>"Extended Chat", :details=>"Access chat for up to one week."}, :"2"=>{:key=>"Second Chance", :details=>"Users can be matched again if their first match doesn't work out…"}}
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 15:42:11 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:42:14 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:42:15 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:42:15 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:42:15 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:42:15 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:44:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:44:8 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:44:8 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:44:8 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:44:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:44:8 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:44:37 [Podlove] [31merror[39m: Plan not found!
+NotFoundError: Plan not found!
+    at get (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\src\controllers\subscriptionPlanController.ts:83:28)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Fri Jul 18 2025 15:48:51 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:48:55 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:48:55 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:48:55 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:48:55 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:48:55 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:49:47 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 15:49:50 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 15:49:50 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 15:49:50 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 15:49:50 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 15:49:50 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 15:55:30 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Fri Jul 18 2025 16:14:58 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 16:15:1 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 16:15:2 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 16:15:2 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 16:15:2 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 16:15:2 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 16:15:53 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 16:15:57 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 16:15:57 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 16:15:57 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 16:15:57 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 16:15:57 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 16:16:0 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Fri Jul 18 2025 16:16:1 [Podlove] [31merror[39m: No such subscription: 'prod_SgrerjJ9CawsBE'
+Error: No such subscription: 'prod_SgrerjJ9CawsBE'
+    at generateV1Error (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\Error.js:11:20)
+    at res.toJSON.then.Error_js_1.StripeAPIError.message (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\stripe\cjs\RequestSender.js:108:62)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Fri Jul 18 2025 16:47:53 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 16:47:56 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 16:47:57 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 16:47:57 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 16:47:57 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 16:47:57 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 16:53:58 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 16:54:1 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 16:54:1 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 16:54:2 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 16:54:2 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 16:54:2 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 16:54:26 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 16:54:29 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 16:54:29 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 16:54:30 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 16:54:30 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 16:54:30 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 16:58:34 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 16:58:37 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 16:58:38 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 16:58:38 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 16:58:38 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 16:58:38 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:8:50 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:8:53 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:8:53 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:8:54 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:8:54 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:8:54 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:9:54 [Podlove] [31merror[39m: Missing Stripe signature header
+ForbiddenError: Missing Stripe signature header
+    at webhook (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\src\services\stripeServices.ts:19:30)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at rawParser (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\body-parser\lib\types\raw.js:76:7)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+ForbiddenError
+Fri Jul 18 2025 17:11:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:11:40 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:11:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:13:3 [Podlove] [31merror[39m: Missing Stripe signature header
+ForbiddenError: Missing Stripe signature header
+    at webhook (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\src\services\stripeServices.ts:19:30)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at rawParser (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\body-parser\lib\types\raw.js:76:7)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+ForbiddenError
+Fri Jul 18 2025 17:13:5 [Podlove] [31merror[39m: Missing Stripe signature header
+ForbiddenError: Missing Stripe signature header
+    at webhook (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\src\services\stripeServices.ts:19:30)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at rawParser (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\body-parser\lib\types\raw.js:76:7)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+ForbiddenError
+Fri Jul 18 2025 17:21:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:29:6 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:29:9 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:29:9 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:29:10 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:29:10 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:29:10 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:43:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:43:39 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:43:40 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:43:40 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:43:40 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:43:40 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:43:40 [Podlove] [31merror[39m: Missing Stripe signature header
+ForbiddenError: Missing Stripe signature header
+    at webhook (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\src\services\stripeServices.ts:30:30)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at rawParser (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\body-parser\lib\types\raw.js:76:7)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+ForbiddenError
+Fri Jul 18 2025 17:44:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:48:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:59:14 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:59:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:59:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:59:18 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:59:18 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:59:18 [Podlove] [32minfo[39m: Socket.IO server initialized
