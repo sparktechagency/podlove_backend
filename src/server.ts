@@ -78,6 +78,7 @@ import ConsumerPolicy from "@models/consumerPolicyModel";
 import MediaPolicy from "@models/mediaPolicyModel";
 import { Server as SocketIOServer } from "socket.io";
 import initSocketHandlers from "@services/socketService";
+import { startPodcastScheduler } from "@services/podcastServices";
 // import { SocketService } from "@services/socketService";
 // import { initSocketHandlers } from "@services/socketService";
 // import initSocketHandlers from "@services/socketService";
@@ -128,6 +129,7 @@ async function startServer() {
     server.listen(PORT, ipaddress, () => {
       logger.info(`Server is running at PORT: ${PORT}, HOST: ${ipaddress}`);
       logger.info(`Socket.IO server initialized`);
+      startPodcastScheduler();
     });
   } catch (error) {
     logger.error("Failed to start the server:", error);

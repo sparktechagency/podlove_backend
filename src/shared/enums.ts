@@ -4,9 +4,9 @@ export enum Role {
 }
 
 export enum Method {
-  emailActivation = "emailActivation",
-  phoneActivation = "phoneActivation",
-  emailRecovery = "emailRecovery",
+  emailActivation = "Method.emailActivation",
+  phoneActivation = "Method.phoneActivation",
+  emailRecovery = "Method.emailRecovery",
 }
 
 export enum AdminAccess {

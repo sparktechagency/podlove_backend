@@ -5,121 +5,127 @@ import to from "await-to-ts";
 import { SubscriptionStatus } from "@shared/enums";
 import { StatusCodes } from "http-status-codes";
 import User from "@models/userModel";
+import { Types } from "mongoose";
+import Notification from "@models/notificationModel";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-const payload = JSON.stringify({
-  type: "invoice.payment_succeeded",
-  data:{}
-});
-
-const header = stripe.webhooks.generateTestHeaderString({
-  payload,
-  secret: process.env.STRIPE_SECRET_KEY!,
-  timestamp: Math.floor(Date.now() / 1000),
-});
-
-const webhook = async (req: Request, res: Response, next: NextFunction):Promise<any> => {
+const webhook = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-  const signature = header;
-  // const signature = req.headers["stripe-signature"] as string | undefined;
+  const sig = req.headers["stripe-signature"];
   let stripeEvent: Stripe.Event;
 
-  // 1) Verify signature if secret is provided
-  if (endpointSecret) {
-    if (!signature) {
-      return next(createError(
-        StatusCodes.FORBIDDEN,
-        "Missing Stripe signature header"
-      ));
-    }
-
-    try {
-      stripeEvent = stripe.webhooks.constructEvent(
-        req.body,
-        signature,
-        endpointSecret
-      );
-    } catch (err: any) {
-      console.error("⚠️  Webhook signature verification failed:", err.message);
-      return res
-        .status(StatusCodes.BAD_REQUEST)
-        .send(`Webhook Error: ${err.message}`);
-    }
-  } else {
-    // If no secret, assume body is already a Stripe.Event
-    stripeEvent = req.body as Stripe.Event;
+  // 2) Verify signature
+  if (!sig) {
+    return next(createError(StatusCodes.FORBIDDEN, "Missing Stripe signature header"));
+  }
+  try {
+    stripeEvent = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+  } catch (err: any) {
+    console.error("⚠️  Webhook signature verification failed:", err.message);
+    return res.status(StatusCodes.BAD_REQUEST).send(`Webhook Error: ${err.message}`);
   }
 
-  // 2) Handle the event
+  // 3) Handle the event
   try {
     switch (stripeEvent.type) {
       case "invoice.payment_succeeded": {
         const invoice = stripeEvent.data.object as Stripe.Invoice;
-        const subscription = await stripe.subscriptions.retrieve(
-          invoice.subscription as string
-        );
-
+        const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
         const { plan, fee, userId } = subscription.metadata;
         if (!userId) {
-          console.warn("⚠️  invoice.payment_succeeded missing metadata.userId");
+          console.warn("⚠️  Missing metadata.userId on subscription");
           break;
         }
-
-        const [findErr, user] = await to(User.findById(userId));
-        if (findErr) throw findErr;
-        if (!user) {
-          console.warn(`⚠️  User not found with ID ${userId}`);
-          break;
-        }
-
-        user.subscription = {
-          id: subscription.id,
-          plan,
-          fee,
-          startedAt: new Date(),
-          status: SubscriptionStatus.PAID,
+        const subUpdate = {
+          "subscription.id": subscription.id,
+          "subscription.plan": plan,
+          "subscription.fee": fee,
+          "subscription.startedAt": new Date(),
+          "subscription.status": SubscriptionStatus.PAID,
         };
 
-        const [saveErr] = await to(user.save());
-        if (saveErr) throw saveErr;
-
-        console.info(
-          `✅  Subscription for user ${userId} marked PAID (subscription ${subscription.id})`
+        const [updErr, user] = await to(
+          User.updateOne({ _id: new Types.ObjectId(userId) }, { $set: subUpdate }, { runValidators: false })
         );
+        if (updErr) throw updErr;
+
+        if (!user) {
+          console.warn(`⚠️  User not found: ${userId}`);
+          break;
+        }
+        if (user?.modifiedCount) {
+          // Create a “payment_success” notification
+          const [notifErr, notification] = await to(
+            Notification.create({
+              type: "payment_success",
+              user: userId, // the Stripe metadata userId
+              message: [
+                {
+                  title: "Payment success!",
+                  description: `You’ve successfully subscribed to Tippz for getting extra matching partner `,
+                },
+              ],
+              read: false,
+              section: "user",
+            })
+          );
+          if (notifErr) {
+            console.error("❌  Failed to create notification:", notifErr);
+            // (optional) decide whether to `throw` here or just log
+          } else {
+            console.info(`🔔  Notification sent to user ${userId}: ${notification._id}`);
+          }
+        }
+        console.info(`✅  Marked subscription PAID for user ${userId} (sub ${subscription.id})`);
         break;
       }
 
       case "invoice.payment_failed": {
         const invoice = stripeEvent.data.object as Stripe.Invoice;
-        const subscription = await stripe.subscriptions.retrieve(
-          invoice.subscription as string
-        );
+        const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
+        const { userId, plan } = subscription.metadata;
 
-        const { plan, fee, userId } = subscription.metadata;
         if (!userId) {
-          console.warn("⚠️  invoice.payment_failed missing metadata.userId");
+          console.warn("⚠️  Missing metadata.userId on subscription");
           break;
         }
 
         const [findErr, user] = await to(User.findById(userId));
         if (findErr) throw findErr;
         if (!user) {
-          console.warn(`⚠️  User not found with ID ${userId}`);
+          console.warn(`⚠️  User not found: ${userId}`);
           break;
         }
 
-        user.subscription = {
-          ...user.subscription!,
-          status: SubscriptionStatus.FAILED,
-        };
+        if (user.subscription) {
+          user.subscription.status = SubscriptionStatus.FAILED;
+        } else {
+          console.warn(`⚠️  No existing subscription to mark FAILED`);
+        }
 
         const [saveErr] = await to(user.save());
         if (saveErr) throw saveErr;
-
-        console.info(
-          `⚠️  Subscription payment failed for user ${userId} (subscription ${subscription.id})`
+        const [notifErr, notification] = await to(
+          Notification.create({
+            type: "payment_failed",
+            user: userId,
+            message: [
+              {
+                title: "Payment failed",
+                description: `Your subscription payment for ${plan} did not go through. Please update your payment method and try again.`,
+              },
+            ],
+            read: false,
+            section: "user",
+          })
         );
+        if (notifErr) {
+          console.error("❌  Failed to create failure notification:", notifErr);
+        } else {
+          console.info(`🔔  Failure notification sent to user ${userId}: ${notification._id}`);
+        }
+        console.info(`⚠️  Subscription payment FAILED for user ${userId}`);
         break;
       }
 
@@ -127,78 +133,13 @@ const webhook = async (req: Request, res: Response, next: NextFunction):Promise<
         console.log(`ℹ️  Unhandled Stripe event type: ${stripeEvent.type}`);
     }
 
-    // 3) Acknowledge receipt of the event
+    // 4) Acknowledge receipt
     res.status(StatusCodes.OK).send("Received");
   } catch (err) {
     console.error("❌  Error handling Stripe webhook:", err);
     next(err);
   }
 };
-
-// const webhook = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-//   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
-//   let event = req.body;
-//   if (endpointSecret) {
-//     const signature = req.headers["stripe-signature"];
-//     if (!signature) next(createError(StatusCodes.FORBIDDEN, "Unauthorized"));
-//     try {
-//       event = stripe.webhooks.constructEvent(req.body, signature!, endpointSecret);
-//     } catch (error: any) {
-//       console.log(`Webhook signature verification failed:`, error.message);
-//       return res.status(StatusCodes.BAD_REQUEST).json({ error: error.message });
-//     }
-//   }
-
-//   let error, user, invoice;
-//   switch (event.type) {
-//     case "invoice.payment_succeeded":
-//       console.log("in");
-//       invoice = event.data.object as Stripe.Invoice;
-//       console.log(invoice);
-//       const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
-//       const plan = subscription.metadata.plan;
-//       const fee = subscription.metadata.fee;
-//       const userId = subscription.metadata.userId;
-
-//       [error, user] = await to(User.findById(userId));
-//       if (error) throw error;
-//       if (!user) throw new Error("User not found");
-
-//       user.subscription!.id = subscription.id;
-//       user.subscription!.plan = plan;
-//       user.subscription!.fee = fee;
-//       user.subscription!.startedAt = new Date();
-//       user.subscription!.status = SubscriptionStatus.PAID;
-
-//       [error] = await to(user.save());
-//       if (error) throw error;
-
-//       break;
-
-//     // case "invoice_payment_failed":
-//     //   invoice = event.data.object as Stripe.Invoice;
-
-//     //   const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
-//     //   const plan = subscription.metadata.plan;
-//     //   const fee = Number.parseFloat(subscription.metadata.fee);
-//     //   const userId = subscription.metadata.userId;
-
-//     //   [error, user] = await to(User.findById(userId));
-//     //   if (error) throw error;
-//     //   if(!user) throw new Error("User not found");
-
-//     //   user.subscription!.plan = plan;
-//     //   user.subscription!.fee = fee;
-//     //   user.subscription!.startedAt = new Date();
-//     //   user.subscription!.status = SubscriptionStatus.PAID;
-
-//     //   [error] = await to(user.save());
-//     //   if(error) throw error;
-
-//       break;
-//   }
-// };
-
 const StripeServices = {
   webhook,
 };

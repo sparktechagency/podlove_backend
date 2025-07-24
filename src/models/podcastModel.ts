@@ -15,6 +15,7 @@ export type PodcastSchema = Document & {
   recordingUrl: string;
   score: number;
   createdAt?: Date;
+  notificationSent: Boolean,
 };
 
 const podcastSchema = new Schema<PodcastSchema>({
@@ -66,6 +67,7 @@ const podcastSchema = new Schema<PodcastSchema>({
     type: Number,
     default: 0,
   },
+  notificationSent: { type: Boolean, default: false },
 });
 
 const Podcast = model<PodcastSchema>("Podcast", podcastSchema);

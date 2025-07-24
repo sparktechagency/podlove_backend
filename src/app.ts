@@ -29,18 +29,31 @@ import StripeServices from "@services/stripeServices";
 const app = express();
 
 app.use("/", WebhookRouter);
-// app.post(
-//   "/webhook",
-//   // ⇣ raw body ONLY for Stripe
-//   express.raw({ type: "application/json" }),
-//   StripeServices.webhook
-// );
+
 app.use(
   "/uploads",
   express.static(path.join(__dirname, "../uploads"))
 );
 
 app.use(express.json());
+// app.use("/", WebhookRouter);
+// app.post(
+//   "/webhook",
+//   bodyParser.raw({ type: "application/json" }),,
+//   StripeServices.webhook
+// );
+// app.post(
+//   "/webhook",
+//   express.raw({ 
+//     // accept any content‑type that contains “json”
+//     type: (req) => {
+//       const ct = req.headers["content-type"] || "";
+//       return /\/json/.test(ct);
+//     }
+//   }),
+//   StripeServices.webhook
+// );
+
 
 app.use(
   cors({

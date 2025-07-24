@@ -154,18 +154,18 @@ type resendOTPPayload = {
 
 const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, next: NextFunction): Promise<any> => {
   const { method, email } = req.body;
-  console.log(method);
-
-  let auth = await Auth.findByEmail(email);
+  console.log("resend otp: ", req.body);
+   
+   const auth = await Auth.findByEmail(email);
+  console.log("auth: ", auth);
   if (!auth) throw createError(StatusCodes.NOT_FOUND, "Account not found");
-
+ 
   if ((method === Method.emailActivation || method === Method.phoneActivation) && auth.isVerified)
     return res.status(StatusCodes.CONFLICT).json({
       success: true,
       message: "Your account is already verified. Please login.",
       data: { isVerified: auth.isVerified },
     });
-
   if (method === Method.emailActivation && !auth.isVerified) {
     auth.generateVerificationOTP();
     await auth.save();

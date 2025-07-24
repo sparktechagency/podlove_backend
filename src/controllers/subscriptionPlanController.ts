@@ -8,7 +8,6 @@ import { StatusCodes } from "http-status-codes";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, description, unitAmount, interval } = req.body;
   let error, product, price, subscriptionPlan;
@@ -20,7 +19,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   [error, product] = await to(
     stripe.products.create({
       name: name!,
-      description: formattedDescription
+      description: formattedDescription,
     })
   );
   if (error) return next(error);
@@ -31,8 +30,8 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
       unit_amount: Number.parseFloat(unitAmount) * 100,
       currency: "usd",
       recurring: {
-        interval: interval!
-      }
+        interval: interval!,
+      },
     })
   );
   if (error) return next(error);
@@ -44,7 +43,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
       unitAmount: Number.parseFloat(unitAmount),
       interval: interval,
       productId: product.id,
-      priceId: price.id
+      priceId: price.id,
     })
   );
   if (error) return next(error);
@@ -52,7 +51,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   return res.status(StatusCodes.CREATED).json({
     success: true,
     message: "Success",
-    data: subscriptionPlan
+    data: subscriptionPlan,
   });
 };
 
@@ -155,19 +154,38 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
 
   if (name || description) {
     subscriptionPlan.name = name || subscriptionPlan.name;
-    subscriptionPlan.description = description || subscriptionPlan.description;
+    let normalizedDescription;
+    if (req.body.description && !Array.isArray(req.body.description)) {
+      const raw = req.body.description as Record<string, { key: string; details: string }>;
+      normalizedDescription = Object.keys(raw)
+        .sort()
+        .map((k) => raw[k]);
+    } else {
+      normalizedDescription = req.body.description;
+    }
 
-    const [error] = await to(stripe.products.update(subscriptionPlan.productId, {
-      name: name,
-      description: description
-    }));
+    // Now assign the *array* to your document
+    // subscriptionPlan.description = normalizedDescription;
+
+    subscriptionPlan.description = normalizedDescription || subscriptionPlan.description;
+
+    console.log("subscription: ", subscriptionPlan.description)
+    const stripeDescription = subscriptionPlan.description
+  .map(item => `${item.key}: ${item.details}`)
+  .join("\n");
+    const [error] = await to(
+      stripe.products.update(subscriptionPlan.productId, {
+        name: name,
+        description: stripeDescription,
+      })
+    );
     if (error) return next(error);
   }
 
   if (unitAmount || interval) {
     let [error] = await to(
       stripe.prices.update(subscriptionPlan.priceId, {
-        active: false
+        active: false,
       })
     );
     if (error) return next(error);
@@ -181,8 +199,8 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
         unit_amount: Number.parseFloat(subscriptionPlan.unitAmount) * 100,
         currency: "usd",
         recurring: {
-          interval: subscriptionPlan.interval!
-        }
+          interval: subscriptionPlan.interval!,
+        },
       })
     );
     if (error) return next(error);
@@ -195,7 +213,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   res.status(StatusCodes.OK).json({
     success: true,
     message: "Success",
-    data: subscriptionPlan
+    data: subscriptionPlan,
   });
 };
 
@@ -203,7 +221,7 @@ const SubscriptionPlanController = {
   create,
   get,
   getAll,
-  update
+  update,
 };
 
 export default SubscriptionPlanController;

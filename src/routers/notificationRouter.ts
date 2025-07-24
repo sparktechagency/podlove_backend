@@ -5,6 +5,8 @@ import NotificationController from "@controllers/notificationController";
 
 const router = express.Router();
 
-router.get("/", authorize, asyncHandler(NotificationController.get));
+router.get("/", asyncHandler(NotificationController.get));
+router.patch("/update", asyncHandler(NotificationController.updateRead));
+//  authorize,
 
 export default router;

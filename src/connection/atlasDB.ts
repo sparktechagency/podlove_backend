@@ -5,7 +5,7 @@ import { logger } from "@shared/logger";
 const clientOptions = {
   serverApi: { version: "1" as const, strict: true, deprecationErrors: true },
 };
-
+        
 export async function connectDB() {
   try {
     await mongoose.connect(process.env.ATLAS_URI!, clientOptions);

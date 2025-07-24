@@ -134,7 +134,7 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
     } else if (status === "scheduled") {
       statusFilter.status = PodcastStatus.SCHEDULED;
     } else if (status === "upcoming") {
-      statusFilter.status = { $in: [PodcastStatus.NOT_SCHEDULED, PodcastStatus.SCHEDULED] };
+      statusFilter.status = { $in: [PodcastStatus.NOT_SCHEDULED, PodcastStatus.SCHEDULED, PodcastStatus.REQSHEDULED] };
     }
   }
 

@@ -6,7 +6,7 @@ const DescriptionItemSchema = new Schema<DescriptionItem>(
     key:     { type: String},
     details: { type: String},
   },
-  { _id: true }
+  { _id: false }
 );
 
 const SubscriptionPlanModel = new Schema<SubscriptionPlanSchema>({
