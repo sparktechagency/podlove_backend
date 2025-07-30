@@ -71,6 +71,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
 const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, password } = req.body;
   let auth = await Auth.findByEmail(email);
+  if(auth?.isBlocked) return next(createError(StatusCodes.FORBIDDEN, "Your account has been blocked by an administrator. Please reach out to the admin for help."))
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
 
   if (!(await auth.comparePassword(password)))
@@ -154,10 +155,10 @@ type resendOTPPayload = {
 
 const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, next: NextFunction): Promise<any> => {
   const { method, email } = req.body;
-  console.log("resend otp: ", req.body);
+  // console.log("resend otp: ", req.body);
    
    const auth = await Auth.findByEmail(email);
-  console.log("auth: ", auth);
+  // console.log("auth: ", auth);
   if (!auth) throw createError(StatusCodes.NOT_FOUND, "Account not found");
  
   if ((method === Method.emailActivation || method === Method.phoneActivation) && auth.isVerified)

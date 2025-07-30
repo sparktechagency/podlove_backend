@@ -1,62 +1,73 @@
+import Notification from "@models/notificationModel";
 import { Request, Response, NextFunction } from "express";
 import { StatusCodes } from "http-status-codes";
+import mongoose from "mongoose";
+import { Types } from "twilio/lib/rest/content/v1/content";
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    //  const notificationMessage = `Your podcast "${podcast.title}" is scheduled for ${date} at ${time}.`;
-    // const notification = new Notification({
-    //   type: 'podcast_scheduled',
-    //   user: userId,             // <-- associate to the user (if you track it)
-    //   message: notificationMessage,
-    //   read: false,
-    //   section: 'user',
-    // });
-    const podcast = { title: "The Future of AI" };
-    const date = "2025-08-01";
-    const time = "3:00 PM";
-    const message = 
-      {
-        title: `${podcast.title}`,
-        description:  `Your podcast is scheduled for ${date} at ${time}`
-      }
-      
-      
-    
-    const notification = [{
-      type: "podcast_scheduled",
-      user: "68600f666d611e9e83e68e1c",
-      message: message,
-      read: false,
-      section: "user",
-    }];
+    const userId = new mongoose.Types.ObjectId(req.user.userId);
 
+    const total = await Notification.countDocuments({ user: userId });
+    const notifications = await Notification.find({ user: userId })
+      .select("type message read section createdAt")
+      .sort({ createdAt: -1 })
+      .lean()
+      .exec();
     return res.status(StatusCodes.OK).json({
       success: true,
-      message: "Schedule updated and notification created successfully",
       data: {
-        //   podcast,
-        notification,
+        notifications,
+        pagination: {
+          total,
+        },
       },
     });
   } catch (err) {
-    next(err);
+    return next(err);
   }
-
-  // return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { notifications: [] } });
 };
 
-const updateRead = async(req:Request, res:Response, next:NextFunction): Promise<any> =>
-{
-  try{
-
-  }catch(err){
-    next(err);
+const updateRead = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  try {
+    const userId = req.user.userId;
+    const result = await Notification.updateMany({ user: userId, read: false }, { $set: { read: true } });
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "All notifications marked as read",
+      data: {
+        modifiedCount: result.modifiedCount,
+      },
+    });
+  } catch (err) {
+    return next(err);
   }
-}
+};
+
+const deleteRead = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  try {
+    const userId = req.user.userId;
+    const result = await Notification.deleteMany({
+      user: userId,
+      read: true,
+    });
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "All read notifications deleted",
+      data: {
+        deletedCount: result.deletedCount,
+      },
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
 
 const NotificationController = {
   get,
-  updateRead
+  updateRead,
+  deleteRead
 };
 
 export default NotificationController;

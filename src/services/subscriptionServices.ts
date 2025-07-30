@@ -43,12 +43,12 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
           userId: userId,
         },
       },
-      success_url: `https://example.com/success`,
+      success_url: `http://10.10.10.59:8000/webhook`,
       cancel_url: `https://example.com/cancel`,
     })
   );
   if (error) return next(error);
-
+  // console.log("session: ", session);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: session.url });
 };
 

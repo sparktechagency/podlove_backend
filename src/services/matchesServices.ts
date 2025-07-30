@@ -119,13 +119,26 @@ async function findMatches(
     null,
     { session }
   ).lean();
+  let candidate2 = await User.find(
+    {
+      _id: { $ne: user._id },
+      gender: { $in: pref.gender },
+    },
+    null,
+    { session }
+  ).lean();
+  // console.log("candidate2: ", candidate2, " candidates: ", candidates);
+  let matchCandidate = candidates.length < limitCount? candidate2 : candidates;
+  console.log("matchCandidates: ", matchCandidate);
   // 4) Distance filtering
-  const nearby = candidates.filter(
+  const nearby = matchCandidate.filter(
     (c) =>
       calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
       pref.distance? calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
       pref.distance : calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude)
   );
+
+  console.log("nearby: ", nearby);
   // 5) Compute scores with concurrency limit
   const scored = await Promise.all(
     nearby.map(async (c) => ({
@@ -270,10 +283,10 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
         matchCount = 2;
         break;
       case SubscriptionPlanName.SPEAKER:
-        matchCount = 3;
+        matchCount = 4;
         break;
       default:
-        matchCount = 4;
+        matchCount = 3;
     }
 
     // 3) Compute participants (this will update user's compatibility inside)

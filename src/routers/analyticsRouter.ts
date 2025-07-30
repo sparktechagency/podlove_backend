@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get("/income/:year", AnalyticsController.getIncomeByYear);
 router.get("/subscription/:year", AnalyticsController.getSubscriptionByYear);
+router.get("/user-growth/:year", AnalyticsController.getUserByYear);
 router.get("/", AnalyticsController.getAnalytics);
 
 export default router;

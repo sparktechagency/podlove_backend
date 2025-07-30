@@ -14,9 +14,9 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   const { name, email, contact, password } = req.body;
   const access: AdminAccess = req.body.access;
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  // const hashedPassword = await bcrypt.hash(password, 10);
 
-  const [error, admin] = await to(Administrator.create({ name, email, contact, password: hashedPassword, access }));
+  const [error, admin] = await to(Administrator.create({ name, email, contact, password: password, access }));
   if (error) return next(error);
 
   return res.status(StatusCodes.CREATED).json({
@@ -159,6 +159,9 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
   const { email, password } = req.body;
   let admin = await Admin.findByEmail(email);
   if (!admin) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
+  if (!(await admin.comparePassword(password)))
+      return next(createError(StatusCodes.UNAUTHORIZED, "Wrong password. Please try again"));
+
   const accessToken = Admin.generateAccessToken(admin._id!.toString());
   return res.status(StatusCodes.OK).json({
     success: true,
@@ -166,6 +169,7 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
     data: { accessToken }
   });
 };
+
 
 const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;

@@ -58,7 +58,7 @@ export type UserSchema = Document & {
 const userSchema = new Schema(
   {
     auth: {
-      type: Schema.Types.ObjectId,
+      type: Types.ObjectId,
       ref: "Auth",
       required: true,
     },
@@ -209,6 +209,7 @@ const userSchema = new Schema(
     timestamps: true,
   }
 );
+
 
 export const User = model<UserSchema>("User", userSchema);
 export default User;

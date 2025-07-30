@@ -73,7 +73,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
       .exec()
   );
 
-  console.log("plan: ", plan);
+  // console.log("plan: ", plan);
 
   // 2) Handle errors
   if (error) return next(error);
@@ -169,7 +169,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
 
     subscriptionPlan.description = normalizedDescription || subscriptionPlan.description;
 
-    console.log("subscription: ", subscriptionPlan.description)
+    // console.log("subscription: ", subscriptionPlan.description)
     const stripeDescription = subscriptionPlan.description
   .map(item => `${item.key}: ${item.details}`)
   .join("\n");

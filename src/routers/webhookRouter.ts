@@ -5,7 +5,8 @@ import bodyParser from "body-parser";
 const router = express.Router();
 router.post(
   "/webhook",
-   express.raw({ type: 'application/json' }),
+  //  express.raw({ type: 'application/json' }),
+  bodyParser.raw({ type: "application/json" }),
   StripeServices.webhook
 );
 

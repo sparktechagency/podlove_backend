@@ -33,6 +33,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
         const invoice = stripeEvent.data.object as Stripe.Invoice;
         const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
         const { plan, fee, userId } = subscription.metadata;
+        console.log("subscription.metadata: ", subscription.metadata);
         if (!userId) {
           console.warn("⚠️  Missing metadata.userId on subscription");
           break;
@@ -44,12 +45,28 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           "subscription.startedAt": new Date(),
           "subscription.status": SubscriptionStatus.PAID,
         };
+        // const filter = { _id: userId };
+        // const update = { $set: { subscription: subUpdate } };
+        // const [updErr, writeResult] = await to(
+        //   User.updateOne(filter, update, {
+        //     runValidators: false,
+        //     lean: true,
+        //   })
+        // );
+        // if (updErr) throw updErr;
 
+        // console.log("writeResult: ", writeResult);
+        console.log("sub update: ", subUpdate);
+        console.log("user: ", userId);
         const [updErr, user] = await to(
-          User.updateOne({ _id: new Types.ObjectId(userId) }, { $set: subUpdate }, { runValidators: false })
+          User.updateOne(
+            { _id: new Types.ObjectId(userId) },
+            { $set:  subUpdate },
+            { runValidators: false }
+          )
         );
         if (updErr) throw updErr;
-
+        // console.log("paid user: ", user);
         if (!user) {
           console.warn(`⚠️  User not found: ${userId}`);
           break;

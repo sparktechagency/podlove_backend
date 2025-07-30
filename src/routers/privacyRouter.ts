@@ -7,5 +7,6 @@ const router = express.Router();
 
 router.get("/", asyncHandler(PrivacyController.get));
 router.patch("/update", admin_authorize, asyncHandler(PrivacyController.update));
+// admin_authorize,
 
 export default router;

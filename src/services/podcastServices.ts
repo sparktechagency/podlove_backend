@@ -2,10 +2,28 @@ import { Request, Response, NextFunction } from "express";
 import Podcast from "@models/podcastModel"; // Adjust the import path as necessary
 import { PodcastStatus } from "@shared/enums";
 import { StatusCodes } from "http-status-codes";
-import to from "await-to-ts";
 import createError from "http-errors";
 import Notification from "@models/notificationModel";
 import cron from "node-cron";
+import mongoose, { Types } from "mongoose";
+// import { time } from "console";
+import { DateTime } from "luxon";
+import { scheduler } from "node:timers/promises";
+interface Participants {
+  user: Types.ObjectId;
+  isAllow: Boolean;
+  score: number;
+}
+[];
+
+interface SelectedUserBody {
+  user: Types.ObjectId;
+}
+[];
+interface MarkedParticipant extends Participants {
+  isAllow: boolean;
+}
+
 // const podcastActions = async(req: Request, res: Response, next: NextFunction) : Promise<any> => {
 //   const { podcastId, status, selectedUserId, schedule } = req.body;
 
@@ -126,7 +144,7 @@ const podcastDone = async (req: Request, res: Response, next: NextFunction): Pro
 const setSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
     // Ensure the request is authenticated
-    const hostUserId = req.user.userId;
+    const hostUserId = req.admin.id;
     if (!hostUserId) {
       throw createError(StatusCodes.UNAUTHORIZED, "Unauthorized user");
     }
@@ -190,78 +208,180 @@ const setSchedule = async (req: Request, res: Response, next: NextFunction): Pro
   }
 };
 
+function markAllowedParticipants(participants: Participants[], selectedUserBody: SelectedUserBody[]): void {
+  // Build a lookup set of selected user IDs (strings)
+  const selectedSet = new Set<string>(selectedUserBody.map(({ user }: any) => user));
+
+  // For each sub‐document, set the isAllow field
+  participants.forEach((subdoc) => {
+    // If there's no user, mark false
+    if (!subdoc.user) {
+      subdoc.isAllow = false;
+      return;
+    }
+
+    // Normalize ObjectId or string to a single string
+    const userStr = subdoc.user instanceof Types.ObjectId ? subdoc.user.toHexString() : subdoc.user;
+
+    // Use Mongoose's built‑in setter so it tracks changes
+    subdoc.isAllow = selectedSet.has(userStr);
+  });
+}
+
 const selectUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const podcastId = req.body.podcastId;
   const selectedUserId = req.body.selectedUserId;
-
   const podcast = await Podcast.findById(podcastId);
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
 
   podcast.selectedUser = selectedUserId;
   podcast.status = PodcastStatus.DONE;
 
+  markAllowedParticipants(podcast.participants, selectedUserId);
+
   await podcast.save();
 
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
 };
 
-function parseScheduleDate(p: { schedule: { date: string; time: string } }): Date | null {
-  const [dayStr, monthStr, yearStr] = p.schedule.date.split("/");
-  if (!dayStr || !monthStr || !yearStr) return null;
-  const day = parseInt(dayStr, 10);
-  const month = parseInt(monthStr, 10) - 1; 
-  const year = 2000 + parseInt(yearStr, 10);
-
-  const timeNormalized = p.schedule.time.replace(".", ":").trim();
-  const isoString = `${year}-${month + 1}`.padStart(2, "0") + `-${day.toString().padStart(2, "0")} ${timeNormalized}`;
-  const dt = new Date(isoString);
-
-  return isNaN(dt.getTime()) ? null : dt;
+function parseScheduleDateInET(p: { schedule: { date: string; time: string } }): DateTime | null {
+  const { date, time } = p.schedule;
+  const dt = DateTime.fromFormat(`${date} ${time}`, "MM/dd/yyyy hh:mm a", { zone: "America/New_York" });
+  return dt.isValid ? dt : null;
 }
 
+// async function notifyScheduledPodcasts(): Promise<void> {
+//   const nowET = DateTime.now().setZone("America/New_York");
+//   const oneHourMs = 1000 * 60 * 60;
+
+//   // 1) Find all scheduled podcasts
+//   const podcasts = await Podcast.find({
+//     status: "Scheduled",
+//     notificationSent: { $ne: true },
+//   }).exec();
+//   for (const p of podcasts) {
+//     const scheduledET = parseScheduleDateInET(p);
+//     if (scheduledET) {
+//       const diffMs = scheduledET.toMillis() - nowET.toMillis();
+//       if (diffMs > 0 && diffMs <= oneHourMs) {
+//         try {
+//           console.log("inside the notification created");
+//           await Notification.create({
+//             type: "podcast_upcoming",
+//             user: p.primaryUser,
+//             message: [
+//               {
+//                 title: "Your podcast is about to start!",
+//                 description: `Your podcast is scheduled for ${p.schedule.date} at ${p.schedule.time}.`,
+//               },
+//             ],
+//             read: false,
+//             section: "user",
+//           });
+
+//           p.notificationSent = true;
+//           await p.save();
+//           console.log(`🔔 Notified user ${p.primaryUser} for podcast ${p._id}`);
+//         } catch (err) {
+
+//           console.error(`❌ Failed to notify for podcast ${p._id}:`, err);
+//         }
+//       }
+//     }
+//   }
+
+//   const findScheduledTime = await Podcast.find({status: "Scheduled"});
+//   for(let schedulePodcast of findScheduledTime){
+//     let scheduler = parseScheduleDateInET(schedulePodcast);
+//     if(scheduler === nowET){
+//       try {
+//      await Podcast.findOneAndUpdate(
+//       { _id: schedulePodcast._id },
+//       {
+//         $set: {
+//           status: PodcastStatus.PLAYING
+//         },
+//       }
+//     )
+//       .lean()
+//       .exec();
+//   } catch (err) {
+//     console.error(`Failed to change to schedule for podcast:`, err);
+//   }
+//     }
+
+//   }
+// }
+
 async function notifyScheduledPodcasts(): Promise<void> {
-  const now = new Date();
-  const oneHour = 1000 * 60 * 60;
-  const inOneHour = new Date(now.getTime() + oneHour);
-   console.log("one hour: ", oneHour);
-  // 1) Find all podcasts with status "scheduled" that have NOT been notified:
-  const podcasts = await Podcast.find({
-    status: "Scheduled"
-    // notificationSent: { $ne: true },
-  }).exec();
-  console.log("podcast: ", podcasts)
+  const nowET = DateTime.now().setZone("America/New_York");
+  const oneHourMs = 1000 * 60 * 60;
+
+  // 1) Fetch everything once
+  const podcasts = await Podcast.find({ status: "Scheduled" }).exec();
+
+  // 2) Prepare batches
+  const notifPromises: Promise<any>[] = [];
+  const bulkOps: mongoose.AnyBulkWriteOperation[] = [];
+
   for (const p of podcasts) {
-    console.log("p: ", p);
-    const scheduledDt = parseScheduleDate(p);
-    if (!scheduledDt) {
-      console.warn(`⚠️  Could not parse schedule for podcast ${p._id}`);
-      continue;
-    }
-   console.log("scheduledDt: ", scheduledDt);
-    // 2) If the scheduled time is within the next hour → notify
-    if (scheduledDt >= now && scheduledDt <= inOneHour) {
-      try {
-        await Notification.create({
+    const scheduledET = parseScheduleDateInET(p);
+    if (!scheduledET) continue;
+
+    const diffMs = scheduledET.toMillis() - nowET.toMillis();
+
+    // a) Within next hour → notify if not already
+    if (diffMs > 0 && diffMs <= oneHourMs && !p.notificationSent) {
+      notifPromises.push(
+        Notification.create({
           type: "podcast_upcoming",
           user: p.primaryUser,
           message: [
             {
               title: "Your podcast is about to start!",
-              description: `Your podcast is scheduled on ${p.schedule.day}, ${p.schedule.date} at ${p.schedule.time}.`,
+              description: `Your podcast is scheduled for ${p.schedule.date} at ${p.schedule.time}.`,
             },
           ],
           read: false,
           section: "user",
-        });
+        })
+      );
+      // mark notificationSent
+      bulkOps.push({
+        updateOne: {
+          filter: { _id: p._id },
+          update: { $set: { notificationSent: true } },
+        },
+      });
+    }
 
-        // 3) Mark notificationSent to avoid duplication
-        p.notificationSent = true;
-        await p.save();
+    // b) Time’s up or passed → switch to PLAYING
+    if (scheduledET <= nowET) {
+      bulkOps.push({
+        updateOne: {
+          filter: { _id: p._id },
+          update: { $set: { status: PodcastStatus.PLAYING } },
+        },
+      });
+    }
+  }
 
-        console.log(`🔔 Notified user ${p.primaryUser} for podcast ${p._id}`);
-      } catch (err) {
-        console.error(`❌ Failed to notify for podcast ${p._id}:`, err);
-      }
+  // console.log("schedule: ", bulkOps);
+
+  // 3) Fire off all notifications in parallel
+  try {
+    await Promise.all(notifPromises);
+  } catch (err) {
+    console.error("❌ Notification batch error:", err);
+  }
+
+  // 4) Apply status & notificationSent in one bulkWrite
+  if (bulkOps.length) {
+    try {
+      await Podcast.bulkWrite(bulkOps);
+      console.log(`✅ Applied ${bulkOps.length} updates`);
+    } catch (err) {
+      console.error("❌ bulkWrite failed:", err);
     }
   }
 }

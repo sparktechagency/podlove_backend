@@ -13,7 +13,7 @@ const uploadFileToCloudinary = async (file: UploadedFile, folder: string): Promi
 };
 
 export const fileHandler = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  console.log("entered");
+  // console.log("entered");
 
   try {
     const fileFields = [
@@ -24,7 +24,7 @@ export const fileHandler = async (req: Request, res: Response, next: NextFunctio
       { fieldName: "cover", folder: "the_drop/cover", key: "coverUrl" },
       { fieldName: "gallery", folder: "the_drop/gallery", key: "galleryUrls" },
     ];
-    console.log(req.files);
+    // console.log(req.files);
     
     if (req.files) {
       await Promise.all(

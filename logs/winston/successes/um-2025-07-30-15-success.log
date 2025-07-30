@@ -1,0 +1,235 @@
+Wed Jul 30 2025 15:1:18 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:1:18 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:1:20 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:1:20 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:1:36 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:1:37 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:1:38 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:1:43 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:2:5 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:2:27 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:3:5 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:4:14 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:4:17 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:4:19 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:5:20 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:5:31 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:5:32 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:10:10 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:10:12 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:10:16 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:10:19 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:10:26 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:14:19 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:14:21 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:18:47 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Wed Jul 30 2025 15:19:11 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\adminController.ts:163:30)
+UnauthorizedError
+Wed Jul 30 2025 15:19:20 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:19:21 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:20:10 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:20:20 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:20:20 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:20:33 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Wed Jul 30 2025 15:20:48 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:20:48 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:21:31 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:21:36 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:21:38 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:21:40 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:21:43 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:21:44 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:21:46 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:22:20 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:22:31 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:22:32 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:23:17 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:24:48 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:24:48 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:27:29 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:27:43 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:28:1 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:28:2 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:28:4 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:28:4 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:28:21 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:28:21 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:28:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:28:25 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:28:28 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:28:29 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:28:32 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:28:32 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:28:45 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:28:45 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:29:13 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:29:13 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:29:21 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:29:22 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:29:24 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:29:25 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:29:33 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:29:33 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:29:36 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:29:36 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:29:45 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:29:45 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:30:12 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:30:12 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:30:52 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:30:52 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:31:5 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:31:5 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:31:22 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:31:22 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:31:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:31:26 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:31:31 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:31:31 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:31:34 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:31:35 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:32:52 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:34:12 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:34:12 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:34:19 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:34:20 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:34:22 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:34:22 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:34:23 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:34:23 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:34:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:34:25 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:34:27 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Jul 30 2025 15:34:27 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:34:48 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:34:48 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:34:56 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:34:56 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:35:31 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:35:31 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:35:42 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:35:42 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:35:46 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:35:46 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:35:47 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:35:48 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:35:57 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:35:57 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:36:1 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Wed Jul 30 2025 15:36:2 [Podlove] [32minfo[39m: [object Object]
+Wed Jul 30 2025 15:36:33 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:36:34 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:39:26 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:40:29 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:40:45 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:40:48 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:40:55 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:41:33 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:41:35 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:42:18 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:43:10 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:44:8 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:44:26 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:44:44 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:44:51 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:44:53 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:45:6 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:45:8 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:45:30 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 30 2025 15:45:34 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 30 2025 15:45:34 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 30 2025 15:45:34 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 30 2025 15:45:34 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Wed Jul 30 2025 15:45:34 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 30 2025 15:45:48 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:46:1 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:46:4 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:47:43 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:47:50 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:47:54 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:47:56 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:48:0 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:48:1 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:48:6 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:48:20 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:48:39 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:48:42 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:50:11 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:50:43 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:53:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 30 2025 15:53:55 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 30 2025 15:53:56 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 30 2025 15:53:56 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 30 2025 15:53:56 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Wed Jul 30 2025 15:53:56 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 30 2025 15:54:12 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:54:36 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Wed Jul 30 2025 15:56:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 30 2025 15:56:7 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 30 2025 15:56:7 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 30 2025 15:56:8 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 30 2025 15:56:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Wed Jul 30 2025 15:56:8 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 30 2025 15:56:22 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:75:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 30 2025 15:56:29 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:75:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 30 2025 15:56:35 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:75:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 30 2025 15:56:59 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:75:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 30 2025 15:58:0 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:75:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 30 2025 15:58:11 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:75:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Jul 30 2025 15:59:14 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Jul 30 2025 15:59:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Jul 30 2025 15:59:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Jul 30 2025 15:59:18 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Jul 30 2025 15:59:18 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Wed Jul 30 2025 15:59:18 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Jul 30 2025 15:59:21 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2

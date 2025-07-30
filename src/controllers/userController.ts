@@ -46,11 +46,32 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
   const ethnicityArray = handleArrayQuery(ethnicity);
   if (ethnicityArray.length) query.ethnicity = { $in: ethnicityArray };
 
-  const [users, total] = await Promise.all([
-    User.find(query).populate({ path: "auth", select: "email isBlocked" }).lean().skip(skip).limit(limit),
+  const normalizeAuthIds = (users: Array<{ auth: any }>) =>
+    users.map((u) => {
+      let a = u.auth;
+      if (typeof a === "string") {
+        // match strings like "ObjectId('6888…')"
+        const m = a.match(/^ObjectId\('([0-9a-fA-F]{24})'\)$/);
+        if (m) {
+          a = new mongoose.Types.ObjectId(m[1]);
+        }
+      }
+      return { ...u, auth: a };
+    });
+  const [rawUsers, total] = await Promise.all([
+    User.find(query).lean().skip(skip).limit(limit),
     User.countDocuments(query),
   ]);
+  const usersWithObjectIds = normalizeAuthIds(rawUsers);
 
+  // const [users, total] = await Promise.all([
+  //   User.find(query).populate({ path: "auth", select: "email isBlocked" }).lean().skip(skip).limit(limit),
+  //   User.countDocuments(query),
+  // ]);
+  const users = await User.populate(usersWithObjectIds, {
+    path: "auth",
+    select: "email isBlocked",
+  });
   const totalPages = Math.ceil(total / limit);
 
   return res.status(StatusCodes.OK).json({
@@ -85,7 +106,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
 // };
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-   console.log("req.body: ", req.body);
+  console.log("req.body: ", req.body);
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
@@ -93,7 +114,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       throw createError(StatusCodes.BAD_REQUEST, "Invalid user ID");
     }
-
+    console.log("req.body: ", req.body.location);
     // Build an updates object with only allowed top-level fields
     const allowedFields = [
       "isProfileComplete",
@@ -109,10 +130,6 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
       "isSelectedForPodcast",
     ];
     const updates: any = {};
-
-   
-    // for testing purpoose add it will be validate with openai 
-    updates.bio = req.body.text ? req.body.text.trim() : "";
 
     for (const field of allowedFields) {
       if (req.body[field] !== undefined) {
@@ -136,26 +153,45 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
         latitude: Number(loc.latitude),
       };
     }
+    // if (req.body.preferences) {
+    //   const pref = typeof req.body.preferences === "string" ? JSON.parse(req.body.preferences) : req.body.preferences;
+    //   updates.preferences = {
+    //     gender: pref.gender,
+    //     age: { min: Number(pref.age.min), max: Number(pref.age.max) },
+    //     bodyType: pref.bodyType,
+    //     ethnicity: pref.ethnicity,
+    //     distance: Number(pref.distance),
+    //   };
+    // }
     if (req.body.preferences) {
-      const pref = typeof req.body.preferences === "string" ? JSON.parse(req.body.preferences) : req.body.preferences;
+      const userWithPrefs = await User.findById(userId)
+        .select("Preferences") // only include the Preferences field
+        .lean();
+      const pref: any =
+        typeof req.body.preferences === "string" ? JSON.parse(req.body.preferences) : req.body.preferences;
+      const age = pref.age && typeof pref.age === "object" ? pref.age : { min: undefined, max: undefined };
+      const updateGender = pref.gender ? pref.gender : userWithPrefs?.preferences?.gender;
       updates.preferences = {
-        gender: pref.gender,
-        age: { min: Number(pref.age.min), max: Number(pref.age.max) },
+        gender: updateGender,
+        age: {
+          min: age.min != null ? Number(age.min) : undefined,
+          max: age.max != null ? Number(age.max) : undefined,
+        },
         bodyType: pref.bodyType,
         ethnicity: pref.ethnicity,
-        distance: Number(pref.distance),
+        distance: pref.distance != null ? Number(pref.distance) : undefined,
       };
     }
     if (req.body.subscription) {
       const sub = typeof req.body.subscription === "string" ? JSON.parse(req.body.subscription) : req.body.subscription;
       const timestamp = Date.parse(sub.startedAt);
-      console.log("timestamp", timestamp);
+      // console.log("timestamp", timestamp);
       updates.subscription = {
         id: sub.id,
         plan: sub.plan,
         fee: sub.fee,
         status: sub.status,
-        startedAt: new Date(timestamp || Date.now()), 
+        startedAt: new Date(timestamp || Date.now()),
       };
     }
 

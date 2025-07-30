@@ -1,0 +1,115 @@
+Tue Jul 29 2025 10:3:13 [Podlove] [32minfo[39m: 68884075fc84ceb7cc974a2e
+Tue Jul 29 2025 10:3:15 [Podlove] [32minfo[39m: 68884075fc84ceb7cc974a2e
+Tue Jul 29 2025 10:5:54 [Podlove] [32minfo[39m: 68884075fc84ceb7cc974a2e
+Tue Jul 29 2025 10:6:9 [Podlove] [32minfo[39m: 6880a9992a4d4f9f7b707c50
+Tue Jul 29 2025 10:6:25 [Podlove] [32minfo[39m: 6880a9992a4d4f9f7b707c50
+Tue Jul 29 2025 10:8:48 [Podlove] [32minfo[39m: 6880a9992a4d4f9f7b707c50
+Tue Jul 29 2025 10:10:49 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:10:52 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:0 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:4 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:9 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:13 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:16 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:21 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:25 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:29 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:50 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:11:56 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:12:24 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:12:28 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:12:33 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:12:40 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:12:51 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:12:54 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:13:0 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:18:22 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jul 29 2025 10:18:26 [Podlove] [32minfo[39m: Privacy Policy exists!
+Tue Jul 29 2025 10:18:26 [Podlove] [32minfo[39m: Consumer Policy exists!
+Tue Jul 29 2025 10:18:27 [Podlove] [32minfo[39m: Media Policy exists!
+Tue Jul 29 2025 10:18:27 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Tue Jul 29 2025 10:18:27 [Podlove] [32minfo[39m: Socket.IO server initialized
+Tue Jul 29 2025 10:31:28 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:31:31 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:31:31 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:31:31 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:31:31 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:31:31 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:31:33 [Podlove] [31merror[39m: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+MongoServerError: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+    at Connection.sendCommand (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:559:17)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.command (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:633:22)
+    at async Server.command (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\sdam\server.ts:342:21)
+    at async FindOneAndUpdateOperation.executeCommand (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\command.ts:179:12)
+    at async FindOneAndUpdateOperation.execute (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\find_and_modify.ts:216:20)
+    at async tryOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\collection.ts:1006:12)
+    at async model.Query._findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3513:13)
+MongoServerError
+Tue Jul 29 2025 10:31:33 [Podlove] [31merror[39m: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+MongoServerError: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+    at Connection.sendCommand (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:559:17)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.command (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:633:22)
+    at async Server.command (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\sdam\server.ts:342:21)
+    at async FindOneAndUpdateOperation.executeCommand (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\command.ts:179:12)
+    at async FindOneAndUpdateOperation.execute (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\find_and_modify.ts:216:20)
+    at async tryOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\collection.ts:1006:12)
+    at async model.Query._findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3513:13)
+MongoServerError
+Tue Jul 29 2025 10:31:33 [Podlove] [31merror[39m: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+MongoServerError: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+    at Connection.sendCommand (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:559:17)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.command (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:633:22)
+    at async Server.command (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\sdam\server.ts:342:21)
+    at async FindOneAndUpdateOperation.executeCommand (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\command.ts:179:12)
+    at async FindOneAndUpdateOperation.execute (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\find_and_modify.ts:216:20)
+    at async tryOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\collection.ts:1006:12)
+    at async model.Query._findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3513:13)
+MongoServerError
+Tue Jul 29 2025 10:31:33 [Podlove] [31merror[39m: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+MongoServerError: Caused by :: Write conflict during plan execution and yielding is disabled. :: Please retry your operation or multi-document transaction.
+    at Connection.sendCommand (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:559:17)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Connection.command (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cmap\connection.ts:633:22)
+    at async Server.command (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\sdam\server.ts:342:21)
+    at async FindOneAndUpdateOperation.executeCommand (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\command.ts:179:12)
+    at async FindOneAndUpdateOperation.execute (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\find_and_modify.ts:216:20)
+    at async tryOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\collection.ts:1006:12)
+    at async model.Query._findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3513:13)
+MongoServerError
+Tue Jul 29 2025 10:35:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Jul 29 2025 10:35:16 [Podlove] [32minfo[39m: Privacy Policy exists!
+Tue Jul 29 2025 10:35:16 [Podlove] [32minfo[39m: Consumer Policy exists!
+Tue Jul 29 2025 10:35:17 [Podlove] [32minfo[39m: Media Policy exists!
+Tue Jul 29 2025 10:35:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Tue Jul 29 2025 10:35:17 [Podlove] [32minfo[39m: Socket.IO server initialized
+Tue Jul 29 2025 10:35:55 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:38:7 [Podlove] [32minfo[39m: 688849a9fc84ceb7cc97503b
+Tue Jul 29 2025 10:38:24 [Podlove] [32minfo[39m: 68884075fc84ceb7cc974a2e
+Tue Jul 29 2025 10:38:38 [Podlove] [32minfo[39m: 68884075fc84ceb7cc974a2e
+Tue Jul 29 2025 10:38:40 [Podlove] [32minfo[39m: 68884075fc84ceb7cc974a2e
+Tue Jul 29 2025 10:43:37 [Podlove] [32minfo[39m: 68884075fc84ceb7cc974a2e
+Tue Jul 29 2025 10:43:40 [Podlove] [32minfo[39m: 68884075fc84ceb7cc974a2e
+Tue Jul 29 2025 10:43:43 [Podlove] [32minfo[39m: 68884075fc84ceb7cc974a2e
+Tue Jul 29 2025 10:44:18 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:44:21 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:44:28 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:44:30 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:44:35 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:44:39 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:44:43 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:44:48 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:44:52 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:44:57 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:45:20 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Tue Jul 29 2025 10:45:25 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb

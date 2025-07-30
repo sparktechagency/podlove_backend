@@ -1,0 +1,251 @@
+Mon Jul 28 2025 16:0:3 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:0:6 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:0:13 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:0:17 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:0:24 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:0:28 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:0:33 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:0:37 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:0:43 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:0:47 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:1:9 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:1:14 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:1:42 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:1:45 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:1:49 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:16:50 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:16:55 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:16:56 [Podlove] [31merror[39m: Matched users not found
+NotFoundError: Matched users not found
+    at getMatchedUsers (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\matchesServices.ts:249:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Mon Jul 28 2025 16:17:8 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:18:6 [Podlove] [32minfo[39m: 68873bd4e3968ce64e6cc258
+Mon Jul 28 2025 16:18:51 [Podlove] [32minfo[39m: 68874e766e78840d002e0dd4
+Mon Jul 28 2025 16:18:54 [Podlove] [32minfo[39m: 68874e766e78840d002e0dd4
+Mon Jul 28 2025 16:19:3 [Podlove] [32minfo[39m: 68874e766e78840d002e0dd4
+Mon Jul 28 2025 16:19:7 [Podlove] [32minfo[39m: 68874e766e78840d002e0dd4
+Mon Jul 28 2025 16:19:13 [Podlove] [32minfo[39m: 68874e766e78840d002e0dd4
+Mon Jul 28 2025 16:19:20 [Podlove] [32minfo[39m: 68874e766e78840d002e0dd4
+Mon Jul 28 2025 16:19:31 [Podlove] [32minfo[39m: 68874e766e78840d002e0dd4
+Mon Jul 28 2025 16:19:39 [Podlove] [32minfo[39m: 68874e766e78840d002e0dd4
+Mon Jul 28 2025 16:19:50 [Podlove] [32minfo[39m: 68874e766e78840d002e0dd4
+Mon Jul 28 2025 16:21:5 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:21:8 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:21:18 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:21:23 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:21:30 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:21:36 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:21:52 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:22:2 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:22:12 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:22:21 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:22:42 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:22:59 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:23:4 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:23:20 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:23:30 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:23:44 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:23:55 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:27:26 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:27:33 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:27:42 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:28:28 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:28:37 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:29:14 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:29:17 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:29:21 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:29:25 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:32:6 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:33:8 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:33:17 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:33:17 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:33:18 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:33:18 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:33:49 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:33:52 [Podlove] [32minfo[39m: 68874efb6e78840d002e0e03
+Mon Jul 28 2025 16:34:36 [Podlove] [32minfo[39m: 688752286e78840d002e0ea7
+Mon Jul 28 2025 16:34:39 [Podlove] [32minfo[39m: 688752286e78840d002e0ea7
+Mon Jul 28 2025 16:34:44 [Podlove] [32minfo[39m: 688752286e78840d002e0ea7
+Mon Jul 28 2025 16:34:46 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:34:47 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:34:49 [Podlove] [32minfo[39m: 688752286e78840d002e0ea7
+Mon Jul 28 2025 16:34:55 [Podlove] [32minfo[39m: 688752286e78840d002e0ea7
+Mon Jul 28 2025 16:35:2 [Podlove] [32minfo[39m: 688752286e78840d002e0ea7
+Mon Jul 28 2025 16:35:12 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:35:12 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:36:28 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:36:28 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:36:29 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:36:29 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:37:54 [Podlove] [32minfo[39m: 688739f8751ee260b1f9cced
+Mon Jul 28 2025 16:37:55 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:38:16 [Podlove] [32minfo[39m: 688732cf363166689c8c7365
+Mon Jul 28 2025 16:38:16 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:38:57 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:39:4 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:39:21 [Podlove] [32minfo[39m: 688739f8751ee260b1f9cced
+Mon Jul 28 2025 16:39:21 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:39:25 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:39:30 [Podlove] [32minfo[39m: 688732cf363166689c8c7365
+Mon Jul 28 2025 16:39:30 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:39:30 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:39:40 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:39:40 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:40:9 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:40:16 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:40:30 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:40:41 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:43:43 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:43:52 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:44:38 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:44:47 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:45:29 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:45:29 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:45:30 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:45:30 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:46:23 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 28 2025 16:46:26 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 28 2025 16:46:26 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 28 2025 16:46:27 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 28 2025 16:46:27 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Jul 28 2025 16:46:27 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Jul 28 2025 16:46:30 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:46:31 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:46:43 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:46:44 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:46:44 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:46:44 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:46:50 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:46:50 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:47:18 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:47:18 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:47:18 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:47:19 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:47:25 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:47:25 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:47:26 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:47:26 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:49:33 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 28 2025 16:49:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 28 2025 16:49:36 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 28 2025 16:49:37 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 28 2025 16:49:37 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Jul 28 2025 16:49:37 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Jul 28 2025 16:51:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 28 2025 16:51:52 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 28 2025 16:51:52 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 28 2025 16:51:53 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 28 2025 16:51:53 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Jul 28 2025 16:51:53 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Jul 28 2025 16:51:59 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:51:59 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:52:8 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:52:12 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:52:12 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:52:14 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:52:15 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'min')
+TypeError: Cannot read properties of undefined (reading 'min')
+    at update (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\userController.ts:139:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+TypeError
+Mon Jul 28 2025 16:52:30 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:52:31 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:53:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 28 2025 16:53:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 28 2025 16:53:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 28 2025 16:53:6 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 28 2025 16:53:6 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Jul 28 2025 16:53:6 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Jul 28 2025 16:53:6 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:53:7 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'min')
+TypeError: Cannot read properties of undefined (reading 'min')
+    at update (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\userController.ts:139:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+TypeError
+Mon Jul 28 2025 16:54:16 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 28 2025 16:54:19 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 28 2025 16:54:20 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 28 2025 16:54:20 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 28 2025 16:54:20 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Jul 28 2025 16:54:20 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Jul 28 2025 16:54:22 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:54:23 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "preferences.age.max"
+CastError: Cast to Number failed for value "NaN" (type number) at path "preferences.age.max"
+    at SchemaNumber.cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:381:11)
+    at SchemaNumber.SchemaType.applySetters (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaNumber.castForQuery (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:435:16)
+    at castUpdateVal (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:628:19)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:433:24)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:378:20)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:378:20)
+    at castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4851:10)
+    at model.Query._findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3474:23)
+CastError
+Mon Jul 28 2025 16:56:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 28 2025 16:56:3 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 28 2025 16:56:3 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 28 2025 16:56:4 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 28 2025 16:56:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Jul 28 2025 16:56:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Jul 28 2025 16:56:4 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:56:5 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'min')
+TypeError: Cannot read properties of undefined (reading 'min')
+    at update (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\userController.ts:137:31)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+TypeError
+Mon Jul 28 2025 16:56:23 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 28 2025 16:56:26 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 28 2025 16:56:26 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 28 2025 16:56:27 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 28 2025 16:56:27 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Jul 28 2025 16:56:27 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Jul 28 2025 16:56:30 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:56:30 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:56:34 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:56:35 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'min')
+TypeError: Cannot read properties of undefined (reading 'min')
+    at update (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\userController.ts:137:31)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+TypeError
+Mon Jul 28 2025 16:56:42 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:56:42 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:56:51 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:56:51 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:56:52 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:56:52 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:56:59 [Podlove] [32minfo[39m: 688732cf363166689c8c7365
+Mon Jul 28 2025 16:57:0 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:57:30 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Mon Jul 28 2025 16:57:30 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:57:40 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 28 2025 16:57:43 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 28 2025 16:57:43 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 28 2025 16:57:44 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 28 2025 16:57:44 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Jul 28 2025 16:57:44 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Jul 28 2025 16:57:49 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:57:50 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'min')
+TypeError: Cannot read properties of undefined (reading 'min')
+    at update (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\userController.ts:137:31)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+TypeError
+Mon Jul 28 2025 16:58:33 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Jul 28 2025 16:58:34 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:58:47 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Jul 28 2025 16:58:50 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Jul 28 2025 16:58:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Jul 28 2025 16:58:51 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Jul 28 2025 16:58:51 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Jul 28 2025 16:58:51 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Jul 28 2025 16:58:53 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Jul 28 2025 16:58:54 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:58:55 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:59:7 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:59:16 [Podlove] [32minfo[39m: 6887532e6e78840d002e0f03
+Mon Jul 28 2025 16:59:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Jul 28 2025 16:59:25 [Podlove] [32minfo[39m: [object Object]
+Mon Jul 28 2025 16:59:27 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Jul 28 2025 16:59:27 [Podlove] [32minfo[39m: [object Object]

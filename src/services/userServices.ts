@@ -69,7 +69,7 @@ const validateBio = async (req: Request, res: Response, next: NextFunction): Pro
     return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated")); 
   }
   const result = await OpenaiServices.analyzeBio(bio);
-
+  console.log("result: ", result);
   if (result === true) {
        const updatedUserBio = await User.findByIdAndUpdate(
       userId,                         

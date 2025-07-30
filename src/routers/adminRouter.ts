@@ -10,13 +10,13 @@ import { upload } from "@utils/multerConfig";
 const router = express.Router();
 
 router.post("/create", AdminController.create);
-router.post("/send-message", AdminServices.sendMessage);
+router.post("/send-message", admin_authorize, AdminServices.sendMessage);
 // router.put("/update", fileUpload(), fileHandler, admin_authorize, AdminController.update);
 router.put("/update", upload.single("avatar"), admin_authorize, AdminController.update);
 router.put("/update/:id", admin_authorize, AdminController.updateAdmin);
-router.delete("/remove/:id", AdminController.remove);
+router.delete("/remove/:id", admin_authorize, AdminController.remove);
 router.get("/info", admin_authorize, AdminController.getAdminInfo);
-router.get("/", AdminController.getAll);
+router.get("/", admin_authorize, AdminController.getAll);
 
 router.post("/login", asyncHandler(AdminController.login));
 router.post("/recovery", asyncHandler(AdminController.recovery));

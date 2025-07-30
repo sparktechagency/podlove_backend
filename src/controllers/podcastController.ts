@@ -47,18 +47,11 @@ const sendPodcastRequest = async (req: Request, res: Response, next: NextFunctio
     session.startTransaction();
 
     // 1) Validate payload
-    const { status, schedule } = req.body;
+    const { status } = req.body;
     if (!Object.values(PodcastStatus).includes(status)) {
       throw createError(StatusCodes.BAD_REQUEST, "Invalid podcast status");
     }
-    if (
-      typeof schedule !== "object" ||
-      typeof schedule.date !== "string" ||
-      typeof schedule.day !== "string" ||
-      typeof schedule.time !== "string"
-    ) {
-      throw createError(StatusCodes.BAD_REQUEST, "Schedule must include date, day, and time strings");
-    }
+   
 
     // 2) Update the Podcast document for this user
     const updated = await Podcast.findOneAndUpdate(
@@ -66,11 +59,6 @@ const sendPodcastRequest = async (req: Request, res: Response, next: NextFunctio
       {
         $set: {
           status,
-          schedule: {
-            date: schedule.date,
-            day: schedule.day,
-            time: schedule.time,
-          },
         },
       },
       { new: true, session }
@@ -105,7 +93,6 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
   const page = parseInt(req.query.page as string, 10) || 1;
   const limit = parseInt(req.query.limit as string, 10) || 10;
   const skip = (page - 1) * limit;
-
   if (page < 1 || limit < 1) throw createError(StatusCodes.BAD_REQUEST, "Page and limit must be positive integers");
 
   if (id) {
@@ -140,7 +127,8 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
 
   const podcasts = await Podcast.find(statusFilter)
     // Only pull back fields you’ll actually return
-    .select("primaryUser participants.score schedule status createdAt")
+    .select("primaryUser participants.score participants.isAllow schedule status createdAt")
+    .sort({ createdAt: -1 })
     .skip(skip)
     .limit(limit)
     .populate([
