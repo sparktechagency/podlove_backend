@@ -19837,3 +19837,2008 @@ Wed Jul 30 2025 19:31:16 [Podlove] [32minfo[39m: Consumer Policy exists!
 Wed Jul 30 2025 19:31:17 [Podlove] [32minfo[39m: Media Policy exists!
 Wed Jul 30 2025 19:31:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
 Wed Jul 30 2025 19:31:17 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 8:41:47 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 8:41:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 8:41:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 8:41:51 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 8:41:51 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 8:41:51 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 8:46:18 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Thu Jul 31 2025 9:22:51 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 9:22:52 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 9:36:54 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 9:36:58 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 9:45:21 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 9:46:28 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 9:46:30 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 9:54:11 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 9:54:12 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 9:54:29 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 9:54:30 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 10:16:2 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 10:16:3 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 10:17:56 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 10:17:57 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 10:23:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 10:23:25 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 10:52:32 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 10:52:32 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 10:58:13 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Thu Jul 31 2025 10:58:17 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Thu Jul 31 2025 10:58:19 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Thu Jul 31 2025 10:58:27 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Thu Jul 31 2025 10:58:47 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:19 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:21 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:23 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:28 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:39 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 10:59:42 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 10:59:42 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 10:59:42 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 10:59:42 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 10:59:42 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 10:59:43 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:43 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:43 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:43 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:44 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:46 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:47 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:50 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:51 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 10:59:55 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:0:10 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:0:56 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:1:4 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:1:26 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:1:28 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:1:42 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:1:43 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:1:54 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:2:7 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:2:22 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Thu Jul 31 2025 11:2:22 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:6:2 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:6:22 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:13:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:13:25 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:13:34 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Thu Jul 31 2025 11:13:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 11:13:52 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 11:13:52 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 11:13:53 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 11:13:53 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 11:13:53 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 11:13:53 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:13:54 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:13:55 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:13:55 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:14:7 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:14:7 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:15:35 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:15:35 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:15:36 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:15:36 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:15:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 11:15:53 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 11:15:53 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 11:15:54 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 11:15:54 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 11:15:54 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 11:15:57 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:15:57 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:17:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 11:17:4 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 11:17:4 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 11:17:4 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 11:17:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 11:17:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 11:17:31 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 11:17:34 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 11:17:35 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 11:17:35 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 11:17:35 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 11:17:35 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 11:20:56 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:21:14 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:22:18 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:22:49 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:24:57 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:24:57 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:25:3 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 11:25:4 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 11:25:22 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:26:45 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:26:48 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:27:28 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:27:47 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:27:55 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:28:57 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:28:58 [Podlove] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:61:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Thu Jul 31 2025 11:29:10 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Thu Jul 31 2025 11:29:10 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:45:10 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 11:56:30 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 11:56:34 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 11:56:34 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 11:56:34 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 11:56:34 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 11:56:34 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 11:56:36 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 11:57:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 11:57:12 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 11:57:12 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 11:57:13 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 11:57:13 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 11:57:13 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 11:57:13 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 11:57:13 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 11:57:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 11:57:48 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 11:57:49 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 11:57:49 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 11:57:49 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 11:57:49 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 12:2:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 12:2:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:2:26 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:5:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 12:6:28 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 12:8:48 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:8:48 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:10:21 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 12:10:22 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 12:11:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:11:25 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:13:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 12:13:8 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:13:9 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:13:18 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:13:18 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:17:55 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Thu Jul 31 2025 12:18:17 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:18:17 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:29:37 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:29:37 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:47:42 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:47:42 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 13:11:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 13:11:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 13:11:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 13:11:5 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 13:11:5 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 13:11:5 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 13:11:10 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 13:11:11 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 13:15:35 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 13:15:35 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 13:16:36 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 13:16:37 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 13:17:18 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 13:17:19 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 13:17:58 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 13:17:59 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 13:18:37 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 13:18:37 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 13:18:52 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 13:18:52 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 13:46:52 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 13:46:52 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 13:47:6 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 13:47:6 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 13:50:30 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 13:50:33 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 13:50:34 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 13:50:34 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 13:50:34 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 13:50:34 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 13:50:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 13:50:46 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 13:50:46 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 13:50:47 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 13:50:47 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 13:50:47 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 13:52:31 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 13:52:34 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 13:52:35 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 13:52:35 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 13:52:35 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 13:52:35 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 13:56:38 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 13:56:38 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 14:3:16 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 14:3:17 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 14:11:48 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 14:23:57 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 14:23:58 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 14:26:1 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 14:26:2 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 14:26:20 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 14:26:21 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 14:30:58 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 14:30:59 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 14:47:2 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 14:47:43 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 14:47:43 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 14:48:11 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 14:50:19 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Thu Jul 31 2025 14:55:28 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 14:55:29 [Podlove] [31merror[39m: Recording file is required
+BadRequestError: Recording file is required
+    at updateRecording (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\podcastController.ts:210:28)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at multerMiddleware (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:19:41)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:64:12
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Thu Jul 31 2025 15:0:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 15:0:4 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 15:0:4 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 15:0:4 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 15:0:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 15:0:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 15:2:1 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:2:2 [Podlove] [31merror[39m: Multipart: Boundary not found
+Error: Multipart: Boundary not found
+    at new Multipart (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:233:13)
+    at getInstance (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:33:12)
+    at module.exports (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:56:10)
+    at multerMiddleware (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:38:16)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:64:12
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 15:10:17 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 15:10:20 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 15:10:20 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 15:10:21 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 15:10:21 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 15:10:21 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 15:13:35 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:421:3)
+UnauthorizedError
+Thu Jul 31 2025 15:13:45 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:13:45 [Podlove] [31merror[39m: Multipart: Boundary not found
+Error: Multipart: Boundary not found
+    at new Multipart (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:233:13)
+    at getInstance (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:33:12)
+    at module.exports (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:56:10)
+    at multerMiddleware (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:38:16)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:64:12
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 15:14:24 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:14:24 [Podlove] [31merror[39m: Multipart: Boundary not found
+Error: Multipart: Boundary not found
+    at new Multipart (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:233:13)
+    at getInstance (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:33:12)
+    at module.exports (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:56:10)
+    at multerMiddleware (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:38:16)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:64:12
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 15:14:41 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:14:41 [Podlove] [31merror[39m: Recording file is required
+BadRequestError: Recording file is required
+    at updateRecording (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\podcastController.ts:211:28)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at multerMiddleware (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:19:41)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:64:12
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Thu Jul 31 2025 15:24:20 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:24:21 [Podlove] [31merror[39m: Invalid upload for field recording
+Error: Invalid upload for field recording
+    at fileFilter (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\utils\multerConfig.ts:55:8)
+    at wrappedFileFilter (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\streamsearch\lib\sbmh.js:200:10)
+    at SBMH.push (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Thu Jul 31 2025 15:24:52 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:25:12 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:25:25 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:25:26 [Podlove] [31merror[39m: Invalid upload for field recording
+Error: Invalid upload for field recording
+    at fileFilter (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\utils\multerConfig.ts:55:8)
+    at wrappedFileFilter (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:123:7)
+    at Multipart.emit (node:events:518:28)
+    at Multipart.emit (node:domain:489:12)
+    at HeaderParser.cb (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+Error
+Thu Jul 31 2025 15:25:38 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:26:26 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 15:30:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 15:30:49 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 15:30:49 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 15:30:50 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 15:30:50 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 15:30:50 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 15:32:21 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:32:28 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:32:37 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:32:53 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:33:0 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:33:11 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:33:19 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:33:27 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:33:30 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:33:35 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:33:47 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:33:52 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:34:28 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:34:31 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:34:37 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:34:43 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:35:7 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:35:8 [Podlove] [31merror[39m: No podcast found for this user
+NotFoundError: No podcast found for this user
+    at getMatchedUsers (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\matchesServices.ts:233:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Thu Jul 31 2025 15:35:16 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:35:18 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:104:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 15:37:44 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:37:46 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:104:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 15:37:47 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:37:49 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:104:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 15:39:54 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:39:54 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 15:39:56 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:104:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 15:39:56 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:104:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 15:59:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 15:59:45 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 15:59:45 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 15:59:45 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 15:59:45 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 15:59:45 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 16:0:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 16:0:52 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 16:0:53 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 16:0:53 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 16:0:53 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 16:0:53 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 16:1:8 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 16:1:11 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 16:1:11 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 16:1:12 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 16:1:12 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 16:1:12 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 16:1:54 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 16:1:56 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:8:19 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 16:8:20 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 16:8:21 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:8:21 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:13:13 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 16:13:32 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 16:15:27 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 16:27:43 [Podlove] [32minfo[39m: 688b37e57f8b39f92c364d02
+Thu Jul 31 2025 16:27:43 [Podlove] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:61:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Thu Jul 31 2025 16:29:19 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:29:22 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:29:28 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:29:31 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:29:35 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:29:38 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:29:45 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:29:56 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:30:2 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:30:8 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:30:20 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:30:25 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:30:55 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:30:57 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:31:0 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:31:6 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:31:8 [Podlove] [31merror[39m: Cast to ObjectId failed for value "null" (type string) at path "primaryUser" for model "Podcast"
+CastError: Cast to ObjectId failed for value "null" (type string) at path "primaryUser" for model "Podcast"
+    at SchemaObjectId.cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaObjectId.SchemaType.castForQuery (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1673:17)
+    at cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\cast.js:390:32)
+    at model.Query.Query.cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:5055:12)
+    at model.Query.Query._castConditions (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:2351:10)
+    at model.Query._findOne (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:2674:8)
+    at model.Query.exec (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async matchUser (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\matchesServices.ts:186:27)
+CastError
+Thu Jul 31 2025 16:34:29 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:34:30 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:37:18 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:37:28 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:42:33 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:43:8 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:43:29 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:43:31 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:43:32 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:43:34 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:48:42 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:48:44 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:48:57 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:48:58 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:49:16 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:49:18 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:55:7 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:55:8 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 16:55:8 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:55:10 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 16:56:18 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:56:19 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:58:36 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:58:36 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+CastError: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+    at SchemaNumber.cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:381:11)
+    at SchemaNumber.SchemaType.applySetters (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaNumber.castForQuery (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:435:16)
+    at castUpdateVal (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:628:19)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:433:24)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:378:20)
+    at castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4851:10)
+    at model.Query._findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3474:23)
+    at model.Query.exec (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+CastError
+Thu Jul 31 2025 16:58:36 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:58:47 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:58:48 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+CastError: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+    at SchemaNumber.cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:381:11)
+    at SchemaNumber.SchemaType.applySetters (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaNumber.castForQuery (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:435:16)
+    at castUpdateVal (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:628:19)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:433:24)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:378:20)
+    at castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4851:10)
+    at model.Query._findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3474:23)
+    at model.Query.exec (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+CastError
+Thu Jul 31 2025 16:58:48 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:58:54 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:59:11 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlovedb.auths index: email_1 dup key: { email: "afrin4axiz@gmail.com" }
+MongoServerError: E11000 duplicate key error collection: podlovedb.auths index: email_1 dup key: { email: "afrin4axiz@gmail.com" }
+    at InsertOneOperation.execute (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\collection.ts:286:12)
+MongoServerError
+Thu Jul 31 2025 16:59:20 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:59:26 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 16:59:27 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlovedb.auths index: email_1 dup key: { email: "afrin4axiz@gmail.com" }
+MongoServerError: E11000 duplicate key error collection: podlovedb.auths index: email_1 dup key: { email: "afrin4axiz@gmail.com" }
+    at InsertOneOperation.execute (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\collection.ts:286:12)
+MongoServerError
+Thu Jul 31 2025 16:59:30 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 17:1:48 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlovedb.auths index: email_1 dup key: { email: "afrin4axiz@gmail.com" }
+MongoServerError: E11000 duplicate key error collection: podlovedb.auths index: email_1 dup key: { email: "afrin4axiz@gmail.com" }
+    at InsertOneOperation.execute (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\collection.ts:286:12)
+MongoServerError
+Thu Jul 31 2025 17:8:25 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:8:31 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:9:36 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:10:6 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:10:15 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:10:29 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:11:53 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:12:0 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:16:35 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:16:39 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:17:9 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:17:19 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:17:53 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:17:58 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:18:4 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:18:37 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:18:49 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:18:54 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:19:3 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:19:9 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:19:25 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:19:31 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:21:3 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:21:14 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:21:17 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:21:24 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:21:34 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:21:41 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:45:58 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 17:45:59 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 17:52:6 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:52:6 [Podlove] [32minfo[39m: 688b4e8a107e7aa530a70116
+Thu Jul 31 2025 17:54:23 [Podlove] [31merror[39m: E11000 duplicate key error collection: podlovedb.auths index: email_1 dup key: { email: "afrinbintaamzad@gmail.com" }
+MongoServerError: E11000 duplicate key error collection: podlovedb.auths index: email_1 dup key: { email: "afrinbintaamzad@gmail.com" }
+    at InsertOneOperation.execute (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\insert.ts:88:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async tryOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:283:14)
+    at async executeOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async Collection.insertOne (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\collection.ts:286:12)
+MongoServerError
+Thu Jul 31 2025 17:55:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 17:56:2 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 17:56:2 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 17:56:3 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 17:56:3 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 17:56:3 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 17:56:24 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 17:56:27 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 17:56:28 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 17:56:28 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 17:56:28 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 17:56:28 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 17:56:29 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 17:56:30 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 17:57:16 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 17:57:16 [Podlove] [32minfo[39m: 688b4572107e7aa530a6fc27
+Thu Jul 31 2025 17:57:17 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 17:57:17 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Jul 31 2025 17:59:51 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 17:59:51 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 18:3:57 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:4:2 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:4:19 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:4:26 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:4:32 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:4:43 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:4:47 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:4:52 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:5:1 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:5:6 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:5:33 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:5:36 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\userServices.ts:91:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Thu Jul 31 2025 18:5:45 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:5:47 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\userServices.ts:91:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Thu Jul 31 2025 18:5:56 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:5:59 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\userServices.ts:91:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Thu Jul 31 2025 18:6:27 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:6:28 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\userServices.ts:91:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Thu Jul 31 2025 18:7:19 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:7:28 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:7:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 18:8:0 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 18:8:1 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 18:8:1 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 18:8:1 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 18:8:1 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 18:8:2 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 18:8:3 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 18:8:25 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:8:31 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:8:33 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:8:46 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:8:53 [Podlove] [32minfo[39m: 688b5b792bad7c6728e8d94f
+Thu Jul 31 2025 18:8:54 [Podlove] [31merror[39m: Matched users not found
+NotFoundError: Matched users not found
+    at getMatchedUsers (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\matchesServices.ts:249:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Thu Jul 31 2025 18:57:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 18:57:31 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 18:57:32 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 18:57:32 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 18:57:32 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 18:57:32 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 02 2025 9:46:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 02 2025 9:46:46 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 02 2025 9:46:46 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 02 2025 9:46:46 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 02 2025 9:46:46 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Sat Aug 02 2025 9:46:46 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 02 2025 9:47:55 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sat Aug 02 2025 9:47:56 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sat Aug 02 2025 10:11:54 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sat Aug 02 2025 10:11:59 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sat Aug 02 2025 10:12:45 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sat Aug 02 2025 16:3:12 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 02 2025 16:3:15 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 02 2025 16:3:15 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 02 2025 16:3:15 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 02 2025 16:3:15 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Sat Aug 02 2025 16:3:15 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 02 2025 16:6:2 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sat Aug 02 2025 16:12:28 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Sat Aug 02 2025 16:12:33 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Sat Aug 02 2025 16:12:34 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Sat Aug 02 2025 16:12:48 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Sat Aug 02 2025 16:13:15 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Sat Aug 02 2025 16:13:31 [Podlove] [31merror[39m: Your account has been blocked by an administrator. Please reach out to the admin for help.
+ForbiddenError: Your account has been blocked by an administrator. Please reach out to the admin for help.
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:46)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+ForbiddenError
+Sat Aug 02 2025 16:14:14 [Podlove] [32minfo[39m: 6889a65cc40327ca3f98ad7a
+Sat Aug 02 2025 16:16:46 [Podlove] [32minfo[39m: 68870decaaa39d5c80dcca60
+Sat Aug 02 2025 16:16:46 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 02 2025 16:18:39 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sat Aug 02 2025 16:46:27 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sat Aug 02 2025 16:48:1 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sat Aug 02 2025 16:48:2 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sat Aug 02 2025 16:49:27 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sat Aug 02 2025 16:50:29 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sat Aug 02 2025 17:2:48 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sat Aug 02 2025 17:2:51 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sat Aug 02 2025 17:8:56 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 9:48:12 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Aug 03 2025 9:48:15 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Aug 03 2025 9:48:16 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Aug 03 2025 9:48:16 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Aug 03 2025 9:48:16 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Sun Aug 03 2025 9:48:16 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Aug 03 2025 10:2:53 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 10:2:55 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 10:3:33 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 10:3:55 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 10:7:29 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 10:7:41 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 10:8:20 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 10:9:28 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:78:28)
+UnauthorizedError
+Sun Aug 03 2025 10:9:32 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:78:28)
+UnauthorizedError
+Sun Aug 03 2025 10:9:38 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 10:10:7 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 11:38:52 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 11:39:52 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 12:41:58 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 12:42:2 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 12:53:51 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 12:54:16 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Sun Aug 03 2025 12:54:21 [Podlove] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:61:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sun Aug 03 2025 15:0:49 [Podlove] [32minfo[39m: 6888b31d394fc35b5ceaa3d2
+Sun Aug 03 2025 15:2:6 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 15:28:51 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 15:28:53 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 15:47:11 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 15:54:23 [Podlove] [31merror[39m: 401 Incorrect API key provided: sk-proj-********************************************************************************************************************************************************LS4A. You can find your API key at https://platform.openai.com/account/api-keys.
+Error: 401 Incorrect API key provided: sk-proj-********************************************************************************************************************************************************LS4A. You can find your API key at https://platform.openai.com/account/api-keys.
+    at Function.generate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\error.ts:76:14)
+    at OpenAI.makeStatusError (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:462:21)
+    at OpenAI.makeRequest (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:526:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async isUserSuitable (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\openaiServices.ts:260:22)
+Error
+Sun Aug 03 2025 15:55:41 [Podlove] [31merror[39m: 401 Incorrect API key provided: sk-proj-********************************************************************************************************************************************************LS4A. You can find your API key at https://platform.openai.com/account/api-keys.
+Error: 401 Incorrect API key provided: sk-proj-********************************************************************************************************************************************************LS4A. You can find your API key at https://platform.openai.com/account/api-keys.
+    at Function.generate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\error.ts:76:14)
+    at OpenAI.makeStatusError (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:462:21)
+    at OpenAI.makeRequest (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:526:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async isUserSuitable (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\openaiServices.ts:260:22)
+Error
+Sun Aug 03 2025 15:56:42 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 15:57:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Aug 03 2025 15:57:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Aug 03 2025 15:57:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Aug 03 2025 15:57:6 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Aug 03 2025 15:57:6 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Sun Aug 03 2025 15:57:6 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Aug 03 2025 15:57:38 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 15:58:33 [Podlove] [31merror[39m: 401 Incorrect API key provided: sk-proj-********************************************************************************************************************************************************LS4A. You can find your API key at https://platform.openai.com/account/api-keys.
+Error: 401 Incorrect API key provided: sk-proj-********************************************************************************************************************************************************LS4A. You can find your API key at https://platform.openai.com/account/api-keys.
+    at Function.generate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\error.ts:76:14)
+    at OpenAI.makeStatusError (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:462:21)
+    at OpenAI.makeRequest (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:526:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async isUserSuitable (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\openaiServices.ts:260:22)
+Error
+Sun Aug 03 2025 16:1:37 [Podlove] [31merror[39m: 401 Incorrect API key provided: sk-proj-********************************************************************************************************************************************************LS4A. You can find your API key at https://platform.openai.com/account/api-keys.
+Error: 401 Incorrect API key provided: sk-proj-********************************************************************************************************************************************************LS4A. You can find your API key at https://platform.openai.com/account/api-keys.
+    at Function.generate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\error.ts:76:14)
+    at OpenAI.makeStatusError (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:462:21)
+    at OpenAI.makeRequest (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:526:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async isUserSuitable (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\openaiServices.ts:260:22)
+Error
+Sun Aug 03 2025 16:24:24 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 16:24:31 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 16:24:32 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Sun Aug 03 2025 16:35:9 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:75:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sun Aug 03 2025 16:35:38 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:35:39 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:39:53 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:40:33 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:40:35 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:41:23 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:41:23 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:46:47 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:46:55 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:46:58 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:53:43 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:56:48 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:58:17 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:58:19 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:59:37 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:59:37 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:59:44 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 16:59:44 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:0:22 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:0:22 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:1:38 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:1:38 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:4:18 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:4:20 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:5:49 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:6:0 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:6:2 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:6:42 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:15:16 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:21:55 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Aug 03 2025 17:21:58 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Aug 03 2025 17:21:59 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Aug 03 2025 17:21:59 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Aug 03 2025 17:21:59 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Sun Aug 03 2025 17:21:59 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Aug 03 2025 17:22:40 [Podlove] [31merror[39m: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+    at Function.generate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\error.ts:96:14)
+    at OpenAI.makeStatusError (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:462:21)
+    at OpenAI.makeRequest (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:526:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async isUserSuitable (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\openaiServices.ts:260:22)
+Error
+Sun Aug 03 2025 17:24:25 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Aug 03 2025 17:24:28 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Aug 03 2025 17:24:28 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Aug 03 2025 17:24:28 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Aug 03 2025 17:24:28 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Sun Aug 03 2025 17:24:28 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Aug 03 2025 17:25:37 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:29:26 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Aug 03 2025 17:29:29 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Aug 03 2025 17:29:30 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Aug 03 2025 17:29:30 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Aug 03 2025 17:29:30 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Sun Aug 03 2025 17:29:30 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Aug 03 2025 17:30:3 [Podlove] [31merror[39m: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
+    at Function.generate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\error.ts:96:14)
+    at OpenAI.makeStatusError (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:462:21)
+    at OpenAI.makeRequest (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:526:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async isUserSuitable (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\openaiServices.ts:260:22)
+Error
+Sun Aug 03 2025 17:34:24 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:34:25 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:35:59 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:36:50 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:37:7 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:38:53 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:38:55 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:39:29 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:39:30 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Sun Aug 03 2025 17:40:31 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 9:2:19 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Aug 04 2025 9:2:22 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Aug 04 2025 9:2:23 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Aug 04 2025 9:2:23 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Aug 04 2025 9:2:23 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Aug 04 2025 9:2:23 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Aug 04 2025 10:11:50 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 10:11:52 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 10:12:14 [Podlove] [31merror[39m: Cast to ObjectId failed for value "null" (type string) at path "primaryUser" for model "Podcast"
+CastError: Cast to ObjectId failed for value "null" (type string) at path "primaryUser" for model "Podcast"
+    at SchemaObjectId.cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaObjectId.SchemaType.applySetters (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaObjectId.SchemaType.castForQuery (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1673:17)
+    at cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\cast.js:390:32)
+    at model.Query.Query.cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:5055:12)
+    at model.Query.Query._castConditions (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:2351:10)
+    at model.Query._findOne (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:2674:8)
+    at model.Query.exec (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async matchUser (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\matchesServices.ts:186:27)
+CastError
+Mon Aug 04 2025 10:15:40 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 10:40:8 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 10:41:51 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 10:42:55 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 10:52:20 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 10:54:30 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 10:54:36 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 10:54:41 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 10:54:45 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 10:54:47 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 10:54:48 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 11:49:27 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Aug 04 2025 11:49:33 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Aug 04 2025 11:49:34 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Aug 04 2025 11:49:34 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Aug 04 2025 11:49:34 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Mon Aug 04 2025 11:49:34 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Aug 04 2025 11:53:10 [Podlove] [31merror[39m: getaddrinfo ENOTFOUND cluster0-shard-00-01.ywrmz.mongodb.net
+MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-01.ywrmz.mongodb.net
+    at Topology.selectServer (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\sdam\topology.ts:634:30)
+    at async tryOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:201:16)
+    at async executeOperation (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\operations\execute_operation.ts:115:12)
+    at async FindCursor._initialize (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cursor\find_cursor.ts:92:22)
+    at async FindCursor.cursorInit (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cursor\abstract_cursor.ts:944:21)
+    at async FindCursor.fetchBatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cursor\abstract_cursor.ts:982:7)
+    at async FindCursor.next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\cursor\abstract_cursor.ts:612:9)
+    at async Collection.findOne (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongodb\src\collection.ts:526:17)
+    at async model.Query._findOne (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:2687:15)
+    at async model.Query.exec (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4604:63)
+MongoServerSelectionError
+Mon Aug 04 2025 12:15:10 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:15:11 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:27:30 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:27:44 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:28:10 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:28:35 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:28:36 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:29:5 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:29:6 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:32:18 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:32:18 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:32:40 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:32:46 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:35:9 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:35:11 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:35:18 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:37:3 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:40:2 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:40:59 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:41:2 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:41:21 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:41:21 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 12:41:38 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:41:41 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:43:36 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:44:41 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:44:47 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:44:58 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:46:16 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 12:49:39 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 15:24:26 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 15:24:59 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Mon Aug 04 2025 15:25:46 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:25:46 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:26:17 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:26:36 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:26:57 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:27:11 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:28:21 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:28:31 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:28:34 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:43:1 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:43:11 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:43:15 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:43:46 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:43:51 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:44:33 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:44:39 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:44:41 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:44:47 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:44:49 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:45:21 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:45:23 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:45:26 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:45:35 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:45:37 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:45:41 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:46:42 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:46:43 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:46:49 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:46:54 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:47:1 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:47:4 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:47:6 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:47:10 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 15:47:39 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:0:35 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:3:5 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:13:56 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:14:0 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:15:50 [Podlove] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\utils\jwt.ts:28:22)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:51:32
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+UnauthorizedError
+Mon Aug 04 2025 16:15:56 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Aug 04 2025 16:15:56 [Podlove] [32minfo[39m: [object Object]
+Mon Aug 04 2025 16:18:39 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:18:39 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:20:55 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:20:55 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:21:1 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:21:1 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:21:9 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:21:9 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:31:38 [Podlove] [32minfo[39m: 68883ecdfc84ceb7cc9748fb
+Mon Aug 04 2025 16:38:5 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Aug 04 2025 16:38:5 [Podlove] [32minfo[39m: [object Object]
+Mon Aug 04 2025 16:38:32 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\controllers\authController.ts:75:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Mon Aug 04 2025 16:40:31 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 16:40:32 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 16:43:16 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 16:43:17 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+CastError: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+    at SchemaNumber.cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:381:11)
+    at SchemaNumber.SchemaType.applySetters (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaNumber.castForQuery (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:435:16)
+    at castUpdateVal (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:628:19)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:433:24)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:378:20)
+    at castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4851:10)
+    at model.Query._findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3474:23)
+    at model.Query.exec (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+CastError
+Mon Aug 04 2025 16:43:21 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 16:43:22 [Podlove] [31merror[39m: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+CastError: Cast to Number failed for value "NaN" (type number) at path "location.latitude"
+    at SchemaNumber.cast (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:381:11)
+    at SchemaNumber.SchemaType.applySetters (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaNumber.castForQuery (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\schema\number.js:435:16)
+    at castUpdateVal (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:628:19)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:433:24)
+    at walkUpdatePath (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:378:20)
+    at castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\helpers\query\castUpdate.js:144:7)
+    at model.Query._castUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4851:10)
+    at model.Query._findOneAndUpdate (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:3474:23)
+    at model.Query.exec (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\mongoose\lib\query.js:4604:80)
+CastError
+Mon Aug 04 2025 16:43:26 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 17:6:10 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 17:26:28 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 17:26:29 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 17:26:31 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Mon Aug 04 2025 17:26:34 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 17:44:37 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 17:45:33 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:1:45 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:1:46 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:2:52 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:5:1 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:10:17 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:11:4 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:12:6 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:12:40 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:13:5 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:13:30 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:13:32 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:13:47 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Mon Aug 04 2025 18:13:51 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Tue Aug 05 2025 9:32:27 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Tue Aug 05 2025 9:32:32 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Tue Aug 05 2025 9:33:4 [Podlove] [32minfo[39m: 68908dd4d257804a7de1c865
+Tue Aug 05 2025 9:33:26 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Tue Aug 05 2025 9:33:53 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Tue Aug 05 2025 9:34:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Tue Aug 05 2025 9:34:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Tue Aug 05 2025 9:34:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Tue Aug 05 2025 9:34:51 [Podlove] [32minfo[39m: Media Policy exists!
+Tue Aug 05 2025 9:34:51 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Tue Aug 05 2025 9:34:51 [Podlove] [32minfo[39m: Socket.IO server initialized
+Tue Aug 05 2025 9:36:14 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:36:30 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:36:40 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:37:23 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:37:50 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:40:2 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:40:17 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:40:33 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:41:28 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:42:18 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:42:30 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:42:31 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:42:56 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:43:2 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:43:39 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:44:44 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:47:2 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:47:2 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:49:33 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 9:49:33 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 9:50:9 [Podlove] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\utils\jwt.ts:28:22)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:51:32
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+UnauthorizedError
+Tue Aug 05 2025 9:51:34 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 9:51:35 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 9:52:18 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:53:3 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:53:3 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:55:9 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 9:55:9 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 9:56:4 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:56:4 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 9:59:37 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 10:48:19 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Tue Aug 05 2025 10:48:48 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Tue Aug 05 2025 10:49:27 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 10:49:27 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 10:50:30 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 11:9:42 [Podlove] [32minfo[39m: 68917c0c8f4478497290b201
+Tue Aug 05 2025 11:32:12 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Tue Aug 05 2025 11:33:48 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:33:57 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:34:4 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:34:9 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:34:15 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:34:41 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:34:56 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:35:39 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:35:45 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:35:56 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:35:58 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:38:17 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:38:20 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 11:38:20 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 12:45:6 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 12:45:16 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 12:45:16 [Podlove] [32minfo[39m: 689197aa8f4478497290b3e3
+Tue Aug 05 2025 12:54:17 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:54:32 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:54:41 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:54:48 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:54:53 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:0 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:9 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:16 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:19 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:24 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:26 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:39 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:43 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:50 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:53 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 12:55:53 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 13:18:11 [Podlove] [32minfo[39m: 6891aa7c8f4478497290b4c9
+Tue Aug 05 2025 14:54:16 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 14:54:31 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 14:54:39 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 14:54:43 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 14:56:3 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 14:57:4 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:3:2 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:3:2 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:3:3 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\userServices.ts:91:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Tue Aug 05 2025 15:6:30 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:6:30 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:6:31 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\userServices.ts:91:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Tue Aug 05 2025 15:14:13 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:14:13 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:14:16 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\userServices.ts:91:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Tue Aug 05 2025 15:14:34 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:14:34 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:14:36 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\userServices.ts:91:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Tue Aug 05 2025 15:15:24 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:15:24 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:15:26 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\userServices.ts:91:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Tue Aug 05 2025 15:18:1 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:19:25 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:25:38 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:25:54 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:25:58 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:26:2 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:26:3 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:31:12 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 15:32:50 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 16:12:1 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 16:12:1 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 16:12:16 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 16:12:16 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 16:13:18 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 16:13:18 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 16:13:53 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 16:13:53 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 16:14:4 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 16:14:4 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:7:9 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:7:33 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:7:43 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:8:0 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:8:0 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:8:8 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:8:8 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:8:43 [Podlove] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\utils\jwt.ts:28:22)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:51:32
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+UnauthorizedError
+Tue Aug 05 2025 17:8:49 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:8:50 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:8:57 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:8:57 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:9:0 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:9:0 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:9:4 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:9:4 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:9:10 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:9:10 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:9:14 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:9:15 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:9:22 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:9:22 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:9:26 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:9:26 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:11:14 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:11:16 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:11:16 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:11:58 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Tue Aug 05 2025 17:11:59 [Podlove] [32minfo[39m: [object Object]
+Tue Aug 05 2025 17:12:5 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:12:5 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:23:11 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:26:13 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:26:16 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:26:16 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:26:27 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:28:5 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:28:8 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:28:8 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:30:39 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:31:17 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:33:26 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:33:46 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:45:17 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:45:19 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:47:15 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:49:16 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:50:53 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:54:6 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:55:52 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:57:55 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:58:31 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Tue Aug 05 2025 17:58:37 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Wed Aug 06 2025 9:20:48 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Wed Aug 06 2025 9:20:51 [Podlove] [32minfo[39m: 6891c69b8f4478497290b5f5
+Wed Aug 06 2025 10:5:33 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Aug 06 2025 10:5:33 [Podlove] [32minfo[39m: [object Object]
+Wed Aug 06 2025 10:8:20 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:8:48 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:10:15 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:10:25 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:10:36 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:10:49 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:11:0 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:11:8 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:11:12 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:11:17 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:11:18 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:43:42 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:44:3 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:44:6 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:44:15 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:44:17 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:44:17 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:44:32 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Aug 06 2025 10:44:32 [Podlove] [32minfo[39m: [object Object]
+Wed Aug 06 2025 10:45:45 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Wed Aug 06 2025 10:45:46 [Podlove] [32minfo[39m: [object Object]
+Wed Aug 06 2025 10:45:51 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:45:51 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:48:49 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 10:48:49 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:0:56 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Wed Aug 06 2025 11:0:58 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Wed Aug 06 2025 11:0:59 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Wed Aug 06 2025 11:1:2 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Wed Aug 06 2025 11:1:29 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:1:29 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:2:3 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:2:3 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:2:12 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:2:44 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:3:31 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:3:31 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:13:29 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:31:8 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:31:56 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:31:56 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:38:41 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:38:53 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:39:3 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:42:56 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:42:59 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:42:59 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:43:20 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:43:23 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:51:26 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 11:56:4 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 12:31:1 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 12:33:31 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 12:37:2 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 12:38:13 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 12:40:31 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 12:40:31 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc

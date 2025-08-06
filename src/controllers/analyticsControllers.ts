@@ -5,6 +5,7 @@ import { Months, SubscriptionPlanName } from "@shared/enums";
 import to from "await-to-ts";
 import { Request, Response, NextFunction } from "express";
 import { StatusCodes } from "http-status-codes";
+import createError from "http-errors";
 
 const getAnalytics = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   let error, users, premiumUsers, totalIncomeResult, totalIncome, totalPodcast, analytics, premiumUsersIcome;
@@ -226,66 +227,53 @@ const getMonthlyUserGrowth = async (year?: number) => {
 };
 
 const getSubscriptionByYear = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const year = Number.parseInt(req.params.year);
-  const resultSubscription = getMonthlySubscriptionGrowth(year);
-
-  // const [error, analytics] = await to(Analytics.find({ year }));
-  // if (error) return next(error);
-
-  // const allMonths = Object.values(Months);
-
-  // const subscription: any = [];
-
-  // if (analytics.length === 0) {
-  //   allMonths.forEach((month) => {
-  //     subscription.push({ month: month, active: 0, cancel: 0 });
-  //   });
-  // } else {
-  //   allMonths.forEach((month) => {
-  //     const monthData = analytics.find((item) => item.month === month);
-  //     if (monthData) {
-  //       subscription.push({ month: month, active: monthData.active, cancel: monthData.cancel });
-  //     } else {
-  //       subscription.push({ month: month, active: 0, cancel: 0 });
-  //     }
-  //   });
-  // }
-  return res.status(StatusCodes.OK).json({
-    success: true,
-    message: "Success",
-    data: resultSubscription,
-  });
+  // const year = Number.parseInt(req.params.year);
+  // const resultSubscription = getMonthlySubscriptionGrowth(year);
+  // console.log("resultSubscription: ", resultSubscription);
+  // return res.status(StatusCodes.OK).json({
+  //   success: true,
+  //   message: "Success",
+  //   data: resultSubscription,
+  // });
+  try {
+    // parse year, default to current if invalid
+    const yr = parseInt(req.params.year, 10);
+    const year = isNaN(yr) ? new Date().getFullYear() : yr;
+    const resultSubscription = await getMonthlySubscriptionGrowth(year);
+    // console.log("result subscriptioin: ", resultSubscription);
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: `Monthly subscription growth for ${resultSubscription.year}`,
+      data: resultSubscription.data,
+    });
+  } catch (err) {
+    console.error("Error in getSubscriptionByYear:", err);
+    return next(createError(StatusCodes.INTERNAL_SERVER_ERROR, "Failed to retrieve subscription analytics"));
+  }
 };
 const getUserByYear = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const year = Number.parseInt(req.params.year);
-  const resultSubscription = getMonthlyUserGrowth(year);
-
-  // const [error, analytics] = await to(Analytics.find({ year }));
-  // if (error) return next(error);
-
-  // const allMonths = Object.values(Months);
-
-  // const subscription: any = [];
-
-  // if (analytics.length === 0) {
-  //   allMonths.forEach((month) => {
-  //     subscription.push({ month: month, active: 0, cancel: 0 });
-  //   });
-  // } else {
-  //   allMonths.forEach((month) => {
-  //     const monthData = analytics.find((item) => item.month === month);
-  //     if (monthData) {
-  //       subscription.push({ month: month, active: monthData.active, cancel: monthData.cancel });
-  //     } else {
-  //       subscription.push({ month: month, active: 0, cancel: 0 });
-  //     }
-  //   });
-  // }
-  return res.status(StatusCodes.OK).json({
-    success: true,
-    message: "Success",
-    data: resultSubscription,
-  });
+  // const year = Number.parseInt(req.params.year);
+  // const resultSubscription = getMonthlyUserGrowth(year);
+  // return res.status(StatusCodes.OK).json({
+  //   success: true,
+  //   message: "Success",
+  //   data: resultSubscription,
+  // });
+  try {
+    // parse year, default to current if invalid
+    const yr = parseInt(req.params.year, 10);
+    const year = isNaN(yr) ? new Date().getFullYear() : yr;
+    const resultUser = await getMonthlyUserGrowth(year);
+    console.log("result user: ", resultUser);
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: `Monthly user growth for ${resultUser.year}`,
+      data: resultUser.data, 
+    });
+  } catch (err) {
+    console.error("Error in getUserByYear:", err);
+    return next(createError(StatusCodes.INTERNAL_SERVER_ERROR, "Failed to retrieve user growth analytics"));
+  }
 };
 
 const AnalyticsController = {

@@ -205,7 +205,8 @@ const updateRecording = async (req: Request, res: Response, next: NextFunction):
   const userId = req.user.userId;
   const podcastId = req.params.id;
   const file = req.file;
-
+  const audioFile = req.file;
+  console.log("file: ", audioFile);
   if (!file) {
     return next(createError(StatusCodes.BAD_REQUEST, "Recording file is required"));
   }

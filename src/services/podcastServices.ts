@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import Podcast from "@models/podcastModel"; // Adjust the import path as necessary
-import { PodcastStatus } from "@shared/enums";
+import { PodcastStatus, SubscriptionPlanName } from "@shared/enums";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
 import Notification from "@models/notificationModel";
@@ -9,6 +9,7 @@ import mongoose, { Types } from "mongoose";
 // import { time } from "console";
 import { DateTime } from "luxon";
 import { scheduler } from "node:timers/promises";
+import User from "@models/userModel";
 interface Participants {
   user: Types.ObjectId;
   isAllow: Boolean;
@@ -231,6 +232,7 @@ function markAllowedParticipants(participants: Participants[], selectedUserBody:
 const selectUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const podcastId = req.body.podcastId;
   const selectedUserId = req.body.selectedUserId;
+  console.log("podcast selected user Id: ", selectedUserId);
   const podcast = await Podcast.findById(podcastId);
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
 
@@ -240,7 +242,7 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
   markAllowedParticipants(podcast.participants, selectedUserId);
 
   await podcast.save();
-
+  console.log("podcast: ", podcast);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
 };
 
@@ -313,6 +315,37 @@ function parseScheduleDateInET(p: { schedule: { date: string; time: string } }):
 //   }
 // }
 
+async function downgradeExpiredSubscriptions(): Promise<{
+  n: number;
+  nModified: number;
+}> {
+  // compute “one month ago”
+  const now = new Date();
+  const oneMonthAgo = new Date(now);
+  oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+  // filter: not already on the free listener plan, and startedAt ≥ 1 month ago
+  const filter = {
+    "subscription.plan": { $ne: SubscriptionPlanName.LISTENER },
+    "subscription.startedAt": { $lte: oneMonthAgo },
+  };
+
+  // the reset you want
+  const reset = {
+    "subscription.id": "",
+    "subscription.plan": SubscriptionPlanName.LISTENER,
+    "subscription.fee": "Free",
+    "subscription.status": "",
+    "subscription.startedAt": now,
+  };
+
+  const result = await User.updateMany(filter, { $set: reset });
+  return {
+    n: result.matchedCount,
+    nModified: result.modifiedCount,
+  };
+}
+
 async function notifyScheduledPodcasts(): Promise<void> {
   const nowET = DateTime.now().setZone("America/New_York");
   const oneHourMs = 1000 * 60 * 60;
@@ -323,7 +356,7 @@ async function notifyScheduledPodcasts(): Promise<void> {
   // 2) Prepare batches
   const notifPromises: Promise<any>[] = [];
   const bulkOps: mongoose.AnyBulkWriteOperation[] = [];
-
+   await downgradeExpiredSubscriptions();
   for (const p of podcasts) {
     const scheduledET = parseScheduleDateInET(p);
     if (!scheduledET) continue;
@@ -388,12 +421,12 @@ async function notifyScheduledPodcasts(): Promise<void> {
 
 export function startPodcastScheduler(): void {
   // Run notifyScheduledPodcasts() every minute
-  cron.schedule("* * * * *", () => {
+  cron.schedule("*/20 * * * *", () => {
     console.log("Hello world");
     notifyScheduledPodcasts().catch((err) => console.error("Scheduler error:", err));
   });
 
-  console.log("⏰ Podcast scheduler started (runs every minute)");
+  console.log("⏰ Podcast scheduler started (runs every 20 minute)");
 }
 
 const PodcastServices = {

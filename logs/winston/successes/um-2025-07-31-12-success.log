@@ -1,0 +1,50 @@
+Thu Jul 31 2025 12:2:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 12:2:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 12:2:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:2:26 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:5:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 12:5:56 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 12:6:28 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 12:8:48 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:8:48 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:10:21 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 12:10:22 [Podlove] [32minfo[39m: 688889fa864295fddbe8d45a
+Thu Jul 31 2025 12:11:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:11:25 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:13:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Thu Jul 31 2025 12:13:5 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jul 31 2025 12:13:8 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:13:9 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:13:18 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:13:18 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:17:55 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Thu Jul 31 2025 12:18:17 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:18:17 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:29:37 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:29:37 [Podlove] [32minfo[39m: [object Object]
+Thu Jul 31 2025 12:47:42 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Jul 31 2025 12:47:42 [Podlove] [32minfo[39m: [object Object]

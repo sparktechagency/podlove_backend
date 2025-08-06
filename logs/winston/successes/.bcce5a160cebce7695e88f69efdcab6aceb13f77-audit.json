@@ -6,136 +6,6 @@
     "auditLog": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\.bcce5a160cebce7695e88f69efdcab6aceb13f77-audit.json",
     "files": [
         {
-            "date": 1753004380400,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-20-02-success.log",
-            "hash": "5cfaf4108e0026bb9bc0a8171cd6be36fdf14ec9709184a7f5e5503a0c26e0f6"
-        },
-        {
-            "date": 1753005955596,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-20-03-success.log",
-            "hash": "8bc90b61e28fdfe1437595e4d789d955e0f483dd0febdf2618d83add8606a35a"
-        },
-        {
-            "date": 1753012808421,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-20-05-success.log",
-            "hash": "3581acf7dabc20d6fb92d8b2ca43c2cc138b1d0bd5495ae92af9a856aaa113b1"
-        },
-        {
-            "date": 1753069288203,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-09-success.log",
-            "hash": "446d9285615fe5caf92050f2f567ab78b476fbf453973abf036c1085f451c8bd"
-        },
-        {
-            "date": 1753072920285,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-10-success.log",
-            "hash": "05ad867f9bee90f374e4aeef96515ea19e0091eb30d6ae1d46a44ca05cb4e421"
-        },
-        {
-            "date": 1753075042863,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-11-success.log",
-            "hash": "fe1634a2b1426349bbb3610b6c9b13a58e154b8fb63af06028e8bc80ca31ee62"
-        },
-        {
-            "date": 1753077736314,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-12-success.log",
-            "hash": "664633d7c1d578115699b8c82678295b00d1984120ad44e90e242d942895f385"
-        },
-        {
-            "date": 1753081213713,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-13-success.log",
-            "hash": "5e38df2c7bc2dae259942c725184cff338a9e25e09308d55d386325daa5b5991"
-        },
-        {
-            "date": 1753084872823,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-14-success.log",
-            "hash": "241ba2eeb4c022ab28aadbc324c3cf16404f50357531b4dec42b3e9a53d448eb"
-        },
-        {
-            "date": 1753088432575,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-15-success.log",
-            "hash": "4b3d63708fd20a03a4b1464aa2167a1f1f0bb7b0ff3509054b4adc30840eeed2"
-        },
-        {
-            "date": 1753092609158,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-16-success.log",
-            "hash": "7f92295eae9b4aff8556b87e02ee2d6e225a10ccf57df288db76863df8ba5a9e"
-        },
-        {
-            "date": 1753095643807,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-17-success.log",
-            "hash": "fcedaca962ed46390dacf2f4c5710eaeb0a8ca30935072cdef40a3e9e498050b"
-        },
-        {
-            "date": 1753099210877,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-21-18-success.log",
-            "hash": "7ec968a17d19894fba56e002bdcdc4d713db43298f62b2b6e1e2fac262ec48c1"
-        },
-        {
-            "date": 1753157653847,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-22-10-success.log",
-            "hash": "e52d479b7e846884de36d2b365e4c19cf9422f0a296e5b7c468a23bbd3347d9b"
-        },
-        {
-            "date": 1753160402390,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-22-11-success.log",
-            "hash": "8c77e65ea6c70eb97fda112633710fcdfe09f85842f938785414a306778e9f87"
-        },
-        {
-            "date": 1753164374752,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-22-12-success.log",
-            "hash": "246631c4dc22c2b75a650b0cd1710c1583024a61f23c8066103b537ae049fad6"
-        },
-        {
-            "date": 1753167607823,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-22-13-success.log",
-            "hash": "f85ca7a44670512ab48371a46c41bfbe2a7cb1ba790ed465d8ba2c3ec0f02634"
-        },
-        {
-            "date": 1753171208701,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-22-14-success.log",
-            "hash": "2ba74bd7a5b138511d46fc782360fbdffe75cc21a89d9aa1a8f418e114f5e738"
-        },
-        {
-            "date": 1753174993152,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-22-15-success.log",
-            "hash": "66133374f95171004c18bb27126ff7794d7898493ff2e15a203db7704e1702f7"
-        },
-        {
-            "date": 1753178401503,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-22-16-success.log",
-            "hash": "d1232ce895a7cd72010d2da1dc9df70f162a3af6190850d77f490a3631e788f2"
-        },
-        {
-            "date": 1753182066893,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-22-17-success.log",
-            "hash": "bd3b608cec67e8f0220a630a47d49be9dab89f9a6a5e9db57876703027ecfd7d"
-        },
-        {
-            "date": 1753185777391,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-22-18-success.log",
-            "hash": "0fb757346e9eee5820f502b11de9d4fc21d22cbae739e0d7831f143249cb927d"
-        },
-        {
-            "date": 1753240588223,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-23-09-success.log",
-            "hash": "cefe64a195136a49f5fefd085a22c9775f9674b5e493a20801c435646d5282de"
-        },
-        {
-            "date": 1753244420159,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-23-10-success.log",
-            "hash": "544c47cccbba82981fa3c63c3e22fc08d2be1535c6bdf6423a4587baa73eba7b"
-        },
-        {
-            "date": 1753246916065,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-23-11-success.log",
-            "hash": "551d49ee520990c2dfdd2e3cf7fb5fc1f41e1c4d1d1413ea6717bd09defd7a1f"
-        },
-        {
-            "date": 1753250435232,
-            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-23-12-success.log",
-            "hash": "56f9d1b2f81b310326fa84ba0c503a22c1a3ca816e3dd25ab7191bd0ff74c489"
-        },
-        {
             "date": 1753254943042,
             "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-23-13-success.log",
             "hash": "ba3e99237e4ee84e779b93bf3aa2f1fa0854e1a41ca5e954b410b9d109ada807"
@@ -524,6 +394,221 @@
             "date": 1753880404155,
             "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-30-19-success.log",
             "hash": "065a906b1528af98199f566911bfba72fe945cda43cd420625e3153124829138"
+        },
+        {
+            "date": 1753929702507,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-08-success.log",
+            "hash": "218b5e754651127c77b81b2baeeb7c3d7e9f44c061be094a2587efd7316db719"
+        },
+        {
+            "date": 1753932171799,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-09-success.log",
+            "hash": "28f586e791bc2f544b54e35cf49fcad8ba5ead436510e9cfb72484e36a6ba1d3"
+        },
+        {
+            "date": 1753935362973,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-10-success.log",
+            "hash": "a9b8bac052467b0be424ff873aa8e34c9b21ecc874f8bf87300a0ebdcf7265a6"
+        },
+        {
+            "date": 1753938010948,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-11-success.log",
+            "hash": "860ec564aa5f3eff237c597d0f7487fe2353965ba141968d7269547f364c9362"
+        },
+        {
+            "date": 1753941715543,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-12-success.log",
+            "hash": "71c54770208e22632eb62e554f15275399afd1bdf8b89572a46fab0fdf2bd019"
+        },
+        {
+            "date": 1753945856544,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-13-success.log",
+            "hash": "b64e2f40ec2abb450851142e485e7ce1d37c4c00d3bb6a512865f68bf4661f10"
+        },
+        {
+            "date": 1753948996971,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-14-success.log",
+            "hash": "0199db3cef8796d570c5a8b0ee4b3f0c330f110092628c1d474d7ed2ab855bbb"
+        },
+        {
+            "date": 1753952400934,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-15-success.log",
+            "hash": "81cb8a3a09a1162dcebb57c62de444e522c1af4960090f8b4761a3b2710ac8b2"
+        },
+        {
+            "date": 1753956044098,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-16-success.log",
+            "hash": "ee1c6ba8d5e32ac800c8ca6a85d0abe269a95d4b111fedce4eeea4acc6ebc7af"
+        },
+        {
+            "date": 1753959708220,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-17-success.log",
+            "hash": "7c9b1780f0c8d791c362d1dab14a933c700151432aa62beb4ceb629689ffd69d"
+        },
+        {
+            "date": 1753963437822,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-07-31-18-success.log",
+            "hash": "ddd7cf82ae60fac52c3ff6674e961adef0cd5160d8af44334d075870e4f93cd0"
+        },
+        {
+            "date": 1754106396474,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-02-09-success.log",
+            "hash": "70c8c7145e94db6b013d3c5e59181e9cc8d1efbeecf842bcb80ea01bd8fd1fd7"
+        },
+        {
+            "date": 1754107914432,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-02-10-success.log",
+            "hash": "06cb3835bc080bf685004bc13cd7226ee02f32339c357877187542f15ecf6504"
+        },
+        {
+            "date": 1754128986640,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-02-16-success.log",
+            "hash": "4363c641132300e15c9811158a12e4d8e77e230446d947496a0fa7d3083a7b13"
+        },
+        {
+            "date": 1754132568744,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-02-17-success.log",
+            "hash": "07719df1abe73e4c0ec8260ace6dabf82f81e714dd4af4873e7fd6499177d55d"
+        },
+        {
+            "date": 1754192886399,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-03-09-success.log",
+            "hash": "bfad874ea52b020d46b94d9bdc47529d62aa3458cec2e17be7975a8571702126"
+        },
+        {
+            "date": 1754193773684,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-03-10-success.log",
+            "hash": "92942e1ce595c719154fb6d9be81c947db6b2a8e7266ca760aa63af6038c568a"
+        },
+        {
+            "date": 1754199532877,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-03-11-success.log",
+            "hash": "b04de314770e0c044e6814e1cae8421ac404bee7a844c9c36246914a23a143c4"
+        },
+        {
+            "date": 1754203318184,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-03-12-success.log",
+            "hash": "c410da6fc8e892d8f2300d03a2f8dc339ac03fbb0dd569952b9efbbc76d8319a"
+        },
+        {
+            "date": 1754211649072,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-03-15-success.log",
+            "hash": "f28771097b29e574844ce7189157e96d33967bddffc75f3748372d68df30769f"
+        },
+        {
+            "date": 1754215297322,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-03-16-success.log",
+            "hash": "aa9618cd6c894e3e7f1751b33a5ae04a756a81ba7af5082169be002053da8d2a"
+        },
+        {
+            "date": 1754218822146,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-03-17-success.log",
+            "hash": "88907797d49eeb78101d06e817dc86334eaba41e0c620f738bbff048cd39bc95"
+        },
+        {
+            "date": 1754276534120,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-04-09-success.log",
+            "hash": "5388c2a884438adadd8fb07ff70778290cb95efb12575e6633d0f50e9553190e"
+        },
+        {
+            "date": 1754280710399,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-04-10-success.log",
+            "hash": "bb67d1585eabeb5fea6640bdab25d6a6d424a113b3127531012c644de92d6ece"
+        },
+        {
+            "date": 1754286557180,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-04-11-success.log",
+            "hash": "349e69eda3a2cedb133fae6f2ec91e0f9ec27558b3061da949dec70e9afe30b8"
+        },
+        {
+            "date": 1754288110673,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-04-12-success.log",
+            "hash": "0c812292736af1e2eb3bf888f6bfbee25c9d9c2b2844c3c316d341fe069185f8"
+        },
+        {
+            "date": 1754299466010,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-04-15-success.log",
+            "hash": "6c5b5248065c327110e2a222798b5ce64f6dd893149c2fb4508479a18aa34716"
+        },
+        {
+            "date": 1754301635774,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-04-16-success.log",
+            "hash": "b6bf0d50d34ed5b9313746c4ae527d4c39265a70bd8a92fd0618ee2f722f2581"
+        },
+        {
+            "date": 1754305570147,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-04-17-success.log",
+            "hash": "058f632b36dffc0410fd174159cf42a280c6d620d692b83b97d68f181b1dbdac"
+        },
+        {
+            "date": 1754308905406,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-04-18-success.log",
+            "hash": "6c7d5470345afe43f00cf1c40b5a34b32ee82893d2675edf230accaed47aa3ab"
+        },
+        {
+            "date": 1754364747460,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-05-09-success.log",
+            "hash": "fac34ed9cdd96adf9fec095fb8ed56feb0d9a20176fd87d10093ec36f7d098a3"
+        },
+        {
+            "date": 1754369299713,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-05-10-success.log",
+            "hash": "eb09cfb2844e1bf6fc612af2679da8a0c05835258d9773b1b6104fe579a9be8a"
+        },
+        {
+            "date": 1754370582462,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-05-11-success.log",
+            "hash": "c51132b1b9de8c4e8005fce0e198331e8d7ec72152fe589402784bce1deb0e6a"
+        },
+        {
+            "date": 1754376306035,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-05-12-success.log",
+            "hash": "0a2b8f84ee1be51e90ed3e22d8aa14108bc225c50d0e5bfa1975923a4ed0aa5a"
+        },
+        {
+            "date": 1754378291867,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-05-13-success.log",
+            "hash": "67c9022053882b6b014f5d95793bfa693767ab4d65279712b723b88fc04f8eea"
+        },
+        {
+            "date": 1754384056895,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-05-14-success.log",
+            "hash": "f0ec90b2f152abd1ede846b6561014899ad21ef53e13b546696fe92ea1a18dbb"
+        },
+        {
+            "date": 1754384582249,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-05-15-success.log",
+            "hash": "271c93453f57043fc69efd5878318e253374d4ec0ea0933f99c906608bd85484"
+        },
+        {
+            "date": 1754388721330,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-05-16-success.log",
+            "hash": "8577ae4ada8833eefd076c81926d23d416db510807337ccd6c8f05ab6c4a1f9f"
+        },
+        {
+            "date": 1754392029259,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-05-17-success.log",
+            "hash": "407a85eddbe6efecd6da37bb30bc1987946ce1f3d9703fa5ac13001e7f2e0f2d"
+        },
+        {
+            "date": 1754450448291,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-06-09-success.log",
+            "hash": "91bead6eedf6d1c28c669d258de6fceb1af26ca3f1cae870f503154a108f09d7"
+        },
+        {
+            "date": 1754453133310,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-06-10-success.log",
+            "hash": "40fd4f769249f890c011651400ae492646ffedca122cd45fc3bf54a4c8a913cd"
+        },
+        {
+            "date": 1754456456656,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-06-11-success.log",
+            "hash": "0fc80241960069747d4846245943d76b225207f4be5bf3abbae453d9bb2fd8ff"
+        },
+        {
+            "date": 1754461861213,
+            "name": "C:\\Users\\jahid\\Music\\Jahid Hasan\\podlove_backend\\logs\\winston\\successes\\um-2025-08-06-12-success.log",
+            "hash": "48548a24b083b79f6625e99f916510fcc23f60e635501f60634edc73a712495c"
         }
     ],
     "hashType": "sha256"

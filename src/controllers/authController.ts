@@ -90,8 +90,10 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
 
 const signInWithGoogle = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { googleId, name, email, avatar } = req.body;
+  console.log("req.body: ", req.body);
   let auth, user;
   auth = await Auth.findOne({ googleId: googleId });
+  console.log("auth: ", auth);
   if (!auth) {
     auth = await Auth.create({ googleId, email });
     user = await User.create({ auth: auth._id, name, avatar });
