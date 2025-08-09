@@ -1,0 +1,85 @@
+Sat Aug 09 2025 12:16:32 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 09 2025 12:16:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 09 2025 12:16:37 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 09 2025 12:16:37 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 09 2025 12:16:37 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Aug 09 2025 12:16:37 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 09 2025 12:22:29 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 09 2025 12:23:40 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 09 2025 12:23:44 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 09 2025 12:23:45 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 09 2025 12:23:45 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 09 2025 12:23:45 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Aug 09 2025 12:23:45 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 09 2025 12:23:47 [Podlove] [32minfo[39m: 6896e8186ee64ff5c3e3a4a8
+Sat Aug 09 2025 12:23:50 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Aug 09 2025 12:26:21 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:24 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:31 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:34 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:44 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:50 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:56 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:2 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:6 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:11 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:24 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:47 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:28:26 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:28:29 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:28:32 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:28:44 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:29:1 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:29:15 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:30:31 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:30:45 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:31:22 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:31:22 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 09 2025 12:31:27 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:31:27 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 09 2025 12:37:57 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:38:0 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:38:8 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:38:9 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:38:34 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:38:34 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 09 2025 12:39:28 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:41:33 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:45:29 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:47:15 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:47:27 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 09 2025 12:47:46 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/tayeur/Desktop/project/podlove_backend/src/middlewares/authorization.ts:45:30
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Sat Aug 09 2025 12:47:56 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:47:58 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:50:27 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:50:28 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:50:56 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:50:56 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 09 2025 12:53:50 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:53:50 [Podlove] [32minfo[39m: [object Object]

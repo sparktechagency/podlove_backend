@@ -22,7 +22,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   return res.status(StatusCodes.CREATED).json({
     success: true,
     message: "Administrator created successfully.",
-    data: {admin}
+    data: { admin }
   });
 };
 
@@ -71,6 +71,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
   } catch (error) {
     return next(error);
   }
+
 };
 
 const updateAdmin = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -160,7 +161,7 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
   let admin = await Admin.findByEmail(email);
   if (!admin) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
   if (!(await admin.comparePassword(password)))
-      return next(createError(StatusCodes.UNAUTHORIZED, "Wrong password. Please try again"));
+    return next(createError(StatusCodes.UNAUTHORIZED, "Wrong password. Please try again"));
 
   const accessToken = Admin.generateAccessToken(admin._id!.toString());
   return res.status(StatusCodes.OK).json({
@@ -218,7 +219,7 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
 
   admin.password = newPassword;
   await admin.save();
-  return res.status(StatusCodes.OK).json({ success: true, message: "Password changed successfully"});
+  return res.status(StatusCodes.OK).json({ success: true, message: "Password changed successfully" });
 };
 
 const AdminController = {

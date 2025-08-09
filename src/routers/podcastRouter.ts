@@ -15,6 +15,7 @@ router.get("/record-get-podcast/:id", admin_authorize, PodcastController.getAdmi
 router.post("/set-schedule", admin_authorize, PodcastServices.setSchedule);
 router.post("/select-user", PodcastServices.selectUser);
 router.post("/podcast-done", PodcastServices.podcastDone);
+
 router.get("/", asyncHandler(PodcastController.getPodcasts));
 
 export default router;

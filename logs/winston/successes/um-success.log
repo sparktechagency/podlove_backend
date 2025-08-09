@@ -21842,3 +21842,435 @@ Wed Aug 06 2025 12:37:2 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
 Wed Aug 06 2025 12:38:13 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
 Wed Aug 06 2025 12:40:31 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
 Wed Aug 06 2025 12:40:31 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Wed Aug 06 2025 14:32:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Aug 06 2025 14:32:56 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Aug 06 2025 14:32:56 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Aug 06 2025 14:32:56 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Aug 06 2025 14:38:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Aug 06 2025 14:39:0 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Aug 06 2025 14:39:1 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Aug 06 2025 14:39:1 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Aug 06 2025 14:39:1 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Wed Aug 06 2025 14:39:1 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Aug 06 2025 14:40:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Aug 06 2025 14:40:32 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Aug 06 2025 14:40:32 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Aug 06 2025 14:40:32 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Aug 06 2025 14:40:32 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Wed Aug 06 2025 14:40:32 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Aug 06 2025 15:23:14 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Aug 06 2025 15:23:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Aug 06 2025 15:23:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Aug 06 2025 15:23:18 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Aug 06 2025 15:23:18 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Wed Aug 06 2025 15:23:18 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Aug 06 2025 16:8:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Aug 06 2025 16:8:40 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Aug 06 2025 16:8:41 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Aug 06 2025 16:8:41 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Aug 06 2025 16:8:41 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Wed Aug 06 2025 16:8:41 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Aug 06 2025 17:20:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Aug 06 2025 17:20:48 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Aug 06 2025 17:20:49 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Aug 06 2025 17:20:49 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Aug 06 2025 17:20:49 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Wed Aug 06 2025 17:20:49 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Aug 07 2025 9:30:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Aug 07 2025 9:31:1 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Aug 07 2025 9:31:1 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Aug 07 2025 9:31:1 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Aug 07 2025 9:31:1 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Thu Aug 07 2025 9:31:1 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Aug 07 2025 9:31:19 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Aug 07 2025 9:31:22 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Aug 07 2025 9:31:23 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Aug 07 2025 9:31:23 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Aug 07 2025 9:31:23 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Thu Aug 07 2025 9:31:23 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Aug 07 2025 9:35:7 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 9:35:8 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 9:36:6 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 9:36:6 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 9:36:7 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 9:36:7 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 9:43:1 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 9:43:2 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 9:47:36 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Thu Aug 07 2025 9:47:36 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Thu Aug 07 2025 10:7:20 [Podlove] [31merror[39m: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+    at Topology.selectServer (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/sdam/topology.ts:634:30)
+    at async tryOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:201:16)
+    at async executeOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:115:12)
+    at async FindCursor._initialize (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/find_cursor.ts:92:22)
+    at async FindCursor.cursorInit (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:944:21)
+    at async FindCursor.fetchBatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:982:7)
+    at async FindCursor.next (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:612:9)
+    at async FindCursor.[Symbol.asyncIterator] (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:506:26)
+    at async FindCursor.toArray (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:700:22)
+    at async model.Query._find (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongoose/lib/query.js:2407:14)
+MongoServerSelectionError
+Thu Aug 07 2025 10:7:20 [Podlove] [31merror[39m: Failed to retrieve subscription analytics
+InternalServerError: Failed to retrieve subscription analytics
+    at getSubscriptionByYear (/home/tayeur/Desktop/project/podlove_backend/src/controllers/analyticsControllers.ts:251:28)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:549:9)
+    at processTimers (node:internal/timers:523:7)
+InternalServerError
+Thu Aug 07 2025 10:7:20 [Podlove] [31merror[39m: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+    at Topology.selectServer (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/sdam/topology.ts:634:30)
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at listOnTimeout (node:internal/timers:549:9)
+    at processTimers (node:internal/timers:523:7)
+    at async tryOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:201:16)
+    at async executeOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:115:12)
+    at async AggregationCursor._initialize (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/aggregation_cursor.ts:92:22)
+    at async AggregationCursor.cursorInit (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:944:21)
+    at async AggregationCursor.fetchBatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:982:7)
+    at async AggregationCursor.next (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:612:9)
+MongoServerSelectionError
+Thu Aug 07 2025 10:7:20 [Podlove] [31merror[39m: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+    at Topology.selectServer (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/sdam/topology.ts:634:30)
+    at async tryOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:201:16)
+    at async executeOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:115:12)
+    at async FindCursor._initialize (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/find_cursor.ts:92:22)
+    at async FindCursor.cursorInit (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:944:21)
+    at async FindCursor.fetchBatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:982:7)
+    at async FindCursor.next (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:612:9)
+    at async FindCursor.[Symbol.asyncIterator] (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:506:26)
+    at async FindCursor.toArray (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:700:22)
+    at async model.Query._find (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongoose/lib/query.js:2407:14)
+MongoServerSelectionError
+Thu Aug 07 2025 10:9:5 [Podlove] [31merror[39m: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+    at Topology.selectServer (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/sdam/topology.ts:634:30)
+    at async tryOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:201:16)
+    at async executeOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:115:12)
+    at async FindCursor._initialize (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/find_cursor.ts:92:22)
+    at async FindCursor.cursorInit (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:944:21)
+    at async FindCursor.fetchBatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:982:7)
+    at async FindCursor.next (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:612:9)
+    at async FindCursor.[Symbol.asyncIterator] (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:506:26)
+    at async FindCursor.toArray (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:700:22)
+    at async model.Query._find (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongoose/lib/query.js:2407:14)
+MongoServerSelectionError
+Thu Aug 07 2025 10:9:5 [Podlove] [31merror[39m: Failed to retrieve subscription analytics
+InternalServerError: Failed to retrieve subscription analytics
+    at getSubscriptionByYear (/home/tayeur/Desktop/project/podlove_backend/src/controllers/analyticsControllers.ts:251:28)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at listOnTimeout (node:internal/timers:549:9)
+    at processTimers (node:internal/timers:523:7)
+InternalServerError
+Thu Aug 07 2025 10:9:5 [Podlove] [31merror[39m: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+    at Topology.selectServer (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/sdam/topology.ts:634:30)
+    at async tryOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:201:16)
+    at async executeOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:115:12)
+    at async AggregationCursor._initialize (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/aggregation_cursor.ts:92:22)
+    at async AggregationCursor.cursorInit (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:944:21)
+    at async AggregationCursor.fetchBatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:982:7)
+    at async AggregationCursor.next (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:612:9)
+    at async Collection.countDocuments (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/collection.ts:819:17)
+    at async model.Query.exec (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongoose/lib/query.js:4604:63)
+    at async getAnalytics (/home/tayeur/Desktop/project/podlove_backend/src/controllers/analyticsControllers.ts:13:20)
+MongoServerSelectionError
+Thu Aug 07 2025 10:9:5 [Podlove] [31merror[39m: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+MongoServerSelectionError: getaddrinfo ENOTFOUND cluster0-shard-00-00.ywrmz.mongodb.net
+    at Topology.selectServer (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/sdam/topology.ts:634:30)
+    at async tryOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:201:16)
+    at async executeOperation (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/operations/execute_operation.ts:115:12)
+    at async FindCursor._initialize (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/find_cursor.ts:92:22)
+    at async FindCursor.cursorInit (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:944:21)
+    at async FindCursor.fetchBatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:982:7)
+    at async FindCursor.next (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:612:9)
+    at async FindCursor.[Symbol.asyncIterator] (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:506:26)
+    at async FindCursor.toArray (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongodb/src/cursor/abstract_cursor.ts:700:22)
+    at async model.Query._find (/home/tayeur/Desktop/project/podlove_backend/node_modules/mongoose/lib/query.js:2407:14)
+MongoServerSelectionError
+Thu Aug 07 2025 10:11:40 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:11:47 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:11:51 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:11:51 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:11:53 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:11:54 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:11:56 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:11:56 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:12:0 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:12:1 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:12:5 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:12:5 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:12:7 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:12:7 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:12:9 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:12:9 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:12:11 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:12:12 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:12:14 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:12:14 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:12:21 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:12:21 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:13:48 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:13:48 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:19:52 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:19:53 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:21:4 [Podlove] [32minfo[39m: 6892d5198f4478497290bfdc
+Thu Aug 07 2025 10:23:14 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:23:14 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:23:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:23:25 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:23:28 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:23:28 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:23:30 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:23:30 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:23:46 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:23:46 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:27:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Aug 07 2025 10:27:12 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Aug 07 2025 10:27:12 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Aug 07 2025 10:27:13 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Aug 07 2025 10:27:13 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Thu Aug 07 2025 10:27:13 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Aug 07 2025 10:27:22 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:27:23 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:28:37 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:28:37 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:34:22 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:34:22 [Podlove] [31merror[39m: Account Not Found
+NotFoundError: Account Not Found
+    at /home/tayeur/Desktop/project/podlove_backend/src/middlewares/authorization.ts:61:41
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Thu Aug 07 2025 10:35:17 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:35:17 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:35:24 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:35:24 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:35:28 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:35:28 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:35:30 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:35:30 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:35:32 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:35:32 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:35:34 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:35:34 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:35:36 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:35:36 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:36:14 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:36:14 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:41:0 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:41:16 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:41:23 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:41:28 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:41:33 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:41:41 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:41:51 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:41:59 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:42:3 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:42:17 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:42:18 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:42:39 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:42:49 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:43:10 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:43:12 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:43:12 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 10:44:12 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:44:12 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:44:15 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:44:15 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:44:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:44:26 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:46:27 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:46:27 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:50:22 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:50:22 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:50:23 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:50:23 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:50:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:50:25 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:50:28 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:50:28 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:50:35 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:50:35 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:50:37 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:50:37 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:54:53 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/tayeur/Desktop/project/podlove_backend/src/middlewares/authorization.ts:45:30
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Thu Aug 07 2025 10:54:59 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:54:59 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:57:17 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:57:18 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:57:28 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:57:29 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:58:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Aug 07 2025 10:58:40 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Aug 07 2025 10:58:41 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Aug 07 2025 10:58:41 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Aug 07 2025 10:58:41 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Thu Aug 07 2025 10:58:41 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Aug 07 2025 10:58:42 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 10:58:42 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 10:58:54 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (/home/tayeur/Desktop/project/podlove_backend/src/controllers/adminController.ts:164:28)
+UnauthorizedError
+Thu Aug 07 2025 11:0:20 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 11:0:20 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 11:0:28 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 11:0:28 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 11:3:24 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:3:24 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:3:24 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:3:24 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:5:16 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Aug 07 2025 11:5:19 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Aug 07 2025 11:5:19 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Aug 07 2025 11:5:20 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Aug 07 2025 11:5:20 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Thu Aug 07 2025 11:5:20 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Aug 07 2025 11:6:59 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:6:59 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:7:54 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:7:54 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:8:1 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:8:2 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:12:49 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:12:49 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:42:9 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 11:42:9 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 11:42:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Aug 07 2025 11:42:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Aug 07 2025 11:42:48 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Aug 07 2025 11:42:48 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Aug 07 2025 11:42:49 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Aug 07 2025 11:42:49 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Thu Aug 07 2025 11:42:49 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Aug 07 2025 11:42:49 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:42:49 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:44:7 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 11:44:7 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Thu Aug 07 2025 11:44:32 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:44:32 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:51:2 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:51:2 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:52:56 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 11:52:57 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 11:58:1 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:58:18 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:58:27 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:58:34 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:58:41 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:58:48 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:58:58 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:59:6 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:59:10 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:59:20 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:59:22 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:59:49 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 11:59:53 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 12:5:1 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 12:5:4 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 12:5:4 [Podlove] [32minfo[39m: 6894403ac2e9b67e67aaa6b2
+Thu Aug 07 2025 12:5:9 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 12:5:10 [Podlove] [32minfo[39m: [object Object]
+Thu Aug 07 2025 12:12:3 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Thu Aug 07 2025 12:12:4 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 09 2025 12:16:32 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 09 2025 12:16:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 09 2025 12:16:37 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 09 2025 12:16:37 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 09 2025 12:16:37 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Aug 09 2025 12:16:37 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 09 2025 12:22:29 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Aug 09 2025 12:22:36 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 09 2025 12:23:40 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 09 2025 12:23:44 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 09 2025 12:23:45 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 09 2025 12:23:45 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 09 2025 12:23:45 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Aug 09 2025 12:23:45 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 09 2025 12:23:47 [Podlove] [32minfo[39m: 6896e8186ee64ff5c3e3a4a8
+Sat Aug 09 2025 12:23:50 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:105:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Aug 09 2025 12:26:21 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:24 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:31 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:34 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:44 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:50 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:26:56 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:2 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:6 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:11 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:24 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:27:47 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:28:26 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:28:29 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:28:32 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:28:44 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:29:1 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:29:15 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:30:31 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:30:45 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:31:22 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:31:22 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 09 2025 12:31:27 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:31:27 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 09 2025 12:37:57 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:38:0 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:38:8 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:38:9 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:38:34 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:38:34 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 09 2025 12:39:28 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:41:33 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:45:29 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:47:15 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:47:27 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Aug 09 2025 12:47:31 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Aug 09 2025 12:47:46 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/tayeur/Desktop/project/podlove_backend/src/middlewares/authorization.ts:45:30
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Sat Aug 09 2025 12:47:56 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:47:58 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:50:27 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:50:28 [Podlove] [32minfo[39m: 6896e9fa54b3479c4f7919fe
+Sat Aug 09 2025 12:50:56 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:50:56 [Podlove] [32minfo[39m: [object Object]
+Sat Aug 09 2025 12:53:50 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Sat Aug 09 2025 12:53:50 [Podlove] [32minfo[39m: [object Object]

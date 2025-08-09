@@ -128,13 +128,13 @@ async function findMatches(
     { session }
   ).lean();
   // console.log("candidate2: ", candidate2, " candidates: ", candidates);
-  let matchCandidate = candidates.length < limitCount? candidate2 : candidates;
+  let matchCandidate = candidates.length < limitCount ? candidate2 : candidates;
   console.log("matchCandidates: ", matchCandidate);
   // 4) Distance filtering
   const nearby = matchCandidate.filter(
     (c) =>
       calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
-      pref.distance? calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
+        pref.distance ? calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
       pref.distance : calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude)
   );
 
@@ -182,7 +182,7 @@ const matchUser = async (
     // if (!Array.isArray(compatibility)) {
     //   throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of strings");
     // }
-
+    console.log("compatibility", userId, compatibility)
     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
     if (podcastExists) {
       return res.status(StatusCodes.CONFLICT).json({

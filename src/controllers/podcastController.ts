@@ -51,7 +51,7 @@ const sendPodcastRequest = async (req: Request, res: Response, next: NextFunctio
     if (!Object.values(PodcastStatus).includes(status)) {
       throw createError(StatusCodes.BAD_REQUEST, "Invalid podcast status");
     }
-   
+
 
     // 2) Update the Podcast document for this user
     const updated = await Podcast.findOneAndUpdate(
@@ -86,7 +86,6 @@ const sendPodcastRequest = async (req: Request, res: Response, next: NextFunctio
   }
 };
 
-const getPodcastEvents = async (req: Request, res: Response, next: NextFunction): Promise<any> => {};
 
 const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { id, status } = req.query;
@@ -114,14 +113,16 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
   if (status) {
     if (status === "done") {
       statusFilter.status = PodcastStatus.DONE;
-    } else if (status === "not_scheduled") {
-      statusFilter.status = PodcastStatus.NOT_SCHEDULED;
-    } else if (status === "req_scheduled") {
+    }
+    //  else if (status === "not_scheduled") {
+    //   statusFilter.status = PodcastStatus.NOT_SCHEDULED;
+    // } 
+    else if (status === "req_scheduled") {
       statusFilter.status = PodcastStatus.REQSHEDULED;
     } else if (status === "scheduled") {
       statusFilter.status = PodcastStatus.SCHEDULED;
     } else if (status === "upcoming") {
-      statusFilter.status = { $in: [PodcastStatus.NOT_SCHEDULED, PodcastStatus.SCHEDULED, PodcastStatus.REQSHEDULED] };
+      statusFilter.status = { $in: [PodcastStatus.SCHEDULED, PodcastStatus.REQSHEDULED] };
     }
   }
 
@@ -214,7 +215,7 @@ const updateRecording = async (req: Request, res: Response, next: NextFunction):
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
-    const {status} = req.body;
+    const { status } = req.body;
     // Only the podcast owner (primaryUser) can update
     const updated = await Podcast.findOneAndUpdate(
       { _id: podcastId, primaryUser: userId },
@@ -243,27 +244,27 @@ const updateRecording = async (req: Request, res: Response, next: NextFunction):
   }
 };
 
-const getAdminRecordedPodcast = async(req:Request, res:Response, next:NextFunction): Promise<any> =>{
+const getAdminRecordedPodcast = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const admin = req.admin.id;
   const podcastId = req.params.id;
-  if(!admin || !podcastId){
+  if (!admin || !podcastId) {
     throw createError(StatusCodes.BAD_REQUEST, "Admin or Podcast ID is not valid");
   }
-  try{
-    const findPodcastId = await Podcast.find({_id:podcastId}).select("_id, recordingUrl status")
-    if(!findPodcastId){
+  try {
+    const findPodcastId = await Podcast.find({ _id: podcastId }).select("_id, recordingUrl status")
+    if (!findPodcastId) {
       res.status(StatusCodes.OK).json({
         success: true,
-        message:"Record podcast audio not found",
-        data:{}
+        message: "Record podcast audio not found",
+        data: {}
       })
     }
     res.status(StatusCodes.OK).json({
       success: true,
-      message:"Recored audio retrived successfully",
-      data:{admin, findPodcastId}
+      message: "Recored audio retrived successfully",
+      data: { admin, findPodcastId }
     })
-  }catch(err){
+  } catch (err) {
     next(err);
   }
 }
