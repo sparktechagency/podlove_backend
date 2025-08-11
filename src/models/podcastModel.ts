@@ -4,16 +4,16 @@ import { PodcastStatus, PodcastType } from "@shared/enums";
 export type PodcastSchema = Document & {
   // type: PodcastType;
   primaryUser: Types.ObjectId;
-  participants:   {
+  participants: {
     set(arg0: string, arg1: boolean): unknown;
-    _id: any; user: Types.ObjectId; isAllow: Boolean, score: number 
-}[];
+    _id: any; user: Types.ObjectId; isAllow: Boolean, score: number
+  }[];
   schedule: {
     date: string;
     day: string;
     time: string;
   };
-  selectedUser: {user: Types.ObjectId }[]| [];
+  selectedUser: { user: Types.ObjectId }[] | [];
   status: PodcastStatus;
   recordingUrl: string;
   score: number;
@@ -34,10 +34,10 @@ const podcastSchema = new Schema<PodcastSchema>({
   },
   participants: [
     {
-    user:  { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    isAllow:{type: Boolean, default: false},
-    score: { type: Number, required: true }
-  }
+      user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+      isAllow: { type: Boolean, default: false },
+      score: { type: Number, required: true }
+    }
   ],
   schedule: {
     date: {
@@ -55,7 +55,7 @@ const podcastSchema = new Schema<PodcastSchema>({
   },
   selectedUser: [
     {
-    user: {type: Schema.Types.ObjectId, ref: "User", default:""},
+      user: { type: Schema.Types.ObjectId, ref: "User", default: "" },
     }
   ],
   status: {
@@ -72,6 +72,8 @@ const podcastSchema = new Schema<PodcastSchema>({
     default: 0,
   },
   notificationSent: { type: Boolean, default: false },
+}, {
+  timestamps: true,
 });
 
 const Podcast = model<PodcastSchema>("Podcast", podcastSchema);

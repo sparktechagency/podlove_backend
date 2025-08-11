@@ -86,11 +86,11 @@ const sendPodcastRequest = async (req: Request, res: Response, next: NextFunctio
   }
 };
 
-
 const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { id, status } = req.query;
   const page = parseInt(req.query.page as string, 10) || 1;
   const limit = parseInt(req.query.limit as string, 10) || 10;
+
   const skip = (page - 1) * limit;
   if (page < 1 || limit < 1) throw createError(StatusCodes.BAD_REQUEST, "Page and limit must be positive integers");
 
@@ -125,11 +125,12 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
       statusFilter.status = { $in: [PodcastStatus.SCHEDULED, PodcastStatus.REQSHEDULED] };
     }
   }
+  console.log("statusFilter: ", statusFilter);
 
   const podcasts = await Podcast.find(statusFilter)
     // Only pull back fields you’ll actually return
     .select("primaryUser participants.score participants.isAllow schedule status createdAt")
-    .sort({ createdAt: -1 })
+    .sort({ createdAt: 1 })
     .skip(skip)
     .limit(limit)
     .populate([
@@ -144,6 +145,8 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
     ])
     .lean()
     .exec();
+
+  console.log("podcasts---: ", podcasts);
 
   const total = await Podcast.countDocuments(statusFilter);
   const totalPages = Math.ceil(total / limit);
@@ -268,6 +271,7 @@ const getAdminRecordedPodcast = async (req: Request, res: Response, next: NextFu
     next(err);
   }
 }
+
 const PodcastController = {
   create,
   getPodcasts,

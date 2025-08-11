@@ -1,0 +1,62 @@
+Mon Aug 11 2025 16:25:57 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Aug 11 2025 16:26:0 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Aug 11 2025 16:26:1 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Aug 11 2025 16:26:1 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Aug 11 2025 16:26:1 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Aug 11 2025 16:26:1 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Aug 11 2025 16:27:47 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Mon Aug 11 2025 16:27:47 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Mon Aug 11 2025 16:28:9 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Mon Aug 11 2025 16:28:11 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Mon Aug 11 2025 16:28:11 [Podlove] [32minfo[39m: 68942e4ab5242e9716a37bfe
+Mon Aug 11 2025 16:31:13 [Podlove] [31merror[39m: Token has expired
+UnauthorizedError: Token has expired
+    at decodeToken (/home/tayeur/Desktop/project/podlove_backend/src/utils/jwt.ts:28:22)
+    at /home/tayeur/Desktop/project/podlove_backend/src/middlewares/authorization.ts:51:32
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+UnauthorizedError
+Mon Aug 11 2025 16:31:25 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Aug 11 2025 16:31:25 [Podlove] [32minfo[39m: [object Object]
+Mon Aug 11 2025 16:31:36 [Podlove] [31merror[39m: Wrong password. Please try again
+UnauthorizedError: Wrong password. Please try again
+    at login (/home/tayeur/Desktop/project/podlove_backend/src/controllers/adminController.ts:164:28)
+UnauthorizedError
+Mon Aug 11 2025 16:32:56 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Aug 11 2025 16:32:59 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Aug 11 2025 16:33:0 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Aug 11 2025 16:33:0 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Aug 11 2025 16:33:0 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Aug 11 2025 16:33:0 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Aug 11 2025 16:33:11 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Aug 11 2025 16:33:12 [Podlove] [32minfo[39m: [object Object]
+Mon Aug 11 2025 16:34:26 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Aug 11 2025 16:34:26 [Podlove] [32minfo[39m: [object Object]
+Mon Aug 11 2025 16:36:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Aug 11 2025 16:36:7 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Aug 11 2025 16:36:8 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Aug 11 2025 16:36:8 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Aug 11 2025 16:36:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Aug 11 2025 16:36:8 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Aug 11 2025 16:36:9 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Aug 11 2025 16:36:9 [Podlove] [32minfo[39m: [object Object]
+Mon Aug 11 2025 16:36:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Aug 11 2025 16:36:45 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Aug 11 2025 16:36:45 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Aug 11 2025 16:36:46 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Aug 11 2025 16:36:46 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Aug 11 2025 16:36:46 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Aug 11 2025 16:36:46 [Podlove] [32minfo[39m: 685e6e80ad422af7edb9b072
+Mon Aug 11 2025 16:36:47 [Podlove] [32minfo[39m: [object Object]
+Mon Aug 11 2025 16:37:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Aug 11 2025 16:37:21 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Aug 11 2025 16:37:21 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Aug 11 2025 16:37:22 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Aug 11 2025 16:37:22 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Aug 11 2025 16:37:22 [Podlove] [32minfo[39m: Socket.IO server initialized

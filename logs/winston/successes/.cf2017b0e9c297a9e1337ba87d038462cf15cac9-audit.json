@@ -49,6 +49,21 @@
             "date": 1754720175834,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-08-09-12-success.log",
             "hash": "5e36909d61a1ec92353905cccd2d21a8f3727682cce26aea2833efb8fe3fc4fc"
+        },
+        {
+            "date": 1754826759135,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-08-10-17-success.log",
+            "hash": "511a945e57bbb78d82d3792f0b9671d02f104de0680301255c49425fc691b3b5"
+        },
+        {
+            "date": 1754887279303,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-08-11-10-success.log",
+            "hash": "de3be342d5076ac7ff1cca8881d8303bad1c28db41d2485c0ebb5b9ba91581ec"
+        },
+        {
+            "date": 1754907952414,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-08-11-16-success.log",
+            "hash": "c301059784a00200ad6298d0aeb4d072864f12abb474318954bc35ba00a637eb"
         }
     ],
     "hashType": "sha256"
