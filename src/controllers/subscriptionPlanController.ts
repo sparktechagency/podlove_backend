@@ -171,8 +171,8 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
 
     // console.log("subscription: ", subscriptionPlan.description)
     const stripeDescription = subscriptionPlan.description
-  .map(item => `${item.key}: ${item.details}`)
-  .join("\n");
+      .map(item => `${item.key}: ${item.details}`)
+      .join("\n");
     const [error] = await to(
       stripe.products.update(subscriptionPlan.productId, {
         name: name,
@@ -217,11 +217,26 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   });
 };
 
+
+const deletes = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const Id = req.params.id;
+
+  const deletes = await SubscriptionPlan.findByIdAndDelete(Id).exec();
+
+  // 4) Send response
+  return res.status(StatusCodes.OK).json({
+    success: true,
+    message: "Success",
+    data: deletes,
+  });
+};
+
 const SubscriptionPlanController = {
   create,
   get,
   getAll,
   update,
+  deletes
 };
 
 export default SubscriptionPlanController;
