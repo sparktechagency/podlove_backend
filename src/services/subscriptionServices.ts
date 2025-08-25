@@ -22,10 +22,12 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
 
   [error, plan] = await to(SubscriptionPlan.findById(planId));
   if (error) return next(error);
+  console.log("plan", plan)
   if (!plan) return next(createError(StatusCodes.NOT_FOUND, "Plan not found"));
 
   [error, customer] = await to(stripe.customers.create({ email: req.user.email }));
   if (error) return next(error);
+
 
   [error, session] = await to(
     stripe.checkout.sessions.create({
@@ -45,7 +47,7 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
           userId: userId,
         },
       },
-      success_url: `http://10.10.10.59:8000/webhook`,
+      success_url: `https://backend.podlove.co/webhook`,
       cancel_url: `https://example.com/cancel`,
     })
   );

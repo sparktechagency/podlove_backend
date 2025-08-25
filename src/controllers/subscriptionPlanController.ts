@@ -11,6 +11,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, description, unitAmount, interval } = req.body;
   let error, product, price, subscriptionPlan;
+  console.log("=======", req.body)
 
   const formattedDescription = description
     .map((desc: { key: string; details: string }) => `${desc.key}: ${desc.details}`)

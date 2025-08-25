@@ -154,7 +154,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const id = req.params.id;
   let { name, description, unitAmount, interval } = req.body;
-    // console.log("description: ", description);
+  // console.log("description: ", description);
   let error, price, plan;
   [error, plan] = await to(Plan.findById(id));
   if (error) next(error);
