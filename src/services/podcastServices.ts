@@ -252,69 +252,6 @@ function parseScheduleDateInET(p: { schedule: { date: string; time: string } }):
   return dt.isValid ? dt : null;
 }
 
-// async function notifyScheduledPodcasts(): Promise<void> {
-//   const nowET = DateTime.now().setZone("America/New_York");
-//   const oneHourMs = 1000 * 60 * 60;
-
-//   // 1) Find all scheduled podcasts
-//   const podcasts = await Podcast.find({
-//     status: "Scheduled",
-//     notificationSent: { $ne: true },
-//   }).exec();
-//   for (const p of podcasts) {
-//     const scheduledET = parseScheduleDateInET(p);
-//     if (scheduledET) {
-//       const diffMs = scheduledET.toMillis() - nowET.toMillis();
-//       if (diffMs > 0 && diffMs <= oneHourMs) {
-//         try {
-//           console.log("inside the notification created");
-//           await Notification.create({
-//             type: "podcast_upcoming",
-//             user: p.primaryUser,
-//             message: [
-//               {
-//                 title: "Your podcast is about to start!",
-//                 description: `Your podcast is scheduled for ${p.schedule.date} at ${p.schedule.time}.`,
-//               },
-//             ],
-//             read: false,
-//             section: "user",
-//           });
-
-//           p.notificationSent = true;
-//           await p.save();
-//           console.log(`🔔 Notified user ${p.primaryUser} for podcast ${p._id}`);
-//         } catch (err) {
-
-//           console.error(`❌ Failed to notify for podcast ${p._id}:`, err);
-//         }
-//       }
-//     }
-//   }
-
-//   const findScheduledTime = await Podcast.find({status: "Scheduled"});
-//   for(let schedulePodcast of findScheduledTime){
-//     let scheduler = parseScheduleDateInET(schedulePodcast);
-//     if(scheduler === nowET){
-//       try {
-//      await Podcast.findOneAndUpdate(
-//       { _id: schedulePodcast._id },
-//       {
-//         $set: {
-//           status: PodcastStatus.PLAYING
-//         },
-//       }
-//     )
-//       .lean()
-//       .exec();
-//   } catch (err) {
-//     console.error(`Failed to change to schedule for podcast:`, err);
-//   }
-//     }
-
-//   }
-// }
-
 async function downgradeExpiredSubscriptions(): Promise<{
   n: number;
   nModified: number;
@@ -356,7 +293,7 @@ async function notifyScheduledPodcasts(): Promise<void> {
   // 2) Prepare batches
   const notifPromises: Promise<any>[] = [];
   const bulkOps: mongoose.AnyBulkWriteOperation[] = [];
-   await downgradeExpiredSubscriptions();
+  await downgradeExpiredSubscriptions();
   for (const p of podcasts) {
     const scheduledET = parseScheduleDateInET(p);
     if (!scheduledET) continue;
@@ -429,11 +366,12 @@ export function startPodcastScheduler(): void {
   console.log("⏰ Podcast scheduler started (runs every 20 minute)");
 }
 
+
 const PodcastServices = {
   setSchedule,
   podcastDone,
   selectUser,
-  startPodcastScheduler,
+  startPodcastScheduler
 };
 
 export default PodcastServices;

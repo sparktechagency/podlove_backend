@@ -1,0 +1,76 @@
+import { model, Schema } from "mongoose";
+import { IRoomCode, IStreamRoom } from "./podcast.interface";
+import { ENUM_LIVE_STREAM_STATUS } from "./index";
+
+
+const RoomCodeSchema: Schema = new Schema<IRoomCode>({
+    id: { type: String, required: true, unique: true },
+    code: { type: String, required: true },
+    room_id: { type: String, required: true, index: true },
+    role: { type: String, required: true },
+    enabled: { type: Boolean, default: true },
+    created_at: { type: String, required: true },
+    updated_at: { type: String, required: true },
+});
+
+const RecordingSchema: Schema = new Schema(
+    {
+        session_id: { type: String, required: true },
+        started_at: { type: Date },
+        ended_at: { type: Date },
+        duration: { type: Number }, // seconds
+        url: { type: String, required: true },
+    },
+    { _id: false }
+);
+
+const StreamRoomSchema = new Schema<IStreamRoom>(
+    {
+        host: {
+            type: Schema.Types.ObjectId,
+            ref: 'NormalUser',
+            required: true,
+        },
+        name: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        description: {
+            type: String,
+            default: '',
+            trim: true,
+        },
+        template_id: {
+            type: String,
+            default: '67ec0c3d4b6eb78daeedc180',
+        },
+        room_id: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        status: {
+            type: String,
+            enum: Object.values(ENUM_LIVE_STREAM_STATUS),
+            required: true,
+            default: ENUM_LIVE_STREAM_STATUS.wating,
+        },
+        startTime: {
+            type: Date,
+            default: null,
+        },
+        endTime: {
+            type: Date,
+            default: null,
+        },
+        roomCodes: [RoomCodeSchema],
+        recordings: [RecordingSchema],
+    },
+    { timestamps: true }
+);
+
+const StreamRoom = model<IStreamRoom>('StreamRoom', StreamRoomSchema);
+export {
+    StreamRoom
+};

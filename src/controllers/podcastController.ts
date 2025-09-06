@@ -6,9 +6,7 @@ import createError from "http-errors";
 import MatchedServices from "@services/matchesServices";
 import { PodcastStatus, SubscriptionPlanName } from "@shared/enums";
 import User from "@models/userModel";
-import { logger } from "@shared/logger";
 import mongoose, { Types } from "mongoose";
-import { scheduler } from "node:timers/promises";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const user = await User.findById(req.user.userId);
@@ -272,13 +270,14 @@ const getAdminRecordedPodcast = async (req: Request, res: Response, next: NextFu
   }
 }
 
+
 const PodcastController = {
   create,
   getPodcasts,
   sendPodcastRequest,
   startPodcast,
   updateRecording,
-  getAdminRecordedPodcast
+  getAdminRecordedPodcast,
 };
 
 export default PodcastController;

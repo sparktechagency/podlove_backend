@@ -2,12 +2,15 @@ import express, { Request, Response, NextFunction } from "express";
 import { notFound } from "@middlewares/notfound";
 import { errorHandler } from "@middlewares/errorHandler";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 import AuthRouter from "@routers/authRouter";
 import UserRouter from "@routers/userRouter";
 import FaqRouter from "@routers/faqRouter";
 import TaCRouter from "@routers/tacRouter";
 import PrivacyRouter from "@routers/privacyRouter";
-import PlanRouter from "@routers/planRouter";
 import AnalyticsRouter from "@routers/analyticsRouter";
 import SupportRouter from "@routers/supportRouter";
 import WebhookRouter from "@routers/webhookRouter";
@@ -24,10 +27,9 @@ import MediaPolicyRouter from "@routers/mediaPolicyRouter";
 import path from "path";
 import ChatRouter from "@routers/chatRouter";
 import SubscriptionPlanRouter from "@routers/subscriptionPlanRouter"
-import StripeServices from "@services/stripeServices";
+
 
 const app = express();
-
 app.use("/", WebhookRouter);
 
 app.use(

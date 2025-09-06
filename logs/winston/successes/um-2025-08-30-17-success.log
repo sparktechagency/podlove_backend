@@ -1,0 +1,52 @@
+Sat Aug 30 2025 17:1:31 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'SDK')
+TypeError: Cannot read properties of undefined (reading 'SDK')
+    at msGetTokens (/home/tayeur/Desktop/project/podlove_backend/src/controllers/podcastController.ts:16:23)
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:175:3)
+TypeError
+Sat Aug 30 2025 17:1:32 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'SDK')
+TypeError: Cannot read properties of undefined (reading 'SDK')
+    at msGetTokens (/home/tayeur/Desktop/project/podlove_backend/src/controllers/podcastController.ts:16:23)
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:175:3)
+TypeError
+Sat Aug 30 2025 17:1:32 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'SDK')
+TypeError: Cannot read properties of undefined (reading 'SDK')
+    at msGetTokens (/home/tayeur/Desktop/project/podlove_backend/src/controllers/podcastController.ts:16:23)
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:175:3)
+TypeError
+Sat Aug 30 2025 17:1:33 [Podlove] [31merror[39m: Cannot read properties of undefined (reading 'SDK')
+TypeError: Cannot read properties of undefined (reading 'SDK')
+    at msGetTokens (/home/tayeur/Desktop/project/podlove_backend/src/controllers/podcastController.ts:16:23)
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:175:3)
+TypeError
