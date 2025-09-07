@@ -2,7 +2,8 @@ import { Types } from "mongoose";
 import { ENUM_LIVE_STREAM_STATUS } from "./index";
 
 export interface IStreamRoom {
-    host: Types.ObjectId;
+    broadcaster: Types.ObjectId;
+    podcastId: Types.ObjectId;
     name: string;
     description: string;
     template_id: string;
@@ -13,6 +14,7 @@ export interface IStreamRoom {
     roomCodes: IRoomCode[];
     recordings: IRecording[];
 }
+
 export interface IRecording {
     session_id: string;
     started_at?: Date;

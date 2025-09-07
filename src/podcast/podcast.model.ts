@@ -2,7 +2,6 @@ import { model, Schema } from "mongoose";
 import { IRoomCode, IStreamRoom } from "./podcast.interface";
 import { ENUM_LIVE_STREAM_STATUS } from "./index";
 
-
 const RoomCodeSchema: Schema = new Schema<IRoomCode>({
     id: { type: String, required: true, unique: true },
     code: { type: String, required: true },
@@ -26,9 +25,14 @@ const RecordingSchema: Schema = new Schema(
 
 const StreamRoomSchema = new Schema<IStreamRoom>(
     {
-        host: {
+        broadcaster: {
             type: Schema.Types.ObjectId,
             ref: 'NormalUser',
+            required: true,
+        },
+        podcastId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Podcast',
             required: true,
         },
         name: {
@@ -71,6 +75,7 @@ const StreamRoomSchema = new Schema<IStreamRoom>(
 );
 
 const StreamRoom = model<IStreamRoom>('StreamRoom', StreamRoomSchema);
+
 export {
     StreamRoom
 };

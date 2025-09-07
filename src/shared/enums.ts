@@ -73,6 +73,7 @@ export enum PodcastStatus {
   REQSHEDULED = "ReqScheduled",
   SCHEDULED = "Scheduled",
   PLAYING = "Playing",
+  STREAM_START = "StreamStart",
   DONE = "Done",
   FINISHED = "Finished"
 }

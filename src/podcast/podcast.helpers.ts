@@ -15,6 +15,8 @@ export const createRoomCodesForAllRoles = async (roomId: string) => {
         throw new Error(`Failed to create room codes: ${response.statusText}`);
     }
 
+    console.log('getMgmToken()', getMgmToken())
+
     const data = await response.json();
     console.log('data', data);
     return data.data;
@@ -26,9 +28,12 @@ export const createRoomCodesForAllRoles = async (roomId: string) => {
  * @returns string
  */
 export function generateRoomName(length: number = 10): string {
-    return crypto
-        .randomBytes(length)
-        .toString('base64')
-        .replace(/[^a-zA-Z0-9]/g, '')
-        .substring(0, length);
+    let name = '';
+    while (name.length < length) {
+        name += crypto
+            .randomBytes(length)
+            .toString('base64')
+            .replace(/[^a-zA-Z0-9]/g, '');
+    }
+    return name.substring(0, length);
 }

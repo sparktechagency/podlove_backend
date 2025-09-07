@@ -2,14 +2,26 @@ import { getMgmToken } from "@utils/getMgmToken";
 import { ENUM_LIVE_STREAM_STATUS, HMS_ENDPOINT } from "./index";
 import { createRoomCodesForAllRoles, generateRoomName } from "./podcast.helpers";
 import { StreamRoom } from "./podcast.model";
+import Podcast from "@models/podcastModel";
+import { PodcastStatus } from "@shared/enums";
 
 const hms_access_key = process.env.HMS_ACCESS_KEY;
 const hms_secret = process.env.HMS_SECRET_KEY;
 const template_id = process.env.HMS_TEMPLATE_ID;
 
-const createStreamingRoom = async (profileId: string) => {
+const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
+
+    const podcast = await Podcast.findById(podcastId)
+    if (!podcast) {
+        throw new Error("Podcast not found");
+    }
+
+    if (podcast.status !== PodcastStatus.PLAYING) {
+        throw new Error("Your schedule time has not started yet");
+    }
+
     const liveRoom = await StreamRoom.findOne({
-        host: profileId,
+        broadcaster: primaryUser,
         $or: [
             { status: ENUM_LIVE_STREAM_STATUS.live },
             { status: ENUM_LIVE_STREAM_STATUS.wating },
@@ -35,55 +47,36 @@ const createStreamingRoom = async (profileId: string) => {
     const roomData = await response.json();
 
     const roomCodes = await createRoomCodesForAllRoles(roomData.id);
+
     await StreamRoom.create({
-        host: profileId,
+        broadcaster: primaryUser,
+        podcastId,
         name,
         template_id: template_id,
         room_id: roomData.id,
         status: ENUM_LIVE_STREAM_STATUS.live,
         roomCodes,
     });
-    // const joinToken = await getJoinToken({
-    //     user_id: profileId,
-    //     role: 'host',
-    //     room_id: roomData.id,
-    // });
 
-    return { roomData, roomCodes };
+    const podcastUpdate = await Podcast.findByIdAndUpdate(
+        podcastId,
+        {
+            roomCodes,
+            status: PodcastStatus.STREAM_START,
+        },
+        { new: true }
+    );
+
+    if (!podcastUpdate) {
+        throw new Error("Failed to update podcast with room codes");
+    }
+
+    return { roomData, podcast: podcastUpdate };
 };
 
-
-
-// const getJoinToken = (payload: {
-//     user_id: string;
-//     role: string;
-//     room_id: string;
-// }) => {
-//     if (!config.hms.hms_secret || !config.hms.hms_access_key) {
-//         throw new Error('HMS access key or secret is missing in config');
-//     }
-
-//     const tokenPayload = {
-//         access_key: config.hms.hms_access_key,
-//         room_id: payload.room_id,
-//         user_id: payload.user_id,
-//         role: payload.role, // e.g. "host" | "guest"
-//         type: 'app',
-//         version: 2,
-//         jti: uuidv4(),
-//     };
-
-//     const token = jwt.sign(tokenPayload, config.hms.hms_secret as string, {
-//         algorithm: 'HS256',
-//         expiresIn: '24h',
-//     });
-
-//     return token;
-// };
-
-
 const LiveStreamingServices = {
-    createStreamingRoom
+    createStreamingRoom,
+    // endStreamingRoom
 };
 
 export default LiveStreamingServices;
