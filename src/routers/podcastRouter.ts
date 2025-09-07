@@ -22,4 +22,9 @@ router.get("/create_room/:podcastId", authorize, asyncHandler(LivePodcastControl
 // ====================================
 router.get("/", asyncHandler(PodcastController.getPodcasts));
 
+// ==============================
+router.post('/end/webhook', asyncHandler(LivePodcastController.postPodcastInWebhook))
+router.post('/recording/webhook', asyncHandler(LivePodcastController.postNewRecordInWebhook))
+
+
 export default router;

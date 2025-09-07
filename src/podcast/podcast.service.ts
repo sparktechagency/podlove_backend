@@ -74,8 +74,22 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
     return { roomData, podcast: podcastUpdate };
 };
 
+
+const postNewRecordInWebhook = async (req: Request) => {
+    const event = req.body;
+
+    // return { roomData, podcast: podcastUpdate };
+};
+
+const postPodcastInWebhook = async (req: Request) => {
+    const event = req.body;
+    // return { roomData, podcast: podcastUpdate };
+};
+
 const LiveStreamingServices = {
     createStreamingRoom,
+    postNewRecordInWebhook,
+    postPodcastInWebhook
     // endStreamingRoom
 };
 
