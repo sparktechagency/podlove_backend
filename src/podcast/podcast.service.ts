@@ -5,8 +5,8 @@ import { StreamRoom } from "./podcast.model";
 import Podcast from "@models/podcastModel";
 import { PodcastStatus } from "@shared/enums";
 
-const hms_access_key = process.env.HMS_ACCESS_KEY;
-const hms_secret = process.env.HMS_SECRET_KEY;
+// const hms_access_key = process.env.HMS_ACCESS_KEY;
+// const hms_secret = process.env.HMS_SECRET_KEY;
 const template_id = process.env.HMS_TEMPLATE_ID;
 
 const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
