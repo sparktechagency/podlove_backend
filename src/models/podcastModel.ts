@@ -26,7 +26,7 @@ export type PodcastSchema = Document & {
   };
   selectedUser: { user: Types.ObjectId }[] | [];
   status: PodcastStatus;
-  recordingUrl: string;
+  recordingUrl: Object;
   score: number;
   createdAt?: Date;
   notificationSent: Boolean,
@@ -71,8 +71,8 @@ const podcastSchema = new Schema<PodcastSchema>({
     default: PodcastStatus.NOT_SCHEDULED,
   },
   recordingUrl: {
-    type: String,
-    default: "",
+    type: Object,
+    default: {},
   },
   roomCodes: [RoomCodeSchema],
   score: {
