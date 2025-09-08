@@ -1,0 +1,7 @@
+Mon Sep 08 2025 10:6:57 [Podlove] [32minfo[39m: 68bc003361b814157cda3798
+Mon Sep 08 2025 10:6:58 [Podlove] [31merror[39m: Your schedule time has not started yet
+Error: Your schedule time has not started yet
+    at Object.createStreamingRoom (/home/tayeur/Desktop/project/podlove_backend/src/podcast/podcast.service.ts:19:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async createStreamingRoom (/home/tayeur/Desktop/project/podlove_backend/src/podcast/podcast.controller.ts:9:21)
+Error

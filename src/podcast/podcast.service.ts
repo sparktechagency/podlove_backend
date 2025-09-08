@@ -10,7 +10,6 @@ import { PodcastStatus } from "@shared/enums";
 const template_id = process.env.HMS_TEMPLATE_ID;
 
 const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
-
     const podcast = await Podcast.findById(podcastId)
     if (!podcast) {
         throw new Error("Podcast not found");
@@ -77,19 +76,21 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
 
 const postNewRecordInWebhook = async (req: Request) => {
     const event = req.body;
+    console.log("req", req)
+    console.log("event", event)
 
     // return { roomData, podcast: podcastUpdate };
 };
 
-const postPodcastInWebhook = async (req: Request) => {
-    const event = req.body;
-    // return { roomData, podcast: podcastUpdate };
-};
+// const postPodcastInWebhook = async (req: Request) => {
+//     const event = req.body;
+//     // return { roomData, podcast: podcastUpdate };
+// };
 
 const LiveStreamingServices = {
     createStreamingRoom,
     postNewRecordInWebhook,
-    postPodcastInWebhook
+    // postPodcastInWebhook
     // endStreamingRoom
 };
 

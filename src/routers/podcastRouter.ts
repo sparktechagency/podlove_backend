@@ -17,13 +17,13 @@ router.post("/set-schedule", admin_authorize, PodcastServices.setSchedule);
 router.post("/select-user", PodcastServices.selectUser);
 router.post("/podcast-done", PodcastServices.podcastDone);
 // ===============================
-router.get("/create_room/:podcastId", authorize, asyncHandler(LivePodcastController.createStreamingRoom));
+router.post("/create_room/:podcastId", authorize, asyncHandler(LivePodcastController.createStreamingRoom));
 
 // ====================================
 router.get("/", asyncHandler(PodcastController.getPodcasts));
 
 // ==============================
-router.post('/end/webhook', asyncHandler(LivePodcastController.postPodcastInWebhook))
+// router.post('/end/webhook', asyncHandler(LivePodcastController.postPodcastInWebhook))
 router.post('/recording/webhook', asyncHandler(LivePodcastController.postNewRecordInWebhook))
 
 

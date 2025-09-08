@@ -16,16 +16,16 @@ const postNewRecordInWebhook = async (req: Request, res: Response, next: NextFun
     return res.status(StatusCodes.OK).json({ success: true, message: "Privacy policy updated successfully", data: privacy });
 };
 
-const postPodcastInWebhook = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+// const postPodcastInWebhook = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
 
-    const privacy = await LiveStreamingServices.postPodcastInWebhook(req as any);
-    return res.status(StatusCodes.OK).json({ success: true, message: "Privacy policy updated successfully", data: privacy });
-};
+//     const privacy = await LiveStreamingServices.postPodcastInWebhook(req as any);
+//     return res.status(StatusCodes.OK).json({ success: true, message: "Privacy policy updated successfully", data: privacy });
+// };
 
 const LivePodcastController = {
     createStreamingRoom,
     postNewRecordInWebhook,
-    postPodcastInWebhook
+    // postPodcastInWebhook
 };
 
 export default LivePodcastController;
