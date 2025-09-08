@@ -77,7 +77,7 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
 const postNewRecordInWebhook = async (req: Request) => {
     const event = req.body;
     console.log("req", req)
-    console.log("event", event)
+    console.log("eventss", event)
 
     // return { roomData, podcast: podcastUpdate };
 };
