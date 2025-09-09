@@ -358,7 +358,7 @@ async function notifyScheduledPodcasts(): Promise<void> {
 
 export function startPodcastScheduler(): void {
   // Run notifyScheduledPodcasts() every minute
-  cron.schedule("*/20 * * * *", () => {
+  cron.schedule("* * * * *", () => {
     console.log("Hello world");
     notifyScheduledPodcasts().catch((err) => console.error("Scheduler error:", err));
   });
