@@ -89,6 +89,11 @@
             "date": 1757392830127,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-09-10-error.log",
             "hash": "ff064fcb53bfe07393c84f9086aeab614b960a817a47b6a9cfc4bf596917ab96"
+        },
+        {
+            "date": 1757400198402,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-09-12-error.log",
+            "hash": "91a6f20c2191ece8bf31f2aeebb9055e73a00e5e601ef57be370190f89c8897b"
         }
     ],
     "hashType": "sha256"

@@ -294,11 +294,16 @@ async function notifyScheduledPodcasts(): Promise<void> {
   const notifPromises: Promise<any>[] = [];
   const bulkOps: mongoose.AnyBulkWriteOperation[] = [];
   await downgradeExpiredSubscriptions();
+  console.log("scheduledET:", nowET);
+
   for (const p of podcasts) {
     const scheduledET = parseScheduleDateInET(p);
     if (!scheduledET) continue;
 
     const diffMs = scheduledET.toMillis() - nowET.toMillis();
+
+    console.log("scheduledET: ", scheduledET, nowET);
+
 
     // a) Within next hour → notify if not already
     if (diffMs > 0 && diffMs <= oneHourMs && !p.notificationSent) {
