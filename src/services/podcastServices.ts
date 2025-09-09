@@ -294,7 +294,6 @@ async function notifyScheduledPodcasts(): Promise<void> {
   const notifPromises: Promise<any>[] = [];
   const bulkOps: mongoose.AnyBulkWriteOperation[] = [];
   await downgradeExpiredSubscriptions();
-  console.log("scheduledET:", nowET);
 
   for (const p of podcasts) {
     const scheduledET = parseScheduleDateInET(p);
@@ -361,22 +360,17 @@ async function notifyScheduledPodcasts(): Promise<void> {
   }
 }
 
-export function startPodcastScheduler(): void {
-  // Run notifyScheduledPodcasts() every minute
-  cron.schedule("* * * * *", () => {
-    console.log("Hello world");
-    notifyScheduledPodcasts().catch((err) => console.error("Scheduler error:", err));
-  });
+cron.schedule("* * * * *", () => {
+  console.log("=======Hello world=======");
+  notifyScheduledPodcasts().catch((err) => console.error("Scheduler error:", err));
+});
 
-  console.log("⏰ Podcast scheduler started (runs every 20 minute)");
-}
 
 
 const PodcastServices = {
   setSchedule,
   podcastDone,
   selectUser,
-  startPodcastScheduler
 };
 
 export default PodcastServices;
