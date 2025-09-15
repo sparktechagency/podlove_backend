@@ -103,7 +103,7 @@ const postNewRecordInWebhook = async (req: Request) => {
             const fileUrl: string = data.hls_vod_recording_presigned_url;
             const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.m3u8`;
 
-            console.log("data", data)
+            // console.log("data", data)
 
 
             const response = await fetch(fileUrl);
@@ -121,6 +121,8 @@ const postNewRecordInWebhook = async (req: Request) => {
 
             // 🔹 Generate public S3 URL
             const s3Url = `https://${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${uploadParams.Key}`;
+
+            console.log("s3Url", s3Url)
 
             // ===================================
             // await StreamRoom.updateOne({ room_id: roomId }, {
