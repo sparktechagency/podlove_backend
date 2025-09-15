@@ -96,7 +96,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
 };
 
 // const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-//   console.log("file", req.file);
+//   // console.log("file", req.file);
 //   const user = await User.findByIdAndUpdate(req.user.userId, { $set: req.body }, { new: true }).populate({
 //     path: "auth",
 //     select: "email",
@@ -106,7 +106,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
 // };
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  console.log("req.body: ", req.body);
+  // console.log("req.body: ", req.body);
   const session = await mongoose.startSession();
   session.startTransaction();
   try {
@@ -114,7 +114,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       throw createError(StatusCodes.BAD_REQUEST, "Invalid user ID");
     }
-    console.log("req.body: ", req.body.location);
+    // console.log("req.body: ", req.body.location);
     // Build an updates object with only allowed top-level fields
     const allowedFields = [
       "isProfileComplete",
@@ -185,7 +185,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
     if (req.body.subscription) {
       const sub = typeof req.body.subscription === "string" ? JSON.parse(req.body.subscription) : req.body.subscription;
       const timestamp = Date.parse(sub.startedAt);
-      // console.log("timestamp", timestamp);
+      // // console.log("timestamp", timestamp);
       updates.subscription = {
         id: sub.id,
         plan: sub.plan,

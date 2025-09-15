@@ -11,7 +11,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, description, unitAmount, interval } = req.body;
   let error, product, price, subscriptionPlan;
-  console.log("=======", req.body)
+  // console.log("=======", req.body)
 
   const formattedDescription = description
     .map((desc: { key: string; details: string }) => `${desc.key}: ${desc.details}`)
@@ -74,7 +74,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
       .exec()
   );
 
-  // console.log("plan: ", plan);
+  // // console.log("plan: ", plan);
 
   // 2) Handle errors
   if (error) return next(error);
@@ -170,7 +170,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
 
     subscriptionPlan.description = normalizedDescription || subscriptionPlan.description;
 
-    // console.log("subscription: ", subscriptionPlan.description)
+    // // console.log("subscription: ", subscriptionPlan.description)
     const stripeDescription = subscriptionPlan.description
       .map(item => `${item.key}: ${item.details}`)
       .join("\n");

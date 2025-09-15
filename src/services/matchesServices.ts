@@ -127,9 +127,9 @@ async function findMatches(
     null,
     { session }
   ).lean();
-  // console.log("candidate2: ", candidate2, " candidates: ", candidates);
+  // // console.log("candidate2: ", candidate2, " candidates: ", candidates);
   let matchCandidate = candidates.length < limitCount ? candidate2 : candidates;
-  console.log("matchCandidates: ", matchCandidate);
+  // console.log("matchCandidates: ", matchCandidate);
   // 4) Distance filtering
   const nearby = matchCandidate.filter(
     (c) =>
@@ -138,7 +138,7 @@ async function findMatches(
       pref.distance : calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude)
   );
 
-  console.log("nearby: ", nearby);
+  // console.log("nearby: ", nearby);
   // 5) Compute scores with concurrency limit
   const scored = await Promise.all(
     nearby.map(async (c) => ({
@@ -182,7 +182,7 @@ const matchUser = async (
     // if (!Array.isArray(compatibility)) {
     //   throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of strings");
     // }
-    console.log("compatibility", userId, compatibility)
+    // console.log("compatibility", userId, compatibility)
     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
     if (podcastExists) {
       return res.status(StatusCodes.CONFLICT).json({

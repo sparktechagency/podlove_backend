@@ -65,24 +65,24 @@ const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunctio
 const validateBio = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const bio = req.body.text as string;
   const userId = req.user?.userId;
-  if(!userId) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated")); 
+  if (!userId) {
+    return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated"));
   }
   const result = await OpenaiServices.analyzeBio(bio);
-  console.log("result: ", result);
+  // console.log("result: ", result);
   if (result === true) {
-       const updatedUserBio = await User.findByIdAndUpdate(
-      userId,                         
-      { $set: { bio: bio.trim() } },  
+    const updatedUserBio = await User.findByIdAndUpdate(
+      userId,
+      { $set: { bio: bio.trim() } },
       {
-        new: true,        
+        new: true,
       }
     );
-    console.log("updatedUserBio: ", updatedUserBio)
+    // console.log("updatedUserBio: ", updatedUserBio)
     if (!updatedUserBio) {
-        return next(createError(StatusCodes.NOT_FOUND, "User not found"));
-      }
-    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: {updatedUserBio} });
+      return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+    }
+    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { updatedUserBio } });
   }
 
   const errorMessage =

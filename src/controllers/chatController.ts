@@ -12,7 +12,7 @@ import { Types } from 'mongoose';
 // const createChat = async (req: Request, res: Response, next:NextFunction) => {
 //     const {receiver } = req.body;
 //     const createdBy = req.user?.userId; // Use _id if that's the correct property, or update to match your DecodedUser type
-//     console.log("create chat: ", createdBy)
+//     // console.log("create chat: ", createdBy)
 //     if (!createdBy) {
 //       throw createError(StatusCodes.BAD_REQUEST, "User not authenticated");
 //     }
@@ -46,7 +46,7 @@ import { Types } from 'mongoose';
 //     next();
 //   };
 
-const createChat = async (req: Request, res: Response, next: NextFunction):Promise<any> => {
+const createChat = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
     const { receiver } = req.body;
     const createdBy = req.user?.userId;
@@ -92,21 +92,21 @@ const createChat = async (req: Request, res: Response, next: NextFunction):Promi
 
 
 
-const getUserChats = async (req: Request, res: Response,  next: NextFunction) => {
-  try{
+const getUserChats = async (req: Request, res: Response, next: NextFunction) => {
+  try {
     const userId = req.user?.userId;
 
-  if (!userId) {
-    throw createError(StatusCodes.BAD_REQUEST, "User not authenticated");
-  }
+    if (!userId) {
+      throw createError(StatusCodes.BAD_REQUEST, "User not authenticated");
+    }
 
-  const chats = await ChatService.getUserChats(userId);
+    const chats = await ChatService.getUserChats(userId);
 
-  res.status(200).json({
-    success: true,
-    data: chats
-  });
-  }catch(err){
+    res.status(200).json({
+      success: true,
+      data: chats
+    });
+  } catch (err) {
     next(err);
   }
 };

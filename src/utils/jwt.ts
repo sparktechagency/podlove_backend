@@ -10,7 +10,7 @@ export const generateToken = (id: string, secret: string): string => jwt.sign({ 
 
 export const decodeToken = (token: string, secret: string): Decoded => {
   try {
-    console.log("toeken", secret);
+    // console.log("toeken", secret);
     return jwt.verify(token, secret) as JwtPayload & Decoded;
   } catch (err: any) {
     let errorMessage: string;

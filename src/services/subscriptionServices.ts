@@ -14,7 +14,7 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
   const planId = req.body.planId;
   let error, user, plan, session, customer;
 
-  console.log("userId===============: ", userId);
+  // console.log("userId===============: ", userId);
 
   [error, user] = await to(User.findById(userId));
   if (error) return next(error);
@@ -22,7 +22,7 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
 
   [error, plan] = await to(SubscriptionPlan.findById(planId));
   if (error) return next(error);
-  console.log("plan", plan)
+  // console.log("plan", plan)
   if (!plan) return next(createError(StatusCodes.NOT_FOUND, "Plan not found"));
 
   [error, customer] = await to(stripe.customers.create({ email: req.user.email }));
@@ -52,7 +52,7 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
     })
   );
   if (error) return next(error);
-  // console.log("session: ", session);
+  // // console.log("session: ", session);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: session.url });
 };
 

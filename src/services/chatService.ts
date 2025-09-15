@@ -45,19 +45,19 @@ async function sendMessage(
   messageType: 'text' | 'image' | 'file' = 'text',
   replyTo?: string
 ): Promise<IMessage> {
-  console.log("chatid: ", chatId);
+  // console.log("chatid: ", chatId);
   const chat = await Chat.findById(chatId);
-  console.log("chat: ", chat);
+  // console.log("chat: ", chat);
   if (!chat) {
     throw createError(StatusCodes.BAD_REQUEST, "Chat ID not found");
   }
-  console.log("senderId: ", senderId);
+  // console.log("senderId: ", senderId);
 
   // Verify sender is a participant
   const isParticipant = chat.participants.some(
     participant => participant.toString() === senderId
   );
-  console.log("participatns: ", isParticipant);
+  // console.log("participatns: ", isParticipant);
 
   if (!isParticipant) {
     throw createError(StatusCodes.BAD_REQUEST, "Participants not found");

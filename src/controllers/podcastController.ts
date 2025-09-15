@@ -123,7 +123,7 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
       statusFilter.status = { $in: [PodcastStatus.SCHEDULED, PodcastStatus.REQSHEDULED] };
     }
   }
-  console.log("statusFilter: ", statusFilter);
+  // console.log("statusFilter: ", statusFilter);
 
   const podcasts = await Podcast.find(statusFilter)
     // Only pull back fields you’ll actually return
@@ -144,7 +144,7 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
     .lean()
     .exec();
 
-  console.log("podcasts---: ", podcasts);
+  // console.log("podcasts---: ", podcasts);
 
   const total = await Podcast.countDocuments(statusFilter);
   const totalPages = Math.ceil(total / limit);
@@ -208,7 +208,7 @@ const updateRecording = async (req: Request, res: Response, next: NextFunction):
   const podcastId = req.params.id;
   const file = req.file;
   const audioFile = req.file;
-  console.log("file: ", audioFile);
+  // console.log("file: ", audioFile);
   if (!file) {
     return next(createError(StatusCodes.BAD_REQUEST, "Recording file is required"));
   }

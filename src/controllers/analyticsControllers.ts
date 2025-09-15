@@ -30,7 +30,7 @@ const getAnalytics = async (req: Request, res: Response, next: NextFunction): Pr
     const num = parseFloat(feeStr) || 0;
     return sum + num;
   }, 0);
-  console.log("total incomde: ", totalIncome);
+  // console.log("total incomde: ", totalIncome);
   [error, totalPodcast] = await to(Podcast.countDocuments());
   if (error) return next(error);
 
@@ -129,7 +129,7 @@ const getMonthlySubscriptionGrowth = async (year?: number) => {
 
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    console.log("monthlySubscriptionGrowth: ", monthlySubscriptionGrowth);
+    // console.log("monthlySubscriptionGrowth: ", monthlySubscriptionGrowth);
 
     const result = Array.from({ length: 12 }, (_, i) => {
       const monthData = monthlySubscriptionGrowth.find((data) => data.month === i + 1) || {
@@ -143,7 +143,7 @@ const getMonthlySubscriptionGrowth = async (year?: number) => {
       };
     });
 
-    console.log("result: ", result);
+    // console.log("result: ", result);
 
     return {
       year: selectedYear,
@@ -199,7 +199,7 @@ const getMonthlyUserGrowth = async (year?: number) => {
 
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    console.log("monthlySubscriptionGrowth: ", monthlyUserGrowth);
+    // console.log("monthlySubscriptionGrowth: ", monthlyUserGrowth);
 
     const result = Array.from({ length: 12 }, (_, i) => {
       const monthData = monthlyUserGrowth.find((data) => data.month === i + 1) || {
@@ -213,7 +213,7 @@ const getMonthlyUserGrowth = async (year?: number) => {
       };
     });
 
-    console.log("result: ", result);
+    // console.log("result: ", result);
 
     return {
       year: selectedYear,
@@ -229,7 +229,7 @@ const getMonthlyUserGrowth = async (year?: number) => {
 const getSubscriptionByYear = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   // const year = Number.parseInt(req.params.year);
   // const resultSubscription = getMonthlySubscriptionGrowth(year);
-  // console.log("resultSubscription: ", resultSubscription);
+  // // console.log("resultSubscription: ", resultSubscription);
   // return res.status(StatusCodes.OK).json({
   //   success: true,
   //   message: "Success",
@@ -240,7 +240,7 @@ const getSubscriptionByYear = async (req: Request, res: Response, next: NextFunc
     const yr = parseInt(req.params.year, 10);
     const year = isNaN(yr) ? new Date().getFullYear() : yr;
     const resultSubscription = await getMonthlySubscriptionGrowth(year);
-    // console.log("result subscriptioin: ", resultSubscription);
+    // // console.log("result subscriptioin: ", resultSubscription);
     return res.status(StatusCodes.OK).json({
       success: true,
       message: `Monthly subscription growth for ${resultSubscription.year}`,
@@ -264,11 +264,11 @@ const getUserByYear = async (req: Request, res: Response, next: NextFunction): P
     const yr = parseInt(req.params.year, 10);
     const year = isNaN(yr) ? new Date().getFullYear() : yr;
     const resultUser = await getMonthlyUserGrowth(year);
-    console.log("result user: ", resultUser);
+    // console.log("result user: ", resultUser);
     return res.status(StatusCodes.OK).json({
       success: true,
       message: `Monthly user growth for ${resultUser.year}`,
-      data: resultUser.data, 
+      data: resultUser.data,
     });
   } catch (err) {
     console.error("Error in getUserByYear:", err);

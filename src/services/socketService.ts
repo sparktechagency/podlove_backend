@@ -39,8 +39,8 @@ export default function initSocketHandlers(io: any): void {
 
   io.on('connection', (socket: AuthenticatedSocket) => {
     // const userId = 
-    console.log(`User ${socket.data.user?.name} connected with socket ID: ${socket.id}`);
-    console.log("user: ", socket.data.user.userId)
+    // console.log(`User ${socket.data.user?.name} connected with socket ID: ${socket.id}`);
+    // console.log("user: ", socket.data.user.userId)
     // Store user socket mapping
     addUserSocket(socket.data.user!.userId, socket.id);
 
@@ -48,12 +48,12 @@ export default function initSocketHandlers(io: any): void {
     socket.on('join-chat', async ({ chatId }) => {
       try {
         // Verify user is participant in this chat
-        console.log("is participatns: ", socket.data.user!.userId);
+        // console.log("is participatns: ", socket.data.user!.userId);
         const chats = await ChatService.getUserChats(socket.data.user!.userId);
-        console.log("chats: ", chats, " chatId: ", chatId);
+        // console.log("chats: ", chats, " chatId: ", chatId);
         const isParticipant = chats.some(chat => chat._id.toHexString() === chatId);
         // const isParticipant = chats.some(chat =>chat._id.equals(chatId));
-        console.log("is participatns: ", isParticipant);
+        // console.log("is participatns: ", isParticipant);
         if (!isParticipant) {
           socket.emit('error', { message: 'You are not a participant in this chat' });
           return;
@@ -90,7 +90,7 @@ export default function initSocketHandlers(io: any): void {
       replyTo?: string;
     }) => {
       try {
-        console.log("data: ", data, " userId: ", socket.data);
+        // console.log("data: ", data, " userId: ", socket.data);
         const message = await ChatService.sendMessage(
           data.chatId,
           socket.data.user!.userId,
@@ -98,7 +98,7 @@ export default function initSocketHandlers(io: any): void {
           data.messageType || 'text',
           data.replyTo
         );
-        console.log("message: ", data.chatId);
+        // console.log("message: ", data.chatId);
 
         // Emit to all participants in the chat
         io.to(data.chatId).emit('new-message', {
@@ -118,7 +118,7 @@ export default function initSocketHandlers(io: any): void {
 
     // Handle typing indicators
     socket.on('typing-start', (data: { chatId: string }) => {
-      console.log("typing start: ", data.chatId)
+      // console.log("typing start: ", data.chatId)
       socket.to(data.chatId).emit('user-typing', {
         userId: socket.data.user!.userId,
         username: socket.data.user!.name
@@ -185,14 +185,14 @@ export default function initSocketHandlers(io: any): void {
 
     // Handle disconnect
     socket.on('disconnect', () => {
-      console.log(`User ${socket.data.user?.name} disconnected`);
+      // console.log(`User ${socket.data.user?.name} disconnected`);
       removeUserSocket(socket.data.user!.userId, socket.id);
     });
   });
 
 
   io.on('connection', (socket: AuthenticatedSocket) => {
-    console.log(`User ${socket.user?.username} connected with socket ID: ${socket.id}`);
+    // console.log(`User ${socket.user?.username} connected with socket ID: ${socket.id}`);
 
     // Store user socket mapping
     addUserSocket(socket.user!.id, socket.id);
@@ -332,7 +332,7 @@ export default function initSocketHandlers(io: any): void {
 
     // Handle disconnect
     socket.on('disconnect', () => {
-      console.log(`User ${socket.user?.username} disconnected`);
+      // console.log(`User ${socket.user?.username} disconnected`);
       removeUserSocket(socket.user!.id, socket.id);
     });
   });
@@ -385,7 +385,7 @@ async function sendPushNotifications(chatId: string, senderId: string, message: 
     // For example, using Firebase Cloud Messaging (FCM)
     for (const participant of offlineParticipants) {
       // Assuming participant is an object with a username property
-      console.log(`Sending push notification to ${(participant as any).name}`);
+      // console.log(`Sending push notification to ${(participant as any).name}`);
       // await this.sendPushNotification(participant._id, message);
     }
   } catch (error) {
@@ -401,11 +401,11 @@ async function sendPushNotifications(chatId: string, senderId: string, message: 
 //   try {
 //     // 1) Fetch all chats for this user
 //     const chats = await ChatService.getUserChats(senderId);
-//     console.log("chats: ", chats);
+//     // console.log("chats: ", chats);
 
 //     // 2) Find the specific chat by its ID
 //     const chat = chats.find(c => c._id.toString() === chatId);
-//     console.log("chat: ", chat);
+//     // console.log("chat: ", chat);
 //     if (!chat) return;
 
 //     // 3) Identify offline participants (excluding the sender)
@@ -419,7 +419,7 @@ async function sendPushNotifications(chatId: string, senderId: string, message: 
 //       const userId = participant._id;
 //       const username = (participant as any).name ?? "Unknown";
 
-//       console.log(`Sending push notification to ${username}`);
+//       // console.log(`Sending push notification to ${username}`);
 
 //       // ▶▶ Your FCM (or other) push logic here…
 //       // await pushService.sendToUser(userId, message);

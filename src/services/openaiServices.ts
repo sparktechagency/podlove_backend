@@ -21,7 +21,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 if (!GEMINI_API_KEY) {
   console.error(
     "Error: GEMINI_API_KEY environment variable not set." +
-      " Get a key from Google AI Studio: https://aistudio.google.com/"
+    " Get a key from Google AI Studio: https://aistudio.google.com/"
   );
   // Decide how to handle this - throw, exit, or make analyzeBioGemini always return false
   // For this example, we'll proceed, but the API call will fail later if key is missing.
@@ -152,7 +152,7 @@ Now, output ONLY a single numeric value (for example, 75) representing the compa
     if (isNaN(compatibilityScore)) {
       throw new Error(`Received output is not a valid number: "${rawOutput}"`);
     }
-    console.log(compatibilityScore);
+    // console.log(compatibilityScore);
     return compatibilityScore;
   } catch (error: any) {
     console.error("Error during API call:", error.response ? error.response.data : error.message);
@@ -204,7 +204,7 @@ const questions = [
 
 async function isUserSuitable(req: Request, res: Response, next: NextFunction): Promise<any> {
   const userResponses = req.body.userResponses;
-  console.log("user response: ", userResponses);
+  // console.log("user response: ", userResponses);
   const questions = [
     {
       question: "Do you believe in mutual respect and understanding in a relationship?",
@@ -278,7 +278,7 @@ async function isUserSuitable(req: Request, res: Response, next: NextFunction): 
     if (rawOutput !== "true" && rawOutput !== "false") {
       throw new Error(`Received output is not valid: "${rawOutput}"`);
     }
-    console.log("getting response status: ", rawOutput);
+    // console.log("getting response status: ", rawOutput);
     return res
       .status(StatusCodes.OK)
       .json({ success: true, message: "Success", data: { isSuitable: rawOutput === "true" } });

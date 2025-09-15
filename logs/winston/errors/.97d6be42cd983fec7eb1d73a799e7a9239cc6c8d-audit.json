@@ -6,21 +6,6 @@
     "auditLog": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/.97d6be42cd983fec7eb1d73a799e7a9239cc6c8d-audit.json",
     "files": [
         {
-            "date": 1756379119817,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-08-28-17-error.log",
-            "hash": "455480cf1f85aa6c6ae30474417de23f72b4d85b96204c6b9489aba700297984"
-        },
-        {
-            "date": 1756382415948,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-08-28-18-error.log",
-            "hash": "0543ac13f9217be6c41f4c4ba6b61b308aa6800de36dc56a79edf6d9ae2d7354"
-        },
-        {
-            "date": 1756632272371,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-08-31-15-error.log",
-            "hash": "4c217dfaac1bf49376d483283c44a665fd1986276c603e661457815797bfda04"
-        },
-        {
             "date": 1756795384497,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-02-12-error.log",
             "hash": "5eb716598ff31ff70f4f70e81a1796e34527a55a80c73d38cb336f55ea292807"
@@ -94,6 +79,51 @@
             "date": 1757400198402,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-09-12-error.log",
             "hash": "91a6f20c2191ece8bf31f2aeebb9055e73a00e5e601ef57be370190f89c8897b"
+        },
+        {
+            "date": 1757402262013,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-09-13-error.log",
+            "hash": "4972f9da2ffd71ec66ac6f36089fe8481fd5156e11c079eac52d388e68db9def"
+        },
+        {
+            "date": 1757565990179,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-11-10-error.log",
+            "hash": "8e4d1cc1dd78200351fe32299688c8a84b02ba3767c9e919430ce50b4b05521c"
+        },
+        {
+            "date": 1757566820227,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-11-11-error.log",
+            "hash": "dcdbf0cbc5dabf4cf4dec4fc5e7ad01dd8d4fcbaf153b633c404863dc9f8a8ae"
+        },
+        {
+            "date": 1757912761242,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-15-11-error.log",
+            "hash": "2cf780016cf4d71f924ee969a6d185adf503c618ba45a1fc9279c47a77c23e1c"
+        },
+        {
+            "date": 1757917747629,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-15-12-error.log",
+            "hash": "b8bb0087993cbf670b944c02239b6fbcc878b3ce17b71dbfdd165c45791b8df0"
+        },
+        {
+            "date": 1757925340474,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-15-14-error.log",
+            "hash": "294188281aff0f014047e24d4f27443be3e036483b56b6f34071e8fb798c942f"
+        },
+        {
+            "date": 1757929660027,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-15-15-error.log",
+            "hash": "2e6069ff40325495317ba4797c766e7f1c3dd003a097f5879d6bafc42f7dd99f"
+        },
+        {
+            "date": 1757930578960,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-15-16-error.log",
+            "hash": "572213e284cbbabac0f67ecc35645f253d1f10e42e46049b6c2b848e45624e4b"
+        },
+        {
+            "date": 1757939735414,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-15-18-error.log",
+            "hash": "6dd7ace03137294b0202a613452ced8ea48b558c18553d24c24beb38315d7b54"
         }
     ],
     "hashType": "sha256"

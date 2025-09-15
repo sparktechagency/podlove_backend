@@ -80,18 +80,18 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
   try {
     const userId = req.user.userId;
     const userObjId = typeof userId === "string" ? new Types.ObjectId(userId) : userId;
-    console.log("userId: ", userId, " userObjId: ", userObjId);
+    // console.log("userId: ", userId, " userObjId: ", userObjId);
     // Fetch the user (with their auth email)
     const user = await User.findById(userId).populate({ path: "auth", select: "email isBlocked" }).lean<LeanUserWithAuth>();
-    console.log("user home: ", user);
-    if(!user){
+    // console.log("user home: ", user);
+    if (!user) {
       throw next(createError(StatusCodes.NOT_FOUND, "You account is not found"));
     }
-    if(user.auth.isBlocked){
+    if (user.auth.isBlocked) {
       throw next(createError(StatusCodes.FORBIDDEN, "You Account is Blocked by Admisnistrator, Please contact our assistance"))
     }
-    
-    // console.log("")
+
+    // // console.log("")
 
     // Find the podcast where they’re primary or a participant
     const podcast = await Podcast.findOne({
@@ -145,7 +145,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
     const subscriptionPlans = await SubscriptionPlan.find().lean();
 
     const hostPodcastMatches = await Podcast.find({
-      status: { $in: ["Scheduled", "Playing"] },
+      status: { $in: ["Scheduled", "Playing", "StreamStart"] },
       "participants.user": userObjId,
     }).exec();
 

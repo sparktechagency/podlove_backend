@@ -44,7 +44,7 @@ const sendEmail = async (email: string, message: string) => {
   };
   const [error, info] = await to(transporter.sendMail(mailOptions));
   if (error) throw new Error(`Failed to send email: ${error.message}`);
-  console.log(`Email sent: ${info.response}`);
+  // console.log(`Email sent: ${info.response}`);
 };
 
 // const sendMessage = async (req: Request<{}, {}, payload>, res: Response, next: NextFunction): Promise<any> => {
@@ -84,12 +84,12 @@ const sendMessage = async (req: Request<{}, {}, payload>, res: Response, next: N
 
     // 2) Build recipients query
     const filter = isAll ? {} : { _id: new mongoose.Types.ObjectId(userId!) };
-    console.log("filter: ", filter);
+    // console.log("filter: ", filter);
     // 3) Fetch recipients in one query
     const rawRecipients = await User.find(filter, "_id auth").lean().exec();
-    // console.log("rawRecipients: ", rawRecipients);
+    // // console.log("rawRecipients: ", rawRecipients);
     const rawRecipant = await Auth.find({ _id: rawRecipients[0].auth });
-    // console.log("rawRecipient: ", rawRecipant);
+    // // console.log("rawRecipient: ", rawRecipant);
     const recipients: Recipient[] = rawRecipant.map((u: any) => ({
       _id: rawRecipients[0]._id as mongoose.Types.ObjectId,
       email: u.email as string,
@@ -104,25 +104,25 @@ const sendMessage = async (req: Request<{}, {}, payload>, res: Response, next: N
       description: message,
     };
     let notifCount = 0;
-    console.log("medium: ", medium);
-    console.log("medium.includes Notification: ", medium.includes("Notification"));
+    // console.log("medium: ", medium);
+    // console.log("medium.includes Notification: ", medium.includes("Notification"));
     if (medium.includes("Notification")) {
       const docs = recipients.map((u) => ({
         type: "admin_message",
         user: u._id,
         message: messageNotification,
       }));
-      console.log("docs: ", docs[0]);
+      // console.log("docs: ", docs[0]);
       const result = await Notification.insertMany(docs[0], {
         ordered: false, // continue on individual errors
       });
-      console.log("result: ", result);
+      // console.log("result: ", result);
       // const result = await Notification.create(docs);
       notifCount = result.length;
     }
 
     // 5) Email parallel (can throttle if needed)
-    console.log("recipents: ", recipients);
+    // console.log("recipents: ", recipients);
     let emailCount = 0;
     if (medium.includes("Email")) {
       await Promise.all(

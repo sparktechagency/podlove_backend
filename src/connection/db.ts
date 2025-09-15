@@ -7,7 +7,7 @@ const connectDB = async (uri: string) => {
     console.error(error);
     return;
   }
-  console.log("Database connected successfully");
+  // console.log("Database connected successfully");
 };
 
 export default connectDB;

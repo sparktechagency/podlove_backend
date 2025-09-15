@@ -12,7 +12,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   [error, user] = await to(User.findById(userId));
   if (error) return next(error);
   if (!user) return next(createError(StatusCodes.NOT_FOUND, "User not found"));
-  // console.log(user);
+  // // console.log(user);
   [error, support] = await to(
     Support.create({ user: userId, userName: user.name, userAvatar: user.avatar || "", category: category, description, date: Date.now() })
   );

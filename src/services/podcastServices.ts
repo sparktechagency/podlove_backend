@@ -68,7 +68,7 @@ const podcastDone = async (req: Request, res: Response, next: NextFunction): Pro
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found");
 
   podcast.status = PodcastStatus.DONE;
-  console.log("podcast status: ", podcast);
+  // console.log("podcast status: ", podcast);
   await podcast.save();
   const feedbackNotification = await Notification.create({
     type: "podcast_feedback",
@@ -232,7 +232,7 @@ function markAllowedParticipants(participants: Participants[], selectedUserBody:
 const selectUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const podcastId = req.body.podcastId;
   const selectedUserId = req.body.selectedUserId;
-  console.log("podcast selected user Id: ", selectedUserId);
+  // console.log("podcast selected user Id: ", selectedUserId);
   const podcast = await Podcast.findById(podcastId);
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
 
@@ -242,7 +242,7 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
   markAllowedParticipants(podcast.participants, selectedUserId);
 
   await podcast.save();
-  console.log("podcast: ", podcast);
+  // console.log("podcast: ", podcast);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
 };
 
@@ -287,10 +287,8 @@ async function notifyScheduledPodcasts(): Promise<void> {
   const nowET = DateTime.now().setZone("America/New_York");
   const oneHourMs = 1000 * 60 * 60;
 
-  // 1) Fetch everything once
   const podcasts = await Podcast.find({ status: "Scheduled" }).exec();
 
-  // 2) Prepare batches
   const notifPromises: Promise<any>[] = [];
   const bulkOps: mongoose.AnyBulkWriteOperation[] = [];
   await downgradeExpiredSubscriptions();
@@ -301,10 +299,6 @@ async function notifyScheduledPodcasts(): Promise<void> {
 
     const diffMs = scheduledET.toMillis() - nowET.toMillis();
 
-    console.log("scheduledET: ", scheduledET, nowET);
-
-
-    // a) Within next hour → notify if not already
     if (diffMs > 0 && diffMs <= oneHourMs && !p.notificationSent) {
       notifPromises.push(
         Notification.create({
@@ -334,22 +328,18 @@ async function notifyScheduledPodcasts(): Promise<void> {
       bulkOps.push({
         updateOne: {
           filter: { _id: p._id },
-          update: { $set: { status: PodcastStatus.PLAYING } },
+          update: { $set: { status: PodcastStatus.STREAM_START } },
         },
       });
     }
   }
 
-  // console.log("schedule: ", bulkOps);
-
-  // 3) Fire off all notifications in parallel
   try {
     await Promise.all(notifPromises);
   } catch (err) {
     console.error("❌ Notification batch error:", err);
   }
 
-  // 4) Apply status & notificationSent in one bulkWrite
   if (bulkOps.length) {
     try {
       await Podcast.bulkWrite(bulkOps);
@@ -361,7 +351,7 @@ async function notifyScheduledPodcasts(): Promise<void> {
 }
 
 cron.schedule("* * * * *", () => {
-  console.log("=======Hello world=======");
+  // console.log("=======Hello world=======");
   notifyScheduledPodcasts().catch((err) => console.error("Scheduler error:", err));
 });
 

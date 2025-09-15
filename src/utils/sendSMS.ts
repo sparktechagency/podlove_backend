@@ -11,7 +11,7 @@ const sendSMS = async (phoneNumber: string, verificationOTP: string) => {
             from: '+18555259062',
             to: phoneNumber
         })
-    .then((message: { sid: any; }) => console.log(message.sid));
+        .then((message: { sid: any; }) => console.log(message.sid));
 };
 
 export default sendSMS;

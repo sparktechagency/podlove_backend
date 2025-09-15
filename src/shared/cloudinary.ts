@@ -12,8 +12,8 @@ const upload = (file: UploadedFile, location: string): Promise<string> => {
     const resourceType: "image" | "video" | "raw" | "auto" = file.mimetype.startsWith("image/")
       ? "image"
       : file.mimetype.startsWith("audio/") || file.mimetype.startsWith("video/")
-      ? "video"
-      : "auto";
+        ? "video"
+        : "auto";
 
     const stream = cloudinary.uploader.upload_stream(
       {
@@ -27,7 +27,7 @@ const upload = (file: UploadedFile, location: string): Promise<string> => {
         }
         if (result?.secure_url) {
           resolve(result.secure_url);
-          console.log(result.secure_url);
+          // console.log(result.secure_url);
         } else {
           reject(new Error("Failed to get secure URL from Cloudinary response."));
         }

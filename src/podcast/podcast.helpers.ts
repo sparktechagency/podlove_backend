@@ -15,10 +15,10 @@ export const createRoomCodesForAllRoles = async (roomId: string) => {
         throw new Error(`Failed to create room codes: ${response.statusText}`);
     }
 
-    console.log('getMgmToken()', getMgmToken())
+    // console.log('getMgmToken()', getMgmToken())
 
     const data = await response.json();
-    console.log('data', data);
+    // console.log('data', data);
     return data.data;
 };
 

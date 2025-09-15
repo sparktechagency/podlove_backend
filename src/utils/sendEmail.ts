@@ -28,11 +28,11 @@ const sendEmail = async (email: string, verificationOTP: string) => {
   //   text: `Your verification code is ${verificationOTP}`,
   // };
   const mailOptions = {
-  from: `"Podlove Support" <${process.env.SERVICE_EMAIL}>`,
-  to: email,
-  subject: "🔒 Your Podlove Verification Code",
-  date: formattedDate,
-  html: `
+    from: `"Podlove Support" <${process.env.SERVICE_EMAIL}>`,
+    to: email,
+    subject: "🔒 Your Podlove Verification Code",
+    date: formattedDate,
+    html: `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -132,11 +132,11 @@ const sendEmail = async (email: string, verificationOTP: string) => {
   </body>
   </html>
   `,
-};
+  };
 
   const [error, info] = await to(transporter.sendMail(mailOptions));
   if (error) throw new Error(`Failed to send email: ${error.message}`);
-  console.log(`Email sent: ${info.response}`);
+  // console.log(`Email sent: ${info.response}`);
 };
 
 export default sendEmail;

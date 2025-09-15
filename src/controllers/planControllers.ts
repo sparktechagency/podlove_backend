@@ -62,7 +62,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
 
 const get = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.params.id;
-  // console.log("userId: ", userId);
+  // // console.log("userId: ", userId);
   // 1) Perform the query with .exec() for a real Promise
   const [error, plan] = await to(
     Plan.findOne({ userId })
@@ -79,7 +79,7 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
       .exec()
   );
 
-  // console.log("plan: ", plan);
+  // // console.log("plan: ", plan);
 
   // 2) Handle errors
   if (error) return next(error);
@@ -154,7 +154,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const id = req.params.id;
   let { name, description, unitAmount, interval } = req.body;
-  // console.log("description: ", description);
+  // // console.log("description: ", description);
   let error, price, plan;
   [error, plan] = await to(Plan.findById(id));
   if (error) next(error);
