@@ -112,7 +112,7 @@ const getDownloadLink = async (fileKey: string): Promise<string> => {
 const postNewRecordInWebhook = async (req: Request) => {
     try {
         const event = req.body as any;
-        console.log("roomId", event.room_id)
+        console.log("roomId", event)
         if (event.type !== "hls.recording.success") {
             throw new Error("Not a recording event");
         }
