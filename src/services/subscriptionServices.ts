@@ -47,8 +47,8 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
           userId: userId,
         },
       },
-      success_url: `https://backend.podlove.co/webhook`,
-      cancel_url: `https://example.com/cancel`,
+      success_url: `https://podlove.co/home`,
+      cancel_url: `https://podlove.co/subscription-plan`,
     })
   );
   if (error) return next(error);
