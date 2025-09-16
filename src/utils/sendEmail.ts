@@ -117,7 +117,7 @@ const sendEmail = async (email: string, verificationOTP: string) => {
           <p>Hi there,</p>
           <p>Thank you for signing up for Podlove. To complete your registration, please use the verification code below:</p>
           <div class="code-box">${verificationOTP}</div>
-          <p>If you did not request this code, please ignore this email or <a href="https://${process.env.SITE_DOMAIN}/support">contact support</a>.</p>
+          <p>If you did not request this code, please ignore this email or <a href="https://podlove.co/contact-us">contact support</a>.</p>
           <p>Happy podcasting!</p>
           <p>The Podlove Team</p>
         </td>
