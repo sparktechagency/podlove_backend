@@ -36,7 +36,7 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
         ],
     });
 
-    console.log('liveRoom', liveRoom)
+    // console.log('liveRoom', liveRoom)
 
     if (liveRoom) {
         throw new Error("You can't able to start another live , because you already created a room for live , please join with that");
@@ -92,8 +92,8 @@ const postNewRecordInWebhook = async (req: Request) => {
             throw new Error("Not a recording event");
         }
         const roomId = event.room_id;
-        // console.log("roomId", roomId)
-        const room = await Podcast.findOne({ room_id: roomId })
+        console.log("roomId", roomId)
+        const room = await StreamRoom.findOne({ room_id: roomId })
         console.log("roomId", room)
         if (!room) {
             throw new Error("Room Id Not Found;");
