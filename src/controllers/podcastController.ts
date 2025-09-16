@@ -110,7 +110,7 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
   let statusFilter: any = {};
   if (status) {
     if (status === "done") {
-      statusFilter.status = PodcastStatus.DONE;
+      statusFilter.status = { $in: [PodcastStatus.DONE, PodcastStatus.FINISHED] };
     }
     //  else if (status === "not_scheduled") {
     //   statusFilter.status = PodcastStatus.NOT_SCHEDULED;
