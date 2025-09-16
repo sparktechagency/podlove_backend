@@ -16,16 +16,20 @@ const postNewRecordInWebhook = async (req: Request, res: Response, next: NextFun
     return res.status(StatusCodes.OK).json({ success: true, message: "Privacy policy updated successfully", data: privacy });
 };
 
-// const postPodcastInWebhook = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const getDownloadLink = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const getDow = req.query.fileUrl;
+    if (!getDow) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ success: false, message: "Record id is required", data: {} });
+    }
+    const privacy = await LiveStreamingServices.getDownloadLink(getDow as any);
+    return res.status(StatusCodes.OK).json({ success: true, message: "Download successfully", data: privacy });
+};
 
-//     const privacy = await LiveStreamingServices.postPodcastInWebhook(req as any);
-//     return res.status(StatusCodes.OK).json({ success: true, message: "Privacy policy updated successfully", data: privacy });
-// };
 
 const LivePodcastController = {
     createStreamingRoom,
     postNewRecordInWebhook,
-    // postPodcastInWebhook
+    getDownloadLink
 };
 
 export default LivePodcastController;
