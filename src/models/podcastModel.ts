@@ -13,7 +13,7 @@ const RoomCodeSchema: Schema = new Schema<IRoomCode>({
 });
 
 export type PodcastSchema = Document & {
-  // type: PodcastType;
+  room_id: string;
   primaryUser: Types.ObjectId;
   participants: {
     set(arg0: string, arg1: boolean): unknown;
@@ -74,6 +74,7 @@ const podcastSchema = new Schema<PodcastSchema>({
     type: Object,
     default: {},
   },
+  room_id: { type: String, default: "" },
   roomCodes: [RoomCodeSchema],
   score: {
     type: Number,

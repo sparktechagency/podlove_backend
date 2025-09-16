@@ -72,6 +72,7 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
         podcastId,
         {
             roomCodes,
+            room_id: roomData.id,
             status: PodcastStatus.PLAYING,
         },
         { new: true }
@@ -92,8 +93,8 @@ const postNewRecordInWebhook = async (req: Request) => {
             throw new Error("Not a recording event");
         }
         const roomId = event.room_id;
-        console.log("roomId", roomId)
-        const room = await StreamRoom.findOne({ room_id: roomId })
+        console.log("event", event)
+        const room = await Podcast.findOne({ room_id: roomId })
         console.log("roomId", room)
         if (!room) {
             throw new Error("Room Id Not Found;");
@@ -103,7 +104,6 @@ const postNewRecordInWebhook = async (req: Request) => {
         if (event.type === "hls.recording.success") {
             const fileUrl: string = data.hls_vod_recording_presigned_url;
             const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.m3u8`;
-
             // console.log("data", data)
 
             const response = await fetch(fileUrl);
@@ -143,6 +143,14 @@ const postNewRecordInWebhook = async (req: Request) => {
             );
         }
 
+        if (event.type === "room.ended") {
+            await Podcast.updateOne(
+                { room_id: roomId },
+                { $set: { status: PodcastStatus.DONE } }
+            );
+            return;
+        }
+        return;
     } catch (err: any) {
         console.error("❌ Error in webhook handler:", err);
     }
