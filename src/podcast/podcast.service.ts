@@ -93,7 +93,7 @@ const postNewRecordInWebhook = async (req: Request) => {
         }
         const roomId = event.room_id;
         // console.log("roomId", roomId)
-        const room = await Podcast.findById({ room_id: roomId })
+        const room = await Podcast.findOne({ room_id: roomId })
         console.log("roomId", room)
         if (!room) {
             throw new Error("Room Id Not Found;");
