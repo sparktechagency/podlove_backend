@@ -67,7 +67,7 @@ const podcastDone = async (req: Request, res: Response, next: NextFunction): Pro
   const podcast = await Podcast.findById(podcastId);
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found");
 
-  podcast.status = PodcastStatus.DONE;
+  podcast.status = PodcastStatus.FINISHED;
   // console.log("podcast status: ", podcast);
   await podcast.save();
   const feedbackNotification = await Notification.create({
