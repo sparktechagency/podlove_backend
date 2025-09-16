@@ -128,7 +128,7 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
   const podcasts = await Podcast.find(statusFilter)
     // Only pull back fields you’ll actually return
     .select("primaryUser participants.score participants.isAllow schedule status createdAt roomCodes recordingUrl")
-    .sort({ createdAt: 1 })
+    .sort({ createdAt: -1 })
     .skip(skip)
     .limit(limit)
     .populate([
