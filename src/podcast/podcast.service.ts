@@ -53,7 +53,7 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
         body: JSON.stringify({
             name,
             template_id: template_id,
-            recording: { enabled: false },
+            // recording: { enabled: false },
         }),
     });
     const roomData = await response.json();
