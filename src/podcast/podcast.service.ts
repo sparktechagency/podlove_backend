@@ -121,9 +121,6 @@ const postNewRecordInWebhook = async (req: Request) => {
 
             // 🔹 Generate public S3 URL
             const s3Url = `https://${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${uploadParams.Key}`;
-
-            console.log("s3Url", s3Url)
-
             // ===================================
             // await StreamRoom.updateOne({ room_id: roomId }, {
             //     status: ENUM_LIVE_STREAM_STATUS.ended,
@@ -134,6 +131,7 @@ const postNewRecordInWebhook = async (req: Request) => {
                 { room_id: roomId },
                 {
                     $set: {
+                        status: PodcastStatus.DONE,
                         recordingUrl: {
                             video: s3Url,
                             sessionId: data.session_id,
@@ -146,7 +144,7 @@ const postNewRecordInWebhook = async (req: Request) => {
         if (event.type === "room.ended") {
             await Podcast.updateOne(
                 { room_id: roomId },
-                { $set: { status: PodcastStatus.DONE } }
+                { $set: { status: PodcastStatus.FINISHED } }
             );
             return;
         }
