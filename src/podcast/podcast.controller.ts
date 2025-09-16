@@ -17,7 +17,7 @@ const postNewRecordInWebhook = async (req: Request, res: Response, next: NextFun
 };
 
 const getDownloadLink = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const getDow = req.query.fileUrl;
+    const getDow = req.body.fileUrl;
     if (!getDow) {
         return res.status(StatusCodes.BAD_REQUEST).json({ success: false, message: "Record id is required", data: {} });
     }
