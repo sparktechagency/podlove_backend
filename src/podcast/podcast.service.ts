@@ -92,8 +92,9 @@ const postNewRecordInWebhook = async (req: Request) => {
             throw new Error("Not a recording event");
         }
         const roomId = event.room_id;
+        // console.log("roomId", roomId)
+        const room = await Podcast.findById({ room_id: roomId })
         console.log("roomId", roomId)
-        const room = await Podcast.findById(roomId)
         if (!room) {
             throw new Error("Room Id Not Found;");
         }
@@ -104,7 +105,6 @@ const postNewRecordInWebhook = async (req: Request) => {
             const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.m3u8`;
 
             // console.log("data", data)
-
 
             const response = await fetch(fileUrl);
             if (!response.ok) throw new Error(`Failed to fetch file: ${response.statusText}`);
