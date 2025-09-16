@@ -16,13 +16,33 @@ const postNewRecordInWebhook = async (req: Request, res: Response, next: NextFun
     return res.status(StatusCodes.OK).json({ success: true, message: "Privacy policy updated successfully", data: privacy });
 };
 
-const getDownloadLink = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const getDow = req.body.fileUrl;
-    if (!getDow) {
-        return res.status(StatusCodes.BAD_REQUEST).json({ success: false, message: "Record id is required", data: {} });
+const extractKeyFromUrl = (url: string) => {
+    try {
+        const parsed = new URL(url);
+        return parsed.pathname.substring(1);
+    } catch {
+        throw new Error("Invalid S3 URL");
     }
-    const privacy = await LiveStreamingServices.getDownloadLink(getDow as any);
-    return res.status(StatusCodes.OK).json({ success: true, message: "Download successfully", data: privacy });
+};
+
+const getDownloadLink = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const { fileUrl } = req.body;
+
+    if (!fileUrl) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+            success: false,
+            message: "fileUrl is required",
+            data: {},
+        });
+    }
+    const fileKey = extractKeyFromUrl(fileUrl);
+    const signedUrl = await LiveStreamingServices.getDownloadLink(fileKey);
+
+    return res.status(StatusCodes.OK).json({
+        success: true,
+        message: "Download URL generated successfully",
+        data: signedUrl,
+    });
 };
 
 

@@ -87,19 +87,21 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
     return { roomData, podcast: podcastUpdate };
 };
 
+
 const getDownloadLink = async (fileKey: string): Promise<string> => {
     try {
-
-        console.log("fileKey", fileKey)
         const bucket = process.env.AWS_S3_BUCKET;
         if (!bucket) throw new Error("AWS_S3_BUCKET is not set");
+
+        console.log("Generating signed URL for fileKey:", fileKey);
 
         const command = new GetObjectCommand({
             Bucket: bucket,
             Key: fileKey,
+            ResponseContentDisposition: `attachment; filename="${fileKey.split("/").pop()}"`,
         });
 
-        const url = await getSignedUrl(s3, command, { expiresIn: 3600 }); // 1 hour
+        const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
         return url;
     } catch (error) {
         console.error("Error generating S3 signed URL:", error);
