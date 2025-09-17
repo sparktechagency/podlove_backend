@@ -7,8 +7,6 @@ import { PodcastStatus } from "@shared/enums";
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-// const hms_access_key = process.env.HMS_ACCESS_KEY;
-// const hms_secret = process.env.HMS_SECRET_KEY;
 const template_id = process.env.HMS_TEMPLATE_ID;
 
 const s3 = new S3Client({
@@ -131,7 +129,7 @@ const postNewRecordInWebhook = async (req: Request) => {
         // stream.recording.success
         if (event.type.includes("recording.success")) {
             console.log("recording.success")
-            const fileUrl: string = data.hls_vod_recording_presigned_url;
+            const fileUrl: string = data?.hls_vod_recording_presigned_url || data?.recording_presigned_url;
             const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.m3u8`;
             // console.log("data", data)
 
@@ -166,9 +164,16 @@ const postNewRecordInWebhook = async (req: Request) => {
 
         }
 
-        //console.log("⚠️ Ignored event type:", event.type);
+        if (event.type.includes("leave.success")) {
+            console.log("leave.success")
+            await Podcast.updateOne(
+                { room_id: roomId },
+                { $set: { status: PodcastStatus.DONE } }
+            );
+            return;
+        }
 
-        if (event.type.includes("leave.success") || event.type.includes("end.success") || event.type.includes("close.success")) {
+        if (event.type.includes("end.success") || event.type.includes("close.success")) {
             console.log("leave.success || end.success || close.success")
             await Podcast.updateOne(
                 { room_id: roomId },
