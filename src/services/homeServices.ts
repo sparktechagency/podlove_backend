@@ -145,7 +145,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
     const subscriptionPlans = await SubscriptionPlan.find().lean();
 
     const hostPodcastMatches = await Podcast.find({
-      status: { $in: ["Scheduled", "Playing", "StreamStart"] },
+      status: { $in: ["Scheduled", "Done", "Playing", "StreamStart"] },
       "participants.user": userObjId,
     }).exec();
 
