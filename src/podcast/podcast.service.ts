@@ -131,6 +131,7 @@ const postNewRecordInWebhook = async (req: Request) => {
         const data = event.data;
         // stream.recording.success
         if (event.type.includes("recording.success")) {
+            console.log("recording.success")
             const fileUrl: string = data.hls_vod_recording_presigned_url;
             const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.m3u8`;
             // console.log("data", data)
@@ -169,6 +170,7 @@ const postNewRecordInWebhook = async (req: Request) => {
         //console.log("⚠️ Ignored event type:", event.type);
 
         if (event.type.includes("leave.success") || event.type.includes("end.success") || event.type.includes("close.success")) {
+            console.log("leave.success || end.success || close.success")
             await Podcast.updateOne(
                 { room_id: roomId },
                 { $set: { status: PodcastStatus.FINISHED } }
@@ -177,6 +179,7 @@ const postNewRecordInWebhook = async (req: Request) => {
         }
 
         if (event.type.includes("open.success") || event.type.includes("join.success")) {
+            console.log("join.success")
             await Podcast.updateOne(
                 { room_id: roomId },
                 { $set: { status: PodcastStatus.PLAYING } }
