@@ -183,14 +183,14 @@ const postNewRecordInWebhook = async (req: Request) => {
             return;
         }
 
-        if (event.type.includes("open.success") || event.type.includes("join.success")) {
-            console.log("join.success")
-            await Podcast.updateOne(
-                { room_id: roomId },
-                { $set: { status: PodcastStatus.PLAYING } }
-            );
-            return;
-        }
+        // if (event.type.includes("open.success") || event.type.includes("join.success")) {
+        //     console.log("join.success")
+        //     await Podcast.updateOne(
+        //         { room_id: roomId },
+        //         { $set: { status: PodcastStatus.PLAYING } }
+        //     );
+        //     return;
+        // }
 
         return;
     } catch (err: any) {
