@@ -25,7 +25,7 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
     }
 
     if (podcast.status !== PodcastStatus.STREAM_START) {
-        throw new Error("Your schedule time has not started yet");
+        // throw new Error("Your schedule time has not started yet");
     }
 
     const liveRoom = await StreamRoom.findOne({
