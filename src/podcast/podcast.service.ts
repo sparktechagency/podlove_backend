@@ -130,7 +130,8 @@ const postNewRecordInWebhook = async (req: Request) => {
         if (event.type.includes("recording.success")) {
             console.log("recording.success")
             const fileUrl: string = data?.hls_vod_recording_presigned_url || data?.recording_presigned_url;
-            const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.m3u8`;
+            const extension = fileUrl.endsWith(".mp4") ? "mp4" : "m3u8";
+            const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.${extension}`;
             // console.log("data", data)
 
             const response = await fetch(fileUrl);
