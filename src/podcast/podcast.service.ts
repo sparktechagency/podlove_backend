@@ -165,14 +165,14 @@ const postNewRecordInWebhook = async (req: Request) => {
 
         }
 
-        if (event.type.includes("leave.success")) {
-            console.log("leave.success")
-            await Podcast.updateOne(
-                { room_id: roomId },
-                { $set: { status: PodcastStatus.DONE } }
-            );
-            return;
-        }
+        // if (event.type.includes("leave.success")) {
+        //     console.log("leave.success")
+        //     await Podcast.updateOne(
+        //         { room_id: roomId },
+        //         { $set: { status: PodcastStatus.DONE } }
+        //     );
+        //     return;
+        // }
 
         if (event.type.includes("end.success") || event.type.includes("close.success")) {
             console.log("leave.success || end.success || close.success")
@@ -183,14 +183,14 @@ const postNewRecordInWebhook = async (req: Request) => {
             return;
         }
 
-        // if (event.type.includes("open.success") || event.type.includes("join.success")) {
-        //     console.log("join.success")
-        //     await Podcast.updateOne(
-        //         { room_id: roomId },
-        //         { $set: { status: PodcastStatus.PLAYING } }
-        //     );
-        //     return;
-        // }
+        if (event.type.includes("open.success") || event.type.includes("join.success")) {
+            console.log("join.success")
+            await Podcast.updateOne(
+                { room_id: roomId },
+                { $set: { status: PodcastStatus.PLAYING } }
+            );
+            return;
+        }
 
         return;
     } catch (err: any) {
