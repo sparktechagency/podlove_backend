@@ -20,6 +20,7 @@ const s3 = new S3Client({
 });
 
 const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
+    console.log(`✅ Podcast== ${podcastId} status set to PLAYING`);
     const podcast = await Podcast.findById(podcastId)
     if (!podcast) {
         throw new Error("Podcast not found");
@@ -113,9 +114,10 @@ const postNewRecordInWebhook = async (req: Request) => {
     try {
         const event = req.body as any;
         console.log("roomId", event)
-        if (event.type !== "hls.recording.success") {
-            throw new Error("Not a recording event");
-        }
+
+        // if (event.type.includes("recording.success")) {
+        //     throw new Error("Not a recording event");
+        // }
         const roomId = event.room_id;
         console.log("roomId", roomId)
 
@@ -127,7 +129,8 @@ const postNewRecordInWebhook = async (req: Request) => {
         }
 
         const data = event.data;
-        if (event.type === "hls.recording.success") {
+        // stream.recording.success
+        if (event.type.includes("recording.success")) {
             const fileUrl: string = data.hls_vod_recording_presigned_url;
             const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.m3u8`;
             // console.log("data", data)
@@ -162,14 +165,25 @@ const postNewRecordInWebhook = async (req: Request) => {
             );
 
         }
-        console.log("⚠️ Ignored event type:", event.type);
-        if (event.type === "room.ended") {
+
+        //console.log("⚠️ Ignored event type:", event.type);
+
+        if (event.type.includes("leave.success") || event.type.includes("end.success") || event.type.includes("close.success")) {
             await Podcast.updateOne(
                 { room_id: roomId },
                 { $set: { status: PodcastStatus.FINISHED } }
             );
             return;
         }
+
+        if (event.type.includes("open.success") || event.type.includes("join.success")) {
+            await Podcast.updateOne(
+                { room_id: roomId },
+                { $set: { status: PodcastStatus.PLAYING } }
+            );
+            return;
+        }
+
         return;
     } catch (err: any) {
         console.error("❌ Error in webhook handler:", err);

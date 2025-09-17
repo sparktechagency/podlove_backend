@@ -144,6 +144,16 @@
             "date": 1758021427922,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-16-17-error.log",
             "hash": "806dbc4d2838126ebdbf88a905b6c87635d5a8b767923f936bf9fb3c6eb74a51"
+        },
+        {
+            "date": 1758087610110,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-17-11-error.log",
+            "hash": "1afe29d9f76ea195d0853027783638ca91a6297a031409f563a7a698888b0839"
+        },
+        {
+            "date": 1758088927559,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-09-17-12-error.log",
+            "hash": "ef13273cc1bcf57289b7090c3a758cdd0d6670261032521d88268eb76379724d"
         }
     ],
     "hashType": "sha256"

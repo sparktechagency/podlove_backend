@@ -10,6 +10,7 @@ import mongoose, { Types } from "mongoose";
 import { DateTime } from "luxon";
 import { scheduler } from "node:timers/promises";
 import User from "@models/userModel";
+import LiveStreamingServices from "src/podcast/podcast.service";
 interface Participants {
   user: Types.ObjectId;
   isAllow: Boolean;
@@ -331,6 +332,11 @@ async function notifyScheduledPodcasts(): Promise<void> {
           update: { $set: { status: PodcastStatus.STREAM_START } },
         },
       });
+      const primaryUserId = p?.primaryUser.toString();
+      // @ts-ignore
+      const postCastId = p?._id.toString();
+      await LiveStreamingServices.createStreamingRoom(primaryUserId, postCastId)
+      console.log(`✅ Podcast ${p._id} status set to PLAYING`);
     }
   }
 
