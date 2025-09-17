@@ -329,7 +329,7 @@ async function notifyScheduledPodcasts(): Promise<void> {
       bulkOps.push({
         updateOne: {
           filter: { _id: p._id },
-          update: { $set: { status: PodcastStatus.STREAM_START } },
+          update: { $set: { status: PodcastStatus.PLAYING } },
         },
       });
       const primaryUserId = p?.primaryUser.toString();
