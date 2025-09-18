@@ -11,8 +11,13 @@ const get = async (req: Request, res: Response, next: NextFunction): Promise<any
 
 const update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { text } = req.body;
-  console.log("====", text)
+
   if (!text) return next(createError(StatusCodes.BAD_REQUEST, "No text provided!"));
+  const data = await TaC.find();
+  if (data.length === 0) {
+    const newTac = new TaC({ text: text });
+    await newTac.save();
+  }
   const tac = await TaC.findOneAndUpdate({}, { text: text }, { new: true });
   console.log("====", tac)
   return res.status(StatusCodes.OK).json({ success: true, message: "Terms and conditions updated successfully", data: tac });
