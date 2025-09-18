@@ -111,7 +111,6 @@ const getDownloadLink = async (fileKey: string): Promise<string> => {
     }
 };
 
-
 const postNewRecordInWebhook = async (req: Request) => {
     try {
         const event = req.body as any;
