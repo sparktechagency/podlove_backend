@@ -6,10 +6,9 @@ import Podcast from "@models/podcastModel";
 import { PodcastStatus } from "@shared/enums";
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { Request, Response } from "express";
-import ffmpeg from "fluent-ffmpeg";
-import { PassThrough } from "stream";
-
+import path from "path";
+import Ffmpeg from "fluent-ffmpeg";
+import fs from "fs";
 
 const template_id = process.env.HMS_TEMPLATE_ID;
 
@@ -91,137 +90,97 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
 };
 
 
-const getDownloadLink = async (fileKey: string, res: Response) => {
+const getDownloadLink = async (fileKey: string): Promise<string> => {
     try {
         const bucket = process.env.AWS_S3_BUCKET;
         if (!bucket) throw new Error("AWS_S3_BUCKET is not set");
 
-        // 1️⃣ Generate signed URL for the .m3u8
-        const command = new GetObjectCommand({ Bucket: bucket, Key: fileKey });
-        const m3u8Url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+        console.log("Generating signed URL for fileKey:", fileKey);
 
-        // 2️⃣ Set headers before streaming starts
-        res.setHeader("Content-Disposition", `attachment; filename="recording.mp4"`);
-        res.setHeader("Content-Type", "video/mp4");
+        const command = new GetObjectCommand({
+            Bucket: bucket,
+            Key: fileKey,
+            ResponseContentDisposition: `attachment; filename="${fileKey.split("/").pop()}"`,
+        });
 
-        // 3️⃣ Setup FFmpeg stream
-        const stream = new PassThrough();
-        ffmpeg(m3u8Url)
-            .outputFormat("mp4")
-            .on("start", (cmd) => console.log("FFmpeg started:", cmd))
-            .on("error", (err) => {
-                console.error("FFmpeg error:", err);
-                if (!res.headersSent) {
-                    res.status(500).end("Failed to convert video");
-                } else {
-                    res.end(); // close stream gracefully
-                }
-            })
-            .on("end", () => {
-                console.log("FFmpeg conversion finished");
-                res.end();
-            })
-            .pipe(stream);
-
-        // 4️⃣ Pipe to response
-        stream.pipe(res);
+        const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+        return url;
     } catch (error) {
-        console.error("Download error:", error);
-        if (!res.headersSent) {
-            res.status(500).send("Download failed");
-        }
+        console.error("Error generating S3 signed URL:", error);
+        throw new Error(`Failed to generate download link: ${(error as Error).message}`);
     }
 };
+
 
 const postNewRecordInWebhook = async (req: Request) => {
     try {
         const event = req.body as any;
-        console.log("roomId", event)
-
-        // if (event.type.includes("recording.success")) {
-        //     throw new Error("Not a recording event");
-        // }
         const roomId = event.room_id;
-        console.log("roomId", roomId)
+        const room = await Podcast.findOne({ room_id: roomId });
 
-        const room = await Podcast.findOne({ room_id: roomId })
-
-        if (!room) {
-            throw new Error("Room Id Not Found;");
-        }
+        if (!room) throw new Error("Room Id Not Found");
 
         const data = event.data;
-        // stream.recording.success
+
         if (event.type.includes("recording.success")) {
-            console.log("recording.success")
             const fileUrl: string = data?.hls_vod_recording_presigned_url || data?.recording_presigned_url;
-            const extension = fileUrl.endsWith(".mp4") ? "mp4" : "m3u8";
-            const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.${extension}`;
-            // console.log("data", data)
+            const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.mp4`;
+            const tmpFilePath = path.join("/tmp", fileName); // temp local file
 
-            const response = await fetch(fileUrl);
-            if (!response.ok) throw new Error(`Failed to fetch file: ${response.statusText}`);
-            const fileBuffer = Buffer.from(await response.arrayBuffer());
+            // 🔹 Convert .m3u8 to .mp4
+            await new Promise<void>((resolve, reject) => {
+                Ffmpeg(fileUrl)
+                    .output(tmpFilePath)
+                    .videoCodec("copy")
+                    .audioCodec("copy")
+                    .on("start", (cmd) => console.log("FFmpeg started:", cmd))
+                    .on("error", (err) => reject(err))
+                    .on("end", () => resolve())
+                    .run();
+            });
 
+            // 🔹 Upload converted MP4 to S3
+            const fileBuffer = fs.readFileSync(tmpFilePath);
             const uploadParams = {
                 Bucket: process.env.AWS_S3_BUCKET as string,
                 Key: `recordings/${fileName}`,
                 Body: fileBuffer,
-                ContentType: "application/vnd.apple.mpegurl",
+                ContentType: "video/mp4",
             };
-
             await s3.send(new PutObjectCommand(uploadParams));
 
-            // 🔹 Generate public S3 URL
             const s3Url = `https://${process.env.AWS_S3_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com/${uploadParams.Key}`;
 
+            // 🔹 Update DB
             await Podcast.updateOne(
                 { room_id: roomId },
                 {
                     $set: { status: PodcastStatus.DONE },
-                    $push: {
-                        recordingUrl: {
-                            video: s3Url,
-                            sessionId: data.session_id,
-                        },
-                    },
+                    $push: { recordingUrl: { video: s3Url, sessionId: data.session_id } },
                 }
             );
 
+            // Cleanup temp file
+            fs.unlinkSync(tmpFilePath);
         }
 
-        // if (event.type.includes("leave.success")) {
-        //     console.log("leave.success")
-        //     await Podcast.updateOne(
-        //         { room_id: roomId },
-        //         { $set: { status: PodcastStatus.DONE } }
-        //     );
-        //     return;
-        // }
+        if (event.type.includes("leave.success")) {
+            await Podcast.updateOne({ room_id: roomId }, { $set: { status: PodcastStatus.DONE } });
+        }
 
         if (event.type.includes("end.success") || event.type.includes("close.success")) {
-            console.log("leave.success || end.success || close.success")
-            await Podcast.updateOne(
-                { room_id: roomId },
-                { $set: { status: PodcastStatus.FINISHED } }
-            );
-            return;
+            await Podcast.updateOne({ room_id: roomId }, { $set: { status: PodcastStatus.FINISHED } });
         }
 
         if (event.type.includes("open.success") || event.type.includes("join.success")) {
-            console.log("join.success")
-            await Podcast.updateOne(
-                { room_id: roomId },
-                { $set: { status: PodcastStatus.PLAYING } }
-            );
-            return;
+            await Podcast.updateOne({ room_id: roomId }, { $set: { status: PodcastStatus.PLAYING } });
         }
 
-        return;
     } catch (err: any) {
         console.error("❌ Error in webhook handler:", err);
     }
 };
+
 
 const LiveStreamingServices = {
     createStreamingRoom,

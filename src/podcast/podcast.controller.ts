@@ -36,7 +36,7 @@ const getDownloadLink = async (req: Request, res: Response, next: NextFunction):
         });
     }
     const fileKey = extractKeyFromUrl(fileUrl);
-    const signedUrl = await LiveStreamingServices.getDownloadLink(fileKey, res);
+    const signedUrl = await LiveStreamingServices.getDownloadLink(fileKey);
 
     return res.status(StatusCodes.OK).json({
         success: true,
