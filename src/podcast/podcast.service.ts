@@ -6,6 +6,10 @@ import Podcast from "@models/podcastModel";
 import { PodcastStatus } from "@shared/enums";
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { Request, Response } from "express";
+import ffmpeg from "fluent-ffmpeg";
+import { PassThrough } from "stream";
+
 
 const template_id = process.env.HMS_TEMPLATE_ID;
 
@@ -87,24 +91,37 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
 };
 
 
-const getDownloadLink = async (fileKey: string): Promise<string> => {
+const getDownloadLink = async (fileKey: string, res: Response) => {
     try {
         const bucket = process.env.AWS_S3_BUCKET;
         if (!bucket) throw new Error("AWS_S3_BUCKET is not set");
 
-        console.log("Generating signed URL for fileKey:", fileKey);
-
+        // 1️⃣ Get signed URL for the .m3u8
         const command = new GetObjectCommand({
             Bucket: bucket,
-            Key: fileKey,
-            ResponseContentDisposition: `attachment; filename="${fileKey.split("/").pop()}"`,
+            Key: fileKey, // this will be .m3u8
         });
+        const m3u8Url = await getSignedUrl(s3, command, { expiresIn: 3600 });
 
-        const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
-        return url;
+        // 2️⃣ Stream convert .m3u8 -> .mp4
+        res.setHeader("Content-Disposition", `attachment; filename="recording.mp4"`);
+        res.setHeader("Content-Type", "video/mp4");
+
+        const stream = new PassThrough();
+        ffmpeg(m3u8Url)
+            .outputFormat("mp4")
+            .videoCodec("copy")
+            .audioCodec("copy")
+            .on("error", (err) => {
+                console.error("FFmpeg error:", err);
+                res.status(500).send("Failed to convert video");
+            })
+            .pipe(stream);
+
+        stream.pipe(res);
     } catch (error) {
-        console.error("Error generating S3 signed URL:", error);
-        throw new Error(`Failed to generate download link: ${(error as Error).message}`);
+        console.error("Download error:", error);
+        res.status(500).send("Download failed");
     }
 };
 
