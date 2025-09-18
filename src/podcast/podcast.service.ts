@@ -96,32 +96,40 @@ const getDownloadLink = async (fileKey: string, res: Response) => {
         const bucket = process.env.AWS_S3_BUCKET;
         if (!bucket) throw new Error("AWS_S3_BUCKET is not set");
 
-        // 1️⃣ Get signed URL for the .m3u8
-        const command = new GetObjectCommand({
-            Bucket: bucket,
-            Key: fileKey, // this will be .m3u8
-        });
+        // 1️⃣ Generate signed URL for the .m3u8
+        const command = new GetObjectCommand({ Bucket: bucket, Key: fileKey });
         const m3u8Url = await getSignedUrl(s3, command, { expiresIn: 3600 });
 
-        // 2️⃣ Stream convert .m3u8 -> .mp4
+        // 2️⃣ Set headers before streaming starts
         res.setHeader("Content-Disposition", `attachment; filename="recording.mp4"`);
         res.setHeader("Content-Type", "video/mp4");
 
+        // 3️⃣ Setup FFmpeg stream
         const stream = new PassThrough();
         ffmpeg(m3u8Url)
             .outputFormat("mp4")
-            .videoCodec("copy")
-            .audioCodec("copy")
+            .on("start", (cmd) => console.log("FFmpeg started:", cmd))
             .on("error", (err) => {
                 console.error("FFmpeg error:", err);
-                res.status(500).send("Failed to convert video");
+                if (!res.headersSent) {
+                    res.status(500).end("Failed to convert video");
+                } else {
+                    res.end(); // close stream gracefully
+                }
+            })
+            .on("end", () => {
+                console.log("FFmpeg conversion finished");
+                res.end();
             })
             .pipe(stream);
 
+        // 4️⃣ Pipe to response
         stream.pipe(res);
     } catch (error) {
         console.error("Download error:", error);
-        res.status(500).send("Download failed");
+        if (!res.headersSent) {
+            res.status(500).send("Download failed");
+        }
     }
 };
 
