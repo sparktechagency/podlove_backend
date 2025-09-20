@@ -127,9 +127,9 @@ async function findMatches(
     null,
     { session }
   ).lean();
-  // // console.log("candidate2: ", candidate2, " candidates: ", candidates);
+  // console.log("candidate2: ", candidate2, " candidates: ", candidates);
   let matchCandidate = candidates.length < limitCount ? candidate2 : candidates;
-  // console.log("matchCandidates: ", matchCandidate);
+  console.log("matchCandidates: ", matchCandidate);
   // 4) Distance filtering
   const nearby = matchCandidate.filter(
     (c) =>
@@ -138,7 +138,7 @@ async function findMatches(
       pref.distance : calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude)
   );
 
-  // console.log("nearby: ", nearby);
+  console.log("nearby: ", nearby);
   // 5) Compute scores with concurrency limit
   const scored = await Promise.all(
     nearby.map(async (c) => ({
@@ -178,18 +178,11 @@ const matchUser = async (
   session.startTransaction();
   try {
     const userId = req.params.id;
-    let { compatibility: userCap } = req.body;
+    let { compatibility } = req.body;
     // if (!Array.isArray(compatibility)) {
     //   throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of strings");
     // }
-
-    const user = await User.findById(userId);
-    if (!user?.compatibility) {
-      throw createError(StatusCodes.NOT_FOUND, "User not found");
-    }
-
-    const compatibility = userCap ? userCap : user.compatibility;
-    console.log("body1", userId, compatibility)
+    console.log("compatibility", userId, compatibility)
     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
     if (podcastExists) {
       return res.status(StatusCodes.CONFLICT).json({
@@ -203,7 +196,10 @@ const matchUser = async (
     const podcast = await Podcast.create([{ primaryUser: userId, participants: topMatches, status: "NotScheduled" }], {
       session,
     });
-    console.log("podcast====1", podcast)
+
+    console.log("topMatches", topMatches);
+    console.log("podcast", podcast);
+
     await session.commitTransaction();
     session.endSession();
     return res.status(StatusCodes.OK).json({ success: true, message: "Matched users successfully", data: podcast });
