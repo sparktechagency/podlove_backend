@@ -182,7 +182,7 @@ const matchUser = async (
     // if (!Array.isArray(compatibility)) {
     //   throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of strings");
     // }
-    // console.log("compatibility", userId, compatibility)
+    console.log("body1", userId, compatibility)
     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
     if (podcastExists) {
       return res.status(StatusCodes.CONFLICT).json({
@@ -196,6 +196,7 @@ const matchUser = async (
     const podcast = await Podcast.create([{ primaryUser: userId, participants: topMatches, status: "NotScheduled" }], {
       session,
     });
+    console.log("podcast====1", podcast)
     await session.commitTransaction();
     session.endSession();
     return res.status(StatusCodes.OK).json({ success: true, message: "Matched users successfully", data: podcast });
