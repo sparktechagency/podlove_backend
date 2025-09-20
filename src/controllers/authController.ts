@@ -205,6 +205,8 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
   const user = req.user;
   const { password, newPassword, confirmPassword } = req.body;
 
+  console.log("req.user: ", req.user, password, newPassword, confirmPassword);
+
   let auth = await Auth.findByEmail(user.email);
   if (!auth) throw createError(StatusCodes.NOT_FOUND, "User Not Found");
   if (!(await auth.comparePassword(password)))
