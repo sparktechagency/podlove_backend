@@ -178,10 +178,17 @@ const matchUser = async (
   session.startTransaction();
   try {
     const userId = req.params.id;
-    let { compatibility } = req.body;
+    let { compatibility: userCap } = req.body;
     // if (!Array.isArray(compatibility)) {
     //   throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of strings");
     // }
+
+    const user = await User.findById(userId);
+    if (!user?.compatibility) {
+      throw createError(StatusCodes.NOT_FOUND, "User not found");
+    }
+
+    const compatibility = userCap ? userCap : user.compatibility;
     console.log("body1", userId, compatibility)
     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
     if (podcastExists) {
