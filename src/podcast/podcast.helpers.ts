@@ -33,7 +33,7 @@ export function generateRoomName(length: number = 10): string {
         name += crypto
             .randomBytes(length)
             .toString('base64')
-            .replace(/[^a-zA-Z0-9]/g, '');
+            .replace(/[^a-zA-Z0-10]/g, '');
     }
     return name.substring(0, length);
 }
