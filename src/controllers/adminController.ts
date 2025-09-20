@@ -211,8 +211,8 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction): P
 
 const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    const email = req.user?.email;
-    const { password, newPassword, confirmPassword } = req.body;
+    // const email = req.user?.email;
+    const { password, newPassword, confirmPassword, email } = req.body;
 
     console.log("req.admin: ", password, newPassword, confirmPassword);
 
