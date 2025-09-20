@@ -197,8 +197,8 @@ const matchUser = async (
       session,
     });
 
-    console.log("topMatches", topMatches);
-    console.log("podcast", podcast);
+    // console.log("topMatches", topMatches);
+    // console.log("podcast", podcast);
 
     await session.commitTransaction();
     session.endSession();
