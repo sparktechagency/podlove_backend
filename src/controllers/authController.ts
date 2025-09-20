@@ -201,6 +201,22 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
   }
 };
 
+// const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+//   const user = req.user;
+//   const { password, newPassword, confirmPassword } = req.body;
+
+
+//   let auth = await Auth.findByEmail(user.email);
+//   if (!auth) throw createError(StatusCodes.NOT_FOUND, "User Not Found");
+//   if (!(await auth.comparePassword(password)))
+//     return next(createError(StatusCodes.UNAUTHORIZED, "Wrong Password. Please try again."));
+
+//   auth.password = newPassword;
+//   await auth.save();
+//   return res.status(StatusCodes.OK).json({ success: true, message: "Password changed successfully", data: {} });
+// };
+
+
 const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const user = req.user;
   const { password, newPassword, confirmPassword } = req.body;
