@@ -10,7 +10,6 @@ import mongoose, { Types } from "mongoose";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const user = await User.findById(req.user.userId);
-  console.log("user====2", user)
   // if (user!.isSelectedForPodcast) return res.status(StatusCodes.CONFLICT).json({
   //   success: true,
   //   message: "User is already selected for another podcast",
@@ -28,7 +27,6 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   //     data: {}
   //   });
   const podcast = await Podcast.create({ primaryUser: user!._id, participants: participants });
-  console.log("podcast====2", podcast)
   return res.status(StatusCodes.CREATED).json({
     success: true,
     message: "User successfully scheduled for the podcast",
