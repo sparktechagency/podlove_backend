@@ -6,9 +6,7 @@ import Podcast from "@models/podcastModel";
 import { PodcastStatus } from "@shared/enums";
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import path from "path";
-import Ffmpeg from "fluent-ffmpeg";
-import fs from "fs";
+
 
 const template_id = process.env.HMS_TEMPLATE_ID;
 
@@ -55,10 +53,10 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
         body: JSON.stringify({
             name,
             template_id: template_id,
-            // recording: { enabled: false },
         }),
     });
     const roomData = await response.json();
+
 
     const roomCodes = await createRoomCodesForAllRoles(roomData.id);
 

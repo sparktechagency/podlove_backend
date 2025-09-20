@@ -3,7 +3,7 @@ import { PodcastStatus, PodcastType } from "@shared/enums";
 import { IRoomCode } from "src/podcast/podcast.interface";
 
 const RoomCodeSchema: Schema = new Schema<IRoomCode>({
-  id: { type: String, required: true, unique: true },
+  id: { type: String, required: true },
   code: { type: String, required: true },
   room_id: { type: String, required: true, index: true },
   role: { type: String, required: true },
