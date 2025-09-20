@@ -91,7 +91,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
       throw next(createError(StatusCodes.FORBIDDEN, "You Account is Blocked by Admisnistrator, Please contact our assistance"))
     }
 
-    // // console.log("")
+    console.log("userId", userId)
 
     // Find the podcast where they’re primary or a participant
     const podcast = await Podcast.findOne({
@@ -100,6 +100,8 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
       .populate({ path: "participants.user", select: "name bio interests" })
       .populate({ path: "primaryUser", select: "name bio interests" })
       .lean();
+
+    console.log("podcast home: ", podcast);
     const isPrimaryUser = !!podcast && podcast.primaryUser._id.toString() === userId;
     if (!podcast) {
       throw new Error("podcast is null");
