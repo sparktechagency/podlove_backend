@@ -214,6 +214,8 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
     const email = req.admin?.email;
     const { password, newPassword, confirmPassword } = req.body;
 
+    console.log("req.admin: ", password, newPassword, confirmPassword);
+
     if (!email) {
       throw createError(StatusCodes.UNAUTHORIZED, "Unauthorized access");
     }
@@ -241,6 +243,8 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
 
     admin.password = newPassword;
     await admin.save();
+
+    console.log("Password changed successfully", isMatch);
 
     return res
       .status(StatusCodes.OK)
