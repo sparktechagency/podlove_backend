@@ -13,7 +13,8 @@ import { Socket } from "socket.io";
 
 const getUserInfo = async (authId: string): Promise<DecodedUser | null> => {
   let error, auth, user, data: DecodedUser;
-  [error, auth] = await to(Auth.findById(authId).select("email role isVerified isBlocked"));``
+  [error, auth] = await to(Auth.findById(authId).select("email role isVerified isBlocked"));
+  console.log("authId", authId, auth);
   if (error || !auth) return null;
   [error, user] = await to(User.findOne({ auth: authId }));
   if (error || !user) return null;
