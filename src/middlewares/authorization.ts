@@ -143,8 +143,6 @@ const getAdminInfo = async (id: string): Promise<DecodedAdmin | null> => {
   [error, admin] = await to(Admin.findById(id)); // or findOne({ auth: id })
   if (error || !admin) return null;
 
-  if (admin.isBlocked) return null;
-
   data = {
     id: admin._id!.toString(),
     email: admin.email,
