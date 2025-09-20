@@ -210,16 +210,44 @@ const resetPassword = async (req: Request, res: Response, next: NextFunction): P
 };
 
 const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const email = req.admin.email;
-  const { password, newPassword, confirmPassword } = req.body;
-  const admin = await Admin.findByEmail(email);
-  if (!admin) throw createError(StatusCodes.NOT_FOUND, "Admin Not Found");
-  if (!(await admin.comparePassword(password)))
-    throw createError(StatusCodes.UNAUTHORIZED, "Wrong Password. Please try again.");
+  try {
+    const email = req.admin?.email;
+    const { password, newPassword, confirmPassword } = req.body;
 
-  admin.password = newPassword;
-  await admin.save();
-  return res.status(StatusCodes.OK).json({ success: true, message: "Password changed successfully" });
+    if (!email) {
+      throw createError(StatusCodes.UNAUTHORIZED, "Unauthorized access");
+    }
+
+    if (!password || !newPassword || !confirmPassword) {
+      throw createError(StatusCodes.BAD_REQUEST, "All fields are required");
+    }
+
+    if (newPassword !== confirmPassword) {
+      throw createError(
+        StatusCodes.BAD_REQUEST,
+        "New password and confirm password do not match"
+      );
+    }
+
+    const admin = await Admin.findByEmail(email);
+    if (!admin) {
+      throw createError(StatusCodes.NOT_FOUND, "Admin not found");
+    }
+
+    const isMatch = await admin.comparePassword(password);
+    if (!isMatch) {
+      throw createError(StatusCodes.UNAUTHORIZED, "Wrong password. Please try again.");
+    }
+
+    admin.password = newPassword;
+    await admin.save();
+
+    return res
+      .status(StatusCodes.OK)
+      .json({ success: true, message: "Password changed successfully" });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const AdminController = {
