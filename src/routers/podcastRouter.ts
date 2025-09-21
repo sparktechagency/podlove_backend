@@ -22,7 +22,9 @@ router.post("/create_room/:podcastId", authorize, asyncHandler(LivePodcastContro
 // ====================================
 router.get("/", asyncHandler(PodcastController.getPodcasts));
 router.post("/download", asyncHandler(LivePodcastController.getDownloadLink));
-router.post("/send_questions_answer", authorize, asyncHandler(LivePodcastController.sendQuestionsAnswer));
+router.post("/send_questions_answer",
+    authorize,
+    asyncHandler(LivePodcastController.sendQuestionsAnswer));
 
 // ==============================
 // router.post('/end/webhook', asyncHandler(LivePodcastController.postPodcastInWebhook))
