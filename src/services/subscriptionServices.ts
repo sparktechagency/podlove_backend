@@ -47,7 +47,7 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
           userId: userId,
         },
       },
-      success_url: `https://podlove.co/home`,
+      success_url: `https://podlove.co/congratulation`,
       cancel_url: `https://podlove.co/subscription-plan`,
     })
   );
