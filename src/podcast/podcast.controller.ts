@@ -46,7 +46,14 @@ const getDownloadLink = async (req: Request, res: Response, next: NextFunction):
 };
 
 
+const sendQuestionsAnswer = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+
+    const result = await LiveStreamingServices.sendQuestionsAnswer(req as any);
+    return res.status(StatusCodes.OK).json({ success: true, message: "Feedback submitted successfully", data: result });
+};
+
 const LivePodcastController = {
+    sendQuestionsAnswer,
     createStreamingRoom,
     postNewRecordInWebhook,
     getDownloadLink

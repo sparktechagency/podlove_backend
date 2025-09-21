@@ -5,10 +5,8 @@ import { AdminAccess } from "@shared/enums";
 import to from "await-to-ts";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
-import generateOTP from "@utils/generateOTP";
 import sendEmail from "@utils/sendEmail";
 import Admin from "@models/adminModel";
-
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, email, contact, password } = req.body;
@@ -170,7 +168,6 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
     data: { accessToken }
   });
 };
-
 
 const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;

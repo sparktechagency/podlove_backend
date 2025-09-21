@@ -1,7 +1,7 @@
 import { getMgmToken } from "@utils/getMgmToken";
 import { ENUM_LIVE_STREAM_STATUS, HMS_ENDPOINT } from "./index";
 import { createRoomCodesForAllRoles, generateRoomName } from "./podcast.helpers";
-import { StreamRoom } from "./podcast.model";
+import { PodcastFeedback, StreamRoom } from "./podcast.model";
 import Podcast from "@models/podcastModel";
 import { PodcastStatus } from "@shared/enums";
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
@@ -87,7 +87,6 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
     return { roomData, podcast: podcastUpdate };
 };
 
-
 const getDownloadLink = async (fileKey: string): Promise<string> => {
     try {
         const bucket = process.env.AWS_S3_BUCKET;
@@ -112,11 +111,6 @@ const getDownloadLink = async (fileKey: string): Promise<string> => {
 const postNewRecordInWebhook = async (req: Request) => {
     try {
         const event = req.body as any;
-        console.log("roomId", event)
-
-        // if (event.type.includes("recording.success")) {
-        //     throw new Error("Not a recording event");
-        // }
         const roomId = event.room_id;
         console.log("roomId", roomId)
 
@@ -177,18 +171,26 @@ const postNewRecordInWebhook = async (req: Request) => {
 
         if (event.type.includes("end.success") || event.type.includes("close.success")) {
             console.log("leave.success || end.success || close.success")
+            const room = await Podcast.findOne({ room_id: roomId })
+            if (!room) {
+                throw new Error("Room Id Not Found;");
+            }
             await Podcast.updateOne(
                 { room_id: roomId },
-                { $set: { status: PodcastStatus.FINISHED } }
+                {
+                    $set: {
+                        status: PodcastStatus.FINISHED,
+                        finishStatus: room.scheduleStatus === "1st" ? "1stFinish" : "2ndFinish",
+                    }
+                }
             );
             return;
         }
 
         if (event.type.includes("open.success") || event.type.includes("join.success")) {
-            console.log("join.success")
             await Podcast.updateOne(
                 { room_id: roomId },
-                { $set: { status: PodcastStatus.PLAYING } }
+                { $set: { status: PodcastStatus.PLAYING, finishStatus: null } }
             );
             return;
         }
@@ -199,12 +201,47 @@ const postNewRecordInWebhook = async (req: Request) => {
     }
 };
 
+const sendQuestionsAnswer = async (req: any) => {
+    try {
+        const userId = req.user.userId;
+
+        const { podcastId, responses, scheduleStatus } = req.body as {
+            podcastId: string;
+            scheduleStatus: "1st" | "2nd";
+            responses: { question: string; answer: any }[];
+        };
+
+        if (!podcastId || !responses || !responses.length) {
+            throw new Error("Podcast ID and responses are required");
+        }
+
+        const feedback = new PodcastFeedback({
+            userId,
+            podcastId,
+            responses
+        });
+
+        await feedback.save();
+
+        const podcast = await Podcast.findByIdAndUpdate(podcastId, {
+            questionsStatus: scheduleStatus === "1st" ? "1stDone" : "2ndDone"
+        });
+        if (!podcast) {
+            throw new Error("Podcast not found");
+        }
+
+        return feedback
+    } catch (error) {
+        console.error("Error saving podcast feedback:", error);
+        throw new Error("Failed to save feedback");
+    }
+};
 
 const LiveStreamingServices = {
     createStreamingRoom,
     postNewRecordInWebhook,
-    getDownloadLink
-    // endStreamingRoom
+    getDownloadLink,
+    sendQuestionsAnswer
 };
 
 export default LiveStreamingServices;

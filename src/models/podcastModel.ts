@@ -13,6 +13,9 @@ const RoomCodeSchema: Schema = new Schema<IRoomCode>({
 });
 
 export type PodcastSchema = Document & {
+  finishStatus: string | null;
+  questionsStatus: string | null;
+  scheduleStatus: string | null;
   room_id: string;
   primaryUser: Types.ObjectId;
   participants: {
@@ -69,6 +72,21 @@ const podcastSchema = new Schema<PodcastSchema>({
     type: String,
     enum: PodcastStatus,
     default: PodcastStatus.NOT_SCHEDULED,
+  },
+  finishStatus: {
+    type: String,
+    enum: ["1stFinish", "2ndFinish"],
+    default: null,
+  },
+  questionsStatus: {
+    type: String,
+    enum: ["1stDone", "2ndDone"],
+    default: null,
+  },
+  scheduleStatus: {
+    type: String,
+    enum: ["1st", "2nd"],
+    default: null,
   },
   recordingUrl: {
     type: [Object],

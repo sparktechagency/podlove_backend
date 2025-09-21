@@ -74,8 +74,34 @@ const StreamRoomSchema = new Schema<IStreamRoom>(
     { timestamps: true }
 );
 
+const podcastFeedbackSchema = new Schema({
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    podcastId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Podcast',
+        required: true
+    },
+    responses: [
+        {
+            question: { type: String, required: true },
+            answer: Schema.Types.Mixed
+        }
+    ],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+
+const PodcastFeedback = model<IStreamRoom>('podcastFeedback', podcastFeedbackSchema);
 const StreamRoom = model<IStreamRoom>('StreamRoom', StreamRoomSchema);
 
 export {
-    StreamRoom
+    StreamRoom,
+    PodcastFeedback
 };

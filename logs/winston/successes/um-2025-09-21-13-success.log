@@ -1,0 +1,6 @@
+Sun Sep 21 2025 13:2:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Sep 21 2025 13:2:45 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Sep 21 2025 13:2:46 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Sep 21 2025 13:2:46 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Sep 21 2025 13:2:46 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sun Sep 21 2025 13:2:46 [Podlove] [32minfo[39m: Socket.IO server initialized

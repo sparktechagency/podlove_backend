@@ -144,6 +144,7 @@ const podcastDone = async (req: Request, res: Response, next: NextFunction): Pro
 // };
 
 const setSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+
   try {
     // Ensure the request is authenticated
     const hostUserId = req.admin.id;
@@ -160,6 +161,9 @@ const setSchedule = async (req: Request, res: Response, next: NextFunction): Pro
     // 1) Update schedule + status
     podcast.schedule = { date, day, time };
     podcast.status = PodcastStatus.SCHEDULED;
+    podcast.room_id = "";
+    podcast.roomCodes = [];
+    podcast.scheduleStatus = podcast?.scheduleStatus === "1st" ? "2nd" : "1st";
     await podcast.save();
 
     const primaryUserId = podcast.primaryUser.toString();
