@@ -8,7 +8,6 @@ import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import Auth from "@models/authModel";
 
-
 const template_id = process.env.HMS_TEMPLATE_ID;
 
 const s3 = new S3Client({
@@ -238,13 +237,12 @@ const send7daysSurveyFeedback = async (user: any, payload: any) => {
 
         await feedback.save();
 
-        const authUser = await Auth.findByIdAndUpdate(user.userId, {
+        const authUser = await Auth.findByIdAndUpdate(user.authId, {
             shareFeedback: "completed"
         });
         if (!authUser) {
             throw new Error("User not found");
         }
-
 
         return feedback
     } catch (error) {

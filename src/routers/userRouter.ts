@@ -7,6 +7,7 @@ import fileHandler from "@middlewares/fileHandler";
 import MatchedServices from "@services/matchesServices";
 import { asyncHandler } from "@shared/asyncHandler";
 import { upload } from "@utils/multerConfig";
+import LivePodcastController from "src/podcast/podcast.controller";
 
 const router = express.Router();
 
@@ -21,5 +22,7 @@ router.get("/match/findMatch", authorize, MatchedServices.findMatch);
 router.get("/get-all-users", asyncHandler(UserController.getAll));
 router.get("/get-all-premium-users", UserServices.getAllPremiumUsers);
 router.get("/", authorize, asyncHandler(UserController.get));
+router.post("/send_survey_feedback", authorize, asyncHandler(LivePodcastController.send7daysSurveyFeedback));
+
 
 export default router;
