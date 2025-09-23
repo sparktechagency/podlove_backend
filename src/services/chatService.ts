@@ -85,7 +85,6 @@ async function sendMessage(
   return populatedChat!.messages[populatedChat!.messages.length - 1];
 }
 
-
 async function editMessage(
   chatId: string,
   messageId: string,
@@ -208,9 +207,6 @@ async function deleteMessage(chatId: string, messageId: string, userId: string):
   );
   await chat.save();
 }
-
-
-
 
 const ChatService = {
   deleteMessage,

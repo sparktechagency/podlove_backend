@@ -1,11 +1,12 @@
 import { getMgmToken } from "@utils/getMgmToken";
 import { ENUM_LIVE_STREAM_STATUS, HMS_ENDPOINT } from "./index";
 import { createRoomCodesForAllRoles, generateRoomName } from "./podcast.helpers";
-import { PodcastFeedback, StreamRoom } from "./podcast.model";
+import { PodcastFeedback, StreamRoom, SurveyFeedback } from "./podcast.model";
 import Podcast from "@models/podcastModel";
 import { PodcastStatus } from "@shared/enums";
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import Auth from "@models/authModel";
 
 
 const template_id = process.env.HMS_TEMPLATE_ID;
@@ -160,15 +161,6 @@ const postNewRecordInWebhook = async (req: Request) => {
 
         }
 
-        // if (event.type.includes("leave.success")) {
-        //     console.log("leave.success")
-        //     await Podcast.updateOne(
-        //         { room_id: roomId },
-        //         { $set: { status: PodcastStatus.DONE } }
-        //     );
-        //     return;
-        // }
-
         if (event.type.includes("end.success") || event.type.includes("close.success")) {
             console.log("leave.success || end.success || close.success")
             const room = await Podcast.findOne({ room_id: roomId })
@@ -237,11 +229,36 @@ const sendQuestionsAnswer = async (req: any) => {
     }
 };
 
+const send7daysSurveyFeedback = async (user: any, payload: any) => {
+    try {
+        const feedback = new SurveyFeedback({
+            userId: user.userId,
+            responses: payload.responses
+        });
+
+        await feedback.save();
+
+        const authUser = await Auth.findByIdAndUpdate(user.userId, {
+            shareFeedback: "completed"
+        });
+        if (!authUser) {
+            throw new Error("User not found");
+        }
+
+
+        return feedback
+    } catch (error) {
+        console.error("Error saving podcast feedback:", error);
+        throw new Error("Failed to save feedback");
+    }
+}
+
 const LiveStreamingServices = {
     createStreamingRoom,
     postNewRecordInWebhook,
     getDownloadLink,
-    sendQuestionsAnswer
+    sendQuestionsAnswer,
+    send7daysSurveyFeedback
 };
 
 export default LiveStreamingServices;

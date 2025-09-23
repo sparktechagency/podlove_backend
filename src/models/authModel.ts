@@ -7,6 +7,7 @@ export type AuthSchema = Document & {
   email: string;
   password: string;
   googleId: string;
+  shareFeedback: string;
   appleId: string;
   verificationOTP: string;
   verificationOTPExpiredAt: Date | null;
@@ -41,6 +42,10 @@ const authSchema: Schema<AuthSchema> = new Schema<AuthSchema>({
   appleId: {
     type: String,
   },
+  shareFeedback: {
+    type: String,
+    default: ""
+  },
   verificationOTP: {
     type: String,
   },
@@ -61,7 +66,7 @@ const authSchema: Schema<AuthSchema> = new Schema<AuthSchema>({
     type: Boolean,
     default: false,
   }
-});
+}, { timestamps: true });
 
 authSchema.methods.comparePassword = async function (password: string) {
   return await bcrypt.compare(password, this.password);

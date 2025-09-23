@@ -6,6 +6,51 @@ import createError from "http-errors";
 import Auth from "@models/authModel";
 import { SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 import OpenaiServices from "./openaiServices";
+import cron from "node-cron";
+import { logger } from "@shared/logger";
+import Notification from "@models/notificationModel";
+
+cron.schedule("0 0 * * *", async () => { // every day at midnight
+  try {
+    const now = new Date();
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000); // 7 days ago
+
+    console.log("Cron job running", now);
+
+    const users = await Auth.find({
+      shareFeedback: "",
+      createdAt: { $lte: sevenDaysAgo }
+    });
+
+    if (users.length === 0) return;
+
+    for (const user of users) {
+      user.shareFeedback = "7days";
+      await user.save();
+
+      const feedbackNotification = await Notification.create({
+        type: "podcast_feedback",
+        user: user._id,
+        message: [
+          {
+            title: "Share your feedback!",
+            description: "Please fill the survey for your podcast feedback.",
+          },
+        ],
+        read: false,
+        section: "user",
+      });
+
+      if (!feedbackNotification) {
+        logger.error(`Notification failed for user: ${user._id}`);
+      }
+    }
+
+    logger.info(`Updated shareFeedback and notifications for ${users.length} users`);
+  } catch (error) {
+    logger.error("Error in feedback cron job:", error);
+  }
+});
 
 const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { search } = req.query;
