@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
 import { IRoomCode, IStreamRoom } from "./podcast.interface";
 import { ENUM_LIVE_STREAM_STATUS } from "./index";
+import Video from "twilio/lib/rest/Video";
 
 const RoomCodeSchema: Schema = new Schema<IRoomCode>({
     id: { type: String, required: true, unique: true },
@@ -115,11 +116,39 @@ const surveyFeedbackSchema = new Schema({
     }
 });
 
-const PodcastFeedback = model<IStreamRoom>('podcastFeedback', podcastFeedbackSchema);
-const SurveyFeedback = model<IStreamRoom>('surveyFeedback', surveyFeedbackSchema);
+const podcastVideosSchema = new Schema({
+    video: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+const mediaPolicySchema = new Schema({
+    text: {
+        type: String,
+    },
+});
+const SMSPolicySchema = new Schema({
+    text: {
+        type: String,
+    },
+});
+
+const SMSPolicy = model('SMS-Policy', SMSPolicySchema);
+const MediaPolicy = model('Media-Policy', mediaPolicySchema);
+const PodcastVideos = model('podcastVideos', podcastVideosSchema);
+const PodcastFeedback = model('podcastFeedback', podcastFeedbackSchema);
+const SurveyFeedback = model('surveyFeedback', surveyFeedbackSchema);
 const StreamRoom = model<IStreamRoom>('StreamRoom', StreamRoomSchema);
 
 export {
+    MediaPolicy,
+    SMSPolicy,
+    PodcastVideos,
     StreamRoom,
     PodcastFeedback,
     SurveyFeedback

@@ -1,10 +1,10 @@
 import { getMgmToken } from "@utils/getMgmToken";
 import { ENUM_LIVE_STREAM_STATUS, HMS_ENDPOINT } from "./index";
 import { createRoomCodesForAllRoles, generateRoomName } from "./podcast.helpers";
-import { PodcastFeedback, StreamRoom, SurveyFeedback } from "./podcast.model";
+import { MediaPolicy, PodcastFeedback, PodcastVideos, SMSPolicy, StreamRoom, SurveyFeedback } from "./podcast.model";
 import Podcast from "@models/podcastModel";
 import { PodcastStatus } from "@shared/enums";
-import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, GetObjectCommand, HeadObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import Auth from "@models/authModel";
 
@@ -251,12 +251,176 @@ const send7daysSurveyFeedback = async (user: any, payload: any) => {
     }
 }
 
+const uploadVideos = async (req: any) => {
+    try {
+        if (!req.file) {
+            throw new Error("No video file uploaded");
+        }
+
+        const fileKey = `videos/${Date.now()}.mp4`;
+
+        // if (req.file.mimetype !== "video/mp4") {
+        //     throw new Error("Only MP4 format is allowed");
+        // }
+
+        // S3 upload params
+        const params = {
+            Bucket: process.env.AWS_S3_BUCKET_NAME!,
+            Key: fileKey,
+            Body: req.file.buffer,
+            ContentType: "video/mp4",
+        };
+
+        // Upload to S3
+        await s3.send(new PutObjectCommand(params));
+
+        const fileUrl = `https://${process.env.AWS_S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${fileKey}`;
+
+        await PodcastVideos.create({ video: fileUrl });
+
+        return {
+            message: "Video uploaded successfully",
+            url: fileUrl,
+        };
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// ======================
+const checkFileExists = async (fileKey: string) => {
+    try {
+        await s3.send(new HeadObjectCommand({
+            Bucket: process.env.AWS_S3_BUCKET_NAME!,
+            Key: fileKey,
+        }));
+        return true;
+    } catch (err: any) {
+        if (err.name === "NotFound") return false;
+        throw err;
+    }
+};
+
+const getPresignedUrl = async (fileKey: string) => {
+    const command = new GetObjectCommand({
+        Bucket: process.env.AWS_S3_BUCKET_NAME!,
+        Key: fileKey,
+    });
+    const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+    return url;
+};
+
+const getExistingVideos = async () => {
+    try {
+        const allVideos = await PodcastVideos.find().sort({ createdAt: -1 }) as any[];
+
+        const videoPromises = allVideos.map(async (doc) => {
+            const urlObj = new URL(doc.video);
+            const key = urlObj.pathname.slice(1);
+
+            const exists = await checkFileExists(key);
+            if (exists) {
+                const presignedUrl = await getPresignedUrl(key);
+                return { ...doc.toObject(), presignedUrl };
+            }
+            return null;
+        });
+
+        const existingVideos = (await Promise.all(videoPromises)).filter(Boolean);
+        return existingVideos;
+    } catch (error) {
+        console.error("❌ Error fetching existing videos:", error);
+        throw new Error("Failed to fetch videos");
+    }
+};
+// ====================
+const deleteFileFromS3 = async (fileKey: string) => {
+    try {
+        await s3.send(
+            new DeleteObjectCommand({
+                Bucket: process.env.AWS_S3_BUCKET_NAME!,
+                Key: fileKey,
+            })
+        );
+        return true;
+    } catch (err) {
+        console.error("❌ Error deleting file from S3:", err);
+        return false;
+    }
+};
+const deleteVideo = async (videoId: string) => {
+    try {
+        const videoDoc = await PodcastVideos.findById(videoId) as any;
+        if (!videoDoc) {
+            throw new Error("Video not found");
+        }
+
+        const urlObj = new URL(videoDoc.video);
+        const key = urlObj.pathname.slice(1);
+
+        const deletedFromS3 = await deleteFileFromS3(key);
+        if (!deletedFromS3) {
+            throw new Error("Failed to delete file from S3");
+        }
+
+        // Delete from MongoDB
+        await PodcastVideos.findByIdAndDelete(videoId);
+
+        return { success: true, message: "Video deleted successfully" };
+    } catch (err: any) {
+        console.error("❌ Error deleting video:", err);
+        return { success: false, message: err.message };
+    }
+};
+// ============================
+
+const addUpdateSMSPolicy = async (payload: any) => {
+    const checkIsExist = await SMSPolicy.findOne();
+    if (checkIsExist) {
+        return await SMSPolicy.findOneAndUpdate({}, payload, {
+            new: true,
+
+            runValidators: true,
+        });
+    } else {
+        return await SMSPolicy.create(payload);
+    }
+};
+
+const getSMSPolicy = async () => {
+    return await SMSPolicy.findOne();
+};
+
+const addUpdateMediaPolicy = async (payload: any) => {
+    const checkIsExist = await MediaPolicy.findOne();
+    if (checkIsExist) {
+        return await MediaPolicy.findOneAndUpdate({}, payload, {
+            new: true,
+
+            runValidators: true,
+        });
+    } else {
+        return await MediaPolicy.create(payload);
+    }
+};
+
+const getMediaPolicy = async () => {
+    return await MediaPolicy.findOne();
+};
+
 const LiveStreamingServices = {
+    getMediaPolicy,
+    addUpdateMediaPolicy,
+    addUpdateSMSPolicy,
+    getSMSPolicy,
+    getExistingVideos,
+    uploadVideos,
     createStreamingRoom,
     postNewRecordInWebhook,
     getDownloadLink,
     sendQuestionsAnswer,
-    send7daysSurveyFeedback
+    send7daysSurveyFeedback,
+    deleteVideo
 };
 
 export default LiveStreamingServices;

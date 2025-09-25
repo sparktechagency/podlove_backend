@@ -56,7 +56,54 @@ const send7daysSurveyFeedback = async (req: Request, res: Response, next: NextFu
     return res.status(StatusCodes.OK).json({ success: true, message: "Feedback submitted successfully", data: result });
 };
 
+const uploadVideos = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const result = await LiveStreamingServices.uploadVideos(req);
+    return res.status(StatusCodes.OK).json({ success: true, message: "Video uploaded successfully", data: result });
+};
+
+const getExistingVideos = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const result = await LiveStreamingServices.getExistingVideos();
+    return res.status(StatusCodes.OK).json({ success: true, message: "Video get successfully", data: result });
+};
+
+
+const deleteVideo = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const result = await LiveStreamingServices.deleteVideo(req.params.videoId);
+    return res.status(StatusCodes.OK).json({ success: true, message: "Video delete successfully", data: result });
+};
+
+// ===================================
+const getMediaPolicy = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const result = await LiveStreamingServices.getMediaPolicy();
+    return res.status(StatusCodes.OK).json({ success: true, message: "get successfully", data: result });
+};
+
+const addUpdateMediaPolicy = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const result = await LiveStreamingServices.addUpdateMediaPolicy(req.body);
+    return res.status(StatusCodes.OK).json({ success: true, message: "Update successfully", data: result });
+};
+
+const getSMSPolicy = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const result = await LiveStreamingServices.getSMSPolicy();
+    return res.status(StatusCodes.OK).json({ success: true, message: " get successfully", data: result });
+};
+
+const addUpdateSMSPolicy = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const result = await LiveStreamingServices.addUpdateSMSPolicy(req.body);
+    return res.status(StatusCodes.OK).json({ success: true, message: "Update successfully", data: result });
+};
+
+
 const LivePodcastController = {
+    addUpdateMediaPolicy,
+    getMediaPolicy,
+
+    getSMSPolicy,
+    addUpdateSMSPolicy,
+
+    deleteVideo,
+    getExistingVideos,
+    uploadVideos,
     sendQuestionsAnswer,
     createStreamingRoom,
     postNewRecordInWebhook,
