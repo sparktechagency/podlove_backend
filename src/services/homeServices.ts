@@ -82,7 +82,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
     const userObjId = typeof userId === "string" ? new Types.ObjectId(userId) : userId;
     // console.log("userId: ", userId, " userObjId: ", userObjId);
     // Fetch the user (with their auth email)
-    const user = await User.findById(userId).populate({ path: "auth", select: "email isBlocked" }).lean<LeanUserWithAuth>();
+    const user = await User.findById(userId).populate({ path: "auth", select: "email isBlocked shareFeedback" }).lean<LeanUserWithAuth>();
     // console.log("user home: ", user);
     if (!user) {
       throw next(createError(StatusCodes.NOT_FOUND, "You account is not found"));

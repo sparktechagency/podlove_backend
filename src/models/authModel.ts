@@ -44,7 +44,8 @@ const authSchema: Schema<AuthSchema> = new Schema<AuthSchema>({
   },
   shareFeedback: {
     type: String,
-    default: ""
+    default: "",
+    enum: ["", "7days", "completed"]
   },
   verificationOTP: {
     type: String,
