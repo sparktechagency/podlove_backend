@@ -127,7 +127,7 @@ const postNewRecordInWebhook = async (req: Request) => {
             const fileUrl: string = data?.hls_vod_recording_presigned_url || data?.recording_presigned_url;
             const extension = fileUrl.endsWith(".mp4") ? "mp4" : "mp4";
             const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.${extension}`;
-            // console.log("data", data)
+            console.log("data", data)
 
             const response = await fetch(fileUrl);
             if (!response.ok) throw new Error(`Failed to fetch file: ${response.statusText}`);
