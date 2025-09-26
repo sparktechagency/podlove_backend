@@ -49,20 +49,10 @@ const sendPodcastRequest = async (req: Request, res: Response, next: NextFunctio
       throw createError(StatusCodes.BAD_REQUEST, "Invalid podcast status");
     }
 
-
     // 2) Update the Podcast document for this user
     const updated = await Podcast.findOneAndUpdate(
       { primaryUser: userId },
-      {
-        $set: {
-          status,
-          schedule: {
-            day: "",
-            date: "",
-            time: ""
-          }
-        },
-      },
+      { $set: { status, schedule: { day: "", date: "", time: "" } } },
       { new: true, session }
     )
       .lean()
@@ -273,7 +263,6 @@ const getAdminRecordedPodcast = async (req: Request, res: Response, next: NextFu
     next(err);
   }
 }
-
 
 const PodcastController = {
   create,
