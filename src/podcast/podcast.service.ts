@@ -29,19 +29,19 @@ const createStreamingRoom = async (primaryUser: string, podcastId: string) => {
         // throw new Error("Your schedule time has not started yet");
     }
 
-    const liveRoom = await StreamRoom.findOne({
-        broadcaster: primaryUser,
-        $or: [
-            { status: ENUM_LIVE_STREAM_STATUS.live },
-            { status: ENUM_LIVE_STREAM_STATUS.wating },
-        ],
-    });
+    // const liveRoom = await StreamRoom.findOne({
+    //     broadcaster: primaryUser,
+    //     $or: [
+    //         { status: ENUM_LIVE_STREAM_STATUS.live },
+    //         { status: ENUM_LIVE_STREAM_STATUS.wating },
+    //     ],
+    // });
 
-    // console.log('liveRoom', liveRoom)
+    // // console.log('liveRoom', liveRoom)
 
-    if (liveRoom) {
-        throw new Error("You can't able to start another live , because you already created a room for live , please join with that");
-    }
+    // if (liveRoom) {
+    //     throw new Error("You can't able to start another live , because you already created a room for live , please join with that");
+    // }
 
     const name = generateRoomName();
     const response = await fetch(`${HMS_ENDPOINT}/rooms`, {
@@ -176,6 +176,7 @@ const postNewRecordInWebhook = async (req: Request) => {
                 }
             );
             return;
+
         }
 
         if (event.type.includes("open.success") || event.type.includes("join.success")) {
