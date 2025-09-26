@@ -56,6 +56,11 @@ const sendPodcastRequest = async (req: Request, res: Response, next: NextFunctio
       {
         $set: {
           status,
+          schedule: {
+            day: "",
+            date: "",
+            time: ""
+          }
         },
       },
       { new: true, session }
