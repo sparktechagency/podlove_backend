@@ -301,6 +301,7 @@ async function notifyScheduledPodcasts(): Promise<void> {
   await downgradeExpiredSubscriptions();
 
   for (const p of podcasts) {
+    console.log(`Checking podcast ${p._id}...`);
     const scheduledET = parseScheduleDateInET(p);
     if (!scheduledET) continue;
 
