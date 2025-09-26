@@ -12,8 +12,9 @@ router.get("/", authorize, asyncHandler(HomeServices.homeData));
 router.post("/upload-video",
     upload.single("video"),
     asyncHandler(LivePodcastController.uploadVideos));
-router.post("/get-video",
+router.get("/get-video",
     asyncHandler(LivePodcastController.getExistingVideos));
+
 router.delete("/delete-video/:videoId",
     asyncHandler(LivePodcastController.deleteVideo));
 

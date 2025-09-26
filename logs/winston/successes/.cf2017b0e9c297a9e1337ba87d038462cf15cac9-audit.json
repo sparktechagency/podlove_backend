@@ -124,6 +124,11 @@
             "date": 1758801621416,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-25-18-success.log",
             "hash": "aab10ddd20890b795c5f084c80ca82f004edd38b7d1e27e2a411e5f19aaf7ce3"
+        },
+        {
+            "date": 1758879801414,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-26-15-success.log",
+            "hash": "93276c8a4ff0f9c84d7265fb1ce974471d9f76aa0c0345af2a32b91c8966c0ed"
         }
     ],
     "hashType": "sha256"

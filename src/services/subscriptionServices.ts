@@ -51,7 +51,9 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
       cancel_url: `https://podlove.co/subscription-plan`,
     })
   );
+
   if (error) return next(error);
+
   // // console.log("session: ", session);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: session.url });
 };
