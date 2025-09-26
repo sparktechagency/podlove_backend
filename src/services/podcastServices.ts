@@ -237,7 +237,7 @@ function markAllowedParticipants(participants: Participants[], selectedUserBody:
 const selectUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const podcastId = req.body.podcastId;
   const selectedUserId = req.body.selectedUserId;
-  // console.log("podcast selected user Id: ", selectedUserId);
+  console.log("podcast selected user Id: ", podcastId, selectedUserId);
   const podcast = await Podcast.findById(podcastId);
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
 
@@ -247,6 +247,8 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
   markAllowedParticipants(podcast.participants, selectedUserId);
 
   await podcast.save();
+
+  const selectedUser = await User.findById(selectedUserId);
   // console.log("podcast: ", podcast);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
 };
