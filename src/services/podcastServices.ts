@@ -235,50 +235,57 @@ function markAllowedParticipants(participants: Participants[], selectedUserBody:
 }
 
 const selectUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const podcastId = req.body.podcastId;
-  const selectedUserId = req.body.selectedUserId;
-  // console.log("podcast selected user Id: ", selectedUserId);
-  const podcast = await Podcast.findById(podcastId);
-  if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
+  try {
+    const { podcastId, selectedUserId } = req.body;
 
-  podcast.selectedUser = selectedUserId;
-  // podcast.status = PodcastStatus.DONE;
+    // 1️⃣ Fetch podcast
+    const podcast = await Podcast.findById(podcastId);
+    if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
 
-  markAllowedParticipants(podcast.participants, selectedUserId);
+    podcast.selectedUser = selectedUserId;
+    markAllowedParticipants(podcast.participants, selectedUserId);
+    await podcast.save();
 
-  await podcast.save();
+    const getExpireTime = (fee?: string) => {
+      if (fee === "Free") return new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString();
+      if (fee === "14.99") return new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+      if (fee === "29.99") return "unlimited";
+      return "";
+    };
 
-  let users = []
-  if (Array.isArray(selectedUserId)) {
-    users = selectedUserId.map((u: any) => u.user || u);
-  }
-  console.log("users: ", users);
-  // Fetch users by array of IDs
-  const selectedUsers = await User.find({ _id: { $in: users } });
-  console.log("selectedUsers: ", selectedUsers);
-  for (const user of selectedUsers) {
-    let expireTime: string;
+    let userIds: Types.ObjectId[] = [];
 
-    if (user?.subscription?.fee === "Free") {
-      expireTime = new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString();
-    } else if (user.subscription?.fee === "14.99") {
-      expireTime = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
-    } else if (user.subscription?.fee === "29.99") {
-      expireTime = "unlimited";
-    } else {
-      expireTime = "";
+    if (Array.isArray(selectedUserId)) {
+      userIds = selectedUserId.map((u: any) => u.user || u);
+    } else if (selectedUserId) {
+      userIds = [selectedUserId];
     }
-    const userId = user._id;
-    await User.findByIdAndUpdate(userId,
-      {
-        chatingtime: expireTime
-      }
-    );
-  }
 
-  // console.log("podcast: ", podcast);
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
+    if (podcast.primaryUser) userIds.push(podcast.primaryUser);
+
+    // Remove duplicates
+    userIds = [...new Set(userIds.map((id) => id.toString()))].map((id) => new Types.ObjectId(id));
+
+
+    const usersToUpdate = await User.find({ _id: { $in: userIds } }) as any[];
+
+    const bulkOps = usersToUpdate.map((user) => ({
+      updateOne: {
+        filter: { _id: user._id },
+        update: { chatingtime: getExpireTime(user.subscription?.fee) },
+      },
+    }));
+
+    if (bulkOps.length > 0) {
+      await User.bulkWrite(bulkOps);
+    }
+
+    return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
+  } catch (err) {
+    next(err);
+  }
 };
+
 
 function parseScheduleDateInET(p: { schedule: { date: string; time: string } }): DateTime | null {
   const { date, time } = p.schedule;
