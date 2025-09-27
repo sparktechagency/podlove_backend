@@ -242,7 +242,7 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
 
   podcast.selectedUser = selectedUserId;
-  podcast.status = PodcastStatus.DONE;
+  // podcast.status = PodcastStatus.DONE;
 
   markAllowedParticipants(podcast.participants, selectedUserId);
 
