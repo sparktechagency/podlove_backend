@@ -40,7 +40,10 @@ export type UserSchema = Document & {
       max: number;
     };
     bodyType: string[];
-    ethnicity: string[];
+    ethnicity: {
+      type: [String],
+      default: [],
+    },
     distance: number;
   };
   survey: string[];

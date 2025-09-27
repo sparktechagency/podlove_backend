@@ -271,9 +271,9 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
 
     // Update each user
     user.chatingtime = expireTime;
-    user.isSelectedForPodcast = true;
     await user.save();
   }
+
   // console.log("podcast: ", podcast);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
 };
