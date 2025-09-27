@@ -236,8 +236,15 @@ function markAllowedParticipants(participants: Participants[], selectedUserBody:
 
 const selectUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const podcastId = req.body.podcastId;
-  const selectedUserId = req.body.selectedUserId;
+  let selectedUserId = req.body.selectedUserId;
+
   console.log("podcast selected user Id: ", podcastId, selectedUserId);
+
+  // ✅ Normalize: extract only ObjectId strings
+  if (Array.isArray(selectedUserId)) {
+    selectedUserId = selectedUserId.map((u: any) => u.user || u);
+  }
+
   const podcast = await Podcast.findById(podcastId);
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
 
@@ -247,6 +254,8 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
   markAllowedParticipants(podcast.participants, selectedUserId);
 
   await podcast.save();
+
+  // ✅ Now this works fine
   const selectedUsers = await User.find({ _id: { $in: selectedUserId } });
 
   for (const user of selectedUsers) {
@@ -267,8 +276,9 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
     await user.save();
   }
 
-  // console.log("podcast: ", podcast);
-  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
+  return res
+    .status(StatusCodes.OK)
+    .json({ success: true, message: "Success", data: podcast });
 };
 
 function parseScheduleDateInET(p: { schedule: { date: string; time: string } }): DateTime | null {
