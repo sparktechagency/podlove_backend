@@ -127,7 +127,7 @@ async function findMatches(
     null,
     { session }
   ).lean();
-  // console.log("candidate2: ", candidate2, " candidates: ", candidates);
+  console.log("candidate2: ", candidate2, " candidates: ", candidates);
   let matchCandidate = candidates.length < limitCount ? candidate2 : candidates;
   console.log("matchCandidates: ", matchCandidate);
   // 4) Distance filtering

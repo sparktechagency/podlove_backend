@@ -159,48 +159,6 @@ Now, output ONLY a single numeric value (for example, 75) representing the compa
   }
 }
 
-const questions = [
-  {
-    question: "Do you believe in mutual respect and understanding in a relationship?",
-    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-  },
-  {
-    question: "Are you open to discussing personal values and beliefs with your partner?",
-    options: ["Yes", "No"],
-  },
-  {
-    question: "Do you prefer long-term commitment over casual dating?",
-    options: ["Yes", "No", "Not sure yet"],
-  },
-  {
-    question: "What qualities do you value most in a partner?",
-    options: [],
-  },
-  {
-    question: "Do you think emotional intelligence is important in a relationship?",
-    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-  },
-  {
-    question: "Have you worked on personal growth and self-improvement for a better relationship?",
-    options: ["Yes", "No"],
-  },
-  {
-    question: "Do you believe trust is the foundation of a healthy relationship?",
-    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-  },
-  {
-    question: "Are you willing to compromise and adapt in a relationship?",
-    options: ["Yes", "No", "Not sure yet"],
-  },
-  {
-    question: "Do you think communication plays a crucial role in maintaining a relationship?",
-    options: ["Yes", "No"],
-  },
-  {
-    question: "Are you ready to invest time and effort into building a meaningful relationship?",
-    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-  },
-];
 
 async function isUserSuitable(req: Request, res: Response, next: NextFunction): Promise<any> {
   const userResponses = req.body.userResponses;
