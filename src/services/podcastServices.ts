@@ -249,7 +249,7 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
     const getExpireTime = (fee?: string) => {
       if (fee === "Free") return new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString();
       if (fee === "14.99") return new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
-      if (fee === "29.99") return "unlimited";
+      if (fee === "29.99") return new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(); // 1 year
       return "";
     };
 
