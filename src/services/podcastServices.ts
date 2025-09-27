@@ -268,13 +268,10 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
     } else {
       expireTime = "";
     }
-
-    await User.updateOne(
-      { _id: user._id },
+    const userId = user._id;
+    await User.findByIdAndUpdate(userId,
       {
-        $set: {
-          chatingtime: expireTime,
-        },
+        chatingtime: expireTime
       }
     );
   }
