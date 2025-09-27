@@ -252,6 +252,7 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
   if (Array.isArray(selectedUserId)) {
     users = selectedUserId.map((u: any) => u.user || u);
   }
+  console.log("users: ", users);
   // Fetch users by array of IDs
   const selectedUsers = await User.find({ _id: { $in: users } });
   console.log("selectedUsers: ", selectedUsers);
