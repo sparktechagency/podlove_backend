@@ -3,6 +3,7 @@ import "dotenv/config";
 import * as process from "node:process";
 import { Request, Response, NextFunction } from "express";
 import { StatusCodes } from "http-status-codes";
+import createError from "http-errors";
 import {
   GoogleGenerativeAI,
   HarmCategory,
@@ -178,18 +179,19 @@ const questions = [
 ];
 
 async function isUserSuitable(req: Request, res: Response, next: NextFunction): Promise<any> {
-  // Ensure userResponses is always an array
+
   const userResponses: string[] = Array.isArray(req.body.userResponses) ? req.body.userResponses : [];
 
   console.log("User Responses:", userResponses);
 
   if (!userResponses.length) {
-    throw new Error(`userResponses are required and must be an array.`);
+    console.error(`userResponses are required and must be an array.`);
+    return next(createError(StatusCodes.BAD_REQUEST, "userResponses are required and must be an array."));
   }
 
   // Build prompt safely
   let prompt = "Below are responses from a user answering the following dating suitability questions:\n\n";
-  questions.forEach((q, index) => {
+  questions?.forEach((q, index) => {
     const answer = userResponses[index] ?? "No response";
     prompt += `${index + 1}. ${q.question} ${answer}\n`;
   });
