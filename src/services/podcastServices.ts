@@ -247,8 +247,6 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
   markAllowedParticipants(podcast.participants, selectedUserId);
 
   await podcast.save();
-
-  // Fetch users by array of IDs
   const selectedUsers = await User.find({ _id: { $in: selectedUserId } });
 
   for (const user of selectedUsers) {
@@ -264,7 +262,6 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
       expireTime = "";
     }
 
-    // Update each user
     user.chatingtime = expireTime;
     user.isSelectedForPodcast = true;
     await user.save();
