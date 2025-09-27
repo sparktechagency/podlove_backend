@@ -269,9 +269,14 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
       expireTime = "";
     }
 
-    // Update each user
-    user.chatingtime = expireTime;
-    await user.save();
+    await User.updateOne(
+      { _id: user._id },
+      {
+        $set: {
+          chatingtime: expireTime,
+        },
+      }
+    );
   }
 
   // console.log("podcast: ", podcast);
