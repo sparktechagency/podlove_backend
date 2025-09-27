@@ -11,6 +11,7 @@ export type DecodedUser = {
 
 export type UserSchema = Document & {
   auth: Types.ObjectId;
+  chatingtime: string;
   isProfileComplete: boolean;
   name: string;
   phoneNumber: string;
@@ -177,6 +178,10 @@ const userSchema = new Schema(
     survey: {
       type: [String],
       default: [],
+    },
+    chatingtime: {
+      type: String,
+      default: ""
     },
     subscription: {
       id: {

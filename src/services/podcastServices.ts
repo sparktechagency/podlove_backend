@@ -248,7 +248,28 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
 
   await podcast.save();
 
-  const selectedUser = await User.findById(selectedUserId);
+  // Fetch users by array of IDs
+  const selectedUsers = await User.find({ _id: { $in: selectedUserId } });
+
+  for (const user of selectedUsers) {
+    let expireTime: string;
+
+    if (user.subscription?.fee === "Free") {
+      expireTime = new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString();
+    } else if (user.subscription?.fee === "14.99") {
+      expireTime = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+    } else if (user.subscription?.fee === "29.99") {
+      expireTime = "unlimited";
+    } else {
+      expireTime = "";
+    }
+
+    // Update each user
+    user.chatingtime = expireTime;
+    user.isSelectedForPodcast = true;
+    await user.save();
+  }
+
   // console.log("podcast: ", podcast);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
 };
