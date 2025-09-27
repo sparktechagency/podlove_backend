@@ -131,6 +131,8 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
     ];
     const updates: any = {};
 
+    console.log("req.body before processing user update: ", req.body);
+
     for (const field of allowedFields) {
       if (req.body[field] !== undefined) {
         updates[field] = req.body[field];

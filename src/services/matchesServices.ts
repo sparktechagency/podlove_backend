@@ -316,6 +316,8 @@ const matchUser = async (
     const userId = req.params.id;
     const { compatibility } = req.body;
 
+    console.log("matchUser called with:", userId, compatibility);
+
     // Check if user already has a pending podcast
     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
     if (podcastExists) {
@@ -370,6 +372,8 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
   if (!Types.ObjectId.isValid(userId)) {
     return next(createError(StatusCodes.BAD_REQUEST, "Invalid user ID"));
   }
+
+  console.log("getMatchedUsers called for userId:", req, userId);
 
   const session = await mongoose.startSession();
   session.startTransaction({ readConcern: { level: "snapshot" } });
