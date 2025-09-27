@@ -329,18 +329,20 @@ const matchUser = async (
     // Find top matches
     const topMatches = await findMatches(userId, compatibility || [], 2, session);
 
+    const participants = topMatches.map(m => ({
+      user: m.user,
+      score: m.score
+    }));
+
     // Create podcast with participants
     const podcast = await Podcast.create(
-      [
-        {
-          primaryUser: userId,
-          participants: topMatches.map((m) => m.user),
-          status: "NotScheduled",
-        },
-      ],
+      [{
+        primaryUser: userId,
+        participants,
+        status: "NotScheduled"
+      }],
       { session }
     );
-
     await session.commitTransaction();
     session.endSession();
 
