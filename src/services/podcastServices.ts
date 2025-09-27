@@ -237,7 +237,7 @@ function markAllowedParticipants(participants: Participants[], selectedUserBody:
 const selectUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const podcastId = req.body.podcastId;
   const selectedUserId = req.body.selectedUserId;
-  console.log("podcast selected user Id: ", podcastId, selectedUserId);
+  // console.log("podcast selected user Id: ", selectedUserId);
   const podcast = await Podcast.findById(podcastId);
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
 
@@ -248,32 +248,31 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
 
   await podcast.save();
 
-  let user = []
-  if (Array.isArray(selectedUserId)) {
-    user = selectedUserId.map((u: any) => u.user || u);
-  }
-  // Fetch users by array of IDs
-  const selectedUsers = await User.find({ _id: { $in: user } });
+  // let users = []
+  // if (Array.isArray(selectedUserId)) {
+  //   users = selectedUserId.map((u: any) => u.user || u);
+  // }
+  // // Fetch users by array of IDs
+  // const selectedUsers = await User.find({ _id: { $in: users } });
 
-  for (const user of selectedUsers) {
-    let expireTime: string;
+  // for (const user of selectedUsers) {
+  //   let expireTime: string;
 
-    if (user.subscription?.fee === "Free") {
-      expireTime = new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString();
-    } else if (user.subscription?.fee === "14.99") {
-      expireTime = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
-    } else if (user.subscription?.fee === "29.99") {
-      expireTime = "unlimited";
-    } else {
-      expireTime = "";
-    }
+  //   if (user?.subscription?.fee === "Free") {
+  //     expireTime = new Date(Date.now() + 72 * 60 * 60 * 1000).toISOString();
+  //   } else if (user.subscription?.fee === "14.99") {
+  //     expireTime = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
+  //   } else if (user.subscription?.fee === "29.99") {
+  //     expireTime = "unlimited";
+  //   } else {
+  //     expireTime = "";
+  //   }
 
-    // Update each user
-    user.chatingtime = expireTime;
-    user.isSelectedForPodcast = true;
-    await user.save();
-  }
-
+  //   // Update each user
+  //   user.chatingtime = expireTime;
+  //   user.isSelectedForPodcast = true;
+  //   await user.save();
+  // }
   // console.log("podcast: ", podcast);
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
 };
@@ -326,7 +325,6 @@ async function notifyScheduledPodcasts(): Promise<void> {
   await downgradeExpiredSubscriptions();
 
   for (const p of podcasts) {
-    console.log(`Checking podcast ${p._id}...`);
     const scheduledET = parseScheduleDateInET(p);
     if (!scheduledET) continue;
 
