@@ -160,56 +160,40 @@ Now, output ONLY a single numeric value (for example, 75) representing the compa
 }
 
 
-async function isUserSuitable(req: Request, res: Response, next: NextFunction): Promise<any> {
-  const userResponses = req.body.userResponses;
-  // console.log("user response: ", userResponses);
-  const questions = [
-    {
-      question: "Do you believe in mutual respect and understanding in a relationship?",
-      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-    },
-    {
-      question: "Are you open to discussing personal values and beliefs with your partner?",
-      options: ["Yes", "No"],
-    },
-    {
-      question: "Do you prefer long-term commitment over casual dating?",
-      options: ["Yes", "No", "Not sure yet"],
-    },
-    {
-      question: "What qualities do you value most in a partner?",
-      options: [],
-    },
-    {
-      question: "Do you think emotional intelligence is important in a relationship?",
-      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-    },
-    {
-      question: "Have you worked on personal growth and self-improvement for a better relationship?",
-      options: ["Yes", "No"],
-    },
-    {
-      question: "Do you believe trust is the foundation of a healthy relationship?",
-      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-    },
-    {
-      question: "Are you willing to compromise and adapt in a relationship?",
-      options: ["Yes", "No", "Not sure yet"],
-    },
-    {
-      question: "Do you think communication plays a crucial role in maintaining a relationship?",
-      options: ["Yes", "No"],
-    },
-    {
-      question: "Are you ready to invest time and effort into building a meaningful relationship?",
-      options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
-    },
-  ];
 
+const questions = [
+  {
+    question: "Do you believe in mutual respect and understanding in a relationship?",
+    options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
+  },
+  { question: "Are you open to discussing personal values and beliefs with your partner?", options: ["Yes", "No"] },
+  { question: "Do you prefer long-term commitment over casual dating?", options: ["Yes", "No", "Not sure yet"] },
+  { question: "What qualities do you value most in a partner?", options: [] },
+  { question: "Do you think emotional intelligence is important in a relationship?", options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"] },
+  { question: "Have you worked on personal growth and self-improvement for a better relationship?", options: ["Yes", "No"] },
+  { question: "Do you believe trust is the foundation of a healthy relationship?", options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"] },
+  { question: "Are you willing to compromise and adapt in a relationship?", options: ["Yes", "No", "Not sure yet"] },
+  { question: "Do you think communication plays a crucial role in maintaining a relationship?", options: ["Yes", "No"] },
+  { question: "Are you ready to invest time and effort into building a meaningful relationship?", options: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"] },
+];
+
+async function isUserSuitable(req: Request, res: Response, next: NextFunction): Promise<any> {
+  // Ensure userResponses is always an array
+  const userResponses: string[] = Array.isArray(req.body.userResponses) ? req.body.userResponses : [];
+
+  console.log("User Responses:", userResponses);
+
+  if (!userResponses.length) {
+    throw new Error(`userResponses are required and must be an array.`);
+  }
+
+  // Build prompt safely
   let prompt = "Below are responses from a user answering the following dating suitability questions:\n\n";
   questions.forEach((q, index) => {
-    prompt += `${index + 1}. ${q.question} ${userResponses[index]}\n`;
+    const answer = userResponses[index] ?? "No response";
+    prompt += `${index + 1}. ${q.question} ${answer}\n`;
   });
+
   prompt += "\nBased on the user's responses, determine if the user is suitable for the app. ";
   prompt += "Output only 'true' if the user is suitable and 'false' if not. ";
   prompt += "Do not include any additional text, punctuation, spaces, or explanation.";
@@ -222,8 +206,7 @@ async function isUserSuitable(req: Request, res: Response, next: NextFunction): 
       messages: [
         {
           role: "system",
-          content:
-            "You are a dating suitability algorithm. Evaluate the user's responses and determine if the user is suitable for the app. Output only 'true' or 'false' with no extra text.",
+          content: "You are a dating suitability algorithm. Evaluate the user's responses and determine if the user is suitable for the app. Output only 'true' or 'false' with no extra text.",
         },
         {
           role: "user",
@@ -232,19 +215,23 @@ async function isUserSuitable(req: Request, res: Response, next: NextFunction): 
       ],
     });
 
-    const rawOutput = response.choices[0].message!.content!.trim();
+    const rawOutput = response.choices[0].message?.content?.trim();
+
     if (rawOutput !== "true" && rawOutput !== "false") {
-      throw new Error(`Received output is not valid: "${rawOutput}"`);
+      throw new Error(`Invalid output from AI: "${rawOutput}"`);
     }
-    // console.log("getting response status: ", rawOutput);
-    return res
-      .status(StatusCodes.OK)
-      .json({ success: true, message: "Success", data: { isSuitable: rawOutput === "true" } });
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Success",
+      data: { isSuitable: rawOutput === "true" },
+    });
   } catch (error: any) {
-    console.error("Error during API call:", error.response ? error.response.data : error.message);
+    console.error("Error during AI call:", error.response?.data || error.message);
     return next(error);
   }
 }
+
 
 const analyzeBio = async (bio: string) => {
   const prompt = `
