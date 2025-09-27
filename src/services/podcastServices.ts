@@ -236,15 +236,8 @@ function markAllowedParticipants(participants: Participants[], selectedUserBody:
 
 const selectUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const podcastId = req.body.podcastId;
-  let selectedUserId = req.body.selectedUserId;
-
+  const selectedUserId = req.body.selectedUserId;
   console.log("podcast selected user Id: ", podcastId, selectedUserId);
-
-  // ✅ Normalize: extract only ObjectId strings
-  if (Array.isArray(selectedUserId)) {
-    selectedUserId = selectedUserId.map((u: any) => u.user || u);
-  }
-
   const podcast = await Podcast.findById(podcastId);
   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
 
@@ -255,8 +248,12 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
 
   await podcast.save();
 
-  // ✅ Now this works fine
-  const selectedUsers = await User.find({ _id: { $in: selectedUserId } });
+  let user = []
+  if (Array.isArray(selectedUserId)) {
+    user = selectedUserId.map((u: any) => u.user || u);
+  }
+  // Fetch users by array of IDs
+  const selectedUsers = await User.find({ _id: { $in: user } });
 
   for (const user of selectedUsers) {
     let expireTime: string;
@@ -271,14 +268,14 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
       expireTime = "";
     }
 
+    // Update each user
     user.chatingtime = expireTime;
     user.isSelectedForPodcast = true;
     await user.save();
   }
 
-  return res
-    .status(StatusCodes.OK)
-    .json({ success: true, message: "Success", data: podcast });
+  // console.log("podcast: ", podcast);
+  return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: podcast });
 };
 
 function parseScheduleDateInET(p: { schedule: { date: string; time: string } }): DateTime | null {
