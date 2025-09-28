@@ -92,6 +92,8 @@ async function findMatches(
   const user = await User.findById(userId, {});
   if (!user) throw new Error("User not found");
 
+  console.log("findMatches called for user:", userId, limitCount);
+
   // 2) Ensure answers array
   answers = answers?.length ? answers : user.compatibility || [];
 
@@ -238,6 +240,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
         const topMatches = await findMatches(userId, updatedUser.compatibility || [], score);
 
+        console.log("topMatches: ", topMatches);
 
         const participants = topMatches.map(m => ({
           user: m.user,
