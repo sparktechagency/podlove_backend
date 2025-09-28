@@ -252,6 +252,27 @@ const send7daysSurveyFeedback = async (user: any, payload: any) => {
     }
 }
 
+const getUser7daysSurveyFeedback = async (userId: any) => {
+    try {
+
+        const user = await Auth.findById(userId);
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        const feedback = await SurveyFeedback.findOne({ userId });
+        // if (!feedback) {
+        //     throw new Error("This user has not submitted any feedback yet");
+        // }
+
+        return feedback
+    } catch (error) {
+        console.error("Error saving podcast feedback:", error);
+        throw new Error("Failed to save feedback");
+    }
+}
+
+
 const uploadVideos = async (req: any) => {
     try {
         if (!req.file) {
@@ -420,6 +441,7 @@ const LiveStreamingServices = {
     getDownloadLink,
     sendQuestionsAnswer,
     send7daysSurveyFeedback,
+    getUser7daysSurveyFeedback,
     deleteVideo
 };
 

@@ -56,6 +56,12 @@ const send7daysSurveyFeedback = async (req: Request, res: Response, next: NextFu
     return res.status(StatusCodes.OK).json({ success: true, message: "Feedback submitted successfully", data: result });
 };
 
+const getUser7daysSurveyFeedback = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const result = await LiveStreamingServices.getUser7daysSurveyFeedback(req.params.userId as any);
+    return res.status(StatusCodes.OK).json({ success: true, message: "Feedback get successfully", data: result });
+};
+
+
 const uploadVideos = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     const result = await LiveStreamingServices.uploadVideos(req);
     return res.status(StatusCodes.OK).json({ success: true, message: "Video uploaded successfully", data: result });
@@ -108,7 +114,8 @@ const LivePodcastController = {
     createStreamingRoom,
     postNewRecordInWebhook,
     getDownloadLink,
-    send7daysSurveyFeedback
+    send7daysSurveyFeedback,
+    getUser7daysSurveyFeedback
 };
 
 export default LivePodcastController;
