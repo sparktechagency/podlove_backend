@@ -92,8 +92,6 @@ async function findMatches(
   const user = await User.findById(userId, {});
   if (!user) throw new Error("User not found");
 
-  console.log("findMatches called for user:", userId, limitCount);
-
   // 2) Ensure answers array
   answers = answers?.length ? answers : user.compatibility || [];
 
@@ -115,6 +113,8 @@ async function findMatches(
     },
     null,
   ).lean();
+
+  console.log(`Found ${candidates.length} candidates after initial filtering.`);
 
   // 5) Distance filtering (strict)
   const nearby = candidates.filter((c) => {
