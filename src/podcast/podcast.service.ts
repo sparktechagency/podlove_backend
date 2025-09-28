@@ -7,6 +7,7 @@ import { PodcastStatus } from "@shared/enums";
 import { S3Client, PutObjectCommand, GetObjectCommand, HeadObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import Auth from "@models/authModel";
+import User from "@models/userModel";
 
 const template_id = process.env.HMS_TEMPLATE_ID;
 
@@ -255,7 +256,7 @@ const send7daysSurveyFeedback = async (user: any, payload: any) => {
 const getUser7daysSurveyFeedback = async (userId: any) => {
     try {
 
-        const user = await Auth.findById(userId);
+        const user = await User.findById(userId);
         if (!user) {
             throw new Error("User not found");
         }
