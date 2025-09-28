@@ -28,7 +28,31 @@ import path from "path";
 import ChatRouter from "@routers/chatRouter";
 import SubscriptionPlanRouter from "@routers/subscriptionPlanRouter"
 
+const apiLogger = (req: Request, res: Response, next: NextFunction) => {
+  console.log("===== API Request =====");
+  console.log("URL:", req.originalUrl);
+  console.log("Method:", req.method);
+  console.log("Query:", req.query);
+  console.log("Body:", req.body);
+
+  // Capture response before sending
+  const oldSend = res.send;
+  res.send = function (body) {
+    console.log("===== API Response =====");
+    console.log("Status:", res.statusCode);
+    try {
+      console.log("Body:", JSON.parse(body as any));
+    } catch {
+      console.log("Body:", body);
+    }
+    return oldSend.call(this, body);
+  };
+
+  next();
+};
+
 const app = express();
+app.use(apiLogger);
 app.use("/", WebhookRouter);
 
 app.use(
@@ -83,6 +107,8 @@ app.use("/notification", NotificationRouter);
 app.use("/consumer", ConsumerPolicyRouter);
 app.use("/media", MediaPolicyRouter);
 app.use("/chat", ChatRouter);
+
+
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello From Podlove");
