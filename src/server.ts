@@ -18,13 +18,13 @@ async function checkAdmin() {
   let error, administrator;
   [error, administrator] = await to(Administrator.find());
   if (error) throw error;
-  if (!administrator || administrator.length < 1) {
+  if (!administrator || administrator.length < 2) {
     logger.info("No administrators found. Creating one...");
     [error, administrator] = await to(
       Administrator.create({
         name: "Admin",
-        email: "admin@gmail.com",
-        password: 123456,
+        email: "support@podlove.co",
+        password: "bJUeDCR8>7PS2dH<",
         contact: "1234567890",
         access: AdminAccess.ALL,
       })
