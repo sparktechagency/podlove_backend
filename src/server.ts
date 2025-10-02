@@ -18,7 +18,7 @@ async function checkAdmin() {
   let error, administrator;
   [error, administrator] = await to(Administrator.find());
   if (error) throw error;
-  if (!administrator || administrator.length < 2) {
+  if (!administrator || administrator.length < 1) {
     logger.info("No administrators found. Creating one...");
     [error, administrator] = await to(
       Administrator.create({
