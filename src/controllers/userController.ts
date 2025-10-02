@@ -59,7 +59,7 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
       return { ...u, auth: a };
     });
   const [rawUsers, total] = await Promise.all([
-    User.find(query).lean().skip(skip).limit(limit),
+    User.find(query).lean().skip(skip).limit(limit).sort({ createdAt: -1 }),
     User.countDocuments(query),
   ]);
   const usersWithObjectIds = normalizeAuthIds(rawUsers);

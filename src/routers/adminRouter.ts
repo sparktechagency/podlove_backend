@@ -1,8 +1,6 @@
 import AdminController from "@controllers/adminController";
 import AdminServices from "@services/adminServices";
 import express from "express";
-import fileUpload from "express-fileupload";
-import fileHandler from "@middlewares/fileHandler";
 import { asyncHandler } from "@shared/asyncHandler";
 import { admin_authorize } from "@middlewares/authorization";
 import { upload } from "@utils/multerConfig";
