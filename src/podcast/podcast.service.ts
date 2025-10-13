@@ -273,7 +273,6 @@ const getUser7daysSurveyFeedback = async (userId: any) => {
     }
 }
 
-
 const uploadVideos = async (req: any) => {
     try {
         if (!req.file) {
@@ -309,6 +308,7 @@ const uploadVideos = async (req: any) => {
         console.error(error);
     }
 }
+
 // ======================
 const checkFileExists = async (fileKey: string) => {
     try {
@@ -370,6 +370,7 @@ const deleteFileFromS3 = async (fileKey: string) => {
         return false;
     }
 };
+
 const deleteVideo = async (videoId: string) => {
     try {
         const videoDoc = await PodcastVideos.findById(videoId) as any;
@@ -394,8 +395,8 @@ const deleteVideo = async (videoId: string) => {
         return { success: false, message: err.message };
     }
 };
-// ============================
 
+// ============================
 const addUpdateSMSPolicy = async (payload: any) => {
     const checkIsExist = await SMSPolicy.findOne();
     if (checkIsExist) {

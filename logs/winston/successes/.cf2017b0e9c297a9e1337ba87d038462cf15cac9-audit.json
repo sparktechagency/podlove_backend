@@ -6,81 +6,6 @@
     "auditLog": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/.cf2017b0e9c297a9e1337ba87d038462cf15cac9-audit.json",
     "files": [
         {
-            "date": 1758436617135,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-21-12-success.log",
-            "hash": "f2cd12b6d26cb645bf81b0ed8b3e69d31f2c5458ad3064397b89e10d35c5d251"
-        },
-        {
-            "date": 1758438150618,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-21-13-success.log",
-            "hash": "2ca07350810bbe5fff055b015042d8f313229fa8a36f9cf1614cfa75632bfadb"
-        },
-        {
-            "date": 1758451257366,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-21-16-success.log",
-            "hash": "ba0a7a8d9549e743be77d05f61a392e265e39b52e01095b00cd9af2e1835e04c"
-        },
-        {
-            "date": 1758695083992,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-24-12-success.log",
-            "hash": "90b62dccd894061651711504677fd1cd498785f6d93c8b5af4e3348cf7df6dc0"
-        },
-        {
-            "date": 1758783499146,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-25-12-success.log",
-            "hash": "1cc9176d213a24105c21beea7de9f8142c8fea7d8460307ec6acdf719646322d"
-        },
-        {
-            "date": 1758783953539,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-25-13-success.log",
-            "hash": "12a7b8f8d700c5d8032d035a63f40cead4d28281e70b5e3cdc4d487355ac89a6"
-        },
-        {
-            "date": 1758796693788,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-25-16-success.log",
-            "hash": "1b43afe0bb9a2deac203b4be7eb9b9044a130feda392f3c047d218f8bfa3bfc0"
-        },
-        {
-            "date": 1758798114747,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-25-17-success.log",
-            "hash": "5d026135d449e09b90205986f6bc572a967c89ff6f09f50d59f14b9e074d1e99"
-        },
-        {
-            "date": 1758801621416,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-25-18-success.log",
-            "hash": "aab10ddd20890b795c5f084c80ca82f004edd38b7d1e27e2a411e5f19aaf7ce3"
-        },
-        {
-            "date": 1758879801414,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-26-15-success.log",
-            "hash": "93276c8a4ff0f9c84d7265fb1ce974471d9f76aa0c0345af2a32b91c8966c0ed"
-        },
-        {
-            "date": 1758882188542,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-26-16-success.log",
-            "hash": "0bb28361d491ff017d1d4f82ba2d13403299841bbc45b71ff768f0978616a0c2"
-        },
-        {
-            "date": 1758884927209,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-26-17-success.log",
-            "hash": "d25182275116778807ef0ba3fdc929657534cfe3c3d404937503c5aad1bf9c0b"
-        },
-        {
-            "date": 1759038796874,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-28-11-success.log",
-            "hash": "8777ddc536eb8b48f2f06826e6dadd63da57f790967e471887d6d34f9daca1f6"
-        },
-        {
-            "date": 1759039668591,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-28-12-success.log",
-            "hash": "88a0ce82b3d65a57700e98d314bec2a52b96ba66c82cb1a59e3c9e66d1969451"
-        },
-        {
-            "date": 1759043413024,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-09-28-13-success.log",
-            "hash": "f472cccf08c602c86efebed4b8dbdc7a2c031ed05de79c26d0f1f30ae2e59d52"
-        },
-        {
             "date": 1759307122289,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-01-14-success.log",
             "hash": "6b6d47d90b9c786b53bffa77c4e9b827b8e9fd4f2437ce09543e1b4e047ab356"
@@ -89,6 +14,36 @@
             "date": 1759384907267,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-02-12-success.log",
             "hash": "c953efea70c1c6838ce1c8d2d8052d792252219d46002ec0c0495e82d86dade3"
+        },
+        {
+            "date": 1760337180065,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-13-12-success.log",
+            "hash": "67d5a99f86520e2c7a1e72d74ce668c383a892a4b11d8918e08c22755b59c2cb"
+        },
+        {
+            "date": 1760339952246,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-13-13-success.log",
+            "hash": "acf5e414e4e37e035be38cb86d881649ced6c05916149d9b0635b6e0fb3c7886"
+        },
+        {
+            "date": 1760344626693,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-13-14-success.log",
+            "hash": "3e0687b4aef43f91800a78111d9a8aca825c4005098e7a04088ed2fd977947fb"
+        },
+        {
+            "date": 1760346640973,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-13-15-success.log",
+            "hash": "a0d64853c02cc3ab57211252383c8e4a0fb2acbc694524528cc6e6f6c7f9ede2"
+        },
+        {
+            "date": 1760349605364,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-13-16-success.log",
+            "hash": "f6d9a1b5a199409b99acc189c6abc6863395197a52b932ea24fe8dc760b50047"
+        },
+        {
+            "date": 1760353474109,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-13-17-success.log",
+            "hash": "5d19c999df18fd1170fd4fb78d8a21d5bbeda56cb3753cb66a2c40f75ba63a5b"
         }
     ],
     "hashType": "sha256"

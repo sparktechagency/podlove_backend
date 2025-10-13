@@ -160,8 +160,6 @@ Now, output ONLY a single numeric value (for example, 75) representing the compa
   }
 }
 
-
-
 const questions = [
   {
     question: "Do you believe in mutual respect and understanding in a relationship?",
@@ -181,8 +179,6 @@ const questions = [
 async function isUserSuitable(req: Request, res: Response, next: NextFunction): Promise<any> {
 
   const userResponses: string[] = Array.isArray(req.body.userResponses) ? req.body.userResponses : [];
-
-  console.log("User Responses:", userResponses);
 
   if (!userResponses.length) {
     console.error(`userResponses are required and must be an array.`);
@@ -233,7 +229,6 @@ async function isUserSuitable(req: Request, res: Response, next: NextFunction): 
     return next(error);
   }
 }
-
 
 const analyzeBio = async (bio: string) => {
   const prompt = `

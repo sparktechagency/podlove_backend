@@ -155,6 +155,7 @@ const getMonthlySubscriptionGrowth = async (year?: number) => {
     throw error;
   }
 };
+
 const getMonthlyUserGrowth = async (year?: number) => {
   try {
     const currentYear = new Date().getFullYear();
@@ -251,6 +252,7 @@ const getSubscriptionByYear = async (req: Request, res: Response, next: NextFunc
     return next(createError(StatusCodes.INTERNAL_SERVER_ERROR, "Failed to retrieve subscription analytics"));
   }
 };
+
 const getUserByYear = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   // const year = Number.parseInt(req.params.year);
   // const resultSubscription = getMonthlyUserGrowth(year);

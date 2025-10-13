@@ -83,6 +83,8 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
     return null;
   }
 };
+
+// findMatches (unchanged except kept here for context)
 async function findMatches(
   userId: string,
   answers: string[],
@@ -106,6 +108,7 @@ async function findMatches(
       _id: { $ne: user._id },
       dateOfBirth: { $gte: ageToDOB(pref.age.max), $lte: ageToDOB(pref.age.min) },
       gender: { $in: pref.gender },
+      isMatch: false,
       bodyType: { $in: pref.bodyType },
       ethnicity: { $in: pref.ethnicity },
       "location.latitude": { $exists: true },
@@ -134,6 +137,7 @@ async function findMatches(
       {
         _id: { $ne: user._id },
         gender: { $in: pref.gender },
+        isMatch: false,
         "location.latitude": { $exists: true },
         "location.longitude": { $exists: true },
       },
@@ -176,10 +180,11 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
   const sig = req.headers["stripe-signature"];
   let stripeEvent: Stripe.Event;
 
-  // 2) Verify signature
+  // 1️⃣ Verify Stripe Signature
   if (!sig) {
     return next(createError(StatusCodes.FORBIDDEN, "Missing Stripe signature header"));
   }
+
   try {
     stripeEvent = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
   } catch (err: any) {
@@ -187,18 +192,22 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
     return res.status(StatusCodes.BAD_REQUEST).send(`Webhook Error: ${err.message}`);
   }
 
-  // 3) Handle the event
   try {
     switch (stripeEvent.type) {
+      // ------------------------------------------------------------
+      // ✅ PAYMENT SUCCESS
+      // ------------------------------------------------------------
       case "invoice.payment_succeeded": {
         const invoice = stripeEvent.data.object as Stripe.Invoice;
         const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
         const { plan, fee, userId } = subscription.metadata;
-        // console.log("subscription.metadata: ", subscription.metadata);
+
         if (!userId) {
-          console.warn("⚠️  Missing metadata.userId on subscription");
+          console.warn("⚠️ Missing metadata.userId on subscription");
           break;
         }
+
+        // Update user subscription info
         const subUpdate = {
           "subscription.id": subscription.id,
           "subscription.plan": plan,
@@ -206,19 +215,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           "subscription.startedAt": new Date(),
           "subscription.status": SubscriptionStatus.PAID,
         };
-        // const filter = { _id: userId };
-        // const update = { $set: { subscription: subUpdate } };
-        // const [updErr, writeResult] = await to(
-        //   User.updateOne(filter, update, {
-        //     runValidators: false,
-        //     lean: true,
-        //   })
-        // );
-        // if (updErr) throw updErr;
 
-        // // console.log("writeResult: ", writeResult);
-        // console.log("sub update: ", subUpdate);
-        // console.log("user: ", userId);
         const updatedUser = await User.findByIdAndUpdate(
           userId,
           { $set: subUpdate },
@@ -226,95 +223,166 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
         );
 
         if (!updatedUser) {
-          console.warn(`⚠️  User not found: ${userId}`);
+          console.warn(`⚠️ User not found: ${userId}`);
           break;
         }
 
-        // Now you can safely use: 
-        console.info(`✅  Marked subscription PAID for user ${userId} (sub ${subscription.id})`);
+        console.info(`✅ Marked subscription PAID for user ${userId} (sub ${subscription.id})`);
 
-        let score = 2
-        if (fee === "Free") score = 2
-        if (fee === "14.99") score = 3
-        if (fee === "29.99") score = 4
+        // Determine participant limit
+        let limitCount = 2;
+        if (fee === "14.99") limitCount = 3;
+        if (fee === "29.99") limitCount = 4;
 
-        const topMatches = await findMatches(userId, updatedUser.compatibility || [], score);
+        // Find top matches
+        const topMatches = await findMatches(userId, updatedUser.compatibility || [], limitCount);
+        console.log("🎯 Found topMatches:", topMatches);
 
-        console.log("topMatches: ", topMatches);
-
-        const participants = topMatches.map(m => ({
+        const newParticipants = topMatches.map((m) => ({
           user: m.user,
-          score: m.score
+          score: m.score,
         }));
 
-        const podcast = await Podcast.findOneAndUpdate(
-          { primaryUser: userId },
-          { participants },
-          { new: true, upsert: true }
+        // Check if user already has a podcast
+        const existingPodcast = await Podcast.findOne({ primaryUser: userId });
+
+        // ------------------------------------------------------------
+        // ✅ UPDATE EXISTING PODCAST
+        // ------------------------------------------------------------
+        if (existingPodcast) {
+          console.log(`🎧 Updating existing podcast for user ${userId}`);
+
+          // Always keep primary user
+          const primaryParticipant = { user: userId, score: 100 };
+
+          // Exclude the primary user from participant list
+          const existingParticipants = existingPodcast.participants.filter(
+            (p: any) => p.user.toString() !== userId
+          );
+
+          // Avoid duplicates
+          const existingIds = new Set(existingParticipants.map((p: any) => p.user.toString()));
+          const additional = newParticipants.filter((p) => !existingIds.has(p.user.toString()));
+
+          // Merge existing + additional (up to limitCount non-primary)
+          const mergedParticipants = [
+            primaryParticipant,
+            ...existingParticipants,
+            ...additional.slice(0, Math.max(0, limitCount - existingParticipants.length)),
+          ];
+
+          // Ensure unique participants
+          const uniqueParticipants = Array.from(
+            new Map(mergedParticipants.map((p) => [p.user.toString(), p])).values()
+          );
+
+          // @ts-ignore
+          existingPodcast.participants = uniqueParticipants;
+          // @ts-ignore
+          existingPodcast.status = "NotScheduled";
+          await existingPodcast.save();
+
+          console.info(
+            `✅ Updated existing podcast for user ${userId} — total participants: ${uniqueParticipants.length}`
+          );
+        }
+        // ------------------------------------------------------------
+        // ✅ CREATE NEW PODCAST
+        // ------------------------------------------------------------
+        else {
+          console.log(`🎙️ Creating new podcast for user ${userId}`);
+
+          const finalOtherParticipants = newParticipants.slice(0, limitCount);
+
+          await Podcast.create({
+            primaryUser: userId,
+            participants: [{ user: userId, score: 100 }, ...finalOtherParticipants],
+            status: "NotScheduled",
+          });
+
+          console.info(`✅ Created new podcast for user ${userId}`);
+        }
+
+        // ------------------------------------------------------------
+        // ✅ Update isMatch flag for all participants
+        // ------------------------------------------------------------
+        let finalParticipantIds: string[] = [userId];
+        const podcastAfter = await Podcast.findOne({ primaryUser: userId });
+
+        if (podcastAfter?.participants?.length) {
+          finalParticipantIds = [
+            ...new Set(podcastAfter.participants.map((p: any) => p.user.toString())),
+          ];
+        }
+
+        await User.updateMany(
+          { _id: { $in: finalParticipantIds } },
+          { $set: { isMatch: true } }
         );
 
+        console.info(`✅ Podcast updated/created successfully for user ${userId}`);
         break;
       }
 
+      // ------------------------------------------------------------
+      // ❌ PAYMENT FAILED
+      // ------------------------------------------------------------
       case "invoice.payment_failed": {
         const invoice = stripeEvent.data.object as Stripe.Invoice;
         const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
         const { userId, plan } = subscription.metadata;
 
         if (!userId) {
-          console.warn("⚠️  Missing metadata.userId on subscription");
+          console.warn("⚠️ Missing metadata.userId on subscription");
           break;
         }
 
-        const [findErr, user] = await to(User.findById(userId));
-        if (findErr) throw findErr;
+        const user = await User.findById(userId);
         if (!user) {
-          console.warn(`⚠️  User not found: ${userId}`);
+          console.warn(`⚠️ User not found: ${userId}`);
           break;
         }
 
         if (user.subscription) {
           user.subscription.status = SubscriptionStatus.FAILED;
-        } else {
-          console.warn(`⚠️  No existing subscription to mark FAILED`);
         }
 
-        const [saveErr] = await to(user.save());
-        if (saveErr) throw saveErr;
-        const [notifErr, notification] = await to(
-          Notification.create({
-            type: "payment_failed",
-            user: userId,
-            message: [
-              {
-                title: "Payment failed",
-                description: `Your subscription payment for ${plan} did not go through. Please update your payment method and try again.`,
-              },
-            ],
-            read: false,
-            section: "user",
-          })
-        );
-        if (notifErr) {
-          console.error("❌  Failed to create failure notification:", notifErr);
-        } else {
-          console.info(`🔔  Failure notification sent to user ${userId}: ${notification._id}`);
-        }
-        console.info(`⚠️  Subscription payment FAILED for user ${userId}`);
+        await user.save();
+
+        await Notification.create({
+          type: "payment_failed",
+          user: userId,
+          message: [
+            {
+              title: "Payment failed",
+              description: `Your subscription payment for ${plan} did not go through. Please update your payment method and try again.`,
+            },
+          ],
+          read: false,
+          section: "user",
+        });
+
+        console.info(`⚠️ Subscription payment FAILED for user ${userId}`);
         break;
       }
 
+      // ------------------------------------------------------------
+      // DEFAULT
+      // ------------------------------------------------------------
       default:
-      // console.log(`ℹ️  Unhandled Stripe event type: ${stripeEvent.type}`);
+        console.log(`ℹ️ Unhandled Stripe event type: ${stripeEvent.type}`);
     }
 
-    // 4) Acknowledge receipt
+    // Respond OK to Stripe
     res.status(StatusCodes.OK).send("Received");
   } catch (err) {
-    console.error("❌  Error handling Stripe webhook:", err);
+    console.error("❌ Error handling Stripe webhook:", err);
     next(err);
   }
 };
+
+
+
 const StripeServices = {
   webhook,
 };

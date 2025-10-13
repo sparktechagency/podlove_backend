@@ -91,75 +91,6 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
   }
 };
 
-// async function findMatches(
-//   userId: string,
-//   answers: string[],
-//   limitCount: number,
-//   session: mongoose.mongo.ClientSession
-// ): Promise<any> {
-//   // 1) Load user
-//   const user = await User.findById(userId, {}, { session });
-//   if (!user) throw new Error("User not found");
-
-//   if (user.compatibility && !answers) {
-//     answers = user.compatibility;
-//   }
-//   // 2) Save own answers
-//   await User.findByIdAndUpdate(userId, { compatibility: answers }, { session }).exec();
-//   // 3) Build filter based on preferences
-//   const pref = user.preferences;
-//   let candidates = await User.find(
-//     {
-//       _id: { $ne: user._id },
-//       dateOfBirth: { $gte: ageToDOB(pref.age.max), $lte: ageToDOB(pref.age.min) },
-//       gender: { $in: pref.gender },
-//       bodyType: { $in: pref.bodyType },
-//       ethnicity: { $in: pref.ethnicity },
-//     },
-//     null,
-//     { session }
-//   ).lean();
-//   let candidate2 = await User.find(
-//     {
-//       _id: { $ne: user._id },
-//       gender: { $in: pref.gender },
-//     },
-//     null,
-//     { session }
-//   ).lean();
-//   console.log("candidate2: ", candidate2, " candidates: ", candidates);
-//   let matchCandidate = candidates.length < limitCount ? candidate2 : candidates;
-//   console.log("matchCandidates: ", matchCandidate);
-//   // 4) Distance filtering
-//   const nearby = matchCandidate.filter(
-//     (c) =>
-//       calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
-//         pref.distance ? calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude) <=
-//       pref.distance : calculateDistance(user.location.latitude, user.location.longitude, c.location.latitude, c.location.longitude)
-//   );
-
-//   console.log("nearby: ", nearby);
-//   // 5) Compute scores with concurrency limit
-//   const scored = await Promise.all(
-//     nearby.map(async (c) => ({
-//       user: c,
-//       score: await getCompatibilityScore(answers, c.compatibility || []),
-//     }))
-//   );
-//   // 6) Sort & return top N
-//   return scored
-//     .map((item) => ({
-//       user: item.user._id,
-//       score: item.score === null ? 0 : item.score,
-//     }))
-//     .sort((a, b) => {
-//       const scoreA = a.score ?? -Infinity;
-//       const scoreB = b.score ?? -Infinity;
-//       return scoreB - scoreA;
-//     })
-//     .slice(0, limitCount);
-// }
-
 const match = async (userId: string, matchCount: number = 3): Promise<string[]> => {
   const matchedUsers = await User.aggregate([
     { $match: { _id: { $ne: new Types.ObjectId(userId) } } },
@@ -169,59 +100,7 @@ const match = async (userId: string, matchCount: number = 3): Promise<string[]> 
   return matchedUsers.map((u: { _id: Types.ObjectId }) => u._id.toString());
 };
 
-// const matchUser = async (
-//   req: Request<{ id: string }, {}, MatchRequestBody>,
-//   res: Response,
-//   next: NextFunction
-// ): Promise<any> => {
-//   const session = await mongoose.startSession();
-//   session.startTransaction();
-//   try {
-//     const userId = req.params.id;
-//     let { compatibility } = req.body;
-//     // if (!Array.isArray(compatibility)) {
-//     //   throw createError(StatusCodes.BAD_REQUEST, "answers must be an array of strings");
-//     // }
-//     console.log("compatibility", userId, compatibility)
-//     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
-//     if (podcastExists) {
-//       return res.status(StatusCodes.CONFLICT).json({
-//         success: false,
-//         message: "User already has a podcast not scheduled",
-//         data: {},
-//       });
-//     }
-
-//     const topMatches = await findMatches(userId, compatibility, 2, session);
-//     const podcast = await Podcast.create([{ primaryUser: userId, participants: topMatches, status: "NotScheduled" }], {
-//       session,
-//     });
-
-//     // console.log("topMatches", topMatches);
-//     // console.log("podcast", podcast);
-
-//     await session.commitTransaction();
-//     session.endSession();
-//     return res.status(StatusCodes.OK).json({ success: true, message: "Matched users successfully", data: podcast });
-//   } catch (err) {
-//     await session.abortTransaction();
-//     session.endSession();
-//     next(err);
-//   }
-// };
-
-
-
-
-
-
-
-async function findMatches(
-  userId: string,
-  answers: string[],
-  limitCount: number,
-  session: mongoose.ClientSession
-): Promise<any[]> {
+async function findMatches(userId: string, answers: string[], limitCount: number, session: mongoose.ClientSession): Promise<any[]> {
   // 1) Load user
   const user = await User.findById(userId, {}, { session });
   if (!user) throw new Error("User not found");
@@ -235,18 +114,16 @@ async function findMatches(
   const pref = user.preferences;
 
   // 4) Fetch candidates matching preferences
-  let candidates = await User.find(
-    {
-      _id: { $ne: user._id },
-      dateOfBirth: { $gte: ageToDOB(pref.age.max), $lte: ageToDOB(pref.age.min) },
-      gender: { $in: pref.gender },
-      bodyType: { $in: pref.bodyType },
-      ethnicity: { $in: pref.ethnicity },
-      "location.latitude": { $exists: true },
-      "location.longitude": { $exists: true },
-    },
-    null,
-    { session }
+  let candidates = await User.find({
+    _id: { $ne: user._id },
+    dateOfBirth: { $gte: ageToDOB(pref.age.max), $lte: ageToDOB(pref.age.min) },
+    gender: { $in: pref.gender },
+    bodyType: { $in: pref.bodyType },
+    isMatch: false,
+    ethnicity: { $in: pref.ethnicity },
+    "location.latitude": { $exists: true },
+    "location.longitude": { $exists: true },
+  }, null, { session }
   ).lean();
 
   // 5) Distance filtering (strict)
@@ -266,6 +143,7 @@ async function findMatches(
     const fallback = await User.find(
       {
         _id: { $ne: user._id },
+        isMatch: false,
         gender: { $in: pref.gender },
         "location.latitude": { $exists: true },
         "location.longitude": { $exists: true },
@@ -312,15 +190,15 @@ const matchUser = async (
 ): Promise<any> => {
   const session = await mongoose.startSession();
   session.startTransaction();
+
   try {
     const userId = req.params.id;
     const { compatibility } = req.body;
 
-    console.log("matchUser called with:", userId, compatibility);
-
-    // Check if user already has a pending podcast
     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
     if (podcastExists) {
+      await session.abortTransaction();
+      session.endSession();
       return res.status(StatusCodes.CONFLICT).json({
         success: false,
         message: "User already has a podcast not scheduled",
@@ -331,22 +209,51 @@ const matchUser = async (
     // Find top matches
     const topMatches = await findMatches(userId, compatibility || [], 2, session);
 
-    const participants = topMatches.map(m => ({
-      user: m.user,
-      score: m.score
-    }));
+    if (!topMatches.length) {
+      await session.abortTransaction();
+      session.endSession();
+      return res.status(StatusCodes.OK).json({
+        success: false,
+        message: "No suitable matches found at this time",
+        data: {},
+      });
+    }
+
+    const participants = [
+      {
+        user: userId,
+        score: 100,
+      },
+      ...topMatches.map((m) => ({
+        user: m.user,
+        score: m.score,
+      })),
+    ];
 
     // Create podcast with participants
     const podcast = await Podcast.create(
-      [{
-        primaryUser: userId,
-        participants,
-        status: "NotScheduled"
-      }],
+      [
+        {
+          primaryUser: userId,
+          participants,
+          status: "NotScheduled",
+        },
+      ],
       { session }
     );
+
+    // Mark users as matched
+    const matchedUserIds = [userId, ...participants.map((p) => p.user)];
+    await User.updateMany(
+      { _id: { $in: matchedUserIds } },
+      { $set: { isMatch: true } },
+      { session }
+    );
+
     await session.commitTransaction();
     session.endSession();
+
+    console.log("====================✅ User successfully scheduled for the podcast=============================");
 
     return res.status(StatusCodes.OK).json({
       success: true,
@@ -361,9 +268,6 @@ const matchUser = async (
 };
 
 
-
-
-
 const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   if (!userId) {
@@ -372,8 +276,6 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
   if (!Types.ObjectId.isValid(userId)) {
     return next(createError(StatusCodes.BAD_REQUEST, "Invalid user ID"));
   }
-
-  console.log("getMatchedUsers called for userId:", req, userId);
 
   const session = await mongoose.startSession();
   session.startTransaction({ readConcern: { level: "snapshot" } });

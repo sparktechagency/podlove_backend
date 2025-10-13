@@ -28,31 +28,6 @@ import path from "path";
 import ChatRouter from "@routers/chatRouter";
 import SubscriptionPlanRouter from "@routers/subscriptionPlanRouter"
 
-// const apiLogger = (req: Request, res: Response, next: NextFunction) => {
-//   console.log("===== API Request =====");
-//   console.log("URL:", req.originalUrl);
-//   console.log("Method:", req.method);
-//   console.log("Method:", req.method);
-//   console.log("Query:", req.query);
-//   console.log("Body:", req.body);
-//   const token = req.headers["authorization"] || req.headers["Authorization"];
-//   console.log("Token:", token || "No token provided");
-
-//   // Capture response before sending
-//   const oldSend = res.send;
-//   res.send = function (body) {
-//     console.log("===== API Response =====");
-//     console.log("Status:", res.statusCode);
-//     try {
-//       console.log("Body:", JSON.parse(body as any));
-//     } catch {
-//       console.log("Body:", body);
-//     }
-//     return oldSend.call(this, body);
-//   };
-
-//   next();
-// };
 
 const app = express();
 // app.use(apiLogger);
@@ -64,23 +39,6 @@ app.use(
 );
 
 app.use(express.json());
-// app.use("/", WebhookRouter);
-// app.post(
-//   "/webhook",
-//   bodyParser.raw({ type: "application/json" }),,
-//   StripeServices.webhook
-// );
-// app.post(
-//   "/webhook",
-//   express.raw({ 
-//     // accept any content‑type that contains “json”
-//     type: (req) => {
-//       const ct = req.headers["content-type"] || "";
-//       return /\/json/.test(ct);
-//     }
-//   }),
-//   StripeServices.webhook
-// );
 
 
 app.use(

@@ -9,23 +9,16 @@ import mongoose, { Types } from "mongoose";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const user = await User.findById(req.user.userId);
-  // if (user!.isSelectedForPodcast) return res.status(StatusCodes.CONFLICT).json({
-  //   success: true,
-  //   message: "User is already selected for another podcast",
-  //   data: {}
-  // });
+
   let matchCount = 0;
   if (user!.subscription.plan === SubscriptionPlanName.LISTENER) matchCount = 2;
   else if (user!.subscription.plan === SubscriptionPlanName.SPEAKER) matchCount = 3;
   else matchCount = 4;
   const participants = await MatchedServices.match(user!._id as string, matchCount);
-  // if (participants.length !== matchCount)
-  //   return res.status(StatusCodes.OK).json({
-  //     success: true,
-  //     message: "Not enough compatible user for the podcast",
-  //     data: {}
-  //   });
+
   const podcast = await Podcast.create({ primaryUser: user!._id, participants: participants });
+
+  console.log('====================LL User successfully scheduled for the podcast=============================',)
   return res.status(StatusCodes.CREATED).json({
     success: true,
     message: "User successfully scheduled for the podcast",
@@ -131,7 +124,7 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
         select: "name avatar",
       },
       {
-        path: "participants.user", // drill into the subdoc
+        path: "participants.user",
         select: "name avatar",
       },
     ])

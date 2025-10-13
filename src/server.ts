@@ -48,9 +48,6 @@ async function startServer() {
     const io = new SocketIOServer(server, {
       cors: { origin: "*" }
     });
-    // const io = new SocketIOServer(server, {
-    //   cors: { origin: "*"},
-    // });
 
     initSocketHandlers(io);
 

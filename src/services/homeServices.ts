@@ -6,13 +6,6 @@ import User from "@models/userModel";
 import mongoose, { ClientSession, Types } from "mongoose";
 import createError from "http-errors";
 import { LeanUserWithAuth } from "@shared/homeInterface";
-interface ParticipantUI {
-  _id: Types.ObjectId; // stringify for JSON
-  score: number;
-  name: string;
-  bio: string;
-  interests: string[];
-}
 
 interface HostSummary {
   _id: Types.ObjectId;
@@ -32,50 +25,6 @@ function summarizeSelectedUserPodcasts(podcasts: any): HostSummary[] {
   );
 }
 
-// const homeData = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-//   const userId = req.user.userId;
-
-//   const user = await User.findById(userId).populate({ path: "auth", select: "email" });
-
-//   let podcast = await Podcast.findOne({
-//     $or: [{ primaryUser: userId }, { participants: userId }],
-//   })
-//     .populate({
-//       path: "participants",
-//       select: "name bio interests",
-//     })
-//     .populate({
-//       path: "primaryUser",
-//       select: "name bio interests",
-//     })
-//     .lean();
-
-//   const isPrimaryUser = podcast ? podcast.primaryUser.toString() === userId : false;
-
-//   const subscriptionPlans = await SubscriptionPlan.find().lean();
-
-//   return res.status(StatusCodes.OK).json({
-//     success: true,
-//     message: "Success",
-//     data: {
-//       user,
-//       podcast: podcast || {},
-//       subscriptionPlans,
-//       isPrimaryUser,
-//     },
-//   });
-// };
-
-// interface LeanUserWithAuth {
-//   _id: Types.ObjectId;
-//   auth: {
-//     _id: Types.ObjectId;
-//     email: string;
-//     isBlocked: boolean;
-//   };
-//   // …any other fields you need
-// }
-
 const homeData = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
     const userId = req.user.userId;
@@ -90,8 +39,6 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
     if (user.auth.isBlocked) {
       throw next(createError(StatusCodes.FORBIDDEN, "You Account is Blocked by Admisnistrator, Please contact our assistance"))
     }
-
-    console.log("userId", userId)
 
     // Find the podcast where they’re primary or a participant
     const podcast = await Podcast.findOne({

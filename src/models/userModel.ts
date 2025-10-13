@@ -212,6 +212,10 @@ const userSchema = new Schema(
     isSelectedForPodcast: {
       type: Boolean,
     },
+    isMatch: {
+      type: Boolean,
+      default: false
+    },
   },
   {
     timestamps: true,
