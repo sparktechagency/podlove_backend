@@ -18,7 +18,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
 
   const podcast = await Podcast.create({ primaryUser: user!._id, participants: participants });
 
-  console.log('====================LL User successfully scheduled for the podcast=============================',)
+  console.log('====================LL User successfully scheduled for the podcast=============================')
   return res.status(StatusCodes.CREATED).json({
     success: true,
     message: "User successfully scheduled for the podcast",
@@ -26,50 +26,52 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   });
 };
 
-// const sendPodcastRequest = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-//   const userId = req.user.userId;
-//   if (!userId) {
-//     return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated"));
-//   }
+const removeFromPodcast = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  try {
+    const { userId } = req.body;
 
-//   const session = await mongoose.startSession();
-//   try {
-//     session.startTransaction();
+    if (!userId) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        success: false,
+        message: "userId is required",
+      });
+    }
 
-//     // 1) Validate payload
-//     const { status } = req.body;
-//     if (!Object.values(PodcastStatus).includes(status)) {
-//       throw createError(StatusCodes.BAD_REQUEST, "Invalid podcast status");
-//     }
+    const podcast = await Podcast.findOne({
+      $or: [
+        { "participants.user": userId },
+        { primaryUser: userId }
+      ]
+    });
 
-//     // 2) Update the Podcast document for this user
-//     const updated = await Podcast.findOneAndUpdate(
-//       { primaryUser: userId },
-//       { $set: { status, schedule: { day: "", date: "", time: "" } } },
-//       { new: true, session }
-//     )
-//       .lean()
-//       .exec();
+    if (!podcast) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        success: false,
+        message: "Podcast not found for this user",
+      });
+    }
 
-//     if (!updated) {
-//       throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this user");
-//     }
+    podcast.participants = podcast.participants.filter(
+      (p) => p.user.toString() !== userId
+    );
 
-//     // 3) Commit & respond
-//     await session.commitTransaction();
-//     session.endSession();
+    if (podcast.primaryUser?.toString() === userId) {
+      podcast.primaryUser = null as any;
+    }
 
-//     return res.status(StatusCodes.OK).json({
-//       success: true,
-//       message: "Podcast request updated successfully",
-//       data: updated,
-//     });
-//   } catch (err) {
-//     await session.abortTransaction();
-//     session.endSession();
-//     return next(err);
-//   }
-// };
+    const updated = await podcast.save();
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "User removed from podcast successfully",
+      data: updated,
+    });
+
+  } catch (err) {
+    return next(err);
+  }
+};
+
 
 const sendPodcastRequest = async (
   req: Request,
@@ -129,7 +131,6 @@ const sendPodcastRequest = async (
   }
 };
 
-
 const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { id, status } = req.query;
   const page = parseInt(req.query.page as string, 10) || 1;
@@ -172,8 +173,7 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
   // console.log("statusFilter: ", statusFilter);
 
   const podcasts = await Podcast.find(statusFilter)
-    // Only pull back fields you’ll actually return
-    .select("primaryUser participants.score participants.isAllow schedule status createdAt roomCodes recordingUrl")
+    .select("primaryUser participants.score participants.isAllow participants.isRequest schedule status createdAt roomCodes recordingUrl")
     .sort({ createdAt: -1 })
     .skip(skip)
     .limit(limit)
@@ -318,6 +318,7 @@ const getAdminRecordedPodcast = async (req: Request, res: Response, next: NextFu
 
 const PodcastController = {
   create,
+  removeFromPodcast,
   getPodcasts,
   sendPodcastRequest,
   startPodcast,

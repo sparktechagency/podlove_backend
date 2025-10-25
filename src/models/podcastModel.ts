@@ -40,7 +40,7 @@ const podcastSchema = new Schema<PodcastSchema>({
   primaryUser: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    required: false,
   },
   participants: [
     {
