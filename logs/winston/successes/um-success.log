@@ -25071,3 +25071,265 @@ Mon Oct 13 2025 17:26:15 [Podlove] [32minfo[39m: Consumer Policy exists!
 Mon Oct 13 2025 17:26:15 [Podlove] [32minfo[39m: Media Policy exists!
 Mon Oct 13 2025 17:26:15 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
 Mon Oct 13 2025 17:26:15 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Oct 15 2025 12:35:50 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Oct 15 2025 12:35:53 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Oct 15 2025 12:35:54 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Oct 15 2025 12:35:54 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Oct 15 2025 12:35:54 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Wed Oct 15 2025 12:35:54 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Oct 15 2025 12:36:6 [Podlove] [32minfo[39m: 68ecd244edf9848e632c5bb2
+Wed Oct 15 2025 12:36:6 [Podlove] [32minfo[39m: 68ecd244edf9848e632c5bb2
+Wed Oct 15 2025 12:47:5 [Podlove] [32minfo[39m: 68ecd244edf9848e632c5bb2
+Wed Oct 15 2025 12:47:5 [Podlove] [32minfo[39m: 68ecd244edf9848e632c5bb2
+Wed Oct 15 2025 12:48:34 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:48:51 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:49:0 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:49:7 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:49:16 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:49:23 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:49:29 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:49:59 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:50:3 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:50:9 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:50:11 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:50:51 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:51:1 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:51:3 [Podlove] [31merror[39m: No podcast found for this user
+NotFoundError: No podcast found for this user
+    at getMatchedUsers (/home/tayeur/Desktop/project/podlove_backend/src/services/matchesServices.ts:295:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Wed Oct 15 2025 12:51:5 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 12:51:6 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Wed Oct 15 2025 15:29:56 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Wed Oct 15 2025 15:29:58 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Thu Oct 16 2025 0:0:9 [Podlove] [32minfo[39m: Updated shareFeedback and notifications for 13 users
+Sat Oct 25 2025 9:31:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Oct 25 2025 9:31:41 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Oct 25 2025 9:31:41 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Oct 25 2025 9:31:42 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Oct 25 2025 9:31:42 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Oct 25 2025 9:31:42 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Oct 25 2025 9:32:3 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/tayeur/Desktop/project/podlove_backend/src/middlewares/authorization.ts:45:30
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Sat Oct 25 2025 9:32:14 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at /home/tayeur/Desktop/project/podlove_backend/src/middlewares/authorization.ts:45:30
+    at /home/tayeur/Desktop/project/podlove_backend/src/shared/asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/express/lib/router/index.js:175:3)
+UnauthorizedError
+Sat Oct 25 2025 9:32:17 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Sat Oct 25 2025 9:32:17 [Podlove] [32minfo[39m: 68ef43a16341813e354b264b
+Sat Oct 25 2025 9:32:19 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:34:30 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:35:31 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:35:40 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:35:45 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:35:54 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:36:1 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:36:19 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:36:52 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:36:57 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:37:1 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:37:3 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:37:16 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:37:19 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:50:54 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:50:54 [Podlove] [32minfo[39m: 68fc452a651dd93f275bf1ae
+Sat Oct 25 2025 9:52:10 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:52:26 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:52:32 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:52:39 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:52:46 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:52:52 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:53:0 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:53:28 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:53:33 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:53:37 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:53:38 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:53:47 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:53:48 [Podlove] [31merror[39m: No podcast found for this user
+NotFoundError: No podcast found for this user
+    at getMatchedUsers (/home/tayeur/Desktop/project/podlove_backend/src/services/matchesServices.ts:295:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sat Oct 25 2025 9:53:49 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:53:51 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:55:53 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:55:55 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:55:58 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:56:0 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:56:25 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:56:27 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:56:29 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:56:31 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:56:49 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:56:50 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:57:12 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:57:13 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:57:16 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:57:17 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:57:22 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:57:24 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:57:40 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:57:42 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:58:6 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:58:8 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:58:10 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:58:13 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:58:25 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:58:26 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 9:58:28 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 9:58:29 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 10:0:11 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 10:0:12 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 10:0:46 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 10:0:48 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 10:0:48 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 10:0:50 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 10:2:8 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 10:2:9 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 10:2:15 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 10:2:16 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 10:2:46 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 10:2:47 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 10:2:49 [Podlove] [32minfo[39m: 68fc4947651dd93f275bf234
+Sat Oct 25 2025 10:2:51 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (/home/tayeur/Desktop/project/podlove_backend/src/services/homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Oct 25 2025 10:5:44 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:5:58 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:6:5 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:6:10 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:6:18 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:6:24 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:6:29 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:6:52 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:6:58 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:7:1 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:7:3 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:7:15 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:7:21 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:7:50 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:7:50 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:9:3 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:9:3 [Podlove] [32minfo[39m: 68fc4c80651dd93f275bf2fd
+Sat Oct 25 2025 10:16:7 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Oct 25 2025 10:16:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Oct 25 2025 10:16:24 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Oct 25 2025 10:16:24 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Oct 25 2025 10:16:24 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Oct 25 2025 10:16:24 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Sat Oct 25 2025 10:16:24 [Podlove] [32minfo[39m: Socket.IO server initialized

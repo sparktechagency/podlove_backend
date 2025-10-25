@@ -18,6 +18,10 @@ export type PodcastSchema = Document & {
   scheduleStatus: string | null;
   room_id: string;
   primaryUser: Types.ObjectId;
+  requestUser: {
+    set(arg0: string, arg1: boolean): unknown;
+    _id: any; user: Types.ObjectId; isAllow: Boolean, score: number
+  }[];
   participants: {
     set(arg0: string, arg1: boolean): unknown;
     _id: any; user: Types.ObjectId; isAllow: Boolean, score: number

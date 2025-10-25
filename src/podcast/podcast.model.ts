@@ -20,8 +20,7 @@ const RecordingSchema: Schema = new Schema(
         ended_at: { type: Date },
         duration: { type: Number }, // seconds
         url: { type: String, required: true },
-    },
-    { _id: false }
+    }, { _id: false }
 );
 
 const StreamRoomSchema = new Schema<IStreamRoom>(
@@ -71,8 +70,7 @@ const StreamRoomSchema = new Schema<IStreamRoom>(
         },
         roomCodes: [RoomCodeSchema],
         recordings: [RecordingSchema],
-    },
-    { timestamps: true }
+    }, { timestamps: true }
 );
 
 const podcastFeedbackSchema = new Schema({
@@ -132,6 +130,7 @@ const mediaPolicySchema = new Schema({
         type: String,
     },
 });
+
 const SMSPolicySchema = new Schema({
     text: {
         type: String,
