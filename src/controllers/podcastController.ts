@@ -26,43 +26,101 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   });
 };
 
-const sendPodcastRequest = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+// const sendPodcastRequest = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+//   const userId = req.user.userId;
+//   if (!userId) {
+//     return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated"));
+//   }
+
+//   const session = await mongoose.startSession();
+//   try {
+//     session.startTransaction();
+
+//     // 1) Validate payload
+//     const { status } = req.body;
+//     if (!Object.values(PodcastStatus).includes(status)) {
+//       throw createError(StatusCodes.BAD_REQUEST, "Invalid podcast status");
+//     }
+
+//     // 2) Update the Podcast document for this user
+//     const updated = await Podcast.findOneAndUpdate(
+//       { primaryUser: userId },
+//       { $set: { status, schedule: { day: "", date: "", time: "" } } },
+//       { new: true, session }
+//     )
+//       .lean()
+//       .exec();
+
+//     if (!updated) {
+//       throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this user");
+//     }
+
+//     // 3) Commit & respond
+//     await session.commitTransaction();
+//     session.endSession();
+
+//     return res.status(StatusCodes.OK).json({
+//       success: true,
+//       message: "Podcast request updated successfully",
+//       data: updated,
+//     });
+//   } catch (err) {
+//     await session.abortTransaction();
+//     session.endSession();
+//     return next(err);
+//   }
+// };
+
+const sendPodcastRequest = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const userId = req.user.userId;
+  const { status } = req.body;
+
   if (!userId) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated"));
+    return next(createError(StatusCodes.BAD_REQUEST, "Participant userId is required"));
+  }
+
+  if (!status || !Object.values(PodcastStatus).includes(status)) {
+    return next(createError(StatusCodes.BAD_REQUEST, "Invalid podcast status"));
   }
 
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
 
-    // 1) Validate payload
-    const { status } = req.body;
-    if (!Object.values(PodcastStatus).includes(status)) {
-      throw createError(StatusCodes.BAD_REQUEST, "Invalid podcast status");
+
+    const podcast = await Podcast.findOne({ "participants.user": userId }).session(session);
+    if (!podcast) {
+      throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this participant");
     }
 
-    // 2) Update the Podcast document for this user
-    const updated = await Podcast.findOneAndUpdate(
-      { primaryUser: userId },
-      { $set: { status, schedule: { day: "", date: "", time: "" } } },
-      { new: true, session }
-    )
-      .lean()
-      .exec();
+    podcast.participants = podcast.participants.map((p: any) => {
+      if (p.user.toString() === userId.toString()) {
+        return {
+          ...p.toObject ? p.toObject() : p,
+          isRequest: true
+        };
+      }
+      return p;
+    });
 
-    if (!updated) {
-      throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this user");
-    }
+    // 3️⃣ Update podcast status and reset schedule
+    podcast.status = status;
+    podcast.schedule = { day: "", date: "", time: "" };
 
-    // 3) Commit & respond
+    // 4️⃣ Save changes
+    await podcast.save({ session });
+
     await session.commitTransaction();
     session.endSession();
 
     return res.status(StatusCodes.OK).json({
       success: true,
-      message: "Podcast request updated successfully",
-      data: updated,
+      message: "Podcast status updated and participant request set to true",
+      data: podcast,
     });
   } catch (err) {
     await session.abortTransaction();
@@ -70,6 +128,7 @@ const sendPodcastRequest = async (req: Request, res: Response, next: NextFunctio
     return next(err);
   }
 };
+
 
 const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { id, status } = req.query;
