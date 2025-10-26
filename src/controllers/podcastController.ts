@@ -72,7 +72,6 @@ const removeFromPodcast = async (req: Request, res: Response, next: NextFunction
   }
 };
 
-
 const sendPodcastRequest = async (
   req: Request,
   res: Response,
@@ -109,11 +108,9 @@ const sendPodcastRequest = async (
       return p;
     });
 
-    // 3️⃣ Update podcast status and reset schedule
     podcast.status = status;
     podcast.schedule = { day: "", date: "", time: "" };
 
-    // 4️⃣ Save changes
     await podcast.save({ session });
 
     await session.commitTransaction();
