@@ -165,7 +165,7 @@ async function findMatches(
     }))
   );
 
-  // 8) Sort & return top N
+  // 8) Sort & return top
   return scored
     .map((item) => ({
       user: item.user._id,
@@ -175,51 +175,46 @@ async function findMatches(
     .slice(0, limitCount);
 }
 
+// ============================
 const webhook = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
   const sig = req.headers["stripe-signature"];
   let stripeEvent: Stripe.Event;
 
-  // 1️⃣ Verify Stripe Signature
-  if (!sig) {
-    return next(createError(StatusCodes.FORBIDDEN, "Missing Stripe signature header"));
-  }
+  if (!sig) return next(createError(StatusCodes.FORBIDDEN, "Missing Stripe signature header"));
 
   try {
     stripeEvent = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
   } catch (err: any) {
-    console.error("⚠️  Webhook signature verification failed:", err.message);
+    console.error("⚠️ Webhook signature verification failed:", err.message);
     return res.status(StatusCodes.BAD_REQUEST).send(`Webhook Error: ${err.message}`);
   }
 
   try {
     switch (stripeEvent.type) {
-      // ------------------------------------------------------------
-      // ✅ PAYMENT SUCCESS
-      // ------------------------------------------------------------
       case "invoice.payment_succeeded": {
         const invoice = stripeEvent.data.object as Stripe.Invoice;
         const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
         const { plan, fee, userId } = subscription.metadata;
 
-        if (!userId) {
-          console.warn("⚠️ Missing metadata.userId on subscription");
+        if (!userId || !Types.ObjectId.isValid(userId)) {
+          console.warn("⚠️ Invalid or missing userId in metadata");
           break;
         }
 
-        // Update user subscription info
-        const subUpdate = {
-          "subscription.id": subscription.id,
-          "subscription.plan": plan,
-          "subscription.fee": fee,
-          "subscription.startedAt": new Date(),
-          "subscription.status": SubscriptionStatus.PAID,
-        };
-
+        // 🟩 Step 1: Update user subscription
         const updatedUser = await User.findByIdAndUpdate(
           userId,
-          { $set: subUpdate },
-          { new: true, runValidators: false, upsert: true }
+          {
+            $set: {
+              "subscription.id": subscription.id,
+              "subscription.plan": plan,
+              "subscription.fee": fee,
+              "subscription.startedAt": new Date(),
+              "subscription.status": SubscriptionStatus.PAID,
+            },
+          },
+          { new: true }
         );
 
         if (!updatedUser) {
@@ -227,126 +222,92 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           break;
         }
 
-        console.info(`✅ Marked subscription PAID for user ${userId} (sub ${subscription.id})`);
+        console.log(`✅ Subscription updated for user ${userId}`);
 
-        // Determine participant limit
+        // 🟩 Step 2: Determine limit count
         let limitCount = 2;
         if (fee === "14.99") limitCount = 3;
         if (fee === "29.99") limitCount = 4;
 
-        // Find top matches
-        const topMatches = await findMatches(userId, updatedUser.compatibility || [], limitCount);
-        console.log("🎯 Found topMatches:", topMatches);
+        // 🟩 Step 3: Find top matches
+        const topMatches = await findMatches(
+          userId,
+          updatedUser.compatibility || [],
+          limitCount
+        );
 
+        if (!topMatches || topMatches.length === 0) {
+          console.warn(`⚠️ No matches found for user ${userId}. Podcast will not be created.`);
+          break;
+        }
+
+        // 🟩 Step 4: Prepare new participants
         const newParticipants = topMatches.map((m) => ({
           user: m.user,
           score: m.score,
         }));
 
-        // Check if user already has a podcast
-        const existingPodcast = await Podcast.findOne({ primaryUser: userId });
+        let podcast = await Podcast.findOne({
+          "participants.user": userId
+        });
 
-        // ------------------------------------------------------------
-        // ✅ UPDATE EXISTING PODCAST
-        // ------------------------------------------------------------
-        if (existingPodcast) {
-          console.log(`🎧 Updating existing podcast for user ${userId}`);
+        if (podcast) {
+          console.log(`🎧 Updating existing podcast containing user ${userId}`);
 
-          // Always keep primary user
-          const primaryParticipant = { user: userId, score: 100 };
+          const existingParticipants = podcast.participants || [];
+          const existingIds = new Set(existingParticipants.map((p: any) => p.user.toString()));
 
-          // Exclude the primary user from participant list
-          const existingParticipants = existingPodcast.participants.filter(
-            (p: any) => p.user.toString() !== userId
+          // Filter new participants not already in the podcast
+          const additional = newParticipants.filter(
+            (p) => !existingIds.has(p.user.toString())
           );
 
-          // Avoid duplicates
-          const existingIds = new Set(existingParticipants.map((p: any) => p.user.toString()));
-          const additional = newParticipants.filter((p) => !existingIds.has(p.user.toString()));
-
-          // Merge existing + additional (up to limitCount non-primary)
-          const mergedParticipants = [
-            primaryParticipant,
+          // Merge + ensure total <= limitCount
+          const merged = [
             ...existingParticipants,
             ...additional.slice(0, Math.max(0, limitCount - existingParticipants.length)),
           ];
 
-          // Ensure unique participants
-          const uniqueParticipants = Array.from(
-            new Map(mergedParticipants.map((p) => [p.user.toString(), p])).values()
-          );
-
           // @ts-ignore
-          existingPodcast.participants = uniqueParticipants;
-          // @ts-ignore
-          existingPodcast.status = "NotScheduled";
-          await existingPodcast.save();
+          podcast.participants = Array.from(
+            new Map(merged.map((p) => [p.user.toString(), p])).values()
+          ).slice(0, limitCount);
 
-          console.info(
-            `✅ Updated existing podcast for user ${userId} — total participants: ${uniqueParticipants.length}`
+          await podcast.save();
+          console.log(
+            `✅ Updated podcast for ${userId}. Total participants: ${podcast.participants.length}`
           );
-        }
-        // ------------------------------------------------------------
-        // ✅ CREATE NEW PODCAST
-        // ------------------------------------------------------------
-        else {
-          console.log(`🎙️ Creating new podcast for user ${userId}`);
+        } else {
+          console.log(`🎙️ Creating new podcast for ${userId}`);
 
-          const finalOtherParticipants = newParticipants.slice(0, limitCount);
-
-          await Podcast.create({
+          podcast = await Podcast.create({
             primaryUser: userId,
-            participants: [{ user: userId, score: 100 }, ...finalOtherParticipants],
+            participants: [{ user: userId, score: 100 }, ...newParticipants].slice(0, limitCount),
             status: "NotScheduled",
           });
 
-          console.info(`✅ Created new podcast for user ${userId}`);
+          console.log(`✅ Created new podcast for ${userId}`);
         }
 
-        // ------------------------------------------------------------
-        // ✅ Update isMatch flag for all participants
-        // ------------------------------------------------------------
-        let finalParticipantIds: string[] = [userId];
-        const podcastAfter = await Podcast.findOne({ primaryUser: userId });
+        // 🟩 Step 6: Update isMatch for all participants
+        const participantIds = podcast.participants.map((p: any) => p.user);
+        await User.updateMany({ _id: { $in: participantIds } }, { $set: { isMatch: true } });
 
-        if (podcastAfter?.participants?.length) {
-          finalParticipantIds = [
-            ...new Set(podcastAfter.participants.map((p: any) => p.user.toString())),
-          ];
-        }
-
-        await User.updateMany(
-          { _id: { $in: finalParticipantIds } },
-          { $set: { isMatch: true } }
-        );
-
-        console.info(`✅ Podcast updated/created successfully for user ${userId}`);
+        console.log(`✅ isMatch set for ${participantIds.length} users`);
         break;
       }
 
-      // ------------------------------------------------------------
-      // ❌ PAYMENT FAILED
-      // ------------------------------------------------------------
       case "invoice.payment_failed": {
         const invoice = stripeEvent.data.object as Stripe.Invoice;
         const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
         const { userId, plan } = subscription.metadata;
 
-        if (!userId) {
-          console.warn("⚠️ Missing metadata.userId on subscription");
-          break;
-        }
+        if (!userId) break;
 
         const user = await User.findById(userId);
-        if (!user) {
-          console.warn(`⚠️ User not found: ${userId}`);
-          break;
-        }
+        if (!user) break;
 
-        if (user.subscription) {
-          user.subscription.status = SubscriptionStatus.FAILED;
-        }
-
+        user.subscription.status = SubscriptionStatus.FAILED;
         await user.save();
 
         await Notification.create({
@@ -355,31 +316,235 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           message: [
             {
               title: "Payment failed",
-              description: `Your subscription payment for ${plan} did not go through. Please update your payment method and try again.`,
+              description: `Your subscription payment for ${plan} did not go through. Please update your payment method.`,
             },
           ],
           read: false,
           section: "user",
         });
 
-        console.info(`⚠️ Subscription payment FAILED for user ${userId}`);
+        console.log(`⚠️ Payment failed for ${userId}`);
         break;
       }
 
-      // ------------------------------------------------------------
-      // DEFAULT
-      // ------------------------------------------------------------
       default:
-        console.log(`ℹ️ Unhandled Stripe event type: ${stripeEvent.type}`);
+        console.log(`Unhandled event type: ${stripeEvent.type}`);
     }
 
-    // Respond OK to Stripe
     res.status(StatusCodes.OK).send("Received");
   } catch (err) {
     console.error("❌ Error handling Stripe webhook:", err);
     next(err);
   }
 };
+
+// ================================
+
+// const webhook = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+//   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+//   const sig = req.headers["stripe-signature"];
+//   let stripeEvent: Stripe.Event;
+
+//   // 1️⃣ Verify Stripe Signature
+//   if (!sig) {
+//     return next(createError(StatusCodes.FORBIDDEN, "Missing Stripe signature header"));
+//   }
+
+//   try {
+//     stripeEvent = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+//   } catch (err: any) {
+//     console.error("⚠️  Webhook signature verification failed:", err.message);
+//     return res.status(StatusCodes.BAD_REQUEST).send(`Webhook Error: ${err.message}`);
+//   }
+
+//   try {
+//     switch (stripeEvent.type) {
+//       // ------------------------------------------------------------
+//       // ✅ PAYMENT SUCCESS
+//       // ------------------------------------------------------------
+//       case "invoice.payment_succeeded": {
+//         const invoice = stripeEvent.data.object as Stripe.Invoice;
+//         const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
+//         const { plan, fee, userId } = subscription.metadata;
+
+//         if (!userId) {
+//           console.warn("⚠️ Missing metadata.userId on subscription");
+//           break;
+//         }
+
+//         // Update user subscription info
+//         const subUpdate = {
+//           "subscription.id": subscription.id,
+//           "subscription.plan": plan,
+//           "subscription.fee": fee,
+//           "subscription.startedAt": new Date(),
+//           "subscription.status": SubscriptionStatus.PAID,
+//         };
+
+//         const updatedUser = await User.findByIdAndUpdate(
+//           userId,
+//           { $set: subUpdate },
+//           { new: true, runValidators: false, upsert: true }
+//         );
+
+//         if (!updatedUser) {
+//           console.warn(`⚠️ User not found: ${userId}`);
+//           break;
+//         }
+
+//         console.info(`✅ Marked subscription PAID for user ${userId} (sub ${subscription.id})`);
+
+//         // Determine participant limit
+//         let limitCount = 2;
+//         if (fee === "14.99") limitCount = 3;
+//         if (fee === "29.99") limitCount = 4;
+
+//         // Find top matches
+//         const topMatches = await findMatches(userId, updatedUser.compatibility || [], limitCount);
+//         console.log("🎯 Found topMatches:", topMatches);
+
+//         const newParticipants = topMatches.map((m) => ({
+//           user: m.user,
+//           score: m.score,
+//         }));
+
+//         // Check if user already has a podcast
+//         const existingPodcast = await Podcast.findOne({ primaryUser: userId });
+
+//         // ------------------------------------------------------------
+//         // ✅ UPDATE EXISTING PODCAST
+//         // ------------------------------------------------------------
+//         if (existingPodcast) {
+//           console.log(`🎧 Updating existing podcast for user ${userId}`);
+
+//           // Always keep primary user
+//           const primaryParticipant = { user: userId, score: 100 };
+
+//           // Exclude the primary user from participant list
+//           const existingParticipants = existingPodcast.participants.filter(
+//             (p: any) => p.user.toString() !== userId
+//           );
+
+//           // Avoid duplicates
+//           const existingIds = new Set(existingParticipants.map((p: any) => p.user.toString()));
+//           const additional = newParticipants.filter((p) => !existingIds.has(p.user.toString()));
+
+//           // Merge existing + additional (up to limitCount non-primary)
+//           const mergedParticipants = [
+//             primaryParticipant,
+//             ...existingParticipants,
+//             ...additional.slice(0, Math.max(0, limitCount - existingParticipants.length)),
+//           ];
+
+//           // Ensure unique participants
+//           const uniqueParticipants = Array.from(
+//             new Map(mergedParticipants.map((p) => [p.user.toString(), p])).values()
+//           );
+
+//           // @ts-ignore
+//           existingPodcast.participants = uniqueParticipants;
+//           // @ts-ignore
+//           existingPodcast.status = "NotScheduled";
+//           await existingPodcast.save();
+
+//           console.info(
+//             `✅ Updated existing podcast for user ${userId} — total participants: ${uniqueParticipants.length}`
+//           );
+//         }
+//         // ------------------------------------------------------------
+//         // ✅ CREATE NEW PODCAST
+//         // ------------------------------------------------------------
+//         else {
+//           console.log(`🎙️ Creating new podcast for user ${userId}`);
+
+//           const finalOtherParticipants = newParticipants.slice(0, limitCount);
+
+//           await Podcast.create({
+//             primaryUser: userId,
+//             participants: [{ user: userId, score: 100 }, ...finalOtherParticipants],
+//             status: "NotScheduled",
+//           });
+
+//           console.info(`✅ Created new podcast for user ${userId}`);
+//         }
+
+//         // ------------------------------------------------------------
+//         // ✅ Update isMatch flag for all participants
+//         // ------------------------------------------------------------
+//         let finalParticipantIds: string[] = [userId];
+//         const podcastAfter = await Podcast.findOne({ primaryUser: userId });
+
+//         if (podcastAfter?.participants?.length) {
+//           finalParticipantIds = [
+//             ...new Set(podcastAfter.participants.map((p: any) => p.user.toString())),
+//           ];
+//         }
+
+//         await User.updateMany(
+//           { _id: { $in: finalParticipantIds } },
+//           { $set: { isMatch: true } }
+//         );
+
+//         console.info(`✅ Podcast updated/created successfully for user ${userId}`);
+//         break;
+//       }
+
+//       // ------------------------------------------------------------
+//       // ❌ PAYMENT FAILED
+//       // ------------------------------------------------------------
+//       case "invoice.payment_failed": {
+//         const invoice = stripeEvent.data.object as Stripe.Invoice;
+//         const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
+//         const { userId, plan } = subscription.metadata;
+
+//         if (!userId) {
+//           console.warn("⚠️ Missing metadata.userId on subscription");
+//           break;
+//         }
+
+//         const user = await User.findById(userId);
+//         if (!user) {
+//           console.warn(`⚠️ User not found: ${userId}`);
+//           break;
+//         }
+
+//         if (user.subscription) {
+//           user.subscription.status = SubscriptionStatus.FAILED;
+//         }
+
+//         await user.save();
+
+//         await Notification.create({
+//           type: "payment_failed",
+//           user: userId,
+//           message: [
+//             {
+//               title: "Payment failed",
+//               description: `Your subscription payment for ${plan} did not go through. Please update your payment method and try again.`,
+//             },
+//           ],
+//           read: false,
+//           section: "user",
+//         });
+
+//         console.info(`⚠️ Subscription payment FAILED for user ${userId}`);
+//         break;
+//       }
+
+//       // ------------------------------------------------------------
+//       // DEFAULT
+//       // ------------------------------------------------------------
+//       default:
+//         console.log(`ℹ️ Unhandled Stripe event type: ${stripeEvent.type}`);
+//     }
+
+//     // Respond OK to Stripe
+//     res.status(StatusCodes.OK).send("Received");
+//   } catch (err) {
+//     console.error("❌ Error handling Stripe webhook:", err);
+//     next(err);
+//   }
+// };
 
 
 

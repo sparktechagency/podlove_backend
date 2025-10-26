@@ -100,6 +100,66 @@ const match = async (userId: string, matchCount: number = 3): Promise<string[]> 
   return matchedUsers.map((u: { _id: Types.ObjectId }) => u._id.toString());
 };
 
+const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user.userId;
+  if (!userId) {
+    return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated"));
+  }
+  if (!Types.ObjectId.isValid(userId)) {
+    return next(createError(StatusCodes.BAD_REQUEST, "Invalid user ID"));
+  }
+
+  const session = await mongoose.startSession();
+  session.startTransaction({ readConcern: { level: "snapshot" } });
+
+  try {
+    // 1) Load the podcast and populate participants.user
+    const findUserMatch = await Podcast.findOne({ primaryUser: userId }, null, { session })
+      .populate({
+        path: "participants.user",
+        select: "name avatar compatibility",
+        options: { session },
+      })
+      .lean()
+      .exec();
+
+    if (!findUserMatch) {
+      throw createError(StatusCodes.NOT_FOUND, "No podcast found for this user");
+    }
+
+    // 2) Extract all participant user IDs
+    const userIds: Types.ObjectId[] = findUserMatch.participants.map((p) => p.user as Types.ObjectId);
+
+    // 3) Load full user docs in one query
+    const users = await User.find(
+      { _id: { $in: userIds } },
+      "name avatar bio interests personality phoneNumber dateOfBirth isProfileComplete location preferences",
+      { session }
+    )
+      .lean()
+      .exec();
+
+    if (!users.length) {
+      throw createError(StatusCodes.NOT_FOUND, "Matched users not found");
+    }
+
+    // 4) Commit transaction (snapshot read only, no writes needed)
+    await session.commitTransaction();
+    session.endSession();
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Matched users retrieved successfully",
+      data: { users },
+    });
+  } catch (err) {
+    await session.abortTransaction();
+    session.endSession();
+    return next(err);
+  }
+};
+// ==================================
+
 async function findMatches(userId: string, answers: string[], limitCount: number, session: mongoose.ClientSession): Promise<any[]> {
   // 1) Load user
   const user = await User.findById(userId, {}, { session });
@@ -173,7 +233,7 @@ async function findMatches(userId: string, answers: string[], limitCount: number
     }))
   );
 
-  // 8) Sort & return top N
+  // 8) Sort & return top
   return scored
     .map((item) => ({
       user: item.user._id,
@@ -244,11 +304,14 @@ const matchUser = async (
 
     // Mark users as matched
     const matchedUserIds = [userId, ...participants.map((p) => p.user)];
-    await User.updateMany(
-      { _id: { $in: matchedUserIds } },
-      { $set: { isMatch: true } },
-      { session }
-    );
+
+    if (topMatches?.length) {
+      await User.updateMany(
+        { _id: { $in: matchedUserIds } },
+        { $set: { isMatch: true } },
+        { session }
+      );
+    }
 
     await session.commitTransaction();
     session.endSession();
@@ -267,65 +330,7 @@ const matchUser = async (
   }
 };
 
-
-const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next: NextFunction): Promise<any> => {
-  const userId = req.user.userId;
-  if (!userId) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated"));
-  }
-  if (!Types.ObjectId.isValid(userId)) {
-    return next(createError(StatusCodes.BAD_REQUEST, "Invalid user ID"));
-  }
-
-  const session = await mongoose.startSession();
-  session.startTransaction({ readConcern: { level: "snapshot" } });
-
-  try {
-    // 1) Load the podcast and populate participants.user
-    const findUserMatch = await Podcast.findOne({ primaryUser: userId }, null, { session })
-      .populate({
-        path: "participants.user",
-        select: "name avatar compatibility",
-        options: { session },
-      })
-      .lean()
-      .exec();
-
-    if (!findUserMatch) {
-      throw createError(StatusCodes.NOT_FOUND, "No podcast found for this user");
-    }
-
-    // 2) Extract all participant user IDs
-    const userIds: Types.ObjectId[] = findUserMatch.participants.map((p) => p.user as Types.ObjectId);
-
-    // 3) Load full user docs in one query
-    const users = await User.find(
-      { _id: { $in: userIds } },
-      "name avatar bio interests personality phoneNumber dateOfBirth isProfileComplete location preferences",
-      { session }
-    )
-      .lean()
-      .exec();
-
-    if (!users.length) {
-      throw createError(StatusCodes.NOT_FOUND, "Matched users not found");
-    }
-
-    // 4) Commit transaction (snapshot read only, no writes needed)
-    await session.commitTransaction();
-    session.endSession();
-
-    return res.status(StatusCodes.OK).json({
-      success: true,
-      message: "Matched users retrieved successfully",
-      data: { users },
-    });
-  } catch (err) {
-    await session.abortTransaction();
-    session.endSession();
-    return next(err);
-  }
-};
+// =================================
 
 const findMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const session = await mongoose.startSession();
