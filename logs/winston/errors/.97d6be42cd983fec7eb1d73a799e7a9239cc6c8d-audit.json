@@ -69,6 +69,11 @@
             "date": 1761387225285,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-10-25-16-error.log",
             "hash": "ec75f64cb7303e4ad87014e3514d73825a57565ec9d277c2ff087bf7ac5e803e"
+        },
+        {
+            "date": 1761475754939,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-10-26-16-error.log",
+            "hash": "da4c4ec379c8b0fdacf8358ace0a738b722b27d4ab823005a5961a30764f4928"
         }
     ],
     "hashType": "sha256"

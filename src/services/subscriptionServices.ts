@@ -43,6 +43,8 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
       subscription_data: {
         metadata: {
           plan: plan.name,
+          // @ts-ignore
+          subscription_id: plan._id.toString(),
           fee: plan.unitAmount,
           userId: userId,
         },

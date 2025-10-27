@@ -195,7 +195,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
       case "invoice.payment_succeeded": {
         const invoice = stripeEvent.data.object as Stripe.Invoice;
         const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
-        const { plan, fee, userId } = subscription.metadata;
+        const { plan, fee, userId, subscription_id } = subscription.metadata;
 
         if (!userId || !Types.ObjectId.isValid(userId)) {
           console.warn("⚠️ Invalid or missing userId in metadata");
@@ -208,6 +208,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           {
             $set: {
               "subscription.id": subscription.id,
+              "subscription.subscription_id": subscription_id,
               "subscription.plan": plan,
               "subscription.fee": fee,
               "subscription.startedAt": new Date(),

@@ -2,8 +2,6 @@ import express from "express";
 import UserController from "@controllers/userController";
 import { authorize } from "@middlewares/authorization";
 import UserServices from "@services/userServices";
-import fileUpload from "express-fileupload";
-import fileHandler from "@middlewares/fileHandler";
 import MatchedServices from "@services/matchesServices";
 import { asyncHandler } from "@shared/asyncHandler";
 import { upload } from "@utils/multerConfig";
@@ -24,7 +22,5 @@ router.get("/get-all-premium-users", UserServices.getAllPremiumUsers);
 router.get("/", authorize, asyncHandler(UserController.get));
 router.post("/send_survey_feedback", authorize, asyncHandler(LivePodcastController.send7daysSurveyFeedback));
 router.get("/get_survey_feedback/:userId", asyncHandler(LivePodcastController.getUser7daysSurveyFeedback));
-
-
 
 export default router;

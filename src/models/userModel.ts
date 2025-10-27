@@ -191,6 +191,11 @@ const userSchema = new Schema(
         type: String,
         default: "",
       },
+      subscription_id: {
+        type: Types.ObjectId,
+        ref: "SubscriptionPlan",
+        default: null,
+      },
       plan: {
         type: String,
         default: SubscriptionPlanName.LISTENER,
