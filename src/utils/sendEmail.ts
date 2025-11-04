@@ -28,9 +28,9 @@ const sendEmail = async (email: string, verificationOTP: string) => {
   //   text: `Your verification code is ${verificationOTP}`,
   // };
   const mailOptions = {
-    from: `"Podlove Support" <${process.env.SERVICE_EMAIL}>`,
+    from: `"PodLove Support" <${process.env.SERVICE_EMAIL}>`,
     to: email,
-    subject: "🔒 Your Podlove Verification Code",
+    subject: "🔒 Your PodLove Verification Code",
     date: formattedDate,
     html: `
   <!DOCTYPE html>
@@ -38,7 +38,7 @@ const sendEmail = async (email: string, verificationOTP: string) => {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Podlove Verification</title>
+    <title>PodLove Verification</title>
     <style>
       body {
         background-color: #f4f6fa;
@@ -109,23 +109,23 @@ const sendEmail = async (email: string, verificationOTP: string) => {
     <table class="container" width="100%" cellpadding="0" cellspacing="0">
       <tr>
         <td class="header">
-          <h1>Welcome to Podlove!</h1>
+          <h1>Welcome to PodLove!</h1>
         </td>
       </tr>
       <tr>
         <td class="body">
           <p>Hi there,</p>
-          <p>Thank you for signing up for Podlove. To complete your registration, please use the verification code below:</p>
+          <p>Thank you for signing up for PodLove. To complete your registration, please use the verification code below:</p>
           <div class="code-box">${verificationOTP}</div>
           <p>If you did not request this code, please ignore this email or <a href="https://podlove.co/contact-us">contact support</a>.</p>
           <p>Happy podcasting!</p>
-          <p>The Podlove Team</p>
+          <p>The PodLove Team</p>
         </td>
       </tr>
       <tr>
         <td class="footer">
-          <p>Podlove • <a href="https://${process.env.SITE_DOMAIN}">${process.env.SITE_DOMAIN}</a></p>
-          <p>&copy; ${new Date().getFullYear()} Podlove. All rights reserved.</p>
+          <p>PodLove • <a href="https://${process.env.SITE_DOMAIN}">${process.env.SITE_DOMAIN}</a></p>
+          <p>&copy; ${new Date().getFullYear()} PodLove. All rights reserved.</p>
         </td>
       </tr>
     </table>
