@@ -89,23 +89,41 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
 };
 
 const signInWithGoogle = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { googleId, name, email, avatar } = req.body;
-  // console.log("req.body: ", req.body);
-  let auth, user;
-  auth = await Auth.findOne({ googleId: googleId });
-  // console.log("auth: ", auth);
-  if (!auth) {
-    auth = await Auth.create({ googleId, email });
-    user = await User.create({ auth: auth._id, name, avatar });
+  try {
+    const { googleId, name, email, avatar } = req.body;
+
+    let auth = await Auth.findOne({ $or: [{ googleId }, { email }] });
+    let user;
+
+    if (!auth) {
+      auth = await Auth.create({ googleId, email });
+      user = await User.create({ auth: auth._id, name, avatar });
+    } else {
+      if (!auth.googleId) {
+        auth.googleId = googleId;
+        await auth.save();
+      }
+      user = await User.findOne({ auth: auth._id });
+    }
+
+    const accessToken = Auth.generateAccessToken(auth._id!.toString());
+
+    user = await User.findOne({ auth: auth._id }).populate({
+      path: "auth",
+      select: "email",
+    });
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Login successful",
+      data: { accessToken, auth, user },
+    });
+  } catch (error) {
+    console.error("Google sign-in error:", error);
+    return next(error);
   }
-  const accessToken = Auth.generateAccessToken(auth._id!.toString());
-  user = await User.findOne({ auth: auth._id }).populate({ path: "auth", select: "email" });
-  return res.status(StatusCodes.OK).json({
-    success: true,
-    message: "Login successful",
-    data: { accessToken, auth, user },
-  });
 };
+
 
 const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;

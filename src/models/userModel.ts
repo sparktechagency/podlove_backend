@@ -1,6 +1,7 @@
 import { Schema, model, Types, Document } from "mongoose";
 import { BodyType, Ethnicity, Gender, SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 
+
 export type DecodedUser = {
   authId: string;
   userId: string;

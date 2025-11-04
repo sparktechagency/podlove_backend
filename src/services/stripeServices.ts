@@ -14,7 +14,6 @@ import OpenAI from "openai";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
 const MODEL = "gpt-4o";
 
-
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: string[]) => {
@@ -340,7 +339,6 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 };
 
 // ================================
-
 // const webhook = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
 //   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 //   const sig = req.headers["stripe-signature"];
