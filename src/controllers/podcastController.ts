@@ -18,7 +18,6 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
 
   const podcast = await Podcast.create({ primaryUser: user!._id, participants: participants });
 
-  console.log('====================LL User successfully scheduled for the podcast=============================')
   return res.status(StatusCodes.CREATED).json({
     success: true,
     message: "User successfully scheduled for the podcast",
