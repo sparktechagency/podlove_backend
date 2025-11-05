@@ -285,8 +285,6 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             participants: [{ user: userId, score: 100 }, ...newParticipants].slice(0, limitCount),
             status: "NotScheduled",
           });
-
-          console.log(`✅ Created new podcast for ${userId}`);
         }
 
         // 🟩 Step 6: Update isMatch for all participants
