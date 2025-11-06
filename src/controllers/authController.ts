@@ -128,6 +128,8 @@ const signInWithGoogle = async (req: Request, res: Response, next: NextFunction)
 const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;
 
+  console.log("email", email)
+
   let auth = await Auth.findOne(email);
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "No accounts found with the given email!"));
   auth.generateRecoveryOTP();
