@@ -10,7 +10,7 @@ import sendSMS from "@utils/sendSMS";
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, email, phoneNumber, password, confirmPassword } = req.body;
 
-  let auth = await Auth.findByEmail(email);
+  let auth = await Auth.findOne({ email });
   if (auth) {
     const message = auth.isVerified
       ? "Email already exists! Please login."
@@ -70,7 +70,7 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
 
 const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, password } = req.body;
-  let auth = await Auth.findByEmail(email);
+  let auth = await Auth.findOne({ email });
   if (auth?.isBlocked) return next(createError(StatusCodes.FORBIDDEN, "Your account has been blocked by an administrator. Please reach out to the admin for help."))
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
 
@@ -128,7 +128,7 @@ const signInWithGoogle = async (req: Request, res: Response, next: NextFunction)
 const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;
 
-  let auth = await Auth.findByEmail(email);
+  let auth = await Auth.findOne(email);
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
   auth.generateRecoveryOTP();
   await auth.save();
@@ -159,7 +159,7 @@ const recoveryVerification = async (req: Request, res: Response, next: NextFunct
 const resetPassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, password, confirmPassword } = req.body;
 
-  let auth = await Auth.findByEmail(email);
+  let auth = await Auth.findOne({ email });
   if (!auth) throw createError(StatusCodes.NOT_FOUND, "User Not Found");
   if (password !== confirmPassword) return next(createError(StatusCodes.BAD_REQUEST, "Passwords don't match"));
 
@@ -177,7 +177,7 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
   const { method, email } = req.body;
   // // console.log("resend otp: ", req.body);
 
-  const auth = await Auth.findByEmail(email);
+  const auth = await Auth.findOne({ email });
   // // console.log("auth: ", auth);
   if (!auth) throw createError(StatusCodes.NOT_FOUND, "Account not found");
 
@@ -241,7 +241,7 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
 
   console.log("req.user: ", req.user, password, newPassword, confirmPassword);
 
-  let auth = await Auth.findByEmail(user.email);
+  let auth = await Auth.findOne({ email: user.email });
   if (!auth) throw createError(StatusCodes.NOT_FOUND, "User Not Found");
   if (!(await auth.comparePassword(password)))
     return next(createError(StatusCodes.UNAUTHORIZED, "Wrong Password. Please try again."));
