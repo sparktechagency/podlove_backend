@@ -7,6 +7,7 @@ import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
 import sendEmail from "@utils/sendEmail";
 import Admin from "@models/adminModel";
+import Auth from "@models/authModel";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, email, contact, password } = req.body;
@@ -171,7 +172,7 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
 
 const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;
-  const admin = await Admin.findOne({ email });
+  const admin = await Auth.findOne({ email });
   if (!admin) throw createError(StatusCodes.NOT_FOUND, "No account found with the given email");
   admin.generateRecoveryOTP();
   await sendEmail(email, admin.recoveryOTP);
