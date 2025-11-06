@@ -8,6 +8,7 @@ import createError from "http-errors";
 import sendEmail from "@utils/sendEmail";
 import Admin from "@models/adminModel";
 import Auth from "@models/authModel";
+import User from "@models/userModel";
 
 const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, email, contact, password } = req.body;
@@ -184,8 +185,8 @@ const recovery = async (req: Request, res: Response, next: NextFunction): Promis
 
 const recoveryVerification = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, recoveryOTP } = req.body;
-  const admin = await Admin.findByEmailWithoutPassword(email);
-  if (!admin) throw createError(StatusCodes.NOT_FOUND, "Admin not found");
+  const admin = await Auth.findOne({ email });
+  if (!admin) throw createError(StatusCodes.NOT_FOUND, "User not found");
   if (admin.isRecoveryOTPExpired()) throw createError(StatusCodes.UNAUTHORIZED, "Recovery OTP has expired.");
   if (!admin.isCorrectRecoveryOTP(recoveryOTP))
     throw createError(StatusCodes.UNAUTHORIZED, "Wrong OTP. Please try again");
