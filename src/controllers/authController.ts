@@ -129,7 +129,7 @@ const recovery = async (req: Request, res: Response, next: NextFunction): Promis
   const { email } = req.body;
 
   let auth = await Auth.findOne(email);
-  if (!auth) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
+  if (!auth) return next(createError(StatusCodes.NOT_FOUND, "No accounts found with the given email!"));
   auth.generateRecoveryOTP();
   await auth.save();
   await sendEmail(email, auth.recoveryOTP);

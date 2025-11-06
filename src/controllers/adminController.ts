@@ -171,7 +171,7 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
 
 const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;
-  const admin = await Admin.findByEmailWithoutPassword(email);
+  const admin = await Admin.findOne({ email });
   if (!admin) throw createError(StatusCodes.NOT_FOUND, "No account found with the given email");
   admin.generateRecoveryOTP();
   await sendEmail(email, admin.recoveryOTP);
