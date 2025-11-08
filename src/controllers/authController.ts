@@ -142,7 +142,7 @@ const recovery = async (req: Request, res: Response, next: NextFunction): Promis
 
 const recoveryVerification = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, otp } = req.body;
-  let auth = await Auth.findByEmailWithOutPassword(email);
+  let auth = await Auth.findOne({ email });
   if (!auth) throw createError(StatusCodes.NOT_FOUND, "User not found");
 
   if (auth.isRecoveryOTPExpired()) return next(createError(StatusCodes.UNAUTHORIZED, "Recovery OTP has expired."));

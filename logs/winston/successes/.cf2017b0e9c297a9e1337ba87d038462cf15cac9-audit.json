@@ -6,21 +6,6 @@
     "auditLog": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/.cf2017b0e9c297a9e1337ba87d038462cf15cac9-audit.json",
     "files": [
         {
-            "date": 1761363090881,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-25-09-success.log",
-            "hash": "23cd6f82d10d811ed167d5b7c381d5086281cd241e0924771588ba81d15fa963"
-        },
-        {
-            "date": 1761364811362,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-25-10-success.log",
-            "hash": "3d7bb0e58c61e8612dda9386d62073fb50a1f25589b15f4052f82ea8f3d2376d"
-        },
-        {
-            "date": 1761368520762,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-25-11-success.log",
-            "hash": "3bcf95d07156ef9bbfba5608f56d9313c1bcaa700ddd5b7db1d9ebd3af266276"
-        },
-        {
             "date": 1761372108413,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-10-25-12-success.log",
             "hash": "c644aa5030bbbdc9bea3ccec20a1079d1f3a12968b585360707aba943be7c063"
@@ -64,6 +49,21 @@
             "date": 1762406035394,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-06-11-success.log",
             "hash": "6a967f14177d4b796ff2bf7614116a3ea4892f11bc8a7b2a859dbe66c354b4c8"
+        },
+        {
+            "date": 1762410109515,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-06-12-success.log",
+            "hash": "4ddabba27ea5eb05bc2694760133067a2181d093a8923a6a73a8b7f686ac3f2a"
+        },
+        {
+            "date": 1762577818436,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-08-10-success.log",
+            "hash": "ed58b0368ccd833789f8e3c3391226cb448a218cc84b9a5e8e744a13467baf82"
+        },
+        {
+            "date": 1762580217294,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-08-11-success.log",
+            "hash": "b803791073b0f268f4e360129cba34d9b3987dc0e83a88c85868d91dec9e0982"
         }
     ],
     "hashType": "sha256"
