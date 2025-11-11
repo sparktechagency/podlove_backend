@@ -9,7 +9,7 @@ import LivePodcastController from "src/podcast/podcast.controller";
 const router = express.Router();
 
 router.post("/create", authorize, asyncHandler(PodcastController.create));
-router.patch("/send-podcast-request", authorize, PodcastController.sendPodcastRequest);
+router.patch("/send-podcast-request", authorize, asyncHandler(PodcastController.sendPodcastRequest));
 router.post("/recordings/:id", authorize, upload.single("recording"), PodcastController.updateRecording);
 router.post("/start-podcast/:id", authorize, PodcastController.startPodcast);
 router.get("/record-get-podcast/:id", admin_authorize, PodcastController.getAdminRecordedPodcast);
@@ -22,17 +22,12 @@ router.post("/create_room/:podcastId", authorize, asyncHandler(LivePodcastContro
 // ====================================
 router.get("/", asyncHandler(PodcastController.getPodcasts));
 router.post("/download", asyncHandler(LivePodcastController.getDownloadLink));
-router.post("/send_questions_answer",
-    authorize,
-    asyncHandler(LivePodcastController.sendQuestionsAnswer));
+router.post("/send_questions_answer", authorize, asyncHandler(LivePodcastController.sendQuestionsAnswer));
 
 // ==============================
 // router.post('/end/webhook', asyncHandler(LivePodcastController.postPodcastInWebhook))
-router.post('/recording/webhook', asyncHandler(LivePodcastController.postNewRecordInWebhook))
+router.post("/recording/webhook", asyncHandler(LivePodcastController.postNewRecordInWebhook));
 
-router.post('/removed_participant', asyncHandler(PodcastController.removeFromPodcast))
-
-
-
+router.post("/removed_participant", asyncHandler(PodcastController.removeFromPodcast));
 
 export default router;
