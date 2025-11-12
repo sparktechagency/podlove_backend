@@ -1,63 +1,57 @@
-import { Types } from 'mongoose';
-// import { Chat, IChat, IMessage } from '@/models/Chat';
+import { Types } from "mongoose";
 import createError from "http-errors";
-// import { Chat, IChat, IMessage } from '@models/chatModel';
-import { StatusCodes } from 'http-status-codes';
-import { Chat, IChat, IMessage } from '@models/chatModel';
+import { StatusCodes } from "http-status-codes";
+import { Chat, IChat, IMessage } from "@models/chatModel";
 
 async function createChat(
   participants: string[],
-  chatType: 'private' | 'group',
+  chatType: "private" | "group",
   createdBy: string,
   chatName?: string
 ): Promise<IChat> {
-  // For private chats, ensure only 2 participants
-  if (chatType === 'private' && participants.length !== 2) {
+  if (chatType === "private" && participants.length !== 2) {
     throw createError(StatusCodes.BAD_REQUEST, "Participants length should be two");
   }
 
-  // Check if private chat already exists
-  if (chatType === 'private') {
+  if (chatType === "private") {
     const existingChat = await Chat.findOne({
-      chatType: 'private',
-      participants: { $all: participants, $size: 2 }
-    });
+      chatType: "private",
+      participants: { $all: participants, $size: 2 },
+    })
+      .lean()
+      .exec();
 
     if (existingChat) {
-      return existingChat;
+      // existingChat is a plain object (lean), cast to IChat
+      return existingChat as unknown as IChat;
     }
   }
 
   const chat = new Chat({
-    participants: participants.map(id => new Types.ObjectId(id)),
+    participants: participants.map((id) => new Types.ObjectId(id)),
     chatType,
     chatName,
-    createdBy: new Types.ObjectId(createdBy)
+    createdBy: new Types.ObjectId(createdBy),
   });
 
-  return await chat.save();
+  const saved = await chat.save();
+  // saved is a Mongoose Document; convert to plain object to match IChat
+  return (saved.toObject ? saved.toObject() : saved) as unknown as IChat;
 }
 
 async function sendMessage(
   chatId: string,
   senderId: string,
   content: string,
-  messageType: 'text' | 'image' | 'file' = 'text',
+  messageType: "text" | "image" | "file" = "text",
   replyTo?: string
 ): Promise<IMessage> {
-  // console.log("chatid: ", chatId);
   const chat = await Chat.findById(chatId);
-  // console.log("chat: ", chat);
   if (!chat) {
     throw createError(StatusCodes.BAD_REQUEST, "Chat ID not found");
   }
-  // console.log("senderId: ", senderId);
 
-  // Verify sender is a participant
-  const isParticipant = chat.participants.some(
-    participant => participant.toString() === senderId
-  );
-  // console.log("participatns: ", isParticipant);
+  const isParticipant = chat.participants.some((participant) => participant.toString() === senderId);
 
   if (!isParticipant) {
     throw createError(StatusCodes.BAD_REQUEST, "Participants not found");
@@ -68,38 +62,28 @@ async function sendMessage(
     sender: new Types.ObjectId(senderId),
     timestamp: new Date(),
     messageType,
-    replyTo: replyTo ? new Types.ObjectId(replyTo) : undefined
+    replyTo: replyTo ? new Types.ObjectId(replyTo) : undefined,
   };
 
-  // Add message to chat and update lastMessage
   chat.messages.push(message);
   chat.lastMessage = message;
 
   await chat.save();
 
-  // Return the message with populated sender info
-  const populatedChat = await Chat.findById(chatId)
-    .populate('messages.sender', 'name email')
-    .exec();
+  const populatedChat = await Chat.findById(chatId).populate("messages.sender", "name email").exec();
 
-  return populatedChat!.messages[populatedChat!.messages.length - 1];
+  const lastMsg = populatedChat!.messages[populatedChat!.messages.length - 1];
+  return lastMsg as unknown as IMessage;
 }
 
-async function editMessage(
-  chatId: string,
-  messageId: string,
-  senderId: string,
-  newContent: string
-): Promise<IMessage> {
+async function editMessage(chatId: string, messageId: string, senderId: string, newContent: string): Promise<IMessage> {
   const chat = await Chat.findById(chatId);
 
   if (!chat) {
     throw createError(StatusCodes.BAD_REQUEST, "Chat ID not found");
   }
 
-  const message = chat.messages.find(
-    (msg: IMessage & { _id?: any }) => msg._id?.toString() === messageId
-  );
+  const message = chat.messages.find((msg: IMessage & { _id?: any }) => msg._id?.toString() === messageId);
 
   if (!message) {
     throw createError(StatusCodes.BAD_REQUEST, "Message not found");
@@ -115,7 +99,7 @@ async function editMessage(
 
   await chat.save();
 
-  return message;
+  return message as unknown as IMessage;
 }
 
 async function getChatHistory(
@@ -123,19 +107,14 @@ async function getChatHistory(
   userId: string,
   page: number = 1,
   limit: number = 50
-): Promise<{ messages: IMessage[], totalPages: number, currentPage: number }> {
-  const chat = await Chat.findById(chatId)
-    .populate('messages.sender', 'username email avatar')
-    .exec();
+): Promise<{ messages: IMessage[]; totalPages: number; currentPage: number }> {
+  const chat = await Chat.findById(chatId).populate("messages.sender", "username email avatar").exec();
 
   if (!chat) {
     throw createError(StatusCodes.BAD_REQUEST, "Chat ID not found");
   }
 
-  // Verify user is a participant
-  const isParticipant = chat.participants.some(
-    participant => participant.toString() === userId
-  );
+  const isParticipant = chat.participants.some((participant) => participant.toString() === userId);
 
   if (!isParticipant) {
     throw createError(StatusCodes.BAD_REQUEST, "Participants not found");
@@ -146,21 +125,19 @@ async function getChatHistory(
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
 
-  // Get messages in reverse order (newest first), then slice for pagination
   const messages = chat.messages
     .sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
     .slice(startIndex, endIndex);
 
   return {
-    messages,
+    messages: messages as IMessage[],
     totalPages,
-    currentPage: page
+    currentPage: page,
   };
 }
 
-// Get user's chats
 async function getUserChats(userId: string): Promise<IChat[]> {
-  // Ensure we’re querying by a valid ObjectId
+  // Validate userId as ObjectId (this will throw if invalid)
   const objectId = Types.ObjectId.createFromHexString(userId);
 
   const chats = await Chat.find({
@@ -179,10 +156,10 @@ async function getUserChats(userId: string): Promise<IChat[]> {
     .lean()
     .exec();
 
-  return chats;
+  // chats returned by .lean() are plain objects; assert to IChat[]
+  return chats as unknown as IChat[];
 }
 
-// Delete a message
 async function deleteMessage(chatId: string, messageId: string, userId: string): Promise<void> {
   const chat = await Chat.findById(chatId);
 
@@ -190,9 +167,7 @@ async function deleteMessage(chatId: string, messageId: string, userId: string):
     throw createError(StatusCodes.BAD_REQUEST, "Chat ID not found");
   }
 
-  const message = chat.messages.find(
-    (msg: IMessage & { _id?: any }) => msg._id?.toString() === messageId
-  );
+  const message = chat.messages.find((msg: IMessage & { _id?: any }) => msg._id?.toString() === messageId);
 
   if (!message) {
     throw createError(StatusCodes.BAD_REQUEST, "Message not found");
@@ -202,9 +177,7 @@ async function deleteMessage(chatId: string, messageId: string, userId: string):
     throw createError(StatusCodes.BAD_REQUEST, "you can only delete your own message");
   }
 
-  chat.messages = chat.messages.filter(
-    (msg: IMessage & { _id?: any }) => msg._id?.toString() !== messageId
-  );
+  chat.messages = chat.messages.filter((msg: IMessage & { _id?: any }) => msg._id?.toString() !== messageId);
   await chat.save();
 }
 
@@ -214,6 +187,6 @@ const ChatService = {
   createChat,
   sendMessage,
   editMessage,
-  getUserChats
-}
+  getUserChats,
+};
 export default ChatService;

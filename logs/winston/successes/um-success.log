@@ -25988,3 +25988,9 @@ Require stack:
 - C:\Users\devmd\Work\podlove_backend\node_modules\engine.io\build\engine.io.js
 - C:\Users\devmd\Work\podlove_backend\node_modules\socket.io\dist\index.js
 - C:\Users\devmd\Work\podlove_backend\src\server.ts
+Wed Nov 12 2025 9:31:47 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Nov 12 2025 9:31:54 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Nov 12 2025 9:31:54 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Nov 12 2025 9:31:54 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Nov 12 2025 9:31:54 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Nov 12 2025 9:31:54 [Podlove] [32minfo[39m: Socket.IO server initialized
