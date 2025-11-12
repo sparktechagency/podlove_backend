@@ -4,3 +4,29 @@ Wed Nov 12 2025 9:31:54 [Podlove] [32minfo[39m: Consumer Policy exists!
 Wed Nov 12 2025 9:31:54 [Podlove] [32minfo[39m: Media Policy exists!
 Wed Nov 12 2025 9:31:54 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
 Wed Nov 12 2025 9:31:54 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Nov 12 2025 9:34:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Nov 12 2025 9:34:31 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Nov 12 2025 9:34:31 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Nov 12 2025 9:34:32 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Nov 12 2025 9:34:32 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Nov 12 2025 9:34:32 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Nov 12 2025 9:36:24 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:36:35 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:36:42 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:36:47 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:36:53 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:37:2 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:37:11 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:38:2 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:38:4 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:38:13 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:38:15 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:38:30 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:42:48 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:43:2 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:43:6 [Podlove] [32minfo[39m: 691400add77c713f2564c521
+Wed Nov 12 2025 9:43:8 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\devmd\Work\podlove_backend\src\services\homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
