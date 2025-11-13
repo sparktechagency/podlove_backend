@@ -26020,3 +26020,29 @@ Error: podcast is null
     at homeData (C:\Users\devmd\Work\podlove_backend\src\services\homeServices.ts:54:13)
     at processTicksAndRejections (node:internal/process/task_queues:105:5)
 Error
+Thu Nov 13 2025 12:42:55 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Nov 13 2025 12:42:59 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Nov 13 2025 12:42:59 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Nov 13 2025 12:42:59 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Nov 13 2025 12:42:59 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Nov 13 2025 12:42:59 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Nov 13 2025 12:49:14 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Nov 13 2025 12:49:18 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Nov 13 2025 12:49:18 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Nov 13 2025 12:49:19 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Nov 13 2025 12:49:19 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Nov 13 2025 12:49:19 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Nov 13 2025 12:49:34 [Podlove] [31merror[39m: Auth validation failed: email: Path `email` is required.
+ValidationError: Auth validation failed: email: Path `email` is required.
+    at model.Document.invalidate (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\document.js:3318:32)
+    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\document.js:3079:17
+    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
+Thu Nov 13 2025 13:2:59 [Podlove] [31merror[39m: Auth validation failed: email: Path `email` is required.
+ValidationError: Auth validation failed: email: Path `email` is required.
+    at model.Document.invalidate (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\document.js:3318:32)
+    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\document.js:3079:17
+    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\schemaType.js:1388:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+ValidationError
