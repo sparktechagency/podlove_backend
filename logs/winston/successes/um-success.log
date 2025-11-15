@@ -25978,3 +25978,5 @@ NotFoundError: No accounts found with the given email!
     at recovery (/home/tayeur/Desktop/project/podlove_backend/src/controllers/authController.ts:134:37)
     at processTicksAndRejections (node:internal/process/task_queues:105:5)
 NotFoundError
+Sat Nov 08 2025 16:0:46 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Nov 15 2025 11:48:30 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
