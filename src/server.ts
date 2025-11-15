@@ -46,7 +46,7 @@ async function startServer() {
     const server = http.createServer(app);
     // const socketService = new SocketService(server);
     const io = new SocketIOServer(server, {
-      cors: { origin: "*" }
+      cors: { origin: "*" },
     });
 
     initSocketHandlers(io);
