@@ -95,7 +95,7 @@ const sendPodcastRequest = async (
 
 
     const podcast = await Podcast.findOne({ "participants.user": userId }).session(session);
-    console.log("podcast", podcast)
+
     if (!podcast) {
       throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this participant");
     }
