@@ -79,36 +79,60 @@ const sendPodcastRequest = async (
   const userId = req.user.userId;
   const { status } = req.body;
 
-  console.log(userId, status)
+  console.log("sendPodcastRequest:", userId, status);
 
+  // Validate user
   if (!userId) {
-    return next(createError(StatusCodes.BAD_REQUEST, "Participant userId is required"));
+    return next(
+      createError(StatusCodes.BAD_REQUEST, "Participant userId is required")
+    );
   }
 
+  // Validate status
   if (!status || !Object.values(PodcastStatus).includes(status)) {
-    return next(createError(StatusCodes.BAD_REQUEST, "Invalid podcast status"));
+    return next(
+      createError(StatusCodes.BAD_REQUEST, "Invalid podcast status")
+    );
   }
 
   const session = await mongoose.startSession();
+
   try {
     session.startTransaction();
 
-
-    const podcast = await Podcast.findOne({ "participants.user": userId }).session(session);
+    // Find existing podcast (transaction-safe)
+    const podcast = await Podcast.findOne({
+      "participants.user": userId,
+    }).session(session);
 
     if (!podcast) {
-      throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this participant");
+      throw createError(
+        StatusCodes.NOT_FOUND,
+        "Podcast not found for this participant"
+      );
     }
 
-    podcast.participants = podcast.participants.map((p: any) => {
+    // ---------------------------------------------------------
+    // FIXED: Update only the needed participant in-place
+    // ---------------------------------------------------------
+    podcast.participants.forEach((p: any) => {
       if (p.user.toString() === userId.toString()) {
         p.isRequest = true;
       }
-      return p;
     });
 
+    // Update global podcast fields
     podcast.status = status;
-    podcast.schedule = { day: "", date: "", time: "" };
+    podcast.schedule = {
+      day: "",
+      date: "",
+      time: "",
+    };
+
+    // ---------------------------------------------------------
+    // FIXED: DO NOT rebuild participants array
+    // DO NOT touch selectedUser (your error comes from there)
+    // ---------------------------------------------------------
 
     await podcast.save({ session });
 
@@ -117,7 +141,8 @@ const sendPodcastRequest = async (
 
     return res.status(StatusCodes.OK).json({
       success: true,
-      message: "Podcast status updated and participant request set to true",
+      message:
+        "Podcast status updated and participant request set to true",
       data: podcast,
     });
   } catch (err) {
@@ -126,6 +151,7 @@ const sendPodcastRequest = async (
     return next(err);
   }
 };
+
 
 const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { id, status } = req.query;
