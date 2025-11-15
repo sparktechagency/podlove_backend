@@ -79,6 +79,8 @@ const sendPodcastRequest = async (
   const userId = req.user.userId;
   const { status } = req.body;
 
+  console.log(userId, status)
+
   if (!userId) {
     return next(createError(StatusCodes.BAD_REQUEST, "Participant userId is required"));
   }
@@ -93,6 +95,7 @@ const sendPodcastRequest = async (
 
 
     const podcast = await Podcast.findOne({ "participants.user": userId }).session(session);
+    console.log("podcast", podcast)
     if (!podcast) {
       throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this participant");
     }
