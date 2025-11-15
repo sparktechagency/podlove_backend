@@ -87,6 +87,10 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
 const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, password } = req.body;
   let auth = await Auth.findOne({ email });
+  if (auth?.googleId)
+    return next(
+      createError(StatusCodes.BAD_GATEWAY, "Your account is connected to Google. Please sign in with Google.")
+    );
   if (auth?.isBlocked)
     return next(
       createError(

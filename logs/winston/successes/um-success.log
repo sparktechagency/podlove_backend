@@ -26046,3 +26046,155 @@ ValidationError: Auth validation failed: email: Path `email` is required.
     at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\schemaType.js:1388:9
     at processTicksAndRejections (node:internal/process/task_queues:85:11)
 ValidationError
+Sat Nov 15 2025 10:51:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Nov 15 2025 10:51:41 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Nov 15 2025 10:51:42 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Nov 15 2025 10:51:42 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Nov 15 2025 10:51:42 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Nov 15 2025 10:51:42 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Nov 15 2025 10:57:1 [Podlove] [31merror[39m: data and hash arguments required
+Error: data and hash arguments required
+    at Object.compare (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\bcrypt.js:208:17)
+    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\promises.js:29:12
+    at new Promise (<anonymous>)
+    at Object.module.exports.promise (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\promises.js:20:12)
+    at Object.compare (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\bcrypt.js:204:25)
+    at model.authSchema.methods.comparePassword (C:\Users\devmd\Work\podlove_backend\src\models\authModel.ts:73:23)
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:99:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Nov 15 2025 10:57:42 [Podlove] [31merror[39m: data and hash arguments required
+Error: data and hash arguments required
+    at Object.compare (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\bcrypt.js:208:17)
+    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\promises.js:29:12
+    at new Promise (<anonymous>)
+    at Object.module.exports.promise (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\promises.js:20:12)
+    at Object.compare (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\bcrypt.js:204:25)
+    at model.authSchema.methods.comparePassword (C:\Users\devmd\Work\podlove_backend\src\models\authModel.ts:73:23)
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:99:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Nov 15 2025 10:59:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Nov 15 2025 10:59:32 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Nov 15 2025 10:59:32 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Nov 15 2025 10:59:33 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Nov 15 2025 10:59:33 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Nov 15 2025 10:59:33 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Nov 15 2025 10:59:39 [Podlove] [31merror[39m: data and hash arguments required
+Error: data and hash arguments required
+    at Object.compare (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\bcrypt.js:208:17)
+    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\promises.js:29:12
+    at new Promise (<anonymous>)
+    at Object.module.exports.promise (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\promises.js:20:12)
+    at Object.compare (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\bcrypt.js:204:25)
+    at model.authSchema.methods.comparePassword (C:\Users\devmd\Work\podlove_backend\src\models\authModel.ts:73:23)
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:100:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Nov 15 2025 11:0:11 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Nov 15 2025 11:0:16 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Nov 15 2025 11:0:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Nov 15 2025 11:0:17 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Nov 15 2025 11:0:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Nov 15 2025 11:0:17 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Nov 15 2025 11:1:17 [Podlove] [31merror[39m: data and hash arguments required
+Error: data and hash arguments required
+    at Object.compare (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\bcrypt.js:208:17)
+    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\promises.js:29:12
+    at new Promise (<anonymous>)
+    at Object.module.exports.promise (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\promises.js:20:12)
+    at Object.compare (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\bcrypt@5.1.1\node_modules\bcrypt\bcrypt.js:204:25)
+    at model.authSchema.methods.comparePassword (C:\Users\devmd\Work\podlove_backend\src\models\authModel.ts:73:23)
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:101:20)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Nov 15 2025 11:2:30 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:99:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sat Nov 15 2025 11:4:4 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:4:11 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:4:19 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:4:24 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:4:28 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:4:40 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:4:52 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:5:35 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:5:40 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:5:44 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:5:46 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:6:18 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:6:48 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:7:7 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:7:7 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:7:8 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\devmd\Work\podlove_backend\src\services\homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Nov 15 2025 11:9:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Nov 15 2025 11:9:22 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Nov 15 2025 11:9:23 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Nov 15 2025 11:9:23 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Nov 15 2025 11:9:23 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Nov 15 2025 11:9:23 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Nov 15 2025 11:9:24 [Podlove] [31merror[39m: Your account is connected to Google. Please sign in with Google.
+Error: Your account is connected to Google. Please sign in with Google.
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:94:18)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Nov 15 2025 11:9:42 [Podlove] [31merror[39m: Your account is connected to Google. Please sign in with Google.
+Error: Your account is connected to Google. Please sign in with Google.
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:94:18)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Nov 15 2025 11:10:7 [Podlove] [31merror[39m: Your account is connected to Google. Please sign in with Google.
+Error: Your account is connected to Google. Please sign in with Google.
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:94:18)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Nov 15 2025 11:11:0 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Nov 15 2025 11:11:7 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Nov 15 2025 11:11:7 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Nov 15 2025 11:11:8 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Nov 15 2025 11:11:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Nov 15 2025 11:11:8 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Nov 15 2025 11:11:11 [Podlove] [31merror[39m: Your account is connected to Google. Please sign in with Google.
+BadRequestError: Your account is connected to Google. Please sign in with Google.
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:94:18)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Sat Nov 15 2025 11:11:32 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:11:32 [Podlove] [32minfo[39m: 691809af3b0133a925a5aa99
+Sat Nov 15 2025 11:11:34 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\devmd\Work\podlove_backend\src\services\homeServices.ts:54:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Nov 15 2025 11:12:18 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:103:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sat Nov 15 2025 11:12:29 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:103:37)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+NotFoundError
+Sat Nov 15 2025 11:13:40 [Podlove] [31merror[39m: Your account is connected to Google. Please sign in with Google.
+BadRequestError: Your account is connected to Google. Please sign in with Google.
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:94:18)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Sat Nov 15 2025 11:14:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Nov 15 2025 11:14:19 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Nov 15 2025 11:14:19 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Nov 15 2025 11:14:19 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Nov 15 2025 11:14:19 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Nov 15 2025 11:14:19 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Nov 15 2025 11:14:20 [Podlove] [31merror[39m: Your account is connected to Google. Please sign in with Google.
+BadGatewayError: Your account is connected to Google. Please sign in with Google.
+    at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:94:18)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadGatewayError
