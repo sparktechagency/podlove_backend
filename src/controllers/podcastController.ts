@@ -112,7 +112,7 @@ const sendPodcastRequest = async (
       );
     }
 
-    console.log(" podcast.participants", podcast.participants)
+    console.log("podcast.participants", podcast.participants);
 
     // ---------------------------------------------------------
     // FIXED: Update only the needed participant in-place
@@ -123,6 +123,19 @@ const sendPodcastRequest = async (
       }
     });
 
+    // ---------------------------------------------------------
+    // CRITICAL FIX FOR YOUR ERROR:
+    // Clean invalid selectedUser entries (user: "")
+    // ---------------------------------------------------------
+    if (Array.isArray(podcast.selectedUser)) {
+      podcast.selectedUser = podcast.selectedUser.filter(
+        (u: any) => u.user && u.user.toString().trim() !== ""
+      );
+    } else {
+      // safety setter
+      podcast.selectedUser = [];
+    }
+
     // Update global podcast fields
     podcast.status = status;
     podcast.schedule = {
@@ -131,11 +144,7 @@ const sendPodcastRequest = async (
       time: "",
     };
 
-    // ---------------------------------------------------------
-    // FIXED: DO NOT rebuild participants array
-    // DO NOT touch selectedUser (your error comes from there)
-    // ---------------------------------------------------------
-
+    // Save with session
     await podcast.save({ session });
 
     await session.commitTransaction();
@@ -153,6 +162,7 @@ const sendPodcastRequest = async (
     return next(err);
   }
 };
+
 
 
 const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
