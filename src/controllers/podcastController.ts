@@ -112,6 +112,8 @@ const sendPodcastRequest = async (
       );
     }
 
+    console.log(" podcast.participants", podcast.participants)
+
     // ---------------------------------------------------------
     // FIXED: Update only the needed participant in-place
     // ---------------------------------------------------------
