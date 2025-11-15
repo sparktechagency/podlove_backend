@@ -99,10 +99,7 @@ const sendPodcastRequest = async (
 
     podcast.participants = podcast.participants.map((p: any) => {
       if (p.user.toString() === userId.toString()) {
-        return {
-          ...p.toObject ? p.toObject() : p,
-          isRequest: true
-        };
+        p.isRequest = true;
       }
       return p;
     });
