@@ -21,4 +21,4 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
       - name: Push to Dockerhub
-        run: docker push tayeburrahman/podlove_backend
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/podlove_backend
