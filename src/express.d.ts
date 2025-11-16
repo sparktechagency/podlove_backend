@@ -3,7 +3,6 @@ import { DecodedAdmin } from "@models/adminModel";
 import fileUpload from "express-fileupload";
 import { ClientSession } from "mongoose";
 
-
 declare global {
   namespace Express {
     interface Request {
