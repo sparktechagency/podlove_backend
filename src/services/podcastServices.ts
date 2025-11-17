@@ -160,7 +160,6 @@ const podcastDone = async (req: Request, res: Response, next: NextFunction): Pro
 //   }
 // };
 
-
 const setSchedule = async (
   req: Request,
   res: Response,
@@ -170,7 +169,6 @@ const setSchedule = async (
   try {
     session.startTransaction();
 
-    // Ensure the request is authenticated
     const hostUserId = req.admin?.id;
     if (!hostUserId) {
       throw createError(StatusCodes.UNAUTHORIZED, "Unauthorized user");
@@ -182,25 +180,32 @@ const setSchedule = async (
       throw createError(StatusCodes.BAD_REQUEST, "Missing required fields");
     }
 
-    // Fetch the podcast document
     const podcast = await Podcast.findById(podcastId).session(session);
     if (!podcast) {
       throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
     }
 
-    // 1) Update schedule + status
+    // Update schedule + status
     podcast.schedule = { date, day, time };
     podcast.status = PodcastStatus.SCHEDULED;
     podcast.room_id = "";
     podcast.roomCodes = [];
-    podcast.scheduleStatus = podcast?.scheduleStatus === "1st" ? "2nd" : "1st";
+    podcast.scheduleStatus = podcast.scheduleStatus === "1st" ? "2nd" : "1st";
+
+    // Clean invalid selectedUser entries to prevent BSONError
+    if (Array.isArray(podcast.selectedUser)) {
+      podcast.selectedUser = podcast.selectedUser.filter(
+        (u: any) => u.user && u.user.toString().trim() !== ""
+      );
+    } else {
+      podcast.selectedUser = [];
+    }
+
     await podcast.save({ session });
 
     const primaryUserId = podcast.primaryUser.toString();
 
-    // 2) Create notifications
-
-    // (a) Primary user
+    // Notifications
     const primaryNotification = Notification.create({
       type: "podcast_scheduled",
       user: primaryUserId,
@@ -214,7 +219,6 @@ const setSchedule = async (
       section: "user",
     });
 
-    // (b) All other participants
     const participantNotifications = podcast.participants.map((part) =>
       Notification.create({
         type: "podcast_invited",
@@ -230,14 +234,11 @@ const setSchedule = async (
       })
     );
 
-    // Wait for all notifications to finish
     await Promise.all([primaryNotification, ...participantNotifications]);
 
-    // Commit transaction
     await session.commitTransaction();
     session.endSession();
 
-    // 3) Respond
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Schedule updated and notifications created successfully",
@@ -249,7 +250,6 @@ const setSchedule = async (
     next(err);
   }
 };
-
 function markAllowedParticipants(participants: Participants[], selectedUserBody: SelectedUserBody[]): void {
   // Build a lookup set of selected user IDs (strings)
   const selectedSet = new Set<string>(selectedUserBody.map(({ user }: any) => user));
