@@ -105,3 +105,9 @@ BadGatewayError: Your account is connected to Google. Please sign in with Google
     at login (C:\Users\devmd\Work\podlove_backend\src\controllers\authController.ts:94:18)
     at processTicksAndRejections (node:internal/process/task_queues:105:5)
 BadGatewayError
+Sat Nov 15 2025 11:14:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Nov 15 2025 11:14:46 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Nov 15 2025 11:14:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Nov 15 2025 11:14:47 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Nov 15 2025 11:14:47 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Nov 15 2025 11:14:47 [Podlove] [32minfo[39m: Socket.IO server initialized
