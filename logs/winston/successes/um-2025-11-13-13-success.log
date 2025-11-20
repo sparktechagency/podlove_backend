@@ -1,7 +1,0 @@
-Thu Nov 13 2025 13:2:59 [Podlove] [31merror[39m: Auth validation failed: email: Path `email` is required.
-ValidationError: Auth validation failed: email: Path `email` is required.
-    at model.Document.invalidate (C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\document.js:3318:32)
-    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\document.js:3079:17
-    at C:\Users\devmd\Work\podlove_backend\node_modules\.pnpm\mongoose@8.8.4\node_modules\mongoose\lib\schemaType.js:1388:9
-    at processTicksAndRejections (node:internal/process/task_queues:85:11)
-ValidationError

@@ -1,5 +1,0 @@
-Thu Jul 10 2025 17:15:50 [Podlove] [31merror[39m: Passwords don't match
-BadRequestError: Passwords don't match
-    at resetPassword (C:\Users\Bd Calling\podlove_backend\src\controllers\authController.ts:143:60)
-    at processTicksAndRejections (node:internal/process/task_queues:105:5)
-BadRequestError

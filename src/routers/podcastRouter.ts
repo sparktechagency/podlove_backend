@@ -16,8 +16,7 @@ router.get("/record-get-podcast/:id", admin_authorize, PodcastController.getAdmi
 router.post("/set-schedule", admin_authorize, PodcastServices.setSchedule);
 router.post("/select-user", PodcastServices.selectUser);
 router.post("/podcast-done", PodcastServices.podcastDone);
-
-// ====================================
+// ===============================
 router.post("/create_room/:podcastId", authorize, asyncHandler(LivePodcastController.createStreamingRoom));
 
 // ====================================
@@ -28,6 +27,7 @@ router.post("/send_questions_answer", authorize, asyncHandler(LivePodcastControl
 // ==============================
 // router.post('/end/webhook', asyncHandler(LivePodcastController.postPodcastInWebhook))
 router.post("/recording/webhook", asyncHandler(LivePodcastController.postNewRecordInWebhook));
+
 router.post("/removed_participant", asyncHandler(PodcastController.removeFromPodcast));
 
 export default router;

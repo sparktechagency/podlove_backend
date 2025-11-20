@@ -23,7 +23,6 @@ type payload = {
   message: string;
   medium: Array<"Email" | "Notification">;
 };
-
 type Recipient = { _id: mongoose.Types.ObjectId; email: string };
 
 const sendEmail = async (email: string, message: string) => {

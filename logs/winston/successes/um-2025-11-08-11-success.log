@@ -1,5 +1,0 @@
-Sat Nov 08 2025 11:36:57 [Podlove] [31merror[39m: No accounts found with the given email!
-NotFoundError: No accounts found with the given email!
-    at recovery (/home/tayeur/Desktop/project/podlove_backend/src/controllers/authController.ts:134:37)
-    at processTicksAndRejections (node:internal/process/task_queues:105:5)
-NotFoundError

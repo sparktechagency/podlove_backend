@@ -156,10 +156,6 @@ async function findMatches(
     finalCandidates = [...nearby, ...fallbackNearby];
   }
 
-  finalCandidates = [
-    ...new Map(finalCandidates.map((u) => [String(u._id), u])).values(),
-  ];
-
   // 7) Compute compatibility scores
   const scored = await Promise.all(
     finalCandidates.map(async (c) => ({

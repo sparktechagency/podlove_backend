@@ -1,8 +1,0 @@
-Sat Jun 28 2025 17:28:37 [Podlove] [31merror[39m: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
-Error: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.
-    at Function.generate (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\openai\src\error.ts:96:14)
-    at OpenAI.makeStatusError (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:462:21)
-    at OpenAI.makeRequest (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\openai\src\core.ts:526:24)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async isUserSuitable (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\openaiServices.ts:260:22)
-Error

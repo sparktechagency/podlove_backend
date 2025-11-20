@@ -90,122 +90,87 @@ const podcastDone = async (req: Request, res: Response, next: NextFunction): Pro
 };
 
 // const setSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-
-//   try {
-//     // Ensure the request is authenticated
-//     const hostUserId = req.admin.id;
-//     if (!hostUserId) {
-//       throw createError(StatusCodes.UNAUTHORIZED, "Unauthorized user");
-//     }
-
-//     const { podcastId, date, day, time } = req.body;
-//     const podcast = await Podcast.findById(podcastId);
-//     if (!podcast) {
-//       throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
-//     }
-
-//     // 1) Update schedule + status
-//     podcast.schedule = { date, day, time };
-//     podcast.status = PodcastStatus.SCHEDULED;
-//     podcast.room_id = "";
-//     podcast.roomCodes = [];
-//     podcast.scheduleStatus = podcast?.scheduleStatus === "1st" ? "2nd" : "1st";
-//     await podcast.save();
-
-//     const primaryUserId = podcast.primaryUser.toString();
-
-//     // 2) Create notifications
-
-//     // (a) Primary user
-//     const primaryNotification = Notification.create({
-//       type: "podcast_scheduled",
-//       user: primaryUserId,
-//       message: [
-//         {
-//           title: "Podcast scheduled!",
-//           description: `The podcast will be held on ${date} at ${time}`,
-//         },
-//       ],
-//       read: false,
-//       section: "user",
-//     });
-
-//     // (b) All other participants
-//     const participantNotifications = podcast.participants.map((part) =>
-//       Notification.create({
-//         type: "podcast_invited",
-//         user: part.user.toString(),
-//         message: [
-//           {
-//             title: "You’re invited!",
-//             description: `You have podcast on ${date} at ${time}`,
-//           },
-//         ],
-//         read: false,
-//         section: "user",
-//       })
-//     );
-
-//     // 3) Wait for all to finish
-//     await Promise.all([primaryNotification, ...participantNotifications]);
-
-//     // 4) Respond
-//     return res.status(StatusCodes.OK).json({
-//       success: true,
-//       message: "Schedule updated and notifications created successfully",
-//       data: podcast,
-//     });
-//   } catch (err) {
-//     next(err);
+//   const hostUserId = req.user.userId;
+//   if(!hostUserId){
+//     throw createError(StatusCodes.BAD_GATEWAY, "Unauthorized user");
 //   }
+//   const { podcastId, date, day, time } = req.body;
+
+//   const podcast  = await Podcast.findById(podcastId);
+//   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
+
+//   podcast.schedule.date = date;
+//   podcast.schedule.day = day;
+//   podcast.schedule.time = time;
+//   podcast.status = PodcastStatus.SCHEDULED;
+
+//   await podcast.save();
+
+//        // a) Primary user notification
+//     const primaryNotif = new Notification({
+//       type: 'podcast_scheduled',
+//       user: primaryUserId,
+//       message: [{
+//         title:       'Podcast scheduled!',
+//         description: `The podcast will be held on ${date} at ${time}`,
+//       }],
+//       read:    false,
+//       section: 'user',
+//     });
+
+//     // b) Participant notifications
+//     const participantSaves = podcast.participants.map(part => {
+//       const userId = part.user.toString();
+//       const inviteNotif = new Notification({
+//         type: 'podcast_invited',
+//         user: userId,
+//         message: [{
+//           title:       'You’re invited!',
+//           description: `You have podcast on ${date} at ${time}`,
+//         }],
+//         read:    false,
+//         section: 'user',
+//       });
+//       return inviteNotif.save();
+//     });
+
+//     // c) Save primary and all participant notifications
+//     const [primarySaved, ...others] = await Promise.all([
+//       primaryNotif.save(),
+//       ...participantSaves
+//     ]);
+
+//   return res.status(StatusCodes.OK).json({ success: true, message: "Schedule updated successfully", data: podcast });
 // };
 
-const setSchedule = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<any> => {
-  const session = await mongoose.startSession();
-  try {
-    session.startTransaction();
+const setSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
 
-    const hostUserId = req.admin?.id;
+  try {
+    // Ensure the request is authenticated
+    const hostUserId = req.admin.id;
     if (!hostUserId) {
       throw createError(StatusCodes.UNAUTHORIZED, "Unauthorized user");
     }
 
     const { podcastId, date, day, time } = req.body;
-
-    if (!podcastId || !date || !day || !time) {
-      throw createError(StatusCodes.BAD_REQUEST, "Missing required fields");
-    }
-
-    const podcast = await Podcast.findById(podcastId).session(session);
+    const podcast = await Podcast.findById(podcastId);
     if (!podcast) {
       throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
     }
 
-    // Update schedule + status
+    // 1) Update schedule + status
     podcast.schedule = { date, day, time };
     podcast.status = PodcastStatus.SCHEDULED;
     podcast.room_id = "";
     podcast.roomCodes = [];
-    podcast.scheduleStatus = podcast.scheduleStatus === "1st" ? "2nd" : "1st";
-
-    // Clean invalid selectedUser entries to prevent BSONError
-    if (Array.isArray(podcast.selectedUser)) {
-      podcast.selectedUser = podcast.selectedUser.filter(
-        (u: any) => u.user && u.user.toString().trim() !== ""
-      );
-    } else {
-      podcast.selectedUser = [];
-    }
-
-    await podcast.save({ session });
+    podcast.scheduleStatus = podcast?.scheduleStatus === "1st" ? "2nd" : "1st";
+    await podcast.save();
 
     const primaryUserId = podcast.primaryUser.toString();
 
-    // Notifications
+    // 2) Create notifications
+
+    // (a) Primary user
     const primaryNotification = Notification.create({
       type: "podcast_scheduled",
       user: primaryUserId,
@@ -219,6 +184,7 @@ const setSchedule = async (
       section: "user",
     });
 
+    // (b) All other participants
     const participantNotifications = podcast.participants.map((part) =>
       Notification.create({
         type: "podcast_invited",
@@ -226,7 +192,7 @@ const setSchedule = async (
         message: [
           {
             title: "You’re invited!",
-            description: `You have a podcast on ${date} at ${time}`,
+            description: `You have podcast on ${date} at ${time}`,
           },
         ],
         read: false,
@@ -234,22 +200,20 @@ const setSchedule = async (
       })
     );
 
+    // 3) Wait for all to finish
     await Promise.all([primaryNotification, ...participantNotifications]);
 
-    await session.commitTransaction();
-    session.endSession();
-
+    // 4) Respond
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Schedule updated and notifications created successfully",
       data: podcast,
     });
   } catch (err) {
-    await session.abortTransaction();
-    session.endSession();
     next(err);
   }
 };
+
 function markAllowedParticipants(participants: Participants[], selectedUserBody: SelectedUserBody[]): void {
   // Build a lookup set of selected user IDs (strings)
   const selectedSet = new Set<string>(selectedUserBody.map(({ user }: any) => user));

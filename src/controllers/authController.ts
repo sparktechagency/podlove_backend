@@ -117,14 +117,6 @@ const signInWithGoogle = async (req: Request, res: Response, next: NextFunction)
       user = await User.findOne({ auth: auth._id });
     }
 
-    if (auth?.isBlocked)
-      return next(
-        createError(
-          StatusCodes.FORBIDDEN,
-          "Your account has been blocked by an administrator. Please reach out to the admin for help."
-        )
-      );
-
     const accessToken = Auth.generateAccessToken(auth._id!.toString());
 
     user = await User.findOne({ auth: auth._id }).populate({
@@ -160,14 +152,6 @@ const signInWithApple = async (req: Request, res: Response, next: NextFunction):
       }
       user = await User.findOne({ auth: auth._id });
     }
-
-    if (auth?.isBlocked)
-      return next(
-        createError(
-          StatusCodes.FORBIDDEN,
-          "Your account has been blocked by an administrator. Please reach out to the admin for help."
-        )
-      );
 
     const accessToken = Auth.generateAccessToken(auth._id!.toString());
 

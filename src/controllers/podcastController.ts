@@ -79,72 +79,37 @@ const sendPodcastRequest = async (
   const userId = req.user.userId;
   const { status } = req.body;
 
-  console.log("sendPodcastRequest:", userId, status);
-
-  // Validate user
   if (!userId) {
-    return next(
-      createError(StatusCodes.BAD_REQUEST, "Participant userId is required")
-    );
+    return next(createError(StatusCodes.BAD_REQUEST, "Participant userId is required"));
   }
 
-  // Validate status
   if (!status || !Object.values(PodcastStatus).includes(status)) {
-    return next(
-      createError(StatusCodes.BAD_REQUEST, "Invalid podcast status")
-    );
+    return next(createError(StatusCodes.BAD_REQUEST, "Invalid podcast status"));
   }
 
   const session = await mongoose.startSession();
-
   try {
     session.startTransaction();
 
-    // Find existing podcast (transaction-safe)
-    const podcast = await Podcast.findOne({
-      "participants.user": userId,
-    }).session(session);
 
+    const podcast = await Podcast.findOne({ "participants.user": userId }).session(session);
     if (!podcast) {
-      throw createError(
-        StatusCodes.NOT_FOUND,
-        "Podcast not found for this participant"
-      );
+      throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this participant");
     }
 
-    console.log("podcast.participants", podcast.participants);
-
-    // ---------------------------------------------------------
-    // FIXED: Update only the needed participant in-place
-    // ---------------------------------------------------------
-    podcast.participants.forEach((p: any) => {
+    podcast.participants = podcast.participants.map((p: any) => {
       if (p.user.toString() === userId.toString()) {
-        p.isRequest = true;
+        return {
+          ...p.toObject ? p.toObject() : p,
+          isRequest: true
+        };
       }
+      return p;
     });
 
-    // ---------------------------------------------------------
-    // CRITICAL FIX FOR YOUR ERROR:
-    // Clean invalid selectedUser entries (user: "")
-    // ---------------------------------------------------------
-    if (Array.isArray(podcast.selectedUser)) {
-      podcast.selectedUser = podcast.selectedUser.filter(
-        (u: any) => u.user && u.user.toString().trim() !== ""
-      );
-    } else {
-      // safety setter
-      podcast.selectedUser = [];
-    }
-
-    // Update global podcast fields
     podcast.status = status;
-    podcast.schedule = {
-      day: "",
-      date: "",
-      time: "",
-    };
+    podcast.schedule = { day: "", date: "", time: "" };
 
-    // Save with session
     await podcast.save({ session });
 
     await session.commitTransaction();
@@ -152,8 +117,7 @@ const sendPodcastRequest = async (
 
     return res.status(StatusCodes.OK).json({
       success: true,
-      message:
-        "Podcast status updated and participant request set to true",
+      message: "Podcast status updated and participant request set to true",
       data: podcast,
     });
   } catch (err) {
@@ -162,8 +126,6 @@ const sendPodcastRequest = async (
     return next(err);
   }
 };
-
-
 
 const getPodcasts = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { id, status } = req.query;
@@ -191,7 +153,7 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
   let statusFilter: any = {};
   if (status) {
     if (status === "done") {
-      statusFilter.status = { $in: [PodcastStatus.REQSHEDULED, PodcastStatus.NOT_SCHEDULED, PodcastStatus.DONE, PodcastStatus.SCHEDULED, PodcastStatus.STREAM_START, PodcastStatus.PLAYING, PodcastStatus.FINISHED] };
+      statusFilter.status = { $in: [PodcastStatus.DONE, PodcastStatus.SCHEDULED, PodcastStatus.STREAM_START, PodcastStatus.PLAYING, PodcastStatus.FINISHED] };
     }
     //  else if (status === "not_scheduled") {
     //   statusFilter.status = PodcastStatus.NOT_SCHEDULED;
