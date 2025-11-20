@@ -239,9 +239,11 @@ const send7daysSurveyFeedback = async (user: any, payload: any) => {
 
         await feedback.save();
 
-        const authUser = await Auth.findByIdAndUpdate(user.authId, {
-            shareFeedback: "completed"
-        });
+        const authUser = await Auth.findByIdAndUpdate(
+            user.authId,
+            { shareFeedback: "completed" },
+            { new: true } // return updated document
+        );
         if (!authUser) {
             throw new Error("User not found");
         }
@@ -265,7 +267,6 @@ const getUser7daysSurveyFeedback = async (userId: any) => {
         // if (!feedback) {
         //     throw new Error("This user has not submitted any feedback yet");
         // }
-
         return feedback
     } catch (error) {
         console.error("Error saving podcast feedback:", error);
