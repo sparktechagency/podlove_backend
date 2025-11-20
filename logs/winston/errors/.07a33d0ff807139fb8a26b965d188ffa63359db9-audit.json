@@ -29,6 +29,11 @@
             "date": 1763182803613,
             "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\errors\\um-2025-11-15-11-error.log",
             "hash": "d3b6d86b039e008171d7dcf66a607dcd8f9e5ededafb8571c8f4afcb293a37ee"
+        },
+        {
+            "date": 1763522957463,
+            "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\errors\\um-2025-11-19-09-error.log",
+            "hash": "2a23427fa38c9c4eb40b3843bb54a1b5b9ae347ae7004e8bd70e009694e35577"
         }
     ],
     "hashType": "sha256"
