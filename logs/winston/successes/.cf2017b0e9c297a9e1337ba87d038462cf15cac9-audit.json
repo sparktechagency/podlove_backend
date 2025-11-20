@@ -6,16 +6,6 @@
     "auditLog": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/.cf2017b0e9c297a9e1337ba87d038462cf15cac9-audit.json",
     "files": [
         {
-            "date": 1762406035394,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-06-11-success.log",
-            "hash": "6a967f14177d4b796ff2bf7614116a3ea4892f11bc8a7b2a859dbe66c354b4c8"
-        },
-        {
-            "date": 1762410109515,
-            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-06-12-success.log",
-            "hash": "4ddabba27ea5eb05bc2694760133067a2181d093a8923a6a73a8b7f686ac3f2a"
-        },
-        {
             "date": 1762577818436,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-08-10-success.log",
             "hash": "ed58b0368ccd833789f8e3c3391226cb448a218cc84b9a5e8e744a13467baf82"
@@ -44,6 +34,21 @@
             "date": 1763615322363,
             "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-20-11-success.log",
             "hash": "7f473ceeb831eebd2c9efee890e1483cbbe2e08c2a855261010875a74c4418a6"
+        },
+        {
+            "date": 1763626822404,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-20-14-success.log",
+            "hash": "a3135d1afe9eac62b516526fe185f57b7c12c7416e8ebe41831dd4cb515c2523"
+        },
+        {
+            "date": 1763630244440,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-20-15-success.log",
+            "hash": "f7f0973391be9dae4879372cddf18afd778cb0c4e8edb51c96b2fe44e5cb63a0"
+        },
+        {
+            "date": 1763632804554,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/successes/um-2025-11-20-16-success.log",
+            "hash": "626f2499fddf4c46470bd94a56481103bc1f0c603c37e079465ca49c3e9f6ed7"
         }
     ],
     "hashType": "sha256"

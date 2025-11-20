@@ -11,6 +11,9 @@ const router = express.Router();
 
 router.patch("/update", authorize, upload.single("avatar"), asyncHandler(UserController.update));
 router.post("/block/:authId", UserServices.block);
+
+router.post("/delete_account/:authId", UserServices.delete_account);
+
 router.post("/unblock/:authId", UserServices.unblock);
 // router.post("/validate-bio", authorize, asyncHandler(UserController.update));
 router.post("/validate-bio", authorize, asyncHandler(UserServices.validateBio));

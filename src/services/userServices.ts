@@ -172,7 +172,35 @@ const unblock = async (req: Request, res: Response, next: NextFunction): Promise
   });
 };
 
+const delete_account = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  try {
+    const authId = req.params.authId;
+
+    // 1. Check if auth exists
+    const auth = await Auth.findById(authId);
+    if (!auth) {
+      return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+    }
+
+    // 2. Delete user profile (User model)
+    await User.findOneAndDelete({ auth: authId });
+
+    // 3. Delete Auth record
+    await Auth.findByIdAndDelete(authId);
+
+    res.status(StatusCodes.OK).json({
+      success: true,
+      message: "User account deleted successfully",
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 const UserServices = {
+  delete_account,
   getAllPremiumUsers,
   validateBio,
   block,
