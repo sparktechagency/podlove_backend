@@ -1,0 +1,31 @@
+Sat Jul 26 2025 18:0:10 [Podlove] [32minfo[39m: 6884bc3795c28e1f8aabc99e
+Sat Jul 26 2025 18:0:12 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:66:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Jul 26 2025 18:0:12 [Podlove] [32minfo[39m: 6884bc3795c28e1f8aabc99e
+Sat Jul 26 2025 18:0:13 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:66:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Jul 26 2025 18:0:16 [Podlove] [32minfo[39m: 6884bc3795c28e1f8aabc99e
+Sat Jul 26 2025 18:0:17 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:66:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Jul 26 2025 18:0:17 [Podlove] [32minfo[39m: 6884bc3795c28e1f8aabc99e
+Sat Jul 26 2025 18:0:18 [Podlove] [31merror[39m: podcast is null
+Error: podcast is null
+    at homeData (C:\Users\jahid\Music\Jahid Hasan\podlove_backend\src\services\homeServices.ts:66:13)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+Error
+Sat Jul 26 2025 18:1:50 [Podlove] [32minfo[39m: 68849ea4a0a0cde82d0fd6e1
+Sat Jul 26 2025 18:13:34 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 26 2025 18:13:37 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 26 2025 18:13:37 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 26 2025 18:13:37 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 26 2025 18:13:37 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.10.59
+Sat Jul 26 2025 18:13:37 [Podlove] [32minfo[39m: Socket.IO server initialized

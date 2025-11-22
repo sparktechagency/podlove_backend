@@ -15,7 +15,6 @@ export type AuthSchema = Document & {
   recoveryOTPExpiredAt: Date | null;
   isVerified: boolean;
   isBlocked: boolean;
-  isDelete: boolean;
   findByEmail(email: string): Promise<any>;
   comparePassword(password: string): Promise<boolean>;
   generateVerificationOTP(): void;
@@ -65,10 +64,6 @@ const authSchema: Schema<AuthSchema> = new Schema<AuthSchema>({
     default: false,
   },
   isBlocked: {
-    type: Boolean,
-    default: false,
-  },
-  isDelete: {
     type: Boolean,
     default: false,
   }

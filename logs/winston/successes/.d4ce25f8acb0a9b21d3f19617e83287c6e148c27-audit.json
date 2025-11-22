@@ -1,0 +1,45 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "F:\\podlove\\podlove_backend\\logs\\winston\\successes\\.d4ce25f8acb0a9b21d3f19617e83287c6e148c27-audit.json",
+    "files": [
+        {
+            "date": 1751988098938,
+            "name": "F:\\podlove\\podlove_backend\\logs\\winston\\successes\\um-2025-07-08-21-success.log",
+            "hash": "87911342711125d82b8e34d0fda13ffbe0345cb558b1fa8f308dfdb9e017b9d9"
+        },
+        {
+            "date": 1751990778122,
+            "name": "F:\\podlove\\podlove_backend\\logs\\winston\\successes\\um-2025-07-08-22-success.log",
+            "hash": "5ab2d99fd0ac72d34fd2119c7bb0c7dc09f54ab1518ef8d134365db41bd52c61"
+        },
+        {
+            "date": 1751995438775,
+            "name": "F:\\podlove\\podlove_backend\\logs\\winston\\successes\\um-2025-07-08-23-success.log",
+            "hash": "c0ede6562b625cbd2d0ce14901dacdb70d8cbf9857c154e3f8b870292c06a3dc"
+        },
+        {
+            "date": 1752724724083,
+            "name": "F:\\podlove\\podlove_backend\\logs\\winston\\successes\\um-2025-07-17-09-success.log",
+            "hash": "8f23ff4f90e4d1c296e7000faf2878049ec73b0ccba7509078e97b79c6060976"
+        },
+        {
+            "date": 1752744589740,
+            "name": "F:\\podlove\\podlove_backend\\logs\\winston\\successes\\um-2025-07-17-15-success.log",
+            "hash": "41aa7c36922f728d64ea49c65a5839200312eaba6a87c9719a1b25eed6315836"
+        },
+        {
+            "date": 1752754371247,
+            "name": "F:\\podlove\\podlove_backend\\logs\\winston\\successes\\um-2025-07-17-18-success.log",
+            "hash": "b5e8fc5896590eebfbdcb235adaf90ee350868a1cc585e9cc252db852ecdc743"
+        },
+        {
+            "date": 1752757396744,
+            "name": "F:\\podlove\\podlove_backend\\logs\\winston\\successes\\um-2025-07-17-19-success.log",
+            "hash": "5198a61ccbf4edef640473cdb89984a9ba920671c5aaeec187cb7e04adcd7a0d"
+        }
+    ],
+    "hashType": "sha256"
+}

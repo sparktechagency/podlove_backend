@@ -1,0 +1,51 @@
+Sat Jul 05 2025 17:0:20 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:0:27 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:0:27 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:0:28 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:0:28 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:5:24 [Podlove] [31merror[39m: No account found with the given email
+NotFoundError: No account found with the given email
+    at login (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\controllers\authController.ts:74:37)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+NotFoundError
+Sat Jul 05 2025 17:10:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:10:47 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:10:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:10:47 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:10:47 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:17:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:18:4 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:18:7 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:18:7 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:18:8 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:18:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:22:26 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:28:39 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:28:42 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:28:42 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:28:43 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:28:43 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:29:58 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:32:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jul 05 2025 17:32:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jul 05 2025 17:32:6 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jul 05 2025 17:32:6 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jul 05 2025 17:32:6 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.168
+Sat Jul 05 2025 17:33:47 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:33:48 [Podlove] [31merror[39m: Multipart: Boundary not found
+Error: Multipart: Boundary not found
+    at new Multipart (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\busboy\lib\types\multipart.js:233:13)
+    at getInstance (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:33:12)
+    at module.exports (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\busboy\lib\index.js:56:10)
+    at multerMiddleware (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\multer\lib\make-middleware.js:38:16)
+    at Layer.handle [as handle_request] (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\middlewares\authorization.ts:64:12
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+Error
+Sat Jul 05 2025 17:33:57 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:34:14 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:35:2 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:35:20 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:36:34 [Podlove] [32minfo[39m: 686908bc6671323576e88562
+Sat Jul 05 2025 17:54:8 [Podlove] [32minfo[39m: 686912412187e3d7c60663b3

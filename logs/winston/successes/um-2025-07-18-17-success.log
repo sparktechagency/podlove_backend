@@ -1,0 +1,102 @@
+Fri Jul 18 2025 17:8:50 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:8:53 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:8:53 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:8:54 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:8:54 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:8:54 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:9:54 [Podlove] [31merror[39m: Missing Stripe signature header
+ForbiddenError: Missing Stripe signature header
+    at webhook (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\src\services\stripeServices.ts:19:30)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at rawParser (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\body-parser\lib\types\raw.js:76:7)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+ForbiddenError
+Fri Jul 18 2025 17:11:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:11:40 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:11:48 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:11:51 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:13:3 [Podlove] [31merror[39m: Missing Stripe signature header
+ForbiddenError: Missing Stripe signature header
+    at webhook (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\src\services\stripeServices.ts:19:30)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at rawParser (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\body-parser\lib\types\raw.js:76:7)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+ForbiddenError
+Fri Jul 18 2025 17:13:5 [Podlove] [31merror[39m: Missing Stripe signature header
+ForbiddenError: Missing Stripe signature header
+    at webhook (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\src\services\stripeServices.ts:19:30)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at rawParser (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\body-parser\lib\types\raw.js:76:7)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+ForbiddenError
+Fri Jul 18 2025 17:21:52 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:21:55 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:29:6 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:29:9 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:29:9 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:29:10 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:29:10 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:29:10 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:43:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:43:39 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:43:40 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:43:40 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:43:40 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:43:40 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:43:40 [Podlove] [31merror[39m: Missing Stripe signature header
+ForbiddenError: Missing Stripe signature header
+    at webhook (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\src\services\stripeServices.ts:30:30)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at rawParser (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\body-parser\lib\types\raw.js:76:7)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\bdcalling\Documents\Jahid Hasan\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+ForbiddenError
+Fri Jul 18 2025 17:44:18 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:44:22 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:48:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:48:5 [Podlove] [32minfo[39m: Socket.IO server initialized
+Fri Jul 18 2025 17:59:14 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Fri Jul 18 2025 17:59:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Fri Jul 18 2025 17:59:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Fri Jul 18 2025 17:59:18 [Podlove] [32minfo[39m: Media Policy exists!
+Fri Jul 18 2025 17:59:18 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.210
+Fri Jul 18 2025 17:59:18 [Podlove] [32minfo[39m: Socket.IO server initialized

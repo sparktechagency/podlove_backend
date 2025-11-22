@@ -84,7 +84,6 @@ const login = async (req: Request, res: Response, next: NextFunction): Promise<a
         "Your account has been blocked by an administrator. Please reach out to the admin for help."
       )
     );
-
   if (!auth) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
 
   if (!(await auth.comparePassword(password)))
@@ -172,6 +171,48 @@ const signInWithApple = async (req: Request, res: Response, next: NextFunction):
     return next(error);
   }
 };
+
+// const signInWithApple = async (req: Request, res: Response, next: NextFunction) => {
+//   try {
+//     const { id_token } = req.body;
+
+//     if (!id_token) return res.status(StatusCodes.BAD_REQUEST).json({ message: "Missing Apple ID token" });
+
+//     const decodedHeader = jwt.decode(id_token, { complete: true }) as { header: { kid: string } };
+//     const kid = decodedHeader.header.kid;
+//     const applePublicKey = await getApplePublicKey(kid);
+
+//     const verified = jwt.verify(id_token, applePublicKey, { algorithms: ["RS256"] }) as any;
+
+//     const appleId = verified.sub;
+//     const email = verified.email;
+//     const name = verified.name || "Apple User";
+
+//     // Check if user exists
+//     let user = await User.findOne({ appleId });
+//     if (!user) {
+//       user = await User.create({ appleId, email, name, isProfileComplete: false });
+//     }
+
+//     const userEmail = (user as any).email || (user.auth as any)?.email;
+
+//     const accessToken = jwt.sign({ id: user._id, email: userEmail }, process.env.JWT_SECRET!, {
+//       expiresIn: "7d",
+//     });
+
+//     return res.status(StatusCodes.OK).json({
+//       success: true,
+//       message: "Signed in with Apple successfully",
+//       data: { accessToken, user },
+//     });
+//   } catch (err) {
+//     console.error("Apple login error:", err);
+//     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+//       success: false,
+//       message: (err as Error).message || "Apple login failed",
+//     });
+//   }
+// };
 
 const recovery = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email } = req.body;
@@ -270,50 +311,19 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
 };
 
 const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const user = req.user;
+  const { password, newPassword, confirmPassword } = req.body;
 
-  try {
-    const user = req.user;
+  console.log("req.user: ", req.user, password, newPassword, confirmPassword);
 
-    const { password, newPassword, confirmPassword, email } = req.body;
+  let auth = await Auth.findOne({ email: user.email });
+  if (!auth) throw createError(StatusCodes.NOT_FOUND, "User Not Found");
+  if (!(await auth.comparePassword(password)))
+    return next(createError(StatusCodes.UNAUTHORIZED, "Wrong Password. Please try again."));
 
-    console.log("req.admin:", password, newPassword, confirmPassword);
-
-    if (!email) {
-      throw createError(StatusCodes.UNAUTHORIZED, "Unauthorized access");
-    }
-
-    if (!password || !newPassword || !confirmPassword) {
-      throw createError(StatusCodes.BAD_REQUEST, "All fields are required");
-    }
-
-    if (newPassword !== confirmPassword) {
-      throw createError(
-        StatusCodes.BAD_REQUEST,
-        "New password and confirm password do not match"
-      );
-    }
-
-    let auth = await Auth.findOne({ email: user.email });
-    if (!auth) {
-      throw createError(StatusCodes.NOT_FOUND, "Admin not found");
-    }
-
-    const isMatch = await auth.comparePassword(password);
-    if (!isMatch) {
-      throw createError(StatusCodes.UNAUTHORIZED, "Wrong password. Please try again.");
-    }
-
-    auth.password = newPassword;
-    await auth.save();
-
-    console.log("Password changed successfully", isMatch);
-
-    return res
-      .status(StatusCodes.OK)
-      .json({ success: true, message: "Password changed successfully" });
-  } catch (error) {
-    next(error);
-  }
+  auth.password = newPassword;
+  await auth.save();
+  return res.status(StatusCodes.OK).json({ success: true, message: "Password changed successfully", data: {} });
 };
 
 const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {

@@ -1,0 +1,35 @@
+Sun Jul 13 2025 12:3:41 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jul 13 2025 12:3:44 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jul 13 2025 12:3:45 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jul 13 2025 12:3:45 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jul 13 2025 12:3:45 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.0.60.147
+Sun Jul 13 2025 12:3:45 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jul 13 2025 12:4:25 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:5:35 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:5:56 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:6:14 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:6:32 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:9:0 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:14:1 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:14:5 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:18:59 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:19:32 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Sun Jul 13 2025 12:23:24 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:30:44 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:36:32 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:40:13 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:40:34 [Podlove] [32minfo[39m: 687217cf282e0b3cdea4802d
+Sun Jul 13 2025 12:52:21 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\Users\Bd Calling\podlove_backend\src\middlewares\authorization.ts:45:30
+    at C:\Users\Bd Calling\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Bd Calling\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Sun Jul 13 2025 12:56:45 [Podlove] [32minfo[39m: 68600f666d611e9e83e68e1a

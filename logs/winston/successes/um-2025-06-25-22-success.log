@@ -1,0 +1,47 @@
+Wed Jun 25 2025 22:1:53 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Wed Jun 25 2025 22:4:55 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a
+Wed Jun 25 2025 22:10:25 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\userServices.ts:78:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+BadRequestError
+Wed Jun 25 2025 22:12:31 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\userServices.ts:78:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+BadRequestError
+Wed Jun 25 2025 22:19:59 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\userServices.ts:78:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+BadRequestError
+Wed Jun 25 2025 22:23:9 [Podlove] [31merror[39m: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+BadRequestError: Your bio contains content that violates our guidelines. Please ensure it does not include:
+1. Profanity, hate speech, or explicit content
+2. Personal information such as phone numbers, addresses, emails, or identifiable details
+3. Spam, random characters, or nonsensical phrases.
+    at validateBio (C:\Users\bdCalling\Documents\Jahid Hasan\podlove_backend\src\services\userServices.ts:78:20)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+BadRequestError
+Wed Jun 25 2025 22:26:24 [Podlove] [32minfo[39m: 685bf24e49787bb2bfa51b3a

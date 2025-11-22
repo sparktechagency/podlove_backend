@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/tayebur/podlove_backend/logs/winston/successes/.08ceefd7aaca9415310d93897a04c72d93410fc1-audit.json",
+    "files": [
+        {
+            "date": 1758280659347,
+            "name": "/home/tayebur/podlove_backend/logs/winston/successes/um-2025-09-19-17-success.log",
+            "hash": "4bee212c80fa42506cd23dabd679e945f38d7927acf4e4e1e3ad8fc5534fb730"
+        }
+    ],
+    "hashType": "sha256"
+}
