@@ -1,6 +1,5 @@
-import Auth from '@models/authModel';
-import User from '@models/userModel';
-import twilio from 'twilio';
+import VerifyPhone from "@models/phoneModel";
+import twilio from "twilio";
 
 const account_sid = process.env.TWILIO_ACCOUNT_SID;
 const auth_token = process.env.TWILIO_AUTH_TOKEN;
@@ -8,69 +7,66 @@ const phone_number = process.env.TWILIO_PHONE_NUMBER;
 
 const client = twilio(account_sid, auth_token);
 
-interface ISendResponse {
+interface IResponse {
     invalid: boolean;
     message: string;
+    otp?: string;
 }
 
-const isValidPhoneNumber = (phone: string): boolean => /^\+\d{10,15}$/.test(phone);
+const isValidPhoneNumber = (phone: string): boolean =>
+    /^\+\d{10,15}$/.test(phone);
 
-export const sendPhoneVerificationsMessage = async (
-    message: string,
-    phoneNumber: string,
-    verifyOtp: string | number,
-    user: string | any,
-    countryCode: string,
-    phone: string
-): Promise<ISendResponse> => {
+export const sendPhoneVerificationMessage = async (
+    phoneNumber: string
+): Promise<IResponse> => {
+
+    if (!account_sid || !auth_token || !phone_number) {
+        return { invalid: true, message: "Twilio configuration missing." };
+    }
 
     if (!isValidPhoneNumber(phoneNumber)) {
-        return {
-            invalid: true,
-            message: "Invalid phone number format. Use E.164 format (e.g., +1234567890)."
-        };
+        return { invalid: true, message: "Phone must be E.164 format." };
     }
 
-    console.log("phoneNumber:", phoneNumber, user);
-    console.log("Twilio SID:", account_sid);
-    console.log("Twilio Auth Token:", auth_token);
-    console.log("Twilio From Number:", phone_number);
+    // Prevent repeat OTP if still valid
+    const existing = await VerifyPhone.findOne({ number: phoneNumber });
 
+    // Rate limit — max 5 per hour
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
+    const count = await VerifyPhone.countDocuments({
+        number: phoneNumber,
+        otpExpiredAt: { $gte: oneHourAgo }
+    });
 
-    try {
-        const result = await client.messages.create({
-            body: message,
-            from: phone_number,
-            to: phoneNumber
+    if (count >= 5) {
+        return { invalid: true, message: "Too many OTP attempts. Try later." };
+    }
+
+    // Generate OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
+
+    // Save or update OTP
+    if (existing) {
+        existing.otp = otp;
+        existing.otpExpiredAt = expiresAt;
+        existing.used = false;
+        await existing.save();
+    } else {
+        await VerifyPhone.create({
+            number: phoneNumber,
+            otp,
+            otpExpiredAt: expiresAt
         });
-
-        if (result) {
-            const updateAuth = await Auth.findByIdAndUpdate(
-                user.authId,
-                { verifyOtp }
-            );
-
-            if (!updateAuth) {
-                throw new Error("Error updating verify code in the database. Please try again!");
-            }
-
-            let updateUser = await User.findByIdAndUpdate(
-                user.userId,
-                { phone_number: phone, phone_c_code: countryCode }
-            );
-
-
-            if (!updateUser) {
-                throw new Error("Error updating phone number in the database. Please try again!");
-            }
-        }
-
-        return {
-            invalid: false,
-            message: `Message sent successfully to ${phoneNumber}`
-        };
-
-    } catch (error: any) {
-        throw new Error(error.message || "Failed to send SMS");
     }
+
+    // Send with Twilio
+    await client.messages.create({
+        body: `Your verification code is: ${otp}`,
+        from: phone_number,
+        to: phoneNumber
+    });
+
+    return { invalid: false, message: "OTP sent successfully.", otp };
 };

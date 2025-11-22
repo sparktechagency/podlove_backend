@@ -28,7 +28,6 @@ import path from "path";
 import ChatRouter from "@routers/chatRouter";
 import SubscriptionPlanRouter from "@routers/subscriptionPlanRouter"
 
-
 const app = express();
 // app.use(apiLogger);
 app.use("/", WebhookRouter);
@@ -39,7 +38,6 @@ app.use(
 );
 
 app.use(express.json());
-
 
 app.use(
   cors({
@@ -68,8 +66,6 @@ app.use("/notification", NotificationRouter);
 app.use("/consumer", ConsumerPolicyRouter);
 app.use("/media", MediaPolicyRouter);
 app.use("/chat", ChatRouter);
-
-
 
 app.use("/", (req: Request, res: Response, next: NextFunction) => {
   res.send("Hello From Podlove");

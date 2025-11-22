@@ -6,6 +6,8 @@ import User from "@models/userModel";
 import { Method } from "@shared/enums";
 import sendEmail from "@utils/sendEmail";
 import sendSMS from "@utils/sendSMS";
+import { sendPhoneVerificationMessage } from "./phone-verify/twilio.verify";
+import VerifyPhone from "@models/phoneModel";
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { name, email, phoneNumber, password, confirmPassword } = req.body;
@@ -267,22 +269,6 @@ const resendOTP = async (req: Request<{}, {}, resendOTPPayload>, res: Response, 
   }
 };
 
-// const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-//   const user = req.user;
-//   const { password, newPassword, confirmPassword } = req.body;
-
-//   console.log("req.user: ", req.user, password, newPassword, confirmPassword);
-
-//   let auth = await Auth.findOne({ email: user.email });
-//   if (!auth) throw createError(StatusCodes.NOT_FOUND, "User Not Found");
-//   if (!(await auth.comparePassword(password)))
-//     return next(createError(StatusCodes.UNAUTHORIZED, "Wrong Password. Please try again."));
-
-//   auth.password = newPassword;
-//   await auth.save();
-//   return res.status(StatusCodes.OK).json({ success: true, message: "Password changed successfully", data: {} });
-// };
-
 const changePassword = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
 
   try {
@@ -330,7 +316,6 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
   }
 };
 
-
 const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   const authId = req.user.authId;
@@ -338,7 +323,91 @@ const remove = async (req: Request, res: Response, next: NextFunction): Promise<
   return res.status(StatusCodes.OK).json({ success: true, message: "User Removed successfully", data: {} });
 };
 
+const sendPhoneVerificationsOPT = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const phone = req.body.phone;
+  const phoneNumber = phone;
+
+  const result = await sendPhoneVerificationMessage(phoneNumber)
+
+  return res.status(StatusCodes.OK).json({ success: true, message: "Message sent successfully", data: result });
+};
+
+const verifyPhoneOtp = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<any> => {
+  try {
+    const phone = req.body.phone;
+    const submittedOtp = req.body.otp;
+
+    if (!phone || !submittedOtp) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        success: false,
+        invalid: true,
+        message: "Phone number and OTP are required.",
+      });
+    }
+
+    const record = await VerifyPhone.findOne({ number: phone });
+
+    if (!record) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        success: false,
+        invalid: true,
+        message: "No OTP found for this phone number.",
+      });
+    }
+
+    if (record.used) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        success: false,
+        invalid: true,
+        message: "OTP already used.",
+      });
+    }
+
+    if (!record.otpExpiredAt || record.otpExpiredAt < new Date()) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        success: false,
+        invalid: true,
+        message: "OTP expired.",
+      });
+    }
+
+    if (record.otp !== submittedOtp) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        success: false,
+        invalid: true,
+        message: "Incorrect OTP.",
+      });
+    }
+
+    // Mark OTP as used
+    record.used = true;
+    await record.save();
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      invalid: false,
+      message: "Phone verification successful.",
+    });
+
+  } catch (error: any) {
+    console.error("OTP verification error:", error);
+
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      invalid: true,
+      message: "Something went wrong during OTP verification.",
+      errorDetails: process.env.NODE_ENV === "development" ? error.message : undefined,
+    });
+  }
+};
+
+
 const AuthController = {
+  verifyPhoneOtp,
   register,
   activate,
   login,
@@ -350,6 +419,7 @@ const AuthController = {
   resetPassword,
   changePassword,
   remove,
+  sendPhoneVerificationsOPT
 };
 
 export default AuthController;

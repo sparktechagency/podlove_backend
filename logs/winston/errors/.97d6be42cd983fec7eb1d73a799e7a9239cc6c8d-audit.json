@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/.97d6be42cd983fec7eb1d73a799e7a9239cc6c8d-audit.json",
+    "files": [
+        {
+            "date": 1763807682493,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-11-22-16-error.log",
+            "hash": "68bb1ed4b1ad19334229b9eeabd1802ecb29aee0dddcbc21dd34279384a04801"
+        },
+        {
+            "date": 1763809380683,
+            "name": "/home/tayeur/Desktop/project/podlove_backend/logs/winston/errors/um-2025-11-22-17-error.log",
+            "hash": "b20bd08ff5bf8f833bd79f0050b9f1a921540b9b743b2383c5032fe83a73cc21"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -16,5 +16,9 @@ router.post("/recovery-verification", asyncHandler(AuthController.recoveryVerifi
 router.post("/reset-password", asyncHandler(AuthController.resetPassword));
 router.post("/change-password", authorize, asyncHandler(AuthController.changePassword));
 router.delete("/delete", authorize, asyncHandler(AuthController.remove));
+router.post("/phone_verify", asyncHandler(AuthController.sendPhoneVerificationsOPT));
+router.post("/verify_phone_otp", asyncHandler(AuthController.verifyPhoneOtp));
+
+
 
 export default router;
