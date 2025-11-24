@@ -89,6 +89,9 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
         });
       }
       podcast.participants = participantsArray as unknown as typeof podcast.participants;
+    } else {
+      //@ts-ignore
+      podcast.participants = []
     }
     // Fetch available subscription plans
     const subscriptionPlans = await SubscriptionPlan.find().lean();
