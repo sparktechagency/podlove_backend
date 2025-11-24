@@ -9,6 +9,8 @@ const phone_number = process.env.TWILIO_PHONE_NUMBER;
 // const auth_token = '5e56cbebc1a6160863afea4d662a4b1d'
 // const phone_number = '+18555259062'
 
+console.log("Twilio SID:", account_sid, auth_token, phone_number);
+
 const client = twilio(account_sid, auth_token);
 
 interface IResponse {
