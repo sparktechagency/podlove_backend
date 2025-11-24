@@ -1,11 +1,10 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express, { Request, Response, NextFunction } from "express";
 import { notFound } from "@middlewares/notfound";
 import { errorHandler } from "@middlewares/errorHandler";
 import cors from "cors";
-import dotenv from "dotenv";
-
-dotenv.config();
-
 import AuthRouter from "@routers/authRouter";
 import UserRouter from "@routers/userRouter";
 import FaqRouter from "@routers/faqRouter";
