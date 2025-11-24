@@ -31,3 +31,9 @@ Mon Nov 24 2025 12:19:33 [Podlove] [32minfo[39m: Consumer Policy exists!
 Mon Nov 24 2025 12:19:33 [Podlove] [32minfo[39m: Media Policy exists!
 Mon Nov 24 2025 12:19:33 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
 Mon Nov 24 2025 12:19:33 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Nov 24 2025 12:20:41 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Nov 24 2025 12:20:47 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Nov 24 2025 12:20:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Nov 24 2025 12:20:47 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Nov 24 2025 12:20:47 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Nov 24 2025 12:20:47 [Podlove] [32minfo[39m: Socket.IO server initialized
