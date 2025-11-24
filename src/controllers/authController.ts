@@ -3,6 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import { Request, Response, NextFunction } from "express";
 import Auth from "@models/authModel";
 import User from "@models/userModel";
+import Administrator from "@models/adminModel";
 import { Method } from "@shared/enums";
 import sendEmail from "@utils/sendEmail";
 import sendSMS from "@utils/sendSMS";
@@ -10,40 +11,99 @@ import { sendPhoneVerificationMessage } from "./phone-verify/twilio.verify";
 import VerifyPhone from "@models/phoneModel";
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const { name, email, phoneNumber, password, confirmPassword } = req.body;
+  const {
+    name,
+    email,
+    phoneNumber,
+    password,
+    confirmPassword,
+    role,             // ⭐ NEW
+    contact,
+    address,
+    dateOfBirth
+  } = req.body;
 
+  if (password !== confirmPassword) {
+    return res
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ success: false, message: "Password does not match." });
+  }
+
+  // Check existing auth
   let auth = await Auth.findOne({ email });
   if (auth) {
     const message = auth.isVerified
       ? "Email already exists! Please login."
       : "Email already exists! Please verify your account";
+
     auth.generateVerificationOTP();
     await auth.save();
-    return res
-      .status(StatusCodes.CONFLICT)
-      .json({ success: false, message: message, data: { isVerified: auth.isVerified, otp: auth.verificationOTP } });
+
+    return res.status(StatusCodes.CONFLICT).json({
+      success: false,
+      message,
+      data: { isVerified: auth.isVerified, otp: auth.verificationOTP }
+    });
   }
 
-  const session = req.session;
-  auth = new Auth({
-    email,
-    password,
-  });
+  // Create Auth account with OTP
+  auth = new Auth({ email, password });
   auth.generateVerificationOTP();
-  await auth.save({ session });
+  await auth.save();
 
+  // ================================
+  // IF ROLE IS ADMIN → CREATE ADMIN
+  // ================================
+  if (role === "ADMIN") {
+
+    const admin = new Administrator({
+      name,
+      email,
+      contact,
+      address,
+      dateOfBirth,
+      password,
+      access: {
+        // default access permissions, customize as needed
+        canManageUsers: true,
+        canManagePodcasts: true,
+        canManageSystem: true
+      }
+    });
+
+    await admin.save();
+
+    await sendEmail(email, auth.verificationOTP);
+
+    return res.status(StatusCodes.CREATED).json({
+      success: true,
+      message: "Admin registered, please verify OTP.",
+      data: {
+        isVerified: auth.isVerified,
+        otp: auth.verificationOTP
+      }
+    });
+  }
+
+  // =================================
+  // OTHERWISE → NORMAL USER REGISTER
+  // =================================
   const user = new User({
     auth: auth._id,
     name,
     phoneNumber,
   });
-  await user.save({ session });
+
+  await user.save();
   await sendEmail(email, auth.verificationOTP);
 
   return res.status(StatusCodes.CREATED).json({
     success: true,
-    message: "Please check your email for otp.",
-    data: { isVerified: auth.isVerified, otp: auth.verificationOTP },
+    message: "Please check your email for OTP.",
+    data: {
+      isVerified: auth.isVerified,
+      otp: auth.verificationOTP
+    }
   });
 };
 
