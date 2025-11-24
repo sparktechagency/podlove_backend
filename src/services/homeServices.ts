@@ -96,33 +96,34 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
         selectedUser: [],
         primaryUser: null,
       }
-      // Fetch available subscription plans
-      const subscriptionPlans = await SubscriptionPlan.find().lean();
-
-      const hostPodcastMatches = await Podcast.find({
-        status: { $in: ["Scheduled", "Done", "Playing", "StreamStart"] },
-        "participants.user": userObjId,
-      }).exec();
-
-      return res.status(StatusCodes.OK).json({
-        success: true,
-        message: "Success",
-        data: {
-          user,
-          podcast: podcast || {},
-          subscriptionPlans,
-          isPrimaryUser,
-          hostPodcastMatches,
-        },
-      });
-    } catch (err) {
-      // Forward the error to your error‑handling middleware
-      next(err);
     }
-  };
+    // Fetch available subscription plans
+    const subscriptionPlans = await SubscriptionPlan.find().lean();
 
-  const HomeServices = {
-    homeData,
-  };
+    const hostPodcastMatches = await Podcast.find({
+      status: { $in: ["Scheduled", "Done", "Playing", "StreamStart"] },
+      "participants.user": userObjId,
+    }).exec();
 
-  export default HomeServices;
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Success",
+      data: {
+        user,
+        podcast: podcast || {},
+        subscriptionPlans,
+        isPrimaryUser,
+        hostPodcastMatches,
+      },
+    });
+  } catch (err) {
+    // Forward the error to your error‑handling middleware
+    next(err);
+  }
+};
+
+const HomeServices = {
+  homeData,
+};
+
+export default HomeServices;
