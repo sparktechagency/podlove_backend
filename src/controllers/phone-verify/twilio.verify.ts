@@ -5,9 +5,9 @@ import twilio from "twilio";
 // const auth_token = process.env.TWILIO_AUTH_TOKEN;
 // const phone_number = process.env.TWILIO_PHONE_NUMBER;
 
-const account_sid = 'ACbf57a53431bf3db00dc2011280c35c19';
-const auth_token = '5e56cbebc1a6160863afea4d662a4b1d'
-const phone_number = '+18555259062'
+const account_sid = "ACbf57a53431bf3db00dc2011280c35c19";
+const auth_token = "5e56cbebc1a6160863afea4d662a4b1d";
+const phone_number = "+18555259062";
 
 const client = twilio(account_sid, auth_token);
 
