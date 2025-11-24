@@ -31,6 +31,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
     const userObjId = typeof userId === "string" ? new Types.ObjectId(userId) : userId;
     // console.log("userId: ", userId, " userObjId: ", userObjId);
     // Fetch the user (with their auth email)
+
     const user = await User.findById(userId).populate({ path: "auth", select: "email isBlocked shareFeedback chatingtime" }).lean<LeanUserWithAuth>();
     // console.log("user home: ", user);
     if (!user) {
@@ -40,7 +41,6 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
       throw next(createError(StatusCodes.FORBIDDEN, "You Account is Blocked by Admisnistrator, Please contact our assistance"))
     }
 
-    // Find the podcast where they’re primary or a participant
     const podcast = await Podcast.findOne({
       $or: [{ primaryUser: userId }, { "participants.user": userId }],
     })
@@ -50,48 +50,46 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
 
     console.log("podcast home: ", podcast);
     const isPrimaryUser = !!podcast && podcast.primaryUser._id.toString() === userId;
-    if (!podcast) {
-      throw new Error("podcast is null");
-    }
+    if (podcast) {
+      const selectedUserPodcast = await Podcast.find({ "selectedUser.user": userObjId })
+        .populate({ path: "participants.user", select: "name bio interests" })
+        .populate({ path: "primaryUser", select: "name bio interests" })
+        .lean();
 
-    const selectedUserPodcast = await Podcast.find({ "selectedUser.user": userObjId })
-      .populate({ path: "participants.user", select: "name bio interests" })
-      .populate({ path: "primaryUser", select: "name bio interests" })
-      .lean();
+      const hostSummaries = summarizeSelectedUserPodcasts(selectedUserPodcast);
+      const participantsArray = podcast?.participants.map((participant) => {
+        // @ts-ignore
+        const { user, score, isAllow, isRequest } = participant;
 
-    const hostSummaries = summarizeSelectedUserPodcasts(selectedUserPodcast);
-    const participantsArray = podcast?.participants.map((participant) => {
-      // @ts-ignore
-      const { user, score, isAllow, isRequest } = participant;
-
-      return {
-        isRequest,
-        ...user,
-        isAllow,
-        score,
-      };
-    });
-
-    if (hostSummaries.length > 0) {
-      hostSummaries.forEach((h) => {
-        participantsArray.push({
-          _id: h._id,
-          score: h.score,
-          isAllow: true,
-          name: h.name,
-          bio: h.bio,
-          interests: h.interests,
-        } as any); // ← bypasses the type‑checker
+        return {
+          isRequest,
+          ...user,
+          isAllow,
+          score,
+        };
       });
 
-      hostSummaries.forEach((h) => {
-        return (podcast as any).selectedUser.push({
-          _id: h._id,
-          user: h._id,
-        } as any);
-      });
+      if (hostSummaries.length > 0) {
+        hostSummaries.forEach((h) => {
+          participantsArray.push({
+            _id: h._id,
+            score: h.score,
+            isAllow: true,
+            name: h.name,
+            bio: h.bio,
+            interests: h.interests,
+          } as any); // ← bypasses the type‑checker
+        });
+
+        hostSummaries.forEach((h) => {
+          return (podcast as any).selectedUser.push({
+            _id: h._id,
+            user: h._id,
+          } as any);
+        });
+      }
+      podcast.participants = participantsArray as unknown as typeof podcast.participants;
     }
-    podcast.participants = participantsArray as unknown as typeof podcast.participants;
     // Fetch available subscription plans
     const subscriptionPlans = await SubscriptionPlan.find().lean();
 

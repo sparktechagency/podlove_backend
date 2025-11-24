@@ -25,3 +25,42 @@ Error: Authenticate
     at async sendPhoneVerificationMessage (/home/tayeur/Desktop/project/podlove_backend/src/controllers/phone-verify/twilio.verify.ts:69:5)
     at async sendPhoneVerificationsOPT (/home/tayeur/Desktop/project/podlove_backend/src/controllers/authController.ts:340:18)
 Error
+Mon Nov 24 2025 10:45:56 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Nov 24 2025 10:46:1 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Nov 24 2025 10:46:1 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Nov 24 2025 10:46:1 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Nov 24 2025 10:46:1 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Nov 24 2025 10:46:1 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Nov 24 2025 10:46:8 [Podlove] [31merror[39m: Authenticate
+Error: Authenticate
+    at success (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/twilio@5.4.3/node_modules/twilio/lib/base/Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async sendPhoneVerificationMessage (/home/tayeur/Desktop/project/podlove_backend/src/controllers/phone-verify/twilio.verify.ts:67:5)
+    at async sendPhoneVerificationsOPT (/home/tayeur/Desktop/project/podlove_backend/src/controllers/authController.ts:340:18)
+Error
+Mon Nov 24 2025 10:46:28 [Podlove] [31merror[39m: Authenticate
+Error: Authenticate
+    at success (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/twilio@5.4.3/node_modules/twilio/lib/base/Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async sendPhoneVerificationMessage (/home/tayeur/Desktop/project/podlove_backend/src/controllers/phone-verify/twilio.verify.ts:67:5)
+    at async sendPhoneVerificationsOPT (/home/tayeur/Desktop/project/podlove_backend/src/controllers/authController.ts:340:18)
+Error
+Mon Nov 24 2025 10:46:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Nov 24 2025 10:46:49 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Nov 24 2025 10:46:49 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Nov 24 2025 10:46:50 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Nov 24 2025 10:46:50 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Nov 24 2025 10:46:50 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Nov 24 2025 10:46:53 [Podlove] [31merror[39m: Authenticate
+Error: Authenticate
+    at success (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/twilio@5.4.3/node_modules/twilio/lib/base/Version.js:79:23)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async sendPhoneVerificationMessage (/home/tayeur/Desktop/project/podlove_backend/src/controllers/phone-verify/twilio.verify.ts:67:5)
+    at async sendPhoneVerificationsOPT (/home/tayeur/Desktop/project/podlove_backend/src/controllers/authController.ts:340:18)
+Error
+Mon Nov 24 2025 10:48:42 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Nov 24 2025 10:48:47 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Nov 24 2025 10:48:48 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Nov 24 2025 10:48:48 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Nov 24 2025 10:48:48 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Nov 24 2025 10:48:48 [Podlove] [32minfo[39m: Socket.IO server initialized

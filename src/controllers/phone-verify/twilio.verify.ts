@@ -5,8 +5,6 @@ const account_sid = process.env.TWILIO_ACCOUNT_SID;
 const auth_token = process.env.TWILIO_AUTH_TOKEN;
 const phone_number = process.env.TWILIO_PHONE_NUMBER;
 
-
-
 console.log("Twilio SID:", account_sid, auth_token, phone_number);
 
 const client = twilio(account_sid, auth_token);

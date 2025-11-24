@@ -14,10 +14,8 @@ router.post("/upload-video",
     asyncHandler(LivePodcastController.uploadVideos));
 router.get("/get-video",
     asyncHandler(LivePodcastController.getExistingVideos));
-
 router.delete("/delete-video/:videoId",
     asyncHandler(LivePodcastController.deleteVideo));
-
 router.patch("/update-sms-policy",
     asyncHandler(LivePodcastController.addUpdateSMSPolicy));
 router.get("/get-sms-policy",
