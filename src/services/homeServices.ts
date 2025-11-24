@@ -94,7 +94,6 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
       podcast = {
         participants: [],
         selectedUser: [],
-        primaryUser: null,
       }
     }
     // Fetch available subscription plans
