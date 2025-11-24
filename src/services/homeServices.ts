@@ -41,7 +41,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
       throw next(createError(StatusCodes.FORBIDDEN, "You Account is Blocked by Admisnistrator, Please contact our assistance"))
     }
 
-    const podcast = await Podcast.findOne({
+    let podcast = await Podcast.findOne({
       $or: [{ primaryUser: userId }, { "participants.user": userId }],
     })
       .populate({ path: "participants.user", select: "name bio interests" })
