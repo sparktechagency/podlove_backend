@@ -17,7 +17,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     phoneNumber,
     password,
     confirmPassword,
-    role,             // ⭐ NEW
+    role,
     contact,
     address,
     dateOfBirth
@@ -47,7 +47,7 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
   }
 
   // Create Auth account with OTP
-  auth = new Auth({ email, password });
+  auth = new Auth({ email, password, phoneNumber });
   auth.generateVerificationOTP();
   await auth.save();
 
@@ -474,7 +474,6 @@ const verifyPhoneOtp = async (
     });
   }
 };
-
 
 const AuthController = {
   verifyPhoneOtp,

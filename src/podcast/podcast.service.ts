@@ -124,11 +124,11 @@ const postNewRecordInWebhook = async (req: Request) => {
         const data = event.data;
         // stream.recording.success
         if (event.type.includes("recording.success")) {
-            console.log("recording.success")
+            // console.log("recording.success")
             const fileUrl: string = data?.hls_vod_recording_presigned_url || data?.recording_presigned_url;
             const extension = fileUrl.endsWith(".mp4") ? "mp4" : "mp4";
             const fileName = `${data.room_id}_${data.session_id}_${Date.now()}.${extension}`;
-            console.log("data", data)
+            // console.log("data", data)
 
             const response = await fetch(fileUrl);
             if (!response.ok) throw new Error(`Failed to fetch file: ${response.statusText}`);
@@ -149,7 +149,7 @@ const postNewRecordInWebhook = async (req: Request) => {
             await Podcast.updateOne(
                 { room_id: roomId },
                 {
-                    $set: { status: PodcastStatus.DONE },
+                    // $set: { status: PodcastStatus.DONE },
                     $push: {
                         recordingUrl: {
                             video: s3Url,
@@ -161,8 +161,8 @@ const postNewRecordInWebhook = async (req: Request) => {
 
         }
 
-        if (event.type.includes("end.success") || event.type.includes("close.success")) {
-            console.log("leave.success || end.success || close.success")
+        if (event.type.includes("end.success") || event.type.includes("leave.success") || event.type.includes("close.success")) {
+            // console.log("leave.success || end.success || close.success")
             const room = await Podcast.findOne({ room_id: roomId })
             if (!room) {
                 throw new Error("Room Id Not Found;");
