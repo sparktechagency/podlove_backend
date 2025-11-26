@@ -29,7 +29,9 @@ const getUserInfo = async (authId: string): Promise<DecodedUser | null> => {
 
 const getAdminInfo = async (id: string): Promise<DecodedAdmin | null> => {
   let error, admin, data: DecodedAdmin;
+  console.log("Admin ID: ", id);
   [error, admin] = await to(Admin.findById(id));
+  console.log("Admin Fetch Error: ", admin);
   if (error || !admin) return null;
   data = {
     id: admin._id!.toString(),
