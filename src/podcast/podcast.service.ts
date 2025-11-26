@@ -161,7 +161,7 @@ const postNewRecordInWebhook = async (req: Request) => {
 
         }
 
-        if (event.type.includes("end.success") || event.type.includes("close.success")) {
+        if (event.type.includes("end.success")) {
             // console.log("leave.success || end.success || close.success")
             const room = await Podcast.findOne({ room_id: roomId })
             if (!room) {
