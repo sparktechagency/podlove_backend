@@ -59,13 +59,14 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
       const hostSummaries = summarizeSelectedUserPodcasts(selectedUserPodcast);
       const participantsArray = podcast?.participants.map((participant) => {
         // @ts-ignore
-        const { user, score, isAllow, isRequest } = participant;
+        const { user, score, isAllow, isRequest, isQuestionAnswer } = participant;
 
         return {
           isRequest,
           ...user,
           isAllow,
           score,
+          isQuestionAnswer
         };
       });
 
