@@ -47,6 +47,7 @@ const podcastSchema = new Schema<PodcastSchema>({
       user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
       isAllow: { type: Boolean, default: false },
       isRequest: { type: Boolean, default: false },
+      isQuestionAnswer: { type: String, default: "" },
       score: { type: Number, required: true }
     }
   ],

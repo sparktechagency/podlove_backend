@@ -215,11 +215,25 @@ const sendQuestionsAnswer = async (req: any) => {
         });
 
         await feedback.save();
-
+        const questionsStatus = scheduleStatus === "1st" ? "1stDone" : "2ndDone";
         const podcast = await Podcast.findByIdAndUpdate(podcastId, {
-            questionsStatus: scheduleStatus === "1st" ? "1stDone" : "2ndDone"
+            questionsStatus: questionsStatus
         });
-        if (!podcast) {
+
+        const podcastQ = await Podcast.findOneAndUpdate(
+            {
+                _id: podcastId,
+                "participants.user": userId
+            },
+            {
+                $set: {
+                    "participants.$.isQuestionAnswer": questionsStatus
+                }
+            },
+            { new: true }
+        );
+
+        if (!podcast || !podcastQ) {
             throw new Error("Podcast not found");
         }
 
