@@ -283,10 +283,12 @@ const matchUser = async (
       {
         user: userId,
         score: 100,
+        isQuestionAnswer: "",
       },
       ...topMatches.map((m) => ({
         user: m.user,
         score: m.score,
+        isQuestionAnswer: ""
       })),
     ];
 

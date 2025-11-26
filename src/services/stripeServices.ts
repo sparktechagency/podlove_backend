@@ -282,7 +282,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
           podcast = await Podcast.create({
             primaryUser: userId,
-            participants: [{ user: userId, score: 100 }, ...newParticipants].slice(0, limitCount),
+            participants: [{ user: userId, score: 100, isQuestionAnswer: "" }, ...newParticipants].slice(0, limitCount),
             status: "NotScheduled",
           });
         }
