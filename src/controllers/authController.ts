@@ -63,16 +63,10 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
       address,
       dateOfBirth,
       password,
-      access: {
-        // default access permissions, customize as needed
-        canManageUsers: true,
-        canManagePodcasts: true,
-        canManageSystem: true
-      }
+      access: "ALL"
     });
 
     await admin.save();
-
     await sendEmail(email, auth.verificationOTP);
 
     return res.status(StatusCodes.CREATED).json({
@@ -83,19 +77,23 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
         otp: auth.verificationOTP
       }
     });
+
+  } else {
+    // =================================
+    // OTHERWISE → NORMAL USER REGISTER
+    // =================================
+    const user = new User({
+      auth: auth._id,
+      name,
+      phoneNumber,
+    });
+
+    await user.save();
+    await sendEmail(email, auth.verificationOTP);
   }
 
-  // =================================
-  // OTHERWISE → NORMAL USER REGISTER
-  // =================================
-  const user = new User({
-    auth: auth._id,
-    name,
-    phoneNumber,
-  });
 
-  await user.save();
-  await sendEmail(email, auth.verificationOTP);
+
 
   return res.status(StatusCodes.CREATED).json({
     success: true,
