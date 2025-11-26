@@ -233,6 +233,8 @@ const sendQuestionsAnswer = async (req: any) => {
             { new: true }
         );
 
+        console.log("podcast================", podcastQ)
+
         if (!podcast || !podcastQ) {
             throw new Error("Podcast not found");
         }
