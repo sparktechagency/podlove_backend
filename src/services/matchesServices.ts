@@ -279,7 +279,7 @@ const matchUser = async (
       });
     }
 
-    const participants = [
+    let participants = [
       {
         user: userId,
         score: 100,
@@ -291,6 +291,14 @@ const matchUser = async (
         isQuestionAnswer: ""
       })),
     ];
+
+    const uniqueUsers = new Set();
+
+    participants = participants.filter(p => {
+      if (uniqueUsers.has(String(p.user))) return false;
+      uniqueUsers.add(String(p.user));
+      return true;
+    });
 
     // Create podcast with participants
     const podcast = await Podcast.create(
