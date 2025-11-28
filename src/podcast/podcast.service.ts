@@ -168,6 +168,8 @@ const postNewRecordInWebhook = async (req: Request) => {
                 throw new Error("Room Id Not Found;");
             }
 
+            console.log("room.scheduleStatus", room.scheduleStatus)
+
             if (room.scheduleStatus === '1st') {
                 await Podcast.updateOne(
                     { room_id: roomId },
