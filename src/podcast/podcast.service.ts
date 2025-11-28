@@ -161,21 +161,39 @@ const postNewRecordInWebhook = async (req: Request) => {
 
         }
 
-        if (event.type.includes("end.success")) {
+        if (event.type.includes("end.success") || event.type.includes("close.success")) {
             // console.log("leave.success || end.success || close.success")
             const room = await Podcast.findOne({ room_id: roomId })
             if (!room) {
                 throw new Error("Room Id Not Found;");
             }
-            await Podcast.updateOne(
-                { room_id: roomId },
-                {
-                    $set: {
-                        status: PodcastStatus.FINISHED,
-                        finishStatus: room.scheduleStatus === "1st" ? "1stFinish" : "2ndFinish",
+
+            if (room.scheduleStatus === '1st') {
+                await Podcast.updateOne(
+                    { room_id: roomId },
+                    {
+                        $set: {
+                            status: PodcastStatus.FINISHED,
+                            finishStatus: "1stFinish"
+                        }
                     }
-                }
-            );
+                );
+
+            }
+
+            if (room.scheduleStatus === '2nd') {
+                await Podcast.updateOne(
+                    { room_id: roomId },
+                    {
+                        $set: {
+                            status: PodcastStatus.FINISHED,
+                            finishStatus: "2ndFinish",
+                        }
+                    }
+                );
+
+            }
+
             return;
 
         }
@@ -203,6 +221,8 @@ const sendQuestionsAnswer = async (req: any) => {
             scheduleStatus: "1st" | "2nd";
             responses: { question: string; answer: any }[];
         };
+
+        console.log("req.body", scheduleStatus)
 
         if (!podcastId || !responses || !responses.length) {
             throw new Error("Podcast ID and responses are required");
