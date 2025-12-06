@@ -130,33 +130,56 @@ const activate = async (req: Request, res: Response, next: NextFunction): Promis
 
 const login = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { email, password } = req.body;
+
   let auth = await Auth.findOne({ email });
-  if (auth?.googleId)
+
+  if (!auth) {
+    return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
+  }
+
+
+  if (!auth.isVerified) {
+    await User.deleteOne({ auth: auth._id });
+    await Administrator.deleteOne({ email: auth.email });
+
+    await Auth.deleteOne({ _id: auth._id });
+
+    return next(createError(StatusCodes.NOT_FOUND, "No registered account exists"));
+  }
+
+  if (auth.googleId) {
     return next(
       createError(StatusCodes.BAD_GATEWAY, "Your account is connected to Google. Please sign in with Google.")
     );
-  if (auth?.isBlocked)
+  }
+
+  // If account blocked
+  if (auth.isBlocked) {
     return next(
-      createError(
-        StatusCodes.FORBIDDEN,
+      createError(StatusCodes.FORBIDDEN,
         "Your account has been blocked by an administrator. Please reach out to the admin for help."
       )
     );
-  if (!auth) return next(createError(StatusCodes.NOT_FOUND, "No account found with the given email"));
+  }
 
-  if (!(await auth.comparePassword(password)))
+  // Password check
+  if (!(await auth.comparePassword(password))) {
     return next(createError(StatusCodes.UNAUTHORIZED, "Wrong password. Please try again"));
+  }
 
-  if (!auth.isVerified) return next(createError(StatusCodes.UNAUTHORIZED, "Verify your email first"));
+  // Generate Token
   const accessToken = Auth.generateAccessToken(auth._id!.toString());
-  const user = await User.findOne({ auth: auth._id }).populate({ path: "auth", select: "email" });
+
+  const user = await User.findOne({ auth: auth._id })
+    .populate({ path: "auth", select: "email" });
 
   return res.status(StatusCodes.OK).json({
     success: true,
     message: "Login successful",
-    data: { accessToken, auth, user },
+    data: { accessToken, auth, user }
   });
 };
+
 
 const signInWithGoogle = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
@@ -198,6 +221,14 @@ const signInWithApple = async (req: Request, res: Response, next: NextFunction):
   try {
     const { appleId, name, email } = req.body;
 
+    // Check required fields
+    if (!appleId || !email) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        success: false,
+        message: "Apple ID and email are required to log in.",
+      });
+    }
+
     let auth = await Auth.findOne({ $or: [{ appleId }, { email }] });
     let user;
 
@@ -212,6 +243,13 @@ const signInWithApple = async (req: Request, res: Response, next: NextFunction):
       user = await User.findOne({ auth: auth._id });
     }
 
+    if (!user) {
+      return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        success: false,
+        message: "Something went wrong while creating your account. Please try again.",
+      });
+    }
+
     const accessToken = Auth.generateAccessToken(auth._id!.toString());
 
     user = await User.findOne({ auth: auth._id }).populate({
@@ -221,12 +259,16 @@ const signInWithApple = async (req: Request, res: Response, next: NextFunction):
 
     return res.status(StatusCodes.OK).json({
       success: true,
-      message: "Login successful",
+      message: "You have successfully logged in!",
       data: { accessToken, auth, user },
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Apple sign-in error:", error);
-    return next(error);
+
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      message: "Oops! Something went wrong. Please try again later.",
+    });
   }
 };
 
