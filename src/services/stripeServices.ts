@@ -90,14 +90,11 @@ async function findMatches(
   limitCount: number,
   session?: mongoose.ClientSession
 ): Promise<any[]> {
-  // 1) Load user
   const user = await User.findById(userId, {}, session ? { session } : {});
   if (!user) throw new Error("User not found");
 
-  // 2) Ensure answers array
   answers = answers?.length ? answers : user.compatibility || [];
 
-  // 3) Save/update user's compatibility answers
   await User.findByIdAndUpdate(
     userId,
     { compatibility: answers },
@@ -122,7 +119,6 @@ async function findMatches(
     session ? { session } : {}
   ).lean();
 
-  // 5) Strict distance filter
   const nearby = candidates.filter((c) => {
     const dist = calculateDistance(
       user.location.latitude,
@@ -133,7 +129,6 @@ async function findMatches(
     return dist <= pref.distance;
   });
 
-  // 6) Fallback if not enough candidates
   let finalCandidates = nearby;
 
   if (nearby.length < limitCount) {
@@ -162,7 +157,6 @@ async function findMatches(
     finalCandidates = [...nearby, ...fallbackNearby];
   }
 
-  // 7) Score users
   const scored = await Promise.all(
     finalCandidates.map(async (c) => ({
       user: c,
@@ -170,7 +164,6 @@ async function findMatches(
     }))
   );
 
-  // 8) Sort & return
   return scored
     .map((item) => ({
       user: item.user._id,
@@ -180,6 +173,7 @@ async function findMatches(
     .slice(0, limitCount);
 }
 
+// --------------------- webhook ---------------------
 const webhook = async (req: Request, res: Response, next: NextFunction) => {
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
   const sig = req.headers["stripe-signature"];
@@ -202,12 +196,11 @@ const webhook = async (req: Request, res: Response, next: NextFunction) => {
         try {
           const invoice = stripeEvent.data.object as Stripe.Invoice;
           const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
-
           const { plan, fee, userId, subscription_id } = subscription.metadata;
 
-          if (!userId || !Types.ObjectId.isValid(userId)) throw new Error("Invalid user ID in metadata");
+          if (!userId || !Types.ObjectId.isValid(userId)) throw new Error("Invalid user ID");
 
-          // 1) Update User Subscription
+          // 1) Update user subscription
           const updatedUser = await User.findByIdAndUpdate(
             userId,
             {
@@ -225,18 +218,13 @@ const webhook = async (req: Request, res: Response, next: NextFunction) => {
 
           if (!updatedUser) throw new Error("User not found");
 
-          // 2) Set match limit based on plan price
+          // 2) Determine limit count
           let limitCount = 2;
           if (fee === "14.99") limitCount = 3;
           if (fee === "29.99") limitCount = 4;
 
-          // 3) Find top matches (same logic as matchUser)
-          const topMatches = await findMatches(
-            userId,
-            updatedUser.compatibility || [],
-            limitCount,
-            session
-          );
+          // 3) Find top matches
+          const topMatches = await findMatches(userId, updatedUser.compatibility || [], limitCount, session);
 
           if (!topMatches.length) {
             await session.commitTransaction();
@@ -244,79 +232,53 @@ const webhook = async (req: Request, res: Response, next: NextFunction) => {
             return res.status(200).send("No matches found");
           }
 
+          // 4) Prepare participants
           let newParticipants = [
-            {
-              user: userId,
-              score: 100,
-              isQuestionAnswer: "",
-            },
-            ...topMatches.map((m) => ({
-              user: m.user,
-              score: m.score,
-              isQuestionAnswer: "",
-            })),
+            { user: userId, score: 100, isQuestionAnswer: "" },
+            ...topMatches.map((m) => ({ user: m.user, score: m.score, isQuestionAnswer: "" })),
           ];
 
           // remove duplicates
-          const seen = new Set();
+          const seen = new Set<string>();
           newParticipants = newParticipants.filter((p) => {
             if (seen.has(String(p.user))) return false;
             seen.add(String(p.user));
             return true;
           });
 
-          // 4) Check existing podcast
-          let podcast = await Podcast.findOne(
-            { "participants.user": userId },
-            {},
-            { session }
-          ) as any;
+          // 5) Check existing podcast
+          let podcast = await Podcast.findOne({ "participants.user": userId }, {}, { session }) as any;
 
           if (podcast) {
-            // Merge but respect limitCount
             const existingIds = new Set(podcast.participants.map((p: any) => String(p.user)));
+            const additional = newParticipants.filter((p) => !existingIds.has(String(p.user)));
 
-            const additional = newParticipants.filter(
-              (p) => !existingIds.has(String(p.user))
-            );
+            const merged = [...podcast.participants, ...additional.slice(0, limitCount - podcast.participants.length)];
 
-            const merged = [
-              ...podcast.participants,
-              ...additional.slice(0, limitCount - podcast.participants.length),
-            ];
-
-            // unique again
             podcast.participants = Array.from(
               new Map(merged.map((p) => [String(p.user), p])).values()
             ).slice(0, limitCount);
 
             await podcast.save({ session });
           } else {
-            // Create new podcast
             podcast = await Podcast.create(
-              [
-                {
-                  primaryUser: userId,
-                  participants: newParticipants.slice(0, limitCount),
-                  status: "NotScheduled",
-                },
-              ],
+              {
+                primaryUser: userId,
+                participants: newParticipants.slice(0, limitCount),
+                status: "NotScheduled",
+              },
               { session }
             );
           }
 
-          // 5) Update isMatch flag
-          const participantIds = podcast.participants.map((p: any) => p.user);
-
-          await User.updateMany(
-            { _id: { $in: participantIds } },
-            { $set: { isMatch: true } },
-            { session }
-          );
+          // 6) Update isMatch
+          const participantIds = podcast?.participants?.map((p: any) => p.user) || [];
+          if (participantIds.length) {
+            await User.updateMany({ _id: { $in: participantIds } }, { $set: { isMatch: true } }, { session });
+          }
 
           await session.commitTransaction();
           session.endSession();
-
           return res.status(200).send("Match processing completed");
         } catch (err) {
           await session.abortTransaction();
@@ -332,19 +294,11 @@ const webhook = async (req: Request, res: Response, next: NextFunction) => {
         const { userId, plan } = subscription.metadata;
 
         if (userId) {
-          await User.findByIdAndUpdate(userId, {
-            "subscription.status": SubscriptionStatus.FAILED,
-          });
-
+          await User.findByIdAndUpdate(userId, { "subscription.status": SubscriptionStatus.FAILED });
           await Notification.create({
             type: "payment_failed",
             user: userId,
-            message: [
-              {
-                title: "Payment failed",
-                description: `Your subscription payment for ${plan} did not go through.`,
-              },
-            ],
+            message: [{ title: "Payment failed", description: `Your subscription payment for ${plan} did not go through.` }],
             read: false,
             section: "user",
           });
