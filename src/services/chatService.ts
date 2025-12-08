@@ -12,7 +12,6 @@ async function createChat(
   if (chatType === "private" && participants.length !== 2) {
     throw createError(StatusCodes.BAD_REQUEST, "Participants length should be two");
   }
-
   if (chatType === "private") {
     const existingChat = await Chat.findOne({
       chatType: "private",
