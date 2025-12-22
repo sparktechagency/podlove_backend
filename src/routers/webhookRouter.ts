@@ -1,6 +1,6 @@
 import express from "express";
-import StripeServices from "@services/stripeServices";
 import bodyParser from "body-parser";
+import StripeServices from "@services/stripeServices";
 
 const router = express.Router();
 router.post(
@@ -9,5 +9,6 @@ router.post(
   bodyParser.raw({ type: "application/json" }),
   StripeServices.webhook
 );
+
 
 export default router;

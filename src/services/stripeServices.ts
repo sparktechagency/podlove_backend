@@ -1,7 +1,6 @@
 import Stripe from "stripe";
 import { Request, Response, NextFunction } from "express";
 import createError from "http-errors";
-import to from "await-to-ts";
 import { SubscriptionStatus } from "@shared/enums";
 import { StatusCodes } from "http-status-codes";
 import User from "@models/userModel";
@@ -11,12 +10,19 @@ import { ageToDOB } from "@utils/ageUtils";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
 import Podcast from "@models/podcastModel";
 import OpenAI from "openai";
+
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
 const MODEL = "gpt-4o";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: string[]) => {
+/* ---------------- Compatibility Score ---------------- */
+const getCompatibilityScore = async (
+  userOneAnswers: string[],
+  userTwoAnswers: string[]
+): Promise<number | null> => {
+  if (!userOneAnswers.length || !userTwoAnswers.length) return 0;
+
   const questions = [
     "Do you prefer spending your weekends socializing in larger gatherings or relaxing at home with a few close friends?",
     "When faced with a major life decision, do you usually follow your head (logic) or your heart (feelings)?",
@@ -43,12 +49,12 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
   ];
 
   let userContent = "Below are 22 questions, followed by each user's responses.\n";
-  userContent += "Please produce a single compatibility score between 0 and 100.\n\n";
+  userContent += "Please produce a single numeric compatibility score between 0 and 100.\n\n";
 
   for (let i = 0; i < questions.length; i++) {
     userContent += `Question ${i + 1}: ${questions[i]}\n`;
-    userContent += `User1: ${userOneAnswers[i]}\n`;
-    userContent += `User2: ${userTwoAnswers[i]}\n\n`;
+    userContent += `User1: ${userOneAnswers[i] || ""}\n`;
+    userContent += `User2: ${userTwoAnswers[i] || ""}\n\n`;
   }
 
   try {
@@ -57,34 +63,21 @@ const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: s
       temperature: 0.3,
       max_tokens: 50,
       messages: [
-        {
-          role: "system",
-          content: `
-      You are a dating compatibility algorithm.
-      Given the questions and each user's responses, produce a single numeric compatibility score (0-100).
-      Your answer must be strictly a number with no extra text or punctuation.
-    `,
-        },
-        {
-          role: "user",
-          content: userContent,
-        },
+        { role: "system", content: "You are a dating compatibility algorithm. Output ONLY a number (0-100)." },
+        { role: "user", content: userContent },
       ],
     });
-    const rawOutput = response.choices[0].message!.content!.trim();
-    const numericRegex = /^\d+(\.\d+)?$/;
-    if (!numericRegex.test(rawOutput)) {
-      throw new Error(`Output is not strictly a number: "${rawOutput}"`);
-    }
-    return parseFloat(rawOutput);
-  } catch (error: any) {
-    console.error("Error during API call:", error.response?.data || error.message);
-    return null;
+
+    const raw = response.choices[0].message?.content?.trim() || "";
+    if (!/^\d+(\.\d+)?$/.test(raw)) throw new Error("Invalid score");
+    return parseFloat(raw);
+  } catch (err) {
+    console.error("OpenAI error:", err);
+    return 0;
   }
 };
 
-
-//=======================
+/* ---------------- Match Finder ---------------- */
 async function findMatches(
   userId: string,
   answers: string[],
@@ -95,16 +88,12 @@ async function findMatches(
   if (!user) throw new Error("User not found");
 
   answers = answers?.length ? answers : user.compatibility || [];
+  if (!answers.length) return [];
 
-  await User.findByIdAndUpdate(
-    userId,
-    { compatibility: answers },
-    session ? { session } : {}
-  ).exec();
+  await User.findByIdAndUpdate(userId, { compatibility: answers }, session ? { session } : {});
 
   const pref = user.preferences;
 
-  // 4) Fetch candidates
   let candidates = await User.find(
     {
       _id: { $ne: user._id },
@@ -120,7 +109,7 @@ async function findMatches(
     session ? { session } : {}
   ).lean();
 
-  const nearby = candidates.filter((c) => {
+  candidates = candidates.filter((c) => {
     const dist = calculateDistance(
       user.location.latitude,
       user.location.longitude,
@@ -130,36 +119,11 @@ async function findMatches(
     return dist <= pref.distance;
   });
 
-  let finalCandidates = nearby;
-
-  if (nearby.length < limitCount) {
-    const fallback = await User.find(
-      {
-        _id: { $ne: user._id },
-        gender: { $in: pref.gender },
-        isMatch: false,
-        "location.latitude": { $exists: true },
-        "location.longitude": { $exists: true },
-      },
-      null,
-      session ? { session } : {}
-    ).lean();
-
-    const fallbackNearby = fallback.filter((c) => {
-      const dist = calculateDistance(
-        user.location.latitude,
-        user.location.longitude,
-        c.location.latitude,
-        c.location.longitude
-      );
-      return dist <= pref.distance;
-    });
-
-    finalCandidates = [...nearby, ...fallbackNearby];
-  }
+  // Limit OpenAI scoring to top 5 candidates to avoid timeout
+  const limitedCandidates = candidates.slice(0, 5);
 
   const scored = await Promise.all(
-    finalCandidates.map(async (c) => ({
+    limitedCandidates.map(async (c) => ({
       user: c,
       score: await getCompatibilityScore(answers, c.compatibility || []),
     }))
@@ -168,40 +132,43 @@ async function findMatches(
   return scored
     .map((item) => ({
       user: item.user._id,
-      score: item.score ?? 0,
+      score: item.score ?? 0, // <- make sure score is never null
     }))
-    .sort((a, b) => b.score - a.score)
+    .sort((a, b) => (b.score ?? 0) - (a.score ?? 0)) // <- coerce null to 0
     .slice(0, limitCount);
 }
 
-// --------------------- webhook ---------------------
-const webhook = async (req: Request, res: Response, next: NextFunction) => {
+/* ---------------- STRIPE WEBHOOK ---------------- */
+const webhook = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-  const sig = req.headers["stripe-signature"];
-  let stripeEvent: Stripe.Event;
+  const sig = req.headers["stripe-signature"] as string | undefined;
 
-  if (!sig) return next(createError(StatusCodes.FORBIDDEN, "Missing Stripe signature header"));
+  if (!sig) {
+    next(createError(StatusCodes.FORBIDDEN, "Missing Stripe signature"));
+    return;
+  }
 
+  let event: Stripe.Event;
   try {
-    stripeEvent = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+    event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
   } catch (err: any) {
-    return res.status(400).send(`Webhook Error: ${err.message}`);
+    res.status(400).send(`Webhook Error: ${err.message}`);
+    return;
   }
 
   try {
-    switch (stripeEvent.type) {
+    switch (event.type) {
       case "invoice.payment_succeeded": {
+        const invoice = event.data.object as Stripe.Invoice;
         const session = await mongoose.startSession();
         session.startTransaction();
 
         try {
-          const invoice = stripeEvent.data.object as Stripe.Invoice;
           const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
-          const { plan, fee, userId, subscription_id } = subscription.metadata;
+          const { userId, plan, fee, subscription_id } = subscription.metadata;
 
           if (!userId || !Types.ObjectId.isValid(userId)) throw new Error("Invalid user ID");
 
-          // 1) Update user subscription
           const updatedUser = await User.findByIdAndUpdate(
             userId,
             {
@@ -219,78 +186,70 @@ const webhook = async (req: Request, res: Response, next: NextFunction) => {
 
           if (!updatedUser) throw new Error("User not found");
 
-          // 2) Determine limit count
-          let limitCount = 2;
-          if (fee === "14.99") limitCount = 3;
-          if (fee === "29.99") limitCount = 4;
+          // Determine limit
+          // let limitCount = 2;
+          // if (fee === "14.99") limitCount = 3;
+          // if (fee === "29.99") limitCount = 4;
 
-          // 3) Find top matches
-          const topMatches = await findMatches(userId, updatedUser.compatibility || [], limitCount, session);
+          // Find matches
+          // const topMatches = await findMatches(userId, updatedUser.compatibility || [], limitCount, session);
 
-          if (!topMatches.length) {
-            await session.commitTransaction();
-            session.endSession();
-            return res.status(200).send("No matches found");
-          }
+          // if (!topMatches.length) {
+          //   await session.commitTransaction();
+          //   session.endSession();
+          //   res.status(200).send("No matches found");
+          //   return;
+          // }
 
-          // 4) Prepare participants
-          let newParticipants = [
-            { user: userId, score: 100, isQuestionAnswer: "" },
-            ...topMatches.map((m) => ({ user: m.user, score: m.score, isQuestionAnswer: "" })),
-          ];
+          // Prepare participants
+          // let newParticipants = [
+          //   { user: userId, score: 100, isQuestionAnswer: "" },
+          //   ...topMatches.map((m) => ({ user: m.user, score: m.score, isQuestionAnswer: "" })),
+          // ];
 
-          // remove duplicates
-          const seen = new Set<string>();
-          newParticipants = newParticipants.filter((p) => {
-            if (seen.has(String(p.user))) return false;
-            seen.add(String(p.user));
-            return true;
-          });
+          // const seen = new Set<string>();
+          // newParticipants = newParticipants.filter((p) => {
+          //   if (seen.has(String(p.user))) return false;
+          //   seen.add(String(p.user));
+          //   return true;
+          // });
 
-          // 5) Check existing podcast
-          let podcast = await Podcast.findOne({ "participants.user": userId }, {}, { session }) as any;
+          // Check existing podcast
+          // let podcast = await Podcast.findOne({ "participants.user": userId }, {}, { session }) as any;
 
-          if (podcast) {
-            const existingIds = new Set(podcast.participants.map((p: any) => String(p.user)));
-            const additional = newParticipants.filter((p) => !existingIds.has(String(p.user)));
+          // if (podcast) {
+          //   const existingIds = new Set(podcast.participants.map((p: any) => String(p.user)));
+          //   const additional = newParticipants.filter((p) => !existingIds.has(String(p.user)));
+          //   const merged = [...podcast.participants, ...additional.slice(0, limitCount - podcast.participants.length)];
+          //   podcast.participants = Array.from(new Map(merged.map((p) => [String(p.user), p])).values()).slice(0, limitCount);
+          //   await podcast.save({ session });
+          // } else {
+          //   podcast = await Podcast.create(
+          //     { primaryUser: userId, participants: newParticipants.slice(0, limitCount), status: "NotScheduled" },
+          //     { session }
+          //   );
+          // }
 
-            const merged = [...podcast.participants, ...additional.slice(0, limitCount - podcast.participants.length)];
-
-            podcast.participants = Array.from(
-              new Map(merged.map((p) => [String(p.user), p])).values()
-            ).slice(0, limitCount);
-
-            await podcast.save({ session });
-          } else {
-            podcast = await Podcast.create(
-              {
-                primaryUser: userId,
-                participants: newParticipants.slice(0, limitCount),
-                status: "NotScheduled",
-              },
-              { session }
-            );
-          }
-
-          // 6) Update isMatch
-          const participantIds = podcast?.participants?.map((p: any) => p.user) || [];
-          if (participantIds.length) {
-            await User.updateMany({ _id: { $in: participantIds } }, { $set: { isMatch: true } }, { session });
-          }
+          // const participantIds = podcast?.participants?.map((p: any) => p.user) || [];
+          // if (participantIds.length) {
+          //   await User.updateMany({ _id: { $in: participantIds } }, { $set: { isMatch: true } }, { session });
+          // }
 
           await session.commitTransaction();
           session.endSession();
-          return res.status(200).send("Match processing completed");
+          res.status(200).send("Match processing completed");
+          return;
         } catch (err) {
           await session.abortTransaction();
           session.endSession();
-          console.error(err);
-          throw err;
+          console.error("Webhook error:", err);
+          next(err);
         }
+        break;
       }
 
       case "invoice.payment_failed": {
-        const invoice = stripeEvent.data.object as Stripe.Invoice;
+        const invoice = event.data.object as Stripe.Invoice;
         const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
         const { userId, plan } = subscription.metadata;
 
@@ -299,25 +258,23 @@ const webhook = async (req: Request, res: Response, next: NextFunction) => {
           await Notification.create({
             type: "payment_failed",
             user: userId,
-            message: [{ title: "Payment failed", description: `Your subscription payment for ${plan} did not go through.` }],
+            message: [{ title: "Payment failed", description: `Your ${plan} subscription payment failed.` }],
             read: false,
             section: "user",
           });
         }
 
-        return res.status(200).send("Payment failed processed");
+        res.status(200).send("Payment failure processed");
+        return;
       }
 
       default:
-        return res.status(200).send("Unhandled event");
+        res.status(200).send("Event ignored");
+        return;
     }
   } catch (err) {
     next(err);
   }
 };
 
-const StripeServices = {
-  webhook,
-};
-
-export default StripeServices;
+export default { webhook };
