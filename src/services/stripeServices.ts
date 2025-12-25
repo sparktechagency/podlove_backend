@@ -36,19 +36,38 @@ const getCompatibilityScore = async (
     "Do you smoke?",
     "Will you date a smoker?",
     "How would you describe your drinking habits?",
-    "If 'Never', would you be comfortable dating someone who drinks?",
     "Do you consider yourself religious or spiritual?",
-    "If 'Religious', what is your religion or denomination?",
-    "If 'Spiritual', would you like to describe your spiritual beliefs?",
-    "How important is religion or spirituality in your life?",
+    "How important is religion/spirituality in your life?",
     "Would you date someone with different religious or spiritual beliefs?",
     "How would you describe your level of political engagement?",
     "Would you date someone with different political beliefs?",
     "Do you have pets?",
     "If yes, which pet do you have?",
+    "How important is spontaneity to you in a relationship?",
+    "How would you describe your communication style?",
+    "How do you recharge after a busy day?",
+    "What kind of vacation do you enjoy most?",
+    "Do you enjoy trying new hobbies or sticking to the ones you know and love?",
+    "When it comes to resolving conflicts, do you prefer to address them right away or take time to reflect?",
+    "How do you feel about sharing responsibilities in a relationship?",
+    "What role does family play in your life?",
+    "How important is it for your partner to share your core values and beliefs?",
+    "When it comes to emotional expression, are you more open or reserved?",
+    "In a relationship, what is more important: emotional, intellectual, shared interests, or physical chemistry?",
+    "How do you handle stress or challenges in life?",
+    "What is your approach to financial planning in a relationship?",
+    "How do you feel about taking risks in life?",
+    "How important is maintaining a healthy lifestyle?",
+    "How do you feel about pets in a relationship?",
+    "How do you prefer your partner to handle disagreements?",
+    "How do you feel about physical intimacy early in a relationship?",
+    "How do you handle showing love and affection in public?",
+    "Are you more of a morning person or a night owl?",
+    "How organized and tidy do you like your living space to be?"
   ];
 
-  let userContent = "Below are 22 questions, followed by each user's responses.\n";
+
+  let userContent = "Below are 40 questions, followed by each user's responses.\n";
   userContent += "Please produce a single numeric compatibility score between 0 and 100.\n\n";
 
   for (let i = 0; i < questions.length; i++) {
@@ -101,7 +120,7 @@ async function findMatches(
       gender: { $in: pref.gender },
       bodyType: { $in: pref.bodyType },
       ethnicity: { $in: pref.ethnicity },
-      isMatch: false,
+      isPodcastActive: false,
       "location.latitude": { $exists: true },
       "location.longitude": { $exists: true },
     },
@@ -232,7 +251,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
           // const participantIds = podcast?.participants?.map((p: any) => p.user) || [];
           // if (participantIds.length) {
-          //   await User.updateMany({ _id: { $in: participantIds } }, { $set: { isMatch: true } }, { session });
+          //   await User.updateMany({ _id: { $in: participantIds } }, { $set: { isPodcastActive: true } }, { session });
           // }
 
           await session.commitTransaction();

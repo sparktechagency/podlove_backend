@@ -48,7 +48,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
       .populate({ path: "primaryUser", select: "name bio interests" })
       .lean();
 
-    console.log("podcast home: ", podcast);
+    // console.log("podcast home: ", podcast);
     const isPrimaryUser = !!podcast && podcast.primaryUser._id.toString() === userId;
     if (podcast) {
       const selectedUserPodcast = await Podcast.find({ "selectedUser.user": userObjId })

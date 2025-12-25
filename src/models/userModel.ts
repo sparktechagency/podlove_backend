@@ -55,7 +55,6 @@ export type UserSchema = Document & {
     status: SubscriptionStatus;
     startedAt: Date;
   };
-  isSelectedForPodcast: boolean;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -215,10 +214,7 @@ const userSchema = new Schema(
         default: Date.now,
       },
     },
-    isSelectedForPodcast: {
-      type: Boolean,
-    },
-    isMatch: {
+    isPodcastActive: {
       type: Boolean,
       default: false
     },

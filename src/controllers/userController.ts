@@ -127,7 +127,6 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
       "bio",
       "compatibility",
       "survey",
-      "isSelectedForPodcast",
     ];
     const updates: any = {};
 

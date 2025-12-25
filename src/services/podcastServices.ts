@@ -26,43 +26,6 @@ interface MarkedParticipant extends Participants {
   isAllow: boolean;
 }
 
-// const podcastActions = async(req: Request, res: Response, next: NextFunction) : Promise<any> => {
-//   const { podcastId, status, selectedUserId, schedule } = req.body;
-
-//   if (!podcastId) {
-//     return res.status(StatusCodes.BAD_REQUEST).json({ success: false, message: "podcastId is required" });
-//   }
-
-//   const podcast = await Podcast.findById(podcastId);
-//   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found");
-
-//   if (schedule) {
-//     const { date, day, time } = schedule;
-//     if (date) podcast.schedule.date = date;
-//     if (day) podcast.schedule.day = day;
-//     if (time) podcast.schedule.time = time;
-//     podcast.status = PodcastStatus.SCHEDULED;
-//   }
-
-//   if (selectedUserId) {
-//     podcast.selectedUser = selectedUserId;
-//     podcast.status = PodcastStatus.DONE;
-//   }
-
-//   if (status) {
-//     podcast.status = status;
-//   }
-
-//   const [saveError] = await to(podcast.save());
-//   if (saveError) return next(saveError);
-
-//   return res.status(StatusCodes.OK).json({
-//     success: true,
-//     message: "Podcast updated successfully",
-//     data: podcast,
-//   });
-// };
-
 const podcastDone = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const podcastId = req.body.podcastId;
   const podcast = await Podcast.findById(podcastId);
@@ -89,60 +52,6 @@ const podcastDone = async (req: Request, res: Response, next: NextFunction): Pro
   return res.status(StatusCodes.OK).json({ success: true, message: "Success", data: { status: podcast.status } });
 };
 
-// const setSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-//   const hostUserId = req.user.userId;
-//   if(!hostUserId){
-//     throw createError(StatusCodes.BAD_GATEWAY, "Unauthorized user");
-//   }
-//   const { podcastId, date, day, time } = req.body;
-
-//   const podcast  = await Podcast.findById(podcastId);
-//   if (!podcast) throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
-
-//   podcast.schedule.date = date;
-//   podcast.schedule.day = day;
-//   podcast.schedule.time = time;
-//   podcast.status = PodcastStatus.SCHEDULED;
-
-//   await podcast.save();
-
-//        // a) Primary user notification
-//     const primaryNotif = new Notification({
-//       type: 'podcast_scheduled',
-//       user: primaryUserId,
-//       message: [{
-//         title:       'Podcast scheduled!',
-//         description: `The podcast will be held on ${date} at ${time}`,
-//       }],
-//       read:    false,
-//       section: 'user',
-//     });
-
-//     // b) Participant notifications
-//     const participantSaves = podcast.participants.map(part => {
-//       const userId = part.user.toString();
-//       const inviteNotif = new Notification({
-//         type: 'podcast_invited',
-//         user: userId,
-//         message: [{
-//           title:       'You’re invited!',
-//           description: `You have podcast on ${date} at ${time}`,
-//         }],
-//         read:    false,
-//         section: 'user',
-//       });
-//       return inviteNotif.save();
-//     });
-
-//     // c) Save primary and all participant notifications
-//     const [primarySaved, ...others] = await Promise.all([
-//       primaryNotif.save(),
-//       ...participantSaves
-//     ]);
-
-//   return res.status(StatusCodes.OK).json({ success: true, message: "Schedule updated successfully", data: podcast });
-// };
-
 const setSchedule = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
 
   try {
@@ -167,8 +76,6 @@ const setSchedule = async (req: Request, res: Response, next: NextFunction): Pro
     await podcast.save();
 
     const primaryUserId = podcast.primaryUser.toString();
-
-    // 2) Create notifications
 
     // (a) Primary user
     const primaryNotification = Notification.create({
@@ -215,25 +122,19 @@ const setSchedule = async (req: Request, res: Response, next: NextFunction): Pro
 };
 
 function markAllowedParticipants(participants: Participants[], selectedUserBody: SelectedUserBody[]): void {
-  // Build a lookup set of selected user IDs (strings)
   const selectedSet = new Set<string>(selectedUserBody.map(({ user }: any) => user));
-
-  // For each sub‐document, set the isAllow field
   participants.forEach((subdoc) => {
-    // If there's no user, mark false
     if (!subdoc.user) {
       subdoc.isAllow = false;
       return;
     }
 
-    // Normalize ObjectId or string to a single string
     const userStr = subdoc.user instanceof Types.ObjectId ? subdoc.user.toHexString() : subdoc.user;
-
-    // Use Mongoose's built‑in setter so it tracks changes
     subdoc.isAllow = selectedSet.has(userStr);
   });
 }
 
+// Not use this function anywhere for now
 const selectUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
     const { podcastId, selectedUserId } = req.body;
@@ -285,7 +186,6 @@ const selectUser = async (req: Request, res: Response, next: NextFunction): Prom
     next(err);
   }
 };
-
 
 function parseScheduleDateInET(p: { schedule: { date: string; time: string } }): DateTime | null {
   const { date, time } = p.schedule;

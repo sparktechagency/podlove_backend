@@ -24,58 +24,7 @@ if (!GEMINI_API_KEY) {
     "Error: GEMINI_API_KEY environment variable not set." +
     " Get a key from Google AI Studio: https://aistudio.google.com/"
   );
-  // Decide how to handle this - throw, exit, or make analyzeBioGemini always return false
-  // For this example, we'll proceed, but the API call will fail later if key is missing.
 }
-
-// const user1Responses = [
-//   "Larger gatherings",
-//   "Head (logic)",
-//   "A weekend hiking trip in nature",
-//   "Extremely important – I am always working on bettering myself",
-//   "Quality time (spending focused time together)",
-//   "Building a family with a partner",
-//   "No",
-//   "Yes",
-//   "No",
-//   "No",
-//   "No",
-//   "Socially – I drink occasionally in social settings",
-//   "Depends",
-//   "Yes, I'm religious",
-//   "Christianity",
-//   "",
-//   "Very important",
-//   "Yes, I'm open to dating someone with different beliefs",
-//   "Somewhat political – I stay informed about politics and discuss it occasionally",
-//   "Yes, I'm open to dating someone with different political views",
-//   "No",
-//   ""
-// ];
-
-// const user2Responses = [
-//   "Relaxing with close friends",
-//   "Heart (feelings)",
-//   "A cozy movie night at home",
-//   "Moderately important – I like to grow but not obsessively",
-//   "Words of affirmation (compliments, verbal expressions of love)",
-//   "Living a simple, peaceful life surrounded by loved ones",
-//   "Yes",
-//   "Maybe",
-//   "Maybe",
-//   "Yes",
-//   "Maybe",
-//   "Rarely – I drink only on special occasions (e.g., holidays, celebrations)",
-//   "No",
-//   "No, I'm not religious or spiritual",
-//   "",
-//   "",
-//   "Not important at all",
-//   "No, I prefer someone who shares my beliefs",
-//   "Not at all political – I don't follow politics and prefer to avoid political discussions",
-//   "No",
-//   ""
-// ];
 
 async function getCompatibilityScore(user1: string[], user2: string[]) {
   const prompt = `

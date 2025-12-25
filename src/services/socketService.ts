@@ -393,53 +393,6 @@ async function sendPushNotifications(chatId: string, senderId: string, message: 
   }
 }
 
-// async function sendPushNotifications(
-//   chatId: string,
-//   senderId: string,
-//   message: any
-// ): Promise<void> {
-//   try {
-//     // 1) Fetch all chats for this user
-//     const chats = await ChatService.getUserChats(senderId);
-//     // console.log("chats: ", chats);
-
-//     // 2) Find the specific chat by its ID
-//     const chat = chats.find(c => c._id.toString() === chatId);
-//     // console.log("chat: ", chat);
-//     if (!chat) return;
-
-//     // 3) Identify offline participants (excluding the sender)
-//     const offlineParticipants = chat.participants.filter(p => {
-//       const participantId = p._id?.toString();
-//       return participantId !== senderId && !isUserOnline(participantId!);
-//     });
-
-//     // 4) For each offline user, log, push, and persist a Notification
-//     for (const participant of offlineParticipants) {
-//       const userId = participant._id;
-//       const username = (participant as any).name ?? "Unknown";
-
-//       // console.log(`Sending push notification to ${username}`);
-
-//       // ▶▶ Your FCM (or other) push logic here…
-//       // await pushService.sendToUser(userId, message);
-
-//       // ▶▶ Persist in MongoDB
-//       await Notification.create({
-//         type: "chat_message",   // or whatever category you prefer
-//         user: userId,
-//         message: typeof message === "string"
-//           ? message
-//           : JSON.stringify(message), 
-//           read:false
-//       });
-//     }
-//   } catch (error) {
-//     console.error("Error sending push notifications:", error);
-//   }
-// }
-
-
 const socketService = {
   initSocketHandlers
 }

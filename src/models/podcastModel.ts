@@ -48,6 +48,7 @@ const podcastSchema = new Schema<PodcastSchema>({
       isAllow: { type: Boolean, default: false },
       isRequest: { type: Boolean, default: false },
       isQuestionAnswer: { type: String, default: "" },
+      role: { type: String, default: "Sparks", enum: ['Spotlight', 'Sparks'] },
       score: { type: Number, required: true }
     }
   ],
