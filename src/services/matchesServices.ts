@@ -10,6 +10,7 @@ import Podcast from "@models/podcastModel";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
 import { SubscriptionPlanName } from "@shared/enums";
 import { searchSimilarUsers, upsertUserVector } from "./vectorService";
+import matchingConfig from "@config/matchingConfig";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
 const MODEL = "gpt-4o";
 
@@ -164,7 +165,7 @@ Reasoning: [text]`;
     });
 
     const content = response.choices[0].message?.content?.trim() || "";
-    
+
     // Parse score and reasoning
     const scoreMatch = content.match(/Score:\s*(\d+)/i);
     const reasoningMatch = content.match(/Reasoning:\s*(.+)/is);
@@ -304,27 +305,39 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
     // 2) Extract all participant user IDs
     const userIds: Types.ObjectId[] = findUserMatch.participants.map((p) => p.user as Types.ObjectId);
 
-    // 3) Load full user docs in one query
+    // 3) Load full user docs
     const users = await User.find(
       { _id: { $in: userIds } },
       "name avatar bio interests personality phoneNumber dateOfBirth isProfileComplete location preferences",
       { session }
-    )
-      .lean()
-      .exec();
+    ).lean();
 
-    if (!users.length) {
+    // 4) Merge user data with scores and reasoning from the podcast participants
+    const enrichedUsers = users.map((userDoc) => {
+      const participant = findUserMatch.participants.find(
+        (p: any) => String(p.user) === String(userDoc._id)
+      ) as any;
+      return {
+        ...userDoc,
+        score: participant?.score,
+        vectorScore: participant?.vectorScore,
+        aiScore: participant?.aiScore,
+        reasoning: participant?.reasoning,
+      };
+    });
+
+    if (!enrichedUsers.length) {
       throw createError(StatusCodes.NOT_FOUND, "Matched users not found");
     }
 
-    // 4) Commit transaction (snapshot read only, no writes needed)
+    // 5) Commit transaction
     await session.commitTransaction();
     session.endSession();
 
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Matched users retrieved successfully",
-      data: { users },
+      data: { users: enrichedUsers },
     });
   } catch (err) {
     await session.abortTransaction();
@@ -444,44 +457,119 @@ async function findMatchesTraditional(
 
   const pref = user.preferences;
 
-  // 4) Fetch candidates matching preferences
-  let candidates = await User.find({
-    _id: { $ne: user._id },
-    dateOfBirth: { $gte: ageToDOB(pref.age.max), $lte: ageToDOB(pref.age.min) },
-    gender: { $in: pref.gender },
-    bodyType: { $in: pref.bodyType },
-    isPodcastActive: false,
-    ethnicity: { $in: pref.ethnicity },
-    "location.latitude": { $exists: true },
-    "location.longitude": { $exists: true },
-  }, null, { session }
-  ).lean();
+  // 4) Build query filter based on configuration
+  const query: any = {};
 
-  // 5) Distance filtering (strict)
-  const nearby = candidates.filter((c) => {
-    const dist = calculateDistance(
-      user.location.latitude,
-      user.location.longitude,
-      c.location.latitude,
-      c.location.longitude
-    );
-    return dist <= pref.distance;
-  });
+  // Always exclude self (critical)
+  if (matchingConfig.PREFERENCE_FILTERS.EXCLUDE_SELF) {
+    query._id = { $ne: user._id };
+  }
 
-  // 6) Fallback if not enough users
+  // Filter out users in active podcasts (highly recommended)
+  if (matchingConfig.PREFERENCE_FILTERS.IS_PODCAST_ACTIVE) {
+    query.isPodcastActive = false;
+  }
+
+  // Apply preference-based filters if enabled
+  if (matchingConfig.ENABLE_PREFERENCE_FILTERS) {
+    // Age filter
+    if (matchingConfig.PREFERENCE_FILTERS.AGE && pref.age?.min && pref.age?.max) {
+      query.dateOfBirth = {
+        $gte: ageToDOB(pref.age.max),
+        $lte: ageToDOB(pref.age.min)
+      };
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`🔍 Filtering by age: ${pref.age.min}-${pref.age.max}`);
+      }
+    }
+
+    // Gender filter
+    if (matchingConfig.PREFERENCE_FILTERS.GENDER && pref.gender?.length) {
+      query.gender = { $in: pref.gender };
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`🔍 Filtering by gender: ${pref.gender.join(', ')}`);
+      }
+    }
+
+    // Body type filter
+    if (matchingConfig.PREFERENCE_FILTERS.BODY_TYPE && pref.bodyType?.length) {
+      query.bodyType = { $in: pref.bodyType };
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`🔍 Filtering by body type: ${pref.bodyType.join(', ')}`);
+      }
+    }
+
+    // Ethnicity filter
+    const ethnicityArray = Array.isArray(pref.ethnicity) ? pref.ethnicity : [];
+    if (matchingConfig.PREFERENCE_FILTERS.ETHNICITY && ethnicityArray.length) {
+      query.ethnicity = { $in: ethnicityArray };
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`🔍 Filtering by ethnicity: ${ethnicityArray.join(', ')}`);
+      }
+    }
+  }
+
+  // Location existence (required for distance calculation)
+  query["location.latitude"] = { $exists: true };
+  query["location.longitude"] = { $exists: true };
+
+  if (matchingConfig.ENABLE_MATCH_LOGGING) {
+    console.log(`🔍 Query filters:`, JSON.stringify(query, null, 2));
+  }
+
+  // Fetch candidates matching query
+  let candidates = await User.find(query, null, { session }).lean();
+
+  if (matchingConfig.ENABLE_MATCH_LOGGING) {
+    console.log(`📊 Found ${candidates.length} candidates before distance filtering`);
+  }
+
+  // 5) Distance filtering (if enabled)
+  let nearby = candidates;
+  if (matchingConfig.ENABLE_PREFERENCE_FILTERS && matchingConfig.PREFERENCE_FILTERS.DISTANCE) {
+    const maxDistance = pref.distance || matchingConfig.DEFAULT_MAX_DISTANCE;
+
+    nearby = candidates.filter((c) => {
+      const dist = calculateDistance(
+        user.location.latitude,
+        user.location.longitude,
+        c.location.latitude,
+        c.location.longitude
+      );
+      return dist <= maxDistance;
+    });
+
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`🔍 Distance filter (${maxDistance} miles): ${nearby.length} candidates remaining`);
+    }
+  } else {
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`🔍 Distance filtering disabled: keeping all ${candidates.length} candidates`);
+    }
+  }
+
+  // 6) Fallback if not enough users (when enabled)
   let finalCandidates = nearby;
-  if (nearby.length < limitCount) {
-    const fallback = await User.find(
-      {
-        _id: { $ne: user._id },
-        isPodcastActive: false,
-        gender: { $in: pref.gender },
-        "location.latitude": { $exists: true },
-        "location.longitude": { $exists: true },
-      },
-      null,
-      { session }
-    ).lean();
+
+  if (matchingConfig.FALLBACK_STRATEGY === 'relax_filters' && nearby.length < matchingConfig.FALLBACK_THRESHOLD) {
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`⚠️ Only ${nearby.length} candidates found, applying fallback strategy...`);
+    }
+
+    // Relaxed query - only keep essential filters
+    const fallbackQuery: any = {
+      _id: { $ne: user._id },
+      isPodcastActive: false,
+      "location.latitude": { $exists: true },
+      "location.longitude": { $exists: true },
+    };
+
+    // Keep gender filter if it's not being relaxed
+    if (matchingConfig.PREFERENCE_FILTERS.GENDER && pref.gender?.length) {
+      fallbackQuery.gender = { $in: pref.gender };
+    }
+
+    const fallback = await User.find(fallbackQuery, null, { session }).lean();
 
     const fallbackNearby = fallback.filter((c) => {
       const dist = calculateDistance(
@@ -490,10 +578,14 @@ async function findMatchesTraditional(
         c.location.latitude,
         c.location.longitude
       );
-      return dist <= pref.distance;
+      return dist <= (matchingConfig.FALLBACK_MAX_DISTANCE || 100);
     });
 
     finalCandidates = [...nearby, ...fallbackNearby];
+
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`📊 Fallback found ${fallbackNearby.length} additional candidates`);
+    }
   }
 
   // 7) Compute compatibility scores
@@ -506,36 +598,60 @@ async function findMatchesTraditional(
 
   // 8) Sort & return top
   return scored
+    .sort((a, b) => (b.score || 0) - (a.score || 0))
+    .slice(0, limitCount)
     .map((item) => ({
       user: item.user._id,
-      score: item.score ?? 0,
-    }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, limitCount);
+      score: Math.round(item.score || 0),
+      aiScore: Math.round(item.score || 0), // Traditional match uses AI scoring as base
+      vectorScore: 0, // No vector score in traditional fallback
+      reasoning: "Matched based on profile preferences and AI compatibility analysis.",
+    }));
 }
 
 
+/**
+ * Get match count based on subscription tier.
+ * Respects configuration settings from matchingConfig.ts
+ * 
+ * @param subscription - User's subscription object
+ * @returns Number of matches allowed
+ * @throws Error if subscription requirements not met (when enforcement is enabled)
+ */
 export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight: number }) => {
-  if (!subscription.plan) {
-    throw new Error("No active subscription found. Please subscribe to find matches.");
+  // Check spotlight quota if enforcement is enabled
+  if (matchingConfig.ENABLE_SPOTLIGHT_QUOTA) {
+    if (!subscription.plan) {
+      throw new Error("No active subscription found. Please subscribe to find matches.");
+    }
+
+    if (subscription.isSpotlight === 0) {
+      throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+    }
   }
 
-  if (subscription.isSpotlight === 0) {
-    throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+  // Return configured match count based on subscription tier
+  if (matchingConfig.ENABLE_SUBSCRIPTION_LIMITS) {
+    const matchCount = matchingConfig.SUBSCRIPTION_MATCH_COUNTS[
+      subscription.plan as keyof typeof matchingConfig.SUBSCRIPTION_MATCH_COUNTS
+    ];
+
+    if (matchCount) {
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`📊 Subscription ${subscription.plan}: ${matchCount} matches allowed`);
+      }
+      return matchCount;
+    }
+
+    // Fallback to SAMPLER count if plan not recognized
+    return matchingConfig.SUBSCRIPTION_MATCH_COUNTS.SAMPLER;
   }
 
-  let matchCount: number;
-  switch (subscription.plan) {
-    case SubscriptionPlanName.SEEKER:
-      matchCount = 3;
-      break;
-    case SubscriptionPlanName.SCOUT:
-      matchCount = 4;
-      break;
-    default:
-      matchCount = 2;
+  // Return default match count when subscription limits are disabled
+  if (matchingConfig.ENABLE_MATCH_LOGGING) {
+    console.log(`📊 Subscription limits disabled: ${matchingConfig.DEFAULT_MATCH_COUNT} matches for all users`);
   }
-  return matchCount;
+  return matchingConfig.DEFAULT_MATCH_COUNT;
 };
 
 const findMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {

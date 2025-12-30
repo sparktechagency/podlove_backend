@@ -3,6 +3,7 @@ import { UserSchema } from "@models/userModel";
 import { generateUserEmbeddingData, generateUserEmbedding } from "./embeddingService";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
 import { ageToDOB } from "@utils/ageUtils";
+import matchingConfig from "@config/matchingConfig";
 
 const pinecone = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY!,
@@ -90,7 +91,7 @@ export async function batchUpsertUserVectors(users: UserSchema[]): Promise<void>
 
     for (let i = 0; i < users.length; i += BATCH_SIZE) {
       const batch = users.slice(i, i + BATCH_SIZE);
-      
+
       const vectors = await Promise.all(
         batch.map(async (user) => {
           try {
@@ -108,7 +109,7 @@ export async function batchUpsertUserVectors(users: UserSchema[]): Promise<void>
       );
 
       const validVectors = vectors.filter((v): v is NonNullable<typeof v> => v !== null);
-      
+
       if (validVectors.length > 0) {
         await index.upsert(validVectors);
         console.log(`Batch ${i / BATCH_SIZE + 1}: Upserted ${validVectors.length} vectors`);
@@ -159,34 +160,61 @@ interface VectorSearchResult {
 export async function searchSimilarUsers(
   options: VectorSearchOptions
 ): Promise<VectorSearchResult[]> {
-  const { user, topK = 20, minSimilarityScore = 0.5 } = options;
+  const {
+    user,
+    topK = matchingConfig.VECTOR_SEARCH_TOP_K,
+    minSimilarityScore = matchingConfig.MIN_SIMILARITY_SCORE
+  } = options;
 
   try {
     // Generate query embedding
     const queryEmbedding = await generateUserEmbedding(user);
     const index = await getIndex();
 
-    // Build metadata filter based on user preferences
+    // Build metadata filter based on configuration
     const pref = user.preferences;
     const userAge = user.dateOfBirth ? calculateAge(user.dateOfBirth) : 0;
 
     // Note: Pinecone metadata filtering syntax
-    const filter: any = {
-      isPodcastActive: false,
-      gender: { $in: pref.gender || [] },
-    };
+    const filter: any = {};
 
-    // Body type filter
-    if (pref.bodyType?.length) {
-      filter.bodyType = { $in: pref.bodyType };
+    // Always filter out users in active podcasts
+    if (matchingConfig.PREFERENCE_FILTERS.IS_PODCAST_ACTIVE) {
+      filter.isPodcastActive = false;
     }
 
-    // Age range filter (if specified)
-    if (pref.age?.min && pref.age?.max) {
-      filter.age = {
-        $gte: pref.age.min,
-        $lte: pref.age.max,
-      };
+    // Apply preference-based filters if enabled
+    if (matchingConfig.ENABLE_PREFERENCE_FILTERS) {
+      // Gender filter
+      if (matchingConfig.PREFERENCE_FILTERS.GENDER && pref.gender?.length) {
+        filter.gender = { $in: pref.gender };
+        if (matchingConfig.ENABLE_MATCH_LOGGING) {
+          console.log(`🔍 Vector search - Gender filter: ${pref.gender.join(', ')}`);
+        }
+      }
+
+      // Body type filter
+      if (matchingConfig.PREFERENCE_FILTERS.BODY_TYPE && pref.bodyType?.length) {
+        filter.bodyType = { $in: pref.bodyType };
+        if (matchingConfig.ENABLE_MATCH_LOGGING) {
+          console.log(`🔍 Vector search - Body type filter: ${pref.bodyType.join(', ')}`);
+        }
+      }
+
+      // Age range filter
+      if (matchingConfig.PREFERENCE_FILTERS.AGE && pref.age?.min && pref.age?.max) {
+        filter.age = {
+          $gte: pref.age.min,
+          $lte: pref.age.max,
+        };
+        if (matchingConfig.ENABLE_MATCH_LOGGING) {
+          console.log(`🔍 Vector search - Age filter: ${pref.age.min}-${pref.age.max}`);
+        }
+      }
+    }
+
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`🔍 Vector search filters:`, JSON.stringify(filter, null, 2));
     }
 
     // Query Pinecone
@@ -197,9 +225,9 @@ export async function searchSimilarUsers(
       includeMetadata: true,
     });
 
-    // Post-filter by distance (Pinecone doesn't support geospatial queries)
+    // Post-filter by distance (if enabled)
     const results: VectorSearchResult[] = [];
-    
+
     for (const match of queryResponse.matches) {
       // Skip self
       if (match.id === String(user._id)) continue;
@@ -207,17 +235,27 @@ export async function searchSimilarUsers(
       // Check similarity threshold
       if (match.score && match.score < minSimilarityScore) continue;
 
-      // Distance filtering
+      // Distance filtering (if enabled)
       const metadata = match.metadata;
       if (metadata?.latitude && metadata?.longitude) {
-        const distance = calculateDistance(
-          user.location.latitude,
-          user.location.longitude,
-          metadata.latitude as number,
-          metadata.longitude as number
-        );
+        let includeUser = true;
 
-        if (distance <= pref.distance) {
+        if (matchingConfig.ENABLE_PREFERENCE_FILTERS && matchingConfig.PREFERENCE_FILTERS.DISTANCE) {
+          const maxDistance = pref.distance || matchingConfig.DEFAULT_MAX_DISTANCE;
+          const distance = calculateDistance(
+            user.location.latitude,
+            user.location.longitude,
+            metadata.latitude as number,
+            metadata.longitude as number
+          );
+          includeUser = distance <= maxDistance;
+
+          if (matchingConfig.ENABLE_MATCH_LOGGING && includeUser) {
+            console.log(`✅ User ${match.id}: distance ${distance.toFixed(2)} miles (max: ${maxDistance})`);
+          }
+        }
+
+        if (includeUser) {
           results.push({
             userId: match.id,
             similarityScore: match.score || 0,
@@ -225,6 +263,10 @@ export async function searchSimilarUsers(
           });
         }
       }
+    }
+
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`📊 Vector search found ${results.length} candidates after all filters`);
     }
 
     // Return top K after distance filtering
