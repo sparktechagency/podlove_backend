@@ -204,14 +204,14 @@ async function downgradeExpiredSubscriptions(): Promise<{
 
   // filter: not already on the free listener plan, and startedAt ≥ 1 month ago
   const filter = {
-    "subscription.plan": { $ne: SubscriptionPlanName.LISTENER },
+    "subscription.plan": { $ne: SubscriptionPlanName.SAMPLER },
     "subscription.startedAt": { $lte: oneMonthAgo },
   };
 
   // the reset you want
   const reset = {
     "subscription.id": "",
-    "subscription.plan": SubscriptionPlanName.LISTENER,
+    "subscription.plan": SubscriptionPlanName.SAMPLER,
     "subscription.fee": "Free",
     "subscription.status": "",
     "subscription.startedAt": now,

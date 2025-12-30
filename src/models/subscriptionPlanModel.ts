@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { DescriptionItem, SubscriptionPlanSchema } from "@schemas/subscriptionPlanSchema";
+import { SubscriptionPlanName } from "@shared/enums";
 
 const DescriptionItemSchema = new Schema<DescriptionItem>(
   {
@@ -10,7 +11,11 @@ const DescriptionItemSchema = new Schema<DescriptionItem>(
 );
 
 const SubscriptionPlanModel = new Schema<SubscriptionPlanSchema>({
-  name: { type: String, required: true },
+  name: {
+    type: String,
+    enum: Object.values(SubscriptionPlanName),
+    required: true
+  },
   description: {
     type: [DescriptionItemSchema],
     default: [],

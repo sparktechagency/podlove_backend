@@ -14,11 +14,11 @@ const getAnalytics = async (req: Request, res: Response, next: NextFunction): Pr
   if (error) return next(error);
 
   [error, premiumUsers] = await to(
-    User.countDocuments({ "subscription.plan": { $ne: SubscriptionPlanName.LISTENER } })
+    User.countDocuments({ "subscription.plan": { $ne: SubscriptionPlanName.SAMPLER } })
   );
   if (error) return next(error);
   [error, premiumUsersIcome] = await to(
-    User.find({ "subscription.plan": { $ne: SubscriptionPlanName.LISTENER } })
+    User.find({ "subscription.plan": { $ne: SubscriptionPlanName.SAMPLER } })
       .select("subscription.fee")
       .lean()
   );

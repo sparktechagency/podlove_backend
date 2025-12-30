@@ -11,8 +11,8 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   const user = await User.findById(req.user.userId);
 
   let matchCount = 0;
-  if (user!.subscription.plan === SubscriptionPlanName.LISTENER) matchCount = 2;
-  else if (user!.subscription.plan === SubscriptionPlanName.SPEAKER) matchCount = 3;
+  if (user!.subscription.plan === SubscriptionPlanName.SAMPLER) matchCount = 2;
+  else if (user!.subscription.plan === SubscriptionPlanName.SEEKER) matchCount = 3;
   else matchCount = 4;
   const participants = await MatchedServices.match(user!._id as string, matchCount);
 

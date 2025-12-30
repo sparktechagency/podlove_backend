@@ -8,6 +8,8 @@ import { S3Client, PutObjectCommand, GetObjectCommand, HeadObjectCommand, Delete
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import Auth from "@models/authModel";
 import User from "@models/userModel";
+type ScheduleRound = "1st" | "2nd";
+type QuestionStatus = "1stDone" | "2ndDone";
 
 const template_id = process.env.HMS_TEMPLATE_ID;
 
@@ -190,6 +192,7 @@ const postNewRecordInWebhook = async (req: Request) => {
                         $set: {
                             status: PodcastStatus.FINISHED,
                             finishStatus: "2ndFinish",
+                            isComplete: true,
                         }
                     }
                 );
@@ -237,7 +240,15 @@ const sendQuestionsAnswer = async (req: any) => {
         });
 
         await feedback.save();
-        const questionsStatus = scheduleStatus === "1st" ? "1stDone" : "2ndDone";
+
+        const statusMap: Record<ScheduleRound, QuestionStatus> = {
+            "1st": "1stDone",
+            "2nd": "2ndDone"
+        };
+
+        const questionsStatus = statusMap[scheduleStatus];
+        console.log("questionsStatus", questionsStatus)
+
         const podcast = await Podcast.findByIdAndUpdate(podcastId, {
             questionsStatus: questionsStatus
         });
@@ -255,7 +266,12 @@ const sendQuestionsAnswer = async (req: any) => {
             { new: true }
         );
 
-        console.log("podcast================", podcastQ?.participants)
+        if (questionsStatus === "2ndDone") {
+            const user = await User.findByIdAndUpdate(userId, {
+                isPodcastActive: false
+            });
+
+        }
 
         if (!podcast || !podcastQ) {
             throw new Error("Podcast not found");

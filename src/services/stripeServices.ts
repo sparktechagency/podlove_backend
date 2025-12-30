@@ -1,7 +1,7 @@
 import Stripe from "stripe";
 import { Request, Response, NextFunction } from "express";
 import createError from "http-errors";
-import { SubscriptionStatus } from "@shared/enums";
+import { SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 import { StatusCodes } from "http-status-codes";
 import User from "@models/userModel";
 import mongoose, { Types } from "mongoose";
@@ -188,6 +188,23 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
           if (!userId || !Types.ObjectId.isValid(userId)) throw new Error("Invalid user ID");
 
+          let isSpotlight: number;
+          let matchCount: number;
+          switch (plan) {
+            case SubscriptionPlanName.SEEKER:
+              isSpotlight = 2;
+              matchCount = 3;
+              break;
+            case SubscriptionPlanName.SCOUT:
+              isSpotlight = 3;
+              matchCount = 4;
+              break;
+            default:
+              isSpotlight = 1;
+              matchCount = 2;
+          }
+
+
           const updatedUser = await User.findByIdAndUpdate(
             userId,
             {
@@ -196,6 +213,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
                 "subscription.subscription_id": subscription_id,
                 "subscription.plan": plan,
                 "subscription.fee": fee,
+                "subscription.isSpotlight": isSpotlight,
                 "subscription.startedAt": new Date(),
                 "subscription.status": SubscriptionStatus.PAID,
               },

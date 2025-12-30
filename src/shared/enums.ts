@@ -51,9 +51,9 @@ export enum Ethnicity {
 }
 
 export enum SubscriptionPlanName {
-  LISTENER = "Listener: Connection Starter",
-  SPEAKER = "Speaker: Conversation Explorer",
-  SEEKER = "Seeker: Connection Builder",
+  SAMPLER = "Sampler",
+  SEEKER = "Seeker",
+  SCOUT = "Scout",
 }
 
 export enum SubscriptionStatus {

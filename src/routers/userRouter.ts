@@ -14,12 +14,15 @@ router.post("/block/:authId", UserServices.block);
 router.post("/unblock/:authId", UserServices.unblock);
 // router.post("/validate-bio", authorize, asyncHandler(UserController.update));
 router.post("/validate-bio", authorize, asyncHandler(UserServices.validateBio));
-router.post("/match/:id", MatchedServices.matchUser);
+// router.post("/match/:id", MatchedServices.matchUser);
 router.get("/match/getAll", authorize, MatchedServices.getMatchedUsers);
 router.get("/match/findMatch", authorize, MatchedServices.findMatch);
 router.get("/get-all-users", asyncHandler(UserController.getAll));
 router.get("/get-all-premium-users", UserServices.getAllPremiumUsers);
 router.get("/", authorize, asyncHandler(UserController.get));
+router.get("/get-user-subscriptions",
+    authorize,
+    UserServices.getUserSubscriptions);
 router.post("/send_survey_feedback", authorize, asyncHandler(LivePodcastController.send7daysSurveyFeedback));
 router.get("/get_survey_feedback/:userId", asyncHandler(LivePodcastController.getUser7daysSurveyFeedback));
 

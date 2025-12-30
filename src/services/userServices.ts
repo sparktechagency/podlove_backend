@@ -172,7 +172,68 @@ const unblock = async (req: Request, res: Response, next: NextFunction): Promise
   });
 };
 
+const getUserSubscriptions = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const userId = req.user?.userId;
+  if (!userId) {
+    return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated"));
+  }
+
+  const result = await User.findById(userId).select("subscription chatingtime createdAt");
+  if (!result) {
+    return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+  }
+
+  let matchRefresh: number;
+  let bioPreview: boolean;
+  let chatWindow: boolean = false;
+  const currentDate = new Date();
+
+  console.log("User subscription plan: ", result.subscription.plan);
+
+  switch (result.subscription.plan) {
+    case SubscriptionPlanName.SAMPLER:
+      bioPreview = false;
+      matchRefresh = 0;
+      const timePassedSinceCreated = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600; // hours passed
+      if (timePassedSinceCreated <= 72) {
+        chatWindow = true;
+      }
+      break;
+
+    case SubscriptionPlanName.SEEKER:
+      bioPreview = false;
+      matchRefresh = 1;
+      const timePassedSinceCreatedSeeker = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600 / 24;
+      if (timePassedSinceCreatedSeeker <= 7) {
+        chatWindow = true;
+      }
+      break;
+
+    case SubscriptionPlanName.SCOUT:
+      matchRefresh = 2;
+      bioPreview = true;
+      chatWindow = true;
+      break;
+
+    default:
+      return next(createError(StatusCodes.BAD_REQUEST, "Invalid subscription plan"));
+  }
+
+  // Send response with all the subscription details
+  return res.json({
+    // sparks,
+    // spotlightAppearances,
+    matchRefresh,
+    status: result.subscription.status,
+    startedAt: result.subscription.startedAt,
+    plan: result.subscription.plan,
+    bioPreview,
+    chatWindow,
+  });
+};
+
 const UserServices = {
+  getUserSubscriptions,
   getAllPremiumUsers,
   validateBio,
   block,

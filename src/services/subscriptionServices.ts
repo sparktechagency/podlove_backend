@@ -81,9 +81,10 @@ const cancel = async (req: Request, res: Response, next: NextFunction): Promise<
   if (error) return next(error);
 
   user.subscription!.id = "";
-  user.subscription!.plan = SubscriptionPlanName.LISTENER;
+  user.subscription!.plan = SubscriptionPlanName.SAMPLER;
   user.subscription!.fee = "Free";
   user.subscription!.status = SubscriptionStatus.NONE;
+  user.subscription!.isSpotlight = 2;
   user.subscription!.startedAt = new Date();
 
   [error] = await to(user.save());

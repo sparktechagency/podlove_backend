@@ -51,9 +51,10 @@ export type UserSchema = Document & {
   subscription: {
     id: string;
     plan: string;
-    fee: String;
+    fee: string;
     status: SubscriptionStatus;
     startedAt: Date;
+    isSpotlight: number;
   };
   createdAt: Date;
   updatedAt: Date;
@@ -198,7 +199,8 @@ const userSchema = new Schema(
       },
       plan: {
         type: String,
-        default: SubscriptionPlanName.LISTENER,
+        enum: Object.values(SubscriptionPlanName),
+        default: SubscriptionPlanName.SAMPLER,
       },
       fee: {
         type: String,
@@ -208,6 +210,10 @@ const userSchema = new Schema(
         type: String,
         enum: Object.values(SubscriptionStatus),
         default: "",
+      },
+      isSpotlight: {
+        type: Number,
+        default: 2
       },
       startedAt: {
         type: Date,

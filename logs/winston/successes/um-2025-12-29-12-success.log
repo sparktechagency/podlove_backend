@@ -1,0 +1,147 @@
+Mon Dec 29 2025 12:41:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:41:40 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:41:40 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:41:41 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:41:41 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:41:41 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Dec 29 2025 12:42:2 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:42:7 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:42:8 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:42:8 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:42:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:42:8 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Dec 29 2025 12:42:50 [Podlove] [31merror[39m: User not authenticated
+UnauthorizedError: User not authenticated
+    at getUserSubscriptions (/home/tayeur/Desktop/project/podlove_backend/src/services/userServices.ts:178:28)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Mon Dec 29 2025 12:44:31 [Podlove] [31merror[39m: User not authenticated
+UnauthorizedError: User not authenticated
+    at getUserSubscriptions (/home/tayeur/Desktop/project/podlove_backend/src/services/userServices.ts:178:28)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Mon Dec 29 2025 12:44:33 [Podlove] [31merror[39m: User not authenticated
+UnauthorizedError: User not authenticated
+    at getUserSubscriptions (/home/tayeur/Desktop/project/podlove_backend/src/services/userServices.ts:178:28)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Mon Dec 29 2025 12:44:34 [Podlove] [31merror[39m: User not authenticated
+UnauthorizedError: User not authenticated
+    at getUserSubscriptions (/home/tayeur/Desktop/project/podlove_backend/src/services/userServices.ts:178:28)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Mon Dec 29 2025 12:44:55 [Podlove] [31merror[39m: User not authenticated
+UnauthorizedError: User not authenticated
+    at getUserSubscriptions (/home/tayeur/Desktop/project/podlove_backend/src/services/userServices.ts:178:28)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/layer.js:95:5)
+    at /home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/tayeur/Desktop/project/podlove_backend/node_modules/.pnpm/express@4.21.2/node_modules/express/lib/router/index.js:47:12)
+UnauthorizedError
+Mon Dec 29 2025 12:45:26 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:45:37 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:45:49 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:45:53 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:45:53 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:45:54 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:45:54 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:45:54 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Dec 29 2025 12:45:57 [Podlove] [32minfo[39m: 694fca208f71f490a2e21df7
+Mon Dec 29 2025 12:45:58 [Podlove] [31merror[39m: Invalid subscription plan
+BadRequestError: Invalid subscription plan
+    at getUserSubscriptions (/home/tayeur/Desktop/project/podlove_backend/src/services/userServices.ts:215:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Mon Dec 29 2025 12:46:11 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:46:16 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:46:16 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:46:17 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:46:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:46:17 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Dec 29 2025 12:47:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:47:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:47:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:47:18 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:47:18 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:47:18 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Dec 29 2025 12:48:11 [Podlove] [32minfo[39m: 694fca208f71f490a2e21df7
+Mon Dec 29 2025 12:48:12 [Podlove] [31merror[39m: Invalid subscription plan
+BadRequestError: Invalid subscription plan
+    at getUserSubscriptions (/home/tayeur/Desktop/project/podlove_backend/src/services/userServices.ts:217:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Mon Dec 29 2025 12:50:5 [Podlove] [32minfo[39m: 694fca208f71f490a2e21df7
+Mon Dec 29 2025 12:50:6 [Podlove] [31merror[39m: Invalid subscription plan
+BadRequestError: Invalid subscription plan
+    at getUserSubscriptions (/home/tayeur/Desktop/project/podlove_backend/src/services/userServices.ts:217:30)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+BadRequestError
+Mon Dec 29 2025 12:50:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:50:46 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:50:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:50:47 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:50:47 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:50:47 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Dec 29 2025 12:50:48 [Podlove] [32minfo[39m: 694fca208f71f490a2e21df7
+Mon Dec 29 2025 12:51:10 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:51:15 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:51:15 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:51:16 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:51:16 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:51:16 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Dec 29 2025 12:54:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:54:40 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:54:40 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:54:40 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:54:40 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:54:40 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Dec 29 2025 12:54:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:55:3 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:55:4 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:55:4 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:55:4 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:55:4 [Podlove] [32minfo[39m: Socket.IO server initialized
+Mon Dec 29 2025 12:55:5 [Podlove] [32minfo[39m: 694fca208f71f490a2e21df7
+Mon Dec 29 2025 12:55:26 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Mon Dec 29 2025 12:55:30 [Podlove] [32minfo[39m: Privacy Policy exists!
+Mon Dec 29 2025 12:55:31 [Podlove] [32minfo[39m: Consumer Policy exists!
+Mon Dec 29 2025 12:55:31 [Podlove] [32minfo[39m: Media Policy exists!
+Mon Dec 29 2025 12:55:31 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 10.10.20.11
+Mon Dec 29 2025 12:55:31 [Podlove] [32minfo[39m: Socket.IO server initialized

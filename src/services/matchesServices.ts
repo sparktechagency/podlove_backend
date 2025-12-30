@@ -23,6 +23,106 @@ interface MatchRequestBody {
   compatibility: string[];
 }
 
+// const matchUser = async (
+//   req: Request<{ id: string }, {}, MatchRequestBody>,
+//   res: Response,
+//   next: NextFunction
+// ): Promise<any> => {
+//   const session = await mongoose.startSession();
+//   session.startTransaction();
+
+//   try {
+//     const userId = req.params.id;
+//     const { compatibility } = req.body;
+
+//     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
+//     if (podcastExists) {
+//       await session.abortTransaction();
+//       session.endSession();
+//       return res.status(StatusCodes.CONFLICT).json({
+//         success: false,
+//         message: "User already has a podcast not scheduled",
+//         data: {},
+//       });
+//     }
+
+//     // Find top matches
+//     const topMatches = await findMatches(userId, compatibility || [], 2, session);
+
+//     if (!topMatches.length) {
+//       await session.abortTransaction();
+//       session.endSession();
+//       return res.status(StatusCodes.OK).json({
+//         success: false,
+//         message: "No suitable matches found at this time",
+//         data: {},
+//       });
+//     }
+
+//     let participants = [
+//       {
+//         user: userId,
+//         score: 100,
+//         isQuestionAnswer: "",
+//       },
+//       ...topMatches.map((m) => ({
+//         user: m.user,
+//         score: m.score,
+//         isQuestionAnswer: ""
+//       })),
+//     ];
+
+//     const uniqueUsers = new Set();
+
+//     participants = participants.filter(p => {
+//       if (uniqueUsers.has(String(p.user))) return false;
+//       uniqueUsers.add(String(p.user));
+//       return true;
+//     });
+
+//     // Create podcast with participants
+//     const podcast = await Podcast.create(
+//       [
+//         {
+//           primaryUser: userId,
+//           participants,
+//           status: "NotScheduled",
+//         },
+//       ],
+//       { session }
+//     );
+
+//     // Mark users as matched
+//     const matchedUserIds = [userId, ...participants.map((p) => p.user)];
+
+//     if (topMatches?.length) {
+//       await User.updateMany(
+//         { _id: { $in: matchedUserIds } },
+//         { $set: { isPodcastActive: true } },
+//         { session }
+//       );
+//     }
+
+//     await session.commitTransaction();
+//     session.endSession();
+
+//     console.log("====================✅ User successfully scheduled for the podcast=============================");
+
+//     return res.status(StatusCodes.OK).json({
+//       success: true,
+//       message: "Matched users successfully",
+//       data: podcast,
+//     });
+//   } catch (err) {
+//     await session.abortTransaction();
+//     session.endSession();
+//     next(err);
+//   }
+// };
+
+// ==================================
+
+
 const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: string[]) => {
 
   const questions = [
@@ -177,6 +277,7 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
   }
 };
 // ==================================
+
 async function findMatches(userId: string, answers: string[], limitCount: number, session: mongoose.ClientSession): Promise<any[]> {
   // 1) Load user
   const user = await User.findById(userId, {}, { session });
@@ -260,157 +361,74 @@ async function findMatches(userId: string, answers: string[], limitCount: number
     .slice(0, limitCount);
 }
 
-const matchUser = async (
-  req: Request<{ id: string }, {}, MatchRequestBody>,
-  res: Response,
-  next: NextFunction
-): Promise<any> => {
-  const session = await mongoose.startSession();
-  session.startTransaction();
 
-  try {
-    const userId = req.params.id;
-    const { compatibility } = req.body;
-
-    const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
-    if (podcastExists) {
-      await session.abortTransaction();
-      session.endSession();
-      return res.status(StatusCodes.CONFLICT).json({
-        success: false,
-        message: "User already has a podcast not scheduled",
-        data: {},
-      });
-    }
-
-    // Find top matches
-    const topMatches = await findMatches(userId, compatibility || [], 2, session);
-
-    if (!topMatches.length) {
-      await session.abortTransaction();
-      session.endSession();
-      return res.status(StatusCodes.OK).json({
-        success: false,
-        message: "No suitable matches found at this time",
-        data: {},
-      });
-    }
-
-    let participants = [
-      {
-        user: userId,
-        score: 100,
-        isQuestionAnswer: "",
-      },
-      ...topMatches.map((m) => ({
-        user: m.user,
-        score: m.score,
-        isQuestionAnswer: ""
-      })),
-    ];
-
-    const uniqueUsers = new Set();
-
-    participants = participants.filter(p => {
-      if (uniqueUsers.has(String(p.user))) return false;
-      uniqueUsers.add(String(p.user));
-      return true;
-    });
-
-    // Create podcast with participants
-    const podcast = await Podcast.create(
-      [
-        {
-          primaryUser: userId,
-          participants,
-          status: "NotScheduled",
-        },
-      ],
-      { session }
-    );
-
-    // Mark users as matched
-    const matchedUserIds = [userId, ...participants.map((p) => p.user)];
-
-    if (topMatches?.length) {
-      await User.updateMany(
-        { _id: { $in: matchedUserIds } },
-        { $set: { isPodcastActive: true } },
-        { session }
-      );
-    }
-
-    await session.commitTransaction();
-    session.endSession();
-
-    console.log("====================✅ User successfully scheduled for the podcast=============================");
-
-    return res.status(StatusCodes.OK).json({
-      success: true,
-      message: "Matched users successfully",
-      data: podcast,
-    });
-  } catch (err) {
-    await session.abortTransaction();
-    session.endSession();
-    next(err);
+export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight: number }) => {
+  if (!subscription.plan) {
+    throw new Error("No active subscription found. Please subscribe to find matches.");
   }
+
+  if (subscription.isSpotlight === 0) {
+    throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+  }
+
+  let matchCount: number;
+  switch (subscription.plan) {
+    case SubscriptionPlanName.SEEKER:
+      matchCount = 3;
+      break;
+    case SubscriptionPlanName.SCOUT:
+      matchCount = 4;
+      break;
+    default:
+      matchCount = 2;
+  }
+  return matchCount;
 };
 
-// ==================================
 const findMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const session = await mongoose.startSession();
+
   try {
     session.startTransaction();
 
-    // 1) Load user
     const user = await User.findById(req.user.userId, null, { session });
     if (!user) {
       throw createError(StatusCodes.NOT_FOUND, "User not found");
     }
 
-    // 2) Determine matchCount based on plan
-    let matchCount: number;
-    switch (user.subscription.plan) {
-      case SubscriptionPlanName.LISTENER:
-        matchCount = 2;
-        break;
-      case SubscriptionPlanName.SPEAKER:
-        matchCount = 4;
-        break;
-      default:
-        matchCount = 3;
-    }
+    const matchCount = subscriptionMatchCount(user.subscription);
 
-    // 3) Compute participants (this will update user's compatibility inside)
     const participants = await findMatches(req.user.userId, user.compatibility, matchCount, session);
+    // const participants = await findMatches(req.user.userId, matchCount, session);
 
-    // 4) Update or create the podcast document
     const podcastUpdate = await Podcast.findOneAndUpdate(
       { primaryUser: user._id },
       { $set: { participants } },
-      { new: true, session }
+      { new: true, upsert: true, session }
     );
 
-    // 5) Commit and respond
+    user.subscription.isSpotlight -= 1;
+    await user.save({ session });
+
     await session.commitTransaction();
-    session.endSession();
 
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "User successfully updated matches for the podcast",
       data: podcastUpdate,
     });
+
   } catch (err) {
     await session.abortTransaction();
-    session.endSession();
     next(err);
+  } finally {
+    session.endSession();
   }
 };
 
 const MatchedServices = {
   match,
-  matchUser,
+  // matchUser,
   getMatchedUsers,
   findMatch
 };

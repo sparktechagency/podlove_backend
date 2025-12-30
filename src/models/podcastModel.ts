@@ -33,6 +33,7 @@ export type PodcastSchema = Document & {
   score: number;
   createdAt?: Date;
   notificationSent: Boolean,
+  isComplete: Boolean,
   roomCodes: IRoomCode[],
 };
 
@@ -101,6 +102,7 @@ const podcastSchema = new Schema<PodcastSchema>({
     type: Number,
     default: 0,
   },
+  isComplete: { type: Boolean, default: false },
   notificationSent: { type: Boolean, default: false },
 }, {
   timestamps: true,
