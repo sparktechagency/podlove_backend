@@ -9,6 +9,7 @@ import mongoose, { Types } from "mongoose";
 import Podcast from "@models/podcastModel";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
 import { SubscriptionPlanName } from "@shared/enums";
+import { searchSimilarUsers, upsertUserVector } from "./vectorService";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
 const MODEL = "gpt-4o";
 
@@ -122,6 +123,61 @@ interface MatchRequestBody {
 
 // ==================================
 
+
+/**
+ * Enhanced compatibility scoring with AI reasoning
+ * Returns score (0-100) and reasoning
+ */
+const getCompatibilityScoreWithReasoning = async (
+  userOne: any,
+  userTwo: any
+): Promise<{ score: number; reasoning: string }> => {
+  try {
+    const prompt = `You are a professional matchmaking consultant. Analyze these two dating profiles and provide:
+1. A compatibility score (0-100)
+2. Brief reasoning (2-3 sentences) covering values, communication style, and lifestyle compatibility.
+
+User 1:
+- Bio: ${userOne.bio || "Not provided"}
+- Interests: ${userOne.interests?.join(", ") || "Not provided"}
+- Personality: Spectrum ${userOne.personality?.spectrum}, Balance ${userOne.personality?.balance}, Focus ${userOne.personality?.focus}
+- Compatibility Answers: ${userOne.compatibility?.slice(0, 10).join("; ") || "Not provided"}
+
+User 2:
+- Bio: ${userTwo.bio || "Not provided"}
+- Interests: ${userTwo.interests?.join(", ") || "Not provided"}
+- Personality: Spectrum ${userTwo.personality?.spectrum}, Balance ${userTwo.personality?.balance}, Focus ${userTwo.personality?.focus}
+- Compatibility Answers: ${userTwo.compatibility?.slice(0, 10).join("; ") || "Not provided"}
+
+Format your response as:
+Score: [number]
+Reasoning: [text]`;
+
+    const response = await openai.chat.completions.create({
+      model: MODEL,
+      temperature: 0.3,
+      max_tokens: 200,
+      messages: [
+        { role: "system", content: "You are a dating compatibility expert." },
+        { role: "user", content: prompt },
+      ],
+    });
+
+    const content = response.choices[0].message?.content?.trim() || "";
+    
+    // Parse score and reasoning
+    const scoreMatch = content.match(/Score:\s*(\d+)/i);
+    const reasoningMatch = content.match(/Reasoning:\s*(.+)/is);
+
+    const score = scoreMatch ? parseInt(scoreMatch[1]) : 0;
+    const reasoning = reasoningMatch ? reasoningMatch[1].trim() : "No reasoning provided";
+
+    return { score, reasoning };
+  } catch (error: any) {
+    console.error("Error getting compatibility score:", error.message);
+    return { score: 0, reasoning: "Error calculating compatibility" };
+  }
+};
 
 const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: string[]) => {
 
@@ -278,7 +334,104 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
 };
 // ==================================
 
-async function findMatches(userId: string, answers: string[], limitCount: number, session: mongoose.ClientSession): Promise<any[]> {
+/**
+ * NEW: Vector-based matching with AI scoring
+ * Combines Pinecone similarity search with OpenAI compatibility assessment
+ */
+async function findMatchesWithVectors(
+  userId: string,
+  answers: string[],
+  limitCount: number,
+  session: mongoose.ClientSession
+): Promise<any[]> {
+  try {
+    // 1) Load user with full profile data
+    const user = await User.findById(userId, {}, { session });
+    if (!user) throw new Error("User not found");
+
+    // 2) Update user's compatibility answers if provided
+    if (answers?.length) {
+      await User.findByIdAndUpdate(
+        userId,
+        { compatibility: answers },
+        { session }
+      ).exec();
+      user.compatibility = answers;
+    }
+
+    // 3) Ensure user has vector in Pinecone (upsert if profile is complete)
+    if (user.isProfileComplete) {
+      try {
+        await upsertUserVector(user);
+      } catch (error) {
+        console.error("Failed to upsert user vector:", error);
+      }
+    }
+
+    // 4) Perform vector similarity search
+    const vectorResults = await searchSimilarUsers({
+      user,
+      topK: Math.min(limitCount * 3, 15), // Get more candidates for AI filtering
+      minSimilarityScore: 0.5, // Only consider reasonably similar users
+    });
+
+    if (!vectorResults.length) {
+      console.log("No vector matches found, falling back to traditional matching");
+      return await findMatchesTraditional(userId, answers, limitCount, session);
+    }
+
+    // 5) Load full user documents for AI scoring
+    const candidateIds = vectorResults.map((r) => new Types.ObjectId(r.userId));
+    const candidates = await User.find(
+      { _id: { $in: candidateIds } },
+      null,
+      { session }
+    ).lean();
+
+    // 6) AI-based compatibility scoring
+    const scoredCandidates = await Promise.all(
+      candidates.map(async (candidate) => {
+        const vectorResult = vectorResults.find((r) => r.userId === candidate._id.toString());
+        const vectorScore = vectorResult?.similarityScore || 0;
+
+        // Get AI compatibility assessment
+        const aiResult = await getCompatibilityScoreWithReasoning(user, candidate);
+
+        // Weighted combination: 40% vector similarity + 60% AI assessment
+        const finalScore = vectorScore * 40 + aiResult.score * 0.6;
+
+        return {
+          user: candidate._id,
+          score: Math.round(finalScore),
+          vectorScore: Math.round(vectorScore * 100),
+          aiScore: aiResult.score,
+          reasoning: aiResult.reasoning,
+        };
+      })
+    );
+
+    // 7) Sort by final score and return top matches
+    return scoredCandidates
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limitCount);
+
+  } catch (error) {
+    console.error("Error in vector-based matching:", error);
+    // Fallback to traditional matching on error
+    return await findMatchesTraditional(userId, answers, limitCount, session);
+  }
+}
+
+/**
+ * TRADITIONAL: Conditional + AI matching (fallback)
+ * Used when vector search fails or returns no results
+ */
+async function findMatchesTraditional(
+  userId: string,
+  answers: string[],
+  limitCount: number,
+  session: mongoose.ClientSession
+): Promise<any[]> {
   // 1) Load user
   const user = await User.findById(userId, {}, { session });
   if (!user) throw new Error("User not found");
@@ -398,8 +551,13 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
 
     const matchCount = subscriptionMatchCount(user.subscription);
 
-    const participants = await findMatches(req.user.userId, user.compatibility, matchCount, session);
-    // const participants = await findMatches(req.user.userId, matchCount, session);
+    // Use vector-based matching (with automatic fallback to traditional)
+    const participants = await findMatchesWithVectors(
+      req.user.userId,
+      user.compatibility,
+      matchCount,
+      session
+    );
 
     const podcastUpdate = await Podcast.findOneAndUpdate(
       { primaryUser: user._id },

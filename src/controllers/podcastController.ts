@@ -14,7 +14,7 @@ const create = async (req: Request, res: Response, next: NextFunction): Promise<
   if (user!.subscription.plan === SubscriptionPlanName.SAMPLER) matchCount = 2;
   else if (user!.subscription.plan === SubscriptionPlanName.SEEKER) matchCount = 3;
   else matchCount = 4;
-  const participants = await MatchedServices.match(user!._id as string, matchCount);
+  const participants = await MatchedServices.match(String(user!._id), matchCount);
 
   const podcast = await Podcast.create({ primaryUser: user!._id, participants: participants });
 
