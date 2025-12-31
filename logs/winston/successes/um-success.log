@@ -27101,3 +27101,135 @@ Wed Dec 31 2025 0:10:10 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
 Wed Dec 31 2025 0:10:10 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
 Wed Dec 31 2025 0:11:1 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
 Wed Dec 31 2025 0:11:1 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:23:36 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:23:36 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:23:37 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:23:39 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:27:37 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:27:37 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:27:41 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:27:41 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:27:42 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 0:27:44 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:9:15 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:9:18 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:9:19 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:9:19 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Dec 31 2025 12:9:19 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Dec 31 2025 12:9:19 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Dec 31 2025 12:10:20 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:10:21 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Wed Dec 31 2025 12:10:23 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:11:36 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:11:36 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:11:47 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:15:55 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:15:59 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:16:0 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:16:28 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:16:33 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:16:33 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:16:33 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Dec 31 2025 12:16:33 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Dec 31 2025 12:16:33 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Dec 31 2025 12:17:6 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:17:6 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:17:13 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:17:33 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:18:45 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Wed Dec 31 2025 12:19:11 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Wed Dec 31 2025 12:20:23 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:20:27 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:20:28 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:20:28 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Dec 31 2025 12:20:28 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Dec 31 2025 12:20:28 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Dec 31 2025 12:20:36 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:20:36 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:22:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:22:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:22:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:22:17 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Dec 31 2025 12:22:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Dec 31 2025 12:22:17 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Dec 31 2025 12:22:30 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:22:30 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:22:47 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Wed Dec 31 2025 12:23:5 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Wed Dec 31 2025 12:24:15 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:24:19 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:24:20 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:24:20 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Dec 31 2025 12:24:20 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Dec 31 2025 12:24:20 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Dec 31 2025 12:26:43 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:26:46 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:26:47 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:26:47 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Dec 31 2025 12:26:47 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Dec 31 2025 12:26:47 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Dec 31 2025 12:27:10 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:27:14 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:27:15 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:27:15 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Dec 31 2025 12:27:15 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Dec 31 2025 12:27:15 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Dec 31 2025 12:27:36 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:27:36 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:27:48 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Wed Dec 31 2025 12:27:54 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:27:54 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:28:4 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:28:17 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:31:33 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:31:37 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:31:37 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:31:38 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Dec 31 2025 12:31:38 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Dec 31 2025 12:31:38 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Dec 31 2025 12:34:9 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Wed Dec 31 2025 12:34:13 [Podlove] [32minfo[39m: Privacy Policy exists!
+Wed Dec 31 2025 12:34:13 [Podlove] [32minfo[39m: Consumer Policy exists!
+Wed Dec 31 2025 12:34:13 [Podlove] [32minfo[39m: Media Policy exists!
+Wed Dec 31 2025 12:34:13 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Wed Dec 31 2025 12:34:13 [Podlove] [32minfo[39m: Socket.IO server initialized
+Wed Dec 31 2025 12:34:15 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getExistingVideos (D:\GitHub\podlove\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Wed Dec 31 2025 12:34:52 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:34:52 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:34:57 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9
+Wed Dec 31 2025 12:35:15 [Podlove] [32minfo[39m: 695401db7eb1505a2b3c12d9

@@ -17,10 +17,13 @@ const DIMENSION = 1024;
  */
 export async function getIndex() {
   try {
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`📡 Connecting to Pinecone index: ${INDEX_NAME}...`);
+    }
     const index = pinecone.index(INDEX_NAME);
     return index;
   } catch (error) {
-    console.error("Error getting Pinecone index:", error);
+    console.error("❌ Error getting Pinecone index:", error);
     throw error;
   }
 }
@@ -34,10 +37,11 @@ export async function createIndex() {
     const indexExists = existingIndexes.indexes?.some((idx: any) => idx.name === INDEX_NAME);
 
     if (indexExists) {
-      console.log(`Index ${INDEX_NAME} already exists`);
+      console.log(`ℹ️ Index ${INDEX_NAME} already exists`);
       return;
     }
 
+    console.log(`🔨 Creating Pinecone index: ${INDEX_NAME} (dimension: ${DIMENSION})...`);
     await pinecone.createIndex({
       name: INDEX_NAME,
       dimension: DIMENSION,
@@ -50,9 +54,9 @@ export async function createIndex() {
       },
     });
 
-    console.log(`Index ${INDEX_NAME} created successfully`);
+    console.log(`🚀 Index ${INDEX_NAME} created successfully`);
   } catch (error: any) {
-    console.error("Error creating index:", error.message);
+    console.error(`❌ Error creating index: ${error.message}`);
     throw error;
   }
 }
@@ -62,6 +66,7 @@ export async function createIndex() {
  */
 export async function upsertUserVector(user: UserSchema): Promise<void> {
   try {
+    console.log(`📤 Preparing vector upsert for user: ${user._id} (${user.name})`);
     const embeddingData = await generateUserEmbeddingData(user);
     const index = await getIndex();
 
@@ -73,9 +78,9 @@ export async function upsertUserVector(user: UserSchema): Promise<void> {
       },
     ]);
 
-    console.log(`User ${embeddingData.userId} vector upserted successfully`);
+    console.log(`✅ Pinecone: User ${embeddingData.userId} vector upserted successfully`);
   } catch (error: any) {
-    console.error(`Error upserting user ${user._id}:`, error.message);
+    console.error(`❌ Error upserting user ${user._id}:`, error.message);
     throw error;
   }
 }
@@ -134,10 +139,11 @@ export async function batchUpsertUserVectors(users: UserSchema[]): Promise<void>
 export async function deleteUserVector(userId: string): Promise<void> {
   try {
     const index = await getIndex();
+    console.log(`🗑️ Deleting vector for user: ${userId}...`);
     await index.deleteOne(userId);
-    console.log(`User ${userId} vector deleted successfully`);
+    console.log(`✅ User ${userId} vector deleted successfully from Pinecone`);
   } catch (error: any) {
-    console.error(`Error deleting user ${userId}:`, error.message);
+    console.error(`❌ Error deleting user ${userId}:`, error.message);
     throw error;
   }
 }
@@ -218,12 +224,19 @@ export async function searchSimilarUsers(
     }
 
     // Query Pinecone
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`🔎 Querying Pinecone for similar users (topK: ${topK})...`);
+    }
     const queryResponse = await index.query({
       vector: queryEmbedding,
       topK: topK * 2, // Get more to filter by distance
       filter,
       includeMetadata: true,
     });
+
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`✨ Pinecone returned ${queryResponse.matches.length} raw matches`);
+    }
 
     // Post-filter by distance (if enabled)
     const results: VectorSearchResult[] = [];
@@ -297,10 +310,12 @@ function calculateAge(dateOfBirth: string): number {
 export async function getIndexStats() {
   try {
     const index = await getIndex();
+    console.log(`📊 Fetching statistics for Pinecone index: ${INDEX_NAME}...`);
     const stats = await index.describeIndexStats();
+    console.log(`📈 Index Stats: Total ${stats.totalRecordCount} vectors, dimension: ${stats.dimension}`);
     return stats;
   } catch (error: any) {
-    console.error("Error getting index stats:", error.message);
+    console.error("❌ Error getting index stats:", error.message);
     throw error;
   }
 }

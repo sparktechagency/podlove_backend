@@ -27,7 +27,7 @@
  * 
  * ⚠️ WARNING: Disabling filters increases match pool but may reduce match quality
  */
-export const ENABLE_PREFERENCE_FILTERS = false;
+export const ENABLE_PREFERENCE_FILTERS = true;
 
 /**
  * Enable/disable individual preference filters.
@@ -37,7 +37,7 @@ export const ENABLE_PREFERENCE_FILTERS = false;
  */
 export const PREFERENCE_FILTERS = {
     /** Filter by gender preference (e.g., only show men to users seeking men) */
-    GENDER: false,
+    GENDER: true,
 
     /** Filter by age range preference (e.g., 25-35 years old) */
     AGE: false,
@@ -49,7 +49,7 @@ export const PREFERENCE_FILTERS = {
     ETHNICITY: false,
 
     /** Filter by maximum distance in miles (geographic proximity) */
-    DISTANCE: false,
+    DISTANCE: true,
 
     /**
      * Filter out users who are already matched in active podcasts
@@ -128,7 +128,7 @@ export const MIN_SIMILARITY_SCORE = 0.5;
  * Enable automatic fallback to traditional matching when vector search fails.
  * Recommended: TRUE for production reliability
  */
-export const ENABLE_VECTOR_FALLBACK = true;
+export const ENABLE_VECTOR_FALLBACK = false;
 
 // ===================================
 // AI COMPATIBILITY SCORING

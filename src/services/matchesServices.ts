@@ -590,10 +590,14 @@ async function findMatchesTraditional(
 
   // 7) Compute compatibility scores
   const scored = await Promise.all(
-    finalCandidates.map(async (c) => ({
-      user: c,
-      score: await getCompatibilityScore(answers, c.compatibility || []),
-    }))
+    finalCandidates.map(async (c) => {
+      const aiResult = await getCompatibilityScoreWithReasoning(user, c);
+      return {
+        user: c,
+        score: aiResult.score,
+        reasoning: aiResult.reasoning
+      };
+    })
   );
 
   // 8) Sort & return top
@@ -603,9 +607,9 @@ async function findMatchesTraditional(
     .map((item) => ({
       user: item.user._id,
       score: Math.round(item.score || 0),
-      aiScore: Math.round(item.score || 0), // Traditional match uses AI scoring as base
-      vectorScore: 0, // No vector score in traditional fallback
-      reasoning: "Matched based on profile preferences and AI compatibility analysis.",
+      aiScore: Math.round(item.score || 0),
+      vectorScore: 0,
+      reasoning: item.reasoning,
     }));
 }
 
@@ -665,6 +669,10 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
       throw createError(StatusCodes.NOT_FOUND, "User not found");
     }
 
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`🚀 Starting AI Matchmaking for user: ${user._id} (${user.name})`);
+    }
+
     const matchCount = subscriptionMatchCount(user.subscription);
 
     // Use vector-based matching (with automatic fallback to traditional)
@@ -679,7 +687,7 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
       { primaryUser: user._id },
       { $set: { participants } },
       { new: true, upsert: true, session }
-    );
+    ).populate('participants.user', 'name avatar');
 
     user.subscription.isSpotlight -= 1;
     await user.save({ session });
