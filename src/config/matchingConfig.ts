@@ -40,13 +40,13 @@ export const PREFERENCE_FILTERS = {
     GENDER: true,
 
     /** Filter by age range preference (e.g., 25-35 years old) */
-    AGE: false,
+    AGE: true,
 
     /** Filter by body type preference (e.g., athletic, average, curvy) */
-    BODY_TYPE: false,
+    BODY_TYPE: true,
 
     /** Filter by ethnicity preference */
-    ETHNICITY: false,
+    ETHNICITY: true,
 
     /** Filter by maximum distance in miles (geographic proximity) */
     DISTANCE: true,
@@ -139,7 +139,7 @@ export const ENABLE_VECTOR_FALLBACK = false;
  * When FALSE: Uses simple compatibility question comparison
  * When TRUE: Uses GPT-4 for deep analysis (slower, more expensive, higher quality)
  */
-export const ENABLE_AI_COMPATIBILITY = true;
+export const ENABLE_AI_COMPATIBILITY = false;
 
 /**
  * OpenAI model for compatibility analysis.
@@ -183,8 +183,8 @@ export const AI_MAX_TOKENS = 200;
  * ⚠️ Must sum to 1.0
  */
 export const SCORE_WEIGHTS = {
-    VECTOR: 0.4,  // Semantic similarity from embeddings
-    AI: 0.6,      // Deep compatibility from GPT analysis
+    VECTOR: 0.8,  // Semantic similarity from embeddings
+    AI: 0.2,      // Deep compatibility from GPT analysis
 };
 
 // ===================================
@@ -212,7 +212,7 @@ export const FALLBACK_MAX_DISTANCE = 100;
  * TRUE = Score all candidates simultaneously (faster, higher API usage)
  * FALSE = Score candidates sequentially (slower, respects rate limits)
  */
-export const ENABLE_PARALLEL_AI_SCORING = true;
+export const ENABLE_PARALLEL_AI_SCORING = false;
 
 /**
  * Rate limiting: Delay between AI requests in milliseconds.
@@ -220,7 +220,7 @@ export const ENABLE_PARALLEL_AI_SCORING = true;
  * 
  * Recommended: 100-500ms to avoid rate limits
  */
-export const AI_REQUEST_DELAY_MS = 200;
+export const AI_REQUEST_DELAY_MS = 300;
 
 /**
  * Cache AI compatibility scores for repeat matches.
@@ -242,7 +242,6 @@ export const SCORE_CACHE_TTL_HOURS = 24;
 
 /**
  * Fallback strategy when not enough matches are found.
- * 
  * Options:
  * - 'relax_filters': Gradually relax preference filters
  * - 'random': Return random compatible users
@@ -318,7 +317,7 @@ export const MIN_PROFILE_COMPLETENESS = 0;
  * TRUE = Only match users who completed compatibility quiz
  * FALSE = Match anyone
  */
-export const REQUIRE_COMPATIBILITY_ANSWERS = false;
+export const REQUIRE_COMPATIBILITY_ANSWERS = true;
 
 /**
  * Minimum number of compatibility answers required.
@@ -347,7 +346,7 @@ export const LOG_AI_INTERACTIONS = false;
  * TRUE = Send AI reasoning to client (more transparent)
  * FALSE = Return scores only (faster, less data transfer)
  */
-export const INCLUDE_REASONING_IN_RESPONSE = true;
+export const INCLUDE_REASONING_IN_RESPONSE = false;
 
 // ===================================
 // HELPER FUNCTIONS
