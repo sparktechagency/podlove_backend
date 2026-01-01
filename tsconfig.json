@@ -9,6 +9,7 @@
     "noImplicitAny": true,
     "baseUrl": "./",
     "paths": {
+      "@config/*": ["src/config/*"],
       "@connection/*": ["src/connection/*"],
       "@controllers/*": ["src/controllers/*"],
       "@events/*": ["src/events/*"],

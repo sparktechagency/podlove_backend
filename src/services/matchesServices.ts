@@ -9,6 +9,8 @@ import mongoose, { Types } from "mongoose";
 import Podcast from "@models/podcastModel";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
 import { SubscriptionPlanName } from "@shared/enums";
+import { searchSimilarUsers, upsertUserVector } from "./vectorService";
+import matchingConfig from "@config/matchingConfig";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
 const MODEL = "gpt-4o";
 
@@ -122,6 +124,61 @@ interface MatchRequestBody {
 
 // ==================================
 
+
+/**
+ * Enhanced compatibility scoring with AI reasoning
+ * Returns score (0-100) and reasoning
+ */
+const getCompatibilityScoreWithReasoning = async (
+  userOne: any,
+  userTwo: any
+): Promise<{ score: number; reasoning: string }> => {
+  try {
+    const prompt = `You are a professional matchmaking consultant. Analyze these two dating profiles and provide:
+1. A compatibility score (0-100)
+2. Brief reasoning (2-3 sentences) covering values, communication style, and lifestyle compatibility.
+
+User 1:
+- Bio: ${userOne.bio || "Not provided"}
+- Interests: ${userOne.interests?.join(", ") || "Not provided"}
+- Personality: Spectrum ${userOne.personality?.spectrum}, Balance ${userOne.personality?.balance}, Focus ${userOne.personality?.focus}
+- Compatibility Answers: ${userOne.compatibility?.slice(0, 10).join("; ") || "Not provided"}
+
+User 2:
+- Bio: ${userTwo.bio || "Not provided"}
+- Interests: ${userTwo.interests?.join(", ") || "Not provided"}
+- Personality: Spectrum ${userTwo.personality?.spectrum}, Balance ${userTwo.personality?.balance}, Focus ${userTwo.personality?.focus}
+- Compatibility Answers: ${userTwo.compatibility?.slice(0, 10).join("; ") || "Not provided"}
+
+Format your response as:
+Score: [number]
+Reasoning: [text]`;
+
+    const response = await openai.chat.completions.create({
+      model: MODEL,
+      temperature: 0.3,
+      max_tokens: 200,
+      messages: [
+        { role: "system", content: "You are a dating compatibility expert." },
+        { role: "user", content: prompt },
+      ],
+    });
+
+    const content = response.choices[0].message?.content?.trim() || "";
+
+    // Parse score and reasoning
+    const scoreMatch = content.match(/Score:\s*(\d+)/i);
+    const reasoningMatch = content.match(/Reasoning:\s*(.+)/is);
+
+    const score = scoreMatch ? parseInt(scoreMatch[1]) : 0;
+    const reasoning = reasoningMatch ? reasoningMatch[1].trim() : "No reasoning provided";
+
+    return { score, reasoning };
+  } catch (error: any) {
+    console.error("Error getting compatibility score:", error.message);
+    return { score: 0, reasoning: "Error calculating compatibility" };
+  }
+};
 
 const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: string[]) => {
 
@@ -248,27 +305,45 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
     // 2) Extract all participant user IDs
     const userIds: Types.ObjectId[] = findUserMatch.participants.map((p) => p.user as Types.ObjectId);
 
-    // 3) Load full user docs in one query
+    // 3) Load full user docs
     const users = await User.find(
       { _id: { $in: userIds } },
       "name avatar bio interests personality phoneNumber dateOfBirth isProfileComplete location preferences",
       { session }
-    )
-      .lean()
-      .exec();
+    ).lean();
 
-    if (!users.length) {
+    // 4) Merge user data with scores and reasoning from the podcast participants
+    const enrichedUsers = users.map((userDoc) => {
+      const participant = findUserMatch.participants.find(
+        (p: any) => String(p.user) === String(userDoc._id)
+      ) as any;
+      return {
+        ...userDoc,
+        score: participant?.score,
+        vectorScore: participant?.vectorScore,
+        aiScore: participant?.aiScore,
+        reasoning: participant?.reasoning,
+      };
+    });
+
+    if (!enrichedUsers.length) {
       throw createError(StatusCodes.NOT_FOUND, "Matched users not found");
     }
 
-    // 4) Commit transaction (snapshot read only, no writes needed)
+    // 🔍 NEW: Apply matchingConfig limits to display only the configured amount of matches
+    const userDoc = await User.findById(userId).select("subscription").lean();
+    const allowedMatchCount = matchingConfig.getMatchCount(userDoc?.subscription?.plan || "SAMPLER");
+    const finalUsers = enrichedUsers.slice(0, allowedMatchCount);
+
+    // 5) Commit transaction
     await session.commitTransaction();
     session.endSession();
 
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Matched users retrieved successfully",
-      data: { users },
+      //data: { users: enrichedUsers },
+      data: { users: finalUsers },
     });
   } catch (err) {
     await session.abortTransaction();
@@ -278,7 +353,104 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
 };
 // ==================================
 
-async function findMatches(userId: string, answers: string[], limitCount: number, session: mongoose.ClientSession): Promise<any[]> {
+/**
+ * NEW: Vector-based matching with AI scoring
+ * Combines Pinecone similarity search with OpenAI compatibility assessment
+ */
+async function findMatchesWithVectors(
+  userId: string,
+  answers: string[],
+  limitCount: number,
+  session: mongoose.ClientSession
+): Promise<any[]> {
+  try {
+    // 1) Load user with full profile data
+    const user = await User.findById(userId, {}, { session });
+    if (!user) throw new Error("User not found");
+
+    // 2) Update user's compatibility answers if provided
+    if (answers?.length) {
+      await User.findByIdAndUpdate(
+        userId,
+        { compatibility: answers },
+        { session }
+      ).exec();
+      user.compatibility = answers;
+    }
+
+    // 3) Ensure user has vector in Pinecone (upsert if profile is complete)
+    if (user.isProfileComplete) {
+      try {
+        await upsertUserVector(user);
+      } catch (error) {
+        console.error("Failed to upsert user vector:", error);
+      }
+    }
+
+    // 4) Perform vector similarity search
+    const vectorResults = await searchSimilarUsers({
+      user,
+      topK: Math.min(limitCount * 3, 15), // Get more candidates for AI filtering
+      minSimilarityScore: 0.5, // Only consider reasonably similar users
+    });
+
+    if (!vectorResults.length) {
+      console.log("No vector matches found, falling back to traditional matching");
+      return await findMatchesTraditional(userId, answers, limitCount, session);
+    }
+
+    // 5) Load full user documents for AI scoring
+    const candidateIds = vectorResults.map((r) => new Types.ObjectId(r.userId));
+    const candidates = await User.find(
+      { _id: { $in: candidateIds } },
+      null,
+      { session }
+    ).lean();
+
+    // 6) AI-based compatibility scoring
+    const scoredCandidates = await Promise.all(
+      candidates.map(async (candidate) => {
+        const vectorResult = vectorResults.find((r) => r.userId === candidate._id.toString());
+        const vectorScore = vectorResult?.similarityScore || 0;
+
+        // Get AI compatibility assessment
+        const aiResult = await getCompatibilityScoreWithReasoning(user, candidate);
+
+        // Weighted combination: 40% vector similarity + 60% AI assessment
+        const finalScore = vectorScore * 40 + aiResult.score * 0.6;
+
+        return {
+          user: candidate._id,
+          score: Math.round(finalScore),
+          vectorScore: Math.round(vectorScore * 100),
+          aiScore: aiResult.score,
+          reasoning: aiResult.reasoning,
+        };
+      })
+    );
+
+    // 7) Sort by final score and return top matches
+    return scoredCandidates
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limitCount);
+
+  } catch (error) {
+    console.error("Error in vector-based matching:", error);
+    // Fallback to traditional matching on error
+    return await findMatchesTraditional(userId, answers, limitCount, session);
+  }
+}
+
+/**
+ * TRADITIONAL: Conditional + AI matching (fallback)
+ * Used when vector search fails or returns no results
+ */
+async function findMatchesTraditional(
+  userId: string,
+  answers: string[],
+  limitCount: number,
+  session: mongoose.ClientSession
+): Promise<any[]> {
   // 1) Load user
   const user = await User.findById(userId, {}, { session });
   if (!user) throw new Error("User not found");
@@ -291,44 +463,119 @@ async function findMatches(userId: string, answers: string[], limitCount: number
 
   const pref = user.preferences;
 
-  // 4) Fetch candidates matching preferences
-  let candidates = await User.find({
-    _id: { $ne: user._id },
-    dateOfBirth: { $gte: ageToDOB(pref.age.max), $lte: ageToDOB(pref.age.min) },
-    gender: { $in: pref.gender },
-    bodyType: { $in: pref.bodyType },
-    isPodcastActive: false,
-    ethnicity: { $in: pref.ethnicity },
-    "location.latitude": { $exists: true },
-    "location.longitude": { $exists: true },
-  }, null, { session }
-  ).lean();
+  // 4) Build query filter based on configuration
+  const query: any = {};
 
-  // 5) Distance filtering (strict)
-  const nearby = candidates.filter((c) => {
-    const dist = calculateDistance(
-      user.location.latitude,
-      user.location.longitude,
-      c.location.latitude,
-      c.location.longitude
-    );
-    return dist <= pref.distance;
-  });
+  // Always exclude self (critical)
+  if (matchingConfig.PREFERENCE_FILTERS.EXCLUDE_SELF) {
+    query._id = { $ne: user._id };
+  }
 
-  // 6) Fallback if not enough users
+  // Filter out users in active podcasts (highly recommended)
+  if (matchingConfig.PREFERENCE_FILTERS.IS_PODCAST_ACTIVE) {
+    query.isPodcastActive = false;
+  }
+
+  // Apply preference-based filters if enabled
+  if (matchingConfig.ENABLE_PREFERENCE_FILTERS) {
+    // Age filter
+    if (matchingConfig.PREFERENCE_FILTERS.AGE && pref.age?.min && pref.age?.max) {
+      query.dateOfBirth = {
+        $gte: ageToDOB(pref.age.max),
+        $lte: ageToDOB(pref.age.min)
+      };
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`🔍 Filtering by age: ${pref.age.min}-${pref.age.max}`);
+      }
+    }
+
+    // Gender filter
+    if (matchingConfig.PREFERENCE_FILTERS.GENDER && pref.gender?.length) {
+      query.gender = { $in: pref.gender };
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`🔍 Filtering by gender: ${pref.gender.join(', ')}`);
+      }
+    }
+
+    // Body type filter
+    if (matchingConfig.PREFERENCE_FILTERS.BODY_TYPE && pref.bodyType?.length) {
+      query.bodyType = { $in: pref.bodyType };
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`🔍 Filtering by body type: ${pref.bodyType.join(', ')}`);
+      }
+    }
+
+    // Ethnicity filter
+    const ethnicityArray = Array.isArray(pref.ethnicity) ? pref.ethnicity : [];
+    if (matchingConfig.PREFERENCE_FILTERS.ETHNICITY && ethnicityArray.length) {
+      query.ethnicity = { $in: ethnicityArray };
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`🔍 Filtering by ethnicity: ${ethnicityArray.join(', ')}`);
+      }
+    }
+  }
+
+  // Location existence (required for distance calculation)
+  query["location.latitude"] = { $exists: true };
+  query["location.longitude"] = { $exists: true };
+
+  if (matchingConfig.ENABLE_MATCH_LOGGING) {
+    console.log(`🔍 Query filters:`, JSON.stringify(query, null, 2));
+  }
+
+  // Fetch candidates matching query
+  let candidates = await User.find(query, null, { session }).lean();
+
+  if (matchingConfig.ENABLE_MATCH_LOGGING) {
+    console.log(`📊 Found ${candidates.length} candidates before distance filtering`);
+  }
+
+  // 5) Distance filtering (if enabled)
+  let nearby = candidates;
+  if (matchingConfig.ENABLE_PREFERENCE_FILTERS && matchingConfig.PREFERENCE_FILTERS.DISTANCE) {
+    const maxDistance = pref.distance || matchingConfig.DEFAULT_MAX_DISTANCE;
+
+    nearby = candidates.filter((c) => {
+      const dist = calculateDistance(
+        user.location.latitude,
+        user.location.longitude,
+        c.location.latitude,
+        c.location.longitude
+      );
+      return dist <= maxDistance;
+    });
+
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`🔍 Distance filter (${maxDistance} miles): ${nearby.length} candidates remaining`);
+    }
+  } else {
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`🔍 Distance filtering disabled: keeping all ${candidates.length} candidates`);
+    }
+  }
+
+  // 6) Fallback if not enough users (when enabled)
   let finalCandidates = nearby;
-  if (nearby.length < limitCount) {
-    const fallback = await User.find(
-      {
-        _id: { $ne: user._id },
-        isPodcastActive: false,
-        gender: { $in: pref.gender },
-        "location.latitude": { $exists: true },
-        "location.longitude": { $exists: true },
-      },
-      null,
-      { session }
-    ).lean();
+
+  if (matchingConfig.FALLBACK_STRATEGY === 'relax_filters' && nearby.length < matchingConfig.FALLBACK_THRESHOLD) {
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`⚠️ Only ${nearby.length} candidates found, applying fallback strategy...`);
+    }
+
+    // Relaxed query - only keep essential filters
+    const fallbackQuery: any = {
+      _id: { $ne: user._id },
+      isPodcastActive: false,
+      "location.latitude": { $exists: true },
+      "location.longitude": { $exists: true },
+    };
+
+    // Keep gender filter if it's not being relaxed
+    if (matchingConfig.PREFERENCE_FILTERS.GENDER && pref.gender?.length) {
+      fallbackQuery.gender = { $in: pref.gender };
+    }
+
+    const fallback = await User.find(fallbackQuery, null, { session }).lean();
 
     const fallbackNearby = fallback.filter((c) => {
       const dist = calculateDistance(
@@ -337,52 +584,84 @@ async function findMatches(userId: string, answers: string[], limitCount: number
         c.location.latitude,
         c.location.longitude
       );
-      return dist <= pref.distance;
+      return dist <= (matchingConfig.FALLBACK_MAX_DISTANCE || 100);
     });
 
     finalCandidates = [...nearby, ...fallbackNearby];
+
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`📊 Fallback found ${fallbackNearby.length} additional candidates`);
+    }
   }
 
   // 7) Compute compatibility scores
   const scored = await Promise.all(
-    finalCandidates.map(async (c) => ({
-      user: c,
-      score: await getCompatibilityScore(answers, c.compatibility || []),
-    }))
+    finalCandidates.map(async (c) => {
+      const aiResult = await getCompatibilityScoreWithReasoning(user, c);
+      return {
+        user: c,
+        score: aiResult.score,
+        reasoning: aiResult.reasoning
+      };
+    })
   );
 
   // 8) Sort & return top
   return scored
+    .sort((a, b) => (b.score || 0) - (a.score || 0))
+    .slice(0, limitCount)
     .map((item) => ({
       user: item.user._id,
-      score: item.score ?? 0,
-    }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, limitCount);
+      score: Math.round(item.score || 0),
+      aiScore: Math.round(item.score || 0),
+      vectorScore: 0,
+      reasoning: item.reasoning,
+    }));
 }
 
 
+/**
+ * Get match count based on subscription tier.
+ * Respects configuration settings from matchingConfig.ts
+ * 
+ * @param subscription - User's subscription object
+ * @returns Number of matches allowed
+ * @throws Error if subscription requirements not met (when enforcement is enabled)
+ */
 export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight: number }) => {
-  if (!subscription.plan) {
-    throw new Error("No active subscription found. Please subscribe to find matches.");
+  // Check spotlight quota if enforcement is enabled
+  if (matchingConfig.ENABLE_SPOTLIGHT_QUOTA) {
+    if (!subscription.plan) {
+      throw new Error("No active subscription found. Please subscribe to find matches.");
+    }
+
+    if (subscription.isSpotlight === 0) {
+      throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+    }
   }
 
-  if (subscription.isSpotlight === 0) {
-    throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+  // Return configured match count based on subscription tier
+  if (matchingConfig.ENABLE_SUBSCRIPTION_LIMITS) {
+    const matchCount = matchingConfig.SUBSCRIPTION_MATCH_COUNTS[
+      subscription.plan as keyof typeof matchingConfig.SUBSCRIPTION_MATCH_COUNTS
+    ];
+
+    if (matchCount) {
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log(`📊 Subscription ${subscription.plan}: ${matchCount} matches allowed`);
+      }
+      return matchCount;
+    }
+
+    // Fallback to SAMPLER count if plan not recognized
+    return matchingConfig.SUBSCRIPTION_MATCH_COUNTS.SAMPLER;
   }
 
-  let matchCount: number;
-  switch (subscription.plan) {
-    case SubscriptionPlanName.SEEKER:
-      matchCount = 3;
-      break;
-    case SubscriptionPlanName.SCOUT:
-      matchCount = 4;
-      break;
-    default:
-      matchCount = 2;
+  // Return default match count when subscription limits are disabled
+  if (matchingConfig.ENABLE_MATCH_LOGGING) {
+    console.log(`📊 Subscription limits disabled: ${matchingConfig.DEFAULT_MATCH_COUNT} matches for all users`);
   }
-  return matchCount;
+  return matchingConfig.DEFAULT_MATCH_COUNT;
 };
 
 const findMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -396,16 +675,25 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
       throw createError(StatusCodes.NOT_FOUND, "User not found");
     }
 
+    if (matchingConfig.ENABLE_MATCH_LOGGING) {
+      console.log(`🚀 Starting AI Matchmaking for user: ${user._id} (${user.name})`);
+    }
+
     const matchCount = subscriptionMatchCount(user.subscription);
 
-    const participants = await findMatches(req.user.userId, user.compatibility, matchCount, session);
-    // const participants = await findMatches(req.user.userId, matchCount, session);
+    // Use vector-based matching (with automatic fallback to traditional)
+    const participants = await findMatchesWithVectors(
+      req.user.userId,
+      user.compatibility,
+      matchCount,
+      session
+    );
 
     const podcastUpdate = await Podcast.findOneAndUpdate(
       { primaryUser: user._id },
       { $set: { participants } },
       { new: true, upsert: true, session }
-    );
+    ).populate('participants.user', 'name avatar');
 
     user.subscription.isSpotlight -= 1;
     await user.save({ session });

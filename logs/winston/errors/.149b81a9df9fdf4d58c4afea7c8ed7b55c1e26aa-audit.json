@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\GitHub\\podlove\\podlove_backend\\logs\\winston\\errors\\.149b81a9df9fdf4d58c4afea7c8ed7b55c1e26aa-audit.json",
+    "files": [
+        {
+            "date": 1767113001804,
+            "name": "D:\\GitHub\\podlove\\podlove_backend\\logs\\winston\\errors\\um-2025-12-30-22-error.log",
+            "hash": "937f009ace08384fef476cfdb70640517bd7788850c6ed4b1c855e0e34b03f31"
+        },
+        {
+            "date": 1767116033855,
+            "name": "D:\\GitHub\\podlove\\podlove_backend\\logs\\winston\\errors\\um-2025-12-30-23-error.log",
+            "hash": "627a83c2246d1d9045758478138daec4dfbef76622eabd1e6e51db616fbe9bd7"
+        },
+        {
+            "date": 1767117680473,
+            "name": "D:\\GitHub\\podlove\\podlove_backend\\logs\\winston\\errors\\um-2025-12-31-00-error.log",
+            "hash": "f6af82f72afb83f1e3374a490112c2963a988570228d94785260a5d687d462cb"
+        },
+        {
+            "date": 1767161333718,
+            "name": "D:\\GitHub\\podlove\\podlove_backend\\logs\\winston\\errors\\um-2025-12-31-12-error.log",
+            "hash": "cf1160726abfbc6e30486d79b48a345cd33869a92de3169463e9b33ecee02daa"
+        }
+    ],
+    "hashType": "sha256"
+}

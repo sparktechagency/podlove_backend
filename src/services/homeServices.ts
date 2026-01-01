@@ -6,6 +6,7 @@ import User from "@models/userModel";
 import mongoose, { ClientSession, Types } from "mongoose";
 import createError from "http-errors";
 import { LeanUserWithAuth } from "@shared/homeInterface";
+import matchingConfig from "@config/matchingConfig";
 
 interface HostSummary {
   _id: Types.ObjectId;
@@ -89,7 +90,12 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
           } as any);
         });
       }
-      podcast.participants = participantsArray as unknown as typeof podcast.participants;
+      //podcast.participants = participantsArray as unknown as typeof podcast.participants;
+      // 🔍 NEW: Apply matchingConfig limits to display only the configured amount of matches
+      const allowedMatchCount = matchingConfig.getMatchCount(user.subscription?.plan || "SAMPLER");
+      const finalParticipants = participantsArray.slice(0, allowedMatchCount);
+
+      podcast.participants = finalParticipants as unknown as typeof podcast.participants;
     } else {
       // @ts-ignore
       podcast = {
