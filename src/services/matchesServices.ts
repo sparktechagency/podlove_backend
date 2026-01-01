@@ -330,6 +330,11 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
       throw createError(StatusCodes.NOT_FOUND, "Matched users not found");
     }
 
+    // 🔍 NEW: Apply matchingConfig limits to display only the configured amount of matches
+    const userDoc = await User.findById(userId).select("subscription").lean();
+    const allowedMatchCount = matchingConfig.getMatchCount(userDoc?.subscription?.plan || "SAMPLER");
+    const finalUsers = enrichedUsers.slice(0, allowedMatchCount);
+
     // 5) Commit transaction
     await session.commitTransaction();
     session.endSession();
@@ -337,7 +342,8 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
     return res.status(StatusCodes.OK).json({
       success: true,
       message: "Matched users retrieved successfully",
-      data: { users: enrichedUsers },
+      //data: { users: enrichedUsers },
+      data: { users: finalUsers },
     });
   } catch (err) {
     await session.abortTransaction();

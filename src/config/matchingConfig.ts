@@ -86,7 +86,7 @@ export const ENABLE_SPOTLIGHT_QUOTA = false;
  * Default match count when subscription limits are disabled.
  * Recommended: 5-10 for good variety without overwhelming users
  */
-export const DEFAULT_MATCH_COUNT = 4;
+export const DEFAULT_MATCH_COUNT = 3;
 
 /**
  * Match counts per subscription tier.
@@ -128,7 +128,7 @@ export const MIN_SIMILARITY_SCORE = 0.5;
  * Enable automatic fallback to traditional matching when vector search fails.
  * Recommended: TRUE for production reliability
  */
-export const ENABLE_VECTOR_FALLBACK = false;
+export const ENABLE_VECTOR_FALLBACK = true;
 
 // ===================================
 // AI COMPATIBILITY SCORING

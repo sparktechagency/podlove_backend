@@ -24,6 +24,11 @@
             "date": 1767244312959,
             "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\errors\\um-2026-01-01-11-error.log",
             "hash": "92b6e20ca2043928f98d768228a2e5a2443d76e01ee84aa8ff80c5b4d9202a93"
+        },
+        {
+            "date": 1767247477961,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\errors\\um-2026-01-01-12-error.log",
+            "hash": "e5d5f210965a43d06595e647152fff6fcdb5e66f6d39116f89867a662a414077"
         }
     ],
     "hashType": "sha256"
