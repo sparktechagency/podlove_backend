@@ -5,6 +5,7 @@ import { StatusCodes } from "http-status-codes";
 import to from "await-to-ts";
 import Cloudinary from "@shared/cloudinary";
 import mongoose from "mongoose";
+import { ageToDOB } from "@utils/ageUtils";
 
 const getAll = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { search, minAge, maxAge, gender, bodyType, ethnicity } = req.query;
@@ -26,9 +27,16 @@ const getAll = async (req: Request, res: Response, next: NextFunction): Promise<
   }
 
   if (minAge || maxAge) {
-    query.age = {};
-    if (minAge) query.age.$gte = parseInt(minAge as string, 10);
-    if (maxAge) query.age.$lte = parseInt(maxAge as string, 10);
+    //    query.age = {};
+    //if (minAge) query.age.$gte = parseInt(minAge as string, 10);
+    //if (maxAge) query.age.$lte = parseInt(maxAge as string, 10);
+    query.dateOfBirth = {};
+    if (minAge) {
+      query.dateOfBirth.$lte = ageToDOB(parseInt(minAge as string, 10));
+    }
+    if (maxAge) {
+      query.dateOfBirth.$gte = ageToDOB(parseInt(maxAge as string, 10));
+    }
   }
 
   const handleArrayQuery = (param: any) => {
