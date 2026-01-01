@@ -173,3 +173,9 @@ Error: Failed to fetch videos
     at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
 Error
 Thu Jan 01 2026 12:43:51 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 12:45:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Thu Jan 01 2026 12:45:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Thu Jan 01 2026 12:45:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Thu Jan 01 2026 12:45:18 [Podlove] [32minfo[39m: Media Policy exists!
+Thu Jan 01 2026 12:45:18 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Thu Jan 01 2026 12:45:18 [Podlove] [32minfo[39m: Socket.IO server initialized

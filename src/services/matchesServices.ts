@@ -416,8 +416,8 @@ async function findMatchesWithVectors(
         // Get AI compatibility assessment
         const aiResult = await getCompatibilityScoreWithReasoning(user, candidate);
 
-        // Weighted combination: 40% vector similarity + 60% AI assessment
-        const finalScore = vectorScore * 40 + aiResult.score * 0.6;
+        // Weighted combination: 80% vector similarity + 20% AI assessment
+        const finalScore = vectorScore * 0.8 + aiResult.score * 0.2;
 
         return {
           user: candidate._id,
