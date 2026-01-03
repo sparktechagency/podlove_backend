@@ -6,6 +6,7 @@ import User from "@models/userModel";
 import mongoose, { ClientSession, Types } from "mongoose";
 import createError from "http-errors";
 import { LeanUserWithAuth } from "@shared/homeInterface";
+import matchingConfig from "@config/matchingConfig";
 
 interface HostSummary {
   _id: Types.ObjectId;
@@ -89,7 +90,12 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
           } as any);
         });
       }
-      podcast.participants = participantsArray as unknown as typeof podcast.participants;
+      //podcast.participants = participantsArray as unknown as typeof podcast.participants;
+      // 🔍 NEW: Apply matchingConfig limits to display only the configured amount of matches
+      const allowedMatchCount = matchingConfig.getMatchCount(user.subscription?.plan || "SAMPLER");
+      const finalParticipants = participantsArray.slice(0, allowedMatchCount);
+
+      podcast.participants = finalParticipants as unknown as typeof podcast.participants;
     } else {
       // @ts-ignore
       podcast = {
@@ -122,8 +128,60 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
   }
 };
 
+const homeCompletedPodcastData = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const userId = req.user?.userId;
+
+    if (!userId) {
+      return next(createError(StatusCodes.UNAUTHORIZED, "Unauthorized"));
+    }
+
+    const user = await User.findById(userId)
+      .populate({
+        path: "auth",
+        select: "email isBlocked shareFeedback chatingtime",
+      })
+      .lean<LeanUserWithAuth>();
+
+    if (!user) {
+      return next(
+        createError(StatusCodes.NOT_FOUND, "Your account was not found")
+      );
+    }
+
+    const podcasts = await Podcast.find({
+      isComplete: true,
+      $or: [
+        { primaryUser: userId },
+        { "participants.user": userId },
+      ],
+    })
+      .populate({
+        path: "participants.user",
+        select: "name bio interests",
+      })
+      .populate({
+        path: "primaryUser",
+        select: "name bio interests",
+      })
+      .lean();
+
+    res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Success",
+      data: {
+        podcast: podcasts ?? [],
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+
 const HomeServices = {
   homeData,
+  homeCompletedPodcastData,
 };
 
 export default HomeServices;

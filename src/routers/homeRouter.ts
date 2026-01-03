@@ -9,6 +9,7 @@ const upload = multer({ storage: multer.memoryStorage() });
 const router = express.Router();
 
 router.get("/", authorize, asyncHandler(HomeServices.homeData));
+router.get("/completed-podcast", authorize, asyncHandler(HomeServices.homeCompletedPodcastData));
 router.post("/upload-video",
     upload.single("video"),
     asyncHandler(LivePodcastController.uploadVideos));

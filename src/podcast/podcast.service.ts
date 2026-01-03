@@ -102,7 +102,7 @@ const getDownloadLink = async (fileKey: string): Promise<string> => {
             Key: fileKey,
             ResponseContentDisposition: `attachment; filename="${fileKey.split("/").pop()}"`,
         });
-
+        // @ts-ignore
         const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
         return url;
     } catch (error) {
@@ -382,6 +382,8 @@ const getPresignedUrl = async (fileKey: string) => {
         Bucket: process.env.AWS_S3_BUCKET_NAME!,
         Key: fileKey,
     });
+
+    // @ts-ignore
     const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
     return url;
 };

@@ -1,6 +1,5 @@
 import http from "http";
 import app from "./app";
-
 import "dotenv/config";
 import { connectDB } from "@connection/atlasDB";
 import { logger } from "@shared/logger";

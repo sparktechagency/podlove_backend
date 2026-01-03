@@ -10,6 +10,7 @@ import { ageToDOB } from "@utils/ageUtils";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
 import Podcast from "@models/podcastModel";
 import OpenAI from "openai";
+import { upsertUserVector } from "./vectorService";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
 const MODEL = "gpt-4o";
@@ -223,58 +224,19 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
           if (!updatedUser) throw new Error("User not found");
 
-          // Determine limit
-          // let limitCount = 2;
-          // if (fee === "14.99") limitCount = 3;
-          // if (fee === "29.99") limitCount = 4;
+          // Upsert user vector to Pinecone (async, non-blocking)
+          if (updatedUser.isProfileComplete) {
+            upsertUserVector(updatedUser).catch((err) => {
+              console.error("Failed to upsert user vector during subscription:", err);
+            });
+          }
 
-          // Find matches
-          // const topMatches = await findMatches(userId, updatedUser.compatibility || [], limitCount, session);
-
-          // if (!topMatches.length) {
-          //   await session.commitTransaction();
-          //   session.endSession();
-          //   res.status(200).send("No matches found");
-          //   return;
-          // }
-
-          // Prepare participants
-          // let newParticipants = [
-          //   { user: userId, score: 100, isQuestionAnswer: "" },
-          //   ...topMatches.map((m) => ({ user: m.user, score: m.score, isQuestionAnswer: "" })),
-          // ];
-
-          // const seen = new Set<string>();
-          // newParticipants = newParticipants.filter((p) => {
-          //   if (seen.has(String(p.user))) return false;
-          //   seen.add(String(p.user));
-          //   return true;
-          // });
-
-          // Check existing podcast
-          // let podcast = await Podcast.findOne({ "participants.user": userId }, {}, { session }) as any;
-
-          // if (podcast) {
-          //   const existingIds = new Set(podcast.participants.map((p: any) => String(p.user)));
-          //   const additional = newParticipants.filter((p) => !existingIds.has(String(p.user)));
-          //   const merged = [...podcast.participants, ...additional.slice(0, limitCount - podcast.participants.length)];
-          //   podcast.participants = Array.from(new Map(merged.map((p) => [String(p.user), p])).values()).slice(0, limitCount);
-          //   await podcast.save({ session });
-          // } else {
-          //   podcast = await Podcast.create(
-          //     { primaryUser: userId, participants: newParticipants.slice(0, limitCount), status: "NotScheduled" },
-          //     { session }
-          //   );
-          // }
-
-          // const participantIds = podcast?.participants?.map((p: any) => p.user) || [];
-          // if (participantIds.length) {
-          //   await User.updateMany({ _id: { $in: participantIds } }, { $set: { isPodcastActive: true } }, { session });
-          // }
+          // Matching logic is handled separately by the findMatch endpoint
+          // User will call the match API after subscribing
 
           await session.commitTransaction();
           session.endSession();
-          res.status(200).send("Match processing completed");
+          res.status(200).send("Subscription activated successfully");
           return;
         } catch (err) {
           await session.abortTransaction();
