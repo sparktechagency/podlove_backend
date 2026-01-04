@@ -1,0 +1,33 @@
+Sun Jan 04 2026 11:4:47 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 11:4:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 11:4:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 11:4:52 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 11:4:52 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 11:4:52 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 11:5:41 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:5:43 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 11:6:28 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:6:45 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:6:46 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:6:57 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:18:46 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 11:18:47 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:18:55 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 11:34:57 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:34:57 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:35:6 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98

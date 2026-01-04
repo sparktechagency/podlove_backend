@@ -27756,3 +27756,361 @@ Thu Jan 01 2026 14:5:30 [Podlove] [32minfo[39m: Consumer Policy exists!
 Thu Jan 01 2026 14:5:30 [Podlove] [32minfo[39m: Media Policy exists!
 Thu Jan 01 2026 14:5:30 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
 Thu Jan 01 2026 14:5:30 [Podlove] [32minfo[39m: Socket.IO server initialized
+Thu Jan 01 2026 15:12:57 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\20300\github\pl\podlove_backend\src\middlewares\authorization.ts:47:30
+    at C:\20300\github\pl\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Thu Jan 01 2026 15:38:2 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Thu Jan 01 2026 17:23:18 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 17:23:18 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 17:23:29 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Thu Jan 01 2026 17:23:57 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Thu Jan 01 2026 17:24:1 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 17:24:2 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 17:24:8 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 17:24:22 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 17:24:30 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 17:24:36 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Thu Jan 01 2026 17:39:23 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Thu Jan 01 2026 17:39:23 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Thu Jan 01 2026 17:39:29 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Thu Jan 01 2026 17:51:50 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Thu Jan 01 2026 17:51:50 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Thu Jan 01 2026 17:52:9 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Thu Jan 01 2026 17:52:12 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Thu Jan 01 2026 17:52:17 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 18:13:54 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Thu Jan 01 2026 18:13:54 [Podlove] [32minfo[39m: 6953ccc5b7eae74f53892048
+Fri Jan 02 2026 0:8:2 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\20300\github\pl\podlove_backend\src\middlewares\authorization.ts:47:30
+    at C:\20300\github\pl\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Fri Jan 02 2026 0:8:3 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sat Jan 03 2026 11:49:59 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 03 2026 11:50:3 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jan 03 2026 11:50:3 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jan 03 2026 11:50:3 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jan 03 2026 11:50:3 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Jan 03 2026 11:50:3 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Jan 03 2026 11:50:11 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 11:50:12 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sat Jan 03 2026 11:50:31 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 11:51:12 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sat Jan 03 2026 11:51:17 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 11:51:17 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 11:51:33 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 12:38:15 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 12:38:30 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 12:38:36 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 12:38:36 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 12:38:48 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sat Jan 03 2026 12:38:55 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 12:38:55 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 12:39:14 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 12:48:45 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sat Jan 03 2026 12:51:35 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 03 2026 12:51:39 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jan 03 2026 12:51:40 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jan 03 2026 12:51:40 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jan 03 2026 12:51:40 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Jan 03 2026 12:51:40 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Jan 03 2026 16:1:13 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sat Jan 03 2026 16:1:17 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sat Jan 03 2026 16:1:18 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sat Jan 03 2026 16:1:18 [Podlove] [32minfo[39m: Media Policy exists!
+Sat Jan 03 2026 16:1:18 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sat Jan 03 2026 16:1:18 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sat Jan 03 2026 22:12:58 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\20300\github\pl\podlove_backend\src\middlewares\authorization.ts:47:30
+    at C:\20300\github\pl\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Sat Jan 03 2026 22:13:1 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sat Jan 03 2026 22:13:20 [Podlove] [31merror[39m: Not Authorized
+UnauthorizedError: Not Authorized
+    at C:\20300\github\pl\podlove_backend\src\middlewares\authorization.ts:47:30
+    at C:\20300\github\pl\podlove_backend\src\shared\asyncHandler.ts:7:19
+    at Layer.handle [as handle_request] (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:284:15
+    at router.process_params (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:280:10)
+    at router.handle (C:\20300\github\pl\podlove_backend\node_modules\express\lib\router\index.js:175:3)
+UnauthorizedError
+Sat Jan 03 2026 22:13:22 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 11:4:47 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 11:4:51 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 11:4:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 11:4:52 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 11:4:52 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 11:4:52 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 11:5:41 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:5:43 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 11:6:28 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:6:45 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:6:46 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:6:57 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:18:46 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 11:18:47 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:18:55 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 11:34:57 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:34:57 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 11:35:6 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 12:14:41 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:14:45 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:14:45 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:14:45 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:14:45 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:14:45 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:14:46 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 12:14:46 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 12:14:48 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 12:14:55 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 12:14:55 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 12:15:7 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 12:15:34 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:15:45 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:15:49 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:15:49 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:15:49 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:15:49 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:15:49 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:17:46 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:17:50 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:17:51 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:17:51 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:17:51 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:17:51 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:17:52 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 12:17:59 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 12:17:59 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 12:18:10 [Podlove] [32minfo[39m: 6953a05c4ae03b903bb11d98
+Sun Jan 04 2026 12:18:35 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 12:19:44 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:19:44 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:19:55 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:19:55 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:20:5 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:31:24 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:31:29 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:31:29 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:31:29 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:31:29 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:31:29 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:31:30 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:31:30 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:31:31 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 12:31:52 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:31:52 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:32:2 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:33:3 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:33:7 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:33:8 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:33:8 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:33:8 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:33:8 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:33:15 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:33:15 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:33:26 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:34:9 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:34:14 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 12:34:19 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 12:34:24 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 12:34:28 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:34:28 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:34:40 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:51:36 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:51:40 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:51:40 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:51:40 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:51:40 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:51:40 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:51:51 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:51:55 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:51:56 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:51:56 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:51:56 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:51:56 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:52:11 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:52:11 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:52:23 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:52:43 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:52:52 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 12:53:11 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:53:16 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:53:17 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:53:17 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:53:17 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:53:17 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:54:31 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:54:36 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:54:36 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:54:36 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:54:36 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:54:36 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:55:1 [Podlove] [32minfo[39m: Successfully Connected to MongoDB Atlas
+Sun Jan 04 2026 12:55:5 [Podlove] [32minfo[39m: Privacy Policy exists!
+Sun Jan 04 2026 12:55:5 [Podlove] [32minfo[39m: Consumer Policy exists!
+Sun Jan 04 2026 12:55:5 [Podlove] [32minfo[39m: Media Policy exists!
+Sun Jan 04 2026 12:55:5 [Podlove] [32minfo[39m: Server is running at PORT: 8000, HOST: 0.0.0.0
+Sun Jan 04 2026 12:55:5 [Podlove] [32minfo[39m: Socket.IO server initialized
+Sun Jan 04 2026 12:56:14 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:56:36 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:56:36 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:56:49 [Podlove] [32minfo[39m: 6953989712519096eeaaca3b
+Sun Jan 04 2026 12:58:10 [Podlove] [32minfo[39m: 69537e187d57648bdab1d196
+Sun Jan 04 2026 12:58:10 [Podlove] [32minfo[39m: 69537e187d57648bdab1d196
+Sun Jan 04 2026 12:58:20 [Podlove] [32minfo[39m: 69537e187d57648bdab1d196
+Sun Jan 04 2026 12:58:20 [Podlove] [32minfo[39m: 69537e187d57648bdab1d196
+Sun Jan 04 2026 12:58:31 [Podlove] [32minfo[39m: 69537e187d57648bdab1d196
+Sun Jan 04 2026 12:59:24 [Podlove] [32minfo[39m: 69537e187d57648bdab1d196
+Sun Jan 04 2026 12:59:36 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
+Sun Jan 04 2026 12:59:41 [Podlove] [31merror[39m: Failed to fetch videos
+Error: Failed to fetch videos
+    at Object.getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.service.ts:409:15)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async getExistingVideos (C:\20300\github\pl\podlove_backend\src\podcast\podcast.controller.ts:71:20)
+Error
