@@ -128,7 +128,7 @@ export const MIN_SIMILARITY_SCORE = 0.5;
  * Enable automatic fallback to traditional matching when vector search fails.
  * Recommended: TRUE for production reliability
  */
-export const ENABLE_VECTOR_FALLBACK = true;
+export const ENABLE_VECTOR_FALLBACK = false;
 
 // ===================================
 // AI COMPATIBILITY SCORING
@@ -159,7 +159,7 @@ export const AI_MODEL = "gpt-4o";
  * 
  * Recommended: 0.3 for consistent compatibility scoring
  */
-export const AI_TEMPERATURE = 0.3;
+export const AI_TEMPERATURE = 0.5;
 
 /**
  * Maximum tokens for AI compatibility response.
@@ -183,8 +183,8 @@ export const AI_MAX_TOKENS = 200;
  * ⚠️ Must sum to 1.0
  */
 export const SCORE_WEIGHTS = {
-    VECTOR: 0.8,  // Semantic similarity from embeddings
-    AI: 0.2,      // Deep compatibility from GPT analysis
+    VECTOR: 0.5,  // Semantic similarity from embeddings
+    AI: 0.5,      // Deep compatibility from GPT analysis
 };
 
 // ===================================
@@ -257,7 +257,7 @@ export const FALLBACK_THRESHOLD = 3;
 
 /**
  * Filter relaxation order (most to least important).
- * When using 'relax_filters' strategy
+ * When using 'relax_filters' strategy.
  */
 export const FILTER_RELAXATION_ORDER = [
     'BODY_TYPE',    // Relax first
@@ -310,7 +310,7 @@ export const EMBEDDING_FIELDS = [
  * 
  * Recommended: 60-80 for quality matches
  */
-export const MIN_PROFILE_COMPLETENESS = 0;
+export const MIN_PROFILE_COMPLETENESS = 60;
 
 /**
  * Require compatibility questions to be answered.
@@ -339,14 +339,14 @@ export const ENABLE_MATCH_LOGGING = true;
  * Log AI prompts and responses.
  * ⚠️ WARNING: May expose sensitive user data in logs
  */
-export const LOG_AI_INTERACTIONS = false;
+export const LOG_AI_INTERACTIONS = true;
 
 /**
  * Include reasoning in match results returned to frontend.
  * TRUE = Send AI reasoning to client (more transparent)
  * FALSE = Return scores only (faster, less data transfer)
  */
-export const INCLUDE_REASONING_IN_RESPONSE = false;
+export const INCLUDE_REASONING_IN_RESPONSE = true;
 
 // ===================================
 // HELPER FUNCTIONS

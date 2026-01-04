@@ -212,11 +212,20 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
 
     // Perform the update
     const user = await User.findByIdAndUpdate(userId, { $set: updates }, { new: true, session })
-      .populate({ path: "auth", select: "email" })
-      .lean();
+      .populate({ path: "auth", select: "email" });
 
     if (!user) {
       throw createError(StatusCodes.NOT_FOUND, "User not found.");
+    }
+
+    // Sync to Pinecone for matching
+    try {
+      const vectorService = (await import("@services/vectorService")).default;
+      await vectorService.upsertUserVector(user as any);
+      console.log(`✅ Vector synced for user: ${user._id}`);
+    } catch (vectorError) {
+      console.error(`❌ Failed to sync vector for user ${user._id}:`, vectorError);
+      // We don't fail the request if vector sync fails, but we log it
     }
 
     await session.commitTransaction();

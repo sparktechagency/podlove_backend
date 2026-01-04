@@ -34,6 +34,66 @@
             "date": 1767254718862,
             "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-01-14-success.log",
             "hash": "2d5a71a2fcb19e3bfd5f22b0ca35594f979fa01904f7aa36fcb90086e5fe4629"
+        },
+        {
+            "date": 1767258777575,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-01-15-success.log",
+            "hash": "e4c2f2bc20d9684b1651c14b4b00759ad934a8eb5cad5c6bba0a20d40b01a723"
+        },
+        {
+            "date": 1767266598137,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-01-17-success.log",
+            "hash": "dbe84f0a47a6bb623488276556e9ecffc59a28ca0470c9105a36543ddf381870"
+        },
+        {
+            "date": 1767269634086,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-01-18-success.log",
+            "hash": "ebd87312e3bcf7e946501823d1adcceda8bb66b771777649bfada3b6bee2f0cf"
+        },
+        {
+            "date": 1767290882765,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-02-00-success.log",
+            "hash": "0e876cd2c5bfeadb4e6898cf315ffdc956054398716019cbf67f69adfcf44066"
+        },
+        {
+            "date": 1767419391649,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-03-11-success.log",
+            "hash": "5524d122d7015a549c6a4650967a70a455e7410ab7e058cc9e95600c94a555f9"
+        },
+        {
+            "date": 1767422295543,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-03-12-success.log",
+            "hash": "34aebd6214fd479dc2701e94bb834e97f8075d16d3cf774096c3c7a7514dc2c8"
+        },
+        {
+            "date": 1767434466299,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-03-16-success.log",
+            "hash": "caf696e8ab4389beddaa173041c3f5aab40c1a4c94d41639cc7cadc19ace2cbc"
+        },
+        {
+            "date": 1767456778889,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-03-22-success.log",
+            "hash": "f4c543c72407060d944e5a2bcfbf45d870122cb145ebde4172a4812dd54e50df"
+        },
+        {
+            "date": 1767503079807,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-04-11-success.log",
+            "hash": "45149cc4f7a842c90dd0442e2a81d78553d0f72d1d4bf05c1858f32ccd2070f8"
+        },
+        {
+            "date": 1767507273725,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-04-12-success.log",
+            "hash": "b62a98fff13fada63783939aa98471db6475862c64ec1b3caa60e6b387bb7e45"
+        },
+        {
+            "date": 1767513114752,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-04-13-success.log",
+            "hash": "eabd872f01e128fbc393000e21c592185aef514a79a5810c90b54ae1f2e261c9"
+        },
+        {
+            "date": 1767513641870,
+            "name": "C:\\20300\\github\\pl\\podlove_backend\\logs\\winston\\successes\\um-2026-01-04-14-success.log",
+            "hash": "2c9bd1c46c9b6be1da9db5c66847944d9c00b46f5ad7eff41c1b28a353ed9609"
         }
     ],
     "hashType": "sha256"
