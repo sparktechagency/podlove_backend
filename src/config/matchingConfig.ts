@@ -43,7 +43,7 @@ export const PREFERENCE_FILTERS = {
     AGE: true,
 
     /** Filter by body type preference (e.g., athletic, average, curvy) */
-    BODY_TYPE: true,
+    BODY_TYPE: false,
 
     /** Filter by ethnicity preference */
     ETHNICITY: true,
