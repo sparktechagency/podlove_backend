@@ -357,7 +357,7 @@ const getMatchedUsers = async (req: Request<{ id: string }>, res: Response, next
  * NEW: Vector-based matching with AI scoring
  * Combines Pinecone similarity search with OpenAI compatibility assessment
  */
-async function findMatchesWithVectors(
+export async function findMatchesWithVectors(
   userId: string,
   answers: string[],
   limitCount: number,
@@ -688,6 +688,10 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
       matchCount,
       session
     );
+
+    if (matchCount !== participants.length) {
+      throw new Error("Sport not matched the expected number of users, Please try again later.");
+    }
 
     const podcastUpdate = await Podcast.findOneAndUpdate(
       { primaryUser: user._id },

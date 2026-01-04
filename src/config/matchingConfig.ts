@@ -93,9 +93,9 @@ export const DEFAULT_MATCH_COUNT = 3;
  * Only applies when ENABLE_SUBSCRIPTION_LIMITS = true
  */
 export const SUBSCRIPTION_MATCH_COUNTS = {
-    SAMPLER: 10,   // Free tier
-    SEEKER: 20,    // Mid tier
-    SCOUT: 40,     // Premium tier
+    SAMPLER: 2,   // Free tier
+    SEEKER: 3,    // Mid tier
+    SCOUT: 4,     // Premium tier
 };
 
 // ===================================
