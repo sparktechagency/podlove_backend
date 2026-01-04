@@ -172,7 +172,6 @@ const userSchema = new Schema(
       },
       ethnicity: {
         type: [String],
-        enum: Object.values(Ethnicity),
         default: "",
       },
       distance: {

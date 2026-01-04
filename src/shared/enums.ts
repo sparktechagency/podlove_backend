@@ -40,7 +40,7 @@ export enum BodyType {
 
 export enum Ethnicity {
   NONE = "",
-  BLACK = "African American/Black",
+  BLACK = "African American / Black",
   ASIAN = "Asian",
   WHITE = "Caucasian/White",
   LATINO = "Hispanic/Latino",
