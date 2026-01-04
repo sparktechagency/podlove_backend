@@ -5,37 +5,42 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const EMBEDDING_MODEL = "text-embedding-3-large"; // 1024 dimensions
 
 /**
- * Embedding Strategy:
+ * Multi-Vector Strategy:
  * 
- * Fields to Embed (semantic search):
- * - Bio (user's self-description)
- * - Interests (hobbies, activities)
- * - Compatibility answers (relationship values, lifestyle choices)
- * - Personality traits (converted to descriptive text)
- * - Survey responses
+ * Each user has 3 distinct vectors in Pinecone:
+ * 1. PROFILE: What the user IS (Bio, Interests, Personality)
+ * 2. PREFS: What the user WANTS (Survey, Preferences as text)
+ * 3. COMP: Relationship values (Compatibility answers)
  * 
- * Fields to Keep as Metadata (exact filtering):
- * - Gender
- * - Age (dateOfBirth converted to age)
- * - BodyType
- * - Ethnicity
- * - Location (lat/long for distance filtering)
- * - isPodcastActive (exclude already matched users)
+ * IDs in Pinecone:
+ * - {userId}#profile
+ * - {userId}#prefs
+ * - {userId}#comp
  */
 
-interface UserEmbeddingData {
+export enum VectorType {
+  PROFILE = "profile",
+  PREFS = "prefs",
+  COMP = "comp",
+}
+
+interface UserVectorMetadata {
   userId: string;
+  type: VectorType;
+  gender: string;
+  age: number;
+  bodyType: string;
+  ethnicity: string[];
+  latitude: number;
+  longitude: number;
+  isPodcastActive: boolean;
+  name: string;
+}
+
+interface UserEmbeddingData {
+  id: string; // userId#type
   embedding: number[];
-  metadata: {
-    gender: string;
-    age: number;
-    bodyType: string;
-    ethnicity: string[];
-    latitude: number;
-    longitude: number;
-    isPodcastActive: boolean;
-    name: string;
-  };
+  metadata: UserVectorMetadata;
 }
 
 /**
@@ -43,7 +48,7 @@ interface UserEmbeddingData {
  */
 function personalityToText(personality: { spectrum: number; balance: number; focus: number }): string {
   const traits = [];
-  
+
   // Spectrum: 1 (Introverted) → 7 (Extroverted)
   if (personality.spectrum <= 3) traits.push("introverted, prefers quiet settings");
   else if (personality.spectrum >= 5) traits.push("extroverted, enjoys social gatherings");
@@ -65,70 +70,77 @@ function personalityToText(personality: { spectrum: number; balance: number; foc
 /**
  * Calculate age from dateOfBirth
  */
-function calculateAge(dateOfBirth: string): number {
-  const dob = new Date(dateOfBirth);
-  const today = new Date();
-  let age = today.getFullYear() - dob.getFullYear();
-  const monthDiff = today.getMonth() - dob.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-    age--;
+function calculateAge(dateOfBirth: string | null | undefined): number {
+  if (!dateOfBirth) return 0;
+  try {
+    const dob = new Date(dateOfBirth);
+    if (isNaN(dob.getTime())) return 0;
+
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDiff = today.getMonth() - dob.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+    return isNaN(age) ? 0 : age;
+  } catch (e) {
+    return 0;
   }
-  return age;
 }
 
 /**
- * Generate a rich text representation of a user profile for embedding
+ * Generate text for the PROFILE vector (Who I am)
  */
 export function generateProfileText(user: UserSchema): string {
   const parts: string[] = [];
+  if (user.bio) parts.push(`About me: ${user.bio}`);
+  if (user.interests?.length) parts.push(`My interests: ${user.interests.join(", ")}`);
+  if (user.personality) parts.push(`My personality traits: ${personalityToText(user.personality)}`);
+  if (user.ethnicity?.length) parts.push(`My background: ${user.ethnicity.join(", ")}`);
+  return parts.join("\n\n");
+}
 
-  // Bio
-  if (user.bio) {
-    parts.push(`About me: ${user.bio}`);
-  }
+/**
+ * Generate text for the PREFS vector (What I want)
+ */
+export function generatePrefsText(user: UserSchema): string {
+  const parts: string[] = [];
+  if (user.survey?.length) parts.push(`What I look for in a partner: ${user.survey.join(". ")}`);
 
-  // Interests
-  if (user.interests?.length) {
-    parts.push(`Interests: ${user.interests.join(", ")}`);
-  }
-
-  // Personality
-  if (user.personality) {
-    parts.push(`Personality: ${personalityToText(user.personality)}`);
-  }
-
-  // Compatibility answers (relationship values)
-  if (user.compatibility?.length) {
-    parts.push(`Relationship values and lifestyle: ${user.compatibility.join(". ")}`);
-  }
-
-  // Survey responses
-  if (user.survey?.length) {
-    parts.push(`Additional preferences: ${user.survey.join(". ")}`);
-  }
-
-  // Ethnicity (as context, not filter)
-  if (user.ethnicity?.length) {
-    parts.push(`Background: ${user.ethnicity.join(", ")}`);
+  const prefs = user.preferences;
+  if (prefs) {
+    const prefParts = [];
+    if (prefs.gender?.length) prefParts.push(`seeking ${prefs.gender.join(" or ")}`);
+    if (prefs.age?.min && prefs.age?.max) prefParts.push(`aged ${prefs.age.min} to ${prefs.age.max}`);
+    if (prefs.bodyType?.length) prefParts.push(`with body type ${prefs.bodyType.join(", ")}`);
+    if (prefParts.length) parts.push(`Preferences detail: I am ${prefParts.join(", ")}.`);
   }
 
   return parts.join("\n\n");
 }
 
 /**
- * Generate embedding vector for a user profile
+ * Generate text for the COMP vector (Compatibility questions)
  */
-export async function generateUserEmbedding(user: UserSchema): Promise<number[]> {
-  const profileText = generateProfileText(user);
-  
-  if (!profileText.trim()) {
-    throw new Error("Cannot generate embedding: user profile is empty");
+export function generateCompText(user: UserSchema): string {
+  if (user.compatibility?.length) {
+    return `My relationship values and lifestyle choices: ${user.compatibility.join(". ")}`;
+  }
+  return "";
+}
+
+/**
+ * Generate embedding vector for a given text
+ */
+export async function generateEmbedding(text: string): Promise<number[]> {
+  if (!text.trim()) {
+    return new Array(1024).fill(0); // Return empty vector if no text
   }
 
   try {
     const response = await openai.embeddings.create({
       model: EMBEDDING_MODEL,
-      input: profileText,
+      input: text,
       dimensions: 1024,
     });
 
@@ -140,65 +152,89 @@ export async function generateUserEmbedding(user: UserSchema): Promise<number[]>
 }
 
 /**
- * Generate complete embedding data for Pinecone storage
+ * Generate complete multi-vector embedding data for Pinecone storage
  */
-export async function generateUserEmbeddingData(user: UserSchema): Promise<UserEmbeddingData> {
-  const embedding = await generateUserEmbedding(user);
-  const age = user.dateOfBirth ? calculateAge(user.dateOfBirth) : 0;
+export async function generateUserEmbeddingData(user: UserSchema): Promise<UserEmbeddingData[]> {
+  const age = calculateAge(user.dateOfBirth);
+  const userId = String(user._id);
 
-  return {
-    userId: String(user._id),
-    embedding,
-    metadata: {
-      gender: user.gender || "",
-      age,
-      bodyType: user.bodyType || "",
-      ethnicity: user.ethnicity || [],
-      latitude: user.location?.latitude || 0,
-      longitude: user.location?.longitude || 0,
-      isPodcastActive: (user as any).isPodcastActive || false,
-      name: user.name || "",
-    },
+  const commonMetadata: Omit<UserVectorMetadata, "type"> = {
+    userId,
+    gender: user.gender || "unspecified",
+    age: age || 0,
+    bodyType: user.bodyType || "unspecified",
+    ethnicity: Array.isArray(user.ethnicity) ? user.ethnicity.filter(Boolean) : [],
+    latitude: user.location?.latitude || 0,
+    longitude: user.location?.longitude || 0,
+    isPodcastActive: (user as any).isPodcastActive || false,
+    name: user.name || "Anonymous",
   };
+
+  const tasks = [
+    { type: VectorType.PROFILE, text: generateProfileText(user) },
+    { type: VectorType.PREFS, text: generatePrefsText(user) },
+    { type: VectorType.COMP, text: generateCompText(user) },
+  ];
+
+  const results: UserEmbeddingData[] = [];
+
+  for (const task of tasks) {
+    if (task.text.trim()) {
+      const embedding = await generateEmbedding(task.text);
+      results.push({
+        id: `${userId}#${task.type}`,
+        embedding,
+        metadata: {
+          ...commonMetadata,
+          type: task.type,
+        },
+      });
+    }
+  }
+
+  return results;
 }
 
 /**
  * Batch generate embeddings for multiple users
- * Useful for initial migration or bulk updates
  */
 export async function batchGenerateEmbeddings(users: UserSchema[]): Promise<UserEmbeddingData[]> {
-  const results: UserEmbeddingData[] = [];
-  
-  // Process in batches to avoid rate limits
-  const BATCH_SIZE = 10;
-  
+  const allVectors: UserEmbeddingData[] = [];
+
+  // Process in small batches
+  const BATCH_SIZE = 5;
+
   for (let i = 0; i < users.length; i += BATCH_SIZE) {
-    const batch = users.slice(i, i + BATCH_SIZE);
+    const userBatch = users.slice(i, i + BATCH_SIZE);
     const batchResults = await Promise.all(
-      batch.map(async (user) => {
+      userBatch.map(async (user) => {
         try {
           return await generateUserEmbeddingData(user);
         } catch (error) {
-          console.error(`Failed to generate embedding for user ${user._id}:`, error);
-          return null;
+          console.error(`Failed to generate embeddings for user ${user._id}:`, error);
+          return [];
         }
       })
     );
-    
-    results.push(...batchResults.filter((r): r is UserEmbeddingData => r !== null));
-    
-    // Add delay between batches to respect rate limits
+
+    for (const userVectors of batchResults) {
+      allVectors.push(...userVectors);
+    }
+
     if (i + BATCH_SIZE < users.length) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 500));
     }
   }
-  
-  return results;
+
+  return allVectors;
 }
 
 export default {
-  generateUserEmbedding,
   generateUserEmbeddingData,
+  generateEmbedding,
   generateProfileText,
+  generatePrefsText,
+  generateCompText,
   batchGenerateEmbeddings,
+  VectorType,
 };

@@ -1,8 +1,14 @@
 import { Pinecone } from "@pinecone-database/pinecone";
 import { UserSchema } from "@models/userModel";
-import { generateUserEmbeddingData, generateUserEmbedding } from "./embeddingService";
+import {
+  generateUserEmbeddingData,
+  generateEmbedding,
+  VectorType,
+  generateProfileText,
+  generatePrefsText,
+  generateCompText
+} from "./embeddingService";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
-import { ageToDOB } from "@utils/ageUtils";
 import matchingConfig from "@config/matchingConfig";
 
 const pinecone = new Pinecone({
@@ -17,9 +23,6 @@ const DIMENSION = 1024;
  */
 export async function getIndex() {
   try {
-    if (matchingConfig.ENABLE_MATCH_LOGGING) {
-      console.log(`📡 Connecting to Pinecone index: ${INDEX_NAME}...`);
-    }
     const index = pinecone.index(INDEX_NAME);
     return index;
   } catch (error) {
@@ -29,7 +32,7 @@ export async function getIndex() {
 }
 
 /**
- * Create Pinecone index (run once during setup)
+ * Create Pinecone index
  */
 export async function createIndex() {
   try {
@@ -62,23 +65,23 @@ export async function createIndex() {
 }
 
 /**
- * Upsert a single user's embedding into Pinecone
+ * Upsert a user's multi-vectors into Pinecone
  */
 export async function upsertUserVector(user: UserSchema): Promise<void> {
   try {
     console.log(`📤 Preparing vector upsert for user: ${user._id} (${user.name})`);
-    const embeddingData = await generateUserEmbeddingData(user);
+    const vectors = await generateUserEmbeddingData(user);
     const index = await getIndex();
 
-    await index.upsert([
-      {
-        id: embeddingData.userId,
-        values: embeddingData.embedding,
-        metadata: embeddingData.metadata as any,
-      },
-    ]);
+    await index.upsert(
+      vectors.map((v) => ({
+        id: v.id,
+        values: v.embedding,
+        metadata: v.metadata as any,
+      }))
+    );
 
-    console.log(`✅ Pinecone: User ${embeddingData.userId} vector upserted successfully`);
+    console.log(`✅ Pinecone: User ${user._id} vectors (${vectors.length}) upserted successfully`);
   } catch (error: any) {
     console.error(`❌ Error upserting user ${user._id}:`, error.message);
     throw error;
@@ -87,46 +90,42 @@ export async function upsertUserVector(user: UserSchema): Promise<void> {
 
 /**
  * Batch upsert multiple user vectors
- * Useful for initial migration or bulk updates
  */
 export async function batchUpsertUserVectors(users: UserSchema[]): Promise<void> {
   try {
     const index = await getIndex();
-    const BATCH_SIZE = 100; // Pinecone recommended batch size
+    const BATCH_SIZE = 50;
 
     for (let i = 0; i < users.length; i += BATCH_SIZE) {
       const batch = users.slice(i, i + BATCH_SIZE);
-
-      const vectors = await Promise.all(
+      const allVectors = await Promise.all(
         batch.map(async (user) => {
           try {
-            const embeddingData = await generateUserEmbeddingData(user);
-            return {
-              id: embeddingData.userId,
-              values: embeddingData.embedding,
-              metadata: embeddingData.metadata as any,
-            };
+            return await generateUserEmbeddingData(user);
           } catch (error) {
             console.error(`Failed to process user ${user._id}:`, error);
-            return null;
+            return [];
           }
         })
       );
 
-      const validVectors = vectors.filter((v): v is NonNullable<typeof v> => v !== null);
+      const flatVectors = allVectors.flat().map((v) => ({
+        id: v.id,
+        values: v.embedding,
+        metadata: v.metadata as any,
+      }));
 
-      if (validVectors.length > 0) {
-        await index.upsert(validVectors);
-        console.log(`Batch ${i / BATCH_SIZE + 1}: Upserted ${validVectors.length} vectors`);
+      if (flatVectors.length > 0) {
+        await index.upsert(flatVectors);
+        console.log(`Batch ${i / BATCH_SIZE + 1}: Upserted ${flatVectors.length} vectors`);
       }
 
-      // Rate limiting delay
       if (i + BATCH_SIZE < users.length) {
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
     }
 
-    console.log(`Successfully upserted ${users.length} user vectors`);
+    console.log(`Successfully upserted vectors for ${users.length} users`);
   } catch (error: any) {
     console.error("Error in batch upsert:", error.message);
     throw error;
@@ -134,23 +133,25 @@ export async function batchUpsertUserVectors(users: UserSchema[]): Promise<void>
 }
 
 /**
- * Delete a user's vector from Pinecone
+ * Delete a user's vectors from Pinecone
  */
 export async function deleteUserVector(userId: string): Promise<void> {
   try {
     const index = await getIndex();
-    console.log(`🗑️ Deleting vector for user: ${userId}...`);
-    await index.deleteOne(userId);
-    console.log(`✅ User ${userId} vector deleted successfully from Pinecone`);
+    console.log(`🗑️ Deleting vectors for user: ${userId}...`);
+    // Delete all 3 types
+    await index.deleteMany([
+      `${userId}#${VectorType.PROFILE}`,
+      `${userId}#${VectorType.PREFS}`,
+      `${userId}#${VectorType.COMP}`,
+    ]);
+    console.log(`✅ User ${userId} vectors deleted successfully from Pinecone`);
   } catch (error: any) {
     console.error(`❌ Error deleting user ${userId}:`, error.message);
     throw error;
   }
 }
 
-/**
- * Search for similar users using vector similarity
- */
 interface VectorSearchOptions {
   user: UserSchema;
   topK?: number;
@@ -159,63 +160,52 @@ interface VectorSearchOptions {
 
 interface VectorSearchResult {
   userId: string;
-  similarityScore: number;
+  similarityScore: number; // Aggregated score
+  breakdown: {
+    profileScore: number; // User A's Prefs vs User B's Profile
+    reciprocalScore: number; // User B's Prefs vs User A's Profile
+    compScore: number; // User A's Comp vs User B's Comp
+  };
   metadata: any;
 }
 
+/**
+ * BIDIRECTIONAL MATCHING LOGIC:
+ * 1. Find candidates whose PROFILES match the current user's PREFS.
+ * 2. Find candidates whose PREFS match the current user's PROFILE.
+ * 3. Find candidates whose COMP answers match the current user's COMP.
+ * 4. Aggregate and weight the results.
+ */
 export async function searchSimilarUsers(
   options: VectorSearchOptions
 ): Promise<VectorSearchResult[]> {
   const {
     user,
-    topK = matchingConfig.VECTOR_SEARCH_TOP_K,
-    minSimilarityScore = matchingConfig.MIN_SIMILARITY_SCORE
+    topK = matchingConfig.VECTOR_SEARCH_TOP_K || 20,
+    minSimilarityScore = matchingConfig.MIN_SIMILARITY_SCORE || 0.5
   } = options;
 
   try {
-    // Generate query embedding
-    const queryEmbedding = await generateUserEmbedding(user);
     const index = await getIndex();
+    const userIdStr = String(user._id);
 
-    // Build metadata filter based on configuration
+    // 1. Get embeddings for search
+    const [profileEmb, prefsEmb, compEmb] = await Promise.all([
+      generateEmbedding(generateProfileText(user)),
+      generateEmbedding(generatePrefsText(user)),
+      generateEmbedding(generateCompText(user)),
+    ]);
+
+    // 2. Build metadata filter
     const pref = user.preferences;
-    const userAge = user.dateOfBirth ? calculateAge(user.dateOfBirth) : 0;
+    const filter: any = { isPodcastActive: false };
 
-    // Note: Pinecone metadata filtering syntax
-    const filter: any = {};
-
-    // Always filter out users in active podcasts
-    if (matchingConfig.PREFERENCE_FILTERS.IS_PODCAST_ACTIVE) {
-      filter.isPodcastActive = false;
-    }
-
-    // Apply preference-based filters if enabled
     if (matchingConfig.ENABLE_PREFERENCE_FILTERS) {
-      // Gender filter
       if (matchingConfig.PREFERENCE_FILTERS.GENDER && pref.gender?.length) {
         filter.gender = { $in: pref.gender };
-        if (matchingConfig.ENABLE_MATCH_LOGGING) {
-          console.log(`🔍 Vector search - Gender filter: ${pref.gender.join(', ')}`);
-        }
       }
-
-      // Body type filter
-      if (matchingConfig.PREFERENCE_FILTERS.BODY_TYPE && pref.bodyType?.length) {
-        filter.bodyType = { $in: pref.bodyType };
-        if (matchingConfig.ENABLE_MATCH_LOGGING) {
-          console.log(`🔍 Vector search - Body type filter: ${pref.bodyType.join(', ')}`);
-        }
-      }
-
-      // Age range filter
       if (matchingConfig.PREFERENCE_FILTERS.AGE && pref.age?.min && pref.age?.max) {
-        filter.age = {
-          $gte: pref.age.min,
-          $lte: pref.age.max,
-        };
-        if (matchingConfig.ENABLE_MATCH_LOGGING) {
-          console.log(`🔍 Vector search - Age filter: ${pref.age.min}-${pref.age.max}`);
-        }
+        filter.age = { $gte: pref.age.min, $lte: pref.age.max };
       }
     }
 
@@ -223,85 +213,113 @@ export async function searchSimilarUsers(
       console.log(`🔍 Vector search filters:`, JSON.stringify(filter, null, 2));
     }
 
-    // Query Pinecone
-    if (matchingConfig.ENABLE_MATCH_LOGGING) {
-      console.log(`🔎 Querying Pinecone for similar users (topK: ${topK})...`);
+    // 3. Execute 3 queries parallel
+    const [matchesProfile, matchesReciprocal, matchesComp] = await Promise.all([
+      // Query 1: My Prefs vs Others' Profiles
+      index.query({
+        vector: prefsEmb,
+        topK: topK * 5,
+        filter: { ...filter, type: VectorType.PROFILE },
+        includeMetadata: true,
+      }),
+      // Query 2: My Profile vs Others' Prefs
+      index.query({
+        vector: profileEmb,
+        topK: topK * 5,
+        filter: { type: VectorType.PREFS }, // Less strict filter for reciprocal
+        includeMetadata: true,
+      }),
+      // Query 3: My Comp vs Others' Comp
+      index.query({
+        vector: compEmb,
+        topK: topK * 5,
+        filter: { ...filter, type: VectorType.COMP },
+        includeMetadata: true,
+      }),
+    ]);
+
+    // 4. Aggregate results
+    const candidateMap = new Map<string, VectorSearchResult>();
+
+    // Process Forward Matches (My Prefs -> Their Profile)
+    for (const m of matchesProfile.matches) {
+      const uId = m.metadata?.userId as string;
+      if (!uId || uId === userIdStr) continue;
+
+      candidateMap.set(uId, {
+        userId: uId,
+        similarityScore: 0,
+        breakdown: { profileScore: m.score || 0, reciprocalScore: 0, compScore: 0 },
+        metadata: m.metadata,
+      });
     }
-    const queryResponse = await index.query({
-      vector: queryEmbedding,
-      topK: topK * 2, // Get more to filter by distance
-      filter,
-      includeMetadata: true,
-    });
 
-    if (matchingConfig.ENABLE_MATCH_LOGGING) {
-      console.log(`✨ Pinecone returned ${queryResponse.matches.length} raw matches`);
-    }
+    // Process Reciprocal (Their Prefs -> My Profile)
+    for (const m of matchesReciprocal.matches) {
+      const uId = m.metadata?.userId as string;
+      if (!uId || uId === userIdStr) continue;
 
-    // Post-filter by distance (if enabled)
-    const results: VectorSearchResult[] = [];
-
-    for (const match of queryResponse.matches) {
-      // Skip self
-      if (match.id === String(user._id)) continue;
-
-      // Check similarity threshold
-      if (match.score && match.score < minSimilarityScore) continue;
-
-      // Distance filtering (if enabled)
-      const metadata = match.metadata;
-      if (metadata?.latitude && metadata?.longitude) {
-        let includeUser = true;
-
-        if (matchingConfig.ENABLE_PREFERENCE_FILTERS && matchingConfig.PREFERENCE_FILTERS.DISTANCE) {
-          const maxDistance = pref.distance || matchingConfig.DEFAULT_MAX_DISTANCE;
-          const distance = calculateDistance(
-            user.location.latitude,
-            user.location.longitude,
-            metadata.latitude as number,
-            metadata.longitude as number
-          );
-          includeUser = distance <= maxDistance;
-
-          if (matchingConfig.ENABLE_MATCH_LOGGING && includeUser) {
-            console.log(`✅ User ${match.id}: distance ${distance.toFixed(2)} miles (max: ${maxDistance})`);
-          }
-        }
-
-        if (includeUser) {
-          results.push({
-            userId: match.id,
-            similarityScore: match.score || 0,
-            metadata: metadata,
-          });
-        }
+      if (candidateMap.has(uId)) {
+        candidateMap.get(uId)!.breakdown.reciprocalScore = m.score || 0;
+      } else {
+        // Only if forward match didn't find them, but they want US
+        // We still consider them if they meet our basic filters (checked later)
+        candidateMap.set(uId, {
+          userId: uId,
+          similarityScore: 0,
+          breakdown: { profileScore: 0, reciprocalScore: m.score || 0, compScore: 0 },
+          metadata: m.metadata, // Metadata from PREFS vector is same as PROFILE
+        });
       }
     }
 
-    if (matchingConfig.ENABLE_MATCH_LOGGING) {
-      console.log(`📊 Vector search found ${results.length} candidates after all filters`);
+    // Process Comp
+    for (const m of matchesComp.matches) {
+      const uId = m.metadata?.userId as string;
+      if (!uId || uId === userIdStr) continue;
+
+      if (candidateMap.has(uId)) {
+        candidateMap.get(uId)!.breakdown.compScore = m.score || 0;
+      }
     }
 
-    // Return top K after distance filtering
-    return results.slice(0, topK);
+    // 5. Calculate final weighted score and finalize results
+    const results: VectorSearchResult[] = [];
+    const candidates = Array.from(candidateMap.values());
+
+    for (const c of candidates) {
+      // WEIGHTS: Profile(0.4), Reciprocal(0.35), Comp(0.25)
+      // If a score is 0 (no match in topK), we treat it as a neutral/low score
+      const finalScore =
+        (c.breakdown.profileScore * 0.4) +
+        (c.breakdown.reciprocalScore * 0.35) +
+        (c.breakdown.compScore * 0.25);
+
+      c.similarityScore = finalScore;
+
+      // Filter by min score
+      if (finalScore < minSimilarityScore) continue;
+
+      // Distance filter
+      if (matchingConfig.PREFERENCE_FILTERS.DISTANCE && pref.distance) {
+        const dist = calculateDistance(
+          user.location.latitude,
+          user.location.longitude,
+          c.metadata.latitude,
+          c.metadata.longitude
+        );
+        if (dist > pref.distance) continue;
+      }
+
+      results.push(c);
+    }
+
+    // Sort and return topK
+    return results.sort((a, b) => b.similarityScore - a.similarityScore).slice(0, topK);
   } catch (error: any) {
     console.error("Error searching similar users:", error.message);
     throw error;
   }
-}
-
-/**
- * Helper function to calculate age from dateOfBirth
- */
-function calculateAge(dateOfBirth: string): number {
-  const dob = new Date(dateOfBirth);
-  const today = new Date();
-  let age = today.getFullYear() - dob.getFullYear();
-  const monthDiff = today.getMonth() - dob.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-    age--;
-  }
-  return age;
 }
 
 /**
@@ -310,10 +328,7 @@ function calculateAge(dateOfBirth: string): number {
 export async function getIndexStats() {
   try {
     const index = await getIndex();
-    console.log(`📊 Fetching statistics for Pinecone index: ${INDEX_NAME}...`);
-    const stats = await index.describeIndexStats();
-    console.log(`📈 Index Stats: Total ${stats.totalRecordCount} vectors, dimension: ${stats.dimension}`);
-    return stats;
+    return await index.describeIndexStats();
   } catch (error: any) {
     console.error("❌ Error getting index stats:", error.message);
     throw error;
@@ -326,10 +341,25 @@ export async function getIndexStats() {
 export async function userVectorExists(userId: string): Promise<boolean> {
   try {
     const index = await getIndex();
-    const result = await index.fetch([userId]);
-    return !!result.records[userId];
+    const result = await index.fetch([`${userId}#${VectorType.PROFILE}`]);
+    return !!result.records[`${userId}#${VectorType.PROFILE}`];
   } catch (error) {
     return false;
+  }
+}
+
+/**
+ * Delete all vectors from the index (Clean)
+ */
+export async function deleteAllVectors() {
+  try {
+    const index = await getIndex();
+    console.log(`🧹 Cleaning index ${INDEX_NAME}...`);
+    await index.deleteAll();
+    console.log(`✅ Index ${INDEX_NAME} cleaned successfully`);
+  } catch (error: any) {
+    console.error("❌ Error cleaning index:", error.message);
+    throw error;
   }
 }
 
@@ -339,6 +369,7 @@ export default {
   upsertUserVector,
   batchUpsertUserVectors,
   deleteUserVector,
+  deleteAllVectors,
   searchSimilarUsers,
   getIndexStats,
   userVectorExists,

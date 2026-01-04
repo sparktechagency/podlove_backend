@@ -388,18 +388,24 @@ async function findMatchesWithVectors(
     }
 
     // 4) Perform vector similarity search
+    // Uses config for topK and minSimilarityScore
     const vectorResults = await searchSimilarUsers({
       user,
-      topK: Math.min(limitCount * 3, 15), // Get more candidates for AI filtering
-      minSimilarityScore: 0.5, // Only consider reasonably similar users
+      topK: matchingConfig.VECTOR_SEARCH_TOP_K || 20,
+      minSimilarityScore: matchingConfig.MIN_SIMILARITY_SCORE || 0.5,
     });
 
     if (!vectorResults.length) {
-      console.log("No vector matches found, falling back to traditional matching");
-      return await findMatchesTraditional(userId, answers, limitCount, session);
+      if (matchingConfig.ENABLE_MATCH_LOGGING) {
+        console.log("No vector matches found, falling back to traditional matching");
+      }
+      if (matchingConfig.ENABLE_VECTOR_FALLBACK) {
+        return await findMatchesTraditional(userId, answers, limitCount, session);
+      }
+      return [];
     }
 
-    // 5) Load full user documents for AI scoring
+    // 5) Load full user documents for further processing
     const candidateIds = vectorResults.map((r) => new Types.ObjectId(r.userId));
     const candidates = await User.find(
       { _id: { $in: candidateIds } },
@@ -407,24 +413,37 @@ async function findMatchesWithVectors(
       { session }
     ).lean();
 
-    // 6) AI-based compatibility scoring
+    // 6) Compatibility scoring (AI or simple)
     const scoredCandidates = await Promise.all(
       candidates.map(async (candidate) => {
         const vectorResult = vectorResults.find((r) => r.userId === candidate._id.toString());
         const vectorScore = vectorResult?.similarityScore || 0;
 
-        // Get AI compatibility assessment
-        const aiResult = await getCompatibilityScoreWithReasoning(user, candidate);
+        let aiScore = 0;
+        let reasoning = "Semantic match based on profile and preferences.";
 
-        // Weighted combination: 80% vector similarity + 20% AI assessment
-        const finalScore = vectorScore * 0.8 + aiResult.score * 0.2;
+        // Deep AI assessment if enabled in config
+        if (matchingConfig.ENABLE_AI_COMPATIBILITY) {
+          const aiResult = await getCompatibilityScoreWithReasoning(user, candidate);
+          aiScore = aiResult.score;
+          reasoning = aiResult.reasoning;
+        } else {
+          // Fallback to simple compatibility score or vector score only
+          aiScore = vectorScore * 100; // Use vector score as base if AI is off
+        }
+
+        // Weighted combination from config: VECTOR vs AI
+        const vWeight = matchingConfig.SCORE_WEIGHTS?.VECTOR || 0.5;
+        const aWeight = matchingConfig.SCORE_WEIGHTS?.AI || 0.5;
+
+        const finalScore = (vectorScore * vWeight) + ((aiScore / 100) * aWeight);
 
         return {
           user: candidate._id,
-          score: Math.round(finalScore),
+          score: Math.round(finalScore * 100),
           vectorScore: Math.round(vectorScore * 100),
-          aiScore: aiResult.score,
-          reasoning: aiResult.reasoning,
+          aiScore: Math.round(aiScore),
+          reasoning: reasoning,
         };
       })
     );
@@ -436,8 +455,11 @@ async function findMatchesWithVectors(
 
   } catch (error) {
     console.error("Error in vector-based matching:", error);
-    // Fallback to traditional matching on error
-    return await findMatchesTraditional(userId, answers, limitCount, session);
+    // Fallback if enabled
+    if (matchingConfig.ENABLE_VECTOR_FALLBACK) {
+      return await findMatchesTraditional(userId, answers, limitCount, session);
+    }
+    throw error;
   }
 }
 
@@ -695,8 +717,10 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
       { new: true, upsert: true, session }
     ).populate('participants.user', 'name avatar');
 
-    user.subscription.isSpotlight -= 1;
-    await user.save({ session });
+    if (matchingConfig.ENABLE_SPOTLIGHT_QUOTA) {
+      user.subscription.isSpotlight -= 1;
+      await user.save({ session });
+    }
 
     await session.commitTransaction();
 

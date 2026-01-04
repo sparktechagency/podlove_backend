@@ -49,7 +49,7 @@ export const PREFERENCE_FILTERS = {
     ETHNICITY: true,
 
     /** Filter by maximum distance in miles (geographic proximity) */
-    DISTANCE: false,
+    DISTANCE: true,
 
     /**
      * Filter out users who are already matched in active podcasts
@@ -128,7 +128,7 @@ export const MIN_SIMILARITY_SCORE = 0.5;
  * Enable automatic fallback to traditional matching when vector search fails.
  * Recommended: TRUE for production reliability
  */
-export const ENABLE_VECTOR_FALLBACK = true;
+export const ENABLE_VECTOR_FALLBACK = false;
 
 // ===================================
 // AI COMPATIBILITY SCORING
@@ -139,7 +139,7 @@ export const ENABLE_VECTOR_FALLBACK = true;
  * When FALSE: Uses simple compatibility question comparison
  * When TRUE: Uses GPT-4 for deep analysis (slower, more expensive, higher quality)
  */
-export const ENABLE_AI_COMPATIBILITY = true;
+export const ENABLE_AI_COMPATIBILITY = false;
 
 /**
  * OpenAI model for compatibility analysis.

@@ -1,0 +1,27 @@
+﻿≡ƒôè Matching Configuration Loaded:
+   - Preference Filters: ENABLED
+   - Active Filters: GENDER, AGE, BODY_TYPE, ETHNICITY, EXCLUDE_SELF
+   - Subscription Limits: DISABLED
+   - Default Match Count: 3
+   - AI Compatibility: ENABLED
+   - Vector Search Top-K: 20
+   - Score Weights: Vector 50% / AI 50%
+≡ƒÜÇ Starting Pinecone Migration...
+Sun Jan 04 2026 14:2:52 [Podlove] [32m[32minfo[32m[39m: Successfully Connected to MongoDB Atlas
+≡ƒôÑ Fetching users from MongoDB...
+Γ£à Found 5 users in MongoDB (DEBUG LIMIT)
+Γä╣∩╕Å Index podlove-users already exists
+≡ƒôñ Migrating users to Pinecone...
+≡ƒôí Connecting to Pinecone index: podlove-users...
+≡ƒôª Batch preparing user 691809b03b0133a925a5aa9b: Test
+≡ƒôª Batch preparing user 690b266957468589cd23226d: Md. Nuruzzaman
+≡ƒôª Batch preparing user 6912b1401a7cf617f491dd75: Front dev 1
+≡ƒôª Batch preparing user 691400add77c713f2564c523: Md. Nuruzzaman
+≡ƒôª Batch preparing user 6912ac1d20dd0f115dc1ad5c: Md. Nuruzzaman
+Batch 1: Upserted 5 vectors
+Successfully upserted 5 user vectors
+Γ£à Migration completed successfully!
+
+≡ƒÆí Pro-tip: Pass a userId as an argument to test matching immediately:
+   npx ts-node -r tsconfig-paths/register scripts/migrateToPinecone.ts <USER_ID>
+   Example: npx ts-node -r tsconfig-paths/register scripts/migrateToPinecone.ts 691809b03b0133a925a5aa9b
