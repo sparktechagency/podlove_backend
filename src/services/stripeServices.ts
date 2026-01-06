@@ -178,6 +178,8 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
     return;
   }
 
+  console.log(`==========================================Received Stripe event=============================: ${event.type}`);
+
   try {
     switch (event.type) {
       case "invoice.payment_succeeded": {
