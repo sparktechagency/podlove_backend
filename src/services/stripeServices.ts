@@ -226,7 +226,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             { new: true, session, runValidators: true }
           );
 
-          console.log(`Updated subscription for user ${userId}:`, userId, plan, fee, subscription_id);
+          console.log(`===============Updated subscription for user ${userId}:`, userId, plan, fee, subscription_id);
 
           if (!updatedUser) {
             throw new Error("User not found or update failed");
