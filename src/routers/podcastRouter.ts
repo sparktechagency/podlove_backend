@@ -8,7 +8,7 @@ import LivePodcastController from "src/podcast/podcast.controller";
 
 const router = express.Router();
 
-router.post("/create", authorize, asyncHandler(PodcastController.create));
+// router.post("/create", authorize, asyncHandler(PodcastController.create));
 router.patch("/send-podcast-request", authorize, asyncHandler(PodcastController.sendPodcastRequest));
 router.post("/recordings/:id", authorize, upload.single("recording"), PodcastController.updateRecording);
 router.post("/start-podcast/:id", authorize, PodcastController.startPodcast);

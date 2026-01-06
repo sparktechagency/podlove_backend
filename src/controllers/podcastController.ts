@@ -9,21 +9,21 @@ import mongoose, { Types } from "mongoose";
 
 import matchingConfig from "@config/matchingConfig";
 
-const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const user = await User.findById(req.user.userId);
+// const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+//   const user = await User.findById(req.user.userId);
 
-  const matchCount = matchingConfig.getMatchCount(user!.subscription.plan || "SAMPLER");
-  const participants = await MatchedServices.match(String(user!._id), matchCount);
+//   const matchCount = matchingConfig.getMatchCount(user!.subscription.plan || "SAMPLER");
+//   const participants = await MatchedServices.match(String(user!._id), matchCount);
 
 
-  const podcast = await Podcast.create({ primaryUser: user!._id, participants: participants });
+//   const podcast = await Podcast.create({ primaryUser: user!._id, participants: participants });
 
-  return res.status(StatusCodes.CREATED).json({
-    success: true,
-    message: "User successfully scheduled for the podcast",
-    data: podcast,
-  });
-};
+//   return res.status(StatusCodes.CREATED).json({
+//     success: true,
+//     message: "User successfully scheduled for the podcast",
+//     data: podcast,
+//   });
+// };
 
 const removeFromPodcast = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
@@ -313,7 +313,7 @@ const getAdminRecordedPodcast = async (req: Request, res: Response, next: NextFu
 }
 
 const PodcastController = {
-  create,
+  // create,
   removeFromPodcast,
   getPodcasts,
   sendPodcastRequest,

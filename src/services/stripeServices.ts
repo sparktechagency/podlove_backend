@@ -11,7 +11,7 @@ import { calculateDistance } from "@utils/calculateDistanceUtils";
 import Podcast from "@models/podcastModel";
 import OpenAI from "openai";
 import { upsertUserVector } from "./vectorService";
-import { findMatchesWithVectors } from "./matchesServices";
+import { createAndUpdatePodcast, findMatchesWithVectors } from "./matchesServices";
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
 const MODEL = "gpt-4o";
@@ -159,6 +159,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 //     .slice(0, limitCount);
 // }
 
+
 /* ---------------- STRIPE WEBHOOK ---------------- */
 const webhook = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
@@ -206,6 +207,8 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
               matchCount = 2;
           }
 
+          console.log(`Processing subscription for user ${userId} with plan ${plan}`);
+
 
           const updatedUser = await User.findByIdAndUpdate(
             userId,
@@ -243,11 +246,16 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             throw new Error("Match count mismatch");
           }
 
-          await Podcast.findOneAndUpdate(
-            { primaryUser: userId },
-            { participants },
-            { upsert: true, new: true, session }
-          );
+          if (participants.length !== matchCount) {
+            throw new Error("Match count mismatch");
+          }
+
+          await createAndUpdatePodcast({
+            isSpotlight: updatedUser.subscription.isSpotlight,
+            userId: updatedUser._id,
+            newParticipants: participants,
+            session
+          });
 
           updatedUser.subscription.isSpotlight -= 1;
 

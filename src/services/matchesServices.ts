@@ -705,24 +705,80 @@ export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight
   return matchingConfig.DEFAULT_MATCH_COUNT;
 };
 
-const findMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+
+export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipants, session }: any) => {
+
+  if (
+    // matchingConfig.ENABLE_SPOTLIGHT_QUOTA &&  
+    isSpotlight === 0) {
+    throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+  }
+
+
+  const activePodcast = await Podcast.findOne(
+    { 'participants.user': userId, isComplete: false },
+    null,
+    { session }
+  );
+
+  if (activePodcast) {
+    throw new Error("You already have an active podcast.");
+  }
+
+  let podcast = await Podcast.findOne(
+    { primaryUser: userId, isComplete: false },
+    null,
+    { session }
+  );
+
+  if (podcast) {
+    podcast = await Podcast.findOneAndUpdate(
+      { _id: podcast._id },
+      {
+        $set: {
+          participants: newParticipants,
+          status: "NotScheduled"
+        }
+      },
+      { new: true, session }
+    ).populate('participants.user', 'name avatar');
+  } else {
+    podcast = new Podcast({
+      primaryUser: userId,
+      participants: newParticipants,
+      status: "NotScheduled",
+      isComplete: false
+    });
+
+    await podcast.save({ session });
+  }
+
+  if (!podcast) {
+    throw new Error("Failed to create or update podcast.");
+  }
+
+  const participantIds = podcast.participants.map((p: any) => p.user);
+  await User.updateMany(
+    { _id: { $in: participantIds } },
+    { $set: { isMatch: true } },
+    { session }
+  );
+
+  return podcast;
+};
+
+
+const findMatch = async (req: Request, res: Response, next: NextFunction) => {
   const session = await mongoose.startSession();
 
   try {
     session.startTransaction();
 
     const user = await User.findById(req.user.userId, null, { session });
-    if (!user) {
-      throw createError(StatusCodes.NOT_FOUND, "User not found");
-    }
-
-    if (matchingConfig.ENABLE_MATCH_LOGGING) {
-      console.log(`🚀 Starting AI Matchmaking for user: ${user._id} (${user.name})`);
-    }
+    if (!user) throw createError(StatusCodes.NOT_FOUND, "User not found");
 
     const matchCount = subscriptionMatchCount(user.subscription);
 
-    // Use vector-based matching (with automatic fallback to traditional)
     const participants = await findMatchesWithVectors(
       req.user.userId,
       user.compatibility,
@@ -730,23 +786,27 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
       session
     );
 
-    const podcastUpdate = await Podcast.findOneAndUpdate(
-      { primaryUser: user._id },
-      { $set: { participants } },
-      { new: true, upsert: true, session }
-    ).populate('participants.user', 'name avatar');
-
-    if (matchingConfig.ENABLE_SPOTLIGHT_QUOTA) {
-      user.subscription.isSpotlight -= 1;
-      await user.save({ session });
+    if (participants.length !== matchCount) {
+      throw new Error("Match count mismatch");
     }
+
+    const podcast = await createAndUpdatePodcast({
+      isSpotlight: user.subscription.isSpotlight,
+      userId: user._id,
+      newParticipants: participants,
+      session
+    });
+
+
+    user.subscription.isSpotlight -= 1;
+    await user.save({ session });
 
     await session.commitTransaction();
 
-    return res.status(StatusCodes.OK).json({
+    res.status(StatusCodes.OK).json({
       success: true,
-      message: "User successfully updated matches for the podcast",
-      data: podcastUpdate,
+      message: "Matchmaking completed",
+      data: podcast,
     });
 
   } catch (err) {
@@ -756,6 +816,7 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
     session.endSession();
   }
 };
+
 
 const MatchedServices = {
   match,
