@@ -416,6 +416,7 @@ export async function findMatchesWithVectors(
       }
     }
 
+
     if (validCandidateIds.length === 0) {
       if (matchingConfig.ENABLE_MATCH_LOGGING) {
         console.log("No valid candidate IDs found in vector results.");
