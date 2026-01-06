@@ -209,12 +209,9 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
               isSpotlight = 1;
               matchCount = 2;
           }
-
           console.log(`Processing subscription for user ${userId} with plan ${plan}`);
 
-
-
-          const updatedUser = await User.findById(userId).session(session);
+          const updatedUser = await User.findById(userId);
           console.log(`0 =============Updated subscription for user ${userId}:`, updatedUser?.subscription);
           if (!updatedUser) throw new Error("User not found");
           updatedUser.subscription.id = subscription.id;
@@ -225,10 +222,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           updatedUser.subscription.startedAt = new Date();
           updatedUser.subscription.status = SubscriptionStatus.PAID;
           updatedUser.subscription.isSpotlight = isSpotlight;
-
           await updatedUser.save();
-
-
 
           console.log(`Updated User Subscription:`, updatedUser);
           if (!updatedUser) {
