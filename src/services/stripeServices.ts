@@ -226,8 +226,6 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             { new: true, session, runValidators: true }
           );
 
-          console.log("UPDATED SUB:", updatedUser?.subscription);
-
           if (!updatedUser) {
             throw new Error("User not found or update failed");
           }
@@ -254,18 +252,24 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             throw new Error("Match count mismatch");
           }
           console.log(`Processing subscription for user ${userId} with plan ${plan}`);
-          await createAndUpdatePodcast({
+          const userUpdate = await createAndUpdatePodcast({
             isSpotlight: updatedUser.subscription.isSpotlight,
             userId: updatedUser._id,
             newParticipants: participants,
             session
           });
 
-          updatedUser.subscription.isSpotlight -= 1;
-
-          await updatedUser.save({ session });
-
-
+          if (userUpdate) {
+            await User.findByIdAndUpdate(
+              userId,
+              {
+                $inc: {
+                  "subscription.isSpotlight": -1,
+                },
+              },
+              { new: true, session }
+            );
+          }
           await session.commitTransaction();
           session.endSession();
           res.status(200).send("Subscription activated successfully");
