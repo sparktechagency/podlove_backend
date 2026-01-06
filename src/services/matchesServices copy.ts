@@ -521,29 +521,28 @@ async function findMatchesTraditional(
 
 export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight: number }) => {
   // FILTERS COMMENTED OUT - Show more AI matches regardless of subscription
-  // if (!subscription.plan) {
-  //   throw new Error("No active subscription found. Please subscribe to find matches.");
-  // }
+  if (!subscription.plan) {
+    throw new Error("No active subscription found. Please subscribe to find matches.");
+  }
 
-  // if (subscription.isSpotlight === 0) {
-  //   throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
-  // }
+  if (subscription.isSpotlight === 0) {
+    throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+  }
 
-  // let matchCount: number;
-  // switch (subscription.plan) {
-  //   case SubscriptionPlanName.SEEKER:
-  //     matchCount = 3;
-  //     break;
-  //   case SubscriptionPlanName.SCOUT:
-  //     matchCount = 4;
-  //     break;
-  //   default:
-  //     matchCount = 2;
-  // }
-  // return matchCount;
+  let matchCount: number;
+  switch (subscription.plan) {
+    case SubscriptionPlanName.SEEKER:
+      matchCount = 3;
+      break;
+    case SubscriptionPlanName.SCOUT:
+      matchCount = 4;
+      break;
+    default:
+      matchCount = 2;
+  }
+  return matchCount;
 
-  // Return higher match count to show more AI-matched profiles
-  return 10;
+
 };
 
 const findMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
