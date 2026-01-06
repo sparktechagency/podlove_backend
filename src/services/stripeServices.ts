@@ -225,7 +225,9 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             },
             { new: true, session }
           );
-          console.log(`User:`, updatedUser);
+
+          console.log(`User====================:`, updatedUser);
+
           if (!updatedUser) throw new Error("User not found");
 
           // Upsert user vector to Pinecone (async, non-blocking)
