@@ -215,20 +215,22 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             {
               $set: {
                 "subscription.id": subscription.id,
-                "subscription.subscription_id": subscription_id,
-                "subscription.plan": plan,
-                "subscription.fee": fee,
+                "subscription.subscription_id": new Types.ObjectId(subscription_id),
+                "subscription.plan": plan as SubscriptionPlanName,
+                "subscription.fee": String(fee),
                 "subscription.isSpotlight": isSpotlight,
                 "subscription.startedAt": new Date(),
                 "subscription.status": SubscriptionStatus.PAID,
               },
             },
-            { new: true, session }
+            { new: true, session, runValidators: true }
           );
 
-          console.log(`User====================:`, updatedUser);
+          console.log("UPDATED SUB:", updatedUser?.subscription);
 
-          if (!updatedUser) throw new Error("User not found");
+          if (!updatedUser) {
+            throw new Error("User not found or update failed");
+          }
 
           // Upsert user vector to Pinecone (async, non-blocking)
           if (updatedUser.isProfileComplete) {
