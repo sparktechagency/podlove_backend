@@ -141,7 +141,7 @@ export async function deleteUserVector(userId: string): Promise<void> {
     const index = await getIndex();
     console.log(`🗑️ Deleting vector for user: ${userId}...`);
     await index.deleteOne(userId);
-    console.log(`✅ User ${userId} vector deleted successfully from Pinecone`);
+    // console.log(`✅ User ${userId} vector deleted successfully from Pinecone`);
   } catch (error: any) {
     console.error(`❌ Error deleting user ${userId}:`, error.message);
     throw error;
@@ -264,7 +264,7 @@ export async function searchSimilarUsers(
           includeUser = distance <= maxDistance;
 
           if (matchingConfig.ENABLE_MATCH_LOGGING && includeUser) {
-            console.log(`✅ User ${match.id}: distance ${distance.toFixed(2)} miles (max: ${maxDistance})`);
+            // console.log(`✅ User ${match.id}: distance ${distance.toFixed(2)} miles (max: ${maxDistance})`);
           }
         }
 
