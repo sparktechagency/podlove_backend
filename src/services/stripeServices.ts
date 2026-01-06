@@ -249,7 +249,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           if (participants.length !== matchCount) {
             throw new Error("Match count mismatch");
           }
-
+          console.log(`Processing subscription for user ${userId} with plan ${plan}`);
           await createAndUpdatePodcast({
             isSpotlight: updatedUser.subscription.isSpotlight,
             userId: updatedUser._id,
