@@ -412,10 +412,9 @@ export async function findMatchesWithVectors(
       if (mongoose.Types.ObjectId.isValid(r.userId)) {
         validCandidateIds.push(new Types.ObjectId(r.userId));
       } else {
-        // console.warn(`⚠️ Skipping invalid potential match ID: ${r.userId}`);
+        console.warn(`⚠️ Skipping invalid potential match ID: ${r.userId}`);
       }
     }
-
 
     if (validCandidateIds.length === 0) {
       if (matchingConfig.ENABLE_MATCH_LOGGING) {
@@ -706,7 +705,6 @@ export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight
   return matchingConfig.DEFAULT_MATCH_COUNT;
 };
 
-
 export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipants, session }: any) => {
 
   if (
@@ -768,7 +766,6 @@ export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipa
   return podcast;
 };
 
-
 const findMatch = async (req: Request, res: Response, next: NextFunction) => {
   const session = await mongoose.startSession();
 
@@ -819,8 +816,123 @@ const findMatch = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 
+const refreshUpdatePodcast = async ({ isSpotlight, userId, newParticipants, session }: any) => {
+
+  if (
+    // matchingConfig.ENABLE_SPOTLIGHT_QUOTA &&  
+    isSpotlight === 0) {
+    throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+  }
+
+
+  const activePodcast = await Podcast.findOne(
+    { 'participants.user': userId, isComplete: false },
+    null,
+    { session }
+  );
+
+  if (activePodcast) {
+    throw new Error("You already have an active podcast.");
+  }
+
+  let podcast = await Podcast.findOne(
+    { primaryUser: userId, isComplete: false },
+    null,
+    { session }
+  );
+
+  if (podcast) {
+    podcast = await Podcast.findOneAndUpdate(
+      { _id: podcast._id },
+      {
+        $set: {
+          participants: newParticipants,
+          status: "NotScheduled"
+        }
+      },
+      { new: true, session }
+    ).populate('participants.user', 'name avatar');
+  } else {
+    podcast = new Podcast({
+      primaryUser: userId,
+      participants: newParticipants,
+      status: "NotScheduled",
+      isComplete: false
+    });
+
+    await podcast.save({ session });
+  }
+
+  if (!podcast) {
+    throw new Error("Failed to create or update podcast.");
+  }
+
+  const participantIds = podcast.participants.map((p: any) => p.user);
+  await User.updateMany(
+    { _id: { $in: participantIds } },
+    { $set: { isMatch: true } },
+    { session }
+  );
+
+  return podcast;
+};
+
+
+const refreshTheMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
+
+  const user = await User.findById(req.user.userId, null, { session });
+  if (!user) {
+    throw createError(StatusCodes.NOT_FOUND, "User not found");
+  }
+
+  if (user.subscription.matchRefresh <= 0) {
+    throw createError(StatusCodes.FORBIDDEN, "No match refreshes left. Please upgrade your subscription.");
+  }
+
+  try {
+    const matchCount = subscriptionMatchCount(user.subscription);
+    const participants = await findMatchesWithVectors(
+      req.user.userId,
+      user.compatibility,
+      matchCount,
+      session
+    );
+    if (participants.length !== matchCount) {
+      throw new Error("Match count mismatch");
+    }
+    const podcast = await createAndUpdatePodcast({
+      isSpotlight: user.subscription.isSpotlight,
+      userId: user._id,
+      newParticipants: participants,
+      session
+    });
+    user.subscription.matchRefresh -= 1;
+    user.subscription.isSpotlight -= 1;
+    await user.save({ session });
+    await session.commitTransaction();
+
+    res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Match refreshed successfully",
+      data: podcast,
+    });
+  } catch (err) {
+    await session.abortTransaction();
+    next(err);
+
+  } finally {
+    session.endSession();
+  }
+
+};
+
+
+
 const MatchedServices = {
   match,
+  refreshTheMatch,
   // matchUser,
   getMatchedUsers,
   findMatch

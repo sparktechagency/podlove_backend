@@ -518,7 +518,6 @@ async function findMatchesTraditional(
     .slice(0, limitCount);
 }
 
-
 export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight: number }) => {
   // FILTERS COMMENTED OUT - Show more AI matches regardless of subscription
   if (!subscription.plan) {
@@ -541,9 +540,8 @@ export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight
       matchCount = 2;
   }
   return matchCount;
-
-
 };
+
 
 const findMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const session = await mongoose.startSession();
@@ -590,6 +588,8 @@ const findMatch = async (req: Request, res: Response, next: NextFunction): Promi
     session.endSession();
   }
 };
+
+
 
 const MatchedServices = {
   match,

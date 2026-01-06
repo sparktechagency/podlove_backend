@@ -55,6 +55,8 @@ export type UserSchema = Document & {
     fee: string;
     status: SubscriptionStatus;
     startedAt: Date;
+    endDate: Date;
+    matchRefresh: number;
     isSpotlight: number;
   };
   isPodcastActive: boolean;
@@ -216,15 +218,23 @@ const userSchema = new Schema(
         type: Number,
         default: 2
       },
+      matchRefresh: {
+        type: Number,
+        default: 0
+      },
       startedAt: {
         type: Date,
         default: Date.now,
+      },
+      endDate: {
+        type: Date,
       },
     },
     isPodcastActive: {
       type: Boolean,
       default: false
     },
+
   },
   {
     timestamps: true,

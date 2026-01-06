@@ -183,7 +183,6 @@ const getUserSubscriptions = async (req: Request, res: Response, next: NextFunct
     return next(createError(StatusCodes.NOT_FOUND, "User not found"));
   }
 
-  let matchRefresh: number;
   let bioPreview: boolean;
   let chatWindow: boolean = false;
   const currentDate = new Date();
@@ -193,7 +192,6 @@ const getUserSubscriptions = async (req: Request, res: Response, next: NextFunct
   switch (result.subscription.plan) {
     case SubscriptionPlanName.SAMPLER:
       bioPreview = false;
-      matchRefresh = 0;
       const timePassedSinceCreated = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600; // hours passed
       if (timePassedSinceCreated <= 72) {
         chatWindow = true;
@@ -202,7 +200,6 @@ const getUserSubscriptions = async (req: Request, res: Response, next: NextFunct
 
     case SubscriptionPlanName.SEEKER:
       bioPreview = false;
-      matchRefresh = 1;
       const timePassedSinceCreatedSeeker = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600 / 24;
       if (timePassedSinceCreatedSeeker <= 7) {
         chatWindow = true;
@@ -210,7 +207,6 @@ const getUserSubscriptions = async (req: Request, res: Response, next: NextFunct
       break;
 
     case SubscriptionPlanName.SCOUT:
-      matchRefresh = 2;
       bioPreview = true;
       chatWindow = true;
       break;
@@ -223,9 +219,10 @@ const getUserSubscriptions = async (req: Request, res: Response, next: NextFunct
   return res.json({
     // sparks,
     // spotlightAppearances,
-    matchRefresh,
-    status: result.subscription.status,
-    startedAt: result.subscription.startedAt,
+    matchRefresh: result.subscription.status,
+    status: result.subscription?.status,
+    startedAt: result.subscription?.startedAt,
+    endDate: result.subscription?.endDate,
     plan: result.subscription.plan,
     bioPreview,
     chatWindow,

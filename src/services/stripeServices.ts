@@ -193,18 +193,22 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
           let isSpotlight: number;
           let matchCount: number;
+          let matchRefresh: number;
           switch (plan) {
             case SubscriptionPlanName.SEEKER:
               isSpotlight = 2;
+              matchRefresh = 1;
               matchCount = 3;
               break;
             case SubscriptionPlanName.SCOUT:
               isSpotlight = 3;
+              matchRefresh = 2;
               matchCount = 4;
               break;
             default:
               isSpotlight = 1;
-              matchCount = 2;
+              matchRefresh = 2;
+              matchCount = 0;
           }
 
           const updatedUser = await User.findById(userId);
@@ -218,6 +222,8 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           updatedUser.subscription.startedAt = new Date();
           updatedUser.subscription.status = SubscriptionStatus.PAID;
           updatedUser.subscription.isSpotlight = isSpotlight;
+          updatedUser.subscription.matchRefresh = matchRefresh;
+          updatedUser.subscription.endDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
           await updatedUser.save();
 
           console.log(`Updated User Subscription:`, updatedUser);
@@ -246,7 +252,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           if (participants.length !== matchCount) {
             throw new Error("Match count mismatch");
           }
-          console.log(`Processing subscription for user ${userId} with plan ${plan}`, updatedUser?.subscription);
+
           const userUpdate = await createAndUpdatePodcast({
             isSpotlight: updatedUser.subscription.isSpotlight,
             userId: updatedUser._id,
@@ -265,6 +271,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
               { new: true, session }
             );
           }
+
           await session.commitTransaction();
           session.endSession();
           res.status(200).send("Subscription activated successfully");
