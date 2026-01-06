@@ -412,7 +412,7 @@ export async function findMatchesWithVectors(
       if (mongoose.Types.ObjectId.isValid(r.userId)) {
         validCandidateIds.push(new Types.ObjectId(r.userId));
       } else {
-        console.warn(`⚠️ Skipping invalid potential match ID: ${r.userId}`);
+        // console.warn(`⚠️ Skipping invalid potential match ID: ${r.userId}`);
       }
     }
 
