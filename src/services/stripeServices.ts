@@ -211,7 +211,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
 
           const updatedUser = await User.findById(userId).session(session);
-          console.log(`0 =============Updated subscription for user ${userId}:`, userId, plan, fee, subscription_id);
+          console.log(`0 =============Updated subscription for user ${userId}:`, updatedUser);
           if (!updatedUser) throw new Error("User not found");
           updatedUser.subscription.id = subscription.id;
           // @ts-check
