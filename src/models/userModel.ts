@@ -49,6 +49,7 @@ export type UserSchema = Document & {
   };
   survey: string[];
   subscription: {
+    subscription_id: Types.ObjectId | null;
     id: string;
     plan: string;
     fee: string;

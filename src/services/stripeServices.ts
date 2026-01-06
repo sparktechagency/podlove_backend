@@ -210,23 +210,23 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           console.log(`Processing subscription for user ${userId} with plan ${plan}`);
 
 
-          const updatedUser = await User.findByIdAndUpdate(
-            userId,
-            {
-              $set: {
-                "subscription.id": subscription.id,
-                "subscription.subscription_id": new Types.ObjectId(subscription_id),
-                "subscription.plan": plan as SubscriptionPlanName,
-                "subscription.fee": String(fee),
-                "subscription.isSpotlight": isSpotlight,
-                "subscription.startedAt": new Date(),
-                "subscription.status": SubscriptionStatus.PAID,
-              },
-            },
-            { new: true, session, runValidators: true }
-          );
+
+          const updatedUser = await User.findById(userId).session(session);
+
+          if (!updatedUser) throw new Error("User not found");
+          updatedUser.subscription.id = subscription.id;
+          // @ts-check
+          updatedUser.subscription.subscription_id = new Types.ObjectId(subscription_id);
+          updatedUser.subscription.plan = plan as SubscriptionPlanName;
+          updatedUser.subscription.fee = String(fee);
+          updatedUser.subscription.startedAt = new Date();
+          updatedUser.subscription.status = SubscriptionStatus.PAID;
+          updatedUser.subscription.isSpotlight = isSpotlight;
+
+          await updatedUser.save({ session });
 
           console.log(`===============Updated subscription for user ${userId}:`, userId, plan, fee, subscription_id);
+
           console.log(`Updated User Subscription:`, updatedUser);
           if (!updatedUser) {
             throw new Error("User not found or update failed");
