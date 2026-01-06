@@ -188,7 +188,6 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
         try {
           const subscription = await stripe.subscriptions.retrieve(invoice.subscription as string);
           const { userId, plan, fee, subscription_id } = subscription.metadata;
-          console.log(`1 v===============Updated subscription for user ${userId}:`, userId, plan, fee, subscription_id);
           if (!userId || !Types.ObjectId.isValid(userId)) throw new Error("Invalid user ID");
 
           let isSpotlight: number;
@@ -212,7 +211,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
 
           const updatedUser = await User.findById(userId).session(session);
-
+          console.log(`0 =============Updated subscription for user ${userId}:`, userId, plan, fee, subscription_id);
           if (!updatedUser) throw new Error("User not found");
           updatedUser.subscription.id = subscription.id;
           // @ts-check
@@ -223,7 +222,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           updatedUser.subscription.status = SubscriptionStatus.PAID;
           updatedUser.subscription.isSpotlight = isSpotlight;
 
-          await updatedUser.save({ session });
+          await updatedUser.save();
 
           console.log(`===============Updated subscription for user ${userId}:`, userId, plan, fee, subscription_id);
 
