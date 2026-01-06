@@ -210,7 +210,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           console.log(`Processing subscription for user ${userId} with plan ${plan}`);
 
 
-
+          console.log(`1 v===============Updated subscription for user ${userId}:`, userId, plan, fee, subscription_id);
           const updatedUser = await User.findById(userId).session(session);
 
           if (!updatedUser) throw new Error("User not found");
