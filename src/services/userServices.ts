@@ -219,7 +219,7 @@ const getUserSubscriptions = async (req: Request, res: Response, next: NextFunct
   return res.json({
     // sparks,
     // spotlightAppearances,
-    matchRefresh: result.subscription.status,
+    // matchRefresh: result.subscription.status,
     status: result.subscription?.status,
     startedAt: result.subscription?.startedAt,
     endDate: result.subscription?.endDate,

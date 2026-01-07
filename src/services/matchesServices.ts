@@ -845,7 +845,7 @@ const refreshTheMatch = async (req: Request, res: Response, next: NextFunction):
       newParticipants: participants,
       session
     });
-    user.subscription.matchRefresh -= 1;
+    // user.subscription.matchRefresh -= 1;
     user.subscription.isSpotlight -= 1;
     await user.save({ session });
     await session.commitTransaction();
