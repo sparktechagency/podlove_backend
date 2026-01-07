@@ -140,7 +140,9 @@ export async function generateUserEmbeddingData(user: UserSchema): Promise<UserE
   ]);
 
   const age = calculateAge(user.dateOfBirth);
+  const userId = String(user._id);
   const baseMetadata = {
+    userId,
     gender: user.gender || "",
     age,
     bodyType: user.bodyType || "",
@@ -150,8 +152,6 @@ export async function generateUserEmbeddingData(user: UserSchema): Promise<UserE
     isPodcastActive: (user as any).isPodcastActive || false,
     name: user.name || "",
   };
-
-  const userId = String(user._id);
 
   return [
     {

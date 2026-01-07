@@ -55,7 +55,7 @@ export const PREFERENCE_FILTERS = {
      * Filter out users who are already matched in active podcasts
      * ⚠️ RECOMMENDED: Keep TRUE to avoid showing users in active sessions
      */
-    IS_PODCAST_ACTIVE: true,
+    IS_PODCAST_ACTIVE: false,
 
     /**
      * Exclude the requesting user from their own matches
@@ -69,14 +69,14 @@ export const PREFERENCE_FILTERS = {
  * When FALSE: All users get the same max match count
  * When TRUE: Match count varies by subscription tier (Sampler: 2, Seeker: 3, Scout: 4)
  */
-export const ENABLE_SUBSCRIPTION_LIMITS = true;
+export const ENABLE_SUBSCRIPTION_LIMITS = false;
 
 /**
  * Enable spotlight (match quota) enforcement.
  * When FALSE: Users can find matches unlimited times
  * When TRUE: Users must have spotlight quota remaining
  */
-export const ENABLE_SPOTLIGHT_QUOTA = true;
+export const ENABLE_SPOTLIGHT_QUOTA = false;
 
 // ===================================
 // MATCH COUNT CONFIGURATION
@@ -86,16 +86,16 @@ export const ENABLE_SPOTLIGHT_QUOTA = true;
  * Default match count when subscription limits are disabled.
  * Recommended: 5-10 for good variety without overwhelming users
  */
-export const DEFAULT_MATCH_COUNT = 3;
+export const DEFAULT_MATCH_COUNT = 2;
 
 /**
  * Match counts per subscription tier.
  * Only applies when ENABLE_SUBSCRIPTION_LIMITS = true
  */
 export const SUBSCRIPTION_MATCH_COUNTS = {
-    SAMPLER: 2,   // Free tier
-    SEEKER: 3,    // Mid tier
-    SCOUT: 4,     // Premium tier
+    SAMPLER: 20,   // Free tier
+    SEEKER: 30,    // Mid tier
+    SCOUT: 40,     // Premium tier
 };
 
 // ===================================

@@ -201,9 +201,10 @@ export async function searchSimilarUsers(options: {
     // 3. Aggregate scores by userId
     const userScores: Record<string, { total: number, counts: number, metadata: any }> = {};
 
-    const processMatches = (matches: any[]) => {
+    const processMatches = (matches: any[], partType: string) => {
       for (const match of matches) {
-        const uId = match.metadata.userId;
+        // Use the userId from metadata if available, otherwise fallback to parsing ID
+        const uId = match.metadata?.userId || match.id.split(":")[0];
         if (uId === userId) continue;
         if (match.score < minSimilarityScore) continue;
 
@@ -212,18 +213,23 @@ export async function searchSimilarUsers(options: {
         }
         userScores[uId].total += match.score;
         userScores[uId].counts += 1;
+
+        // Ensure we keep the 'profile' metadata if we encounter it
+        if (partType === 'profile') {
+          userScores[uId].metadata = match.metadata;
+        }
       }
     };
 
-    processMatches(matchesForMyProfile.matches);
-    processMatches(matchesForMyPref.matches);
-    processMatches(matchesForMyComp.matches);
+    processMatches(matchesForMyProfile.matches, 'pref');
+    processMatches(matchesForMyPref.matches, 'profile');
+    processMatches(matchesForMyComp.matches, 'comp');
 
     // 4. Calculate average scores and return
     const results = Object.entries(userScores).map(([uId, data]) => ({
       userId: uId,
-      similarityScore: data.total / 3, // Average across 3 parts (or fewer if some parts were empty but for simplicity /3)
-      metadata: data.metadata,
+      similarityScore: data.total / data.counts, // Use actual match count for average
+      metadata: { ...data.metadata, type: 'profile' }, // Always present as a profile match
     }));
 
     // Distance filtering
