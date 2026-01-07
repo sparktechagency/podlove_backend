@@ -9,6 +9,7 @@ import sendEmail from "@utils/sendEmail";
 import sendSMS from "@utils/sendSMS";
 import { sendPhoneVerificationMessage } from "./phone-verify/twilio.verify";
 import VerifyPhone from "@models/phoneModel";
+import { upsertUserVector, deleteUserVector } from "@services/vectorService";
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const {
@@ -89,15 +90,6 @@ const register = async (req: Request, res: Response, next: NextFunction): Promis
     });
 
     await user.save();
-
-    // Sync to Pinecone for matching
-    try {
-      const vectorService = (await import("@services/vectorService")).default;
-      await vectorService.upsertUserVector(user as any);
-    } catch (vectorError) {
-      console.error(`❌ Failed to sync vector for user ${user._id} during registration:`, vectorError);
-    }
-
     await sendEmail(email, auth.verificationOTP);
   }
 
@@ -200,14 +192,7 @@ const signInWithGoogle = async (req: Request, res: Response, next: NextFunction)
     if (!auth) {
       auth = await Auth.create({ googleId, email });
       user = await User.create({ auth: auth._id, name, avatar });
-
-      // Sync new user to Pinecone
-      try {
-        const vectorService = (await import("@services/vectorService")).default;
-        await vectorService.upsertUserVector(user as any);
-      } catch (vectorError) {
-        console.error(`❌ Failed to sync vector for user ${user._id} during Google sign-in:`, vectorError);
-      }
+      await upsertUserVector(user);
     } else {
       if (!auth.googleId) {
         auth.googleId = googleId;
@@ -252,14 +237,7 @@ const signInWithApple = async (req: Request, res: Response, next: NextFunction):
     if (!auth) {
       auth = await Auth.create({ appleId, email });
       user = await User.create({ auth: auth._id, name });
-
-      // Sync new user to Pinecone
-      try {
-        const vectorService = (await import("@services/vectorService")).default;
-        await vectorService.upsertUserVector(user as any);
-      } catch (vectorError) {
-        console.error(`❌ Failed to sync vector for user ${user._id} during Apple sign-in:`, vectorError);
-      }
+      await upsertUserVector(user);
     } else {
       if (!auth.appleId) {
         auth.appleId = appleId;
@@ -454,7 +432,11 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
 const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   const authId = req.user.authId;
-  await Promise.all([Auth.findByIdAndDelete(authId), User.findByIdAndDelete(userId)]);
+  await Promise.all([
+    Auth.findByIdAndDelete(authId),
+    User.findByIdAndDelete(userId),
+    deleteUserVector(userId)
+  ]);
   return res.status(StatusCodes.OK).json({ success: true, message: "User Removed successfully", data: {} });
 };
 

@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\20300\\github\\sta\\podlove_backend\\logs\\winston\\successes\\.4f33b07d7e11299ae7f49b976c3d5f1d2e9fcd21-audit.json",
+    "files": [
+        {
+            "date": 1767770552334,
+            "name": "C:\\20300\\github\\sta\\podlove_backend\\logs\\winston\\successes\\um-2026-01-07-13-success.log",
+            "hash": "47e26d7ece363913d76c4b07c468153653cecb4e2756f381627701e5b27790ad"
+        }
+    ],
+    "hashType": "sha256"
+}

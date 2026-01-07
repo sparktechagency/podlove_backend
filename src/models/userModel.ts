@@ -41,19 +41,19 @@ export type UserSchema = Document & {
       max: number;
     };
     bodyType: string[];
-    ethnicity: {
-      type: [String],
-      default: [],
-    },
+    ethnicity: string[];
     distance: number;
   };
   survey: string[];
   subscription: {
+    subscription_id: Types.ObjectId | null;
     id: string;
     plan: string;
     fee: string;
     status: SubscriptionStatus;
     startedAt: Date;
+    endDate: Date;
+    matchRefresh: number;
     isSpotlight: number;
   };
   isPodcastActive: boolean;
@@ -172,7 +172,6 @@ const userSchema = new Schema(
       },
       ethnicity: {
         type: [String],
-        enum: Object.values(Ethnicity),
         default: "",
       },
       distance: {
@@ -216,15 +215,23 @@ const userSchema = new Schema(
         type: Number,
         default: 2
       },
+      matchRefresh: {
+        type: Number,
+        default: 0
+      },
       startedAt: {
         type: Date,
         default: Date.now,
+      },
+      endDate: {
+        type: Date,
       },
     },
     isPodcastActive: {
       type: Boolean,
       default: false
     },
+
   },
   {
     timestamps: true,

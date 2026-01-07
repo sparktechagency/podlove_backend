@@ -253,7 +253,7 @@ export const FALLBACK_STRATEGY = 'relax_filters';
  * Minimum matches required before triggering fallback.
  * If matches < threshold, apply fallback strategy
  */
-export const FALLBACK_THRESHOLD = 3;
+export const FALLBACK_THRESHOLD = 1;
 
 /**
  * Filter relaxation order (most to least important).
@@ -310,7 +310,7 @@ export const EMBEDDING_FIELDS = [
  * 
  * Recommended: 60-80 for quality matches
  */
-export const MIN_PROFILE_COMPLETENESS = 60;
+export const MIN_PROFILE_COMPLETENESS = 30;
 
 /**
  * Require compatibility questions to be answered.

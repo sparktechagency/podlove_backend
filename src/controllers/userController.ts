@@ -6,6 +6,7 @@ import to from "await-to-ts";
 import Cloudinary from "@shared/cloudinary";
 import mongoose from "mongoose";
 import { ageToDOB } from "@utils/ageUtils";
+import { upsertUserVector } from "@services/vectorService";
 
 const getAll = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { search, minAge, maxAge, gender, bodyType, ethnicity } = req.query;
@@ -212,24 +213,20 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
 
     // Perform the update
     const user = await User.findByIdAndUpdate(userId, { $set: updates }, { new: true, session })
-      .populate({ path: "auth", select: "email" });
+      .populate({ path: "auth", select: "email" })
+      .lean();
 
     if (!user) {
       throw createError(StatusCodes.NOT_FOUND, "User not found.");
     }
 
-    // Sync to Pinecone for matching
-    try {
-      const vectorService = (await import("@services/vectorService")).default;
-      await vectorService.upsertUserVector(user as any);
-      console.log(`✅ Vector synced for user: ${user._id}`);
-    } catch (vectorError) {
-      console.error(`❌ Failed to sync vector for user ${user._id}:`, vectorError);
-      // We don't fail the request if vector sync fails, but we log it
-    }
-
     await session.commitTransaction();
     session.endSession();
+
+    // Update Pinecone vector in background (don't block response)
+    if (user.isProfileComplete) {
+      upsertUserVector(user as any).catch(err => console.error("Background Pinecone upsert failed:", err));
+    }
 
     return res.status(StatusCodes.OK).json({
       success: true,
