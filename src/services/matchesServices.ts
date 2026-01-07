@@ -824,9 +824,9 @@ const refreshTheMatch = async (req: Request, res: Response, next: NextFunction):
     throw createError(StatusCodes.NOT_FOUND, "User not found");
   }
 
-  if (user.subscription.matchRefresh <= 0) {
-    throw createError(StatusCodes.FORBIDDEN, "No match refreshes left. Please upgrade your subscription.");
-  }
+  // if (user.subscription.matchRefresh <= 0) {
+  //   throw createError(StatusCodes.FORBIDDEN, "No match refreshes left. Please upgrade your subscription.");
+  // }
 
   try {
     const matchCount = subscriptionMatchCount(user.subscription);
