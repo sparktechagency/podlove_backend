@@ -193,21 +193,21 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
 
           let isSpotlight: number;
           let matchCount: number;
-          let matchRefresh: number;
+          // let matchRefresh: number;
           switch (plan) {
             case SubscriptionPlanName.SEEKER:
               isSpotlight = 2;
-              matchRefresh = 1;
+              // matchRefresh = 1;
               matchCount = 3;
               break;
             case SubscriptionPlanName.SCOUT:
               isSpotlight = 3;
-              matchRefresh = 2;
+              // matchRefresh = 2;
               matchCount = 4;
               break;
             default:
               isSpotlight = 1;
-              matchRefresh = 2;
+              // matchRefresh = 2;
               matchCount = 0;
           }
 
@@ -222,7 +222,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           updatedUser.subscription.startedAt = new Date();
           updatedUser.subscription.status = SubscriptionStatus.PAID;
           updatedUser.subscription.isSpotlight = isSpotlight;
-          updatedUser.subscription.matchRefresh = matchRefresh;
+          // updatedUser.subscription.matchRefresh = matchRefresh;
           updatedUser.subscription.endDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
           await updatedUser.save();
 
