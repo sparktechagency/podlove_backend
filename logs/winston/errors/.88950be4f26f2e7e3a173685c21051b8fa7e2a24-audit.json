@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\20300\\github\\sta\\podlove_backend\\logs\\winston\\errors\\.88950be4f26f2e7e3a173685c21051b8fa7e2a24-audit.json",
+    "files": [
+        {
+            "date": 1767767490217,
+            "name": "C:\\20300\\github\\sta\\podlove_backend\\logs\\winston\\errors\\um-2026-01-07-12-error.log",
+            "hash": "7ddf181fcf6213f9137463baf59e516ead12c57552a8bd65e76781272dcdec46"
+        },
+        {
+            "date": 1767769913514,
+            "name": "C:\\20300\\github\\sta\\podlove_backend\\logs\\winston\\errors\\um-2026-01-07-13-error.log",
+            "hash": "e2ca973b68f48329702e5c4a48aba34a37510ca49820d74983fe8f206e13d5f2"
+        }
+    ],
+    "hashType": "sha256"
+}

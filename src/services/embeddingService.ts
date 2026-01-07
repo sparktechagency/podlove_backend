@@ -7,24 +7,15 @@ const EMBEDDING_MODEL = "text-embedding-3-large"; // 1024 dimensions
 /**
  * Embedding Strategy:
  * 
- * Fields to Embed (semantic search):
- * - Bio (user's self-description)
- * - Interests (hobbies, activities)
- * - Compatibility answers (relationship values, lifestyle choices)
- * - Personality traits (converted to descriptive text)
- * - Survey responses
- * 
- * Fields to Keep as Metadata (exact filtering):
- * - Gender
- * - Age (dateOfBirth converted to age)
- * - BodyType
- * - Ethnicity
- * - Location (lat/long for distance filtering)
- * - isPodcastActive (exclude already matched users)
+ * 1. Profile (Who the user is): Bio, interests, personality, background
+ * 2. Preference (What the user wants): Desired gender, age range, body type
+ * 3. Compatibility (Values and Lifestyle): Compatibility answers, survey responses
  */
 
-interface UserEmbeddingData {
+export interface UserEmbeddingData {
+  id: string; // userId:profile, userId:pref, userId:comp
   userId: string;
+  type: 'profile' | 'pref' | 'comp';
   embedding: number[];
   metadata: {
     gender: string;
@@ -35,6 +26,7 @@ interface UserEmbeddingData {
     longitude: number;
     isPodcastActive: boolean;
     name: string;
+    type: 'profile' | 'pref' | 'comp';
   };
 }
 
@@ -43,7 +35,7 @@ interface UserEmbeddingData {
  */
 function personalityToText(personality: { spectrum: number; balance: number; focus: number }): string {
   const traits = [];
-  
+
   // Spectrum: 1 (Introverted) → 7 (Extroverted)
   if (personality.spectrum <= 3) traits.push("introverted, prefers quiet settings");
   else if (personality.spectrum >= 5) traits.push("extroverted, enjoys social gatherings");
@@ -66,6 +58,7 @@ function personalityToText(personality: { spectrum: number; balance: number; foc
  * Calculate age from dateOfBirth
  */
 function calculateAge(dateOfBirth: string): number {
+  if (!dateOfBirth) return 0;
   const dob = new Date(dateOfBirth);
   const today = new Date();
   let age = today.getFullYear() - dob.getFullYear();
@@ -77,61 +70,54 @@ function calculateAge(dateOfBirth: string): number {
 }
 
 /**
- * Generate a rich text representation of a user profile for embedding
+ * Generate text for user's profile (Who they are)
  */
 export function generateProfileText(user: UserSchema): string {
   const parts: string[] = [];
-
-  // Bio
-  if (user.bio) {
-    parts.push(`About me: ${user.bio}`);
-  }
-
-  // Interests
-  if (user.interests?.length) {
-    parts.push(`Interests: ${user.interests.join(", ")}`);
-  }
-
-  // Personality
-  if (user.personality) {
-    parts.push(`Personality: ${personalityToText(user.personality)}`);
-  }
-
-  // Compatibility answers (relationship values)
-  if (user.compatibility?.length) {
-    parts.push(`Relationship values and lifestyle: ${user.compatibility.join(". ")}`);
-  }
-
-  // Survey responses
-  if (user.survey?.length) {
-    parts.push(`Additional preferences: ${user.survey.join(". ")}`);
-  }
-
-  // Ethnicity (as context, not filter)
-  if (user.ethnicity?.length) {
-    parts.push(`Background: ${user.ethnicity.join(", ")}`);
-  }
-
+  if (user.bio) parts.push(`About me: ${user.bio}`);
+  if (user.interests?.length) parts.push(`Interests: ${user.interests.join(", ")}`);
+  if (user.personality) parts.push(`Personality: ${personalityToText(user.personality)}`);
+  if (user.ethnicity?.length) parts.push(`Background background: ${user.ethnicity.join(", ")}`);
+  if (user.gender) parts.push(`Gender: ${user.gender}`);
   return parts.join("\n\n");
 }
 
 /**
- * Generate embedding vector for a user profile
+ * Generate text for user's preferences (What they want)
  */
-export async function generateUserEmbedding(user: UserSchema): Promise<number[]> {
-  const profileText = generateProfileText(user);
-  
-  if (!profileText.trim()) {
-    throw new Error("Cannot generate embedding: user profile is empty");
+export function generatePreferenceText(user: UserSchema): string {
+  const parts: string[] = [];
+  const pref = user.preferences;
+  if (pref) {
+    if (pref.gender?.length) parts.push(`I am looking for: ${pref.gender.join(", ")}`);
+    if (pref.age?.min && pref.age?.max) parts.push(`Preferred age range: ${pref.age.min} to ${pref.age.max} years old`);
+    if (pref.bodyType?.length) parts.push(`Preferred body types: ${pref.bodyType.join(", ")}`);
+    if (pref.ethnicity?.length) parts.push(`Preferred ethnicities: ${pref.ethnicity.join(", ")}`);
   }
+  return parts.join("\n\n") || "No specific preferences provided.";
+}
 
+/**
+ * Generate text for compatibility (Values and Lifestyle)
+ */
+export function generateCompatibilityText(user: UserSchema): string {
+  const parts: string[] = [];
+  if (user.compatibility?.length) parts.push(`My values and lifestyle choices: ${user.compatibility.join(". ")}`);
+  if (user.survey?.length) parts.push(`Additional lifestyle information: ${user.survey.join(". ")}`);
+  return parts.join("\n\n") || "No compatibility information provided.";
+}
+
+/**
+ * Helper to generate embedding from text
+ */
+async function getEmbedding(text: string): Promise<number[]> {
+  if (!text.trim()) return new Array(1024).fill(0); // Return empty vector if no text
   try {
     const response = await openai.embeddings.create({
       model: EMBEDDING_MODEL,
-      input: profileText,
+      input: text,
       dimensions: 1024,
     });
-
     return response.data[0].embedding;
   } catch (error: any) {
     console.error("Error generating embedding:", error.message);
@@ -140,38 +126,65 @@ export async function generateUserEmbedding(user: UserSchema): Promise<number[]>
 }
 
 /**
- * Generate complete embedding data for Pinecone storage
+ * Generate three embeddings for a single user
  */
-export async function generateUserEmbeddingData(user: UserSchema): Promise<UserEmbeddingData> {
-  const embedding = await generateUserEmbedding(user);
-  const age = user.dateOfBirth ? calculateAge(user.dateOfBirth) : 0;
+export async function generateUserEmbeddingData(user: UserSchema): Promise<UserEmbeddingData[]> {
+  const profileText = generateProfileText(user);
+  const prefText = generatePreferenceText(user);
+  const compText = generateCompatibilityText(user);
 
-  return {
-    userId: String(user._id),
-    embedding,
-    metadata: {
-      gender: user.gender || "",
-      age,
-      bodyType: user.bodyType || "",
-      ethnicity: user.ethnicity || [],
-      latitude: user.location?.latitude || 0,
-      longitude: user.location?.longitude || 0,
-      isPodcastActive: (user as any).isPodcastActive || false,
-      name: user.name || "",
-    },
+  const [profileEmbedding, prefEmbedding, compEmbedding] = await Promise.all([
+    getEmbedding(profileText),
+    getEmbedding(prefText),
+    getEmbedding(compText),
+  ]);
+
+  const age = calculateAge(user.dateOfBirth);
+  const baseMetadata = {
+    gender: user.gender || "",
+    age,
+    bodyType: user.bodyType || "",
+    ethnicity: user.ethnicity || [],
+    latitude: user.location?.latitude || 0,
+    longitude: user.location?.longitude || 0,
+    isPodcastActive: (user as any).isPodcastActive || false,
+    name: user.name || "",
   };
+
+  const userId = String(user._id);
+
+  return [
+    {
+      id: `${userId}:profile`,
+      userId,
+      type: 'profile',
+      embedding: profileEmbedding,
+      metadata: { ...baseMetadata, type: 'profile' },
+    },
+    {
+      id: `${userId}:pref`,
+      userId,
+      type: 'pref',
+      embedding: prefEmbedding,
+      metadata: { ...baseMetadata, type: 'pref' },
+    },
+    {
+      id: `${userId}:comp`,
+      userId,
+      type: 'comp',
+      embedding: compEmbedding,
+      metadata: { ...baseMetadata, type: 'comp' },
+    },
+  ];
 }
 
 /**
  * Batch generate embeddings for multiple users
- * Useful for initial migration or bulk updates
  */
 export async function batchGenerateEmbeddings(users: UserSchema[]): Promise<UserEmbeddingData[]> {
   const results: UserEmbeddingData[] = [];
-  
-  // Process in batches to avoid rate limits
-  const BATCH_SIZE = 10;
-  
+  const BATCH_SIZE = 5; // Reduced batch size as each user now takes 3 OpenAI calls
+
   for (let i = 0; i < users.length; i += BATCH_SIZE) {
     const batch = users.slice(i, i + BATCH_SIZE);
     const batchResults = await Promise.all(
@@ -184,21 +197,23 @@ export async function batchGenerateEmbeddings(users: UserSchema[]): Promise<User
         }
       })
     );
-    
-    results.push(...batchResults.filter((r): r is UserEmbeddingData => r !== null));
-    
-    // Add delay between batches to respect rate limits
+
+    for (const triple of batchResults) {
+      if (triple) results.push(...triple);
+    }
+
     if (i + BATCH_SIZE < users.length) {
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
   }
-  
+
   return results;
 }
 
 export default {
-  generateUserEmbedding,
   generateUserEmbeddingData,
   generateProfileText,
+  generatePreferenceText,
+  generateCompatibilityText,
   batchGenerateEmbeddings,
 };

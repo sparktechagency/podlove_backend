@@ -10,7 +10,9 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
-    "dev": "nodemon -r tsconfig-paths/register src/server.ts"
+    "dev": "nodemon -r tsconfig-paths/register src/server.ts",
+    "migrate": "ts-node -r tsconfig-paths/register src/scripts/migrateToPinecone.ts",
+    "matching": "ts-node -r tsconfig-paths/register src/scripts/matchUser.ts"
   },
   "keywords": [],
   "author": "",

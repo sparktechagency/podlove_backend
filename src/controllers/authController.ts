@@ -9,6 +9,7 @@ import sendEmail from "@utils/sendEmail";
 import sendSMS from "@utils/sendSMS";
 import { sendPhoneVerificationMessage } from "./phone-verify/twilio.verify";
 import VerifyPhone from "@models/phoneModel";
+import { deleteUserVector } from "@services/vectorService";
 
 const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const {
@@ -429,7 +430,11 @@ const changePassword = async (req: Request, res: Response, next: NextFunction): 
 const remove = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   const authId = req.user.authId;
-  await Promise.all([Auth.findByIdAndDelete(authId), User.findByIdAndDelete(userId)]);
+  await Promise.all([
+    Auth.findByIdAndDelete(authId),
+    User.findByIdAndDelete(userId),
+    deleteUserVector(userId)
+  ]);
   return res.status(StatusCodes.OK).json({ success: true, message: "User Removed successfully", data: {} });
 };
 
