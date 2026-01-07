@@ -43,7 +43,7 @@ export const PREFERENCE_FILTERS = {
     AGE: true,
 
     /** Filter by body type preference (e.g., athletic, average, curvy) */
-    BODY_TYPE: false,
+    BODY_TYPE: true,
 
     /** Filter by ethnicity preference */
     ETHNICITY: true,
@@ -122,7 +122,7 @@ export const VECTOR_SEARCH_TOP_K = 20;
  * - Balanced: 0.5 - 0.7
  * - Exploratory: 0.3 - 0.5
  */
-export const MIN_SIMILARITY_SCORE = 0.5;
+export const MIN_SIMILARITY_SCORE = 0.2;
 
 /**
  * Enable automatic fallback to traditional matching when vector search fails.
