@@ -18,6 +18,8 @@ export type PodcastSchema = Document & {
   scheduleStatus: string | null;
   room_id: string;
   primaryUser: Types.ObjectId;
+  isRequest: boolean;
+  isQuestionAnswer?: string;
   participants: {
     user: Types.ObjectId;
     isAllow: boolean;
@@ -28,6 +30,7 @@ export type PodcastSchema = Document & {
     vectorScore?: number;
     aiScore?: number;
     reasoning?: string;
+
     _id?: any;
   }[];
   schedule: {
@@ -51,6 +54,11 @@ const podcastSchema = new Schema<PodcastSchema>({
     ref: "User",
     required: false,
   },
+  isRequest: {
+    type: Boolean,
+    default: false,
+  },
+  isQuestionAnswer: { type: String, default: "" },
   participants: [
     {
       user: { type: Schema.Types.ObjectId, ref: 'User', required: true },

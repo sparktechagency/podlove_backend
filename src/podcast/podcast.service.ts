@@ -253,24 +253,40 @@ const sendQuestionsAnswer = async (req: any) => {
             questionsStatus: questionsStatus
         });
 
-        const podcastQ = await Podcast.findOneAndUpdate(
+        let podcastQ = await Podcast.findOneAndUpdate(
             {
                 _id: podcastId,
-                "participants.user": userId
+                primaryUser: userId
             },
             {
                 $set: {
-                    "participants.$.isQuestionAnswer": questionsStatus
+                    isQuestionAnswer: questionsStatus,
+                    questionsStatus
                 }
             },
             { new: true }
         );
 
+        if (!podcastQ) {
+            podcastQ = await Podcast.findOneAndUpdate(
+                {
+                    _id: podcastId,
+                    "participants.user": userId
+                },
+                {
+                    $set: {
+                        "participants.$.isQuestionAnswer": questionsStatus,
+                        questionsStatus
+                    }
+                },
+                { new: true }
+            );
+        }
+
         if (questionsStatus === "2ndDone") {
             const user = await User.findByIdAndUpdate(userId, {
                 isPodcastActive: false
             });
-
         }
 
         if (!podcast || !podcastQ) {

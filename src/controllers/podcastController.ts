@@ -93,24 +93,34 @@ const sendPodcastRequest = async (
 
 
     const podcast = await Podcast.findOne({ "participants.user": userId }).session(session);
-    if (!podcast) {
-      throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this participant");
+    if (podcast) {
+      podcast.participants = podcast.participants.map((p: any) => {
+        if (p.user.toString() === userId.toString()) {
+          return {
+            ...p.toObject ? p.toObject() : p,
+            isRequest: true
+          };
+        }
+        return p;
+      });
+
+      podcast.status = status;
+      podcast.schedule = { day: "", date: "", time: "" };
+      await podcast.save({ session });
+    } else {
+      let podcast = await Podcast.findOne({ primaryUser: userId }).session(session);
+      if (!podcast) {
+        throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this participant");
+      }
+      podcast.isRequest = true;
+      podcast.status = status;
+      podcast.schedule = { day: "", date: "", time: "" };
+      await podcast.save({ session });
     }
 
-    podcast.participants = podcast.participants.map((p: any) => {
-      if (p.user.toString() === userId.toString()) {
-        return {
-          ...p.toObject ? p.toObject() : p,
-          isRequest: true
-        };
-      }
-      return p;
-    });
 
-    podcast.status = status;
-    podcast.schedule = { day: "", date: "", time: "" };
 
-    await podcast.save({ session });
+
 
     await session.commitTransaction();
     session.endSession();
