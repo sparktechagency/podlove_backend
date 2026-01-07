@@ -55,7 +55,7 @@ export const PREFERENCE_FILTERS = {
      * Filter out users who are already matched in active podcasts
      * ⚠️ RECOMMENDED: Keep TRUE to avoid showing users in active sessions
      */
-    IS_PODCAST_ACTIVE: false,
+    IS_PODCAST_ACTIVE: true,
 
     /**
      * Exclude the requesting user from their own matches
@@ -69,14 +69,14 @@ export const PREFERENCE_FILTERS = {
  * When FALSE: All users get the same max match count
  * When TRUE: Match count varies by subscription tier (Sampler: 2, Seeker: 3, Scout: 4)
  */
-export const ENABLE_SUBSCRIPTION_LIMITS = false;
+export const ENABLE_SUBSCRIPTION_LIMITS = true;
 
 /**
  * Enable spotlight (match quota) enforcement.
  * When FALSE: Users can find matches unlimited times
  * When TRUE: Users must have spotlight quota remaining
  */
-export const ENABLE_SPOTLIGHT_QUOTA = false;
+export const ENABLE_SPOTLIGHT_QUOTA = true;
 
 // ===================================
 // MATCH COUNT CONFIGURATION

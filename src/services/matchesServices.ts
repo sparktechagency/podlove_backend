@@ -815,69 +815,6 @@ const findMatch = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-
-const refreshUpdatePodcast = async ({ isSpotlight, userId, newParticipants, session }: any) => {
-
-  if (
-    // matchingConfig.ENABLE_SPOTLIGHT_QUOTA &&  
-    isSpotlight === 0) {
-    throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
-  }
-
-
-  const activePodcast = await Podcast.findOne(
-    { 'participants.user': userId, isComplete: false },
-    null,
-    { session }
-  );
-
-  if (activePodcast) {
-    throw new Error("You already have an active podcast.");
-  }
-
-  let podcast = await Podcast.findOne(
-    { primaryUser: userId, isComplete: false },
-    null,
-    { session }
-  );
-
-  if (podcast) {
-    podcast = await Podcast.findOneAndUpdate(
-      { _id: podcast._id },
-      {
-        $set: {
-          participants: newParticipants,
-          status: "NotScheduled"
-        }
-      },
-      { new: true, session }
-    ).populate('participants.user', 'name avatar');
-  } else {
-    podcast = new Podcast({
-      primaryUser: userId,
-      participants: newParticipants,
-      status: "NotScheduled",
-      isComplete: false
-    });
-
-    await podcast.save({ session });
-  }
-
-  if (!podcast) {
-    throw new Error("Failed to create or update podcast.");
-  }
-
-  const participantIds = podcast.participants.map((p: any) => p.user);
-  await User.updateMany(
-    { _id: { $in: participantIds } },
-    { $set: { isMatch: true } },
-    { session }
-  );
-
-  return podcast;
-};
-
-
 const refreshTheMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const session = await mongoose.startSession();
   session.startTransaction();
