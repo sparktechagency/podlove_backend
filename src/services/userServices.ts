@@ -9,6 +9,7 @@ import OpenaiServices from "./openaiServices";
 import cron from "node-cron";
 import { logger } from "@shared/logger";
 import Notification from "@models/notificationModel";
+import Podcast from "@models/podcastModel";
 
 cron.schedule("0 0 * * *", async () => { // every day at midnight
   try {
@@ -179,6 +180,20 @@ const getUserSubscriptions = async (req: Request, res: Response, next: NextFunct
   }
 
   const result = await User.findById(userId).select("subscription chatingtime createdAt");
+
+  const podcastUser = await Podcast.findOne({
+    isComplete: false,
+    $or: [
+      { "participants.user": userId },
+      { primaryUser: userId }
+    ]
+  }).lean();
+
+  let primaryUser: any = null;
+  if (podcastUser) {
+    primaryUser = await User.findById(podcastUser?.primaryUser).select("subscription chatingtime createdAt");
+  }
+
   if (!result) {
     return next(createError(StatusCodes.NOT_FOUND, "User not found"));
   }
@@ -192,34 +207,51 @@ const getUserSubscriptions = async (req: Request, res: Response, next: NextFunct
   switch (result.subscription.plan) {
     case SubscriptionPlanName.SAMPLER:
       bioPreview = false;
-      const timePassedSinceCreated = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600; // hours passed
-      if (timePassedSinceCreated <= 72) {
-        chatWindow = true;
-      }
       break;
 
     case SubscriptionPlanName.SEEKER:
       bioPreview = false;
-      const timePassedSinceCreatedSeeker = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600 / 24;
-      if (timePassedSinceCreatedSeeker <= 7) {
-        chatWindow = true;
-      }
       break;
 
     case SubscriptionPlanName.SCOUT:
       bioPreview = true;
-      chatWindow = true;
       break;
 
     default:
       return next(createError(StatusCodes.BAD_REQUEST, "Invalid subscription plan"));
   }
 
+  if (primaryUser?.subscription?.plan) {
+    switch (primaryUser.subscription.plan) {
+      case SubscriptionPlanName.SAMPLER:
+        if (primaryUser) {
+          const timePassedSinceCreated = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600; // hours passed
+          if (timePassedSinceCreated <= 72) {
+            chatWindow = true;
+          }
+        }
+        break;
+
+      case SubscriptionPlanName.SEEKER:
+        if (primaryUser) {
+          const timePassedSinceCreatedSeeker = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600 / 24;
+          if (timePassedSinceCreatedSeeker <= 7) {
+            chatWindow = true;
+          }
+        }
+        break;
+
+      case SubscriptionPlanName.SCOUT:
+        chatWindow = true;
+        break;
+
+      default:
+        return next(createError(StatusCodes.BAD_REQUEST, "Invalid subscription plan"));
+    }
+  }
+
   // Send response with all the subscription details
   return res.json({
-    // sparks,
-    // spotlightAppearances,
-    // matchRefresh: result.subscription.status,
     status: result.subscription?.status,
     startedAt: result.subscription?.startedAt,
     endDate: result.subscription?.endDate,
