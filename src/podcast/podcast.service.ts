@@ -277,12 +277,6 @@ const sendQuestionsAnswer = async (req: any) => {
             );
         }
 
-        if (questionsStatus === "2ndDone") {
-            const user = await User.findByIdAndUpdate(userId, {
-                isPodcastActive: false
-            });
-        }
-
         if (!podcastQ) {
             throw new Error("Podcast not found");
         }

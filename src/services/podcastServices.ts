@@ -74,7 +74,6 @@ const setSchedule = async (req: Request, res: Response, next: NextFunction): Pro
     podcast.roomCodes = [];
     podcast.scheduleStatus = podcast.scheduleStatus;
 
-
     if (podcast?.scheduleStatus === null) {
       podcast.scheduleStatus = "1st";
     } else if (podcast?.scheduleStatus === "1st") {

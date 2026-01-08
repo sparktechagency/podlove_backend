@@ -11,7 +11,7 @@ import { logger } from "@shared/logger";
 import Notification from "@models/notificationModel";
 import Podcast from "@models/podcastModel";
 
-cron.schedule("0 0 * * *", async () => { // every day at midnight
+cron.schedule("0 0 * * *", async () => {
   try {
     const now = new Date();
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000); // 7 days ago
@@ -52,6 +52,46 @@ cron.schedule("0 0 * * *", async () => { // every day at midnight
     logger.error("Error in feedback cron job:", error);
   }
 });
+
+cron.schedule("0 0 * * *", async () => {
+  try {
+    const now = new Date();
+    console.log("Subscription expiry cron running:", now);
+
+    const expiredUsers = await User.find({
+      "subscription.endDate": { $lte: now },
+      "subscription.status": SubscriptionStatus.PAID,
+    });
+
+    if (!expiredUsers.length) return;
+
+    for (const user of expiredUsers) {
+      user.subscription.status = SubscriptionStatus.NONE;
+      user.subscription.plan = SubscriptionPlanName.SAMPLER;
+      user.subscription.isSpotlight = 0;
+
+      await user.save();
+
+      await Notification.create({
+        type: "subscription_expired",
+        user: user._id,
+        message: [
+          {
+            title: "Subscription expired",
+            description: "Your subscription has expired. Please renew to continue premium features.",
+          },
+        ],
+        read: false,
+        section: "user",
+      });
+    }
+
+    logger.info(`Expired subscriptions updated for ${expiredUsers.length} users`);
+  } catch (error) {
+    logger.error("Error in subscription expiry cron:", error);
+  }
+});
+
 
 const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { search } = req.query;

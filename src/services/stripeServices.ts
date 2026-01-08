@@ -178,7 +178,6 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
     return;
   }
 
-
   try {
     switch (event.type) {
       case "invoice.payment_succeeded": {
@@ -212,7 +211,7 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
           }
 
           const updatedUser = await User.findById(userId);
-          console.log(`0 =============Updated subscription for user ${userId}:`, updatedUser?.subscription);
+          // console.log(`0 =============Updated subscription for user ${userId}:`, updatedUser?.subscription);
           if (!updatedUser) throw new Error("User not found");
           updatedUser.subscription.id = subscription.id;
           // @ts-check

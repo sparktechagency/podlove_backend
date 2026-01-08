@@ -56,7 +56,6 @@ export type UserSchema = Document & {
     // matchRefresh: number;
     isSpotlight: number;
   };
-
   isPodcastActive: boolean;
   createdAt: Date;
   updatedAt: Date;

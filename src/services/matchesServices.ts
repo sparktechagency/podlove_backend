@@ -815,54 +815,54 @@ const findMatch = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const refreshTheMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const refreshTheMatch = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   const session = await mongoose.startSession();
-  session.startTransaction();
-
-  const user = await User.findById(req.user.userId, null, { session });
-  if (!user) {
-    throw createError(StatusCodes.NOT_FOUND, "User not found");
-  }
-
-  // if (user.subscription.matchRefresh <= 0) {
-  //   throw createError(StatusCodes.FORBIDDEN, "No match refreshes left. Please upgrade your subscription.");
-  // }
 
   try {
-    const matchCount = subscriptionMatchCount(user.subscription);
-    const participants = await findMatchesWithVectors(
-      req.user.userId,
-      user.compatibility,
-      matchCount,
-      session
-    );
-    if (participants.length !== matchCount) {
-      throw new Error("Match count mismatch");
+    session.startTransaction();
+
+    const user = await User.findById(req.user.userId, null, { session });
+    if (!user) {
+      throw createError(StatusCodes.NOT_FOUND, "User not found");
     }
-    const podcast = await createAndUpdatePodcast({
-      isSpotlight: user.subscription.isSpotlight,
-      userId: user._id,
-      newParticipants: participants,
-      session
-    });
-    // user.subscription.matchRefresh -= 1;
-    user.subscription.isSpotlight -= 1;
-    await user.save({ session });
+
+    const { status } = req.params;
+
+    if (status === "refresh") {
+      await User.findByIdAndUpdate(
+        req.user.userId,
+        { isPodcastActive: false },
+        { session }
+      );
+    }
+
+    //  else if (status === "refresh") {
+    //   await User.findByIdAndUpdate(
+    //     req.user.userId,
+    //     { isPodcastActive: false },
+    //     { session }
+    //   );
+    // } else {
+    //   throw createError(StatusCodes.BAD_REQUEST, "Invalid status");
+    // }
+
     await session.commitTransaction();
 
     res.status(StatusCodes.OK).json({
       success: true,
       message: "Match refreshed successfully",
-      data: podcast,
+      data: user, // or whatever should actually be returned
     });
   } catch (err) {
     await session.abortTransaction();
     next(err);
-
   } finally {
     session.endSession();
   }
-
 };
 
 
