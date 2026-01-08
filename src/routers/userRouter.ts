@@ -17,6 +17,8 @@ router.post("/validate-bio", authorize, asyncHandler(UserServices.validateBio));
 // router.post("/match/:id", MatchedServices.matchUser);
 router.get("/match/getAll", authorize, MatchedServices.getMatchedUsers);
 router.get("/match/findMatch", authorize, MatchedServices.findMatch);
+router.post("/match/refreshTheMatch", authorize, MatchedServices.refreshTheMatch);
+
 router.get("/get-all-users", asyncHandler(UserController.getAll));
 router.get("/get-all-premium-users", UserServices.getAllPremiumUsers);
 router.get("/", authorize, asyncHandler(UserController.get));

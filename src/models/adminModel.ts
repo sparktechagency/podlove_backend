@@ -6,7 +6,6 @@ import { generateToken } from "@utils/jwt";
 import generateOTP from "@utils/generateOTP";
 import bcrypt from "bcrypt";
 import { logger } from "@shared/logger";
-
 export type DecodedAdmin = {
   id: string;
   email: string;
@@ -29,7 +28,7 @@ export type AdminSchema = Document & {
   isRecoveryOTPExpired(): boolean;
 };
 
-const adminSchema : Schema<AdminSchema> = new Schema<AdminSchema>({
+const adminSchema: Schema<AdminSchema> = new Schema<AdminSchema>({
   name: {
     type: String,
     required: true
