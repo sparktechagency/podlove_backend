@@ -247,11 +247,7 @@ const sendQuestionsAnswer = async (req: any) => {
         };
 
         const questionsStatus = statusMap[scheduleStatus];
-        console.log("questionsStatus", questionsStatus)
 
-        const podcast = await Podcast.findByIdAndUpdate(podcastId, {
-            questionsStatus: questionsStatus
-        });
 
         let podcastQ = await Podcast.findOneAndUpdate(
             {
@@ -261,7 +257,6 @@ const sendQuestionsAnswer = async (req: any) => {
             {
                 $set: {
                     isQuestionAnswer: questionsStatus,
-                    questionsStatus
                 }
             },
             { new: true }
@@ -275,8 +270,7 @@ const sendQuestionsAnswer = async (req: any) => {
                 },
                 {
                     $set: {
-                        "participants.$.isQuestionAnswer": questionsStatus,
-                        questionsStatus
+                        "participants.$.isQuestionAnswer": questionsStatus
                     }
                 },
                 { new: true }
@@ -289,7 +283,7 @@ const sendQuestionsAnswer = async (req: any) => {
             });
         }
 
-        if (!podcast || !podcastQ) {
+        if (!podcastQ) {
             throw new Error("Podcast not found");
         }
 
