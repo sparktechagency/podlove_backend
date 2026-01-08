@@ -90,8 +90,6 @@ const createChat = async (req: Request, res: Response, next: NextFunction): Prom
   }
 };
 
-
-
 const getUserChats = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userId = req.user?.userId;
