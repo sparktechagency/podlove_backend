@@ -93,8 +93,11 @@ const sendPodcastRequest = async (
   try {
     session.startTransaction();
 
+    const podcast = await Podcast.findOne({
+      isComplete: false,
+      $or: [{ "participants.user": userId }, { primaryUser: userId }],
+    }).session(session);
 
-    const podcast = await Podcast.findOne({ "participants.user": userId }).session(session);
     if (podcast) {
       podcast.participants = podcast.participants.map((p: any) => {
         if (p.user.toString() === userId.toString()) {
@@ -111,7 +114,13 @@ const sendPodcastRequest = async (
       console.log("podcast:=================", podcast);
       await podcast.save({ session });
     } else {
-      let podcast = await Podcast.findOne({ primaryUser: userId }).session(session);
+      // let podcast = await Podcast.findOne({ primaryUser: userId }).session(session);
+
+      const podcast = await Podcast.findOne({
+        isComplete: false,
+        $or: [{ "participants.user": userId }, { primaryUser: userId }],
+      }).session(session);
+
       if (!podcast) {
         throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this participant");
       }
