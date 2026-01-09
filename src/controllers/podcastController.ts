@@ -102,7 +102,18 @@ const sendPodcastRequest = async (
 
     const participant = podcast.participants.find((p: any) => p.user.toString() === userId.toString());
 
-    if (participant) {
+    if (podcast?.primaryUser?.toString() !== userId.toString()) {
+      podcast.isRequest = true;
+      podcast.status = status;
+      podcast.schedule = { day: "", date: "", time: "" };
+      await podcast.save({ session });
+
+    } else {
+      if (!participant) {
+        throw createError(StatusCodes.NOT_FOUND, "Spark not found in podcast");
+      }
+
+      // ===============
       podcast.participants = podcast.participants.map((p: any) => {
         if (p.user.toString() === userId.toString()) {
           return {
@@ -116,15 +127,6 @@ const sendPodcastRequest = async (
       podcast.status = status;
       podcast.schedule = { day: "", date: "", time: "" };
       console.log("podcast:=================", podcast);
-      await podcast.save({ session });
-    } else {
-      if (podcast?.primaryUser?.toString() !== userId.toString()) {
-        throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this Spotlight");
-      }
-
-      podcast.isRequest = true;
-      podcast.status = status;
-      podcast.schedule = { day: "", date: "", time: "" };
       await podcast.save({ session });
     }
 
