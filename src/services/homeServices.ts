@@ -78,18 +78,6 @@ const homeData = async (
         })
       );
 
-      if (hostSummaries.length) {
-        for (const h of hostSummaries) {
-          participantsArray.push({
-            _id: h._id,
-            name: h.name,
-            bio: h.bio,
-            interests: h.interests,
-            score: h.score,
-            isAllow: true,
-          } as any);
-        }
-      }
 
       podcast.participants = participantsArray as any;
     } else {
@@ -140,7 +128,7 @@ const homeCompletedPodcastData = async (req: Request, res: Response, next: NextF
     const podcasts = await Podcast.find({
       isComplete: true,
       $or: [
-        { primaryUser: userId },
+        { primaryUser: userId }, HomeRouter
         { "participants.user": userId },
       ],
     })
