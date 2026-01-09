@@ -830,7 +830,7 @@ const refreshTheMatch = async (
       throw createError(StatusCodes.NOT_FOUND, "User not found");
     }
 
-    const { status } = req.query as { status: string };
+    const { status, podcastId } = req.query as { status: string, podcastId: any };
 
     if (status === "refresh") {
       await User.findByIdAndUpdate(
@@ -838,6 +838,12 @@ const refreshTheMatch = async (
         { isPodcastActive: false },
         { session }
       );
+
+      const podcast = await Podcast.findById(podcastId, null, { session });
+      if (podcast) {
+        podcast.isComplete = true;
+        await podcast.save({ session });
+      }
     }
 
     await session.commitTransaction();
@@ -845,7 +851,7 @@ const refreshTheMatch = async (
     res.status(StatusCodes.OK).json({
       success: true,
       message: "Match refreshed successfully",
-      data: user, // or whatever should actually be returned
+      data: user,
     });
   } catch (err) {
     await session.abortTransaction();

@@ -92,7 +92,6 @@ cron.schedule("0 0 * * *", async () => {
   }
 });
 
-
 const getAllPremiumUsers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { search } = req.query;
   const page = parseInt(req.query.page as string, 10) || 1;
@@ -213,93 +212,88 @@ const unblock = async (req: Request, res: Response, next: NextFunction): Promise
   });
 };
 
-const getUserSubscriptions = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-  const userId = req.user?.userId;
-  if (!userId) {
-    return next(createError(StatusCodes.UNAUTHORIZED, "User not authenticated"));
-  }
+const getUserSubscriptions = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const userId = req.user?.userId;
+    if (!userId) {
+      return next(
+        createError(StatusCodes.UNAUTHORIZED, "User not authenticated")
+      );
+    }
 
-  const result = await User.findById(userId).select("subscription chatingtime createdAt");
+    const user = await User.findById(userId)
+      .select("subscription chatingtime createdAt")
+      .lean();
 
-  const podcastUser = await Podcast.findOne({
-    isComplete: false,
-    $or: [
-      { "participants.user": userId },
-      { primaryUser: userId }
-    ]
-  }).lean();
+    if (!user) {
+      return next(createError(StatusCodes.NOT_FOUND, "User not found"));
+    }
 
-  let primaryUser: any = null;
-  if (podcastUser) {
-    primaryUser = await User.findById(podcastUser?.primaryUser).select("subscription chatingtime createdAt");
-  }
+    const podcastUser = await Podcast.findOne({
+      isComplete: false,
+      $or: [{ "participants.user": userId }, { primaryUser: userId }],
+    })
+      .select("finishStatus")
+      .lean();
 
-  if (!result) {
-    return next(createError(StatusCodes.NOT_FOUND, "User not found"));
-  }
+    const now = Date.now();
+    const createdAt = new Date(user.createdAt).getTime();
 
-  let bioPreview: boolean;
-  let chatWindow: boolean = false;
-  const currentDate = new Date();
+    let bioPreview = false;
+    let chatWindow = false;
 
-  console.log("User subscription plan: ", result.subscription.plan);
+    const isPodcastFinished =
+      podcastUser?.finishStatus === "1stFinish" ||
+      podcastUser?.finishStatus === "2ndFinish";
 
-  switch (result.subscription.plan) {
-    case SubscriptionPlanName.SAMPLER:
-      bioPreview = false;
-      break;
-
-    case SubscriptionPlanName.SEEKER:
-      bioPreview = false;
-      break;
-
-    case SubscriptionPlanName.SCOUT:
-      bioPreview = true;
-      break;
-
-    default:
-      return next(createError(StatusCodes.BAD_REQUEST, "Invalid subscription plan"));
-  }
-
-  if (primaryUser?.subscription?.plan) {
-    switch (primaryUser.subscription.plan) {
-      case SubscriptionPlanName.SAMPLER:
-        if (primaryUser) {
-          const timePassedSinceCreated = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600; // hours passed
-          if (timePassedSinceCreated <= 72) {
-            chatWindow = true;
-          }
+    switch (user.subscription.plan) {
+      case SubscriptionPlanName.SAMPLER: {
+        const hoursPassed = (now - createdAt) / (1000 * 60 * 60);
+        if (hoursPassed <= 72 && isPodcastFinished) {
+          chatWindow = true;
         }
         break;
+      }
 
-      case SubscriptionPlanName.SEEKER:
-        if (primaryUser) {
-          const timePassedSinceCreatedSeeker = (currentDate.getTime() - new Date(result.createdAt).getTime()) / 1000 / 3600 / 24;
-          if (timePassedSinceCreatedSeeker <= 7) {
-            chatWindow = true;
-          }
+      case SubscriptionPlanName.SEEKER: {
+        const daysPassed = (now - createdAt) / (1000 * 60 * 60 * 24);
+        if (daysPassed <= 7 && isPodcastFinished) {
+          chatWindow = true;
         }
         break;
+      }
 
-      case SubscriptionPlanName.SCOUT:
-        chatWindow = true;
+      case SubscriptionPlanName.SCOUT: {
+        bioPreview = true;
+        if (isPodcastFinished) {
+          chatWindow = true;
+        }
         break;
+      }
 
       default:
-        return next(createError(StatusCodes.BAD_REQUEST, "Invalid subscription plan"));
+        return next(
+          createError(StatusCodes.BAD_REQUEST, "Invalid subscription plan")
+        );
     }
-  }
 
-  // Send response with all the subscription details
-  return res.json({
-    status: result.subscription?.status,
-    startedAt: result.subscription?.startedAt,
-    endDate: result.subscription?.endDate,
-    plan: result.subscription.plan,
-    bioPreview,
-    chatWindow,
-  });
+    res.json({
+      status: user.subscription?.status,
+      startedAt: user.subscription?.startedAt,
+      endDate: user.subscription?.endDate,
+      plan: user.subscription.plan,
+      bioPreview,
+      chatWindow,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
+
 
 const UserServices = {
   getUserSubscriptions,
