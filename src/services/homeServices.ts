@@ -16,15 +16,15 @@ interface HostSummary {
   score: number;
 }
 
-function summarizeSelectedUserPodcasts(podcasts: any): HostSummary[] {
-  return podcasts.map(
-    (p: { primaryUser: { _id: any; name: any; bio: any; interests: any }; participants: { score: number }[] }) => {
-      const { _id, name, bio, interests } = p.primaryUser;
-      const score = p.participants[0]?.score ?? 0;
-      return { _id, name, bio, interests, score };
-    }
-  );
+function summarizeSelectedUserPodcast(podcast: any): HostSummary[] {
+  if (!podcast?.primaryUser) return [];
+
+  const { _id, name, bio, interests } = podcast.primaryUser;
+  const score = podcast.participants?.[0]?.score ?? 0;
+
+  return [{ _id, name, bio, interests, score }];
 }
+
 
 const homeData = async (
   req: Request,
@@ -66,7 +66,7 @@ const homeData = async (
       !!podcast && podcast.primaryUser?._id.toString() === userId;
 
     if (podcast) {
-      const hostSummaries = summarizeSelectedUserPodcasts(podcast);
+      const hostSummaries = summarizeSelectedUserPodcast(podcast);
 
       const participantsArray = podcast.participants.map(
         ({ user, score, isAllow, isRequest, isQuestionAnswer }) => ({
