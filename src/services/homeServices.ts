@@ -26,20 +26,32 @@ function summarizeSelectedUserPodcasts(podcasts: any): HostSummary[] {
   );
 }
 
-const homeData = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const homeData = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const userId = req.user.userId;
-    const userObjId = typeof userId === "string" ? new Types.ObjectId(userId) : userId;
-    // console.log("userId: ", userId, " userObjId: ", userObjId);
-    // Fetch the user (with their auth email)
 
-    const user = await User.findById(userId).populate({ path: "auth", select: "email isBlocked shareFeedback chatingtime" }).lean<LeanUserWithAuth>();
-    // console.log("user home: ", user);
+    const user = await User.findById(userId)
+      .populate({
+        path: "auth",
+        select: "email isBlocked shareFeedback chatingtime",
+      })
+      .lean<LeanUserWithAuth>();
+
     if (!user) {
-      throw next(createError(StatusCodes.NOT_FOUND, "You account is not found"));
+      return next(createError(StatusCodes.NOT_FOUND, "Your account was not found"));
     }
-    if (user.auth.isBlocked) {
-      throw next(createError(StatusCodes.FORBIDDEN, "You Account is Blocked by Admisnistrator, Please contact our assistance"))
+
+    if (user.auth?.isBlocked) {
+      return next(
+        createError(
+          StatusCodes.FORBIDDEN,
+          "Your account is blocked by the administrator. Please contact support."
+        )
+      );
     }
 
     let podcast = await Podcast.findOne({
@@ -50,26 +62,56 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
       .populate({ path: "primaryUser", select: "name bio interests" })
       .lean();
 
-    // console.log("podcast home: ", podcast);
-    const isPrimaryUser = !!podcast && podcast.primaryUser._id.toString() === userId;
+    const isPrimaryUser =
+      !!podcast && podcast.primaryUser?._id.toString() === userId;
 
+    if (podcast) {
+      const hostSummaries = summarizeSelectedUserPodcasts(podcast);
+
+      const participantsArray = podcast.participants.map(
+        ({ user, score, isAllow, isRequest, isQuestionAnswer }) => ({
+          ...user,
+          score,
+          isAllow,
+          isRequest,
+          isQuestionAnswer,
+        })
+      );
+
+      if (hostSummaries.length) {
+        for (const h of hostSummaries) {
+          participantsArray.push({
+            _id: h._id,
+            name: h.name,
+            bio: h.bio,
+            interests: h.interests,
+            score: h.score,
+            isAllow: true,
+          } as any);
+        }
+      }
+
+      podcast.participants = participantsArray as any;
+    } else {
+      podcast = {
+        participants: [],
+        selectedUser: [],
+      } as any;
+    }
 
     const subscriptionPlans = await SubscriptionPlan.find().lean();
 
-
-    return res.status(StatusCodes.OK).json({
+    res.status(StatusCodes.OK).json({
       success: true,
       message: "Success",
       data: {
         user,
-        podcast: podcast || {},
+        podcast,
         subscriptionPlans,
         isPrimaryUser,
-        // hostPodcastMatches,
       },
     });
   } catch (err) {
-    // Forward the error to your error‑handling middleware
     next(err);
   }
 };
