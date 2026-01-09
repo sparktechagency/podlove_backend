@@ -44,6 +44,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
 
     let podcast = await Podcast.findOne({
       $or: [{ primaryUser: userId }, { "participants.user": userId }],
+      isComplete: false,
     })
       .populate({ path: "participants.user", select: "name bio interests" })
       .populate({ path: "primaryUser", select: "name bio interests" })
@@ -51,65 +52,10 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
 
     // console.log("podcast home: ", podcast);
     const isPrimaryUser = !!podcast && podcast.primaryUser._id.toString() === userId;
-    if (podcast) {
-      const selectedUserPodcast = await Podcast.find({ "selectedUser.user": userObjId })
-        .populate({ path: "participants.user", select: "name bio interests" })
-        .populate({ path: "primaryUser", select: "name bio interests" })
-        .lean();
 
-      const hostSummaries = summarizeSelectedUserPodcasts(selectedUserPodcast);
-      const participantsArray = podcast?.participants.map((participant) => {
-        // @ts-ignore
-        const { user, score, isAllow, isRequest, isQuestionAnswer } = participant;
 
-        return {
-          isRequest,
-          ...user,
-          isAllow,
-          score,
-          isQuestionAnswer
-        };
-      });
-
-      if (hostSummaries.length > 0) {
-        hostSummaries.forEach((h) => {
-          participantsArray.push({
-            _id: h._id,
-            score: h.score,
-            isAllow: true,
-            name: h.name,
-            bio: h.bio,
-            interests: h.interests,
-          } as any); // ← bypasses the type‑checker
-        });
-
-        hostSummaries.forEach((h) => {
-          return (podcast as any).selectedUser.push({
-            _id: h._id,
-            user: h._id,
-          } as any);
-        });
-      }
-      //podcast.participants = participantsArray as unknown as typeof podcast.participants;
-      // 🔍 NEW: Apply matchingConfig limits to display only the configured amount of matches
-      const allowedMatchCount = matchingConfig.getMatchCount(user.subscription?.plan || "SAMPLER");
-      const finalParticipants = participantsArray.slice(0, allowedMatchCount);
-
-      podcast.participants = finalParticipants as unknown as typeof podcast.participants;
-    } else {
-      // @ts-ignore
-      podcast = {
-        participants: [],
-        selectedUser: [],
-      }
-    }
-    // Fetch available subscription plans
     const subscriptionPlans = await SubscriptionPlan.find().lean();
 
-    const hostPodcastMatches = await Podcast.find({
-      status: { $in: ["Scheduled", "Done", "Playing", "StreamStart"] },
-      "participants.user": userObjId,
-    }).exec();
 
     return res.status(StatusCodes.OK).json({
       success: true,
@@ -119,7 +65,7 @@ const homeData = async (req: Request, res: Response, next: NextFunction): Promis
         podcast: podcast || {},
         subscriptionPlans,
         isPrimaryUser,
-        hostPodcastMatches,
+        // hostPodcastMatches,
       },
     });
   } catch (err) {
