@@ -79,6 +79,8 @@ const sendPodcastRequest = async (
   const userId = req.user.userId;
   const { status } = req.body;
 
+  console.log("userId: ", userId, " status: ", status);
+
   if (!userId) {
     return next(createError(StatusCodes.BAD_REQUEST, "Participant userId is required"));
   }
@@ -106,6 +108,7 @@ const sendPodcastRequest = async (
 
       podcast.status = status;
       podcast.schedule = { day: "", date: "", time: "" };
+      console.log("podcast:=================", podcast);
       await podcast.save({ session });
     } else {
       let podcast = await Podcast.findOne({ primaryUser: userId }).session(session);
@@ -117,9 +120,6 @@ const sendPodcastRequest = async (
       podcast.schedule = { day: "", date: "", time: "" };
       await podcast.save({ session });
     }
-
-
-
 
 
     await session.commitTransaction();
