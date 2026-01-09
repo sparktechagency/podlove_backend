@@ -66,7 +66,6 @@ const homeData = async (
       !!podcast && podcast.primaryUser?._id.toString() === userId;
 
     if (podcast) {
-      const hostSummaries = summarizeSelectedUserPodcast(podcast);
 
       const participantsArray = podcast.participants.map(
         ({ user, score, isAllow, isRequest, isQuestionAnswer }) => ({
@@ -128,7 +127,7 @@ const homeCompletedPodcastData = async (req: Request, res: Response, next: NextF
     const podcasts = await Podcast.find({
       isComplete: true,
       $or: [
-        { primaryUser: userId }, HomeRouter
+        { primaryUser: userId },
         { "participants.user": userId },
       ],
     })
