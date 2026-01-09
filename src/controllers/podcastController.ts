@@ -77,7 +77,8 @@ const sendPodcastRequest = async (
   next: NextFunction
 ) => {
   const userId = req.user.userId;
-  const { status } = req.body;
+  const { status, podcastId } = req.body;
+  console.log(podcastId)
 
   console.log("userId: ", userId, " status: ", status);
 
@@ -93,12 +94,15 @@ const sendPodcastRequest = async (
   try {
     session.startTransaction();
 
-    const podcast = await Podcast.findOne({
-      isComplete: false,
-      $or: [{ "participants.user": userId }, { primaryUser: userId }],
-    }).session(session);
+    const podcast = await Podcast.findById(podcastId).session(session);
 
-    if (podcast) {
+    if (!podcast) {
+      throw createError(StatusCodes.NOT_FOUND, "Podcast not found");
+    }
+
+    const participant = podcast.participants.find((p: any) => p.user.toString() === userId.toString());
+
+    if (participant) {
       podcast.participants = podcast.participants.map((p: any) => {
         if (p.user.toString() === userId.toString()) {
           return {
@@ -114,16 +118,10 @@ const sendPodcastRequest = async (
       console.log("podcast:=================", podcast);
       await podcast.save({ session });
     } else {
-      // let podcast = await Podcast.findOne({ primaryUser: userId }).session(session);
-
-      const podcast = await Podcast.findOne({
-        isComplete: false,
-        $or: [{ "participants.user": userId }, { primaryUser: userId }],
-      }).session(session);
-
-      if (!podcast) {
-        throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this participant");
+      if (podcast?.primaryUser?.toString() !== userId.toString()) {
+        throw createError(StatusCodes.NOT_FOUND, "Podcast not found for this Spotlight");
       }
+
       podcast.isRequest = true;
       podcast.status = status;
       podcast.schedule = { day: "", date: "", time: "" };
