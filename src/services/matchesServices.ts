@@ -81,7 +81,7 @@ const ScheduledPodcasts = async () => {
         matchCount,
         session
       );
-
+      console.log(`⚠️ ⚠️`, participants.length, matchCount);
       if (participants.length !== matchCount) {
         console.log(`⚠️ Match mismatch for user ${user._id}`);
         continue;
