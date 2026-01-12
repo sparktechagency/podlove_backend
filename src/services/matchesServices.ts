@@ -25,22 +25,17 @@ export interface Preferences {
 interface MatchRequestBody {
   compatibility: string[];
 }
-// ====================================================
-const FIVE_HOURS = 1 * 60 * 60 * 1000; // 5 hours in ms
-
-// setTimeout(() => {
-//   console.log("✅ Podcast scheduler started after 5 hours");
+// ==================================================== 
 
 cron.schedule("*/1 * * * *", async () => {
-  console.log("✅ Podcast scheduler started after 1 Min");
+  console.log("✅ Podcast scheduler started");
+
   try {
     await ScheduledPodcasts();
   } catch (err) {
-    console.error("Scheduler error:", err);
+    console.error("❌ Scheduler error:", err);
   }
 });
-
-// }, FIVE_HOURS);
 
 const ScheduledPodcasts = async () => {
   const session = await mongoose.startSession();
@@ -48,6 +43,7 @@ const ScheduledPodcasts = async () => {
   try {
     session.startTransaction();
 
+    // Step 1: Fetch eligible users
     const users = await User.find(
       {
         isPodcastActive: false,
@@ -65,33 +61,25 @@ const ScheduledPodcasts = async () => {
       return;
     }
 
+    // Step 2: Loop through each user
     for (const user of users) {
-
       const matchCount = subscriptionMatchCount(user.subscription);
 
-      // ✅ Validate user before scheduling
+      // Skip invalid users
       if (!matchCount || !user.compatibility?.length || !user._id || !user.isProfileComplete) {
         console.log(`⚠️ Skipping user ${user._id} due to insufficient data or match count`);
-        await session.commitTransaction();
-        return;
+        continue; // continue to next user
       }
 
-      const participants = await findMatchesWithVectors(
-        // @ts-ignore
-        user._id,
-        user.compatibility,
-        matchCount,
-        session
-      );
-
-      console.log(`⚠️ Participants found: ${participants.length}, expected: ${matchCount}`);
+      // Step 3: Find matching participants
+      const participants = await findMatchesWithVectors(user._id.toString(), user.compatibility, matchCount, session);
 
       if (participants.length !== matchCount) {
-        console.log(`⚠️ Match mismatch for user ${user._id}`);
+        console.log(`⚠️ Match mismatch for user ${user._id}. Expected ${matchCount}, found ${participants.length}`);
         continue;
       }
 
-      // 🔹 Create podcast
+      // Step 4: Create podcast
       const podcast = await createAndUpdatePodcast({
         isSpotlight: user.subscription.isSpotlight,
         userId: user._id,
@@ -101,19 +89,25 @@ const ScheduledPodcasts = async () => {
 
       console.log(`🎙️ Podcast ${podcast._id} created for user ${user._id}`);
 
-      // 🔹 Update main user
-      await User.findByIdAndUpdate(user._id, {
-        $inc: { "subscription.isSpotlight": -1 },
-        isPodcastActive: true
-      }, { session });
+      // Step 5: Update user
+      await User.findByIdAndUpdate(
+        user._id.toString(),
+        {
+          $inc: { "subscription.isSpotlight": -1 },
+          isPodcastActive: true
+        },
+        { session }
+      );
 
       console.log(`🎙️ Updated user ${user._id}, remaining Spotlight: ${user.subscription.isSpotlight - 1}`);
     }
 
+    // Step 6: Commit transaction after all users processed
     await session.commitTransaction();
-    console.log("🎙️ Podcast scheduling completed");
+    console.log("🎙️ Podcast scheduling completed successfully");
 
   } catch (err) {
+    // Rollback transaction on error
     await session.abortTransaction();
     console.error("❌ Podcast scheduler failed:", err);
   } finally {
