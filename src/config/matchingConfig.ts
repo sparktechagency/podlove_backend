@@ -55,7 +55,7 @@ export const PREFERENCE_FILTERS = {
      * Filter out users who are already matched in active podcasts
      * ⚠️ RECOMMENDED: Keep TRUE to avoid showing users in active sessions
      */
-    IS_PODCAST_ACTIVE: false,
+    IS_PODCAST_ACTIVE: true,
 
     /**
      * Exclude the requesting user from their own matches
