@@ -88,17 +88,19 @@ const ScheduledPodcasts = async () => {
       }
 
       // 🔹 Create podcast
-      await createAndUpdatePodcast({
+      const podcast = await createAndUpdatePodcast({
         isSpotlight: user.subscription.isSpotlight,
         userId: user._id,
         newParticipants: participants,
         session
       });
 
+      console.log(`🎙️ =Podcast= ${podcast._id} created for user ${user._id}`);
+
       // 🔹 Update main user
       user.subscription.isSpotlight -= 1;
       user.isPodcastActive = true;
-      console.log(`🎙️ Podcast created for user ${user._id}, remaining Spotlight: ${user.subscription.isSpotlight}`);
+      console.log(`🎙️ =Podcast== created for user ${user._id}, remaining Spotlight: ${user.subscription.isSpotlight}`);
       await user.save({ session });
     }
 
