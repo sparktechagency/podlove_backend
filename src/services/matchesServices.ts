@@ -67,6 +67,7 @@ const ScheduledPodcasts = async () => {
       const matchCount = subscriptionMatchCount(user.subscription);
 
       const participants = await findMatchesWithVectors(
+        // @ts-ignore
         user._id,
         user.compatibility,
         matchCount,
