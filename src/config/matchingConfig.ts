@@ -122,7 +122,7 @@ export const VECTOR_SEARCH_TOP_K = 20;
  * - Balanced: 0.5 - 0.7
  * - Exploratory: 0.3 - 0.5
  */
-export const MIN_SIMILARITY_SCORE = 0.2;
+export const MIN_SIMILARITY_SCORE = 0.03;
 
 /**
  * Enable automatic fallback to traditional matching when vector search fails.
