@@ -87,9 +87,6 @@ const ScheduledPodcasts = async () => {
         continue;
       }
 
-      // 🔹 Extract participant IDs
-      const participantIds = participants.map(p => p.user);
-
       // 🔹 Create podcast
       await createAndUpdatePodcast({
         isSpotlight: user.subscription.isSpotlight,
@@ -798,6 +795,7 @@ export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipa
   );
 
   if (activePodcast) {
+    console.log("User already has an active podcast:", activePodcast._id);
     throw new Error("You already have an active podcast.");
   }
 
@@ -826,6 +824,8 @@ export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipa
       isComplete: false
     });
 
+    console.log("create new podcast._id:", podcast._id);
+
     await podcast.save({ session });
   }
 
@@ -834,6 +834,8 @@ export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipa
   }
 
   const participantIds = podcast.participants.map((p: any) => p.user);
+  console.log("create new participantIds:", participantIds);
+
   await User.updateMany(
     { _id: { $in: participantIds } },
     { $set: { isMatch: true } },
