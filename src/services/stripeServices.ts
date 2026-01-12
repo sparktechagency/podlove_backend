@@ -271,6 +271,8 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             );
           }
 
+
+
           await session.commitTransaction();
           session.endSession();
           res.status(200).send("Subscription activated successfully");

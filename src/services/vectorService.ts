@@ -81,10 +81,42 @@ export async function upsertUserVector(user: UserSchema): Promise<void> {
     const embeddingData = await generateUserEmbeddingData(user);
     const index = await getIndex();
 
+    // Sanitize metadata to ensure Pinecone accepts the values
+    const sanitizeMetadata = (md: any) => {
+      const m: any = { ...md };
+
+      // Age must be a number (not null). Default to 0 if invalid.
+      const ageNum = Number(m.age);
+      m.age = Number.isFinite(ageNum) ? Math.floor(ageNum) : 0;
+
+      // Ensure gender/bodyType/name are strings
+      m.gender = m.gender == null ? "" : String(m.gender);
+      m.bodyType = m.bodyType == null ? "" : String(m.bodyType);
+      m.name = m.name == null ? "" : String(m.name);
+
+      // Ethnicity must be a list of strings (or empty list)
+      if (!Array.isArray(m.ethnicity)) m.ethnicity = [];
+      else m.ethnicity = m.ethnicity.filter((e: any) => e != null).map((e: any) => String(e));
+
+      // Latitude/longitude numeric fallback
+      m.latitude = Number.isFinite(Number(m.latitude)) ? Number(m.latitude) : 0;
+      m.longitude = Number.isFinite(Number(m.longitude)) ? Number(m.longitude) : 0;
+
+      // isPodcastActive boolean fallback
+      m.isPodcastActive = Boolean(m.isPodcastActive);
+
+      // Remove any keys with null (defensive)
+      Object.keys(m).forEach((k) => {
+        if (m[k] === null) delete m[k];
+      });
+
+      return m;
+    };
+
     const records = embeddingData.map(data => ({
       id: data.id,
       values: data.embedding,
-      metadata: data.metadata as any,
+      metadata: sanitizeMetadata(data.metadata),
     }));
 
     await index.upsert(records);
@@ -109,10 +141,27 @@ export async function batchUpsertUserVectors(users: UserSchema[]): Promise<void>
     await Promise.all(batch.map(async (user) => {
       try {
         const embeddingData = await generateUserEmbeddingData(user);
+        // sanitize metadata for each record
+        const sanitizeMetadata = (md: any) => {
+          const m: any = { ...md };
+          const ageNum = Number(m.age);
+          m.age = Number.isFinite(ageNum) ? Math.floor(ageNum) : 0;
+          m.gender = m.gender == null ? "" : String(m.gender);
+          m.bodyType = m.bodyType == null ? "" : String(m.bodyType);
+          m.name = m.name == null ? "" : String(m.name);
+          if (!Array.isArray(m.ethnicity)) m.ethnicity = [];
+          else m.ethnicity = m.ethnicity.filter((e: any) => e != null).map((e: any) => String(e));
+          m.latitude = Number.isFinite(Number(m.latitude)) ? Number(m.latitude) : 0;
+          m.longitude = Number.isFinite(Number(m.longitude)) ? Number(m.longitude) : 0;
+          m.isPodcastActive = Boolean(m.isPodcastActive);
+          Object.keys(m).forEach((k) => { if (m[k] === null) delete m[k]; });
+          return m;
+        };
+
         allRecords.push(...embeddingData.map(data => ({
           id: data.id,
           values: data.embedding,
-          metadata: data.metadata as any,
+          metadata: sanitizeMetadata(data.metadata),
         })));
       } catch (error) {
         console.error(`Failed to generate embeddings for user ${user._id}:`, error);

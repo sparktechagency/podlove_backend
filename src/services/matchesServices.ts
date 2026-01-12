@@ -98,13 +98,6 @@ const ScheduledPodcasts = async () => {
         session
       });
 
-      // 🔹 Update ALL participants
-      await User.updateMany(
-        { _id: { $in: participantIds } },
-        { $set: { isPodcastActive: true } },
-        { session }
-      );
-
       // 🔹 Update main user
       user.subscription.isSpotlight -= 1;
       user.isPodcastActive = true;
