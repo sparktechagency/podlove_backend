@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\20300\\github\\sta\\yoyo\\podlove_backend\\logs\\winston\\successes\\.c9de155fbbef518ef8a39de1118e9e2c5fc1f4cb-audit.json",
+    "files": [
+        {
+            "date": 1768201075057,
+            "name": "C:\\20300\\github\\sta\\yoyo\\podlove_backend\\logs\\winston\\successes\\um-2026-01-12-12-success.log",
+            "hash": "af631f3b0d21721d60d9778be190b3e23c949156e30a77c890d1569a774acd5e"
+        },
+        {
+            "date": 1768201826694,
+            "name": "C:\\20300\\github\\sta\\yoyo\\podlove_backend\\logs\\winston\\successes\\um-2026-01-12-13-success.log",
+            "hash": "c701f2cc34adb2c818793709d4adb685f2a91ffc100bc1b4e0ac3d0b2133d349"
+        }
+    ],
+    "hashType": "sha256"
+}

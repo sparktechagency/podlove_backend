@@ -59,14 +59,46 @@ function personalityToText(personality: { spectrum: number; balance: number; foc
  */
 function calculateAge(dateOfBirth: string): number {
   if (!dateOfBirth) return 0;
-  const dob = new Date(dateOfBirth);
-  const today = new Date();
-  let age = today.getFullYear() - dob.getFullYear();
-  const monthDiff = today.getMonth() - dob.getMonth();
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-    age--;
+  
+  try {
+    let dob: Date;
+    
+    // Handle DD/MM/YYYY format (e.g., 31/01/1990)
+    if (dateOfBirth.includes('/')) {
+      const parts = dateOfBirth.split('/');
+      if (parts.length === 3) {
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1; // JavaScript months are 0-indexed
+        const year = parseInt(parts[2], 10);
+        dob = new Date(year, month, day);
+      } else {
+        dob = new Date(dateOfBirth);
+      }
+    } else {
+      // Handle ISO format or other standard formats
+      dob = new Date(dateOfBirth);
+    }
+    
+    // Validate the date
+    if (isNaN(dob.getTime())) {
+      console.error(`Invalid dateOfBirth format: ${dateOfBirth}`);
+      return 0;
+    }
+    
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDiff = today.getMonth() - dob.getMonth();
+    
+    // Adjust if birthday hasn't occurred this year
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+    
+    return age > 0 ? age : 0;
+  } catch (error) {
+    console.error(`Error calculating age for dateOfBirth: ${dateOfBirth}`, error);
+    return 0;
   }
-  return age;
 }
 
 /**
