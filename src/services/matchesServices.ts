@@ -100,6 +100,7 @@ const ScheduledPodcasts = async () => {
       );
 
       console.log(`🎙️ Updated user ${user._id}, remaining Spotlight: ${user.subscription.isSpotlight - 1}`);
+      await session.commitTransaction();
     }
 
     // Step 6: Commit transaction after all users processed
