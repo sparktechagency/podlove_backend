@@ -5,7 +5,7 @@ import OpenAI from "openai";
 import process from "node:process";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
-import mongoose, { Types } from "mongoose";
+import mongoose, { ClientSession, Types } from "mongoose";
 import Podcast from "@models/podcastModel";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
 import { SubscriptionPlanName } from "@shared/enums";
@@ -24,6 +24,13 @@ export interface Preferences {
 }
 interface MatchRequestBody {
   compatibility: string[];
+}
+
+interface CreatePodcastProps {
+  isSpotlight: number;
+  userId: Types.ObjectId | string;
+  newParticipants: { user: Types.ObjectId | string; role?: string }[];
+  session: ClientSession;
 }
 // ==================================================== 
 
@@ -89,17 +96,6 @@ const ScheduledPodcasts = async () => {
 
       console.log(`🎙️ Podcast ${podcast._id} created for user ${user._id}`);
 
-      // Step 5: Update user
-      await User.findByIdAndUpdate(
-        user._id.toString(),
-        {
-          $inc: { "subscription.isSpotlight": -1 },
-          isPodcastActive: true
-        },
-        { session }
-      );
-
-      console.log(`🎙️ Updated user ${user._id}, remaining Spotlight: ${user.subscription.isSpotlight - 1}`);
       await session.commitTransaction();
     }
 
@@ -777,16 +773,21 @@ export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight
   return matchingConfig.DEFAULT_MATCH_COUNT;
 };
 
-export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipants, session }: any) => {
-
-  if (
-    isSpotlight === 0) {
+export const createAndUpdatePodcast = async ({
+  isSpotlight,
+  userId,
+  newParticipants,
+  session
+}: CreatePodcastProps) => {
+  if (isSpotlight === 0) {
     throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
   }
 
+  const userIdObj = typeof userId === "string" ? new Types.ObjectId(userId) : userId;
 
+  // 1️⃣ Check if user already has an active podcast
   const activePodcast = await Podcast.findOne(
-    { 'participants.user': userId, isComplete: false },
+    { 'participants.user': userIdObj, isComplete: false },
     null,
     { session }
   );
@@ -796,33 +797,30 @@ export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipa
     throw new Error("You already have an active podcast.");
   }
 
+  // 2️⃣ Find existing podcast
   let podcast = await Podcast.findOne(
-    { primaryUser: userId, isComplete: false },
+    { primaryUser: userIdObj, isComplete: false },
     null,
     { session }
   );
 
   if (podcast) {
+    // Update existing podcast
     podcast = await Podcast.findOneAndUpdate(
       { _id: podcast._id },
-      {
-        $set: {
-          participants: newParticipants,
-          status: "NotScheduled"
-        }
-      },
+      { $set: { participants: newParticipants, status: "NotScheduled" } },
       { new: true, session }
     ).populate('participants.user', 'name avatar');
   } else {
+    // Create new podcast
     podcast = new Podcast({
-      primaryUser: userId,
+      primaryUser: userIdObj,
       participants: newParticipants,
       status: "NotScheduled",
       isComplete: false
     });
 
-    console.log("create new podcast._id:", podcast._id);
-
+    console.log("Creating new podcast._id:", podcast._id);
     await podcast.save({ session });
   }
 
@@ -830,15 +828,25 @@ export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipa
     throw new Error("Failed to create or update podcast.");
   }
 
-  const participantIds = podcast.participants.map((p: any) => p.user);
-  console.log("create new participantIds:", participantIds);
+  // 3️⃣ Update participants to mark active
+  const participantIds = podcast.participants.map(p =>
+    typeof p.user === "string" ? new Types.ObjectId(p.user) : p.user
+  );
 
   const updates = await User.updateMany(
     { _id: { $in: participantIds } },
     { $set: { isPodcastActive: true } },
     { session }
   );
-  console.log("Updated users for isMatch:", updates?.modifiedCount);
+
+  console.log("Updated participants for isPodcastActive:", updates.modifiedCount);
+
+  // 4️⃣ Update primary user
+  await User.findByIdAndUpdate(
+    userIdObj,
+    { $inc: { "subscription.isSpotlight": -1 }, isPodcastActive: true },
+    { session }
+  );
 
   return podcast;
 };
@@ -872,8 +880,6 @@ const findMatch = async (req: Request, res: Response, next: NextFunction) => {
       session
     });
 
-
-    user.subscription.isSpotlight -= 1;
     await user.save({ session });
 
     await session.commitTransaction();

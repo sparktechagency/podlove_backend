@@ -252,26 +252,12 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             throw new Error("Match count mismatch");
           }
 
-          const userUpdate = await createAndUpdatePodcast({
+          await createAndUpdatePodcast({
             isSpotlight: updatedUser.subscription.isSpotlight,
             userId: updatedUser._id,
             newParticipants: participants,
             session
           });
-
-          if (userUpdate) {
-            await User.findByIdAndUpdate(
-              userId,
-              {
-                $inc: {
-                  "subscription.isSpotlight": -1,
-                },
-              },
-              { new: true, session }
-            );
-          }
-
-
 
           await session.commitTransaction();
           session.endSession();
