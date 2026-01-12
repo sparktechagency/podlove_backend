@@ -192,7 +192,6 @@ const postNewRecordInWebhook = async (req: Request) => {
                         $set: {
                             status: PodcastStatus.FINISHED,
                             finishStatus: "2ndFinish",
-                            isComplete: true,
                         }
                     }
                 );
