@@ -40,7 +40,7 @@ export const PREFERENCE_FILTERS = {
     GENDER: true,
 
     /** Filter by age range preference (e.g., 25-35 years old) */
-    AGE: true,
+    AGE: false,
 
     /** Filter by body type preference (e.g., athletic, average, curvy) */
     BODY_TYPE: true,
