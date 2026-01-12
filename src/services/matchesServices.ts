@@ -28,18 +28,18 @@ interface MatchRequestBody {
 // ====================================================
 const FIVE_HOURS = 1 * 60 * 60 * 1000; // 5 hours in ms
 
-setTimeout(() => {
-  console.log("✅ Podcast scheduler started after 5 hours");
+// setTimeout(() => {
+//   console.log("✅ Podcast scheduler started after 5 hours");
 
-  cron.schedule("*/1 * * * *", async () => {
-    try {
-      await ScheduledPodcasts();
-    } catch (err) {
-      console.error("Scheduler error:", err);
-    }
-  });
+cron.schedule("*/1 * * * *", async () => {
+  try {
+    await ScheduledPodcasts();
+  } catch (err) {
+    console.error("Scheduler error:", err);
+  }
+});
 
-}, FIVE_HOURS);
+// }, FIVE_HOURS);
 
 const ScheduledPodcasts = async () => {
   const session = await mongoose.startSession();
@@ -80,7 +80,7 @@ const ScheduledPodcasts = async () => {
       }
 
       // 🔹 Extract participant IDs
-      const participantIds = participants.map(p => p._id);
+      const participantIds = participants.map(p => p.user);
 
       // 🔹 Create podcast
       await createAndUpdatePodcast({
