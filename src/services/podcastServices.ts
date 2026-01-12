@@ -74,12 +74,13 @@ const setSchedule = async (req: Request, res: Response, next: NextFunction): Pro
     podcast.roomCodes = [];
     podcast.scheduleStatus = podcast.scheduleStatus;
 
-    if (podcast?.scheduleStatus === null) {
+    if (!podcast.scheduleStatus && !podcast.finishStatus) {
       podcast.scheduleStatus = "1st";
-    } else if (podcast?.scheduleStatus === "1st") {
+    } else if (
+      podcast.scheduleStatus === "1st" &&
+      podcast.finishStatus === "1stFinish"
+    ) {
       podcast.scheduleStatus = "2nd";
-    } else {
-      throw createError(StatusCodes.BAD_REQUEST, "Podcast schedule cannot be updated more than twice");
     }
 
     await podcast.save();
