@@ -56,21 +56,23 @@ const ScheduledPodcasts = async () => {
       null,
       { session }
     );
-    console.log(`🎙️==||=== Found ${users.length} users eligible for podcast scheduling`);
+
+    console.log(`🎙️ Found ${users.length} users eligible for podcast scheduling`);
+
     if (!users.length) {
       console.log("No users eligible for podcast scheduling");
       await session.commitTransaction();
       return;
     }
 
-
-
     for (const user of users) {
 
       const matchCount = subscriptionMatchCount(user.subscription);
 
-      if (!matchCount || user.compatibility.length === 0 || !user._id || !user.isProfileComplete) {
+      // ✅ Validate user before scheduling
+      if (!matchCount || !user.compatibility?.length || !user._id || !user.isProfileComplete) {
         console.log(`⚠️ Skipping user ${user._id} due to insufficient data or match count`);
+        await session.commitTransaction();
         return;
       }
 
@@ -81,7 +83,9 @@ const ScheduledPodcasts = async () => {
         matchCount,
         session
       );
-      console.log(`⚠️ ⚠️`, participants.length, matchCount);
+
+      console.log(`⚠️ Participants found: ${participants.length}, expected: ${matchCount}`);
+
       if (participants.length !== matchCount) {
         console.log(`⚠️ Match mismatch for user ${user._id}`);
         continue;
@@ -95,13 +99,15 @@ const ScheduledPodcasts = async () => {
         session
       });
 
-      console.log(`🎙️ =Podcast= ${podcast._id} created for user ${user._id}`);
+      console.log(`🎙️ Podcast ${podcast._id} created for user ${user._id}`);
 
       // 🔹 Update main user
-      user.subscription.isSpotlight -= 1;
-      user.isPodcastActive = true;
-      console.log(`🎙️ =Podcast== created for user ${user._id}, remaining Spotlight: ${user.subscription.isSpotlight}`);
-      await user.save({ session });
+      await User.findByIdAndUpdate(user._id, {
+        $inc: { "subscription.isSpotlight": -1 },
+        isPodcastActive: true
+      }, { session });
+
+      console.log(`🎙️ Updated user ${user._id}, remaining Spotlight: ${user.subscription.isSpotlight - 1}`);
     }
 
     await session.commitTransaction();
@@ -114,6 +120,7 @@ const ScheduledPodcasts = async () => {
     session.endSession();
   }
 };
+
 
 
 // ====================================================
