@@ -32,6 +32,7 @@ const FIVE_HOURS = 1 * 60 * 60 * 1000; // 5 hours in ms
 //   console.log("✅ Podcast scheduler started after 5 hours");
 
 cron.schedule("*/1 * * * *", async () => {
+  console.log("✅ Podcast scheduler started after 1 Min");
   try {
     await ScheduledPodcasts();
   } catch (err) {
@@ -62,9 +63,16 @@ const ScheduledPodcasts = async () => {
       return;
     }
 
+    console.log(`🎙️ Found ${users.length} users eligible for podcast scheduling`);
+
     for (const user of users) {
 
       const matchCount = subscriptionMatchCount(user.subscription);
+
+      if (!matchCount || user.compatibility.length === 0 || !user._id || !user.isProfileComplete) {
+        console.log(`⚠️ Skipping user ${user._id} due to insufficient data or match count`);
+        return;
+      }
 
       const participants = await findMatchesWithVectors(
         // @ts-ignore
