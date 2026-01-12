@@ -115,8 +115,6 @@ const ScheduledPodcasts = async () => {
   }
 };
 
-
-
 // ====================================================
 
 // const matchUser = async (
@@ -218,11 +216,6 @@ const ScheduledPodcasts = async () => {
 
 // ==================================
 
-
-/**
- * Enhanced compatibility scoring with AI reasoning
- * Returns score (0-100) and reasoning
- */
 const getCompatibilityScoreWithReasoning = async (
   userOne: any,
   userTwo: any
@@ -797,7 +790,7 @@ export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipa
     { session }
   );
 
-  if (activePodcast) {
+  if (activePodcast?._id) {
     console.log("User already has an active podcast:", activePodcast._id);
     throw new Error("You already have an active podcast.");
   }
