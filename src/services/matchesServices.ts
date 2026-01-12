@@ -56,7 +56,7 @@ const ScheduledPodcasts = async () => {
       null,
       { session }
     );
-    console.log(`🎙️== Found ${users.length} users eligible for podcast scheduling`);
+    console.log(`🎙️==||=== Found ${users.length} users eligible for podcast scheduling`);
     if (!users.length) {
       console.log("No users eligible for podcast scheduling");
       await session.commitTransaction();
