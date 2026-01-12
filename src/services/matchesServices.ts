@@ -835,7 +835,7 @@ export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipa
 
   const updates = await User.updateMany(
     { _id: { $in: participantIds } },
-    { $set: { isMatch: true } },
+    { $set: { isPodcastActive: true } },
     { session }
   );
   console.log("Updated users for isMatch:", updates?.modifiedCount);
