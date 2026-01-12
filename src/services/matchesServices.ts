@@ -98,6 +98,7 @@ const ScheduledPodcasts = async () => {
       // 🔹 Update main user
       user.subscription.isSpotlight -= 1;
       user.isPodcastActive = true;
+      console.log(`🎙️ Podcast created for user ${user._id}, remaining Spotlight: ${user.subscription.isSpotlight}`);
       await user.save({ session });
     }
 
@@ -782,7 +783,6 @@ export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight
 export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipants, session }: any) => {
 
   if (
-    // matchingConfig.ENABLE_SPOTLIGHT_QUOTA &&  
     isSpotlight === 0) {
     throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
   }
@@ -836,11 +836,12 @@ export const createAndUpdatePodcast = async ({ isSpotlight, userId, newParticipa
   const participantIds = podcast.participants.map((p: any) => p.user);
   console.log("create new participantIds:", participantIds);
 
-  await User.updateMany(
+  const updates = await User.updateMany(
     { _id: { $in: participantIds } },
     { $set: { isMatch: true } },
     { session }
   );
+  console.log("Updated users for isMatch:", updates?.modifiedCount);
 
   return podcast;
 };
