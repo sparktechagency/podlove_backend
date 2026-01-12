@@ -170,7 +170,6 @@ const postNewRecordInWebhook = async (req: Request) => {
                 throw new Error("Room Id Not Found;");
             }
 
-            console.log("room.scheduleStatus", room.scheduleStatus)
 
             if (room.scheduleStatus === '1st') {
                 await Podcast.updateOne(
@@ -178,11 +177,12 @@ const postNewRecordInWebhook = async (req: Request) => {
                     {
                         $set: {
                             status: PodcastStatus.FINISHED,
-                            finishStatus: "1stFinish"
+                            finishStatus: "1stFinish",
+                            isRequest: false,
+                            "participants.$[].isRequest": false,
                         }
                     }
                 );
-
             }
 
             if (room.scheduleStatus === '2nd') {
@@ -193,10 +193,11 @@ const postNewRecordInWebhook = async (req: Request) => {
                             status: PodcastStatus.FINISHED,
                             finishStatus: "2ndFinish",
                             isComplete: true,
+                            isRequest: false,
+                            "participants.$[].isRequest": false,
                         }
                     }
                 );
-
             }
 
             return;
