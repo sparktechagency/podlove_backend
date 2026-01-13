@@ -905,7 +905,7 @@ const refreshTheMatch = async (
 ): Promise<void> => {
   try {
     const userId = req.user.userId;
-    const { status, podcastId } = req.query as {
+    const { status, podcastId } = req.body as {
       status?: string;
       podcastId?: string;
     };
