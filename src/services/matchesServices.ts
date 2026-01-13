@@ -903,46 +903,53 @@ const refreshTheMatch = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  const session = await mongoose.startSession();
-
   try {
-    session.startTransaction();
+    const userId = req.user.userId;
+    const { status, podcastId } = req.query as {
+      status?: string;
+      podcastId?: string;
+    };
 
-    const user = await User.findById(req.user.userId, null, { session });
+    const user = await User.findById(userId);
     if (!user) {
       throw createError(StatusCodes.NOT_FOUND, "User not found");
     }
 
-    const { status, podcastId } = req.query as { status: string, podcastId: any };
-
-    if (status === "refresh") {
-      await User.findByIdAndUpdate(
-        req.user.userId,
-        { isPodcastActive: false },
-        { session }
-      );
-
-      const podcast = await Podcast.findById(podcastId, null, { session });
-      if (podcast) {
-        podcast.isComplete = true;
-        await podcast.save({ session });
-      }
+    if (status !== "refresh") {
+      throw createError(StatusCodes.BAD_REQUEST, "Invalid status");
     }
 
-    await session.commitTransaction();
+    if (!podcastId || !mongoose.Types.ObjectId.isValid(podcastId)) {
+      throw createError(StatusCodes.BAD_REQUEST, "Invalid podcastId");
+    }
+
+    // Update user
+    await User.findByIdAndUpdate(userId, {
+      isPodcastActive: false,
+    });
+
+    // Update podcast
+    const podcast = await Podcast.findById(podcastId);
+    if (!podcast) {
+      throw createError(StatusCodes.NOT_FOUND, "Podcast not found");
+    }
+
+    await Podcast.findByIdAndUpdate(podcastId, {
+      isComplete: true,
+    });
+
+    const updatedUser = await User.findById(userId);
 
     res.status(StatusCodes.OK).json({
       success: true,
       message: "Match refreshed successfully",
-      data: user,
+      data: updatedUser,
     });
   } catch (err) {
-    await session.abortTransaction();
     next(err);
-  } finally {
-    session.endSession();
   }
 };
+
 
 
 
