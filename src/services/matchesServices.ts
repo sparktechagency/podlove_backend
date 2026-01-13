@@ -915,10 +915,6 @@ const refreshTheMatch = async (
       throw createError(StatusCodes.NOT_FOUND, "User not found");
     }
 
-    if (status !== "refresh") {
-      throw createError(StatusCodes.BAD_REQUEST, "Invalid status");
-    }
-
     if (!podcastId || !mongoose.Types.ObjectId.isValid(podcastId)) {
       throw createError(StatusCodes.BAD_REQUEST, "Invalid podcastId");
     }
