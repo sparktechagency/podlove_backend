@@ -77,7 +77,7 @@ const ScheduledPodcasts = async () => {
       // Skip invalid users
       if (!matchCount || !user.compatibility?.length || !user._id || !user.isProfileComplete) {
         console.log(`⚠️ Skipping user ${user._id} due to insufficient data or match count`);
-        return;
+        throw new Error(`⚠️ Skipping user ${user._id} due to insufficient data or match count`);
       }
 
       // Step 3: Find matching participants
@@ -85,7 +85,7 @@ const ScheduledPodcasts = async () => {
 
       if (participants.length !== matchCount) {
         console.log(`⚠️ Match mismatch for user ${user._id}. Expected ${matchCount}, found ${participants.length}`);
-        return;
+        throw new Error(`⚠️ Match mismatch for user ${user._id}. Expected ${matchCount}, found ${participants.length}`);
       }
 
       // Step 4: Create podcast
@@ -113,11 +113,6 @@ const ScheduledPodcasts = async () => {
     session.endSession();
   }
 };
-
-// ====================================================
-
-
-
 // ==================================
 
 const getCompatibilityScoreWithReasoning = async (
@@ -171,91 +166,7 @@ Reasoning: [text]`;
   }
 };
 
-// const getCompatibilityScore = async (userOneAnswers: string[], userTwoAnswers: string[]) => {
 
-//   const questions = [
-//     "Do you prefer spending your weekends socializing in larger gatherings or relaxing at home with a few close friends?",
-//     "When faced with a major life decision, do you usually follow your head (logic) or your heart (feelings)?",
-//     "Which of these activities sounds most appealing to you?",
-//     "How important is personal growth in your life?",
-//     "How do you like to show affection?",
-//     "How do you envision your ideal future?",
-//     "Do you have kids?",
-//     "Do you want kids in the future?",
-//     "Will you date a person who has kids?",
-//     "Do you smoke?",
-//     "Will you date a smoker?",
-//     "How would you describe your drinking habits?",
-//     "Do you consider yourself religious or spiritual?",
-//     "How important is religion/spirituality in your life?",
-//     "Would you date someone with different religious or spiritual beliefs?",
-//     "How would you describe your level of political engagement?",
-//     "Would you date someone with different political beliefs?",
-//     "Do you have pets?",
-//     "If yes, which pet do you have?",
-//     "How important is spontaneity to you in a relationship?",
-//     "How would you describe your communication style?",
-//     "How do you recharge after a busy day?",
-//     "What kind of vacation do you enjoy most?",
-//     "Do you enjoy trying new hobbies or sticking to the ones you know and love?",
-//     "When it comes to resolving conflicts, do you prefer to address them right away or take time to reflect?",
-//     "How do you feel about sharing responsibilities in a relationship?",
-//     "What role does family play in your life?",
-//     "How important is it for your partner to share your core values and beliefs?",
-//     "When it comes to emotional expression, are you more open or reserved?",
-//     "In a relationship, what is more important: emotional, intellectual, shared interests, or physical chemistry?",
-//     "How do you handle stress or challenges in life?",
-//     "What is your approach to financial planning in a relationship?",
-//     "How do you feel about taking risks in life?",
-//     "How important is maintaining a healthy lifestyle?",
-//     "How do you feel about pets in a relationship?",
-//     "How do you prefer your partner to handle disagreements?",
-//     "How do you feel about physical intimacy early in a relationship?",
-//     "How do you handle showing love and affection in public?",
-//     "Are you more of a morning person or a night owl?",
-//     "How organized and tidy do you like your living space to be?"
-//   ];
-
-//   let userContent = "Below are 40 questions, followed by each user's responses.\n";
-//   userContent += "Please produce a single compatibility score between 0 and 100.\n\n";
-
-//   for (let i = 0; i < questions.length; i++) {
-//     userContent += `Question ${i + 1}: ${questions[i]}\n`;
-//     userContent += `User1: ${userOneAnswers[i]}\n`;
-//     userContent += `User2: ${userTwoAnswers[i]}\n\n`;
-//   }
-
-//   try {
-//     const response = await openai.chat.completions.create({
-//       model: MODEL,
-//       temperature: 0.3,
-//       max_tokens: 50,
-//       messages: [
-//         {
-//           role: "system",
-//           content: `
-//       You are a dating compatibility algorithm.
-//       Given the questions and each user's responses, produce a single numeric compatibility score (0-100).
-//       Your answer must be strictly a number with no extra text or punctuation.
-//     `,
-//         },
-//         {
-//           role: "user",
-//           content: userContent,
-//         },
-//       ],
-//     });
-//     const rawOutput = response.choices[0].message!.content!.trim();
-//     const numericRegex = /^\d+(\.\d+)?$/;
-//     if (!numericRegex.test(rawOutput)) {
-//       throw new Error(`Output is not strictly a number: "${rawOutput}"`);
-//     }
-//     return parseFloat(rawOutput);
-//   } catch (error: any) {
-//     console.error("Error during API call:", error.response?.data || error.message);
-//     return null;
-//   }
-// };
 
 const match = async (userId: string, matchCount: number = 3): Promise<string[]> => {
   const matchedUsers = await User.aggregate([
@@ -679,84 +590,6 @@ export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight
   }
   return matchingConfig.DEFAULT_MATCH_COUNT;
 };
-
-// export const createAndUpdatePodcast = async ({
-//   isSpotlight,
-//   userId,
-//   newParticipants,
-//   session
-// }: CreatePodcastProps) => {
-//   if (isSpotlight === 0) {
-//     throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
-//   }
-
-//   const userIdObj = typeof userId === "string" ? new Types.ObjectId(userId) : userId;
-
-//   // 1️⃣ Check if user already has an active podcast
-//   const activePodcast = await Podcast.findOne(
-//     { 'participants.user': userIdObj, isComplete: false },
-//     null,
-//     { session }
-//   );
-
-//   if (activePodcast?._id) {
-//     console.log("User already has an active podcast:", activePodcast._id);
-//     throw new Error("You already have an active podcast.");
-//   }
-
-//   // 2️⃣ Find existing podcast
-//   let podcast = await Podcast.findOne(
-//     { primaryUser: userIdObj, isComplete: false },
-//     null,
-//     { session }
-//   );
-
-//   if (podcast?._id) {
-//     // Update existing podcast
-//     podcast = await Podcast.findOneAndUpdate(
-//       { _id: podcast._id },
-//       { $set: { participants: newParticipants, status: "NotScheduled" } },
-//       { new: true, session }
-//     ).populate('participants.user', 'name avatar');
-//   } else {
-//     // Create new podcast
-//     podcast = new Podcast({
-//       primaryUser: userIdObj,
-//       participants: newParticipants,
-//       status: "NotScheduled",
-//       isComplete: false
-//     });
-
-//     console.log("Creating new podcast._id:", podcast._id);
-//     await podcast.save({ session });
-//   }
-
-//   if (!podcast) {
-//     throw new Error("Failed to create or update podcast.");
-//   }
-
-//   // 3️⃣ Update participants to mark active
-//   const participantIds = podcast.participants.map(p =>
-//     typeof p.user === "string" ? new Types.ObjectId(p.user) : p.user
-//   );
-
-//   const updates = await User.updateMany(
-//     { _id: { $in: participantIds } },
-//     { $set: { isPodcastActive: true } },
-//     { session }
-//   );
-
-//   console.log("Updated participants for isPodcastActive:", updates.modifiedCount);
-
-//   /* -------------------- UPDATE PRIMARY USER -------------------- */
-//   await User.findByIdAndUpdate(
-//     userIdObj.toString(),
-//     { $inc: { "subscription.isSpotlight": -1 }, isPodcastActive: true },
-//     { session }
-//   );
-
-//   return podcast;
-// };
 
 export const createAndUpdatePodcast = async ({
   isSpotlight,
