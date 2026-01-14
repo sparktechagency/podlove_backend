@@ -244,10 +244,8 @@ const webhook = async (req: Request, res: Response, next: NextFunction): Promise
             matchCount,
             session
           );
-          if (participants.length !== matchCount) {
-            throw new Error("Match count mismatch");
-          }
 
+          console.log('matchCount', matchCount)
           if (participants.length !== matchCount) {
             throw new Error("Match count mismatch");
           }
