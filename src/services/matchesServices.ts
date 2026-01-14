@@ -912,6 +912,9 @@ export const createAndUpdatePodcast = async ({
     { session }
   );
 
+  console.log("=============", activePodcast?.primaryUser)
+  console.log("=============", activePodcast?.participants)
+
   if (activePodcast) {
     throw new Error(
       "One or more participants already have an active podcast."
