@@ -590,9 +590,9 @@ async function findMatchesTraditional(
   }
 
   // Filter out users in active podcasts (highly recommended)
-  if (matchingConfig.PREFERENCE_FILTERS.IS_PODCAST_ACTIVE) {
-    query.isPodcastActive = false;
-  }
+  // if (matchingConfig.PREFERENCE_FILTERS.IS_PODCAST_ACTIVE) {
+  query.isPodcastActive = false;
+  // }
 
   // Apply preference-based filters if enabled
   if (matchingConfig.ENABLE_PREFERENCE_FILTERS) {

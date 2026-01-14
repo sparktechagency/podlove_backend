@@ -86,7 +86,7 @@ export const ENABLE_SPOTLIGHT_QUOTA = false;
  * Default match count when subscription limits are disabled.
  * Recommended: 5-10 for good variety without overwhelming users
  */
-export const DEFAULT_MATCH_COUNT = 3;
+export const DEFAULT_MATCH_COUNT = 2;
 
 /**
  * Match counts per subscription tier.
