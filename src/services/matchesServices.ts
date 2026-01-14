@@ -773,80 +773,238 @@ export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight
   return matchingConfig.DEFAULT_MATCH_COUNT;
 };
 
+// export const createAndUpdatePodcast = async ({
+//   isSpotlight,
+//   userId,
+//   newParticipants,
+//   session
+// }: CreatePodcastProps) => {
+//   if (isSpotlight === 0) {
+//     throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+//   }
+
+//   const userIdObj = typeof userId === "string" ? new Types.ObjectId(userId) : userId;
+
+//   // 1️⃣ Check if user already has an active podcast
+//   const activePodcast = await Podcast.findOne(
+//     { 'participants.user': userIdObj, isComplete: false },
+//     null,
+//     { session }
+//   );
+
+//   if (activePodcast?._id) {
+//     console.log("User already has an active podcast:", activePodcast._id);
+//     throw new Error("You already have an active podcast.");
+//   }
+
+//   // 2️⃣ Find existing podcast
+//   let podcast = await Podcast.findOne(
+//     { primaryUser: userIdObj, isComplete: false },
+//     null,
+//     { session }
+//   );
+
+//   if (podcast?._id) {
+//     // Update existing podcast
+//     podcast = await Podcast.findOneAndUpdate(
+//       { _id: podcast._id },
+//       { $set: { participants: newParticipants, status: "NotScheduled" } },
+//       { new: true, session }
+//     ).populate('participants.user', 'name avatar');
+//   } else {
+//     // Create new podcast
+//     podcast = new Podcast({
+//       primaryUser: userIdObj,
+//       participants: newParticipants,
+//       status: "NotScheduled",
+//       isComplete: false
+//     });
+
+//     console.log("Creating new podcast._id:", podcast._id);
+//     await podcast.save({ session });
+//   }
+
+//   if (!podcast) {
+//     throw new Error("Failed to create or update podcast.");
+//   }
+
+//   // 3️⃣ Update participants to mark active
+//   const participantIds = podcast.participants.map(p =>
+//     typeof p.user === "string" ? new Types.ObjectId(p.user) : p.user
+//   );
+
+//   const updates = await User.updateMany(
+//     { _id: { $in: participantIds } },
+//     { $set: { isPodcastActive: true } },
+//     { session }
+//   );
+
+//   console.log("Updated participants for isPodcastActive:", updates.modifiedCount);
+
+//   /* -------------------- UPDATE PRIMARY USER -------------------- */
+//   await User.findByIdAndUpdate(
+//     userIdObj.toString(),
+//     { $inc: { "subscription.isSpotlight": -1 }, isPodcastActive: true },
+//     { session }
+//   );
+
+//   return podcast;
+// };
+
 export const createAndUpdatePodcast = async ({
   isSpotlight,
   userId,
   newParticipants,
   session
 }: CreatePodcastProps) => {
-  if (isSpotlight === 0) {
-    throw new Error("Your Spotlight subscription has expired. Please renew to find matches.");
+
+  /* -------------------- VALIDATION -------------------- */
+
+  if (isSpotlight <= 0) {
+    throw new Error(
+      "Your Spotlight subscription has expired. Please renew to find matches."
+    );
   }
 
-  const userIdObj = typeof userId === "string" ? new Types.ObjectId(userId) : userId;
+  if (!userId) {
+    throw new Error("User ID is required.");
+  }
 
-  // 1️⃣ Check if user already has an active podcast
+  if (!Array.isArray(newParticipants) || newParticipants.length === 0) {
+    throw new Error("At least one participant is required.");
+  }
+
+  const userIdObj =
+    typeof userId === "string" ? new Types.ObjectId(userId) : userId;
+
+  /* -------------------- UNIQUE PARTICIPANTS -------------------- */
+
+  const uniqueParticipantMap = new Map<string, any>();
+
+
+  // Add participants (deduped)
+  for (const participant of newParticipants) {
+    const id =
+      typeof participant.user === "string"
+        ? participant.user
+        : participant.user.toString();
+
+    uniqueParticipantMap.set(id, {
+      ...participant,
+      user: new Types.ObjectId(id)
+    });
+  }
+
+  const participants = Array.from(uniqueParticipantMap.values());
+  const participantIds = participants.map(p => p.user);
+
+  /* -------------------- ACTIVE PODCAST CHECK -------------------- */
+
   const activePodcast = await Podcast.findOne(
-    { 'participants.user': userIdObj, isComplete: false },
+    {
+      isComplete: false,
+      $or: [
+        { "participants.user": { $in: participantIds } },
+        { primaryUser: { $in: participantIds } }
+      ]
+    },
     null,
     { session }
   );
 
-  if (activePodcast?._id) {
-    console.log("User already has an active podcast:", activePodcast._id);
+  if (activePodcast) {
+    throw new Error(
+      "One or more participants already have an active podcast."
+    );
+  }
+  const uActivePodcast = await Podcast.findOne(
+    {
+      isComplete: false,
+      $or: [
+        { "participants.user": userIdObj },
+        { primaryUser: userIdObj }
+      ]
+    },
+    null,
+    { session }
+  );
+
+  if (uActivePodcast) {
     throw new Error("You already have an active podcast.");
   }
 
-  // 2️⃣ Find existing podcast
+  /* -------------------- CREATE / UPDATE PODCAST -------------------- */
+
   let podcast = await Podcast.findOne(
-    { primaryUser: userIdObj, isComplete: false },
+    {
+      primaryUser: userIdObj,
+      isComplete: false
+    },
     null,
     { session }
   );
 
   if (podcast) {
-    // Update existing podcast
     podcast = await Podcast.findOneAndUpdate(
-      { _id: podcast._id },
-      { $set: { participants: newParticipants, status: "NotScheduled" } },
-      { new: true, session }
-    ).populate('participants.user', 'name avatar');
+      {
+        _id: podcast._id,
+        primaryUser: userIdObj
+      },
+      {
+        $set: {
+          participants,
+          status: "NotScheduled"
+        }
+      },
+      {
+        new: true,
+        session
+      }
+    );
   } else {
-    // Create new podcast
-    podcast = new Podcast({
-      primaryUser: userIdObj,
-      participants: newParticipants,
-      status: "NotScheduled",
-      isComplete: false
-    });
+    const created = await Podcast.create(
+      [
+        {
+          primaryUser: userIdObj,
+          participants,
+          status: "NotScheduled",
+          isComplete: false
+        }
+      ],
+      { session }
+    );
 
-    console.log("Creating new podcast._id:", podcast._id);
-    await podcast.save({ session });
+    podcast = created[0];
   }
 
   if (!podcast) {
-    throw new Error("Failed to create or update podcast.");
+    throw new Error("Podcast creation failed.");
   }
 
-  // 3️⃣ Update participants to mark active
-  const participantIds = podcast.participants.map(p =>
-    typeof p.user === "string" ? new Types.ObjectId(p.user) : p.user
-  );
+  /* -------------------- UPDATE PARTICIPANTS -------------------- */
 
-  const updates = await User.updateMany(
+  await User.updateMany(
     { _id: { $in: participantIds } },
     { $set: { isPodcastActive: true } },
     { session }
   );
 
-  console.log("Updated participants for isPodcastActive:", updates.modifiedCount);
+  /* -------------------- UPDATE PRIMARY USER -------------------- */
 
-  // 4️⃣ Update primary user
-  await User.findByIdAndUpdate(
-    userIdObj,
-    { $inc: { "subscription.isSpotlight": -1 }, isPodcastActive: true },
-    { session }
+  const spotlightUpdate = await User.findOneAndUpdate(
+    {
+      _id: userIdObj
+    },
+    {
+      $inc: { "subscription.isSpotlight": -1 },
+      $set: { isPodcastActive: true }
+    },
+    { session, new: true }
   );
+
+  if (!spotlightUpdate) {
+    throw new Error("Failed to update Spotlight subscription.");
+  }
 
   return podcast;
 };
