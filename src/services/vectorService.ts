@@ -195,6 +195,31 @@ export async function deleteUserVector(userId: string): Promise<void> {
 }
 
 /**
+ * Update only the isPodcastActive status in Pinecone for all 3 user vectors
+ */
+export async function updateUserPodcastStatus(userId: string, isPodcastActive: boolean): Promise<void> {
+  try {
+    const index = await getIndex();
+    const idsToUpdate = [`${userId}:profile`, `${userId}:pref`, `${userId}:comp`];
+
+    console.log(`🔄 Updating Pinecone isPodcastActive to ${isPodcastActive} for user: ${userId}...`);
+
+    await Promise.all(idsToUpdate.map(async (id) => {
+      await index.update({
+        id,
+        metadata: { isPodcastActive }
+      });
+    }));
+
+    console.log(`✅ Pinecone status updated for user: ${userId}`);
+  } catch (error: any) {
+    console.error(`❌ Error updating Pinecone status for user ${userId}:`, error.message);
+    // Note: We don't throw here to avoid breaking the main transaction, 
+    // but in a production app we might want more robust retry logic.
+  }
+}
+
+/**
  * Helper to get embedding from text
  */
 async function getEmbedding(text: string): Promise<number[]> {
@@ -317,6 +342,7 @@ export default {
   upsertUserVector,
   batchUpsertUserVectors,
   deleteUserVector,
+  updateUserPodcastStatus,
   searchSimilarUsers,
   getIndexStats,
 };

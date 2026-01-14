@@ -9,7 +9,7 @@ import mongoose, { ClientSession, Types } from "mongoose";
 import Podcast from "@models/podcastModel";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
 import { SubscriptionPlanName } from "@shared/enums";
-import { searchSimilarUsers, upsertUserVector } from "./vectorService";
+import { searchSimilarUsers, upsertUserVector, updateUserPodcastStatus } from "./vectorService";
 import matchingConfig from "@config/matchingConfig";
 import cron from "node-cron";
 const openai = new OpenAI({ apiKey: process.env.OPENAI_KEY });
@@ -1009,6 +1009,12 @@ export const createAndUpdatePodcast = async ({
     throw new Error("Failed to update Spotlight subscription.");
   }
 
+  // 4️⃣ Synchronize with Pinecone (Async)
+  const allAffectedUserIds = [userIdObj.toString(), ...participantIds.map(id => id.toString())];
+  Promise.all(allAffectedUserIds.map(id => updateUserPodcastStatus(id, true))).catch(err => {
+    console.error("Failed to sync podcast status to Pinecone:", err);
+  });
+
   return podcast;
 };
 
@@ -1083,6 +1089,11 @@ const refreshTheMatch = async (
     // Update user
     await User.findByIdAndUpdate(userId, {
       isPodcastActive: false,
+    });
+
+    // Synchronize with Pinecone (Async)
+    updateUserPodcastStatus(userId, false).catch(err => {
+      console.error("Failed to sync podcast status to Pinecone:", err);
     });
 
     // Update podcast
