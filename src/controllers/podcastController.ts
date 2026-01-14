@@ -6,24 +6,9 @@ import MatchedServices from "@services/matchesServices";
 import { PodcastStatus, SubscriptionPlanName } from "@shared/enums";
 import User from "@models/userModel";
 import mongoose, { Types } from "mongoose";
+import { updateUserPodcastStatus } from "@services/vectorService";
 
 import matchingConfig from "@config/matchingConfig";
-
-// const create = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-//   const user = await User.findById(req.user.userId);
-
-//   const matchCount = matchingConfig.getMatchCount(user!.subscription.plan || "SAMPLER");
-//   const participants = await MatchedServices.match(String(user!._id), matchCount);
-
-
-//   const podcast = await Podcast.create({ primaryUser: user!._id, participants: participants });
-
-//   return res.status(StatusCodes.CREATED).json({
-//     success: true,
-//     message: "User successfully scheduled for the podcast",
-//     data: podcast,
-//   });
-// };
 
 const removeFromPodcast = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
@@ -33,6 +18,14 @@ const removeFromPodcast = async (req: Request, res: Response, next: NextFunction
       return res.status(StatusCodes.BAD_REQUEST).json({
         success: false,
         message: "userId is required",
+      });
+    }
+
+    // Validate ObjectId
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        success: false,
+        message: "Invalid userId format",
       });
     }
 
@@ -59,6 +52,16 @@ const removeFromPodcast = async (req: Request, res: Response, next: NextFunction
     }
 
     const updated = await podcast.save();
+
+    // Update user in MongoDB
+    await User.findByIdAndUpdate(userId, {
+      isPodcastActive: false,
+    });
+
+    // Synchronize with Pinecone (Async - don't wait for it)
+    await updateUserPodcastStatus(userId, false).catch(err => {
+      console.error("Failed to sync podcast status to Pinecone for user", userId, ":", err);
+    });
 
     return res.status(StatusCodes.OK).json({
       success: true,
