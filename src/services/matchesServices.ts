@@ -5,7 +5,7 @@ import OpenAI from "openai";
 import process from "node:process";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
-import mongoose, { ClientSession, Types } from "mongoose";
+import mongoose, { ClientSession, ObjectId, Types } from "mongoose";
 import Podcast from "@models/podcastModel";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
 import { SubscriptionPlanName } from "@shared/enums";
@@ -999,7 +999,7 @@ const refreshTheMatch = async (
     });
 
     // Synchronize with Pinecone (Async)
-    updateUserPodcastStatus(userId, false).catch(err => {
+    await updateUserPodcastStatus(userId, false).catch(err => {
       console.error("Failed to sync podcast status to Pinecone:", err);
     });
 
@@ -1007,6 +1007,20 @@ const refreshTheMatch = async (
     const podcast = await Podcast.findById(podcastId);
     if (!podcast) {
       throw createError(StatusCodes.NOT_FOUND, "Podcast not found");
+    }
+
+    const podcastUsers = podcast?.participants || [];
+    for (const usr of podcastUsers) {
+      const participantId = usr?.user;
+
+      if (!participantId) {
+        console.warn("Skipping participant with undefined userId in podcast:", podcastId);
+        continue;
+      }
+
+      await updateUserPodcastStatus(participantId.toString(), false).catch(err => {
+        console.error("Failed to sync podcast status to Pinecone:", err);
+      });
     }
 
     await Podcast.findByIdAndUpdate(podcastId, {
