@@ -1011,16 +1011,20 @@ const refreshTheMatch = async (
 
     const podcastUsers = podcast?.participants || [];
     for (const usr of podcastUsers) {
-      const participantId = usr?.user;
+      const participantId = usr?.user.toString();
 
       if (!participantId) {
         console.warn("Skipping participant with undefined userId in podcast:", podcastId);
         continue;
       }
 
-      await updateUserPodcastStatus(participantId.toString(), false).catch(err => {
+      await updateUserPodcastStatus(participantId, false).catch(err => {
         console.error("Failed to sync podcast status to Pinecone:", err);
       });
+      await User.findByIdAndUpdate(participantId, {
+        isPodcastActive: false,
+      });
+
     }
 
     await Podcast.findByIdAndUpdate(podcastId, {
