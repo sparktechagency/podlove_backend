@@ -72,6 +72,8 @@ const ScheduledPodcasts = async () => {
     for (const user of users) {
       const matchCount = subscriptionMatchCount(user.subscription);
 
+      console.log("matchCount", matchCount)
+
       // Skip invalid users
       if (!matchCount || !user.compatibility?.length || !user._id || !user.isProfileComplete) {
         console.log(`⚠️ Skipping user ${user._id} due to insufficient data or match count`);
@@ -114,102 +116,7 @@ const ScheduledPodcasts = async () => {
 
 // ====================================================
 
-// const matchUser = async (
-//   req: Request<{ id: string }, {}, MatchRequestBody>,
-//   res: Response,
-//   next: NextFunction
-// ): Promise<any> => {
-//   const session = await mongoose.startSession();
-//   session.startTransaction();
 
-//   try {
-//     const userId = req.params.id;
-//     const { compatibility } = req.body;
-
-//     const podcastExists = await Podcast.exists({ primaryUser: userId, status: "NotScheduled" });
-//     if (podcastExists) {
-//       await session.abortTransaction();
-//       session.endSession();
-//       return res.status(StatusCodes.CONFLICT).json({
-//         success: false,
-//         message: "User already has a podcast not scheduled",
-//         data: {},
-//       });
-//     }
-
-//     // Find top matches
-//     const topMatches = await findMatches(userId, compatibility || [], 2, session);
-
-//     if (!topMatches.length) {
-//       await session.abortTransaction();
-//       session.endSession();
-//       return res.status(StatusCodes.OK).json({
-//         success: false,
-//         message: "No suitable matches found at this time",
-//         data: {},
-//       });
-//     }
-
-//     let participants = [
-//       {
-//         user: userId,
-//         score: 100,
-//         isQuestionAnswer: "",
-//       },
-//       ...topMatches.map((m) => ({
-//         user: m.user,
-//         score: m.score,
-//         isQuestionAnswer: ""
-//       })),
-//     ];
-
-//     const uniqueUsers = new Set();
-
-//     participants = participants.filter(p => {
-//       if (uniqueUsers.has(String(p.user))) return false;
-//       uniqueUsers.add(String(p.user));
-//       return true;
-//     });
-
-//     // Create podcast with participants
-//     const podcast = await Podcast.create(
-//       [
-//         {
-//           primaryUser: userId,
-//           participants,
-//           status: "NotScheduled",
-//         },
-//       ],
-//       { session }
-//     );
-
-//     // Mark users as matched
-//     const matchedUserIds = [userId, ...participants.map((p) => p.user)];
-
-//     if (topMatches?.length) {
-//       await User.updateMany(
-//         { _id: { $in: matchedUserIds } },
-//         { $set: { isPodcastActive: true } },
-//         { session }
-//       );
-//     }
-
-//     await session.commitTransaction();
-//     session.endSession();
-
-//     console.log("====================✅ User successfully scheduled for the podcast=============================");
-
-//     return res.status(StatusCodes.OK).json({
-//       success: true,
-//       message: "Matched users successfully",
-//       data: podcast,
-//     });
-//   } catch (err) {
-//     await session.abortTransaction();
-//     session.endSession();
-//     next(err);
-//   }
-// };
 
 // ==================================
 
