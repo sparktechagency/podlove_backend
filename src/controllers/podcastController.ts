@@ -200,6 +200,10 @@ const getPodcasts = async (req: Request, res: Response, next: NextFunction): Pro
         path: "participants.user",
         select: "name avatar",
       },
+      {
+        path: "matches.user",
+        select: "name avatar",
+      },
     ])
     .lean()
     .exec();
