@@ -44,6 +44,19 @@ export type PodcastSchema = Document & {
   score: number;
   createdAt?: Date;
   notificationSent: Boolean,
+  matches: {
+    user: Types.ObjectId;
+    isAllow: boolean;
+    isRequest?: boolean;
+    isQuestionAnswer?: string;
+    role?: string;
+    score: number;
+    vectorScore?: number;
+    aiScore?: number;
+    reasoning?: string;
+
+    _id?: any;
+  }[];
   isComplete: Boolean,
   roomCodes: IRoomCode[],
 };
@@ -60,6 +73,19 @@ const podcastSchema = new Schema<PodcastSchema>({
   },
   isQuestionAnswer: { type: String, default: "" },
   participants: [
+    {
+      user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+      isAllow: { type: Boolean, default: false },
+      isRequest: { type: Boolean, default: false },
+      isQuestionAnswer: { type: String, default: "" },
+      role: { type: String, default: "Sparks", enum: ['Spotlight', 'Sparks'] },
+      score: { type: Number, required: true },
+      vectorScore: { type: Number, default: 0 },
+      aiScore: { type: Number, default: 0 },
+      reasoning: { type: String, default: "" }
+    }
+  ],
+  matches: [
     {
       user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
       isAllow: { type: Boolean, default: false },

@@ -710,6 +710,7 @@ export const createAndUpdatePodcast = async ({
         {
           primaryUser: userIdObj,
           participants,
+          matches: participants,
           status: "NotScheduled",
           isComplete: false
         }
