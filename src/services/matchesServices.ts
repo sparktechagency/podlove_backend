@@ -77,7 +77,7 @@ const ScheduledPodcasts = async () => {
       // Skip invalid users
       if (!matchCount || !user.compatibility?.length || !user._id || !user.isProfileComplete) {
         console.log(`⚠️ Skipping user ${user._id} due to insufficient data or match count`);
-        throw new Error(`⚠️ Skipping user ${user._id} due to insufficient data or match count`);
+        continue;
       }
 
       // Step 3: Find matching participants
@@ -85,7 +85,7 @@ const ScheduledPodcasts = async () => {
 
       if (participants.length !== matchCount) {
         console.log(`⚠️ Match mismatch for user ${user._id}. Expected ${matchCount}, found ${participants.length}`);
-        throw new Error(`⚠️ Match mismatch for user ${user._id}. Expected ${matchCount}, found ${participants.length}`);
+        continue;
       }
 
       // Step 4: Create podcast
