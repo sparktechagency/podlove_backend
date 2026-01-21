@@ -200,20 +200,22 @@ const userSchema = new Schema(
       plan: {
         type: String,
         enum: Object.values(SubscriptionPlanName),
-        default: SubscriptionPlanName.SAMPLER,
+        default: null,
+        // default: SubscriptionPlanName.SAMPLER,
       },
       fee: {
         type: String,
-        default: "Free",
+        default: null,
+        // default: "Free",
       },
       status: {
         type: String,
-        enum: Object.values(SubscriptionStatus),
+        // enum: Object.values(SubscriptionStatus),
         default: "",
       },
       isSpotlight: {
         type: Number,
-        default: 2
+        // default: 2
       },
       // matchRefresh: {
       //   type: Number,
