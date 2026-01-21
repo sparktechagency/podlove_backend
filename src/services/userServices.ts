@@ -66,7 +66,7 @@ cron.schedule("0 0 * * *", async () => {
     if (!expiredUsers.length) return;
 
     for (const user of expiredUsers) {
-      user.subscription.status = SubscriptionStatus.NONE;
+      user.subscription.status = SubscriptionStatus.ACTIVE;
       user.subscription.plan = SubscriptionPlanName.SAMPLER;
       user.subscription.isSpotlight = 0;
 

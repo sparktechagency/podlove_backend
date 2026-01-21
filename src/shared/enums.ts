@@ -58,6 +58,8 @@ export enum SubscriptionPlanName {
 
 export enum SubscriptionStatus {
   NONE = "",
+  INACTIVE = "INACTIVE",
+  ACTIVE = "ACTIVE",
   PAID = "PAID",
   DUE = "DUE",
   FAILED = "FAILED",

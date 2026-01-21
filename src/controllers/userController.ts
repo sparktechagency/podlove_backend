@@ -7,6 +7,8 @@ import Cloudinary from "@shared/cloudinary";
 import mongoose from "mongoose";
 import { ageToDOB } from "@utils/ageUtils";
 import { upsertUserVector } from "@services/vectorService";
+import { SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
+import SubscriptionPlan from "@models/subscriptionPlanModel";
 
 const getAll = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { search, minAge, maxAge, gender, bodyType, ethnicity } = req.query;
@@ -173,6 +175,7 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
     //     distance: Number(pref.distance),
     //   };
     // }
+
     if (req.body.preferences) {
       const userWithPrefs = await User.findById(userId)
         .select("Preferences") // only include the Preferences field
@@ -244,10 +247,86 @@ const update = async (req: Request, res: Response, next: NextFunction): Promise<
   }
 };
 
+const updateUserSubscriptionController =
+  async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    try {
+      const { userId } = req.params;
+      const { subscriptionPlanId } = req.body;
+
+      if (!userId) {
+        return res.status(400).json({ message: "Invalid user ID" });
+      }
+
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      if (!subscriptionPlanId) {
+        return res.status(400).json({ message: "Invalid subscription plan ID" });
+      }
+
+      /** ✅ CASE 1: SAMPLER */
+      if (user.subscription.plan === SubscriptionPlanName.SAMPLER) {
+        user.subscription.status = SubscriptionStatus.ACTIVE;
+        const startedAt = new Date();
+        user.subscription.startedAt = startedAt;
+        const endDate = new Date(startedAt);
+        endDate.setMonth(endDate.getMonth() + 1);
+        user.subscription.endDate = endDate;
+
+        await user.save();
+
+        return res.status(200).json({
+          success: true,
+          message: "Sampler subscription activated",
+          data: user.subscription,
+        });
+      }
+
+
+
+      const plan = await SubscriptionPlan.findById(subscriptionPlanId);
+      if (!plan) {
+        return res.status(404).json({ message: "Subscription plan not found" });
+      }
+
+      const startedAt = new Date();
+      const endDate = new Date(startedAt);
+      endDate.setMonth(endDate.getMonth() + 1);
+
+      const update = User.findByIdAndUpdate(
+        userId,
+        {
+          $set: {
+            "subscription.subscription_id": plan._id,
+            "subscription.plan": SubscriptionPlanName.SAMPLER,
+            "subscription.fee": "Free",
+            "subscription.status": SubscriptionStatus.ACTIVE,
+            "subscription.startedAt": startedAt,
+            "subscription.endDate": endDate,
+            "subscription.isSpotlight": 2,
+          },
+        },
+        { new: true }
+      );
+
+
+
+      return res.status(200).json({
+        success: true,
+        message: "Subscription activated successfully",
+        data: update,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
+
 const UserController = {
   get,
   getAll,
   update,
+  updateUserSubscriptionController
 };
 
 export default UserController;

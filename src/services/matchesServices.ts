@@ -8,7 +8,7 @@ import createError from "http-errors";
 import mongoose, { ClientSession, ObjectId, Types } from "mongoose";
 import Podcast from "@models/podcastModel";
 import { calculateDistance } from "@utils/calculateDistanceUtils";
-import { SubscriptionPlanName } from "@shared/enums";
+import { SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 import { searchSimilarUsers, upsertUserVector, updateUserPodcastStatus } from "./vectorService";
 import matchingConfig from "@config/matchingConfig";
 import cron from "node-cron";
@@ -54,7 +54,8 @@ const ScheduledPodcasts = async () => {
     const users = await User.find(
       {
         isPodcastActive: false,
-        "subscription.isSpotlight": { $gt: 0 }
+        "subscription.status": SubscriptionStatus.ACTIVE,
+        "subscription.isSpotlight": { $gt: 0 },
       },
       null,
       { session }
