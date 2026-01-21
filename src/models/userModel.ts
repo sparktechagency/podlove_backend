@@ -209,7 +209,7 @@ const userSchema = new Schema(
       status: {
         type: String,
         enum: Object.values(SubscriptionStatus),
-        default: "",
+        default: SubscriptionStatus.INACTIVE,
       },
       isSpotlight: {
         type: Number,
