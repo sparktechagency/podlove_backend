@@ -27,7 +27,7 @@ router.get("/get-user-subscriptions",
     UserServices.getUserSubscriptions);
 router.post("/send_survey_feedback", authorize, asyncHandler(LivePodcastController.send7daysSurveyFeedback));
 router.get("/get_survey_feedback/:userId", asyncHandler(LivePodcastController.getUser7daysSurveyFeedback));
-router.get("/update_user_subscription/:userId", authorize, asyncHandler(UserController.updateUserSubscriptionController));
+router.patch("/update_user_subscription/:userId", authorize, asyncHandler(UserController.updateUserSubscriptionController));
 
 
 export default router;
