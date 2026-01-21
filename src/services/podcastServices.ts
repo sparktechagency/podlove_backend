@@ -6,6 +6,7 @@ import createError from "http-errors";
 import Notification from "@models/notificationModel";
 import cron from "node-cron";
 import mongoose, { Types } from "mongoose";
+import moment from "moment-timezone";
 // import { time } from "console";
 import { DateTime } from "luxon";
 import { scheduler } from "node:timers/promises";
@@ -17,7 +18,27 @@ interface Participants {
   score: number;
 }
 [];
+// ======================================
 
+/**
+ * Convert user's local time to server UTC time
+ * @param dateStr - Date string in format "YYYY-MM-DD"
+ * @param timeStr - Time string in format "HH:mm"
+ * @param userTimeZone - User's timezone e.g. "America/Costa_Rica"
+ * @returns string - Server UTC time in format "YYYY-MM-DD HH:mm"
+ */
+export const convertToServerTime = (
+  dateStr: string,
+  timeStr: string,
+  userTimeZone: string
+): string => {
+  const userDateTimeStr = `${dateStr} ${timeStr}`;
+
+  const serverUTC = moment.tz(userDateTimeStr, userTimeZone).utc().format("YYYY-MM-DD HH:mm");
+
+  return serverUTC;
+};
+// =====================================
 interface SelectedUserBody {
   user: Types.ObjectId;
 }
@@ -61,14 +82,22 @@ const setSchedule = async (req: Request, res: Response, next: NextFunction): Pro
       throw createError(StatusCodes.UNAUTHORIZED, "Unauthorized user");
     }
 
-    const { podcastId, date, day, time } = req.body;
+    const { podcastId, date, day, time, timezone } = req.body;
     const podcast = await Podcast.findById(podcastId);
     if (!podcast) {
       throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
     }
+    // ✅ Convert user local time to server UTC
+    const serverTime = convertToServerTime(date, time, timezone);
 
     // 1) Update schedule + status
-    podcast.schedule = { date, day, time };
+    // podcast.schedule = { date, day, time };
+    podcast.schedule = {
+      date: serverTime.split(" ")[0],
+      day,
+      time: serverTime.split(" ")[1],
+    };
+
     podcast.status = PodcastStatus.SCHEDULED;
     podcast.room_id = "";
     podcast.roomCodes = [];
@@ -390,7 +419,6 @@ const updatePodcastStatusAdmin = async (
     }
 
     console.log("updatedPodcast===============>: ", updatedPodcast.scheduleStatus, updatedPodcast.status, updatedPodcast.finishStatus);
-
 
     return res.status(StatusCodes.OK).json({
       success: true,
