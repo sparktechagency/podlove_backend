@@ -32,9 +32,14 @@ export const convertToServerTime = (
   timeStr: string,
   userTimeZone: string
 ): string => {
-  const userDateTimeStr = `${dateStr} ${timeStr}`;
+  const userDateTimeStr = `${dateStr} ${timeStr}`; // e.g., "01/21/2026 04:45 PM"
 
-  const serverUTC = moment.tz(userDateTimeStr, userTimeZone).utc().format("YYYY-MM-DD HH:mm");
+  // Specify the format: MM/DD/YYYY hh:mm A
+  const format = "MM/DD/YYYY hh:mm A";
+
+  const serverUTC = moment.tz(userDateTimeStr, format, userTimeZone) // parse in user's TZ
+    .utc() // convert to UTC
+    .format("YYYY-MM-DD HH:mm"); // format for DB
 
   return serverUTC;
 };
