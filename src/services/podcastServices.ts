@@ -87,6 +87,8 @@ const setSchedule = async (req: Request, res: Response, next: NextFunction): Pro
     if (!podcast) {
       throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
     }
+
+    console.log("timezone=================: ", date, time, timezone);
     // ✅ Convert user local time to server UTC
     const serverTime = convertToServerTime(date, time, timezone);
 
@@ -131,7 +133,7 @@ const setSchedule = async (req: Request, res: Response, next: NextFunction): Pro
     });
 
     // (b) All other participants
-    const participantNotifications = podcast.participants.map((part) =>
+    const participantNotifications = podcast.participants.map((part: any) =>
       Notification.create({
         type: "podcast_invited",
         user: part.user.toString(),
