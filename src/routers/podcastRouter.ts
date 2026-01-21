@@ -29,5 +29,8 @@ router.post("/send_questions_answer", authorize, asyncHandler(LivePodcastControl
 router.post("/recording/webhook", asyncHandler(LivePodcastController.postNewRecordInWebhook));
 
 router.post("/removed_participant", asyncHandler(PodcastController.removeFromPodcast));
+router.post("/admin_updates", asyncHandler(PodcastServices.updatePodcastStatusAdmin));
+
+
 
 export default router;

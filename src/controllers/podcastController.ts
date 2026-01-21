@@ -2,13 +2,10 @@ import { Request, Response, NextFunction } from "express";
 import Podcast from "@models/podcastModel";
 import { StatusCodes } from "http-status-codes";
 import createError from "http-errors";
-import MatchedServices from "@services/matchesServices";
-import { PodcastStatus, SubscriptionPlanName } from "@shared/enums";
+import { PodcastStatus } from "@shared/enums";
 import User from "@models/userModel";
 import mongoose, { Types } from "mongoose";
 import { updateUserPodcastStatus } from "@services/vectorService";
-
-import matchingConfig from "@config/matchingConfig";
 
 const removeFromPodcast = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {

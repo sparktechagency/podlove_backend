@@ -163,51 +163,50 @@ const postNewRecordInWebhook = async (req: Request) => {
 
         }
 
-        if (event.type.includes("end.success") || event.type.includes("close.success")) {
-            // console.log("leave.success || end.success || close.success")
-            const room = await Podcast.findOne({ room_id: roomId })
-            if (!room) {
-                throw new Error("Room Id Not Found;");
-            }
+        // if (event.type.includes("end.success") || event.type.includes("close.success")) {
+
+        //     const room = await Podcast.findOne({ room_id: roomId })
+        //     if (!room) {
+        //         throw new Error("Room Id Not Found;");
+        //     }
 
 
-            if (room.scheduleStatus === '1st') {
-                await Podcast.updateOne(
-                    { room_id: roomId },
-                    {
-                        $set: {
-                            status: PodcastStatus.FINISHED,
-                            finishStatus: "1stFinish",
-                            isRequest: false,
-                            "participants.$[].isRequest": false,
-                        }
-                    }
-                );
-            }
+        //     if (room.scheduleStatus === '1st') {
+        //         await Podcast.updateOne(
+        //             { room_id: roomId },
+        //             {
+        //                 $set: {
+        //                     status: PodcastStatus.FINISHED,
+        //                     finishStatus: "1stFinish",
+        //                     isRequest: false,
+        //                     "participants.$[].isRequest": false,
+        //                 }
+        //             }
+        //         );
+        //     }
 
-            if (room.scheduleStatus === '2nd') {
-                await Podcast.updateOne(
-                    { room_id: roomId },
-                    {
-                        $set: {
-                            status: PodcastStatus.FINISHED,
-                            finishStatus: "2ndFinish",
-                        }
-                    }
-                );
-            }
+        //     if (room.scheduleStatus === '2nd') {
+        //         await Podcast.updateOne(
+        //             { room_id: roomId },
+        //             {
+        //                 $set: {
+        //                     status: PodcastStatus.FINISHED,
+        //                     finishStatus: "2ndFinish",
+        //                 }
+        //             }
+        //         );
+        //     }
 
-            return;
+        //     return;
+        // }
 
-        }
-
-        if (event.type.includes("open.success") || event.type.includes("join.success")) {
-            await Podcast.updateOne(
-                { room_id: roomId },
-                { $set: { status: PodcastStatus.PLAYING, finishStatus: null } }
-            );
-            return;
-        }
+        // if (event.type.includes("open.success") || event.type.includes("join.success")) {
+        //     await Podcast.updateOne(
+        //         { room_id: roomId },
+        //         { $set: { status: PodcastStatus.PLAYING, finishStatus: null } }
+        //     );
+        //     return;
+        // }
 
         return;
     } catch (err: any) {

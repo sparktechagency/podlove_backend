@@ -311,12 +311,105 @@ cron.schedule("* * * * *", () => {
   notifyScheduledPodcasts().catch((err) => console.error("Scheduler error:", err));
 });
 
+const updatePodcastStatusAdmin = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<any> => {
+  try {
+    const { podcastId, status } = req.body as { podcastId: string; status: "Finished" | "Playing" };
+
+    if (!podcastId || !status) {
+      throw createError(StatusCodes.BAD_REQUEST, "podcastId and status are required");
+    }
+
+    const podcast = await Podcast.findById(podcastId);
+    if (!podcast) {
+      throw createError(StatusCodes.NOT_FOUND, "Podcast not found!");
+    }
+
+    if (podcast.status === status) {
+      return res.status(StatusCodes.OK).json({
+        success: true,
+        message: `Podcast is already in ${status} status`,
+        data: podcast
+      });
+    }
+
+    const finishStatus = podcast.scheduleStatus === '2nd' ? '2ndFinish' : '1stFinish';
+
+    // Optional: update finishStatus depending on schedule
+    if (status === 'Finished') {
+      if (finishStatus === '2ndFinish') {
+        await Podcast.findByIdAndUpdate(podcastId, {
+          $set: {
+            status: PodcastStatus.FINISHED,
+            finishStatus: finishStatus,
+          }
+        }
+        );
+      } else {
+        await Podcast.findByIdAndUpdate(podcastId,
+          {
+            $set: {
+              status: PodcastStatus.FINISHED,
+              finishStatus: finishStatus,
+              isRequest: false,
+              "participants.$[].isRequest": false,
+            }
+          }
+        );
+      }
+
+    } else if (status === 'Playing') {
+      if (finishStatus === '2ndFinish') {
+        await Podcast.findByIdAndUpdate(podcastId,
+          {
+            $set: {
+              status: 'Playing',
+              finishStatus: '1stFinish',
+            }
+          }
+        );
+      } else {
+        await Podcast.findByIdAndUpdate(podcastId,
+          {
+            $set: {
+              status: 'Playing',
+              finishStatus: null
+            }
+          }
+        );
+      }
+    }
+
+    const updatedPodcast = await Podcast.findById(podcastId);
+
+    if (!updatedPodcast) {
+      throw createError(StatusCodes.NOT_FOUND, "Podcast not found after update!");
+    }
+
+    console.log("updatedPodcast===============>: ", updatedPodcast.scheduleStatus, updatedPodcast.status, updatedPodcast.finishStatus);
+
+
+    return res.status(StatusCodes.OK).json({
+      success: true,
+      message: "Podcast status updated successfully",
+      data: updatedPodcast
+    });
+
+  } catch (err) {
+    next(err);
+  }
+
+};
 
 
 const PodcastServices = {
   setSchedule,
   podcastDone,
   selectUser,
+  updatePodcastStatusAdmin
 };
 
 export default PodcastServices;

@@ -28,7 +28,6 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
   [error, customer] = await to(stripe.customers.create({ email: req.user.email }));
   if (error) return next(error);
 
-
   [error, session] = await to(
     stripe.checkout.sessions.create({
       payment_method_types: ["card"],

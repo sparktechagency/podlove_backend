@@ -542,7 +542,6 @@ export const subscriptionMatchCount = (subscription: { plan: string; isSpotlight
   return matchCount;
 };
 
-
 const findMatch = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const session = await mongoose.startSession();
 
