@@ -1,7 +1,6 @@
 import { Schema, model, Types, Document } from "mongoose";
 import { BodyType, Ethnicity, Gender, SubscriptionPlanName, SubscriptionStatus } from "@shared/enums";
 
-
 export type DecodedUser = {
   authId: string;
   userId: string;
@@ -185,7 +184,7 @@ const userSchema = new Schema(
     },
     chatingtime: {
       type: String,
-      default: ""
+      default: "",
     },
     subscription: {
       id: {
@@ -213,12 +212,9 @@ const userSchema = new Schema(
       },
       isSpotlight: {
         type: Number,
-        default: 2
+        default: 2,
       },
-      isActive: {
-        type: Boolean,
-        default: false
-      },
+
       startedAt: {
         type: Date,
         default: Date.now,
@@ -229,15 +225,13 @@ const userSchema = new Schema(
     },
     isPodcastActive: {
       type: Boolean,
-      default: false
+      default: false,
     },
-
   },
   {
     timestamps: true,
-  }
+  },
 );
-
 
 export const User = model<UserSchema>("User", userSchema);
 export default User;
