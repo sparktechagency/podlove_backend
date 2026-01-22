@@ -345,6 +345,7 @@ async function downgradeExpiredSubscriptions(): Promise<{
 
 async function notifyScheduledPodcasts(): Promise<void> {
   const nowUTC = new Date().getTime();
+  console.log("nowUTC=================: ", new Date(nowUTC).toISOString());
   const oneHourMs = 1000 * 60 * 60;
 
   const podcasts = await Podcast.find({ status: PodcastStatus.SCHEDULED }).exec();
