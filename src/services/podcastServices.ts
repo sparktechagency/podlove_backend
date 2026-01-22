@@ -270,22 +270,99 @@ async function downgradeExpiredSubscriptions(): Promise<{
   };
 }
 
+// async function notifyScheduledPodcasts(): Promise<void> {
+//   const nowUTC = new Date(); 
+//   const oneHourMs = 1000 * 60 * 60;
+
+//   const podcasts = await Podcast.find({ status: "Scheduled" }).exec();
+
+//   const notifPromises: Promise<any>[] = [];
+//   const bulkOps: mongoose.AnyBulkWriteOperation[] = [];
+//   await downgradeExpiredSubscriptions();
+
+//   for (const p of podcasts) {
+//     const scheduledET = parseScheduleDateInET(p);
+//     if (!scheduledET) continue;
+
+//     const diffMs = scheduledET.toMillis() - nowET.toMillis();
+
+//     if (diffMs > 0 && diffMs <= oneHourMs && !p.notificationSent) {
+//       notifPromises.push(
+//         Notification.create({
+//           type: "podcast_upcoming",
+//           user: p.primaryUser,
+//           message: [
+//             {
+//               title: "Your podcast is about to start!",
+//               description: `Your podcast is scheduled for ${p.schedule.date} at ${p.schedule.time}.`,
+//             },
+//           ],
+//           read: false,
+//           section: "user",
+//         })
+//       );
+//       // mark notificationSent
+//       bulkOps.push({
+//         updateOne: {
+//           filter: { _id: p._id },
+//           update: { $set: { notificationSent: true } },
+//         },
+//       });
+//     }
+
+//     // b) Time’s up or passed → switch to PLAYING
+//     if (scheduledET <= nowET) {
+//       bulkOps.push({
+//         updateOne: {
+//           filter: { _id: p._id },
+//           update: { $set: { status: PodcastStatus.PLAYING } },
+//         },
+//       });
+//       const primaryUserId = p?.primaryUser.toString();
+//       // @ts-ignore
+//       const postCastId = p?._id.toString();
+//       await LiveStreamingServices.createStreamingRoom(primaryUserId, postCastId)
+//       console.log(`✅ Podcast ${p._id} status set to PLAYING`);
+//     }
+//   }
+
+//   try {
+//     await Promise.all(notifPromises);
+//   } catch (err) {
+//     console.error("❌ Notification batch error:", err);
+//   }
+
+//   if (bulkOps.length) {
+//     try {
+//       await Podcast.bulkWrite(bulkOps);
+//       console.log(`✅ Applied ${bulkOps.length} updates`);
+//     } catch (err) {
+//       console.error("❌ bulkWrite failed:", err);
+//     }
+//   }
+// }
+
+
 async function notifyScheduledPodcasts(): Promise<void> {
-  const nowET = DateTime.now().setZone("America/New_York");
+  const nowUTC = new Date().getTime();
   const oneHourMs = 1000 * 60 * 60;
 
-  const podcasts = await Podcast.find({ status: "Scheduled" }).exec();
+  const podcasts = await Podcast.find({ status: PodcastStatus.SCHEDULED }).exec();
 
   const notifPromises: Promise<any>[] = [];
   const bulkOps: mongoose.AnyBulkWriteOperation[] = [];
+
   await downgradeExpiredSubscriptions();
 
   for (const p of podcasts) {
-    const scheduledET = parseScheduleDateInET(p);
-    if (!scheduledET) continue;
+    if (!p.schedule?.date || !p.schedule?.time) continue;
 
-    const diffMs = scheduledET.toMillis() - nowET.toMillis();
+    // ⬇️ Parse as UTC (NO ET)
+    const scheduledUTC = new Date(`${p.schedule.date}T${p.schedule.time}:00Z`).getTime();
 
+    const diffMs = scheduledUTC - nowUTC;
+
+    // 🔔 1 hour before
     if (diffMs > 0 && diffMs <= oneHourMs && !p.notificationSent) {
       notifPromises.push(
         Notification.create({
@@ -301,7 +378,7 @@ async function notifyScheduledPodcasts(): Promise<void> {
           section: "user",
         })
       );
-      // mark notificationSent
+
       bulkOps.push({
         updateOne: {
           filter: { _id: p._id },
@@ -310,36 +387,26 @@ async function notifyScheduledPodcasts(): Promise<void> {
       });
     }
 
-    // b) Time’s up or passed → switch to PLAYING
-    if (scheduledET <= nowET) {
+    // ▶️ Start podcast
+    if (scheduledUTC <= nowUTC) {
       bulkOps.push({
         updateOne: {
           filter: { _id: p._id },
           update: { $set: { status: PodcastStatus.PLAYING } },
         },
       });
-      const primaryUserId = p?.primaryUser.toString();
-      // @ts-ignore
-      const postCastId = p?._id.toString();
-      await LiveStreamingServices.createStreamingRoom(primaryUserId, postCastId)
+
+      await LiveStreamingServices.createStreamingRoom(
+        p.primaryUser.toString(),
+        p._id.toString()
+      );
+
       console.log(`✅ Podcast ${p._id} status set to PLAYING`);
     }
   }
 
-  try {
-    await Promise.all(notifPromises);
-  } catch (err) {
-    console.error("❌ Notification batch error:", err);
-  }
-
-  if (bulkOps.length) {
-    try {
-      await Podcast.bulkWrite(bulkOps);
-      console.log(`✅ Applied ${bulkOps.length} updates`);
-    } catch (err) {
-      console.error("❌ bulkWrite failed:", err);
-    }
-  }
+  await Promise.all(notifPromises);
+  if (bulkOps.length) await Podcast.bulkWrite(bulkOps);
 }
 
 cron.schedule("* * * * *", () => {
