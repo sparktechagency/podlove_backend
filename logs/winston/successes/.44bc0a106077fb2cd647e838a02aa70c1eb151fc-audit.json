@@ -6,39 +6,9 @@
     "auditLog": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\successes\\.44bc0a106077fb2cd647e838a02aa70c1eb151fc-audit.json",
     "files": [
         {
-            "date": 1762833675371,
-            "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\successes\\um-2025-11-11-10-success.log",
-            "hash": "3e741d9ebd07271e8a8c5c7abff0e150e176cf8b0082cbbd53b64e31bb5c82bb"
-        },
-        {
-            "date": 1762917943333,
-            "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\successes\\um-2025-11-12-09-success.log",
-            "hash": "7f902e566c91df6a7f3cddda90b8a5bffcbab25f3c745cbfe52ba217469cdfc2"
-        },
-        {
-            "date": 1763016152502,
-            "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\successes\\um-2025-11-13-12-success.log",
-            "hash": "4fcf0ff6567582fab1292ef95600cd3ee339e5c27ac76aa252c861df5565ed88"
-        },
-        {
-            "date": 1763017379061,
-            "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\successes\\um-2025-11-13-13-success.log",
-            "hash": "d568812983aaa123c7b9b7ac0ed5fbebdcb0bf5e2592ff74545679806a58b1bb"
-        },
-        {
-            "date": 1763182274217,
-            "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\successes\\um-2025-11-15-10-success.log",
-            "hash": "a5f91c471cfe266cd040364f3ffc20725806522397fc5b6caa44b4cff749b8c4"
-        },
-        {
-            "date": 1763182803609,
-            "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\successes\\um-2025-11-15-11-success.log",
-            "hash": "c8caccf4a9a6b6ffd1fb31740717c9a5ff74c0b652ddcc5d7f48eae32b5bd0ab"
-        },
-        {
-            "date": 1763522957450,
-            "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\successes\\um-2025-11-19-09-success.log",
-            "hash": "020113ad730e0cd9488712ce36a6580922090f075d00649ff08541148a87d01a"
+            "date": 1769063997595,
+            "name": "C:\\Users\\devmd\\Work\\podlove_backend\\logs\\winston\\successes\\um-2026-01-22-12-success.log",
+            "hash": "8223c7e12df77a16a56605e9680f77b5080e19750d58600d30f93a1af2f4c1d5"
         }
     ],
     "hashType": "sha256"
