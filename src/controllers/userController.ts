@@ -293,7 +293,7 @@ const updateUserSubscriptionController = async (req: Request, res: Response, nex
     const endDate = new Date(startedAt);
     endDate.setMonth(endDate.getMonth() + 1);
 
-    const update = User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       userId,
       {
         $set: {
@@ -308,6 +308,10 @@ const updateUserSubscriptionController = async (req: Request, res: Response, nex
       },
       { new: true },
     ).lean();
+
+    if (!updatedUser) {
+      return res.status(500).json({ message: "Subscription update failed" });
+    }
 
     return res.status(200).json({
       success: true,
