@@ -268,19 +268,30 @@ const updateUserSubscriptionController = async (req: Request, res: Response, nex
 
     /** ✅ CASE 1: SAMPLER */
     if (user.subscription.plan === SubscriptionPlanName.SAMPLER) {
-      user.subscription.status = SubscriptionStatus.ACTIVE;
       const startedAt = new Date();
-      user.subscription.startedAt = startedAt;
       const endDate = new Date(startedAt);
       endDate.setMonth(endDate.getMonth() + 1);
-      user.subscription.endDate = endDate;
 
-      await user.save();
+      // Using findByIdAndUpdate instead of user.save()
+      const updatedUser = await User.findByIdAndUpdate(
+        userId,
+        {
+          $set: {
+            "subscription.status": SubscriptionStatus.ACTIVE,
+            "subscription.startedAt": startedAt,
+            "subscription.endDate": endDate
+          }
+        },
+        { new: true }
+      );
+      if (!updatedUser) {
+        return res.status(500).json({ message: "Subscription update failed" });
+      }
 
       return res.status(200).json({
         success: true,
         message: "Sampler subscription activated",
-        data: user.subscription,
+        data: updatedUser.subscription,
       });
     }
 
