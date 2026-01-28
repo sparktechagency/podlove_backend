@@ -65,7 +65,7 @@ export const sendPhoneVerificationMessage = async (
 
     // Send with Twilio
     await client.messages.create({
-        body: `Your verification code is: ${otp}`,
+        body: `Your PodLove account verification code is: ${otp}`,
         from: phone_number,
         to: phoneNumber
     });

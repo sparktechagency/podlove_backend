@@ -212,7 +212,7 @@ const userSchema = new Schema(
       },
       isSpotlight: {
         type: Number,
-        default: 2,
+        default: 0,
       },
 
       startedAt: {
