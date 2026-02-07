@@ -12,6 +12,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 const upgrade = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const userId = req.user.userId;
   const planId = req.body.planId;
+  const returnTo = req.body?.returnTo || "home";
   let error, user, plan, session, customer;
 
   // console.log("userId===============: ", userId);
@@ -48,7 +49,7 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
           userId: userId,
         },
       },
-      success_url: `https://podlove.co/subscribe/success`,
+      success_url: `https://podlove.co/subscribe/success?return_to=${returnTo},`,
       cancel_url: `https://podlove.co/subscribe/cancel`,
       //  success_url: `http://localhost:3000/home`,
       //  cancel_url: `http://localhost:3000/subscription-plan`,
