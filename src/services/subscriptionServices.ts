@@ -49,7 +49,7 @@ const upgrade = async (req: Request, res: Response, next: NextFunction): Promise
           userId: userId,
         },
       },
-      success_url: `https://podlove.co/subscribe/success?return_to=${returnTo},`,
+      success_url: `https://podlove.co/subscribe/success?return_to=${returnTo}`,
       cancel_url: `https://podlove.co/subscribe/cancel`,
       //  success_url: `http://localhost:3000/home`,
       //  cancel_url: `http://localhost:3000/subscription-plan`,
